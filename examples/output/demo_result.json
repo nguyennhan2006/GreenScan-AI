@@ -1,0 +1,1235 @@
+{
+  "schema_version": "analysis-result-v1",
+  "run_id": "0e2b32b299824430",
+  "manifest": {
+    "run_id": "0e2b32b299824430",
+    "created_at": "2026-07-14T15:30:41.886633Z",
+    "pipeline_version": "pipeline-v1",
+    "config_hash": "fce3add63a2ae9f93a8256bfcf5a3f214b683b8c5e11f72fed028a4506ef6c61",
+    "input_hashes": {
+      "0:company_esg_2024.txt": "694452fb0947d0023e3c2521e4cf183ec11ad738c100f1c9f3baff8fe854f15b",
+      "1:financial_2024.txt": "90b05c321f035f62b327af2ee6f26f4dafa61c3e5314fc2d711a7d5558d7850a",
+      "2:legal_notice_2024.txt": "bef53cf8e8bf53b692e6090a93663ef9af28c1f34e85dcf68494fae7cabce20c"
+    },
+    "deterministic_seed": 0,
+    "plan": [
+      "validate_inputs",
+      "parse_and_ocr_documents",
+      "extract_green_claims",
+      "build_hybrid_retrieval_index",
+      "retrieve_evidence_per_claim",
+      "verify_claim_evidence_pairs",
+      "score_greenwashing_risk",
+      "apply_quality_gates",
+      "write_evidence_pack"
+    ]
+  },
+  "claims": [
+    {
+      "claim_id": "beb320e537ef767d",
+      "text": "CÔNG TY CỔ PHẦN MINH HỌA - BÁO CÁO PHÁT TRIỂN BỀN VỮNG 2024",
+      "claim_type": "generic_sustainability",
+      "source_chunk_id": "e78e7f4082267e0e",
+      "source_name": "company_esg_2024.txt",
+      "source_page": null,
+      "metric": null,
+      "direction": null,
+      "values": [
+        2024.0
+      ],
+      "units": [],
+      "period": "2024",
+      "baseline": null,
+      "is_future_commitment": false,
+      "is_vague": false,
+      "confidence": 0.6599999999999999
+    },
+    {
+      "claim_id": "bee5f0dc69e7ad89",
+      "text": "Chúng tôi là doanh nghiệp xanh hàng đầu và luôn hướng tới một tương lai thân thiện với môi trường.",
+      "claim_type": "generic_sustainability",
+      "source_chunk_id": "e78e7f4082267e0e",
+      "source_name": "company_esg_2024.txt",
+      "source_page": null,
+      "metric": null,
+      "direction": null,
+      "values": [],
+      "units": [],
+      "period": null,
+      "baseline": null,
+      "is_future_commitment": false,
+      "is_vague": true,
+      "confidence": 0.48
+    },
+    {
+      "claim_id": "a54b03fd9d16668c",
+      "text": "Công ty đã giảm 30% tổng phát thải khí nhà kính trong năm 2024 so với năm 2023.",
+      "claim_type": "emissions_reduction",
+      "source_chunk_id": "e78e7f4082267e0e",
+      "source_name": "company_esg_2024.txt",
+      "source_page": null,
+      "metric": "emissions",
+      "direction": "decrease",
+      "values": [
+        30.0,
+        2024.0,
+        2023.0
+      ],
+      "units": [
+        "%"
+      ],
+      "period": "2024",
+      "baseline": "2023",
+      "is_future_commitment": false,
+      "is_vague": false,
+      "confidence": 0.7799999999999999
+    },
+    {
+      "claim_id": "024636ae060f1ea5",
+      "text": "Tỷ lệ năng lượng tái tạo đạt 50% tổng điện năng tiêu thụ trong năm 2024.",
+      "claim_type": "renewable_energy",
+      "source_chunk_id": "e78e7f4082267e0e",
+      "source_name": "company_esg_2024.txt",
+      "source_page": null,
+      "metric": "renewable_energy",
+      "direction": null,
+      "values": [
+        50.0,
+        2024.0
+      ],
+      "units": [
+        "%"
+      ],
+      "period": "2024",
+      "baseline": null,
+      "is_future_commitment": false,
+      "is_vague": false,
+      "confidence": 0.7799999999999999
+    },
+    {
+      "claim_id": "d5257b52771a5d60",
+      "text": "Công ty cam kết Net Zero 2050 và sẽ đầu tư mạnh mẽ vào các sáng kiến ESG.",
+      "claim_type": "emissions_reduction",
+      "source_chunk_id": "e78e7f4082267e0e",
+      "source_name": "company_esg_2024.txt",
+      "source_page": null,
+      "metric": null,
+      "direction": null,
+      "values": [
+        2050.0
+      ],
+      "units": [],
+      "period": "2050",
+      "baseline": null,
+      "is_future_commitment": true,
+      "is_vague": false,
+      "confidence": 0.7799999999999999
+    },
+    {
+      "claim_id": "a05138b27377513a",
+      "text": "Nguồn vốn từ trái phiếu xanh được sử dụng hoàn toàn cho các dự án đủ điều kiện xanh.",
+      "claim_type": "green_finance",
+      "source_chunk_id": "e78e7f4082267e0e",
+      "source_name": "company_esg_2024.txt",
+      "source_page": null,
+      "metric": "green_finance",
+      "direction": null,
+      "values": [],
+      "units": [],
+      "period": null,
+      "baseline": null,
+      "is_future_commitment": false,
+      "is_vague": false,
+      "confidence": 0.6
+    }
+  ],
+  "verifications": [
+    {
+      "claim": {
+        "claim_id": "beb320e537ef767d",
+        "text": "CÔNG TY CỔ PHẦN MINH HỌA - BÁO CÁO PHÁT TRIỂN BỀN VỮNG 2024",
+        "claim_type": "generic_sustainability",
+        "source_chunk_id": "e78e7f4082267e0e",
+        "source_name": "company_esg_2024.txt",
+        "source_page": null,
+        "metric": null,
+        "direction": null,
+        "values": [
+          2024.0
+        ],
+        "units": [],
+        "period": "2024",
+        "baseline": null,
+        "is_future_commitment": false,
+        "is_vague": false,
+        "confidence": 0.6599999999999999
+      },
+      "status": "PARTIALLY_SUPPORTED",
+      "rationale": "Relevant evidence was found, but the claim is not fully verified at the same scope, period or precision.",
+      "evidence": [
+        {
+          "chunk_id": "d7f3cd9846458028",
+          "source_name": "financial_2024.txt",
+          "source_type": "financial",
+          "text": "CÔNG TY CỔ PHẦN MINH HỌA - THUYẾT MINH TÀI CHÍNH VÀ DỮ LIỆU VẬN HÀNH\n\nNăm 2023, tổng phát thải Scope 1 và Scope 2 là 100.000 tCO2e.\nNăm 2024, tổng phát thải Scope 1 và Scope 2 là 112.000 tCO2e, tăng 12% so với năm trước.\nĐiện năng tái tạo mua trong năm 2024 chiếm 8% tổng điện năng tiêu thụ.\nKhoản thu từ trái phiếu xanh là 500 tỷ đồng. Báo cáo phân bổ vốn xác định 320 tỷ đồng đã giải ngân cho dự án điện mặt trời; 180 tỷ đồng đang nằm trong tài khoản tiền gửi và chưa được phân bổ tại ngày kết thúc kỳ báo cáo.\nKhông có báo cáo đảm bảo độc lập đối với các chỉ tiêu phát thải nêu trên.",
+          "page": null,
+          "score": 0.484141,
+          "lexical_score": 0.570422,
+          "semantic_score": 0.289798,
+          "citation": "financial_2024.txt (block 1)",
+          "suspicious_instruction": false
+        },
+        {
+          "chunk_id": "6b007691468556e6",
+          "source_name": "legal_notice_2024.txt",
+          "source_type": "legal",
+          "text": "THÔNG TIN BÊN NGOÀI VÀ PHÁP LÝ - TÌNH HUỐNG MINH HỌA\n\nCơ quan có thẩm quyền ghi nhận một vi phạm hành chính liên quan đến việc lưu giữ chất thải nguy hại không đúng khu vực được phê duyệt. Doanh nghiệp đã nộp phạt và thực hiện biện pháp khắc phục.\nTài liệu này không xác nhận rằng toàn bộ danh mục dự án của doanh nghiệp đáp ứng tiêu chí phân loại xanh.\nĐối với vốn trái phiếu xanh, cần theo dõi riêng số tiền chưa phân bổ và công bố mục đích đầu tư tạm thời.",
+          "page": null,
+          "score": 0.274301,
+          "lexical_score": 0.324921,
+          "semantic_score": 0.123543,
+          "citation": "legal_notice_2024.txt (block 1)",
+          "suspicious_instruction": false
+        }
+      ],
+      "computed_values": {
+        "claim_numbers": [],
+        "evidence_numbers": [
+          [
+            1.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            2.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            100.0,
+            "tco2e",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            1.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            2.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            112.0,
+            "tco2e",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            12.0,
+            "%",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            8.0,
+            "%",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            500000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            320000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            180000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ]
+        ],
+        "matched": false,
+        "contradiction": false,
+        "closest_pair": null,
+        "calculation_method": "deterministic-relative-error"
+      },
+      "warnings": [],
+      "verification_tool_version": "verifier-v1"
+    },
+    {
+      "claim": {
+        "claim_id": "bee5f0dc69e7ad89",
+        "text": "Chúng tôi là doanh nghiệp xanh hàng đầu và luôn hướng tới một tương lai thân thiện với môi trường.",
+        "claim_type": "generic_sustainability",
+        "source_chunk_id": "e78e7f4082267e0e",
+        "source_name": "company_esg_2024.txt",
+        "source_page": null,
+        "metric": null,
+        "direction": null,
+        "values": [],
+        "units": [],
+        "period": null,
+        "baseline": null,
+        "is_future_commitment": false,
+        "is_vague": true,
+        "confidence": 0.48
+      },
+      "status": "PARTIALLY_SUPPORTED",
+      "rationale": "Evidence is related but incomplete; additional baseline, scope or assurance is required.",
+      "evidence": [
+        {
+          "chunk_id": "6b007691468556e6",
+          "source_name": "legal_notice_2024.txt",
+          "source_type": "legal",
+          "text": "THÔNG TIN BÊN NGOÀI VÀ PHÁP LÝ - TÌNH HUỐNG MINH HỌA\n\nCơ quan có thẩm quyền ghi nhận một vi phạm hành chính liên quan đến việc lưu giữ chất thải nguy hại không đúng khu vực được phê duyệt. Doanh nghiệp đã nộp phạt và thực hiện biện pháp khắc phục.\nTài liệu này không xác nhận rằng toàn bộ danh mục dự án của doanh nghiệp đáp ứng tiêu chí phân loại xanh.\nĐối với vốn trái phiếu xanh, cần theo dõi riêng số tiền chưa phân bổ và công bố mục đích đầu tư tạm thời.",
+          "page": null,
+          "score": 0.440983,
+          "lexical_score": 0.528905,
+          "semantic_score": 0.244634,
+          "citation": "legal_notice_2024.txt (block 1)",
+          "suspicious_instruction": false
+        },
+        {
+          "chunk_id": "d7f3cd9846458028",
+          "source_name": "financial_2024.txt",
+          "source_type": "financial",
+          "text": "CÔNG TY CỔ PHẦN MINH HỌA - THUYẾT MINH TÀI CHÍNH VÀ DỮ LIỆU VẬN HÀNH\n\nNăm 2023, tổng phát thải Scope 1 và Scope 2 là 100.000 tCO2e.\nNăm 2024, tổng phát thải Scope 1 và Scope 2 là 112.000 tCO2e, tăng 12% so với năm trước.\nĐiện năng tái tạo mua trong năm 2024 chiếm 8% tổng điện năng tiêu thụ.\nKhoản thu từ trái phiếu xanh là 500 tỷ đồng. Báo cáo phân bổ vốn xác định 320 tỷ đồng đã giải ngân cho dự án điện mặt trời; 180 tỷ đồng đang nằm trong tài khoản tiền gửi và chưa được phân bổ tại ngày kết thúc kỳ báo cáo.\nKhông có báo cáo đảm bảo độc lập đối với các chỉ tiêu phát thải nêu trên.",
+          "page": null,
+          "score": 0.267112,
+          "lexical_score": 0.302003,
+          "semantic_score": 0.135579,
+          "citation": "financial_2024.txt (block 1)",
+          "suspicious_instruction": false
+        }
+      ],
+      "computed_values": {
+        "claim_numbers": [],
+        "evidence_numbers": [
+          [
+            1.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            2.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            100.0,
+            "tco2e",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            1.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            2.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            112.0,
+            "tco2e",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            12.0,
+            "%",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            8.0,
+            "%",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            500000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            320000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            180000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ]
+        ],
+        "matched": false,
+        "contradiction": false,
+        "closest_pair": null,
+        "calculation_method": "deterministic-relative-error"
+      },
+      "warnings": [],
+      "verification_tool_version": "verifier-v1"
+    },
+    {
+      "claim": {
+        "claim_id": "a54b03fd9d16668c",
+        "text": "Công ty đã giảm 30% tổng phát thải khí nhà kính trong năm 2024 so với năm 2023.",
+        "claim_type": "emissions_reduction",
+        "source_chunk_id": "e78e7f4082267e0e",
+        "source_name": "company_esg_2024.txt",
+        "source_page": null,
+        "metric": "emissions",
+        "direction": "decrease",
+        "values": [
+          30.0,
+          2024.0,
+          2023.0
+        ],
+        "units": [
+          "%"
+        ],
+        "period": "2024",
+        "baseline": "2023",
+        "is_future_commitment": false,
+        "is_vague": false,
+        "confidence": 0.7799999999999999
+      },
+      "status": "CONTRADICTED",
+      "rationale": "Retrieved evidence contains a conflicting direction or materially different quantitative value.",
+      "evidence": [
+        {
+          "chunk_id": "d7f3cd9846458028",
+          "source_name": "financial_2024.txt",
+          "source_type": "financial",
+          "text": "CÔNG TY CỔ PHẦN MINH HỌA - THUYẾT MINH TÀI CHÍNH VÀ DỮ LIỆU VẬN HÀNH\n\nNăm 2023, tổng phát thải Scope 1 và Scope 2 là 100.000 tCO2e.\nNăm 2024, tổng phát thải Scope 1 và Scope 2 là 112.000 tCO2e, tăng 12% so với năm trước.\nĐiện năng tái tạo mua trong năm 2024 chiếm 8% tổng điện năng tiêu thụ.\nKhoản thu từ trái phiếu xanh là 500 tỷ đồng. Báo cáo phân bổ vốn xác định 320 tỷ đồng đã giải ngân cho dự án điện mặt trời; 180 tỷ đồng đang nằm trong tài khoản tiền gửi và chưa được phân bổ tại ngày kết thúc kỳ báo cáo.\nKhông có báo cáo đảm bảo độc lập đối với các chỉ tiêu phát thải nêu trên.",
+          "page": null,
+          "score": 0.544657,
+          "lexical_score": 0.612091,
+          "semantic_score": 0.37335,
+          "citation": "financial_2024.txt (block 1)",
+          "suspicious_instruction": false
+        },
+        {
+          "chunk_id": "6b007691468556e6",
+          "source_name": "legal_notice_2024.txt",
+          "source_type": "legal",
+          "text": "THÔNG TIN BÊN NGOÀI VÀ PHÁP LÝ - TÌNH HUỐNG MINH HỌA\n\nCơ quan có thẩm quyền ghi nhận một vi phạm hành chính liên quan đến việc lưu giữ chất thải nguy hại không đúng khu vực được phê duyệt. Doanh nghiệp đã nộp phạt và thực hiện biện pháp khắc phục.\nTài liệu này không xác nhận rằng toàn bộ danh mục dự án của doanh nghiệp đáp ứng tiêu chí phân loại xanh.\nĐối với vốn trái phiếu xanh, cần theo dõi riêng số tiền chưa phân bổ và công bố mục đích đầu tư tạm thời.",
+          "page": null,
+          "score": 0.214559,
+          "lexical_score": 0.218315,
+          "semantic_score": 0.121081,
+          "citation": "legal_notice_2024.txt (block 1)",
+          "suspicious_instruction": false
+        }
+      ],
+      "computed_values": {
+        "claim_numbers": [
+          [
+            30.0,
+            "%"
+          ]
+        ],
+        "evidence_numbers": [
+          [
+            1.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            2.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            100.0,
+            "tco2e",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            1.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            2.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            112.0,
+            "tco2e",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            12.0,
+            "%",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            8.0,
+            "%",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            500000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            320000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            180000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ]
+        ],
+        "matched": false,
+        "contradiction": true,
+        "closest_pair": {
+          "claim": 30.0,
+          "evidence": 12.0,
+          "relative_error": 0.6,
+          "citation": "financial_2024.txt (block 1)"
+        },
+        "calculation_method": "deterministic-relative-error"
+      },
+      "warnings": [],
+      "verification_tool_version": "verifier-v1"
+    },
+    {
+      "claim": {
+        "claim_id": "024636ae060f1ea5",
+        "text": "Tỷ lệ năng lượng tái tạo đạt 50% tổng điện năng tiêu thụ trong năm 2024.",
+        "claim_type": "renewable_energy",
+        "source_chunk_id": "e78e7f4082267e0e",
+        "source_name": "company_esg_2024.txt",
+        "source_page": null,
+        "metric": "renewable_energy",
+        "direction": null,
+        "values": [
+          50.0,
+          2024.0
+        ],
+        "units": [
+          "%"
+        ],
+        "period": "2024",
+        "baseline": null,
+        "is_future_commitment": false,
+        "is_vague": false,
+        "confidence": 0.7799999999999999
+      },
+      "status": "CONTRADICTED",
+      "rationale": "Retrieved evidence contains a conflicting direction or materially different quantitative value.",
+      "evidence": [
+        {
+          "chunk_id": "d7f3cd9846458028",
+          "source_name": "financial_2024.txt",
+          "source_type": "financial",
+          "text": "CÔNG TY CỔ PHẦN MINH HỌA - THUYẾT MINH TÀI CHÍNH VÀ DỮ LIỆU VẬN HÀNH\n\nNăm 2023, tổng phát thải Scope 1 và Scope 2 là 100.000 tCO2e.\nNăm 2024, tổng phát thải Scope 1 và Scope 2 là 112.000 tCO2e, tăng 12% so với năm trước.\nĐiện năng tái tạo mua trong năm 2024 chiếm 8% tổng điện năng tiêu thụ.\nKhoản thu từ trái phiếu xanh là 500 tỷ đồng. Báo cáo phân bổ vốn xác định 320 tỷ đồng đã giải ngân cho dự án điện mặt trời; 180 tỷ đồng đang nằm trong tài khoản tiền gửi và chưa được phân bổ tại ngày kết thúc kỳ báo cáo.\nKhông có báo cáo đảm bảo độc lập đối với các chỉ tiêu phát thải nêu trên.",
+          "page": null,
+          "score": 0.570966,
+          "lexical_score": 0.65913,
+          "semantic_score": 0.374322,
+          "citation": "financial_2024.txt (block 1)",
+          "suspicious_instruction": false
+        },
+        {
+          "chunk_id": "6b007691468556e6",
+          "source_name": "legal_notice_2024.txt",
+          "source_type": "legal",
+          "text": "THÔNG TIN BÊN NGOÀI VÀ PHÁP LÝ - TÌNH HUỐNG MINH HỌA\n\nCơ quan có thẩm quyền ghi nhận một vi phạm hành chính liên quan đến việc lưu giữ chất thải nguy hại không đúng khu vực được phê duyệt. Doanh nghiệp đã nộp phạt và thực hiện biện pháp khắc phục.\nTài liệu này không xác nhận rằng toàn bộ danh mục dự án của doanh nghiệp đáp ứng tiêu chí phân loại xanh.\nĐối với vốn trái phiếu xanh, cần theo dõi riêng số tiền chưa phân bổ và công bố mục đích đầu tư tạm thời.",
+          "page": null,
+          "score": 0.127579,
+          "lexical_score": 0.085167,
+          "semantic_score": 0.090528,
+          "citation": "legal_notice_2024.txt (block 1)",
+          "suspicious_instruction": false
+        }
+      ],
+      "computed_values": {
+        "claim_numbers": [
+          [
+            50.0,
+            "%"
+          ]
+        ],
+        "evidence_numbers": [
+          [
+            1.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            2.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            100.0,
+            "tco2e",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            1.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            2.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            112.0,
+            "tco2e",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            12.0,
+            "%",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            8.0,
+            "%",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            500000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            320000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            180000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ]
+        ],
+        "matched": false,
+        "contradiction": true,
+        "closest_pair": {
+          "claim": 50.0,
+          "evidence": 12.0,
+          "relative_error": 0.76,
+          "citation": "financial_2024.txt (block 1)"
+        },
+        "calculation_method": "deterministic-relative-error"
+      },
+      "warnings": [],
+      "verification_tool_version": "verifier-v1"
+    },
+    {
+      "claim": {
+        "claim_id": "d5257b52771a5d60",
+        "text": "Công ty cam kết Net Zero 2050 và sẽ đầu tư mạnh mẽ vào các sáng kiến ESG.",
+        "claim_type": "emissions_reduction",
+        "source_chunk_id": "e78e7f4082267e0e",
+        "source_name": "company_esg_2024.txt",
+        "source_page": null,
+        "metric": null,
+        "direction": null,
+        "values": [
+          2050.0
+        ],
+        "units": [],
+        "period": "2050",
+        "baseline": null,
+        "is_future_commitment": true,
+        "is_vague": false,
+        "confidence": 0.7799999999999999
+      },
+      "status": "PARTIALLY_SUPPORTED",
+      "rationale": "Evidence is related but incomplete; additional baseline, scope or assurance is required.",
+      "evidence": [
+        {
+          "chunk_id": "d7f3cd9846458028",
+          "source_name": "financial_2024.txt",
+          "source_type": "financial",
+          "text": "CÔNG TY CỔ PHẦN MINH HỌA - THUYẾT MINH TÀI CHÍNH VÀ DỮ LIỆU VẬN HÀNH\n\nNăm 2023, tổng phát thải Scope 1 và Scope 2 là 100.000 tCO2e.\nNăm 2024, tổng phát thải Scope 1 và Scope 2 là 112.000 tCO2e, tăng 12% so với năm trước.\nĐiện năng tái tạo mua trong năm 2024 chiếm 8% tổng điện năng tiêu thụ.\nKhoản thu từ trái phiếu xanh là 500 tỷ đồng. Báo cáo phân bổ vốn xác định 320 tỷ đồng đã giải ngân cho dự án điện mặt trời; 180 tỷ đồng đang nằm trong tài khoản tiền gửi và chưa được phân bổ tại ngày kết thúc kỳ báo cáo.\nKhông có báo cáo đảm bảo độc lập đối với các chỉ tiêu phát thải nêu trên.",
+          "page": null,
+          "score": 0.314946,
+          "lexical_score": 0.422649,
+          "semantic_score": 0.094419,
+          "citation": "financial_2024.txt (block 1)",
+          "suspicious_instruction": false
+        },
+        {
+          "chunk_id": "6b007691468556e6",
+          "source_name": "legal_notice_2024.txt",
+          "source_type": "legal",
+          "text": "THÔNG TIN BÊN NGOÀI VÀ PHÁP LÝ - TÌNH HUỐNG MINH HỌA\n\nCơ quan có thẩm quyền ghi nhận một vi phạm hành chính liên quan đến việc lưu giữ chất thải nguy hại không đúng khu vực được phê duyệt. Doanh nghiệp đã nộp phạt và thực hiện biện pháp khắc phục.\nTài liệu này không xác nhận rằng toàn bộ danh mục dự án của doanh nghiệp đáp ứng tiêu chí phân loại xanh.\nĐối với vốn trái phiếu xanh, cần theo dõi riêng số tiền chưa phân bổ và công bố mục đích đầu tư tạm thời.",
+          "page": null,
+          "score": 0.215839,
+          "lexical_score": 0.249794,
+          "semantic_score": 0.085449,
+          "citation": "legal_notice_2024.txt (block 1)",
+          "suspicious_instruction": false
+        }
+      ],
+      "computed_values": {
+        "claim_numbers": [],
+        "evidence_numbers": [
+          [
+            1.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            2.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            100.0,
+            "tco2e",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            1.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            2.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            112.0,
+            "tco2e",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            12.0,
+            "%",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            8.0,
+            "%",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            500000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            320000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            180000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ]
+        ],
+        "matched": false,
+        "contradiction": false,
+        "closest_pair": null,
+        "calculation_method": "deterministic-relative-error"
+      },
+      "warnings": [],
+      "verification_tool_version": "verifier-v1"
+    },
+    {
+      "claim": {
+        "claim_id": "a05138b27377513a",
+        "text": "Nguồn vốn từ trái phiếu xanh được sử dụng hoàn toàn cho các dự án đủ điều kiện xanh.",
+        "claim_type": "green_finance",
+        "source_chunk_id": "e78e7f4082267e0e",
+        "source_name": "company_esg_2024.txt",
+        "source_page": null,
+        "metric": "green_finance",
+        "direction": null,
+        "values": [],
+        "units": [],
+        "period": null,
+        "baseline": null,
+        "is_future_commitment": false,
+        "is_vague": false,
+        "confidence": 0.6
+      },
+      "status": "PARTIALLY_SUPPORTED",
+      "rationale": "Evidence is related but incomplete; additional baseline, scope or assurance is required.",
+      "evidence": [
+        {
+          "chunk_id": "6b007691468556e6",
+          "source_name": "legal_notice_2024.txt",
+          "source_type": "legal",
+          "text": "THÔNG TIN BÊN NGOÀI VÀ PHÁP LÝ - TÌNH HUỐNG MINH HỌA\n\nCơ quan có thẩm quyền ghi nhận một vi phạm hành chính liên quan đến việc lưu giữ chất thải nguy hại không đúng khu vực được phê duyệt. Doanh nghiệp đã nộp phạt và thực hiện biện pháp khắc phục.\nTài liệu này không xác nhận rằng toàn bộ danh mục dự án của doanh nghiệp đáp ứng tiêu chí phân loại xanh.\nĐối với vốn trái phiếu xanh, cần theo dõi riêng số tiền chưa phân bổ và công bố mục đích đầu tư tạm thời.",
+          "page": null,
+          "score": 0.349498,
+          "lexical_score": 0.411786,
+          "semantic_score": 0.184479,
+          "citation": "legal_notice_2024.txt (block 1)",
+          "suspicious_instruction": false
+        },
+        {
+          "chunk_id": "d7f3cd9846458028",
+          "source_name": "financial_2024.txt",
+          "source_type": "financial",
+          "text": "CÔNG TY CỔ PHẦN MINH HỌA - THUYẾT MINH TÀI CHÍNH VÀ DỮ LIỆU VẬN HÀNH\n\nNăm 2023, tổng phát thải Scope 1 và Scope 2 là 100.000 tCO2e.\nNăm 2024, tổng phát thải Scope 1 và Scope 2 là 112.000 tCO2e, tăng 12% so với năm trước.\nĐiện năng tái tạo mua trong năm 2024 chiếm 8% tổng điện năng tiêu thụ.\nKhoản thu từ trái phiếu xanh là 500 tỷ đồng. Báo cáo phân bổ vốn xác định 320 tỷ đồng đã giải ngân cho dự án điện mặt trời; 180 tỷ đồng đang nằm trong tài khoản tiền gửi và chưa được phân bổ tại ngày kết thúc kỳ báo cáo.\nKhông có báo cáo đảm bảo độc lập đối với các chỉ tiêu phát thải nêu trên.",
+          "page": null,
+          "score": 0.317143,
+          "lexical_score": 0.392592,
+          "semantic_score": 0.136039,
+          "citation": "financial_2024.txt (block 1)",
+          "suspicious_instruction": false
+        }
+      ],
+      "computed_values": {
+        "claim_numbers": [],
+        "evidence_numbers": [
+          [
+            1.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            2.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            100.0,
+            "tco2e",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            1.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            2.0,
+            null,
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            112.0,
+            "tco2e",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            12.0,
+            "%",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            8.0,
+            "%",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            500000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            320000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ],
+          [
+            180000000000.0,
+            "ty",
+            "financial_2024.txt (block 1)"
+          ]
+        ],
+        "matched": false,
+        "contradiction": false,
+        "closest_pair": null,
+        "calculation_method": "deterministic-relative-error"
+      },
+      "warnings": [],
+      "verification_tool_version": "verifier-v1"
+    }
+  ],
+  "risks": [
+    {
+      "claim_id": "beb320e537ef767d",
+      "risk_score": 17.0,
+      "severity": "LOW",
+      "components": [
+        {
+          "name": "specificity",
+          "score": 7.0,
+          "max_score": 15.0,
+          "reason": "Claim specificity and identifiable metric."
+        },
+        {
+          "name": "quantitative_evidence",
+          "score": 2.0,
+          "max_score": 15.0,
+          "reason": "Presence of a quantitative value in the claim."
+        },
+        {
+          "name": "baseline_and_period",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Baseline and reporting/target period completeness."
+        },
+        {
+          "name": "evidence_support",
+          "score": 8.0,
+          "max_score": 20.0,
+          "reason": "Verification status: PARTIALLY_SUPPORTED."
+        },
+        {
+          "name": "independent_assurance",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Independent/legal/standard source coverage."
+        },
+        {
+          "name": "contradiction",
+          "score": 0.0,
+          "max_score": 20.0,
+          "reason": "Direct contradiction penalty."
+        },
+        {
+          "name": "vague_or_exaggerated_language",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Vague or promotional language."
+        }
+      ],
+      "requires_human_review": false,
+      "rubric_version": "risk-rubric-v1"
+    },
+    {
+      "claim_id": "bee5f0dc69e7ad89",
+      "risk_score": 48.0,
+      "severity": "MEDIUM",
+      "components": [
+        {
+          "name": "specificity",
+          "score": 15.0,
+          "max_score": 15.0,
+          "reason": "Claim specificity and identifiable metric."
+        },
+        {
+          "name": "quantitative_evidence",
+          "score": 15.0,
+          "max_score": 15.0,
+          "reason": "Presence of a quantitative value in the claim."
+        },
+        {
+          "name": "baseline_and_period",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Baseline and reporting/target period completeness."
+        },
+        {
+          "name": "evidence_support",
+          "score": 8.0,
+          "max_score": 20.0,
+          "reason": "Verification status: PARTIALLY_SUPPORTED."
+        },
+        {
+          "name": "independent_assurance",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Independent/legal/standard source coverage."
+        },
+        {
+          "name": "contradiction",
+          "score": 0.0,
+          "max_score": 20.0,
+          "reason": "Direct contradiction penalty."
+        },
+        {
+          "name": "vague_or_exaggerated_language",
+          "score": 10.0,
+          "max_score": 10.0,
+          "reason": "Vague or promotional language."
+        }
+      ],
+      "requires_human_review": false,
+      "rubric_version": "risk-rubric-v1"
+    },
+    {
+      "claim_id": "a54b03fd9d16668c",
+      "risk_score": 43.0,
+      "severity": "MEDIUM",
+      "components": [
+        {
+          "name": "specificity",
+          "score": 1.0,
+          "max_score": 15.0,
+          "reason": "Claim specificity and identifiable metric."
+        },
+        {
+          "name": "quantitative_evidence",
+          "score": 2.0,
+          "max_score": 15.0,
+          "reason": "Presence of a quantitative value in the claim."
+        },
+        {
+          "name": "baseline_and_period",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Baseline and reporting/target period completeness."
+        },
+        {
+          "name": "evidence_support",
+          "score": 20.0,
+          "max_score": 20.0,
+          "reason": "Verification status: CONTRADICTED."
+        },
+        {
+          "name": "independent_assurance",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Independent/legal/standard source coverage."
+        },
+        {
+          "name": "contradiction",
+          "score": 20.0,
+          "max_score": 20.0,
+          "reason": "Direct contradiction penalty."
+        },
+        {
+          "name": "vague_or_exaggerated_language",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Vague or promotional language."
+        }
+      ],
+      "requires_human_review": true,
+      "rubric_version": "risk-rubric-v1"
+    },
+    {
+      "claim_id": "024636ae060f1ea5",
+      "risk_score": 43.0,
+      "severity": "MEDIUM",
+      "components": [
+        {
+          "name": "specificity",
+          "score": 1.0,
+          "max_score": 15.0,
+          "reason": "Claim specificity and identifiable metric."
+        },
+        {
+          "name": "quantitative_evidence",
+          "score": 2.0,
+          "max_score": 15.0,
+          "reason": "Presence of a quantitative value in the claim."
+        },
+        {
+          "name": "baseline_and_period",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Baseline and reporting/target period completeness."
+        },
+        {
+          "name": "evidence_support",
+          "score": 20.0,
+          "max_score": 20.0,
+          "reason": "Verification status: CONTRADICTED."
+        },
+        {
+          "name": "independent_assurance",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Independent/legal/standard source coverage."
+        },
+        {
+          "name": "contradiction",
+          "score": 20.0,
+          "max_score": 20.0,
+          "reason": "Direct contradiction penalty."
+        },
+        {
+          "name": "vague_or_exaggerated_language",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Vague or promotional language."
+        }
+      ],
+      "requires_human_review": true,
+      "rubric_version": "risk-rubric-v1"
+    },
+    {
+      "claim_id": "d5257b52771a5d60",
+      "risk_score": 27.0,
+      "severity": "MEDIUM",
+      "components": [
+        {
+          "name": "specificity",
+          "score": 7.0,
+          "max_score": 15.0,
+          "reason": "Claim specificity and identifiable metric."
+        },
+        {
+          "name": "quantitative_evidence",
+          "score": 2.0,
+          "max_score": 15.0,
+          "reason": "Presence of a quantitative value in the claim."
+        },
+        {
+          "name": "baseline_and_period",
+          "score": 10.0,
+          "max_score": 10.0,
+          "reason": "Baseline and reporting/target period completeness."
+        },
+        {
+          "name": "evidence_support",
+          "score": 8.0,
+          "max_score": 20.0,
+          "reason": "Verification status: PARTIALLY_SUPPORTED."
+        },
+        {
+          "name": "independent_assurance",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Independent/legal/standard source coverage."
+        },
+        {
+          "name": "contradiction",
+          "score": 0.0,
+          "max_score": 20.0,
+          "reason": "Direct contradiction penalty."
+        },
+        {
+          "name": "vague_or_exaggerated_language",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Vague or promotional language."
+        }
+      ],
+      "requires_human_review": false,
+      "rubric_version": "risk-rubric-v1"
+    },
+    {
+      "claim_id": "a05138b27377513a",
+      "risk_score": 24.0,
+      "severity": "LOW",
+      "components": [
+        {
+          "name": "specificity",
+          "score": 1.0,
+          "max_score": 15.0,
+          "reason": "Claim specificity and identifiable metric."
+        },
+        {
+          "name": "quantitative_evidence",
+          "score": 15.0,
+          "max_score": 15.0,
+          "reason": "Presence of a quantitative value in the claim."
+        },
+        {
+          "name": "baseline_and_period",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Baseline and reporting/target period completeness."
+        },
+        {
+          "name": "evidence_support",
+          "score": 8.0,
+          "max_score": 20.0,
+          "reason": "Verification status: PARTIALLY_SUPPORTED."
+        },
+        {
+          "name": "independent_assurance",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Independent/legal/standard source coverage."
+        },
+        {
+          "name": "contradiction",
+          "score": 0.0,
+          "max_score": 20.0,
+          "reason": "Direct contradiction penalty."
+        },
+        {
+          "name": "vague_or_exaggerated_language",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Vague or promotional language."
+        }
+      ],
+      "requires_human_review": false,
+      "rubric_version": "risk-rubric-v1"
+    }
+  ],
+  "quality_gates": [
+    {
+      "gate_id": "G0",
+      "name": "Data admissibility",
+      "passed": true,
+      "status": "PASS",
+      "details": "All parsed chunks must retain source provenance."
+    },
+    {
+      "gate_id": "G1",
+      "name": "Extraction fidelity",
+      "passed": true,
+      "status": "PASS",
+      "details": "Claims retain source chunk and document location."
+    },
+    {
+      "gate_id": "G2",
+      "name": "Retrieval admissibility",
+      "passed": true,
+      "status": "PASS",
+      "details": "Each claim has admissible evidence or an explicit insufficient-evidence status."
+    },
+    {
+      "gate_id": "G3",
+      "name": "Deterministic verification",
+      "passed": true,
+      "status": "PASS",
+      "details": "Numeric comparisons are executed by deterministic code."
+    },
+    {
+      "gate_id": "G4",
+      "name": "Citation integrity",
+      "passed": true,
+      "status": "PASS",
+      "details": "Every decisive evidence item has a document-level location."
+    },
+    {
+      "gate_id": "G5",
+      "name": "Risk review",
+      "passed": false,
+      "status": "PENDING_HUMAN_REVIEW",
+      "details": "High/critical or legal-conflict cases require reviewer approval."
+    },
+    {
+      "gate_id": "G6",
+      "name": "Reproducibility",
+      "passed": true,
+      "status": "PASS",
+      "details": "Run manifest records configuration, input hashes, seed and plan."
+    }
+  ],
+  "summary": {
+    "total_documents": 3,
+    "total_chunks": 3,
+    "total_claims": 6,
+    "status_counts": {
+      "PARTIALLY_SUPPORTED": 4,
+      "CONTRADICTED": 2
+    },
+    "severity_counts": {
+      "LOW": 2,
+      "MEDIUM": 4
+    },
+    "release_status": "PENDING_HUMAN_REVIEW"
+  },
+  "output_directory": ".quantum/runs/0e2b32b299824430"
+}

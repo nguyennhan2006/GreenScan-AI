@@ -1,0 +1,22 @@
+version: risk-rubric-v1
+meaning: Higher score means higher greenwashing risk.
+components:
+  specificity:
+    max_score: 15
+  quantitative_evidence:
+    max_score: 15
+  baseline_and_period:
+    max_score: 10
+  evidence_support:
+    max_score: 20
+  independent_assurance:
+    max_score: 10
+  contradiction:
+    max_score: 20
+  vague_or_exaggerated_language:
+    max_score: 10
+severity:
+  low: [0, 24]
+  medium: [25, 49]
+  high: [50, 74]
+  critical: [75, 100]
