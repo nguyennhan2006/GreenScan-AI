@@ -11,6 +11,8 @@ dist/
 *.egg-info/
 .env
 .quantum/
+node_modules/
+frontend/dist/
 .DS_Store
 .idea/
 .vscode/

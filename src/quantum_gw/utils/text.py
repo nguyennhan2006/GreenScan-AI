@@ -5,7 +5,6 @@ import re
 import unicodedata
 from pathlib import Path
 
-
 TOKEN_RE = re.compile(r"[\w%+./-]+", re.UNICODE)
 NUMBER_RE = re.compile(r"(?<!\w)(\d[\d.,]*)(?:\s*)(%|tco2e|co2e|kg|tấn|tan|mj|kwh|mwh|vnd|đồng|ty|tỷ|triệu|million|billion)?", re.IGNORECASE)
 YEAR_RE = re.compile(r"\b(20\d{2}|19\d{2})\b")

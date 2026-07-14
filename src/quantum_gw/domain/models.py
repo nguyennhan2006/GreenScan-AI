@@ -133,6 +133,22 @@ class AnalysisSummary(BaseModel):
     release_status: str
 
 
+class SuggestionItem(BaseModel):
+    code: str
+    issue: str
+    recommendation: str
+    example_fix: str | None = None
+
+
+class ClaimSuggestion(BaseModel):
+    claim_id: str
+    claim_text: str
+    status: VerificationStatus
+    severity: Severity
+    risk_score: float
+    items: list[SuggestionItem] = Field(default_factory=list)
+
+
 class AnalysisResult(BaseModel):
     schema_version: str = "analysis-result-v1"
     run_id: str
