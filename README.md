@@ -77,6 +77,21 @@ quantum-agent serve --host 0.0.0.0 --port 8000
 
 Open `http://localhost:8000/docs` for the interactive API.
 
+### Web UI (React + Tailwind)
+
+```bash
+cd frontend
+npm install
+npm run dev            # expects the API on http://localhost:8000
+```
+
+Open `http://localhost:5173`. The UI lets you paste claims or upload report
+files, shows per-claim risk scores, detected issues and fix suggestions, and
+supports editing a claim and re-checking it. Set `VITE_API_URL` if the API
+runs on a different host/port. CORS origins for the API are configured with
+the `QUANTUM_CORS_ORIGINS` environment variable
+(default `http://localhost:5173,http://127.0.0.1:5173`).
+
 ### Docker
 
 ```bash
@@ -101,6 +116,7 @@ See [Accuracy Improvement Playbook](docs/ACCURACY_IMPROVEMENT_PLAYBOOK.md) and [
 
 ```text
 src/quantum_gw/      Core package
+frontend/            React + Tailwind web UI (Vite)
 configs/             Versioned taxonomy, pipeline and scoring rules
 data/sample/         Runnable synthetic demonstration
 data/golden/         Small acceptance-test seed set

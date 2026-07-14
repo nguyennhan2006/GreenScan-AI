@@ -9,7 +9,13 @@ from quantum_gw.domain.enums import DocumentRole
 from quantum_gw.domain.models import Claim, EvidenceChunk
 from quantum_gw.settings import ClaimSettings
 from quantum_gw.storage.audit import AuditLogger
-from quantum_gw.utils.text import YEAR_RE, normalize_for_match, parse_numbers, split_sentences, stable_id
+from quantum_gw.utils.text import (
+    YEAR_RE,
+    normalize_for_match,
+    parse_numbers,
+    split_sentences,
+    stable_id,
+)
 
 
 class ClaimExtractionAgent:

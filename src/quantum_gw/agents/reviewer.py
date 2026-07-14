@@ -1,7 +1,13 @@
 from __future__ import annotations
 
 from quantum_gw.domain.enums import VerificationStatus
-from quantum_gw.domain.models import EvidenceChunk, QualityGate, RiskAssessment, RunManifest, VerificationResult
+from quantum_gw.domain.models import (
+    EvidenceChunk,
+    QualityGate,
+    RiskAssessment,
+    RunManifest,
+    VerificationResult,
+)
 from quantum_gw.storage.audit import AuditLogger
 
 
