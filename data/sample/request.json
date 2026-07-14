@@ -1,0 +1,7 @@
+{
+  "documents": [
+    {"path": "data/sample/company_esg_2024.txt", "role": "claim_source", "source_type": "internal"},
+    {"path": "data/sample/financial_2024.txt", "role": "evidence", "source_type": "financial"},
+    {"path": "data/sample/legal_notice_2024.txt", "role": "evidence", "source_type": "legal"}
+  ]
+}

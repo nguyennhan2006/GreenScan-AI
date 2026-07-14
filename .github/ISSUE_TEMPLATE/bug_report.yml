@@ -1,0 +1,24 @@
+name: Pipeline failure
+about: Report a reproducible parsing, retrieval, verification or scoring defect
+title: "[BUG] "
+labels: [bug]
+body:
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Failing stage
+      options: [Intake/OCR, Claim extraction, Retrieval, Verification, Scoring, Quality gate, API/CLI]
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour and ground truth
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behaviour, run ID and redacted evidence
+    validations:
+      required: true

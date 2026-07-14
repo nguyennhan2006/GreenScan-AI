@@ -1,0 +1,39 @@
+version: pipeline-v1
+language: vi
+runs_dir: .quantum/runs
+
+intake:
+  chunk_size_chars: 1400
+  chunk_overlap_chars: 180
+  min_native_text_chars: 40
+  extract_tables: true
+  ocr_enabled: true
+  ocr_languages: vie+eng
+  tesseract_command: tesseract
+
+claim_extraction:
+  provider: heuristic
+  minimum_confidence: 0.40
+  include_vague_claims: true
+
+retrieval:
+  top_k: 5
+  candidate_k: 20
+  lexical_weight: 0.55
+  semantic_weight: 0.45
+  minimum_score: 0.12
+  exclude_same_chunk: true
+
+verification:
+  numeric_relative_tolerance: 0.12
+  strong_support_score: 0.46
+  partial_support_score: 0.22
+  injection_policy: exclude
+
+scoring:
+  rubric_file: configs/scoring_v1.yaml
+
+review:
+  high_risk_threshold: 50
+  critical_risk_threshold: 75
+  require_human_for_legal_conflict: true

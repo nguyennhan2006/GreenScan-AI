@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+title: AI Quantum Greenwashing Agent
+message: Please cite this repository and the underlying research references when using it.
+type: software
+version: 0.1.0
+date-released: 2026-07-14
+license: Apache-2.0
