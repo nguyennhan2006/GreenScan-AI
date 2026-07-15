@@ -1,0 +1,30 @@
+# Model set locked for V1.1 (local-first). See docs/decisions/0002-local-first-model-gateway.md
+models:
+  llm_primary:
+    provider: local
+    model: Qwen/Qwen3-8B
+    mode: non_thinking
+
+  llm_verifier:
+    provider: local
+    model: Qwen/Qwen3-14B
+    optional: true
+
+  embedding:
+    provider: local
+    model: BAAI/bge-m3
+
+  reranker:
+    provider: local
+    model: BAAI/bge-reranker-v2-m3
+
+  ocr:
+    provider: local
+    model: configurable
+
+  cloud_fallback:
+    provider: fpt
+    enabled: false
+    api_key: ""
+    base_url: ""
+    model: ""

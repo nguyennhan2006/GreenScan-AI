@@ -65,7 +65,7 @@ class OrchestratorAgent:
 
         chunks = DocumentIntakeAgent(self.settings.intake, audit).run(documents)
         claims = ClaimExtractionAgent(self.settings.claim_extraction, audit).run(chunks)
-        retrieval_agent = EvidenceRetrievalAgent(chunks, self.settings.retrieval, audit)
+        retrieval_agent = EvidenceRetrievalAgent(chunks, self.settings, audit)
         verifier = VerificationAgent(self.settings.verification, audit)
         scorer = RiskScoringAgent(self.settings.scoring["rubric_file"], audit)
 
