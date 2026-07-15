@@ -12,13 +12,17 @@ services:
     ports:
       - "8000:8000"
     env_file:
-      - .env
+      - path: .env
+        required: false
     environment:
-      LOCAL_LLM_BASE_URL: http://vllm:8000/v1
-      EMBEDDING_PROVIDER: http
-      EMBEDDING_BASE_URL: http://embedding:80
-      RERANKER_PROVIDER: http
-      RERANKER_BASE_URL: http://reranker:80
+      # Values from .env win; these defaults target the gpu-profile services.
+      LOCAL_LLM_PROVIDER: ${LOCAL_LLM_PROVIDER:-openai_compatible}
+      LOCAL_LLM_BASE_URL: ${LOCAL_LLM_BASE_URL:-http://vllm:8000/v1}
+      LOCAL_LLM_MODEL: ${LOCAL_LLM_MODEL:-Qwen/Qwen3-8B}
+      EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-http}
+      EMBEDDING_BASE_URL: ${EMBEDDING_BASE_URL:-http://embedding:80}
+      RERANKER_PROVIDER: ${RERANKER_PROVIDER:-http}
+      RERANKER_BASE_URL: ${RERANKER_BASE_URL:-http://reranker:80}
       DATABASE_URL: postgresql://quantum:quantum@postgres:5432/quantum
       REDIS_URL: redis://redis:6379/0
       S3_ENDPOINT: http://minio:9000
