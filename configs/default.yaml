@@ -18,11 +18,28 @@ claim_extraction:
 
 retrieval:
   top_k: 5
-  candidate_k: 20
+  candidate_k: 30
+  fusion: rrf          # rrf | weighted — RRF only reorders; scores stay weighted
+  rrf_k: 60
   lexical_weight: 0.55
   semantic_weight: 0.45
   minimum_score: 0.12
   exclude_same_chunk: true
+
+embedding:
+  provider: lite       # lite (no download) | local (BAAI/bge-m3) | http (TEI)
+  model: BAAI/bge-m3
+  device: cuda
+  batch_size: 16
+  base_url: ""
+
+reranker:
+  provider: none       # none | local (BAAI/bge-reranker-v2-m3) | http (TEI /rerank)
+  model: BAAI/bge-reranker-v2-m3
+  device: cuda
+  base_url: ""
+  candidate_k: 30
+  final_k: 5
 
 verification:
   numeric_relative_tolerance: 0.12

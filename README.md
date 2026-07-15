@@ -15,7 +15,9 @@ A production-oriented **Version 1 baseline** for analysing environmental and ESG
 - Versioned 0–100 risk rubric and human-review flags.
 - Seven quality gates, append-only audit log and reproducibility manifest.
 - CLI, FastAPI service, Docker, tests, golden-set evaluation and GitHub Actions.
-- Optional OpenAI-compatible LLM adapter. The default path requires no external API.
+- **Local-first model gateway** (v1.1): one `LLMProvider` interface over local
+  vLLM/Ollama plus optional FPT Marketplace, Gemini, OpenAI, Anthropic and
+  OpenRouter fallbacks. The default path requires no external API and no keys.
 
 ## Architecture
 
@@ -97,6 +99,33 @@ the `QUANTUM_CORS_ORIGINS` environment variable
 ```bash
 docker compose up --build
 ```
+
+### Local-first model gateway (v1.1)
+
+All model access goes through a single gateway; business modules never call a
+concrete model API. Configure via `.env` (see `.env.example` — the app starts
+normally with every cloud key empty):
+
+```bash
+# Development with Ollama
+LOCAL_LLM_PROVIDER=ollama
+LOCAL_LLM_BASE_URL=http://localhost:11434
+LOCAL_LLM_MODEL=qwen3:8b
+
+# Server with vLLM (never expose port 8000 to the Internet)
+vllm serve Qwen/Qwen3-8B --host 0.0.0.0 --port 8000 --max-model-len 32768
+```
+
+Task-level routing lives in `configs/routing.yaml`; the locked V1.1 model set
+in `configs/models_v1_1.yaml` (Qwen3-8B primary, BGE-M3 embeddings,
+bge-reranker-v2-m3). Check provider status at `GET /v1/gateway/health`.
+Full stack (vLLM + embedding + reranker + postgres/redis/minio):
+
+```bash
+docker compose -f docker-compose.local-first.yml --profile gpu up --build
+```
+
+Design rationale: [ADR 0002](docs/decisions/0002-local-first-model-gateway.md).
 
 ## Accuracy improvement loop
 

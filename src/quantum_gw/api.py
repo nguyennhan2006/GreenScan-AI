@@ -13,6 +13,7 @@ from quantum_gw.agents.orchestrator import OrchestratorAgent
 from quantum_gw.agents.suggester import SuggestionAgent
 from quantum_gw.domain.enums import DocumentRole, SourceType
 from quantum_gw.domain.models import AnalysisResult, ClaimSuggestion, DocumentInput
+from quantum_gw.providers import ModelGateway
 from quantum_gw.settings import load_settings
 
 app = FastAPI(title="AI Quantum Greenwashing Agent", version=__version__)
@@ -56,6 +57,17 @@ def _analyze(documents: list[DocumentInput]) -> AnalyzeResponse:
 @app.get("/health")
 def health() -> dict:
     return {"status": "ok", "version": __version__}
+
+
+@app.get("/v1/gateway/health")
+def gateway_health(live: bool = False) -> dict:
+    """Model-gateway status. `live=true` also pings each configured provider."""
+    gateway = ModelGateway()
+    return {
+        "active_provider": gateway.settings.provider,
+        "fallback_order": gateway.settings.fallback_order,
+        "providers": gateway.healthcheck() if live else gateway.describe(),
+    }
 
 
 @app.post("/v1/analyze/text", response_model=AnalyzeResponse)

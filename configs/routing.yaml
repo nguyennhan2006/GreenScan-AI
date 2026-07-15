@@ -1,0 +1,33 @@
+# Task-level provider routing for the Model Gateway (v1.1 local-first).
+# primary/fallback name a provider from the registry:
+#   local | ollama | fpt | gemini | openai | anthropic | openrouter
+# Special targets:
+#   deterministic — the task must be solved by Python, never an LLM
+#   none          — no fallback; fail fast instead of silently switching provider
+# local_large maps to the optional verifier model (Qwen3-14B/32B); until it is
+# deployed the gateway resolves it through the normal fallback chain.
+
+routing:
+  claim_extraction:
+    primary: local
+    fallback: fpt
+
+  claim_normalization:
+    primary: local
+    fallback: fpt
+
+  retrieval_query_generation:
+    primary: local
+    fallback: none
+
+  quantitative_verification:
+    primary: deterministic
+    fallback: none
+
+  legal_reasoning:
+    primary: local
+    fallback: fpt
+
+  final_report:
+    primary: local
+    fallback: fpt
