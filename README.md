@@ -53,7 +53,7 @@ Version 1 intentionally uses **one orchestrator with specialised modules**. Mult
 ```bash
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
-pip install -e ".[dev]"
+pip install -e ".[dev,crawl]"      # crawl = deps cho tools/crawl_*.py và test smoke
 
 quantum-agent demo
 quantum-agent evaluate
@@ -87,9 +87,15 @@ npm install
 npm run dev            # expects the API on http://localhost:8000
 ```
 
-Open `http://localhost:5173`. The UI lets you paste claims or upload report
-files, shows per-claim risk scores, detected issues and fix suggestions, and
-supports editing a claim and re-checking it. Set `VITE_API_URL` if the API
+Open `http://localhost:5173`. The v2 UI (sidebar workbench) covers: new
+analysis wizard (upload/paste → configure → run), overview, claim list, claim
+detail (5 attributes → evidence → numeric check → legal context → risk
+breakdown → reviewer decision), source-page viewer with highlight, review
+queue, export (JSON/Markdown/manifest/audit), saved-run history (reopen a run
+without re-running the pipeline), legal library and settings. Screen map and
+design rules: `docs/05-ui/PRODUCTION_UI_SPEC_2026-09-20.md`; what changed
+from the mockups and why: `docs/05-ui/UI_V2_REVIEW_2026-09-20.md`.
+Set `VITE_API_URL` if the API
 runs on a different host/port. CORS origins for the API are configured with
 the `QUANTUM_CORS_ORIGINS` environment variable
 (default `http://localhost:5173,http://127.0.0.1:5173`).
@@ -139,7 +145,7 @@ Do not optimise only the final score. Measure each stage independently:
 6. RAG vs no-RAG delta and top-k sensitivity.
 7. Regression results after every model, prompt, chunking or rubric change.
 
-See [Accuracy Improvement Playbook](docs/ACCURACY_IMPROVEMENT_PLAYBOOK.md) and [Evaluation](docs/EVALUATION.md).
+See [Accuracy Improvement Playbook](docs/04-data-ai/ACCURACY_IMPROVEMENT_PLAYBOOK.md) and [Evaluation](docs/04-data-ai/EVALUATION.md).
 
 ## Repository map
 

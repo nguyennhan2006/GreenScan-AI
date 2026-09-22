@@ -1,0 +1,30 @@
+generated: '2026-08-08'
+sources:
+  SEC:
+    domains:
+    - sec.gov
+    authority: U.S. Securities and Exchange Commission
+    seed: https://www.sec.gov/newsroom/press-releases
+    policy: Official primary source. Download landing HTML and all order PDFs/attachments linked from the case page. Preserve
+      “without admitting or denying” qualifier when present.
+  ASIC:
+    domains:
+    - asic.gov.au
+    authority: Australian Securities and Investments Commission
+    seed: https://www.asic.gov.au/online-services/search-asic-registers/infringement-notices-register/
+    policy: Official primary source. For court cases collect ASIC release and linked judgment/court artifact where available.
+      Infringement payments are not admissions.
+  ACCC:
+    domains:
+    - accc.gov.au
+    authority: Australian Competition and Consumer Commission
+    seed: https://www.accc.gov.au/media
+    policy: Official primary source. Collect media release plus linked Federal Court orders/judgment and undertakings where
+      available.
+  ASA:
+    domains:
+    - asa.org.uk
+    authority: UK Advertising Standards Authority
+    seed: https://www.asa.org.uk/about-asa-and-cap/the-work-we-do/environmental-claims-and-issues/rulings-on-environmental-issues.html
+    policy: Official adjudication/ruling source. Store ruling sections, challenged ad description, assessment and action.
+      Preserve upheld/not-upheld status per issue.

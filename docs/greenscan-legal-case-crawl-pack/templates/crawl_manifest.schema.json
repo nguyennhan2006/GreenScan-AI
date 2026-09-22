@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GreenScan Crawl Manifest Record",
+  "type": "object",
+  "required": [
+    "run_id",
+    "target_id",
+    "url",
+    "stage",
+    "status",
+    "attempts",
+    "timestamp"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "target_id": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "stage": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "attempts": {
+      "type": "integer"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "error_class": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

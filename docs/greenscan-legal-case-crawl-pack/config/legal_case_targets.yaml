@@ -1,0 +1,624 @@
+generated: '2026-08-08'
+target_window:
+- 2021
+- 2022
+- 2023
+- 2024
+- 2025
+targets:
+- id: INT-VANGUARD-AU
+  company: Vanguard Investments Australia Ltd
+  case_entity: Vanguard Investments Australia Ltd
+  reporting_entity: Vanguard Investments Australia Ltd
+  brand: Vanguard
+  relationship: same_entity
+  country: Australia
+  authority: ASIC / Federal Court of Australia
+  case_id: 24-213MR
+  case_year: 2024
+  level: A
+  outcome: court_penalty_and_admitted_conduct
+  qualifier: Court penalty; preserve exact ASIC/court wording and scope of admitted misleading conduct. Do not propagate to
+    unrelated Vanguard claims.
+  profile: asset_manager
+  case_url: https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2024-releases/24-213mr-asic-s-vanguard-greenwashing-action-results-in-record-12-9-million-penalty/
+  report_urls:
+  - https://www.vanguard.com.au/personal/support/forms-and-notices
+  - https://www.vanguard.com.au/personal/about-us/investment-stewardship/reports-and-policies
+  - https://www.vanguard.com.au/personal/about-us/our-esg-approach/our-approach-to-esg
+  report_url_status: verified_official
+  notes: Case concerns an investment product/ESG screen. Prioritize PDS/product disclosures, holdings/screen methodology,
+    stewardship/ESG policy and regulator-linked documents; annual corporate reporting is secondary.
+- id: INT-MERCER-AU
+  company: Mercer Superannuation (Australia) Limited
+  case_entity: Mercer Superannuation (Australia) Limited
+  reporting_entity: Mercer Superannuation (Australia) Limited
+  brand: Mercer Super
+  relationship: same_entity
+  country: Australia
+  authority: ASIC / Federal Court of Australia
+  case_id: 24-173MR
+  case_year: 2024
+  level: A
+  outcome: court_penalty
+  qualifier: Court outcome on Sustainable Plus representations. Keep claim/product scope exact.
+  profile: super_fund
+  case_url: https://asic.gov.au/about-asic/news-centre/find-a-media-release/2024-releases/24-173mr-asic-s-first-greenwashing-case-results-in-landmark-11-3-million-penalty-for-mercer/
+  report_urls:
+  - https://www.mercersuper.com.au/documents/annual-reports/
+  - https://www.mercersuper.com.au/documents/product-disclosure-statement/
+  report_url_status: verified_official
+  notes: Collect annual reports plus PDS/investment guides and sustainability/responsible-investment product disclosures for
+    2021–2025.
+- id: INT-ACTIVE-SUPER-AU
+  company: Active Super / LGSS Pty Limited
+  case_entity: LGSS Pty Limited (Active Super)
+  reporting_entity: LGSS Pty Limited (Active Super)
+  brand: Active Super
+  relationship: same_entity_then_merged
+  country: Australia
+  authority: ASIC / Federal Court of Australia
+  case_id: 25-042MR
+  case_year: 2025
+  level: A
+  outcome: court_penalty
+  qualifier: Court finding/penalty. Active Super products became part of Vision Super from 1 Mar 2025; keep pre-merger and
+    post-merger entity periods separate.
+  profile: super_fund
+  case_url: https://asic.gov.au/about-asic/news-centre/find-a-media-release/2025-releases/25-042mr-active-super-ordered-to-pay-10-5-million-penalty-in-asic-s-third-greenwashing-court-action/
+  report_urls:
+  - https://www.activesuper.com.au/news-and-events/annual-members-meeting/
+  - https://www.activesuper.com.au/the-basics/tools-and-resources/
+  - https://www.activesuper.com.au/product-disclosure-statement/defined-benefit-scheme/defined-benefit-scheme-pds/
+  report_url_status: verified_official_partial_archive
+  notes: Historical annual-report discovery may require following official media.activesuper.com.au attachments. Do not replace
+    missing historical reports with Vision Super reports; record merger boundary.
+- id: INT-CLOROX-AU
+  company: The Clorox Company
+  case_entity: Clorox Australia Pty Limited
+  reporting_entity: The Clorox Company
+  brand: Glad / Clorox
+  relationship: subsidiary_of_parent
+  country: Australia / United States
+  authority: ACCC / Federal Court of Australia
+  case_id: ACCC-Clorox-2025
+  case_year: 2025
+  level: A
+  outcome: court_penalty_and_admission
+  qualifier: Clorox admitted misleading conduct concerning specified Glad ocean-plastic claims. Label only challenged representations/artifacts.
+  profile: consumer_brand
+  case_url: https://www.accc.gov.au/media-release/clorox-ordered-to-pay-825m-in-penalties-for-misleading-ocean-plastic-claims-about-certain-glad-products
+  report_urls:
+  - https://investors.thecloroxcompany.com/financial-reporting/annual-reports/default.aspx
+  - https://www.thecloroxcompany.com/annualreport/
+  - https://www.thecloroxcompany.com/
+  report_url_status: verified_official
+  notes: Integrated annual reports include financial and ESG information. Capture challenged product/packaging representations
+    from regulator attachments where available.
+- id: INT-INVESCO-US
+  company: Invesco Ltd.
+  case_entity: Invesco Advisers, Inc.
+  reporting_entity: Invesco Ltd.
+  brand: Invesco
+  relationship: subsidiary_of_parent
+  country: United States
+  authority: U.S. SEC
+  case_id: SEC-2024-179
+  case_year: 2024
+  level: B
+  outcome: administrative_order_settlement
+  qualifier: SEC settlement without admitting or denying findings. Preserve qualifier in metadata and any narrative output.
+  profile: asset_manager
+  case_url: https://www.sec.gov/newsroom/press-releases/2024-179
+  report_urls:
+  - https://www.invesco.com/corporate/en/investor-relations/annual-reports-and-proxy-statements.html
+  - https://www.invesco.com/corporate/en/investor-relations.html
+  report_url_status: verified_official
+  notes: Prioritize ESG-integration disclosures, sustainable-investment policies and product materials in addition to corporate
+    annual reports.
+- id: INT-WISDOMTREE-US
+  company: WisdomTree, Inc.
+  case_entity: WisdomTree Asset Management, Inc.
+  reporting_entity: WisdomTree, Inc.
+  brand: WisdomTree
+  relationship: subsidiary_of_parent
+  country: United States
+  authority: U.S. SEC
+  case_id: SEC-2024-173
+  case_year: 2024
+  level: B
+  outcome: administrative_order_settlement
+  qualifier: SEC settlement without admitting or denying findings. Exact funds/exclusion statements are the positive legal
+    scope.
+  profile: asset_manager
+  case_url: https://www.sec.gov/newsroom/press-releases/2024-173
+  report_urls:
+  - https://ir.wisdomtree.com/company-information/annual-reports-proxy
+  - https://ir.wisdomtree.com/sec-filings/annual-reports
+  report_url_status: verified_official
+  notes: Collect fund prospectuses/ESG exclusion policies and holdings if reachable from official pages.
+- id: INT-GSAM-US
+  company: The Goldman Sachs Group, Inc.
+  case_entity: Goldman Sachs Asset Management, L.P.
+  reporting_entity: The Goldman Sachs Group, Inc.
+  brand: Goldman Sachs Asset Management
+  relationship: subsidiary_of_parent
+  country: United States
+  authority: U.S. SEC
+  case_id: SEC-2022-209
+  case_year: 2022
+  level: B
+  outcome: administrative_order_settlement
+  qualifier: SEC settlement without admitting or denying findings. Scope is policies/procedures and specified ESG products/processes.
+  profile: asset_manager
+  case_url: https://www.sec.gov/newsroom/press-releases/2022-209
+  report_urls:
+  - https://www.goldmansachs.com/investor-relations/
+  - https://www.goldmansachs.com/investor-relations/corporate-governance/sustainability-reporting/
+  - https://www.goldmansachs.com/investor-relations/corporate-governance/sustainability-reporting/historical-reports
+  - https://am.gs.com/en-int/institutions/creating-impact/reports
+  report_url_status: verified_official
+  notes: Separate Group reporting from Asset Management product/policy documents.
+- id: INT-TLOU-AU
+  company: Tlou Energy Limited
+  case_entity: Tlou Energy Limited
+  reporting_entity: Tlou Energy Limited
+  brand: Tlou Energy
+  relationship: same_entity
+  country: Australia
+  authority: ASIC
+  case_id: 22-294MR
+  case_year: 2022
+  level: C
+  outcome: infringement_notices
+  qualifier: Payment of ASIC infringement notices is not an admission of guilt or liability. Keep this qualifier machine-readable.
+  profile: energy_company
+  case_url: https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2022-releases/22-294mr-asic-acts-against-greenwashing-by-energy-company/
+  report_urls:
+  - https://tlouenergy.com/reports/
+  report_url_status: verified_official
+  notes: Reports hub lists annual reports across target years. Collect net-zero/carbon-neutral project statements and market
+    announcements.
+- id: INT-BLACK-MOUNTAIN-AU
+  company: Black Mountain Energy Ltd
+  case_entity: Black Mountain Energy Ltd
+  reporting_entity: Black Mountain Energy Ltd
+  brand: Black Mountain Energy
+  relationship: same_entity
+  country: Australia
+  authority: ASIC
+  case_id: 23-001MR
+  case_year: 2023
+  level: C
+  outcome: infringement_notices
+  qualifier: Payment of infringement notices is not an admission of guilt or liability.
+  profile: energy_company
+  case_url: https://asic.gov.au/about-asic/news-centre/find-a-media-release/2023-releases/23-001mr-asic-issues-infringement-notices-to-energy-company-for-greenwashing/
+  report_urls:
+  - https://blackmountainenergy.com/archives/
+  - https://blackmountainenergy.com/preliminary-documentation/
+  - https://blackmountainenergy.com/media-toolkit/
+  report_url_status: verified_official
+  notes: Archive may contain market/project material rather than a conventional five-year annual-report archive; record missing
+    years explicitly.
+- id: INT-FERTOZ-AU
+  company: Fertoz Ltd / Canadian Phosphate
+  case_entity: Fertoz Ltd
+  reporting_entity: Fertoz Ltd (historical; verify rename timeline)
+  brand: Fertoz
+  relationship: same_entity_with_possible_rename
+  country: Australia / Canada
+  authority: ASIC
+  case_id: 24-133MR
+  case_year: 2024
+  level: C
+  outcome: infringement_notices
+  qualifier: ASIC infringement notice payment is not an admission of guilt or liability. Verify corporate rename/entity continuity
+    before parent mapping.
+  profile: mining_agriculture
+  case_url: https://asic.gov.au/about-asic/news-centre/find-a-media-release/2024-releases/24-133mr-asx-listed-company-pays-two-infringement-notices-for-greenwashing-in-market-announcements/
+  report_urls:
+  - https://fertoz.com/investors/
+  report_url_status: verified_official_needs_historical_discovery
+  notes: Investor page is official but historical annual report links may need ASX/official company announcement discovery.
+    Do not use third-party mirrors unless marked fallback-only.
+- id: INT-MORNINGSTAR-AU
+  company: Morningstar, Inc.
+  case_entity: Morningstar Investment Management Australia Limited
+  reporting_entity: Morningstar, Inc.
+  brand: Morningstar
+  relationship: subsidiary_of_parent
+  country: Australia / United States
+  authority: ASIC
+  case_id: 23-324MR
+  case_year: 2023
+  level: C
+  outcome: infringement_notices
+  qualifier: Payment is not an admission of guilt or liability. Scope relates to specified exclusion/weapon-exposure representations.
+  profile: asset_manager
+  case_url: https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2023-releases/23-324mr-asic-issues-infringement-notices-to-morningstar-for-statements-regarding-exposure-to-weapon-investments/
+  report_urls:
+  - https://shareholders.morningstar.com/filings-and-stock-quote/annual-reports/default.aspx
+  - https://www.morningstar.com/company/corporate-sustainability-policies-reports
+  report_url_status: verified_official
+  notes: Collect both parent annual reports and Australian product investment/exclusion documents when linked.
+- id: INT-NORTHERN-TRUST-AU
+  company: Northern Trust Corporation
+  case_entity: Northern Trust Asset Management Australia Pty Ltd
+  reporting_entity: Northern Trust Corporation
+  brand: Northern Trust Asset Management
+  relationship: subsidiary_of_parent
+  country: Australia / United States
+  authority: ASIC
+  case_id: 23-344MR
+  case_year: 2023
+  level: C
+  outcome: infringement_notices
+  qualifier: Payment is not an admission of guilt or liability. Keep exact screen/product scope.
+  profile: asset_manager
+  case_url: https://asic.gov.au/about-asic/news-centre/find-a-media-release/2023-releases/23-344mr-asic-issues-infringement-notices-to-northern-trust-asset-management-for-greenwashing/
+  report_urls:
+  - https://www.northerntrust.com/united-states/about-us/investor-relations/annual-reports
+  - https://www.northerntrust.com/japan/about-us/corporate-social-responsibility/policy
+  report_url_status: verified_official
+  notes: Sustainability page locale may differ but documents are official. Collect Australian fund screen disclosures separately.
+- id: INT-SHELL-UK
+  company: Shell plc
+  case_entity: Shell UK Ltd
+  reporting_entity: Shell plc
+  brand: Shell
+  relationship: subsidiary_of_parent
+  country: United Kingdom
+  authority: UK Advertising Standards Authority
+  case_id: G22-1170842
+  case_year: 2023
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: ASA ruling upheld for specified advertisements/overall impression. Not a court finding of fraud; label exact
+    ads/claims only.
+  profile: energy_company
+  case_url: https://www.asa.org.uk/rulings/shell-uk-ltd-g22-1170842-shell-uk-ltd.html
+  report_urls:
+  - https://www.shell.com/investors/results-and-reporting/annual-report-archive.html
+  - https://www.shell.com/sustainability/reporting-centre/reporting-centre-archive.html
+  - https://www.shell.com/sustainability/reporting-centre.html
+  report_url_status: verified_official
+  notes: Excellent five-year annual/sustainability coverage. Capture challenged ad image/text from ASA page if available.
+- id: INT-REPSOL-ES
+  company: Repsol, S.A.
+  case_entity: Repsol, S.A.
+  reporting_entity: Repsol, S.A.
+  brand: Repsol
+  relationship: same_entity
+  country: Spain / United Kingdom ad jurisdiction
+  authority: UK Advertising Standards Authority
+  case_id: A23-1185942
+  case_year: 2023
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: ASA ruling scope is specified ads/claims; not company-wide greenwashing label.
+  profile: energy_company
+  case_url: https://www.asa.org.uk/rulings/repsol-sa-a23-1185942-repsol-sa.html
+  report_urls:
+  - https://www.repsol.com/en/shareholders-and-investors/financial-information/annual-reports/index.cshtml
+  - https://www.repsol.com/en/shareholders-and-investors/financial-information/annual-reports/archive/index.cshtml
+  - https://www.repsol.com/en/sustainability/sustainability-reports/index.cshtml
+  report_url_status: verified_official
+  notes: Collect annual reports, sustainability reports and claims around renewable fuels/hydrogen/transition.
+- id: INT-PETRONAS-MY
+  company: PETRONAS (Petroliam Nasional Berhad)
+  case_entity: Petroliam Nasional Berhad
+  reporting_entity: Petroliam Nasional Berhad
+  brand: PETRONAS
+  relationship: same_entity
+  country: Malaysia / United Kingdom ad jurisdiction
+  authority: UK Advertising Standards Authority
+  case_id: A22-1169312
+  case_year: 2023
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: ASA ruling scope is specified advertisement/overall environmental impression. Do not substitute PETRONAS Gas
+    Berhad subsidiary reports for group reports.
+  profile: energy_company
+  case_url: https://www.asa.org.uk/rulings/petroliam-nasional-berhad-a22-1169312-petroliam-nasional-berhad.html
+  report_urls:
+  - https://www.petronas.com/sustainability/reporting
+  - https://www.petronas.com/media/reports
+  - https://www.petronas.com/integrated-report-2025/
+  - https://www.petronas.com/integrated-report-2024/
+  report_url_status: verified_official
+  notes: Use PETRONAS Global, not PGB/PCG subsidiary pages, unless explicitly needed as evidence.
+- id: INT-EQUINOR-NO
+  company: Equinor ASA
+  case_entity: Equinor ASA
+  reporting_entity: Equinor ASA
+  brand: Equinor
+  relationship: same_entity
+  country: Norway / United Kingdom ad jurisdiction
+  authority: UK Advertising Standards Authority
+  case_id: A23-1204534
+  case_year: 2023
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: ASA ruling applies to specified ad/overall impression.
+  profile: energy_company
+  case_url: https://www.asa.org.uk/rulings/equinor-asa-a23-1204534-equinor-asa.html
+  report_urls:
+  - https://www.equinor.com/investors/annual-reports
+  - https://www.equinor.com/sustainability/sustainability-reports-archive
+  report_url_status: verified_official
+  notes: Collect annual reports plus sustainability/energy-transition disclosures.
+- id: INT-TOTALENERGIES-FR
+  company: TotalEnergies SE
+  case_entity: TotalEnergies SE
+  reporting_entity: TotalEnergies SE
+  brand: TotalEnergies
+  relationship: same_entity
+  country: France / United Kingdom ad jurisdiction
+  authority: UK Advertising Standards Authority
+  case_id: A24-1246357
+  case_year: 2025
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: ASA ruling applies to specified advertisement and omitted material context; not a company-wide legal label.
+  profile: energy_company
+  case_url: https://www.asa.org.uk/rulings/totalenergies-se-a24-1246357-totalenergies-se.html
+  report_urls:
+  - https://totalenergies.com/investors/publications-and-regulated-information/regulated-information/annual-financial-reports
+  - https://totalenergies.com/investors/reports
+  report_url_status: verified_official
+  notes: Collect Sustainability & Climate progress reports where offered.
+- id: INT-HSBC-UK
+  company: HSBC Holdings plc
+  case_entity: HSBC UK Bank plc
+  reporting_entity: HSBC Holdings plc
+  brand: HSBC
+  relationship: subsidiary_of_parent
+  country: United Kingdom
+  authority: UK Advertising Standards Authority
+  case_id: G21-1127656
+  case_year: 2022
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: ASA ruling scope is specified advertisements and omission of material financed-emissions/context.
+  profile: bank
+  case_url: https://www.asa.org.uk/rulings/hsbc-uk-bank-plc-g21-1127656-hsbc-uk-bank-plc.html
+  report_urls:
+  - https://www.hsbc.com/who-we-are/esg-and-responsible-business/esg-reporting-centre
+  - https://www.hsbc.com/investors/results-and-announcements/annual-report
+  report_url_status: verified_official_or_stable_official
+  notes: Prioritize financed emissions, climate strategy, annual reports and ESG datapacks.
+- id: INT-LLOYDS-UK
+  company: Lloyds Banking Group plc
+  case_entity: Lloyds Bank plc
+  reporting_entity: Lloyds Banking Group plc
+  brand: Lloyds Bank
+  relationship: subsidiary_of_parent
+  country: United Kingdom
+  authority: UK Advertising Standards Authority
+  case_id: A24-1244509
+  case_year: 2024
+  level: C
+  outcome: asa_ruling_upheld_in_part
+  qualifier: Keep which advertisement/claim was upheld vs not upheld. Do not flatten mixed ruling into all-positive label.
+  profile: bank
+  case_url: https://www.asa.org.uk/rulings/lloyds-bank-plc-a24-1244509-lloyds-bank-plc.html
+  report_urls:
+  - https://www.lloydsbankinggroup.com/investors/annual-report/annual-report-archive.html
+  report_url_status: verified_official
+  notes: Archive includes annual and sustainability reporting across target years.
+- id: INT-UNILEVER-UK
+  company: Unilever PLC
+  case_entity: Unilever UK Ltd
+  reporting_entity: Unilever PLC
+  brand: Persil / Unilever
+  relationship: subsidiary_of_parent
+  country: United Kingdom
+  authority: UK Advertising Standards Authority
+  case_id: A22-1150985
+  case_year: 2022
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: Scope is specified Persil environmental advertisement/lifecycle substantiation.
+  profile: consumer_brand
+  case_url: https://www.asa.org.uk/rulings/unilever-uk-ltd-a22-1150985-unilever-uk-ltd.html
+  report_urls:
+  - https://www.unilever.com/investors/annual-report-and-accounts/
+  - https://www.unilever.com/
+  report_url_status: verified_official
+  notes: Capture annual reports plus climate/transition/sustainability disclosures and challenged ad artifact.
+- id: INT-TESCO-UK
+  company: Tesco PLC
+  case_entity: Tesco Stores Ltd
+  reporting_entity: Tesco PLC
+  brand: Tesco / Plant Chef
+  relationship: subsidiary_of_parent
+  country: United Kingdom
+  authority: UK Advertising Standards Authority
+  case_id: G21-1128264
+  case_year: 2022
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: Scope is specified Plant Chef environmental claims and substantiation.
+  profile: retail_brand
+  case_url: https://www.asa.org.uk/rulings/tesco-stores-ltd-g21-1128264-tesco-stores-ltd.html
+  report_urls:
+  - https://www.tescoplc.com/investors/
+  - https://www.tescoplc.com/investors/reports-results-and-presentations/
+  - https://origin.tescoplc.com/investors
+  - https://origin.tescoplc.com/investors/shareholder-centre/
+  report_url_status: official_seed_verified_with_origin_fallback
+  notes: If canonical reports route changes, discover from official investor page; do not treat origin domain as separate
+    entity.
+- id: INT-OATLY-UK
+  company: Oatly Group AB
+  case_entity: Oatly UK Ltd
+  reporting_entity: Oatly Group AB
+  brand: Oatly
+  relationship: subsidiary_of_parent
+  country: Sweden / United Kingdom
+  authority: UK Advertising Standards Authority
+  case_id: G21-1096286
+  case_year: 2022
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: ASA ruling contains multiple challenged environmental claims; preserve per-claim upheld/not-upheld status if
+    mixed.
+  profile: consumer_brand
+  case_url: https://www.asa.org.uk/rulings/oatly-uk-ltd-g21-1096286-oatly-uk-ltd.html
+  report_urls:
+  - https://investors.oatly.com/financials-filings
+  report_url_status: verified_official
+  notes: Official page lists annual and sustainability reports across target years.
+- id: INT-LUFTHANSA-DE
+  company: Deutsche Lufthansa AG
+  case_entity: Deutsche Lufthansa AG
+  reporting_entity: Deutsche Lufthansa AG
+  brand: Lufthansa
+  relationship: same_entity
+  country: Germany / United Kingdom ad jurisdiction
+  authority: UK Advertising Standards Authority
+  case_id: A22-1169419
+  case_year: 2023
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: Scope is specified environmental advertising claim(s), not company-wide finding.
+  profile: airline_public
+  case_url: https://www.asa.org.uk/rulings/deutsche-lufthansa-ag-a22-1169419-deutsche-lufthansa-ag.html
+  report_urls:
+  - https://investor-relations.lufthansagroup.com/en/financial-reports-publications.html
+  - https://www.lufthansagroup.com/en/responsibility/news-and-data/reporting.html
+  report_url_status: verified_official
+  notes: Financial reports 2011–2026 and sustainability fact sheets/TCFD/SASB are available.
+- id: INT-ETIHAD-AE
+  company: Etihad Airways
+  case_entity: Etihad Airways
+  reporting_entity: Etihad Airways
+  brand: Etihad
+  relationship: same_entity
+  country: United Arab Emirates / United Kingdom ad jurisdiction
+  authority: UK Advertising Standards Authority
+  case_id: A23-1206008
+  case_year: 2023
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: Scope is specified advertising/environmental advocacy representations.
+  profile: airline_private
+  case_url: https://www.asa.org.uk/rulings/etihad-airways-a23-1206008-etihad-airways.html
+  report_urls:
+  - https://www.etihad.com/en/about-us/sustainability
+  - https://www.etihad.com/en-cd/about-us/sustainability
+  - https://www.etihad.com/en-gb/news/etihad-publishes-2022-sustainability-report
+  report_url_status: verified_official_partial_archive
+  notes: No assumption of five annual financial reports. Collect sustainability/environment reports for each available year
+    and record unavailable official annual reports rather than padding with third-party sources.
+- id: INT-MAZDA-UK
+  company: Mazda Motor Corporation
+  case_entity: Mazda Motors UK Ltd
+  reporting_entity: Mazda Motor Corporation
+  brand: Mazda
+  relationship: subsidiary_of_parent
+  country: Japan / United Kingdom
+  authority: UK Advertising Standards Authority
+  case_id: A24-1247950
+  case_year: 2024
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: Scope is specified vehicle sustainability claim.
+  profile: automotive
+  case_url: https://www.asa.org.uk/rulings/mazda-motors-uk-ltd-a24-1247950-mazda-motors-uk-ltd.html
+  report_urls:
+  - https://www.mazda.com/en/sustainability/report/
+  - https://www.mazda.com/en/investors/library/integrated-report/
+  - https://www.mazda.com/en/sustainability/
+  report_url_status: verified_official
+  notes: Sustainability report page directly lists 2021–2025 PDFs.
+- id: INT-NIKE-UK
+  company: NIKE, Inc.
+  case_entity: Nike Retail B.V.
+  reporting_entity: NIKE, Inc.
+  brand: Nike
+  relationship: subsidiary_or_retail_entity_of_parent
+  country: United States / United Kingdom ad jurisdiction
+  authority: UK Advertising Standards Authority
+  case_id: A25-1309100
+  case_year: 2025
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: Scope is specified “Sustainable Materials” advertising claim. Maintain case_entity != reporting_entity.
+  profile: fashion_brand
+  case_url: https://www.asa.org.uk/rulings/nike-retail-bv-a25-1309100-nike-retail-bv.html
+  report_urls:
+  - https://investors.nike.com/investors/news-events-and-reports/
+  - https://about.nike.com/en/resources/nike-inc-impact-report-archive
+  - https://about.nike.com/en/mission/focus-areas/sustainability
+  report_url_status: verified_official
+  notes: Investor page has annual-report archive; impact archive includes FY21–FY23 and earlier. Discover FY24/FY25 from current
+    impact reporting if separate.
+- id: INT-UNIQLO-UK
+  company: FAST RETAILING CO., LTD.
+  case_entity: UNIQLO (UK) Ltd
+  reporting_entity: FAST RETAILING CO., LTD.
+  brand: UNIQLO
+  relationship: subsidiary_brand_of_parent
+  country: Japan / United Kingdom
+  authority: UK Advertising Standards Authority
+  case_id: A26-1327727
+  case_year: 2026
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: Scope is specified recycled-materials advertisement. Case year is 2026, but corporate corpus window remains 2021–2025
+    for comparability.
+  profile: fashion_brand
+  case_url: https://www.asa.org.uk/rulings/uniqlo--uk--ltd-a26-1327727-uniqlo--uk--ltd.html
+  report_urls:
+  - https://www.fastretailing.com/eng/ir/library/annual.html
+  - https://www.fastretailing.com/eng/sustainability/report/
+  - https://www.fastretailing.com/eng/sustainability/report/data.html
+  report_url_status: verified_official
+  notes: Integrated reports and sustainability data book available. Do not include 2026 corporate report in 2021–2025 benchmark
+    unless separately versioned.
+- id: INT-ADIDAS-UK
+  company: adidas AG
+  case_entity: adidas (UK) Ltd
+  reporting_entity: adidas AG
+  brand: adidas
+  relationship: subsidiary_of_parent
+  country: Germany / United Kingdom
+  authority: UK Advertising Standards Authority
+  case_id: A26-1327728
+  case_year: 2026
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: Scope is specified recycled-running-shoes advertisement. Corporate benchmark window remains 2021–2025.
+  profile: fashion_brand
+  case_url: https://www.asa.org.uk/rulings/adidas-uk-ltd-a26-1327728-adidas-uk-ltd.html
+  report_urls:
+  - https://www.adidas-group.com/en/sustainability/resource-center/reports
+  - https://www.adidas-group.com/en/sustainability
+  - https://report.adidas-group.com/2025/en/
+  report_url_status: verified_official
+  notes: Official reports hub lists annual reports 2021–2025 and notes sustainability is integrated into annual reporting.
+- id: INT-CALVIN-KLEIN-UK
+  company: PVH Corp.
+  case_entity: Calvin Klein Europe B.V.
+  reporting_entity: PVH Corp.
+  brand: Calvin Klein
+  relationship: brand_entity_of_parent
+  country: United States / United Kingdom ad jurisdiction
+  authority: UK Advertising Standards Authority
+  case_id: A26-1327724
+  case_year: 2026
+  level: C
+  outcome: asa_ruling_upheld
+  qualifier: Scope is specified responsibly-sourced/recycled/organic advertising claim. Corporate benchmark window remains
+    2021–2025.
+  profile: fashion_brand
+  case_url: https://www.asa.org.uk/rulings/calvin-klein-europe-bv--a26-1327724-calvin-klein-europe-bv.html
+  report_urls:
+  - https://www.pvh.com/investor-relations
+  - https://www.pvh.com/investor-relations/sec-filings?group=Annual
+  - https://www.pvh.com/responsibility
+  - https://www.pvh.com/responsibility/resources
+  report_url_status: verified_official
+  notes: Map brand/entity to PVH parent. Capture CR reports/resources and annual SEC filings separately.

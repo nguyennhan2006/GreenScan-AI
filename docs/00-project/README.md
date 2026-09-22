@@ -19,6 +19,11 @@ Bộ tài liệu này trả lời bốn câu hỏi nền tảng:
 | `PROBLEM_DEFINITION.md` | Định nghĩa vấn đề greenwashing trong bối cảnh tài chính Việt Nam | Research lead, reviewer, AI agent |
 | `GLOSSARY.md` | Chuẩn hóa thuật ngữ nghiệp vụ, pháp lý, ESG, AI/RAG | Toàn team, ChatGPT, Claude Code |
 | `README.md` | Hướng dẫn cách dùng thư mục 00 và danh mục nguồn ban đầu | Toàn team |
+| `ROADMAP.md` · `IMPLEMENTATION_BACKLOG.md` | Lộ trình phiên bản và backlog ưu tiên | Product owner, developer |
+| `ISSUES_REGISTER_2026-09.md` | Sổ khúc mắc A–G với phương án, chủ sở hữu, nghiệm thu; tick khi đóng | Toàn team |
+| `EXECUTION_PLAN_2026-09.md` | **Kế hoạch 6 tuần tới sản phẩm trình bày được** — trạng thái đo được, Definition of Done, sprint, kịch bản demo | Toàn team |
+| `ROUND2_READINESS_2026-09-22.md` | **Source of truth readiness Vòng 2** (snapshot 22/09, không sửa số): số đo, chấm thử 6 tiêu chí, N1–N5, thứ tự ưu tiên, hard gate, chuẩn bị Chung kết (§9). Số đo gốc: `benchmark/baseline_2026-09-22.json` | Toàn team |
+| `CORE_FEATURE_TEST_REPORT_2026-09-20.md` | Báo cáo kiểm thử tính năng cốt lõi 20/09 (D1–D9 đã sửa) | Nhân, reviewer |
 
 ## Nguyên tắc sử dụng
 

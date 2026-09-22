@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GreenScan Source Document Metadata",
+  "type": "object",
+  "required": [
+    "doc_id",
+    "target_id",
+    "source_url",
+    "source_type",
+    "doc_family",
+    "accessed_at",
+    "sha256",
+    "bytes",
+    "crawler_version"
+  ],
+  "properties": {
+    "doc_id": {
+      "type": "string"
+    },
+    "target_id": {
+      "type": "string"
+    },
+    "case_entity": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reporting_entity": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "source_type": {
+      "enum": [
+        "authority",
+        "court",
+        "corporate",
+        "filing",
+        "product",
+        "other_official"
+      ]
+    },
+    "doc_family": {
+      "type": "string"
+    },
+    "year": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1900,
+      "maximum": 2100
+    },
+    "year_status": {
+      "enum": [
+        "resolved",
+        "review",
+        "not_applicable"
+      ]
+    },
+    "published_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "accessed_at": {
+      "type": "string"
+    },
+    "http_status": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "content_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "redirect_chain": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "text_layer_ratio": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "ocr_used": {
+      "type": "boolean"
+    },
+    "crawler_version": {
+      "type": "string"
+    },
+    "parser_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

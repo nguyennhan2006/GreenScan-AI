@@ -224,6 +224,40 @@ Recommended path:
 - [ ] Report includes limitations.
 - [ ] Demo fixture can be rerun deterministically.
 
+## 11b. Running the two evaluation sets (as implemented, 2026-08-14)
+
+```bash
+quantum-agent evaluate                      # synthetic golden set, data/golden
+quantum-agent evaluate-real                 # adjudicated pack, data/real_cases
+python data/real_cases/scripts/run_case.py --all   # same pack, per-case detail
+```
+
+Both are covered by the test suite (`tests/test_real_case_evaluation.py`), which
+matters more than it sounds: the pipeline once scored **0/4** on the adjudicated
+pack while the unit suite was fully green, because the pack was reachable only
+through a script outside the package and nothing ran it.
+
+`evaluate-real` reports four numbers and deliberately does not blend them —
+they fail independently and one figure hides which moved:
+
+| Metric | What it measures |
+| --- | --- |
+| `verification_status_accuracy` | the case-level verdict |
+| `evidence_stance_accuracy` | per passage, including `CONTEXT_ONLY` negatives |
+| `risk_band_accuracy` | the severity reviewers assigned |
+| `legal_check_coverage` | claims that reached the legal layer |
+
+Two standing rules for this pack:
+
+1. **Control cases are never scored.** A Vietnamese report with no adjudication
+   has no right answer; assigning one is what the pack explicitly forbids.
+2. **Do not tune the rubric against it.** Four adjudicated claims cannot support
+   a statistical claim, and fitting weights to them converts the evaluation set
+   into a training set — see `DATASET_AUDIT_V2.md` §5 and
+   `TRAINING_READINESS.md`. `risk_band_accuracy` is currently 0.50 and is
+   expected to stay a measurement, not a target, until the adjudicated corpus
+   reaches the 100–200 claims those documents call for.
+
 ## 12. Long-term evaluation roadmap
 
 1. Build manually labeled Vietnamese ESG/finance claim dataset.

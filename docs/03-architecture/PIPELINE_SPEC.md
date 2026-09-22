@@ -1,9 +1,33 @@
 # PIPELINE_SPEC.md
 
-Version: 0.1  
+Version: 0.2  
 Status: Draft implementation spec  
 Owner: Product Owner / Product Engineer  
-Last updated: 2026-07-07
+Last updated: 2026-08-14
+
+> **Implemented plan (v0.2).** This document is the target design; the stages
+> below are broader than what runs today. What `OrchestratorAgent.PLAN`
+> actually executes is:
+>
+> ```text
+> validate_inputs
+> parse_and_ocr_documents
+> extract_green_claims          bilingual, configs/taxonomy.yaml
+> build_hybrid_retrieval_index
+> retrieve_evidence_per_claim   BM25 + semantic, RRF, admissibility floor
+> verify_claim_evidence_pairs   numeric → qualitative cue → direction → similarity
+> check_applicable_law          legal corpus + rule pack → one record per claim
+> score_greenwashing_risk       rubric bands from configs/scoring_v1.yaml
+> apply_quality_gates           G0–G7
+> write_evidence_pack
+> ```
+>
+> Two changes in v0.2 alter the semantics of stages 9, 10 and 12 as written
+> below, and are recorded in
+> [ADR 0003](../decisions/0003-qualitative-verification-and-legal-wiring.md):
+> verification reaches `CONTRADICTED` qualitatively (not only through
+> arithmetic), and the legal layer is a pipeline step rather than an offline
+> tool. Gate **G7 (Legal check)** is new.
 
 ## 1. Purpose
 
@@ -483,6 +507,37 @@ Apply audit-style verification to the claim-evidence package.
 - Every layer has a status.
 - Rationale references evidence IDs.
 - Contradiction cannot be asserted without evidence ID.
+
+### As implemented (v0.2)
+
+The five layers above are the target. What runs today decides each *passage's*
+stance first, then derives the claim status from those stances — the reverse of
+the original order, which allowed a status and its own evidence to disagree.
+
+| Method | Decides | Applies when |
+| --- | --- | --- |
+| `numeric` | SUPPORTS / CONTRADICTS | comparable figures exist on both sides |
+| `qualitative_cue` | SUPPORTS / CONTRADICTS | a cue phrase fires and the passage is connected to the claim |
+| `direction` | CONTRADICTS | the claim states a trend that evidence reverses |
+| `llm` | any | opt-in only; always sets `requires_llm_review` |
+| `similarity` | PARTIAL / CONTEXT | nothing above decided |
+
+Each `RetrievedEvidence` carries `relation`, `relation_reason` and
+`relation_method`, so a reviewer can tell a deterministic figure comparison from
+a cue phrase from a model's opinion. Only `CONTRADICTED` may be reached from a
+`below_threshold` passage, and only when that passage is an authority's finding.
+
+## 12b. Stage 9b — Applicable-law check
+
+One `legal_checks` record per claim, from the registered corpus and the
+version-locked rule pack. It names the instrument and the date it was applied,
+which conditions held, which are unknown, and the scope limits its sources
+carry. It is a *legal check record*, never a verdict about a company.
+
+`INSUFFICIENT_EVIDENCE` from this stage is informational — it covers both "no
+instrument governs this" and "an instrument governs it but its text was never
+extracted", which are coverage gaps. Only `NOT_MATCH`/`PARTIAL_MATCH` holds a
+release. See [ADR 0003](../decisions/0003-qualitative-verification-and-legal-wiring.md).
 
 ## 13. Stage 10 — Risk scoring
 

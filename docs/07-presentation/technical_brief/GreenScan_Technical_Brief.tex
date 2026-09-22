@@ -1,0 +1,435 @@
+﻿% GreenScan AI — Tài liệu kỹ thuật tóm tắt (Vòng 2, AI-Quantum Challenge 2026)
+% Biên dịch: xelatex GreenScan_Technical_Brief.tex  (chạy 2 lần để có mục lục)
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[top=2.2cm,bottom=2.2cm,left=2.4cm,right=2.4cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Consolas}[Scale=0.9]
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx,array,multirow}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+% ---- tiếng Việt cho các nhãn mặc định (không dùng babel/polyglossia để giảm phụ thuộc)
+\renewcommand{\contentsname}{Mục lục}
+\renewcommand{\tablename}{Bảng}
+\renewcommand{\figurename}{Hình}
+\renewcommand{\refname}{Tài liệu tham khảo}
+\renewcommand{\abstractname}{Tóm tắt}
+
+% ---- màu và kiểu
+\definecolor{gsgreen}{HTML}{1B7F5A}
+\definecolor{gsgray}{HTML}{5B6770}
+\definecolor{gslight}{HTML}{EEF5F1}
+\definecolor{gsamber}{HTML}{B7791F}
+\titleformat{\section}{\large\bfseries\color{gsgreen}}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.6em}{}
+\titlespacing*{\section}{0pt}{14pt}{6pt}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+\setlist{nosep,leftmargin=1.4em}
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+\captionsetup{font=small,labelfont=bf,skip=4pt}
+% ---- bảng được phép chiếm gần trọn trang để tránh trang trắng nửa chừng
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.6}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.85}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{4}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{10pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+\renewcommand{\arraystretch}{1.15}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\status}[1]{\textsc{#1}}
+\newcommand{\principle}[1]{\textcolor{gsgreen}{\textbf{#1}}}
+
+% ---- hộp lưu ý
+\newcommand{\notice}[1]{%
+  \begin{center}\begin{tikzpicture}
+    \node[draw=gsgreen,fill=gslight,rounded corners=3pt,inner sep=8pt,text width=0.92\linewidth,align=left]{\small #1};
+  \end{tikzpicture}\end{center}}
+
+\title{\vspace{-1.2cm}\textbf{GreenScan AI}\\[4pt]
+  \large Hệ thống kiểm chứng tuyên bố xanh bằng bằng chứng, số liệu và quy định pháp lý\\[4pt]
+  \normalsize\color{gsgray} Tài liệu kỹ thuật tóm tắt — Vòng 2, AI-Quantum Challenge 2026}
+\author{\normalsize Đội Eco Nexus (AQ2026-119) — Lê Diễm Quỳnh · Phan Thanh Thảo · Nguyễn Chơn Nhân}
+\date{\normalsize Phiên bản 1.0 — tháng 9/2026}
+
+\begin{document}
+\maketitle
+\vspace{-0.8cm}
+
+\notice{GreenScan AI là hệ thống \textbf{hỗ trợ} kiểm chứng từng tuyên bố xanh bằng bằng chứng có truy vết. Hệ thống tạo \emph{chỉ báo rủi ro} và \emph{hồ sơ kiểm chứng} để chuyên gia xem xét; \textbf{không} đưa ra kết luận pháp lý, \textbf{không} xếp hạng doanh nghiệp, \textbf{không} thay thế kiểm toán viên hay cơ quan có thẩm quyền.}
+
+\begin{abstract}
+\noindent Doanh nghiệp niêm yết Việt Nam công bố ngày càng nhiều tuyên bố về phát thải, năng lượng tái tạo, tài chính xanh và cam kết net-zero, trong khi việc kiểm tra từng tuyên bố vẫn dựa trên đọc thủ công. GreenScan AI đặt bài toán theo hướng \emph{evidence-first}: mỗi tuyên bố phải đi qua trích xuất và chuẩn hoá năm thuộc tính bắt buộc, truy xuất bằng chứng lai, kiểm chứng theo thứ tự thẩm quyền (số học $\to$ lập trường định tính $\to$ xu hướng $\to$ tương đồng), đối chiếu văn bản pháp lý theo phiên bản và ngày hiệu lực, chấm điểm rủi ro theo rubric công khai, rồi qua tám cổng chất lượng trước khi tới người xem xét. Tài liệu này trình bày công nghệ, phương pháp, logic kiểm chứng, dữ liệu, cách đánh giá, kết quả đo được, giới hạn, hướng phát triển (gồm bài toán chọn bằng chứng dạng QUBO) và giá trị của hệ thống.
+\end{abstract}
+
+{\setcounter{tocdepth}{1}\tableofcontents}
+
+% =====================================================================
+\section{Bài toán và bối cảnh}
+
+\textbf{Vấn đề cốt lõi không phải là phát hiện câu chữ mơ hồ, mà là kiểm chứng quan hệ giữa tuyên bố và bằng chứng.} Một tuyên bố như \emph{``giảm 30\% phát thải trong năm 2024''} chỉ có ý nghĩa khi biết: chỉ số nào, so với năm gốc nào, phạm vi phát thải nào (Scope 1/2/3, hợp nhất hay công ty mẹ), số liệu ở bảng nào, và có mâu thuẫn với thuyết minh tài chính, giấy phép hay quyết định xử phạt hay không.
+
+Bối cảnh Việt Nam làm bài toán này cấp thiết theo ba hướng:
+\begin{itemize}
+  \item \textbf{Quy mô vốn xanh.} Dư nợ tín dụng xanh đạt trên 704.244 tỷ đồng tại 31/3/2025, 58 tổ chức tín dụng phát sinh dư nợ, chiếm 4,3\% tổng dư nợ nền kinh tế (NHNN, 5/2025). Vốn lớn đòi hỏi kiểm chứng mục đích sử dụng vốn.
+  \item \textbf{Khung pháp lý đã có hiệu lực.} Quyết định 21/2025/QĐ-TTg (hiệu lực 22/8/2025) lần đầu quy định tiêu chí môi trường và việc xác nhận dự án thuộc danh mục phân loại xanh; Thông tư 17/2022/TT-NHNN hướng dẫn quản lý rủi ro môi trường trong cấp tín dụng; Luật BVMT 2020 đặt nền cho tín dụng xanh, trái phiếu xanh.
+  \item \textbf{Số liệu phát thải chuyển thành dữ liệu tuân thủ.} Quyết định 13/2024/QĐ-TTg đưa 2.166 cơ sở vào diện phải kiểm kê khí nhà kính; Nghị định 06/2022/NĐ-CP (sửa bởi 119/2025 và 83/2026) quy định kế hoạch giảm nhẹ 2026--2030. Từ 2026, đối chiếu tuyên bố với số liệu là nhu cầu thường trực.
+\end{itemize}
+
+\textbf{Phạm vi MVP} được thu hẹp có chủ đích: tuyên bố \emph{môi trường định lượng} của doanh nghiệp niêm yết thuộc 4--6 ngành phát thải cao, đối chiếu với tập văn bản pháp lý ưu tiên. Tuyên bố xã hội và quản trị nằm ngoài phạm vi.
+
+% =====================================================================
+\section{Nguyên tắc thiết kế}
+
+Bốn nguyên tắc chi phối mọi quyết định kỹ thuật; chúng được mã hoá thành cổng chất lượng (mục~\ref{sec:gates}), không chỉ là tuyên ngôn.
+
+\begin{enumerate}[label=\textbf{P\arabic*.}]
+  \item \principle{Evidence-first.} Không kết luận từ ngôn ngữ trong báo cáo. Mọi verdict phải trỏ tới bằng chứng có nguồn, trang, kỳ báo cáo và đơn vị đo. Hệ thống không được sinh bằng chứng: mọi trích dẫn phải giải quyết được về tài liệu gốc.
+  \item \principle{Dừng phán đoán (abstain) là kết quả hợp lệ.} Khi bằng chứng không đủ, OCR không tin cậy hoặc tuyên bố thiếu thuộc tính bắt buộc, hệ thống trả \status{Insufficient evidence} và chuyển người xem xét, thay vì suy đoán. Đây là điểm phân biệt với chatbot RAG: một câu trả lời trôi chảy vẫn có thể sai nếu truy xuất kém.
+  \item \principle{Người trong vòng lặp.} Mô hình ngôn ngữ có thể \emph{chỉ ra} một đoạn bằng chứng, không được \emph{khép lại} một kết luận. Case rủi ro cao, có mâu thuẫn hoặc có yếu tố pháp lý luôn dừng ở hàng đợi reviewer; quyết định của người được ghi bổ sung (append-only), không sửa kết quả máy.
+  \item \principle{Không kết luận vượt bằng chứng.} Đầu ra là \emph{mức độ đầy đủ của bằng chứng cho từng tuyên bố}, không phải nhãn ``doanh nghiệp có greenwashing''. Nguyên tắc được viết thành mệnh đề trong dữ liệu:
+  \begin{center}\small\code{company\_has\_case} $\neq$ \code{document\_is\_greenwashing} $\neq$ \code{claim\_is\_greenwashing}\end{center}
+\end{enumerate}
+
+% =====================================================================
+\section{Kiến trúc và công nghệ}
+
+\subsection{Đường ống xử lý}
+
+Phiên bản 1 dùng \textbf{một orchestrator với các module chuyên biệt} (ADR~0001), không dùng đa tác tử: tính tái lập và kiểm toán được quan trọng hơn tính tự chủ, và đa tác tử chỉ được đưa vào khi benchmark chứng minh lợi ích đo được. Kế hoạch chạy gồm 10 bước cố định, ghi vào manifest của mỗi lần chạy.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  node distance=4mm and 4mm,
+  box/.style={draw=gsgreen,fill=gslight,rounded corners=2pt,minimum height=10mm,text width=25mm,align=center,font=\footnotesize},
+  side/.style={draw=gsgray,dashed,rounded corners=2pt,minimum height=10mm,text width=25mm,align=center,font=\footnotesize,fill=white},
+  arr/.style={-{Stealth[length=2mm]},thick,gsgray}]
+  \node[box] (in)  {Tài liệu vào\\PDF · scan · TXT · JSON};
+  \node[box,right=of in] (doc) {Document AI\\trang · bảng · OCR\\provenance};
+  \node[box,right=of doc] (cl) {Trích xuất claim\\taxonomy song ngữ};
+  \node[box,right=of cl] (norm) {Chuẩn hoá\\5 thuộc tính};
+  \node[box,right=of norm] (ret) {Truy xuất lai\\BM25 + ngữ nghĩa\\RRF · rerank};
+  \node[box,below=of ret] (ver) {Kiểm chứng\\số học $\to$ lập trường\\$\to$ xu hướng};
+  \node[box,left=of ver] (law) {Đối chiếu pháp lý\\registry · rule pack\\ngày hiệu lực};
+  \node[box,left=of law] (score) {Chấm rủi ro\\rubric 0--100\\9 tiêu chí};
+  \node[box,left=of score] (gate) {Cổng chất lượng\\G0--G7};
+  \node[box,left=of gate] (out) {Hồ sơ kiểm chứng\\JSON · MD · audit\\reviewer queue};
+  \node[side,below=of ver] (gw) {Model Gateway\\local-first: vLLM/Ollama\\FPT · cloud dự phòng};
+  \node[side,below=of law] (pol) {Policy corpus\\11 văn bản VN\\938 điều khoản};
+  \node[side,below=of gate,text width=55mm,xshift=15mm] (llm) {LLM chỉ tham gia: chuẩn hoá 5 thuộc tính · lập trường khi bất định · suy luận pháp lý. Số học: mã tất định.};
+  \draw[arr] (in)--(doc); \draw[arr] (doc)--(cl); \draw[arr] (cl)--(norm); \draw[arr] (norm)--(ret);
+  \draw[arr] (ret)--(ver); \draw[arr] (ver)--(law); \draw[arr] (law)--(score); \draw[arr] (score)--(gate); \draw[arr] (gate)--(out);
+  \draw[arr,dashed] (gw)--(ver);
+  \draw[arr,dashed] (pol)--(law);
+\end{tikzpicture}
+\caption{Đường ống evidence-first, 10 bước cố định. Mô hình ngôn ngữ chỉ tham gia ở bước chuẩn hoá và ở bước lập trường khi lớp tất định không quyết được; phép tính số học luôn chạy bằng mã tất định.}
+\end{figure}
+
+\subsection{Lớp công nghệ}
+
+Mọi thành phần là mã nguồn mở hoặc chạy cục bộ; không có phụ thuộc bắt buộc vào dịch vụ thương mại, để doanh nghiệp có thể soát bản nháp báo cáo chưa công bố trên hạ tầng của chính mình.
+
+\begin{table}[!htbp]\small
+\begin{tabularx}{\linewidth}{L{3.2cm} X L{3.6cm}}
+\toprule
+\textbf{Lớp} & \textbf{Công nghệ / thành phần} & \textbf{Vai trò} \\
+\midrule
+Document AI & PyMuPDF, pdfplumber (bảng), Tesseract \code{vie+eng} (trang scan); chunk giữ \code{doc\_id}, trang, khối & Provenance từ byte gốc tới từng đoạn \\
+Trích xuất claim & Taxonomy song ngữ 8 loại claim, 6 phạm vi, 6 nhóm chỉ số; heuristic tất định + LLM chuẩn hoá & Câu $\to$ claim có 5 thuộc tính \\
+Truy xuất & BM25 + điểm ngữ nghĩa (n-gram lite / BGE-M3), hợp nhất RRF, reranker \code{bge-reranker-v2-m3}, $k$=30$\to$5 & Bằng chứng ủng hộ và bác bỏ \\
+Kiểm chứng & So số theo dung sai tương đối 12\%, lexicon lập trường song ngữ, kiểm tra xu hướng, LLM judge chỉ khi bất định & Verdict 5 trạng thái \\
+Tầng pháp lý & Registry văn bản có \code{effective\_from}, chuỗi thay thế, rule pack YAML có phiên bản, hai chế độ kiểm tra & Policy-as-code \\
+Model Gateway & Một giao diện \code{LLMProvider}; local (vLLM/Ollama) mặc định; FPT Marketplace, Gemini, OpenAI, Anthropic, OpenRouter dự phòng; routing theo 8 loại tác vụ & Chạy được không cần khoá cloud \\
+Dịch vụ & FastAPI (analyze, document page render + highlight, reviews, gold export), CLI Typer, Docker Compose & API + vận hành \\
+Giao diện & React + Tailwind: Tài liệu / Tổng quan / Kiểm chứng; checklist 5 thuộc tính; evidence viewer có trang; decision bar & Reviewer làm việc theo claim \\
+Kiểm định & 206 test (đơn vị, e2e, bảo mật prompt-injection, hồi quy 4 case thật), CI GitHub Actions & Mỗi thay đổi phải qua gate \\
+\bottomrule
+\end{tabularx}
+\caption{Ngăn xếp công nghệ theo lớp.}
+\end{table}
+
+\subsection{Model Gateway local-first và routing theo tác vụ}
+
+Mọi truy cập mô hình đi qua một gateway duy nhất (ADR~0002); module nghiệp vụ không bao giờ gọi trực tiếp một API mô hình. Điều này cho ba tính chất: (i) ứng dụng khởi động và chạy trọn pipeline khi \emph{mọi} khoá cloud để trống; (ii) đổi nhà cung cấp không đổi mã nghiệp vụ; (iii) mỗi tác vụ chọn mô hình theo nhu cầu chi phí/chất lượng riêng.
+
+\begin{table}[!htbp]\small
+\begin{tabularx}{\linewidth}{L{4.2cm} L{2.4cm} X}
+\toprule
+\textbf{Tác vụ} & \textbf{Chính $\to$ dự phòng} & \textbf{Lý do} \\
+\midrule
+Trích xuất / chuẩn hoá claim & local $\to$ FPT & Khối lượng lớn, JSON có schema; mô hình tầm trung là đủ \\
+Sinh truy vấn truy xuất & local $\to$ FPT & Prompt ngắn, nhạy độ trễ \\
+\textbf{Kiểm tra số học} & \textbf{deterministic $\to$ none} & Mô hình ngôn ngữ không được phân xử phép tính \\
+Lập trường định tính (khi bất định) & local $\to$ FPT & Chỉ chạy trên phần dư khó; luôn gắn cờ cần người xác nhận \\
+Suy luận pháp lý & FPT $\to$ local & Tác vụ khó nhất: giữ đúng phạm vi và qualifier \\
+Đọc trang scan / biểu đồ & FPT (vision) $\to$ none & Chỉ khi trang không có text layer \\
+\bottomrule
+\end{tabularx}
+\caption{Routing theo tác vụ (\code{configs/routing.yaml}). Bộ mô hình V1.1 khoá: Qwen3-8B (chính), BGE-M3 (embedding), bge-reranker-v2-m3 (rerank).}
+\end{table}
+
+% =====================================================================
+\section{Phương pháp và logic kiểm chứng}
+
+\subsection{Năm thuộc tính bắt buộc của một tuyên bố}
+
+Một tuyên bố môi trường định lượng chỉ \emph{kiểm chứng được} khi có đủ: (1)~\textbf{chỉ số} (phát thải, năng lượng, nước, chất thải, vốn xanh); (2)~\textbf{giá trị và đơn vị}; (3)~\textbf{kỳ báo cáo}; (4)~\textbf{năm gốc} nếu là tuyên bố tăng/giảm hay cam kết; (5)~\textbf{phạm vi} (Scope 1/2/3, hợp nhất/mẹ, cơ sở, sản phẩm). Thiếu thuộc tính nào, hệ thống nói rõ thiếu thuộc tính đó — đây là thứ \emph{hành động được} với người viết báo cáo, hơn hẳn một con số tổng hợp. Giá trị \code{None} là câu trả lời thật, không phải lỗi: nó làm thuộc tính thiếu hiện ra trong rubric thay vì âm thầm bỏ qua.
+
+\subsection{Truy xuất lai và bất đối xứng có chủ đích}
+
+Với mỗi claim, hệ thống lấy 30 ứng viên bằng cả điểm từ vựng (BM25) lẫn ngữ nghĩa, hợp nhất bằng Reciprocal Rank Fusion, rerank rồi giữ 5. Hai quy tắc quan trọng:
+
+\begin{itemize}
+  \item \textbf{Tìm cả bằng chứng bác bỏ}, không chỉ bằng chứng ủng hộ. Tài liệu được gán vai trò (\code{claim\_source}, \code{evidence}, \code{authority}) và bằng chứng từ nguồn có thẩm quyền mang trọng số riêng.
+  \item \textbf{Ngưỡng truy xuất không được quyết định rằng bằng chứng không tồn tại.} Một tầng sàn (\code{floor\_k}) giữ lại các ứng viên tốt nhất dưới ngưỡng, đánh dấu \code{below\_threshold}. Lý do: phán quyết của toà trong case KLM-2024 không chia sẻ từ nội dung nào với tuyên bố nó bác bỏ. Bất đối xứng được giữ chặt: \emph{một đoạn yếu có thể mang bác bỏ từ nguồn có thẩm quyền; nó không bao giờ đủ để xác lập ủng hộ.}
+\end{itemize}
+
+\subsection{Thứ tự thẩm quyền khi kiểm chứng}
+
+Lập trường của \emph{từng đoạn} bằng chứng được tính \emph{trước}, rồi verdict của claim được suy ra từ đó (ADR~0003) — không phải ngược lại. Thứ tự, mạnh nhất trước:
+
+\begin{enumerate}
+  \item \textbf{Số học.} Hai con số cùng chỉ số, cùng đơn vị, so theo dung sai tương đối. Chạy bằng mã Python tất định; không có đường dự phòng bằng LLM.
+  \item \textbf{Lập trường định tính.} Lexicon song ngữ theo cụm từ (``không thực hiện'', ``lacked controls''), \emph{không} dùng phủ định đơn. Im lặng không bao giờ là bác bỏ; cue chỉ có hiệu lực khi có liên hệ với claim (trùng từ, hoặc đoạn là phát hiện của cơ quan có thẩm quyền).
+  \item \textbf{Xu hướng.} Tuyên bố giảm nhưng bằng chứng cho thấy tăng.
+  \item \textbf{Tương đồng.} Không quyết được gì; chỉ nói mức liên quan.
+\end{enumerate}
+
+Mô hình ngôn ngữ chỉ được gọi ở bước 2 khi cả lexicon lẫn số học đều không quyết được (\code{llm\_stance: on\_ambiguous}); mọi câu trả lời của nó đặt cờ \code{requires\_llm\_review}, và bất kỳ lỗi nhà cung cấp nào cũng trả về \code{None} để verdict tất định đứng vững.
+
+\begin{table}[!htbp]\small
+\begin{tabularx}{\linewidth}{L{3.6cm} X}
+\toprule
+\textbf{Verdict} & \textbf{Điều kiện} \\
+\midrule
+\status{Supported} & Có ít nhất một bằng chứng dùng được, truy vết được, cùng kỳ/phạm vi, số liệu nhất quán, không còn mâu thuẫn chưa giải quyết \\
+\status{Partially supported} & Có bằng chứng liên quan nhưng chưa xác minh ở cùng phạm vi, kỳ hoặc độ chính xác \\
+\status{Unsupported} & Không có bằng chứng đủ cho tuyên bố dù đã tìm trong nguồn được cấp \\
+\status{Contradicted} & Mâu thuẫn số cùng chỉ số, hoặc cue bác bỏ từ tài liệu vai trò evidence/authority \\
+\status{Insufficient evidence} & Không đủ dữ liệu để phán đoán — kết quả hợp lệ, chuyển người xem xét \\
+\bottomrule
+\end{tabularx}
+\caption{Năm trạng thái verdict. ``Thiếu bằng chứng'' và ``bị bác bỏ'' là hai trạng thái khác nhau và không bao giờ được gộp.}
+\end{table}
+
+\subsection{Tầng pháp lý: policy-as-code}
+
+Văn bản pháp lý được quản lý như mã: một registry ghi từng văn bản với \code{effective\_from}, chuỗi sửa đổi/thay thế (ví dụ NĐ~06/2022 $\to$ NĐ~119/2025 $\to$ NĐ~83/2026), vấn đề pháp lý mà nó điều chỉnh, và URL nguồn chính thức; 938 điều khoản đã tách từ 11 văn bản; rule pack YAML có phiên bản mô tả điều kiện kiểm tra được. Hai chế độ được tách bạch vì chúng trả lời hai câu hỏi khác nhau: \emph{tuân thủ lịch sử} (văn bản nào có hiệu lực khi tuyên bố được công bố) và \emph{phù hợp chính sách hiện hành}. Qualifier phạm vi từ nguồn có thẩm quyền (``dàn xếp không thừa nhận'', ``không khái quát hoá phát hiện này'') đi theo bằng chứng vào tận bản ghi; thiếu chúng, ``cơ quan quản lý thấy tuyên bố chưa đầy đủ'' sẽ biến thành ``doanh nghiệp nói dối''. Một kiểm tra pháp lý bất phân định \emph{không} chặn phát hành — đó là khoảng trống bao phủ, không phải phát hiện về doanh nghiệp.
+
+\subsection{Chấm điểm rủi ro theo rubric công khai}
+
+Điểm 0--100 (cao = rủi ro cao) là tổng của chín thành phần có trần cố định, tổng trần đúng 100 để dải mức không bị lạm phát khi thêm tiêu chí. Năm thành phần đầu ánh xạ một-một với năm thuộc tính bắt buộc, nên giao diện chỉ ra được \emph{chính xác} thuộc tính nào đang thiếu.
+
+\begin{table}[!htbp]\small
+\begin{tabularx}{\linewidth}{X r X r}
+\toprule
+\textbf{Thành phần} & \textbf{Trần} & \textbf{Thành phần} & \textbf{Trần} \\
+\midrule
+Tính cụ thể của chỉ số & 12 & Bằng chứng hỗ trợ & 18 \\
+Số liệu định lượng & 12 & Bảo đảm độc lập & 8 \\
+Năm gốc & 8 & Mâu thuẫn & 18 \\
+Kỳ báo cáo & 8 & Ngôn ngữ mơ hồ / phóng đại & 8 \\
+Phạm vi / ranh giới & 8 & & \\
+\midrule
+\multicolumn{4}{l}{Mức: Thấp 0--24 · Trung bình 25--49 · Cao 50--74 · Nghiêm trọng 75--100 (\code{risk-rubric-v2})} \\
+\bottomrule
+\end{tabularx}
+\caption{Rubric chấm điểm. Điểm chỉ dùng để sàng lọc và ưu tiên kiểm tra ở cấp \emph{từng tuyên bố}; không cộng dồn thành điểm doanh nghiệp.}
+\end{table}
+
+\subsection{Cổng chất lượng và dấu vết kiểm toán}\label{sec:gates}
+
+Mỗi lần chạy phải qua tám cổng; kết quả cổng nằm trong hồ sơ đầu ra và log \code{audit.jsonl} chỉ ghi thêm.
+
+\begin{table}[!htbp]\small
+\begin{tabularx}{\linewidth}{l L{3.4cm} X}
+\toprule
+& \textbf{Cổng} & \textbf{Điều kiện} \\
+\midrule
+G0 & Dữ liệu đủ điều kiện & Mọi đoạn giữ provenance nguồn \\
+G1 & Trung thực trích xuất & Claim giữ đoạn nguồn và vị trí tài liệu \\
+G2 & Truy xuất đủ điều kiện & Mỗi claim có bằng chứng dùng được hoặc trạng thái thiếu bằng chứng tường minh \\
+G3 & Kiểm chứng tất định & So sánh số học chạy bằng mã, không bằng mô hình \\
+G4 & Toàn vẹn trích dẫn & Mọi bằng chứng quyết định có vị trí trong tài liệu \\
+G5 & Xem xét rủi ro & Case cao/nghiêm trọng hoặc có xung đột pháp lý chờ người duyệt \\
+G6 & Tái lập & Manifest ghi cấu hình, băm đầu vào, kế hoạch chạy \\
+G7 & Kiểm tra pháp lý & Văn bản áp dụng đã được tra; rule chạy và không đạt thì giữ lại để xem xét \\
+\bottomrule
+\end{tabularx}
+\caption{Tám cổng chất lượng. Trạng thái phát hành: \status{Releasable} / \status{Pending human review} / \status{Blocked}.}
+\end{table}
+
+% =====================================================================
+\section{Dữ liệu}
+
+Dữ liệu được tổ chức thành sáu vùng với vai trò tách bạch; bytes gốc của bên thứ ba không được phân phối lại qua kho mã — chỉ metadata, băm SHA-256 và dữ liệu chuẩn hoá được lưu để tái lập.
+
+\begin{table}[!htbp]\small
+\begin{tabularx}{\linewidth}{L{2.4cm} X L{3.6cm}}
+\toprule
+\textbf{Vùng} & \textbf{Nội dung} & \textbf{Dùng cho} \\
+\midrule
+\code{sample/} & Demo tổng hợp tiếng Việt, chạy ngay & Xem pipeline end-to-end \\
+\code{golden/} & Bộ acceptance-test có kết quả kỳ vọng & Hồi quy sau mỗi thay đổi \\
+\code{real\_cases/} & 4 case đã có phán quyết (BNY-2022, DWS-2023, KDP-2024 — SEC; KLM-2024 — toà Amsterdam) + 2 control Việt Nam (HPG, BVH) & Benchmark thật; demo; mẫu gán nhãn \\
+\code{crawl/} & 670 tài liệu / 21 doanh nghiệp VN30, 2021--2025: 19.512 đơn vị nội dung, 15.658 chunk, 7.960 claim ứng viên, 3.786 evidence ứng viên & Truy xuất; hàng đợi gán nhãn \\
+\code{legal\_cases/} & 297 tài liệu của 29 target pháp lý quốc tế & Benchmark, hard negatives \\
+\code{legal/} & 11 văn bản pháp luật VN (gốc + OCR) và 938 điều khoản đã tách & Đối chiếu theo điều khoản \\
+\bottomrule
+\end{tabularx}
+\caption{Sáu vùng dữ liệu. Control Việt Nam \emph{không} được gán nhãn greenwashing chỉ vì thiếu dữ liệu; case SEC là dàn xếp \emph{without admission or denial} — qualifier được giữ nguyên.}
+\end{table}
+
+\textbf{Sáu mức trưởng thành} phân biệt rõ dữ liệu \emph{đã có} với dữ liệu \emph{đã kiểm chứng}: L0 thô $\to$ L1 đã parse $\to$ L2 ứng viên $\to$ L3 đã lọc $\to$ L4 đã adjudicate $\to$ L5 gold (chỉ để báo cáo cuối, không bao giờ dùng để tinh chỉnh). Hệ thống hiện thừa khối lượng ở L0--L3 và thiếu ở L4; vì vậy nút thắt của dự án là \emph{giám sát của con người}, không phải thu thập thêm.
+
+\textbf{Chia tập giữ lại theo doanh nghiệp} trước, rồi mới chia theo thời gian trong phần huấn luyện: chia ngẫu nhiên theo claim rò rỉ từ vựng và tên KPI của cùng một issuer giữa train và test. Kết quả được báo cáo theo từng doanh nghiệp, không gộp thành một con số khái quát.
+
+\textbf{Quy tắc gán nhãn.} Nhãn là \emph{mức đầy đủ bằng chứng theo năm thuộc tính} cộng verdict, không phải ``có greenwashing''. Hai người gán độc lập, một người làm trọng tài, mục tiêu Cohen $\kappa \ge 0{,}7$. Nhãn sinh bởi mô hình, dịch máy hoặc gán yếu nằm ở silver set riêng, không trộn vào gold.
+
+% =====================================================================
+\section{Đánh giá}
+
+\subsection{Đo từng tầng, không chỉ điểm cuối}
+
+Hệ thống được đo tách tầng để biết cải thiện nằm ở đâu: độ trung thực parsing/OCR và bảng; precision/recall trích xuất claim; Recall@k và tỷ lệ nhiễu của truy xuất; độ chính xác verdict và trích dẫn; hiệu chuẩn điểm rủi ro với nhãn người; delta RAG/không-RAG và độ nhạy top-$k$; hồi quy sau mọi thay đổi mô hình, prompt, chunking hay rubric.
+
+\begin{table}[!htbp]\small
+\begin{tabularx}{\linewidth}{X c X}
+\toprule
+\textbf{Chỉ số} & \textbf{Ngưỡng} & \textbf{Cách đo} \\
+\midrule
+F1 trích xuất tuyên bố & $\ge 0{,}75$ & So với gold do người gán và trọng tài xác nhận \\
+Recall@10 truy xuất bằng chứng & $\ge 0{,}85$ & Tỷ lệ claim có ít nhất một bằng chứng đúng trong 10 kết quả đầu \\
+Độ chính xác trích dẫn & $\ge 0{,}90$ & Trích dẫn trỏ đúng trang/bảng/ô chứa bằng chứng \\
+Sai sót kiểm tra số học & $= 0$ & Bộ test cố định cho đơn vị, tỷ lệ, năm gốc, xu hướng \\
+Độ chính xác verdict & $\ge 0{,}80$ & So với nhãn người trên tập hold-out theo doanh nghiệp \\
+Cơ chế abstain & báo cáo minh bạch & Tỷ lệ case abstain thực sự thiếu bằng chứng, do reviewer đánh giá \\
+\bottomrule
+\end{tabularx}
+\caption{Ngưỡng đánh giá cam kết trong hồ sơ Vòng 1. Kết quả được công bố kèm khoảng tin cậy và theo từng doanh nghiệp.}
+\end{table}
+
+\subsection{Kết quả đo được đến 9/2026}
+
+\begin{itemize}
+  \item \textbf{Case thật có phán quyết:} 4/4 khớp verdict kỳ vọng (\status{Contradicted}), 4/4 khớp lập trường từng đoạn bằng chứng, 4/4 có kiểm tra pháp lý bao phủ, 2/4 khớp dải rủi ro. Trước ADR~0003, kết quả là 0/4 dù bộ test đơn vị xanh — bài học: \emph{test đơn vị không thay được benchmark thật}.
+  \item \textbf{Cổng chất lượng:} tỷ lệ qua các cổng bắt buộc 100\%, độ bao phủ trích dẫn 100\% trên bộ golden; test prompt-injection: chỉ thị nhúng trong tài liệu bị loại khỏi bằng chứng.
+  \item \textbf{Vận hành:} báo cáo PTBV 11~MB (hai tài liệu, 803 chunk) xử lý dưới 2 phút trên máy tính cá nhân không GPU, chế độ hoàn toàn cục bộ.
+  \item \textbf{Kiểm định mã:} 206 test tự động, lint sạch, CI.
+\end{itemize}
+
+\subsection{Giới hạn hiện tại — công bố có chủ đích}
+
+\begin{itemize}
+  \item \textbf{Độ tin cậy verdict trên tài liệu Việt Nam thật chưa đạt.} Chạy thử trên một báo cáo PTBV ngành thép cho tỷ lệ \status{Contradicted} cao bất thường; nguyên nhân đã đo được là lỗi kỹ thuật ở lexicon lập trường (va chạm khi bỏ dấu: ``thiếu'' / ``thiêu kết''), trích xuất bắt cả tiêu đề mục, và so số chưa theo chỉ số. Đây là hạng mục ưu tiên cao nhất của sprint hiện tại và có gate hồi quy bằng 4 case thật.
+  \item \textbf{Gold set còn nhỏ:} 5 claim đã adjudicate so với cam kết 100 cặp. Chưa thể công bố số cho bảng ngưỡng ở trên; kế hoạch gán nhãn 100 cặp đang chạy với hai người gán độc lập.
+  \item \textbf{Provenance dừng ở trang;} trích dẫn tới ô bảng đang được bổ sung cho bảng kiểm kê khí nhà kính.
+  \item Heuristic trích xuất là baseline minh bạch, không phải mô hình ESG tiếng Việt tối tân; chất lượng OCR phụ thuộc bản scan; taxonomy pháp lý là cơ sở tri thức khởi đầu, cần chuyên gia rà và đánh phiên bản.
+\end{itemize}
+
+% =====================================================================
+\section{Hướng phát triển}
+
+\subsection{Lộ trình sản phẩm}
+
+Lộ trình giữ nguyên nguyên tắc của V1: mỗi năng lực mới chỉ được bật khi có benchmark chứng minh, và tính tái lập không bị đánh đổi lấy tính tự động.
+
+\begin{table}[!htbp]\small
+\begin{tabularx}{\linewidth}{L{2.2cm} X}
+\toprule
+\textbf{Mốc} & \textbf{Nội dung} \\
+\midrule
+V1.2 (đang làm) & Sửa độ tin cậy verdict; LLM chuẩn hoá 5 thuộc tính và lập trường khi bất định, có ablation có/không LLM; gold set 100 cặp với $\kappa$; xuất hồ sơ PDF/JSON; lịch sử phiên; trích dẫn ô bảng; hỏi đáp có grounding trả ``không đủ dữ liệu'' khi thiếu căn cứ \\
+V1.3 & Bộ tính toán theo chỉ số (phát thải, tái tạo, chất thải, nước, vốn xanh); chuẩn hoá kỳ/phạm vi/đơn vị và tuyệt đối-so-cường độ; mở rộng rule pack theo ngành (QĐ~21 Phụ lục~I); kết nối nguồn độc lập (xử phạt, giấy phép) \\
+V2 & Workflow engine và CSDL bền vững; truy xuất phân cấp/đồ thị cho case chủ đề xuyên tài liệu \emph{chỉ sau khi} benchmark chứng minh; đa tác tử có kiểm soát khi vượt baseline; giám sát drift, registry mô hình/prompt/rubric \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Hướng nghiên cứu AI--Quantum: chọn tập bằng chứng tối thiểu đủ}
+
+Quantum không nằm trong điều kiện bắt buộc của MVP. Nhóm hình thức hoá một bài toán con có ý nghĩa thực tế khi số claim, tài liệu và ràng buộc tăng lớn: \emph{chọn tập bằng chứng nhỏ nhất nhưng đủ để kết luận một tuyên bố}, tránh đưa các đoạn trùng lặp vào mô hình. Bài toán viết dưới dạng tối ưu nhị phân không ràng buộc bậc hai (QUBO):
+\begin{align}
+  H(\mathbf{x},\mathbf{y}) \;=\; &-\sum_{j} r_j\,x_j \;+\; \lambda \sum_{j<l} s_{jl}\,x_j x_l \;-\; \gamma \sum_{m} w_m\,y_m \notag\\
+  &+\; \mu \Big(\sum_{j} x_j - k\Big)^{2} \;+\; \nu \sum_{m} y_m \Big(1 - \sum_{j \in J_m} x_j\Big)_{\!+},
+\end{align}
+với $x_j, y_m \in \{0,1\}$, trong đó $r_j$ là điểm liên quan của đoạn $j$ với tuyên bố (từ bước rerank), $s_{jl}$ là độ trùng lặp thông tin giữa hai đoạn, $y_m$ là biến phủ cho từng thuộc tính bắt buộc $m$ (chỉ số, giá trị--đơn vị, kỳ, năm gốc, phạm vi) với trọng số $w_m$, $J_m$ là tập đoạn có chứa thuộc tính $m$, $\lambda$ cân bằng liên quan--đa dạng, $\gamma$ thưởng độ phủ, và $\mu$, $\nu$ là hệ số phạt. Số hạng $\mu(\sum_j x_j - k)^2$ ép nghiệm về \emph{đúng} $k$ đoạn, nên $k$ được hiểu là \textbf{số đoạn mục tiêu} (target cardinality) và được quét qua nhiều giá trị khi benchmark; nếu cần ràng buộc bất đẳng thức $\sum_j x_j \le k$ thì phải mã hoá bằng biến slack nhị phân. Số hạng phạt cuối buộc $y_m = 1$ chỉ khi có ít nhất một đoạn trong $J_m$ được chọn; phần $(\cdot)_+$ được tuyến tính hoá theo cách chuẩn khi đưa về dạng QUBO thuần. Dạng này ánh xạ sang mô hình Ising, nên chạy được bằng thuật toán lấy cảm hứng lượng tử (tôi luyện mô phỏng) hoặc QAOA trên trình mô phỏng, với quy mô 20--40 ứng viên mỗi tuyên bố.
+
+Benchmark gồm bốn cột giải: top-$k$ theo rerank, tham lam/MMR, nghiệm chính xác (ILP hoặc vét cạn ở quy mô nhỏ), và tôi luyện mô phỏng/QAOA; đo theo bốn chỉ tiêu: độ phủ năm thuộc tính bắt buộc, độ trùng lặp, số đoạn phải đưa vào mô hình, và thời gian xử lý. Nhóm \emph{không} tuyên bố lợi thế lượng tử khi chưa đo được; nếu QAOA không vượt baseline cổ điển thì đó vẫn là một kết quả hợp lệ. Bài toán phân bổ case cho reviewer theo tải và mức rủi ro có dạng QUBO tương tự.
+
+Phân công vai trò là rõ ràng: \textbf{AI} đọc hiểu tài liệu, trích xuất tuyên bố, truy xuất bằng chứng và kiểm tra rule; \textbf{tối ưu lấy cảm hứng lượng tử} xử lý bước chọn bằng chứng và sắp thứ tự kiểm tra. Cách đặt vấn đề này thể hiện tiềm năng AI--Quantum mà không phóng đại, vì MVP hoàn thành được bằng công nghệ AI hiện có.
+
+% =====================================================================
+\section{Tiềm năng và giá trị}
+
+\subsection{Giá trị theo từng đối tượng}
+
+Người dùng đầu tiên được chọn là bộ phận ESG và kiểm toán nội bộ của doanh nghiệp niêm yết — kịch bản rủi ro thấp, dữ liệu do chính người dùng cung cấp, giá trị thấy được ngay. Các nhóm còn lại là hướng mở rộng sau khi độ chính xác được kiểm chứng.
+
+\begin{table}[!htbp]\small
+\begin{tabularx}{\linewidth}{L{3.4cm} X}
+\toprule
+\textbf{Đối tượng} & \textbf{Giá trị nhận được} \\
+\midrule
+Bộ phận ESG / kiểm toán nội bộ (người dùng đầu tiên) & Tự soát bản nháp báo cáo trước công bố: biết \emph{chính xác} tuyên bố nào thiếu năm gốc, phạm vi, kỳ báo cáo; rủi ro thấp vì dữ liệu do chính họ cung cấp \\
+Ngân hàng / tổ chức tín dụng & Hồ sơ bằng chứng cho khoản vay xanh: mục đích sử dụng vốn, phù hợp tiêu chí QĐ~21, quy trình rủi ro môi trường theo TT~17 \\
+Nhà đầu tư / analyst & Bảng claim có trích dẫn thay cho điểm tổng hợp không truy vết; ưu tiên kiểm tra tuyên bố rủi ro cao \\
+Kiểm toán viên / reviewer ESG & Working paper có claim gốc, bằng chứng dùng và bị loại, logic điểm, người và thời điểm review \\
+Cơ quan quản lý / giảng viên / hội đồng & Phương pháp minh bạch, rubric công khai, có thể tái lập toàn bộ quá trình \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Điểm khác biệt}
+
+\begin{itemize}
+  \item \textbf{Kiểm chứng quan hệ claim--bằng chứng, không chấm điểm ngôn ngữ.} Kiểm tra năm gốc, đơn vị, kỳ, tỷ lệ, xu hướng, phát thải tuyệt đối và cường độ, mục đích sử dụng vốn, điều khoản pháp lý trong một quy trình thống nhất có phiên bản rule.
+  \item \textbf{Cơ chế abstain được trình bày như tính năng.} Dám nói ``không đủ bằng chứng'' là điều phân biệt hệ thống với một chatbot.
+  \item \textbf{Chuyên biệt cho tiếng Việt và pháp lý Việt Nam}, với policy layer có ngày hiệu lực để kiểm tra đúng văn bản đang áp dụng.
+  \item \textbf{Chạy cục bộ, không cần dịch vụ thương mại}, phù hợp yêu cầu bảo mật tài liệu chưa công bố của doanh nghiệp.
+  \item Điểm mới không nằm ở một mô hình đơn lẻ, mà ở \emph{cách ghép các lớp AI thành quy trình kiểm chứng có kỷ luật bằng chứng} cho một bài toán tài chính cụ thể.
+\end{itemize}
+
+\subsection{Đóng góp có thể tái sử dụng}
+
+Ngoài phần mềm, dự án để lại ba tài sản dùng được độc lập: (1)~\textbf{bộ dữ liệu claim--bằng chứng tiếng Việt có provenance} (trang, băm nguồn, kỳ, phạm vi, nhãn hai người gán); (2)~\textbf{rule pack pháp lý và taxonomy xanh Việt Nam} có phiên bản và ngày hiệu lực; (3)~\textbf{benchmark} đánh giá OCR, truy xuất, trích dẫn và kiểm tra số liệu cho tài liệu tài chính Việt Nam. Ba tài sản này là nền cho nghiên cứu tiếp theo về fact verification tiếng Việt trong tài chính xanh.
+
+\subsection{Giả thuyết giá trị đang được kiểm chứng}
+
+Một báo cáo 200--300 trang cần 8--12 giờ đọc rà thủ công; mục tiêu là 30 phút sàng lọc tự động cộng khoảng 2 giờ rà điểm rủi ro cao. Đây là \emph{giả thuyết nêu công khai để đo ở giai đoạn kiểm thử}, không phải kết quả đã có; nhóm không cam kết mức tiết kiệm chi phí bằng tiền khi chưa có dữ liệu thực nghiệm.
+
+% =====================================================================
+\section{Cam kết trách nhiệm}
+
+\begin{itemize}
+  \item Chỉ dùng dữ liệu công bố công khai, có quyền truy cập hợp pháp hoặc được cấp phép cho nghiên cứu; ghi nguồn, điều kiện sử dụng, ngày truy cập và băm SHA-256.
+  \item Không thu thập dữ liệu cá nhân không cần thiết; không dùng dữ liệu mạng xã hội trong MVP.
+  \item Không kết luận vượt quá bằng chứng; case rủi ro cao hoặc thiếu bằng chứng luôn cần chuyên gia xem xét.
+  \item Không công bố xếp hạng hay cáo buộc đối với doanh nghiệp cụ thể từ kết quả của hệ thống.
+  \item Không dùng hệ thống để tạo nội dung gây hiểu lầm hoặc che giấu tác động môi trường.
+\end{itemize}
+
+\vspace{6pt}
+\begin{center}\small\color{gsgray}
+Mã nguồn, tài liệu kiến trúc (ADR 0001--0003), rubric, rule pack và bộ dữ liệu pilot được quản lý trong kho mã của dự án; mọi số liệu trong tài liệu này đo được bằng lệnh trong kho mã tại thời điểm 9/2026.
+\end{center}
+
+\end{document}
