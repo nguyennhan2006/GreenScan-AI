@@ -1,0 +1,9 @@
+{
+  "documents": 1061,
+  "units": 19512,
+  "chunks": 15658,
+  "claims": 7960,
+  "evidence": 3786,
+  "pairs": 39592,
+  "cross_split_duplicate_hashes": 1
+}

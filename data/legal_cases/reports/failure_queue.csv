@@ -1,0 +1,2 @@
+target_id,url,stage,error_class,http_status,retryable,attempts,next_action
+INT-CLOROX-AU,https://www.accc.gov.au/media-release/clorox-ordered-to-pay-825m-in-penalties-for-misleading-ocean-plastic-claims-about-certain-glad-products,case_landing,http_403,403,false,1,manual acquisition

@@ -1,0 +1,185 @@
+{
+  "exact_duplicate_groups": [
+    {
+      "sha256": "ab639a4fce1e9bdb3793b6f72c76afc361a735128c05dc781773eb5047af34a2",
+      "sources": [
+        "INT-VANGUARD-AU:https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2024-releases/24-173mr-asic-s-first-greenwashing-case-results-in-landmark-11-3-million-penalty-for-mercer/",
+        "INT-MERCER-AU:https://asic.gov.au/about-asic/news-centre/find-a-media-release/2024-releases/24-173mr-asic-s-first-greenwashing-case-results-in-landmark-11-3-million-penalty-for-mercer/"
+      ]
+    },
+    {
+      "sha256": "12bc19f0f33e86dad27a96152a576b0e372f8ae6798db193ce3ab12ce8afe83a",
+      "sources": [
+        "INT-MERCER-AU:https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2022-releases/22-294mr-asic-acts-against-greenwashing-by-energy-company/",
+        "INT-TLOU-AU:https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2022-releases/22-294mr-asic-acts-against-greenwashing-by-energy-company/",
+        "INT-BLACK-MOUNTAIN-AU:https://asic.gov.au/about-asic/news-centre/find-a-media-release/2022-releases/22-294mr-asic-acts-against-greenwashing-by-energy-company/"
+      ]
+    },
+    {
+      "sha256": "1701a12e3afc705d0accf918998697f035e1f1215ce9d1df84093246c0799b88",
+      "sources": [
+        "INT-MERCER-AU:https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2022-releases/22-336mr-asic-issues-infringement-notices-against-investment-manager-for-greenwashing/",
+        "INT-BLACK-MOUNTAIN-AU:https://asic.gov.au/about-asic/news-centre/find-a-media-release/2022-releases/22-336mr-asic-issues-infringement-notices-against-investment-manager-for-greenwashing/"
+      ]
+    },
+    {
+      "sha256": "b93cb83119f7d04b7d20ba2b3ecdd42bfb381fd0616a8ae3f76f9596d221f85d",
+      "sources": [
+        "INT-MERCER-AU:https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2022-releases/22-379mr-asic-issues-infringement-notice-against-superannuation-trustee-for-greenwashing/",
+        "INT-BLACK-MOUNTAIN-AU:https://asic.gov.au/about-asic/news-centre/find-a-media-release/2022-releases/22-379mr-asic-issues-infringement-notice-against-superannuation-trustee-for-greenwashing/"
+      ]
+    },
+    {
+      "sha256": "f544ac86c71cc21c55dab3564c0ef4f062d07f79f4122e8e10baac2f466c453f",
+      "sources": [
+        "INT-MERCER-AU:https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2023-releases/23-001mr-asic-issues-infringement-notices-to-energy-company-for-greenwashing/",
+        "INT-BLACK-MOUNTAIN-AU:https://asic.gov.au/about-asic/news-centre/find-a-media-release/2023-releases/23-001mr-asic-issues-infringement-notices-to-energy-company-for-greenwashing/"
+      ]
+    },
+    {
+      "sha256": "813160f450f0fd1d2ccbaa28eb4ccbf24fd1e7ebd06bc12047d451df20e93d5f",
+      "sources": [
+        "INT-MERCER-AU:https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2023-releases/23-324mr-asic-issues-infringement-notices-to-morningstar-for-statements-regarding-exposure-to-weapon-investments/",
+        "INT-MORNINGSTAR-AU:https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2023-releases/23-324mr-asic-issues-infringement-notices-to-morningstar-for-statements-regarding-exposure-to-weapon-investments/"
+      ]
+    },
+    {
+      "sha256": "08865b43ee8bc27e35aa1fa0a1c97d522d7e7a60f621df2c2eccf96235ee2f03",
+      "sources": [
+        "INT-TLOU-AU:https://www.asic.gov.au/online-services/search-asic-registers/infringement-notices-register/",
+        "INT-BLACK-MOUNTAIN-AU:https://asic.gov.au/online-services/search-asic-s-registers/additional-searches/credit-and-asic-act-infringements-notices-register/"
+      ]
+    },
+    {
+      "sha256": "b609cf387d2480f3738761b7c8e9e50a0251daddb5a0b53411cdf7010ceb0967",
+      "sources": [
+        "INT-FERTOZ-AU:https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2023-releases/23-344mr-asic-issues-infringement-notices-to-northern-trust-asset-management-for-greenwashing/",
+        "INT-NORTHERN-TRUST-AU:https://asic.gov.au/about-asic/news-centre/find-a-media-release/2023-releases/23-344mr-asic-issues-infringement-notices-to-northern-trust-asset-management-for-greenwashing/"
+      ]
+    },
+    {
+      "sha256": "29ff029ff5280625e0ec8685e71ed0f3d965fc449c9dc56aa1386ab279646001",
+      "sources": [
+        "INT-SHELL-UK:https://www.asa.org.uk/rulings/shell-uk-ltd-g22-1170842-shell-uk-ltd.html",
+        "INT-SHELL-UK:https://www.asa.org.uk/rulings/shell-uk-ltd-g22-1170842-shell-uk-ltd.html"
+      ]
+    },
+    {
+      "sha256": "c73e39918b45705e52fccf1061e352793fc3c218e827aaa2e294c1fc6083bfe7",
+      "sources": [
+        "INT-REPSOL-ES:https://www.asa.org.uk/rulings/repsol-sa-a23-1185942-repsol-sa.html",
+        "INT-REPSOL-ES:https://www.asa.org.uk/rulings/repsol-sa-a23-1185942-repsol-sa.html"
+      ]
+    },
+    {
+      "sha256": "386d84ae4560f32befaeea1c52d8ab8b75366a9978d66433afe821843d347ae7",
+      "sources": [
+        "INT-PETRONAS-MY:https://www.asa.org.uk/rulings/petroliam-nasional-berhad-a22-1169312-petroliam-nasional-berhad.html",
+        "INT-PETRONAS-MY:https://www.asa.org.uk/rulings/petroliam-nasional-berhad-a22-1169312-petroliam-nasional-berhad.html"
+      ]
+    },
+    {
+      "sha256": "ab734ad0286304292ed59342d98cb529c248e026b0d7e9648b2faaa5dc718a23",
+      "sources": [
+        "INT-EQUINOR-NO:https://www.asa.org.uk/rulings/equinor-asa-a23-1204534-equinor-asa.html",
+        "INT-EQUINOR-NO:https://www.asa.org.uk/rulings/equinor-asa-a23-1204534-equinor-asa.html"
+      ]
+    },
+    {
+      "sha256": "d2f39d48a6721969a8cd58ba9ff2481d9ee1ca87499278ed7018172e7325cd89",
+      "sources": [
+        "INT-TOTALENERGIES-FR:https://www.asa.org.uk/rulings/totalenergies-se-a24-1246357-totalenergies-se.html",
+        "INT-TOTALENERGIES-FR:https://www.asa.org.uk/rulings/totalenergies-se-a24-1246357-totalenergies-se.html"
+      ]
+    },
+    {
+      "sha256": "fccbe5fe959dc13caeae832cfc6b9c35390d7bb0ff13c6b378d150e7c7180be8",
+      "sources": [
+        "INT-HSBC-UK:https://www.asa.org.uk/rulings/hsbc-uk-bank-plc-g21-1127656-hsbc-uk-bank-plc.html",
+        "INT-HSBC-UK:https://www.asa.org.uk/rulings/hsbc-uk-bank-plc-g21-1127656-hsbc-uk-bank-plc.html"
+      ]
+    },
+    {
+      "sha256": "4e94c2e6849370b9f89f452f117d459af865c99ffedd252d5f4ef2651a92dcf7",
+      "sources": [
+        "INT-LLOYDS-UK:https://www.asa.org.uk/rulings/lloyds-bank-plc-a24-1244509-lloyds-bank-plc.html",
+        "INT-LLOYDS-UK:https://www.asa.org.uk/rulings/lloyds-bank-plc-a24-1244509-lloyds-bank-plc.html"
+      ]
+    },
+    {
+      "sha256": "52f56b47b5f1a8bd5b12b3b8f062cbc45edac9b0e9122ba7d47bf4437d2555cf",
+      "sources": [
+        "INT-UNILEVER-UK:https://www.asa.org.uk/rulings/unilever-uk-ltd-a22-1150985-unilever-uk-ltd.html",
+        "INT-UNILEVER-UK:https://www.asa.org.uk/rulings/unilever-uk-ltd-a22-1150985-unilever-uk-ltd.html"
+      ]
+    },
+    {
+      "sha256": "d0b39a4f14cf5920fdfcdc17a7fa7e2434a21a0ba1c92a2e622abd8960c09998",
+      "sources": [
+        "INT-TESCO-UK:https://www.asa.org.uk/rulings/tesco-stores-ltd-g21-1128264-tesco-stores-ltd.html",
+        "INT-TESCO-UK:https://www.asa.org.uk/rulings/tesco-stores-ltd-g21-1128264-tesco-stores-ltd.html"
+      ]
+    },
+    {
+      "sha256": "42b852ceec7abd76dbd8dfe3caa77f7d01e3399f7f6cb80883bea1baf63f3f9b",
+      "sources": [
+        "INT-OATLY-UK:https://www.asa.org.uk/rulings/oatly-uk-ltd-g21-1096286-oatly-uk-ltd.html",
+        "INT-OATLY-UK:https://www.asa.org.uk/rulings/oatly-uk-ltd-g21-1096286-oatly-uk-ltd.html"
+      ]
+    },
+    {
+      "sha256": "92d6adbf5673f59af2e08774f2a54bd1c8a325ff0c27236efbc958c8be42bfac",
+      "sources": [
+        "INT-LUFTHANSA-DE:https://www.asa.org.uk/rulings/deutsche-lufthansa-ag-a22-1169419-deutsche-lufthansa-ag.html",
+        "INT-LUFTHANSA-DE:https://www.asa.org.uk/rulings/deutsche-lufthansa-ag-a22-1169419-deutsche-lufthansa-ag.html"
+      ]
+    },
+    {
+      "sha256": "35620baf09749b922df27f08a49e9c088519f9a73149b7a2327e73117de7a062",
+      "sources": [
+        "INT-ETIHAD-AE:https://www.asa.org.uk/rulings/etihad-airways-a23-1206008-etihad-airways.html",
+        "INT-ETIHAD-AE:https://www.asa.org.uk/rulings/etihad-airways-a23-1206008-etihad-airways.html"
+      ]
+    },
+    {
+      "sha256": "46bfbe83b3393a10c19e299789fefdcf18481428d60447b9cefd6a1817634a23",
+      "sources": [
+        "INT-MAZDA-UK:https://www.asa.org.uk/rulings/mazda-motors-uk-ltd-a24-1247950-mazda-motors-uk-ltd.html",
+        "INT-MAZDA-UK:https://www.asa.org.uk/rulings/mazda-motors-uk-ltd-a24-1247950-mazda-motors-uk-ltd.html"
+      ]
+    },
+    {
+      "sha256": "75642360c681c310cd7a10ec8112abccc12ee5fb51ff7fa739ab4d89b7b4ecef",
+      "sources": [
+        "INT-NIKE-UK:https://www.asa.org.uk/rulings/nike-retail-bv-a25-1309100-nike-retail-bv.html",
+        "INT-NIKE-UK:https://www.asa.org.uk/rulings/nike-retail-bv-a25-1309100-nike-retail-bv.html"
+      ]
+    },
+    {
+      "sha256": "205038c83eaee38f12e5b0fb31e1548a29fdef8d0c1bed4ca0d6ad4f523c1aa6",
+      "sources": [
+        "INT-UNIQLO-UK:https://www.asa.org.uk/rulings/uniqlo--uk--ltd-a26-1327727-uniqlo--uk--ltd.html",
+        "INT-UNIQLO-UK:https://www.asa.org.uk/rulings/uniqlo--uk--ltd-a26-1327727-uniqlo--uk--ltd.html"
+      ]
+    },
+    {
+      "sha256": "eeadbd94141df50cd44692b078e25bbb3c4a563f30bbb8f30e5891376aae884c",
+      "sources": [
+        "INT-ADIDAS-UK:https://www.asa.org.uk/rulings/adidas-uk-ltd-a26-1327728-adidas-uk-ltd.html",
+        "INT-ADIDAS-UK:https://www.asa.org.uk/rulings/adidas-uk-ltd-a26-1327728-adidas-uk-ltd.html"
+      ]
+    },
+    {
+      "sha256": "85eb7b4ff636cf8831c78c79e23f8154427657663f30ed606d136adda231a81f",
+      "sources": [
+        "INT-CALVIN-KLEIN-UK:https://www.asa.org.uk/rulings/calvin-klein-europe-bv--a26-1327724-calvin-klein-europe-bv.html",
+        "INT-CALVIN-KLEIN-UK:https://www.asa.org.uk/rulings/calvin-klein-europe-bv--a26-1327724-calvin-klein-europe-bv.html"
+      ]
+    }
+  ],
+  "cross_split_exact": [],
+  "near_duplicate_groups": [],
+  "same_case_artifact_cross_split": [],
+  "same_report_translation_cross_split": [],
+  "note": "Splits are not assigned at collection time; cross-split checks run at build."
+}

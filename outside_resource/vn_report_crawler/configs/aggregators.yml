@@ -1,0 +1,98 @@
+# KẾT QUẢ KHẢO SÁT SPRINT 2 (2026-07-29)
+# ======================================
+# Cả Vietstock lẫn CafeF đều KHÔNG dùng được với adapter HTML. Listing tài liệu
+# render hoàn toàn bằng JavaScript; HTML tĩnh trả về 0 tài liệu:
+#
+#   finance.vietstock.vn/tai-lieu/bao-cao-tai-chinh.htm   1032 <a>, 4 <tr>, 0 tài liệu
+#   finance.vietstock.vn/tai-lieu/bao-cao-thuong-nien.htm  shell y hệt trang trên
+#   finance.vietstock.vn/HPG/tai-tai-lieu.htm              0 tài liệu
+#   cafef.vn/du-lieu/cong-bo-thong-tin.chn                 70 <a>, 2 <tr>, 0 tài liệu
+#   cafef.vn/du-lieu/hose/HPG-....chn                      0 tài liệu
+#
+# Vài PDF tìm thấy trên Vietstock là tài liệu marketing của chính họ
+# (VSTF_Huong_dan_su_dung, VS-SECTOR), không phải báo cáo doanh nghiệp.
+#
+# robots.txt (kiểm tra 2026-07-29): cả hai CHO PHÉP các path trên.
+# Nhưng Vietstock có `Disallow: /*.js` -> KHÔNG được crawl JS bundle của họ,
+# nên không thể dò endpoint API bằng cách đọc JS.
+#
+# Muốn dùng hai nguồn này cần một trong hai:
+#   (a) Endpoint JSON/AJAX xác định qua DevTools thủ công -> viết adapter API
+#   (b) Adapter Playwright riêng cho listing (chỉ listing, không cho toàn nguồn)
+# Cả hai đều nằm ngoài phạm vi Sprint 2. Giữ enabled: false.
+#
+# Crawler nay tự phát hiện tình huống này: xem crawler/discovery/browser_fallback.py
+# và cảnh báo "Trang có vẻ cần render JavaScript" trong manifest.
+
+# Nguồn tổng hợp. TẤT CẢ đều enabled: false cho tới khi qua đủ checklist:
+#   1. Kiểm tra robots.txt
+#   2. Kiểm tra điều khoản sử dụng
+#   3. Xác định endpoint ổn định
+#   4. Chạy fixture test (pytest tests/)
+#   5. Dry-run 20-50 tài liệu
+#   6. Xem tỷ lệ lỗi và duplicate trong manifest
+#   7. Bật production
+#
+# Selector trong adapter_options CHƯA hiệu chỉnh với HTML thật -- xem cảnh báo
+# trong crawler/adapters/vietstock.py và crawler/adapters/cafef.py.
+
+defaults:
+  enabled: false
+  authority: aggregator
+  delay_seconds: 3.0
+  max_requests_per_minute: 15
+  max_depth: 2
+  robots_policy:
+    on_missing: allow
+    on_temporary_error: retry_then_skip
+  report_types:
+    financial:
+      - báo cáo tài chính
+      - bctc
+      - financial statements
+    annual:
+      - báo cáo thường niên
+      - annual report
+    sustainability:
+      - báo cáo phát triển bền vững
+      - sustainability report
+      - esg
+    governance:
+      - báo cáo quản trị
+      - corporate governance report
+    prospectus:
+      - bản cáo bạch
+      - prospectus
+  exclude_patterns: [đăng nhập, quảng cáo, tuyển dụng]
+
+sources:
+  - id: vietstock
+    adapter: vietstock
+    company: Multiple issuers
+    start_urls:
+      - https://finance.vietstock.vn/tai-lieu/bao-cao-tai-chinh.htm
+      - https://finance.vietstock.vn/tai-lieu/bao-cao-thuong-nien.htm
+    allowed_domains: [finance.vietstock.vn, static.vietstock.vn]
+    # Nguồn tốt nhất để kiểm thử parser đa định dạng.
+    allowed_file_types: [pdf, doc, docx, xls, xlsx]
+    adapter_options:
+      row_selector: "table tr, .doc-item, li"
+      link_selector: "a[href]"
+
+  - id: cafef
+    adapter: cafef
+    company: Multiple issuers
+    start_urls:
+      - https://cafef.vn/du-lieu/cong-bo-thong-tin.chn
+    allowed_domains: [cafef.vn, m.cafef.vn, cafef1.mediacdn.vn]
+    allowed_file_types: [pdf, xls, xlsx]
+    adapter_options:
+      follow_ticker_pages: true
+
+  # --- Sprint 3-5, adapter chưa cài đặt. Giữ lại để tham chiếu kế hoạch. ---
+  # - id: stockbiz     (adapter: stockbiz,  authority: aggregator)
+  # - id: money24h     (adapter: money24h,  authority: mirror)
+  # - id: hnx          (adapter: hnx,       authority: official_exchange)
+  # - id: vlca         (adapter: vlca,      authority: aggregator)
+  #
+  # FiinPro-X: KHÔNG crawl. Là sản phẩm thương mại, chỉ dùng qua API/license.

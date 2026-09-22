@@ -1,0 +1,11 @@
+{
+  "cross_split_duplicate_hashes": [
+    {
+      "sha256": "52f62e00f73a4245710c64c7c0e61926c5e20b7713f78d1d1fc4998faa94b40b",
+      "splits": [
+        "review",
+        "train"
+      ]
+    }
+  ]
+}

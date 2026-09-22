@@ -9,7 +9,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def load_jsonl(path: Path):
     rows = []
-    for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+    # split("\n") not splitlines(): splitlines() also breaks on U+2028/U+2029/
+    # U+0085, which appear in text extracted from Vietnamese PDFs and are legal
+    # inside a JSON string.
+    for n, line in enumerate(path.read_text(encoding="utf-8").split("\n"), 1):
         if line.strip():
             try:
                 rows.append(json.loads(line))

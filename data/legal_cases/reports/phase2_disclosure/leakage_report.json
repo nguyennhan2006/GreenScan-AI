@@ -1,0 +1,45 @@
+{
+  "exact_duplicate_groups": [
+    {
+      "sha256": "a4758ac4ce5fab5d4aeb1456b881a53247a14acdc20c809f0463606caeb429d5",
+      "sources": [
+        "INT-PETRONAS-MY:https://www.petronas.com/sites/default/files/uploads/content/2026/PETRONAS%20Integrated%20Report%202025.pdf",
+        "INT-PETRONAS-MY:https://www.petronas.com/integrated-report-2025/assets/pdf/PETRONAS_IR25_Interactive.pdf",
+        "INT-PETRONAS-MY:https://www.petronas.com/sites/default/files/uploads/PIR%202025/PETRONAS%20Integrated%20Report%202025.pdf"
+      ]
+    },
+    {
+      "sha256": "1484cb77d5ffeac4c039dc4201f9c5451ed81752c4ec9697cf9665c794ad8143",
+      "sources": [
+        "INT-PETRONAS-MY:https://www.petronas.com/sites/default/files/uploads/content/2025/PETRONAS-Integrated-Report-2024.pdf",
+        "INT-PETRONAS-MY:https://www.petronas.com/integrated-report-2024/assets/pdf/2024/PETRONAS-Integrated-Report-Interactive-2024.pdf"
+      ]
+    },
+    {
+      "sha256": "a151d5d75069425ef3cf201b315d832693930369b5ef4ec692c3d04c3c331d46",
+      "sources": [
+        "INT-PETRONAS-MY:https://www.petronas.com/integrated-report-2025/assets/pdf/PETRONAS_AFS25.pdf",
+        "INT-PETRONAS-MY:https://www.petronas.com/integrated-report-2025/assets/pdf/PETRONAS_2025_Audited_Financial_Statements.pdf"
+      ]
+    },
+    {
+      "sha256": "fe5d4971bf6ee37af3fcc057ab467e2a73ba202fe1ec8e2e1b647aca4aecdfb0",
+      "sources": [
+        "INT-PETRONAS-MY:https://www.petronas.com/integrated-report-2024/assets/pdf/PIR 2024_Audited Financial Statements.pdf",
+        "INT-PETRONAS-MY:https://www.petronas.com/integrated-report-2024/assets/pdf/PIR%202024_Audited%20Financial%20Statements.pdf"
+      ]
+    },
+    {
+      "sha256": "53aad83c8d5f9f09ed79a751cc29e508bd737f8d28748c56d680c27f145ebff8",
+      "sources": [
+        "INT-NIKE-UK:https://nmp.about.nike.com/originals/about/prod/d3df5655-4772-41c7-af0d-9f1c99badb4b/FY18_Nike_Impact-Report_Final.pdf?s=8aca66ea01964fa982ab8ac993cc56e5bd33cade19ec126a1681d97041e8533c&dl=0",
+        "INT-NIKE-UK:https://nmp.about.nike.com/originals/about/prod/d3df5655-4772-41c7-af0d-9f1c99badb4b/FY18-NIKE-Inc-Impact-Report-GRI-Index.pdf?s=2adfa06c7a03ab0be31d7ba3732c07c5012681306bbe3d1aa9e80c4af90de74b&dl=0"
+      ]
+    }
+  ],
+  "cross_split_exact": [],
+  "near_duplicate_groups": [],
+  "same_case_artifact_cross_split": [],
+  "same_report_translation_cross_split": [],
+  "note": "Splits are not assigned at collection time; cross-split checks run at build."
+}

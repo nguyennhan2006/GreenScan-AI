@@ -1,0 +1,62 @@
+{
+  "www.asic.gov.au": {
+    "requests": 19,
+    "success": 19,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 242
+  },
+  "download.asic.gov.au": {
+    "requests": 4,
+    "success": 4,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 975
+  },
+  "asic.gov.au": {
+    "requests": 9,
+    "success": 9,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 468
+  },
+  "www.accc.gov.au": {
+    "requests": 2,
+    "success": 0,
+    "http_4xx": 2,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 103
+  },
+  "www.sec.gov": {
+    "requests": 11,
+    "success": 11,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 354
+  },
+  "www.asa.org.uk": {
+    "requests": 91,
+    "success": 91,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 412
+  }
+}

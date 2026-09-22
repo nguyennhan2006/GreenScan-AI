@@ -1,0 +1,342 @@
+{
+  "www.vanguard.com.au": {
+    "requests": 3,
+    "success": 3,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 3,
+    "median_latency_ms": 1194
+  },
+  "www.mercersuper.com.au": {
+    "requests": 27,
+    "success": 27,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 1795
+  },
+  "www.activesuper.com.au": {
+    "requests": 5,
+    "success": 1,
+    "http_4xx": 4,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 1,
+    "median_latency_ms": 1152
+  },
+  "investors.thecloroxcompany.com": {
+    "requests": 2,
+    "success": 0,
+    "http_4xx": 2,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 144
+  },
+  "www.thecloroxcompany.com": {
+    "requests": 3,
+    "success": 1,
+    "http_4xx": 2,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 1,
+    "median_latency_ms": 501
+  },
+  "www.invesco.com": {
+    "requests": 9,
+    "success": 9,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 1,
+    "median_latency_ms": 740
+  },
+  "ir.wisdomtree.com": {
+    "requests": 6,
+    "success": 6,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 1,
+    "median_latency_ms": 2307
+  },
+  "www.goldmansachs.com": {
+    "requests": 18,
+    "success": 18,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 3,
+    "median_latency_ms": 103
+  },
+  "am.gs.com": {
+    "requests": 3,
+    "success": 3,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 1232
+  },
+  "tlouenergy.com": {
+    "requests": 1,
+    "success": 1,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 1,
+    "median_latency_ms": 638
+  },
+  "blackmountainenergy.com": {
+    "requests": 6,
+    "success": 0,
+    "http_4xx": 6,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 133
+  },
+  "fertoz.com": {
+    "requests": 1,
+    "success": 1,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 1,
+    "median_latency_ms": 1986
+  },
+  "shareholders.morningstar.com": {
+    "requests": 1,
+    "success": 1,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 1,
+    "median_latency_ms": 1749
+  },
+  "www.morningstar.com": {
+    "requests": 2,
+    "success": 0,
+    "http_4xx": 2,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 70
+  },
+  "www.northerntrust.com": {
+    "requests": 2,
+    "success": 0,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 2,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 90191
+  },
+  "www.shell.com": {
+    "requests": 3,
+    "success": 3,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 3,
+    "median_latency_ms": 270
+  },
+  "www.repsol.com": {
+    "requests": 27,
+    "success": 27,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 621
+  },
+  "www.petronas.com": {
+    "requests": 27,
+    "success": 27,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 1,
+    "median_latency_ms": 502
+  },
+  "www.equinor.com": {
+    "requests": 2,
+    "success": 2,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 2,
+    "median_latency_ms": 7017
+  },
+  "totalenergies.com": {
+    "requests": 26,
+    "success": 26,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 1697
+  },
+  "www.hsbc.com": {
+    "requests": 26,
+    "success": 26,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 624
+  },
+  "www.lloydsbankinggroup.com": {
+    "requests": 1,
+    "success": 1,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 1,
+    "median_latency_ms": 271
+  },
+  "www.unilever.com": {
+    "requests": 4,
+    "success": 0,
+    "http_4xx": 4,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 349
+  },
+  "www.tescoplc.com": {
+    "requests": 2,
+    "success": 2,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 2,
+    "median_latency_ms": 343
+  },
+  "origin.tescoplc.com": {
+    "requests": 2,
+    "success": 2,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 2,
+    "median_latency_ms": 526
+  },
+  "investor-relations.lufthansagroup.com": {
+    "requests": 3,
+    "success": 3,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 884
+  },
+  "www.lufthansagroup.com": {
+    "requests": 2,
+    "success": 0,
+    "http_4xx": 2,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 156
+  },
+  "www.mazda.com": {
+    "requests": 15,
+    "success": 15,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 1,
+    "median_latency_ms": 435
+  },
+  "investors.nike.com": {
+    "requests": 2,
+    "success": 0,
+    "http_4xx": 2,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 176
+  },
+  "about.nike.com": {
+    "requests": 2,
+    "success": 2,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 1,
+    "median_latency_ms": 1507
+  },
+  "nmp.about.nike.com": {
+    "requests": 24,
+    "success": 24,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 684
+  },
+  "www.fastretailing.com": {
+    "requests": 16,
+    "success": 16,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 1,
+    "median_latency_ms": 544
+  },
+  "report.adidas-group.com": {
+    "requests": 1,
+    "success": 1,
+    "http_4xx": 0,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 1,
+    "median_latency_ms": 980
+  },
+  "www.pvh.com": {
+    "requests": 8,
+    "success": 0,
+    "http_4xx": 8,
+    "http_5xx": 0,
+    "transport_error": 0,
+    "robots_status": null,
+    "zero_result_pages": 0,
+    "median_latency_ms": 127
+  }
+}
