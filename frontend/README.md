@@ -1,16 +1,34 @@
-# React + Vite
+# GreenScan AI — web UI (v2)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React 19 + Vite 8 + Tailwind 4. No router library: `src/lib/router.jsx` is a
+tiny hash router so deep links (`#/runs/<id>/claims/<claim>`) survive a reload
+and a saved run can be opened straight from a URL.
 
-Currently, two official plugins are available:
+```bash
+npm install
+npm run dev        # http://localhost:5173, proxies /api → http://localhost:8000
+npm run build
+npm run lint
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Start the API first: `python -m quantum_gw.cli serve --port 8000` from the repo root.
 
-## React Compiler
+## Layout
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Path | Screen |
+| --- | --- |
+| `#/start` | reviewer name (no accounts exist; the name goes into the review trail) |
+| `#/new` | 3-step intake: sources → configuration → run |
+| `#/runs` | saved runs (`GET /v1/runs`), rename, reopen |
+| `#/runs/:id` | overview: work queues, missing attributes, verdict distribution, gates |
+| `#/runs/:id/claims` | claim list with status filters |
+| `#/runs/:id/claims/:claimId` | claim detail in audit order; `?tab=review` jumps to the decision bar |
+| `#/runs/:id/review` | review queue by workflow state |
+| `#/runs/:id/export` | evidence-pack downloads |
+| `#/legal` | legal registry (`GET /v1/legal/corpus`) |
+| `#/settings` | reviewer, model gateway (read-only), gold stats |
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Design rules (what may never appear: company scores, rankings, accusatory
+wording) are in `../docs/05-ui/PRODUCTION_UI_SPEC_2026-09-20.md` §1 and §4.6.
+Semantic colours live in `src/components/badges.jsx`; the five mandatory
+attributes and the row model in `src/lib/claims.js`.
