@@ -1,0 +1,26 @@
+{
+  "document_number": "83/2026/NĐ-CP",
+  "title": "Sửa đổi, bổ sung một số điều của Nghị định 06/2022/NĐ-CP (đã sửa bởi 119/2025/NĐ-CP)",
+  "authority": "Chính phủ",
+  "issued_date": "2026-03-01",
+  "effective_from": "2026-03-01",
+  "status": "effective",
+  "id": "ND83-2026-ND-CP",
+  "checked_at": "2026-08-14T02:07:31.240145+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\ND83-2026-ND-CP\\original.pdf",
+      "sha256": "5cad78c99003431d9da3133acd75e3c1c57026359a1dc392f82f192c75a3660f",
+      "bytes": 592400,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/3/83-ndcp.signed.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/3/83-ndcp.signed.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-08-14T02:07:31.697688+00:00",
+      "pages": 19,
+      "text_chars": 148
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 19 pages, 148 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

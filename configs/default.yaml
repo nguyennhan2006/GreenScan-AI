@@ -3,8 +3,9 @@ language: vi
 runs_dir: .quantum/runs
 
 intake:
-  chunk_size_chars: 1400
-  chunk_overlap_chars: 180
+  chunk_size_chars: 600
+  chunk_overlap_chars: 0
+  max_sentences_per_chunk: 3
   min_native_text_chars: 40
   extract_tables: true
   ocr_enabled: true
@@ -24,6 +25,7 @@ retrieval:
   lexical_weight: 0.55
   semantic_weight: 0.45
   minimum_score: 0.12
+  floor_k: 3           # always keep this many best candidates, marked below_threshold
   exclude_same_chunk: true
 
 embedding:
@@ -42,15 +44,28 @@ reranker:
   final_k: 5
 
 verification:
-  numeric_relative_tolerance: 0.12
+  numeric_relative_tolerance: 0.10   # cap on precision-derived tolerance (precision-v1), not a global tolerance
   strong_support_score: 0.46
   partial_support_score: 0.22
   injection_policy: exclude
+  qualitative_min_overlap: 0.20   # authority sources bypass this; see settings.py
+  llm_stance: "off"               # quoted: bare `off` is YAML boolean false
+                                  # "off" | "on_ambiguous" — see verification/llm_judge.py
+  llm_stance_min_overlap: 0.12
 
 scoring:
   rubric_file: configs/scoring_v1.yaml
 
 review:
-  high_risk_threshold: 50
-  critical_risk_threshold: 75
+  # high_risk_threshold / critical_risk_threshold used to live here and were read
+  # by nothing: the scorer had its own hardcoded ladder. Severity bands now come
+  # from the `severity:` block of the rubric file above, and from nowhere else.
   require_human_for_legal_conflict: true
+
+legal:
+  enabled: true
+  registry_file: configs/legal/LEGAL_SOURCE_REGISTRY.yaml
+  rule_pack_file: configs/legal/rule_pack_vn_green_v0.1.yaml
+  # historical_compliance | current_policy_alignment — different questions, kept
+  # apart deliberately; see src/quantum_gw/legal/corpus.py
+  check_mode: current_policy_alignment

@@ -1,20 +1,39 @@
-version: risk-rubric-v1
+version: risk-rubric-v2
 meaning: Higher score means higher greenwashing risk.
+
+# v2 splits `baseline_and_period` into `baseline` + `period` and adds
+# `scope_boundary`, so the five mandatory attributes each have their own
+# component and the UI can show a reviewer exactly which one is missing:
+#   Specific metric      -> specificity
+#   Baseline             -> baseline
+#   Period               -> period
+#   Scope/Boundary       -> scope_boundary
+#   Evidence/Methodology -> evidence_support + independent_assurance
+# The remaining components are penalties, not attributes.
+# Max scores MUST sum to 100. The severity bands below are absolute cuts on a
+# 0-100 scale, so adding a component without rebalancing silently inflates every
+# score and pushes claims into HIGH. Splitting baseline/period and adding
+# scope_boundary took the total to 120 and moved 32/41 claims into review on a
+# corpus where 3 belonged there; these weights restore the 100-point scale.
 components:
   specificity:
-    max_score: 15
+    max_score: 12
   quantitative_evidence:
-    max_score: 15
-  baseline_and_period:
-    max_score: 10
+    max_score: 12
+  baseline:
+    max_score: 8
+  period:
+    max_score: 8
+  scope_boundary:
+    max_score: 8
   evidence_support:
-    max_score: 20
+    max_score: 18
   independent_assurance:
-    max_score: 10
+    max_score: 8
   contradiction:
-    max_score: 20
+    max_score: 18
   vague_or_exaggerated_language:
-    max_score: 10
+    max_score: 8
 severity:
   low: [0, 24]
   medium: [25, 49]

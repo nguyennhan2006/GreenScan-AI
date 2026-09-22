@@ -1,0 +1,33 @@
+{
+  "case_id": "BNY-2022",
+  "organization": "BNY Mellon Investment Adviser, Inc.",
+  "jurisdiction": "US",
+  "sector": "Asset management",
+  "case_type": "ESG process representation versus actual implementation",
+  "case_status": "SEC_SETTLEMENT_WITHOUT_ADMISSION_OR_DENIAL",
+  "adjudication_date": "2022-05-23",
+  "split": "demo",
+  "primary_claim_id": "BNY-CLAIM-001",
+  "expected_verification": "CONTRADICTED",
+  "risk_band": "CRITICAL",
+  "claim_text": "ESG risks, opportunities and issues were considered throughout the research process via proprietary quality reviews.",
+  "claim_is_paraphrase": true,
+  "claim_source": "Overlay Fund prospectuses and RFP responses summarized in SEC order",
+  "claim_source_pages": [
+    3,
+    4
+  ],
+  "evidence_summary": "The SEC order states that numerous investments lacked an ESG quality-review score. In one fund, 67 of 185 investments lacked a score at the relevant time, representing nearly 25% of net assets. The order found that a reasonable investor could mistakenly infer that all holdings were reviewed.",
+  "expected_reasoning": [
+    "Separate policy language from evidence of implementation.",
+    "Use fund-level counts and net-asset share as quantitative evidence.",
+    "Do not equate the existence of an ESG team with universal review coverage.",
+    "Preserve the settlement qualifier: no admission or denial."
+  ],
+  "source_ids": [
+    "BNY_SEC_ORDER_2022",
+    "BNY_SEC_PRESS_2022"
+  ],
+  "training_eligibility": "gold_after_second_reviewer",
+  "legal_caution": "The order concerns specified funds, statements and period, not all BNY products."
+}

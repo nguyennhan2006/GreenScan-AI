@@ -1,0 +1,26 @@
+{
+  "document_number": "48/2026/NĐ-CP",
+  "title": "Sửa đổi, bổ sung một số điều của Nghị định 08/2022/NĐ-CP (đã sửa bởi 05/2025/NĐ-CP)",
+  "authority": "Chính phủ",
+  "issued_date": "2026-01-01",
+  "effective_from": "2026-01-01",
+  "status": "effective",
+  "id": "ND48-2026-ND-CP",
+  "checked_at": "2026-08-14T02:07:30.601179+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\ND48-2026-ND-CP\\original.pdf",
+      "sha256": "3902145d9d3fb8201b501076a5abb3c828a97e5d877206e2220456dc9a17abbb",
+      "bytes": 2668328,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/48-cp.signed.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/48-cp.signed.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-08-14T02:07:31.210492+00:00",
+      "pages": 62,
+      "text_chars": 148
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 62 pages, 148 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

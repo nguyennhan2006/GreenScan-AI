@@ -1,0 +1,91 @@
+version: stance-cues-v2
+# Cues for qualitative stance detection.
+#
+# Why this file exists: the verifier could previously reach CONTRADICTED only
+# through a numeric relative-error test or a giảm/tăng direction flip. Every
+# adjudicated case in data/real_cases is refuted qualitatively instead —
+# by omission (KDP-2024), a coverage gap (BNY-2022), a control gap (DWS-2023)
+# or a court finding of misleading vagueness (KLM-2024) — so all four came back
+# as INSUFFICIENT_EVIDENCE or, worse, PARTIALLY_SUPPORTED: a regulator's finding
+# that DWS "lacked formalized controls" was being counted as partial support for
+# the company's own claim.
+#
+# Design constraints these lists are written to:
+#
+#   Phrases, not bare negation. "không" and "not" are far too common to carry a
+#   refutation on their own; "không thực hiện" and "did not" are not. A bare
+#   negation cue would flip "Báo cáo tài chính không trình bày chỉ tiêu môi
+#   trường" into a refutation, when that sentence is an absence of disclosure
+#   rather than a contradiction of any claim.
+#
+#   Silence is never refutation. A cue only fires on text that is present. No
+#   entry here means "evidence failed to mention X".
+#
+# Matching (v2) is whole-word on the text's own orthography: accented text is
+# matched against the accented cue, and only text without any diacritics is
+# matched accent-folded. v1 folded everything, so "thiếu" fired on "thiêu kết"
+# (sintering) in every steel report -- 274 of 357 CONTRADICTED on Hòa Phát
+# came from that one cue. A refutation cue must also sit in the same sentence
+# as a content word of the claim.
+#
+# `benign` phrases are removed before refutation cues are looked up: they
+# contain a negation but state something positive.
+refutes:
+  # "không có" and "chưa có" on their own are absence statements ("không có báo
+  # cáo đảm bảo") -- a disclosure gap the rubric already scores, not a
+  # contradiction. Only their specific forms refute.
+  vi: ["không thực hiện", "không có bằng chứng", "không có cơ sở", "không có kiểm soát",
+       "không có tài liệu", "không có quy trình", "không đầy đủ", "không chính xác", "không đúng",
+       "không phù hợp", "không đạt", "không tuân thủ", "không kiểm chứng", "không được kiểm chứng",
+       "chưa thực hiện", "chưa đầy đủ", "chưa được kiểm chứng", "chưa kiểm chứng",
+       "thiếu", "bỏ sót", "sai lệch", "gây hiểu nhầm", "gây nhầm lẫn",
+       "vi phạm", "xử phạt", "phóng đại", "thổi phồng", "mâu thuẫn", "trái ngược"]
+  en: ["did not", "does not", "do not", "was not", "were not", "had not", "has not",
+       "have not", "is not", "are not", "cannot", "unable to",
+       "failed to", "failure to", "lacked", "lacks", "lacking",
+       "no evidence", "no such", "no controls", "no documentation",
+       "omitted", "omission", "undisclosed", "not disclosed",
+       "incomplete", "inaccurate", "misleading", "unsubstantiated", "unsupported",
+       "overstated", "exaggerated",
+       "inadequate", "insufficient", "inconsistent", "deficien",
+       "not implemented", "never implemented", "contrary to", "contradict",
+       "violation", "violated", "breach"]
+supports:
+  # "phù hợp với" (consistent with / suitable for) and "kiểm toán" (audited)
+  # appear in every annual report -- the auditor's opinion, product colours
+  # that "suit any space" -- and confirmed nothing; removed in v2.
+  vi: ["xác nhận", "chứng nhận", "đã đạt", "được kiểm chứng", "thẩm định", "đảm bảo độc lập",
+       "được kiểm toán", "kiểm toán xác nhận", "đã được xác minh"]
+  en: ["confirmed", "verified", "validated by", "audited", "assured",
+       "independent assurance", "certified", "in accordance with", "achieved",
+       "met the target", "consistent with", "substantiated"]
+# Markers that the passage is an authority speaking — a regulator's order, a
+# court's judgment, an inspection conclusion. These do not decide a stance on
+# their own; they establish that a refutation cue in the same passage is a
+# finding of fact rather than someone's opinion, which is what lets a decisive
+# passage count even when it shares few words with the claim. BNY-2022's
+# refutation shares only "esg" and "the" with the claim it refutes.
+adjudicative:
+  vi: ["quyết định xử phạt", "kết luận thanh tra", "kết luận kiểm tra", "bản án",
+       "tòa án", "cơ quan quản lý", "quyết định của", "kết luận"]
+  en: ["sec order", "the order", "the court", "court found", "judgment", "judgement",
+       "enforcement", "settled charges", "cease-and-desist", "penalty",
+       "found that", "order found", "order states", "regulator"]
+benign:
+  vi: ["không có sự cố", "không có tai nạn", "không có vi phạm", "không có trường hợp",
+       "không có khiếu nại", "không có sai sót", "không phát sinh", "không xảy ra",
+       "không ghi nhận sự cố", "không ghi nhận vi phạm", "không ghi nhận tai nạn",
+       "không bị xử phạt", "không có tồn tại", "không có phát hiện"]
+  en: ["no incidents", "no incident", "no accidents", "no violations", "no violation",
+       "no breaches", "no complaints", "no material weakness", "no findings", "no fines",
+       "no penalties", "were not identified", "was not identified", "did not occur",
+       "no cases of", "no exceptions"]
+# Nouns that mean "what the subject said". An adjudicative sentence that
+# contains one of these is a ruling on the claim as such and counts as being
+# about it even when it shares no vocabulary with the claim's wording.
+statement_nouns:
+  vi: ["tuyên bố", "công bố", "quảng cáo", "cam kết", "phát ngôn", "thông tin đã công bố",
+       "nội dung quảng cáo", "báo cáo"]
+  en: ["statement", "statements", "claim", "claims", "representation", "representations",
+       "advertisement", "advertisements", "advertising", "disclosure", "disclosures",
+       "marketing", "prospectus", "prospectuses", "rfp responses", "policy"]

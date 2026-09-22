@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AIQuantumRealCasePilot",
+  "type": "object",
+  "required": [
+    "case_id",
+    "organization",
+    "case_status",
+    "split",
+    "source_ids"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "organization": {
+      "type": "string"
+    },
+    "jurisdiction": {
+      "type": "string"
+    },
+    "sector": {
+      "type": "string"
+    },
+    "case_type": {
+      "type": "string"
+    },
+    "case_status": {
+      "type": "string"
+    },
+    "adjudication_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "split": {
+      "enum": [
+        "demo",
+        "evaluation",
+        "control"
+      ]
+    },
+    "primary_claim_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "expected_verification": {
+      "type": "string"
+    },
+    "risk_band": {
+      "type": "string"
+    },
+    "claim_text": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "claim_is_paraphrase": {
+      "type": "boolean"
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "training_eligibility": {
+      "type": "string"
+    }
+  }
+}

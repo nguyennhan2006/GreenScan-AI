@@ -1,0 +1,26 @@
+{
+  "document_number": "06/2022/NĐ-CP",
+  "title": "Quy định giảm nhẹ phát thải khí nhà kính và bảo vệ tầng ô-dôn",
+  "authority": "Chính phủ",
+  "issued_date": "2022-01-07",
+  "effective_from": "2022-01-07",
+  "status": "effective",
+  "id": "ND06-2022-ND-CP",
+  "checked_at": "2026-08-14T02:07:26.942965+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\ND06-2022-ND-CP\\original.pdf",
+      "sha256": "c3b7f52f7b12642e5a4e3a6167b0a43061fd7226a5e9df2498af3e01e872d631",
+      "bytes": 3686133,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2022/01/06-nd.signed.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2022/01/06-nd.signed.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-08-14T02:07:27.412949+00:00",
+      "pages": 88,
+      "text_chars": 148
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 88 pages, 148 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

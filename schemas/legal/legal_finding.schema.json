@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenscan.ai/schemas/legal/legal_finding.schema.json",
+  "title": "Legal check result",
+  "description": "An evidenced legal check record. Never a statement that a company violated the law.",
+  "type": "object",
+  "required": [
+    "legal_check_id",
+    "claim_id",
+    "issue",
+    "check_mode",
+    "as_of_date",
+    "legal_finding",
+    "requires_human_review"
+  ],
+  "properties": {
+    "legal_check_id": {
+      "type": "string"
+    },
+    "claim_id": {
+      "type": "string"
+    },
+    "issue": {
+      "type": "string"
+    },
+    "check_mode": {
+      "enum": [
+        "historical_compliance",
+        "current_policy_alignment"
+      ],
+      "description": "Which question was asked. The two are not interchangeable."
+    },
+    "as_of_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "applicable_sources": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "blocked_sources": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "In-force instruments whose text could not be read. Distinct from 'not applicable'."
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "criterion": {
+            "type": "string"
+          },
+          "condition_id": {
+            "type": "string"
+          },
+          "source_clause": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "SATISFIED",
+              "NOT_SATISFIED",
+              "UNKNOWN"
+            ],
+            "description": "UNKNOWN means no evidence spoke to it — never a failure."
+          },
+          "reason": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "legal_finding": {
+      "enum": [
+        "MATCH",
+        "PARTIAL_MATCH",
+        "NOT_MATCH",
+        "INSUFFICIENT_EVIDENCE"
+      ]
+    },
+    "legal_risk": {
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ]
+    },
+    "rule_pack_version": {
+      "type": "string"
+    },
+    "rules_applied": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requires_human_review": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

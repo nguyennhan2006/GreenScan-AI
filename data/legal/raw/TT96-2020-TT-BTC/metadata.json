@@ -1,0 +1,26 @@
+{
+  "document_number": "96/2020/TT-BTC",
+  "title": "Hướng dẫn công bố thông tin trên thị trường chứng khoán",
+  "authority": "Bộ Tài chính",
+  "issued_date": "2020-11-16",
+  "effective_from": "2021-01-01",
+  "status": "effective_with_amendments",
+  "id": "TT96-2020-TT-BTC",
+  "checked_at": "2026-08-14T02:07:28.923812+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\TT96-2020-TT-BTC\\original.pdf",
+      "sha256": "ae1dee6f0e0aba2b3346270868e048177d5c3fc9332443c6f2467d1694f52dbe",
+      "bytes": 3488133,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2020/12/96-btc.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2020/12/96-btc.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-08-14T02:07:29.324933+00:00",
+      "pages": 107,
+      "text_chars": 108
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 107 pages, 108 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

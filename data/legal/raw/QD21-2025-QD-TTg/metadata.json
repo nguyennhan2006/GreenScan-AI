@@ -1,0 +1,26 @@
+{
+  "document_number": "21/2025/QĐ-TTg",
+  "title": "Quy định tiêu chí môi trường và việc xác nhận dự án đầu tư thuộc danh mục phân loại xanh",
+  "authority": "Thủ tướng Chính phủ",
+  "issued_date": "2025-07-04",
+  "effective_from": "2025-08-22",
+  "status": "effective",
+  "id": "QD21-2025-QD-TTg",
+  "checked_at": "2026-08-14T02:07:18.902594+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\QD21-2025-QD-TTg\\original.pdf",
+      "sha256": "d7d208a2b58d1f029c3fee53088863ce2d7e4c380bf5e875813cc33559802984",
+      "bytes": 1281311,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/21-ttg.signed.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/21-ttg.signed.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-08-14T02:07:20.041899+00:00",
+      "pages": 32,
+      "text_chars": 148
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 32 pages, 148 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

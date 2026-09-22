@@ -1,0 +1,35 @@
+{
+  "case_id": "DWS-2023",
+  "organization": "DWS Investment Management Americas, Inc.",
+  "jurisdiction": "US / Germany",
+  "sector": "Asset management",
+  "case_type": "ESG integration marketing versus controls and documented execution",
+  "case_status": "SEC_SETTLEMENT_WITHOUT_ADMISSION_OR_DENIAL",
+  "adjudication_date": "2023-09-25",
+  "split": "evaluation",
+  "primary_claim_id": "DWS-CLAIM-001",
+  "expected_verification": "CONTRADICTED",
+  "risk_band": "CRITICAL",
+  "claim_text": "ESG was integrated across investment teams and the ESG Engine was used to make portfolio decisions.",
+  "claim_is_paraphrase": true,
+  "claim_source": "Public marketing and ESG Integration Policy reproduced in SEC order",
+  "claim_source_pages": [
+    1,
+    3
+  ],
+  "evidence_summary": "The SEC order states that DWS did not have adequate controls to verify implementation, that documented compliance was inconsistent, and that some senior personnel were unaware of or unsure about the policy. The SEC imposed a $19 million ESG-related penalty.",
+  "expected_reasoning": [
+    "Distinguish organization-wide marketing from product-specific implementation.",
+    "Look for mandatory controls, monitoring, documentation and actual use.",
+    "Do not combine the separate $6 million AML penalty with the $19 million ESG penalty.",
+    "Preserve the settlement qualifier: no admission or denial."
+  ],
+  "source_ids": [
+    "DWS_SEC_ORDER_2023",
+    "DWS_SEC_PRESS_2023",
+    "DWS_ANNUAL_REPORT_2023",
+    "DWS_ANNUAL_REPORT_2020"
+  ],
+  "training_eligibility": "silver_until_2020_report_archived",
+  "legal_caution": "Use the SEC order for the adjudicated claim; treat 2023 report as post-remediation control."
+}
