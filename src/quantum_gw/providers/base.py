@@ -46,6 +46,20 @@ class LLMProvider(ABC):
         self, messages: list[dict[str, str]], response_schema: dict[str, Any] | None = None
     ) -> LLMResponse: ...
 
+    def bind_model(self, model: str) -> LLMProvider:
+        """Return this provider aimed at a different model on the same endpoint.
+
+        One endpoint usually serves many models -- FPT Marketplace exposes a
+        dozen behind a single base URL -- and tasks have genuinely different
+        needs: claim extraction wants a fast small model, legal reasoning wants
+        the strongest one available. Without this, every task on a provider is
+        stuck with one model id.
+
+        Providers that cannot switch models return themselves unchanged, so
+        routing never fails because of an override it cannot honour.
+        """
+        return self
+
     @abstractmethod
     def healthcheck(self) -> bool: ...
 

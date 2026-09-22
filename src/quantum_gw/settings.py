@@ -10,9 +10,52 @@ import yaml
 from pydantic import BaseModel, Field
 
 
+def load_dotenv(path: str | Path = ".env", *, override: bool = False) -> int:
+    """Read a .env file into os.environ.
+
+    README and .env.example both tell the operator to configure the gateway via
+    .env, but nothing in the process ever read that file -- only docker-compose's
+    `env_file` did. Pasting an API key into .env and starting the API locally
+    therefore did nothing, silently, which is the worst way for a credential to
+    fail.
+
+    Deliberately stdlib-only (no python-dotenv dependency) and real environment
+    variables win by default, so `FPT_LLM_API_KEY=... quantum-agent serve` still
+    beats the file.
+    """
+    p = Path(path)
+    if not p.is_file():
+        return 0
+    loaded = 0
+    # split("\n"): a value may legitimately contain U+2028 and splitlines() would
+    # break the line in two.
+    for raw in p.read_text(encoding="utf-8").split("\n"):
+        line = raw.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        key = key.strip()
+        value = value.strip().strip('"').strip("'")
+        if not key:
+            continue
+        if override or key not in os.environ:
+            os.environ[key] = value
+            loaded += 1
+    return loaded
+
+
+# Load once at import so every entry point (CLI, API, scripts) sees the same
+# configuration without each having to remember to call this.
+load_dotenv(os.environ.get("QUANTUM_ENV_FILE", ".env"))
+
+
 class IntakeSettings(BaseModel):
-    chunk_size_chars: int = 1400
-    chunk_overlap_chars: int = 180
+    # A passage is a few sentences of one paragraph: small enough to be about
+    # one thing, so a stance cue or a figure in it belongs to the claim it is
+    # retrieved for. 1,400 characters made a whole page one passage.
+    chunk_size_chars: int = 600
+    chunk_overlap_chars: int = 0
+    max_sentences_per_chunk: int = 3
     min_native_text_chars: int = 40
     extract_tables: bool = True
     ocr_enabled: bool = True
@@ -34,6 +77,10 @@ class RetrievalSettings(BaseModel):
     lexical_weight: float = 0.55
     semantic_weight: float = 0.45
     minimum_score: float = 0.12
+    # Best candidates always returned even when they score below minimum_score,
+    # marked `below_threshold`. Separates "no passage speaks to this claim" from
+    # "no passage looked like this claim" — see HybridRetriever._admissible.
+    floor_k: int = 3
     exclude_same_chunk: bool = True
 
 
@@ -55,15 +102,36 @@ class RerankerSettings(BaseModel):
 
 
 class VerificationSettings(BaseModel):
-    numeric_relative_tolerance: float = 0.12
+    # Upper bound on the precision-derived tolerance (policy precision-v1 in
+    # the verifier). Not a tolerance itself any more: two figures agree when
+    # they differ by no more than the coarser published precision, capped here.
+    numeric_relative_tolerance: float = 0.10
     strong_support_score: float = 0.46
     partial_support_score: float = 0.22
     injection_policy: str = "exclude"
+    # Lexical overlap a passage needs before a stance cue counts. Passages from
+    # an authority (a regulator's order, a court judgment) bypass this: BNY-2022's
+    # refutation shares only "esg" and "the" with the claim it refutes.
+    qualitative_min_overlap: float = 0.20
+    # off | on_ambiguous. `on_ambiguous` lets a language model rule on passages
+    # the deterministic layers declined, and marks every such claim for human
+    # review. Off by default so the shipped pipeline stays reproducible.
+    llm_stance: str = "off"
+    llm_stance_min_overlap: float = 0.12
+
+
+class LegalSettings(BaseModel):
+    enabled: bool = True
+    registry_file: str = "configs/legal/LEGAL_SOURCE_REGISTRY.yaml"
+    rule_pack_file: str = "configs/legal/rule_pack_vn_green_v0.1.yaml"
+    # historical_compliance (law as it stood when the claim was published) or
+    # current_policy_alignment (today's criteria). They are different questions
+    # and a company can be compliant on one and misaligned on the other, so the
+    # mode is explicit rather than inferred.
+    check_mode: str = "current_policy_alignment"
 
 
 class ReviewSettings(BaseModel):
-    high_risk_threshold: int = 50
-    critical_risk_threshold: int = 75
     require_human_for_legal_conflict: bool = True
 
 
@@ -91,6 +159,8 @@ class GatewaySettings(BaseModel):
     fpt_api_key: str = ""
     fpt_model: str = ""
     fpt_api_format: str = "openai_compatible"  # openai_compatible | fpt_native
+    fpt_timeout_seconds: float = 180
+    fpt_max_tokens: int = 4096
 
     gemini_api_key: str = ""
     gemini_model: str = ""
@@ -123,6 +193,8 @@ def load_gateway_settings() -> GatewaySettings:
         fpt_api_key=env("FPT_LLM_API_KEY", ""),
         fpt_model=env("FPT_LLM_MODEL", ""),
         fpt_api_format=env("FPT_LLM_API_FORMAT", "openai_compatible"),
+        fpt_timeout_seconds=float(env("FPT_LLM_TIMEOUT_SECONDS", "180")),
+        fpt_max_tokens=int(env("FPT_LLM_MAX_TOKENS", "4096")),
         gemini_api_key=env("GEMINI_API_KEY", ""),
         gemini_model=env("GEMINI_MODEL", ""),
         openai_api_key=env("OPENAI_API_KEY", ""),
@@ -146,6 +218,7 @@ class AppSettings(BaseModel):
     verification: VerificationSettings = Field(default_factory=VerificationSettings)
     scoring: dict[str, Any] = Field(default_factory=lambda: {"rubric_file": "configs/scoring_v1.yaml"})
     review: ReviewSettings = Field(default_factory=ReviewSettings)
+    legal: LegalSettings = Field(default_factory=LegalSettings)
     raw: dict[str, Any] = Field(default_factory=dict, exclude=True)
 
     def stable_hash(self) -> str:

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from collections.abc import Iterable
 from pathlib import Path
 
@@ -30,12 +31,18 @@ class DocumentParser:
         suffix = path.suffix.lower()
         if suffix == ".pdf":
             return self._parse_pdf(document, path)
+        # Same derivation as _parse_pdf and DocumentStore.put: the evidence
+        # deep-link is built from this id, and it must resolve in the store for
+        # every file type, not only PDF.
+        doc_id = stable_id(str(path.resolve()), document.display_name())
         if suffix == ".json":
             raw = json.loads(path.read_text(encoding="utf-8"))
             text = json.dumps(raw, ensure_ascii=False, indent=2)
-            return self._chunks_from_text(document, text)
+            return self._chunks_from_text(document, text, doc_id=doc_id)
         if suffix in {".txt", ".md", ".csv", ".yaml", ".yml"}:
-            return self._chunks_from_text(document, path.read_text(encoding="utf-8", errors="ignore"))
+            return self._chunks_from_text(
+                document, path.read_text(encoding="utf-8", errors="ignore"), doc_id=doc_id
+            )
         raise ValueError(f"Unsupported file type: {suffix}")
 
     def _parse_pdf(self, document: DocumentInput, path: Path) -> list[EvidenceChunk]:
@@ -103,9 +110,12 @@ class DocumentParser:
             return {}
         return result
 
-    def _chunks_from_text(self, document: DocumentInput, text: str) -> list[EvidenceChunk]:
+    def _chunks_from_text(
+        self, document: DocumentInput, text: str, doc_id: str | None = None
+    ) -> list[EvidenceChunk]:
         text = normalize_text(text)
-        doc_id = stable_id(document.display_name(), text[:500])
+        # Inline text has no path, so its id comes from the content itself.
+        doc_id = doc_id or stable_id(document.display_name(), text[:500])
         chunks = []
         for index, part in enumerate(self._window(text), start=1):
             chunks.append(
@@ -123,23 +133,50 @@ class DocumentParser:
         return chunks
 
     def _window(self, text: str) -> Iterable[str]:
+        """Passages of a few sentences, never crossing a paragraph break.
+
+        A passage is what a stance and a figure comparison are made against, so
+        it has to be about one thing. With 1,400-character windows the demo's
+        legal notice was a single chunk, and its "vi phạm" (about hazardous-waste
+        storage) refuted every claim it was retrieved for, while the financial
+        note's 12% (emissions) was compared against a 50% (renewables) claim.
+        """
         text = normalize_text(text)
         if not text:
             return []
-        size = max(200, self.settings.chunk_size_chars)
-        overlap = min(max(0, self.settings.chunk_overlap_chars), size // 2)
+        size = max(120, self.settings.chunk_size_chars)
+        max_sentences = max(1, self.settings.max_sentences_per_chunk)
         output: list[str] = []
-        start = 0
-        while start < len(text):
-            end = min(len(text), start + size)
-            if end < len(text):
-                boundary = max(text.rfind("\n", start, end), text.rfind(". ", start, end))
-                if boundary > start + size // 2:
-                    end = boundary + 1
-            part = text[start:end].strip()
-            if part:
-                output.append(part)
-            if end >= len(text):
-                break
-            start = max(start + 1, end - overlap)
+        for paragraph in re.split(r"\n\s*\n", text):
+            paragraph = paragraph.strip()
+            if not paragraph:
+                continue
+            sentences = _sentences(paragraph)
+            window: list[str] = []
+            length = 0
+            for sentence in sentences:
+                if window and (length + len(sentence) > size or len(window) >= max_sentences):
+                    output.append(" ".join(window))
+                    window, length = [], 0
+                window.append(sentence)
+                length += len(sentence) + 1
+            if window:
+                output.append(" ".join(window))
         return output
+
+
+def _sentences(paragraph: str) -> list[str]:
+    """Sentences of one paragraph; a line that ends without punctuation is its own sentence.
+
+    Short fragments (a heading, a table label) stay attached to the following
+    sentence rather than becoming a passage of their own, so a citation still
+    lands on readable text.
+    """
+    parts = [p.strip(" •\t") for p in re.split(r"(?<=[.!?;])\s+|\n+", paragraph) if p.strip()]
+    merged: list[str] = []
+    for part in parts:
+        if merged and len(merged[-1]) < 40:
+            merged[-1] = f"{merged[-1]} {part}"
+        else:
+            merged.append(part)
+    return merged
