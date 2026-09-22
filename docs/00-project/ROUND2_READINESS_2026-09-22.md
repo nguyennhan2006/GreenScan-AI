@@ -2,7 +2,7 @@
 
 **Loại tài liệu:** snapshot tại một thời điểm. **Không sửa số trong tài liệu này về sau.** Lần rà soát tiếp theo tạo `ROUND2_READINESS_<ngày>.md` mới hoặc thêm mục "Progress since 22/09" ở cuối. Baseline số đo đi kèm: [`benchmark/baseline_2026-09-22.json`](../../benchmark/baseline_2026-09-22.json) — mọi tuyên bố "đã cải thiện" phải so với file đó.
 **Người chạy đo:** Nhân (với Claude) · **Rubric:** Thể lệ cuộc thi, mục 11.2 Vòng 2 (6 tiêu chí) · **Mốc:** product freeze 10/10 · Bán kết 25/10 · Chung kết 10/11/2026
-**Quyết định quản trị kèm theo:** `DECISIONS_LOG.md` D-2026-09-22-01 → 05 · Issue mới: `ISSUES_REGISTER_2026-09.md` mục N
+**Quyết định quản trị kèm theo:** `DECISIONS_LOG.md` D-2026-09-22-01 → 06 · Issue mới: `ISSUES_REGISTER_2026-09.md` mục N · **Tài liệu đi kèm:** `RESEARCH_PROGRAM_2026-09-22.md` (audit code 15 câu, RQ1–RQ10, 4 gate) — xem "Đính chính" cuối tài liệu này
 
 ---
 
@@ -162,6 +162,14 @@ Khác biệt cốt lõi Vòng 2 → Vòng 3 (theo tiêu chí 1 đã thấy): Vò
 - Quantum chỉ được nói ở Vòng 3 **kèm số đo**; nếu SA/QAOA không thắng greedy, slide nói đúng như vậy.
 
 ---
+
+## Đính chính sau audit code (22/09 chiều — không sửa số đo)
+
+- §2 tiêu chí 4 ghi "chưa có xuất PDF/JSON, RunStore": **sai một phần** — `RunStore` và `GET /v1/runs/{id}/export?format=json|md` đã có (`storage/runs.py`, `api.py:247–300`); chỉ **thiếu PDF**. E2 gần xong, E1 còn PDF.
+- §2 tiêu chí 3 "embedding `lite`, reranker `none`": đúng; bổ sung — adapter BGE-M3/bge-reranker/TEI **có code**, `FlagEmbedding` chưa cài trong `.venv`; task `claim_normalization` trong `routing.yaml` **không có code gọi**.
+- §3 N1(b): "cùng bảng → không mâu thuẫn" viết quá tuyệt đối; đã sửa trong ISSUES N1 (target↔actual cùng bảng là mâu thuẫn hợp lệ).
+- §3 N2: root cause là danh sách cue *adjudicative* quá rộng ("cơ quan quản lý") chứ không phải cửa sổ câu — chi tiết ISSUES N2.
+- §2 "Điểm gia quyền ước lượng ~66–68": giữ để xếp ưu tiên nội bộ; **không** đưa lên tài liệu trình bày (D-2026-09-22-06 — dùng 4 gate).
 
 ## Phụ lục — Lệnh tái hiện số đo mục 1
 
