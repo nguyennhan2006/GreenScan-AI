@@ -115,6 +115,7 @@ _MULTIPLIERS = {
 _UNITS = [
     (r"t\s*co2\s*(?:e|eq|td|tuong duong)?|tan\s*co2\s*(?:e|eq|td|tuong duong)?|tco2|tan co2", "tco2e"),
     (r"kg\s*co2\s*(?:e|eq)?", "kgco2e"),
+    (r"co2\s*(?:e|eq)?\s*\)?\s*tan", "tco2e"),  # GRI table header order: "(CO2e) Tấn 22.540.603"
     (r"co2\s*(?:e|eq)?", "tco2e"),
     (r"gwh", "gwh"), (r"mwh", "mwh"), (r"kwh", "kwh"), (r"gj", "gj"), (r"mj", "mj"), (r"tj", "tj"),
     (r"m3|m³|met khoi", "m3"), (r"tan|tonnes?|tons?", "tan"), (r"kg", "kg"), (r"ha", "ha"),
@@ -125,6 +126,11 @@ _UNIT_RE = re.compile(
     re.IGNORECASE,
 )
 _NUMBER_TOKEN_RE = re.compile(r"(?<![\w./-])(\d[\d.,]*)")
+# A unit written before the figure, as in a table row read left to right:
+# "Phát thải (CO2e) Tấn 22.540.603", "Tổng tiêu thụ GJ 193.403.521".
+_UNIT_BEFORE_RE = re.compile(
+    r"(?P<unit>" + "|".join(u for u, _ in _UNITS) + r")\s*[:()\-–]*\s*$", re.IGNORECASE
+)
 _SCOPE_RE = re.compile(r"(?:scope|pham vi)\s*((?:[123]\s*(?:,|va|and|&|\+|-|to|den)?\s*)+)(?!\d)")
 
 
@@ -239,6 +245,10 @@ def _iter_quantities(text: str):
             if tail.group("mult"):
                 multiplier = _MULTIPLIERS[tail.group("mult").lower()]
             unit = _canonical_unit(tail.group("unit"))
+        if unit is None:
+            lead = _UNIT_BEFORE_RE.search(before[-24:])
+            if lead:
+                unit = _canonical_unit(lead.group("unit"))
         values.append((value * multiplier, unit, _half_unit(raw, multiplier)))
     return values
 

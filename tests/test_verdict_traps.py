@@ -358,3 +358,87 @@ def test_quantified_claim_is_not_supported_by_a_phrase(settings):
         "Báo cáo đảm bảo độc lập năm 2024 rà soát hệ thống quản lý phát thải khí nhà kính của Tập đoàn.",
     )
     assert VerificationStatus.SUPPORTED not in _statuses(result)
+
+
+# --- N1: two figures are a contradiction only when they measure the same thing ---
+# From the Hòa Phát baseline run (benchmark/baseline_2026-09-22.json): five of
+# eight CONTRADICTED verdicts compared figures that only shared a unit.
+
+def _no_contradiction(result):
+    assert VerificationStatus.CONTRADICTED not in _statuses(result)
+    assert not any(e.relation == "CONTRADICTS" for v in result.verifications for e in v.evidence)
+
+
+def test_share_pct_vs_change_pct_not_contradiction(settings):
+    """99% share of emissions is not contradicted by a 24% rise in output."""
+    result = _run(
+        settings,
+        "Ngành gang thép chiếm hơn 99% tổng lượng phát thải khí nhà kính của Tập đoàn năm 2025.",
+        "Từ tháng 9 năm 2025 nhà máy mới đi vào vận hành, tổng sản lượng thép thô tăng 24%, "
+        "tương ứng với mức tăng phát thải khí nhà kính của toàn tập đoàn.",
+        SourceType.INTERNAL,
+    )
+    _no_contradiction(result)
+    reasons = " ".join(e.relation_reason for v in result.verifications for e in v.evidence)
+    assert "cơ sở đo" in reasons
+
+
+def test_group_total_vs_subsidiary_not_contradiction(settings):
+    """A group total is not contradicted by one plant's figure; a 250x gap goes to a reviewer."""
+    result = _run(
+        settings,
+        "Trong năm 2025, tổng lượng phát thải khí nhà kính của Tập đoàn là 23.474.480 tCO2e.",
+        "Nhà máy tại Hải Dương phát thải khí nhà kính ở mức tương đối thấp trong năm 2025 "
+        "(phát thải 90.846 tCO2e).",
+        SourceType.INTERNAL,
+    )
+    _no_contradiction(result)
+
+
+def test_intensity_by_technology_not_contradiction(settings):
+    """0,70 tCO2/t on the scrap-EAF route is not contradicted by 1,43 on DRI-EAF or 2,32 on BF-BOF."""
+    result = _run(
+        settings,
+        "Cường độ phát thải CO2 trung bình (Scrap-EAF) năm 2025 là 0,70 tấn CO2 / tấn thép thô.",
+        "Cường độ phát thải CO2 trung bình (BF-BOF): 2,32 tấn CO2 / tấn thép thô; "
+        "trung bình (DRI-EAF): 1,43 tấn CO2 / tấn thép thô.",
+        SourceType.INTERNAL,
+    )
+    _no_contradiction(result)
+    reasons = " ".join(e.relation_reason for v in result.verifications for e in v.evidence)
+    assert "công nghệ" in reasons
+
+
+def test_grid_share_vs_renewable_share_not_contradiction(settings):
+    """4,5% of energy from the grid and 0,03% renewable are two different shares."""
+    result = _run(
+        settings,
+        "Năng lượng tiêu thụ được cung cấp từ lưới điện tại các địa điểm chiếm 4,5% năm 2025.",
+        "Năng lượng tiêu thụ là năng lượng tái tạo tại các địa điểm chiếm 0,03% năm 2025.",
+        SourceType.INTERNAL,
+    )
+    _no_contradiction(result)
+
+
+def test_two_numbers_same_table_row_not_contradiction(settings):
+    """A table row that restates the claim's figure next to another figure supports, not contradicts."""
+    result = _run(
+        settings,
+        "Tổng phát thải khí nhà kính Phạm vi 1 và 2 năm 2025 của Tập đoàn là 23.474.480 tCO2e.",
+        "Bảng KNK 2025 (kiểm kê độc lập): Phạm vi 1 (CO2e) Tấn 22.540.603; Phạm vi 2 (CO2e) Tấn 933.876; "
+        "Tổng Phạm vi 1 và 2 (CO2e) Tấn 23.474.479.",
+        SourceType.STANDARD,
+    )
+    _no_contradiction(result)
+    assert _statuses(result) == [VerificationStatus.SUPPORTED]
+
+
+def test_same_basis_same_boundary_still_contradicts(settings):
+    """Guard: the eligibility rule must not swallow a real mismatch of the same quantity."""
+    result = _run(
+        settings,
+        "Phát thải khí nhà kính Scope 1 và 2 của Tập đoàn năm 2024 giảm 30% so với năm 2020.",
+        "Kiểm kê độc lập: phát thải khí nhà kính Scope 1 và 2 của Tập đoàn năm 2024 giảm 8% so với năm 2020.",
+        SourceType.STANDARD,
+    )
+    assert _statuses(result) == [VerificationStatus.CONTRADICTED]

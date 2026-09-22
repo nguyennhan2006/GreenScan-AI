@@ -18,6 +18,17 @@ from quantum_gw.utils.text import (
     parse_quantities,
     split_sentences,
 )
+from quantum_gw.verification.numeric_facts import (
+    AMBIGUOUS,
+    NOT_COMPARABLE,
+    NumericFact,
+    describe,
+    eligibility,
+    facts_in,
+)
+from quantum_gw.verification.numeric_facts import (
+    POLICY_ID as ELIGIBILITY_POLICY,
+)
 from quantum_gw.verification.stance import (
     CONTEXT,
     CONTRADICTS,
@@ -324,38 +335,64 @@ class VerificationAgent:
     def _numeric_relation(self, claim: Claim, item: RetrievedEvidence) -> StanceSignal | None:
         """Stance from comparable figures, or None when there is no pair to compare.
 
-        Comparable means the same canonical unit, a sentence about the claim's
-        metric, the same GHG scopes when both name them, and -- when the claim
-        names a period -- a sentence that is not dated to some other year. A
-        2023 figure agreeing with a claim about 2024 is not support for it.
+        Comparable is decided by `numeric_facts.eligibility` before any
+        arithmetic: same canonical unit, and no explicit mismatch of basis
+        (share vs change vs absolute vs intensity), organisational boundary,
+        technology, metric variant or GHG scope. A pair the rule marks
+        AMBIGUOUS (target vs actual, or a gap of 20-100x with a dimension
+        unread) is handed to the reviewer as PARTIAL, never as CONTRADICTED.
+        Only sentences about the claim's metric are read, and -- when the claim
+        names a period -- a sentence dated to some other year is not support.
         """
-        claim_numbers = _measurements(claim.text)
-        if not claim_numbers:
+        claim_facts = _claim_facts(claim.text)
+        if not claim_facts:
             return None
-        claim_scopes = emission_scopes(claim.text)
-        best = None  # (error, claim_q, evidence_q, sentence)
+        best = None        # (error, claim_fact, evidence_fact, sentence)
+        ambiguous = None   # (error, claim_fact, evidence_fact, reason)
+        blocked = None     # (reason, claim_fact, evidence_fact)
         for sentence in self._metric_sentences(claim, item.text):
-            closest = _closest_pair(claim_numbers, _measurements(sentence))
-            if closest and (best is None or closest[0] < best[0]):
-                best = (*closest, sentence)
+            for evidence_fact in facts_in(sentence):
+                for claim_fact in claim_facts:
+                    verdict, reason = eligibility(claim_fact, evidence_fact)
+                    if verdict == NOT_COMPARABLE:
+                        if reason != "different_unit" and blocked is None:
+                            blocked = (reason, claim_fact, evidence_fact)
+                        continue
+                    error = abs(evidence_fact.value - claim_fact.value) / max(abs(claim_fact.value), 1.0)
+                    if verdict == AMBIGUOUS:
+                        if ambiguous is None or error < ambiguous[0]:
+                            ambiguous = (error, claim_fact, evidence_fact, reason)
+                        continue
+                    if best is None or error < best[0]:
+                        best = (error, claim_fact, evidence_fact, sentence)
         if best is None:
-            return None
-        error, claim_q, evidence_q, sentence = best
-        c_value, e_value = claim_q[0], evidence_q[0]
-        item_scopes = emission_scopes(sentence) or emission_scopes(item.text)
-        boundary_differs = bool(claim_scopes and item_scopes and claim_scopes != item_scopes)
-        other_period = _dated_to_other_year(sentence, claim)
-        tolerance = self._tolerance(claim_q, evidence_q)
-        if error <= tolerance:
-            if boundary_differs:
+            if ambiguous is not None:
+                _, c_fact, e_fact, reason = ambiguous
                 return StanceSignal(
                     relation=PARTIAL,
                     reason=(
-                        f"Số liệu khớp ({c_value} ≈ {e_value}) nhưng khác ranh giới phát thải: "
-                        f"tuyên bố Scope {_scopes(claim_scopes)}, tài liệu Scope {_scopes(item_scopes)}."
+                        f"Số liệu {c_fact.value} (tuyên bố) và {e_fact.value} (tài liệu) không so sánh "
+                        f"được tự động: {describe(reason)}."
                     ),
                     method="numeric",
                 )
+            if blocked is not None:
+                reason, c_fact, e_fact = blocked
+                return StanceSignal(
+                    relation=CONTEXT,
+                    reason=(
+                        f"Có số liệu cùng đơn vị ({c_fact.value} vs {e_fact.value}) nhưng {describe(reason)}, "
+                        "nên không phải mâu thuẫn."
+                    ),
+                    method="numeric",
+                )
+            return None
+        error, c_fact, e_fact, sentence = best
+        claim_q, evidence_q = c_fact.as_tuple(), e_fact.as_tuple()
+        c_value, e_value = c_fact.value, e_fact.value
+        other_period = _dated_to_other_year(sentence, claim)
+        tolerance = self._tolerance(claim_q, evidence_q)
+        if error <= tolerance:
             if other_period:
                 return StanceSignal(
                     relation=PARTIAL,
@@ -370,20 +407,19 @@ class VerificationAgent:
                 reason=f"Số liệu khớp: {c_value} ≈ {e_value} (dung sai ±{tolerance * 100:.2g}% theo độ chính xác công bố).",
                 method="numeric",
             )
-        if error >= 0.35:
-            if boundary_differs or other_period:
-                why = (
-                    f"khác ranh giới phát thải (Scope {_scopes(claim_scopes)} vs {_scopes(item_scopes)})"
-                    if boundary_differs else f"thuộc kỳ {other_period}, không phải {claim.period}"
-                )
+        if error >= self.settings.numeric_contradiction_error:
+            if other_period:
                 return StanceSignal(
                     relation=CONTEXT,
-                    reason=f"Số liệu {why} nên không so sánh được.",
+                    reason=f"Số liệu thuộc kỳ {other_period}, không phải {claim.period}, nên không so sánh được.",
                     method="numeric",
                 )
             return StanceSignal(
                 relation=CONTRADICTS,
-                reason=f"Số liệu lệch: tuyên bố {c_value}, tài liệu {e_value}.",
+                reason=(
+                    f"Số liệu lệch: tuyên bố {c_value}, tài liệu {e_value} "
+                    f"(cùng {_same_dimensions(c_fact, e_fact)})."
+                ),
                 method="numeric",
             )
         # Between the published precision and a material difference: the
@@ -413,58 +449,68 @@ class VerificationAgent:
         return absolute / max(abs(c_value), 1e-9)
 
     def _numeric_comparison(self, claim: Claim, evidence: list[RetrievedEvidence]) -> dict:
-        claim_numbers = _measurements(claim.text)
+        """Audit record of every figure pair considered, with the eligibility verdict on each."""
+        claim_facts = _claim_facts(claim.text)
         claim_scopes = emission_scopes(claim.text)
-        evidence_numbers = []
-        skipped_boundary = []
-        for item in evidence:
-            item_scopes = emission_scopes(item.text)
-            if claim_scopes and item_scopes and claim_scopes != item_scopes:
-                skipped_boundary.append({"citation": item.citation, "scopes": _scopes(item_scopes)})
-                continue
-            evidence_numbers.extend(
-                (value, unit, half, item.citation)
-                for value, unit, half in self._metric_measurements(claim, item.text)
-            )
+        pairs: list[dict] = []
+        skipped: list[dict] = []
         matched = False
         closest = None
-        for claim_q in claim_numbers:
-            c_value, c_unit, _ = claim_q
-            for e_value, e_unit, e_half, citation in evidence_numbers:
-                if not _compatible_units(c_unit, e_unit):
-                    continue
-                relative_error = abs(e_value - c_value) / max(abs(c_value), 1.0)
-                tolerance = self._tolerance(claim_q, (e_value, e_unit, e_half))
-                candidate = {
-                    "claim": c_value,
-                    "claim_unit": c_unit,
-                    "evidence": e_value,
-                    "evidence_unit": e_unit,
-                    "relative_error": relative_error,
-                    "tolerance": tolerance,
-                    "citation": citation,
-                }
-                if closest is None or relative_error < closest["relative_error"]:
-                    closest = candidate
-                if relative_error <= tolerance:
-                    matched = True
+        for item in evidence:
+            for sentence in self._metric_sentences(claim, item.text):
+                for e_fact in facts_in(sentence):
+                    for c_fact in claim_facts:
+                        verdict, reason = eligibility(c_fact, e_fact)
+                        if verdict == NOT_COMPARABLE:
+                            if reason != "different_unit" and len(skipped) < 20:
+                                skipped.append({
+                                    "claim": c_fact.value, "evidence": e_fact.value, "unit": c_fact.unit,
+                                    "reason": reason, "citation": item.citation,
+                                    "claim_dimensions": c_fact.dimensions(),
+                                    "evidence_dimensions": e_fact.dimensions(),
+                                })
+                            continue
+                        relative_error = abs(e_fact.value - c_fact.value) / max(abs(c_fact.value), 1.0)
+                        tolerance = self._tolerance(c_fact.as_tuple(), e_fact.as_tuple())
+                        candidate = {
+                            "claim": c_fact.value,
+                            "claim_unit": c_fact.unit,
+                            "evidence": e_fact.value,
+                            "evidence_unit": e_fact.unit,
+                            "relative_error": relative_error,
+                            "tolerance": tolerance,
+                            "eligibility": verdict,
+                            "eligibility_reason": reason,
+                            "citation": item.citation,
+                        }
+                        if len(pairs) < 30:
+                            pairs.append(candidate)
+                        if verdict == AMBIGUOUS:
+                            continue
+                        if closest is None or relative_error < closest["relative_error"]:
+                            closest = candidate
+                        if relative_error <= tolerance:
+                            matched = True
         contradiction = bool(
-            claim_numbers
-            and evidence_numbers
+            claim_facts
             and not matched
             and closest
-            and closest["relative_error"] >= 0.35
+            and closest["relative_error"] >= self.settings.numeric_contradiction_error
         )
         return {
-            "claim_numbers": [(v, u) for v, u, _ in claim_numbers],
+            "claim_numbers": [(f.value, f.unit) for f in claim_facts],
+            "claim_facts": [{"value": f.value, "unit": f.unit, **f.dimensions()} for f in claim_facts],
             "claim_scopes": _scopes(claim_scopes) if claim_scopes else None,
-            "evidence_numbers": [(v, u, c) for v, u, _, c in evidence_numbers[:30]],
-            "skipped_boundary_mismatch": skipped_boundary[:10],
+            "evidence_numbers": [(p["evidence"], p["evidence_unit"], p["citation"]) for p in pairs],
+            "pairs_considered": pairs,
+            "skipped_not_comparable": skipped,
             "matched": matched,
             "contradiction": contradiction,
             "closest_pair": closest,
             "tolerance_used": closest["tolerance"] if closest else None,
             "policy_id": "precision-v1",
+            "eligibility_policy": ELIGIBILITY_POLICY,
+            "contradiction_error_threshold": self.settings.numeric_contradiction_error,
             "calculation_method": "deterministic-relative-error",
         }
 
@@ -534,23 +580,6 @@ class VerificationAgent:
             return sentences
         return [s for s in sentences if any(term in normalize_for_match(s) for term in terms)]
 
-    def _metric_measurements(self, claim: Claim, text: str) -> list[tuple[float, str | None, float]]:
-        """Figures from the sentences that talk about the claim's metric.
-
-        A passage can carry several figures about several things; comparing the
-        claim's 50% renewables against a 12% emissions increase in the same
-        passage produced a contradiction about nothing. Without a metric on the
-        claim every sentence is eligible.
-        """
-        terms = self._metric_terms(claim)
-        if not terms:
-            return _measurements(text)
-        eligible = [
-            sentence for sentence in (split_sentences(text) or [text])
-            if any(term in normalize_for_match(sentence) for term in terms)
-        ]
-        return [value for sentence in eligible for value in _measurements(sentence)]
-
     def _audit(self, result: VerificationResult) -> None:
         self.audit.write(
             "claim_verified",
@@ -586,29 +615,6 @@ def _load_taxonomy(path: str) -> dict:
         return {}
 
 
-def _compatible_units(claim_unit: str | None, evidence_unit: str | None) -> bool:
-    """Same canonical unit, and a unit on both sides.
-
-    Two bare numbers are counts of unknown things -- "2 nhà máy" against "3
-    dự án", a page number against a section number -- and agreeing or
-    disagreeing says nothing about the claim.
-    """
-    return claim_unit is not None and claim_unit == evidence_unit
-
-
-def _closest_pair(claim_numbers: list[tuple], evidence_numbers: list[tuple]) -> tuple | None:
-    """(relative error, claim quantity, evidence quantity) for the closest unit-compatible pair."""
-    closest = None
-    for claim_q in claim_numbers:
-        for evidence_q in evidence_numbers:
-            if not _compatible_units(claim_q[1], evidence_q[1]):
-                continue
-            error = abs(evidence_q[0] - claim_q[0]) / max(abs(claim_q[0]), 1.0)
-            if closest is None or error < closest[0]:
-                closest = (error, claim_q, evidence_q)
-    return closest
-
-
 def _dated_to_other_year(sentence: str, claim: Claim) -> str | None:
     """The year the sentence is about, when it is not the claim's period or baseline."""
     if not claim.period:
@@ -630,3 +636,26 @@ def _measurements(text: str) -> list[tuple[float, str | None, float]]:
     the 2023 in a table produces a 0.05% relative error and a false SUPPORTS.
     """
     return [q for q in parse_quantities(text) if q[0] < 1900 or q[0] > 2100]
+
+
+def _claim_facts(text: str) -> list[NumericFact]:
+    """Figures in the claim with their dimensions; a claim may span a sentence boundary."""
+    facts: list[NumericFact] = []
+    for sentence in split_sentences(text) or [text]:
+        facts.extend(facts_in(sentence))
+    return facts
+
+
+def _same_dimensions(a: NumericFact, b: NumericFact) -> str:
+    """The dimensions both facts state, for the rationale of a contradiction."""
+    parts = []
+    if a.basis != "unknown":
+        parts.append({"absolute": "số tuyệt đối", "intensity": "cường độ",
+                      "percentage_share": "tỷ trọng", "percentage_change": "mức thay đổi"}.get(a.basis, a.basis))
+    if a.boundary != "unknown":
+        parts.append(f"ranh giới {a.boundary}")
+    if a.scopes:
+        parts.append(f"Scope {_scopes(a.scopes)}")
+    if a.technology:
+        parts.append(f"công nghệ {a.technology}")
+    return ", ".join(parts) or "đơn vị"

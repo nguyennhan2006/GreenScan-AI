@@ -1,0 +1,923 @@
+{
+  "snapshot_date": "2026-09-22",
+  "git_head": "4688786fa8ba9fe84320e22b784f2140215c29ba",
+  "run_id": "ee80513739924f2d",
+  "elapsed_seconds_wall": 103.4,
+  "total_claims": 165,
+  "claims_with_digits": 50,
+  "claim_type_counts": {
+    "biodiversity": 7,
+    "emissions_reduction": 65,
+    "generic_sustainability": 29,
+    "renewable_energy": 9,
+    "resource_efficiency": 6,
+    "waste_and_circularity": 49
+  },
+  "status_counts": {
+    "CONTRADICTED": 1,
+    "INSUFFICIENT_EVIDENCE": 1,
+    "PARTIALLY_SUPPORTED": 160,
+    "SUPPORTED": 3
+  },
+  "severity_counts": {
+    "CRITICAL": 1,
+    "HIGH": 59,
+    "LOW": 2,
+    "MEDIUM": 103
+  },
+  "legal_finding_counts": {
+    "INSUFFICIENT_EVIDENCE": 165
+  },
+  "partial_rationale_variety": 3,
+  "contradicted_claims": [
+    {
+      "claim_id": "90c39dfce9447549",
+      "text": "quốc gia về giảm phát thải khí nhà kính Duy trì cơ chế kê khai và nộp thuế minh bạch và tuân thủ pháp luật.",
+      "source_page": 33,
+      "rationale": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Bằng chứng phủ định tuyên bố (nguồn có thẩm quyền): “thiếu”.",
+      "severity": "CRITICAL"
+    }
+  ],
+  "supported_claims": [
+    {
+      "claim_id": "c21a7eaa52f33654",
+      "text": "Tuân thủ nghiêm túc các quy định pháp luật trong nước Thực hiện kiểm kê khí nhà kính theo tiêu chuẩn ISO 14064-1:2018 và báo cáo đầy đủ theo quy định Hợp tác và",
+      "source_page": 33,
+      "rationale": "Một nguồn ngoài tài liệu tuyên bố xác nhận: Bằng chứng xác nhận tuyên bố: “xác nhận”.",
+      "severity": "MEDIUM"
+    },
+    {
+      "claim_id": "04735e1ed7f66c4a",
+      "text": "động thực hiện kiểm kê dấu chân carbon cho các sản phẩm, thực hiện theo chuẩn ISO 14067 và đã được kiểm định bởi bên thứ ba – Tổ chức CARE (Cơ quan chứng nhận s",
+      "source_page": 35,
+      "rationale": "Một nguồn ngoài tài liệu tuyên bố xác nhận: Bằng chứng xác nhận tuyên bố: “chứng nhận”.",
+      "severity": "MEDIUM"
+    },
+    {
+      "claim_id": "daeeba55dde8d018",
+      "text": "Đào tạo lập Báo cáo kiểm kê khí nhà kính",
+      "source_page": 61,
+      "rationale": "Một nguồn ngoài tài liệu tuyên bố xác nhận: Bằng chứng xác nhận tuyên bố: “chứng nhận”.",
+      "severity": "MEDIUM"
+    }
+  ],
+  "high_or_critical": [
+    {
+      "claim_id": "296fbafb9d4ddf05",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Từ khi thành lập đến nay, Tập đoàn đã liên tục mở rộng hệ sinh thái thép từ thượng nguồn đến hạ nguồn, nâng cao năng lực",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "period": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "c1a5ce72754649c4",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Theo đó, xanh hóa sản xuất, phát triển con người, quản trị và đổi mới là ba ưu tiên hàng đầu.",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "7c093fae00aa5ff8",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Chúng tôi nhận thức về trách nhiệm của mình trong việc tham gia lộ trình giảm phát thải quốc gia và đang tích cực thực h",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "6c5e9630647bf026",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "tiến công nghệ, tối ưu hiệu quả sử dụng tài nguyên, và giảm thiểu phát thải ra môi trường.",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "c36a157ad6e2648d",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "ESG Hòa Phát tích hợp các mục tiêu phát triển bền vững (SDGs) vào chiến lược kinh doanh, phù",
+      "components": {
+        "specificity": 6.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "b6da112c7e45597c",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "góp tích cực cho sự phát triển thịnh vượng và bền vững của đất nước.",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "a33eb8a97547fd56",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Thông qua việc tham gia các hiệp hội này, Tập đoàn tham gia đối thoại chính sách, chia sẻ tri thức và hợp tác trong các ",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "ca416809d376ffc6",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Chúng tôi nỗ lực hoạt động hiệu quả, tiết kiệm và có trách nhiệm, góp phần ứng phó biến đổi khí hậu, thúc đẩy kinh tế tu",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "a22a05f0a313c153",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "nguyên chung, Biến chất thải sản xuất thành các nguyên liệu có giá trị cho các ngành khác, góp phần giảm khai thác tài n",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "2febd81b59255d48",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "HÒA PHÁT trò nền tảng để cung cấp nguồn thép chất lượng cao cho các công trình hạ tầng và máy móc, tuy nhiên nó tiêu tốn",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "bc929d96a5aa37ce",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Khác với Khai thác nguyên liệu thô nhiều vật liệu khác bị suy giảm đặc tính sau mỗi lần tái chế (như nhựa hay giấy), thé",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "015ce8c5deca31de",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Phát thải carbon phát sinh nhiều nhất ở giai đoạn đầu tiên khi khử quặng sắt để tạo ra thép nguyên chất và giảm đi đáng ",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "13fd05789b86f5aa",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Hướng tới mục tiêu phát triển bền vững và giảm dấu chân carbon, Hòa Thành viên của các Hiệp hội ngành nghề Phát đang chủ",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "000abd3c4fc08ef5",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Phê duyệt Chính sách, mục tiêu và các tuyên bố về Phát triển bền vững",
+      "components": {
+        "specificity": 6.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "0261e5667ddfc81a",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "ít carbon, sử dụng tài nguyên hiệu quả và vận hành Xây dựng môi trường làm việc an toàn, Tăng cường quản trị minh bạch, ",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "2ce25237fd6949fc",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "an toàn lao động Quản lý nguồn nhân lực Quản trị doanh nghiệp Quản lý chất lượng Chủ đề trọng yếu hàng đầu & Thích ứng B",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "ab54c7342b5b28e1",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Hòa Phát hướng tới duy trì năng lực cạnh tranh bền vững trong quá trình chuyển đổi hướng tới trung hòa carbon, đồng thời",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "6a475121b41f56fc",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "nghiên cứu và tìm kiếm các giải pháp điều chỉnh cơ cấu tiêu thụ nguyên liệu và qua đó giảm phát sinh chất thải.",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "9c5ccc9c1b8f79e0",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "động, củng cố quan hệ hợp tác và xác định các mục tiêu phát triển bền vững phù hợp trong từng giai đoạn.",
+      "components": {
+        "specificity": 6.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "7c09d6a04cd7bb4c",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "cao, đạt tiêu chuẩn chất lượng An toàn và sức khỏe người tiêu dùng (đặc biệt với sản phẩm nông nghiệp, thực phẩm) Giá bá",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "period": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "90c39dfce9447549",
+      "status": "CONTRADICTED",
+      "text": "quốc gia về giảm phát thải khí nhà kính Duy trì cơ chế kê khai và nộp thuế minh bạch và tuân thủ pháp luật.",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 18.0,
+        "independent_assurance": 8.0,
+        "contradiction": 18.0
+      }
+    },
+    {
+      "claim_id": "849950c5b9812b9a",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Chúng tôi cam kết nỗ lực đồng hành cùng Chính phủ Việt Nam hướng tới mục tiêu Net Zero 2050.",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "168ce8c96eaa87b5",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Phần lớn các công ty thành viên đã thành lập Ban Quản lý Năng lượng và Khí nhà kính, có chức năng giám sát hiệu quả sử d",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "8d743a19c166f31c",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Ban họp định kỳ hàng quý nhằm đánh giá tiến độ thực hiện mục tiêu, chia sẻ thông tin về các dự án tiết kiệm năng lượng, ",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "d79be1994c9e3f03",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Hằng năm, Ban xây dựng kế hoạch giảm phát thải, theo dõi tiến độ triển khai và đề xuất các giải pháp chiến lược nhằm nân",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "38792389ab485482",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Báo cáo được thiết lập dựa trên các yêu cầu của tiêu chuẩn ISO 14064-1, theo các hướng dẫn của Ban liên chính phủ về biế",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "b36d3478ee0d3988",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "giúp giảm nhu cầu gia nhiệt, tiết kiệm năng lượng và giảm phát thải CO2 trên mỗi tấn thép.",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "8c03e86741c139dc",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "thích ứng với biến đổi khí hậu Những cải tiến này đã góp phần nâng cao đáng kể hiệu suất năng lượng, giảm phụ thuộc vào ",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "57ffa16a3bc6de53",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Thành tựu này thể hiện cam kết mạnh mẽ của doanh nghiệp trong việc quản lý năng lượng một cách hệ thống, cải tiến liên t",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "1ba12e2e5e9374e1",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "thép, nhằm chuẩn hóa công tác quản lý năng lượng, sử dụng hiệu quả tài nguyên và giảm phát thải.",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "26b6b8324f6a112f",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Bên cạnh đó, Công ty Cổ phần Thép Hòa Phát Dung Quất đã ban hành Sổ tay Quản lý Năng lượng, quy định rõ các chính sách, ",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "bafe2fcdea723631",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "để tối ưu tiêu thụ, giảm cường độ năng lượng và hướng tới chuyển dịch sang các nguồn năng lượng tái tạo.",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "3b4b6983be486792",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Đây là giải pháp sạch, không phát thải tại chỗ, góp phần lớn vào mục tiêu trung hòa carbon trong dài hạn.",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "96b8538433c7d68a",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Các Khu liên hợp sản xuất gang thép của Hòa Phát đã triển khai các giải pháp chủ chốt về tiết kiệm năng lượng trong toàn",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "c65a345980b54b86",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Quy trình luyện thép bằng EAF có cường độ phát thải CO2 thấp hơn nhiều lần so với lò cao truyền thống, đặc biệt khi kết ",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "71262447d78eaa00",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Ngược lại, EAF có mức phát thải thấp hơn, nhưng phụ thuộc vào nguồn nguyên liệu như thép",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "5e8acec00a31d46b",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Biện pháp này giúp tái tạo lại thép từ phế liệu đã qua sử dụng, do không cần hoàn nguyên nên giảm đáng kể lượng tiêu thụ",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "a9cdc9af6804a921",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "hao than cốc, tận dụng nhiệt lượng và giảm phát thải khí nhà kính trong toàn bộ chuỗi sản xuất, đồng thời gia tăng năng ",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "ccbbd530ae37c776",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Việc sử dụng nhiều hơn thép phế giúp tăng sản lượng, giảm tỷ trọng nguyên liệu phát thải cao, giảm tiêu hao than cốc và ",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "faa75ced1386821c",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Qua đó, lượng CO2 sinh ra trong quá trình cháy và hoàn nguyên cũng giảm tương ứng.",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "bc7bdb40741b3645",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Đây chính là mắt xích quan trọng trong mô hình kinh tế tuần hoàn, góp phần thực hiện mục tiêu sản xuất thép xanh và bền ",
+      "components": {
+        "specificity": 6.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "93ceba0f5ecbfb87",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "toàn sinh học lâu dài, thể hiện cam kết của Hòa Phát trong phát triển nông nghiệp bền vững và thích ứng khí hậu.",
+      "components": {
+        "specificity": 6.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "c9fb43a7781bf603",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "tỷ trọng phát thải từ nông nghiệp và chăn nuôi chỉ chiếm một phần nhỏ, không đáng kể so với lĩnh vực sản xuất thép chủ l",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "980ede9decc42d31",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "các biện pháp giảm phát thải khí metan, tối ưu hóa quy trình sản xuất và thúc đẩy ứng dụng công nghệ xanh.",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "7132b0fa0b09d30c",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Nhóm nông nghiệp, bất động sản và điện máy gia dụng có mức phát thải thấp hơn đáng kể.",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "b8f6a09ead2eb8cb",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "không khí nhằm giảm thiểu tác động môi trường, tuân thủ quy định pháp luật và hướng tới tăng trưởng xanh.",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "9014b372863fb49f",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "kiệm năng lượng, thúc đẩy tái chế và tái sử dụng thông qua việc áp dụng công nghệ sạch, thân thiện môi trường trong toàn",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "a5dcca0f3661cfdd",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Quá trình này giúp giảm đáng kể tải lượng ô nhiễm và loại bỏ mùi hôi của chất thải trước khi xả ra môi",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "72047bf2cf444a8d",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Quan trọng hơn, biogas tạo ra khí Mê-tan CH4 có thể được sử dụng làm nguồn năng lượng tái tạo để đun nấu hoặc phát điện,",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "56d8a77f30eae927",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Việc vệ sinh, thu gom chất thải được thực hiện thường xuyên giúp trang trại vận hành ổn định, sạch sẽ và thân thiện với ",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "a7a90e42c7e1dd15",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "quan đến nước thải, thể hiện cam kết mạnh mẽ của Hòa Phát trong việc bảo vệ môi trường nước và duy trì hoạt động sản xuấ",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "fd5e7bcee8f0715f",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Bùn thải Chất thải khác Bụi thải Bùn thải Chất thải khác Hành động giảm thiểu và thích ứng với biến đổi khí hậu Quản lý ",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "8f4e6a5c20d93d0c",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Theo đó, các chất thải rắn chứa sắt sẽ được thu",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "b9ddee22636bdebe",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Việc tối ưu hiệu quả sử dụng sắt trước hết giúp giảm tiêu hao nguyên vật liệu thô, đồng thời giải quyết vấn đề chất thải",
+      "components": {
+        "specificity": 1.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0
+      }
+    },
+    {
+      "claim_id": "86ced468645dc9af",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "text": "Những thành quả này phản ánh nỗ lực không ngừng của Tập đoàn trong việc mở rộng cơ hội lãnh đạo cho phụ nữ, đồng thời đặ",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "period": 8.0,
+        "evidence_support": 12.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "fc67b5c47453de0e",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Phát triển cộng đồng Hành trình số hóa quản trị nhân sự cũng sẽ được đẩy mạnh, với việc mở rộng thêm các phân hệ mới, hư",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "19fe9fe913803550",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "đã trở thành một hoạt động thường niên bền vững, liên tục mở rộng phạm vi, tích cực tiếp cận và mang lại cơ hội sống khỏ",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "91ca5b9a511e54ff",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Nỗ lực này thể hiện tinh thần trách nhiệm xã hội và cam kết vì cộng đồng của Tập đoàn Hòa Phát trong hành trình phát tri",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "d7a9fbc340ed2a35",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Là một trong những tập đoàn công nghiệp hàng đầu Việt Nam, Hòa Phát coi quản trị tốt và đạo đức kinh doanh không chỉ là ",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    },
+    {
+      "claim_id": "089adfcb41fe031a",
+      "status": "PARTIALLY_SUPPORTED",
+      "text": "Dòng máy lọc nước HyperS được phát triển theo hướng tối ưu năng lượng và thân thiện môi trường, nổi bật với công nghệ là",
+      "components": {
+        "specificity": 12.0,
+        "quantitative_evidence": 12.0,
+        "baseline": 8.0,
+        "period": 8.0,
+        "scope_boundary": 8.0,
+        "evidence_support": 7.0,
+        "independent_assurance": 8.0,
+        "vague_or_exaggerated_language": 8.0
+      }
+    }
+  ],
+  "manual_review": {
+    "contradicted_judged_wrong": null,
+    "supported_judged_weak": null,
+    "high_judged_wrong": null,
+    "reviewer": "",
+    "note": "điền tay sau khi soát"
+  }
+}

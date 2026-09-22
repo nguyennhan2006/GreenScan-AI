@@ -106,6 +106,10 @@ class VerificationSettings(BaseModel):
     # the verifier). Not a tolerance itself any more: two figures agree when
     # they differ by no more than the coarser published precision, capped here.
     numeric_relative_tolerance: float = 0.10
+    # Relative error at or above which two comparable figures contradict. Kept as a
+    # named setting (was a literal 0.35 in two places) so it can be swept on the
+    # numeric-pair gold set; the value itself is not yet evidence-based (ISSUES N1).
+    numeric_contradiction_error: float = 0.35
     strong_support_score: float = 0.46
     partial_support_score: float = 0.22
     injection_policy: str = "exclude"

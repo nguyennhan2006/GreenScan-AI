@@ -50,6 +50,14 @@ _PREDICATE_EN_RE = re.compile(
     re.IGNORECASE,
 )
 _WORD_RE = re.compile(r"[^\W\d_]+", re.UNICODE)
+# A GRI disclosure index ("305-1", "306-4") or a line that opens with a unit
+# ("Tấn 131.639 ...", "GJ 193.403.521 ...") is a row of an indicator table read
+# left to right. It is evidence for a claim made elsewhere, not a claim: the
+# Hòa Phát waste table produced five "claims" that contradicted each other.
+_GRI_INDEX_RE = re.compile(r"(?<![\w-])(?:20[1-9]|30[1-9]|4[01]\d)-\d{1,2}(?![\w-])")
+_UNIT_LEAD_RE = re.compile(
+    r"^\s*(?:tan|tonnes?|tons?|gj|mj|tj|kwh|mwh|gwh|m3|kg|%|tco2e?|tan co2e?|ha)\s*[\d(]", re.IGNORECASE
+)
 
 
 def heading_reason(sentence: str) -> str | None:
@@ -64,6 +72,8 @@ def heading_reason(sentence: str) -> str | None:
     stripped = sentence.strip()
     if _TOC_DOTS_RE.search(stripped):
         return "table_of_contents"
+    if _GRI_INDEX_RE.search(stripped) or _UNIT_LEAD_RE.match(normalize_for_match(stripped)):
+        return "table_row"
     if " | " in stripped or _ENUMERATOR_RE.match(stripped) or _NUMBERED_CAPS_RE.match(stripped):
         return "section_label"
     if _CAPS_RUN_RE.search(stripped):
@@ -149,7 +159,9 @@ class ClaimExtractionAgent:
                 if reason:
                     rejected[reason] = rejected.get(reason, 0) + 1
                     continue
-                numbers = parse_numbers(sentence)
+                # A bare year is a label, not a figure: "năm 2025" must not turn the
+                # chairman's letter into a quantified claim (ISSUES N3).
+                numbers = [(v, u) for v, u in parse_numbers(sentence) if u is not None or not 1900 <= v <= 2100]
                 vague_matched = [term for term in self.vague_terms if term in normalized]
                 # A figure does not make promotional language honest, but it does
                 # make the claim checkable, which is what is_vague is about.
