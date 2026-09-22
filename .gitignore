@@ -41,3 +41,6 @@ data/legal_cases/**/*.pdf
 # Local copies / backups that must never enter history
 outside_resource/*.zip
 *.backup_*.docx
+
+# Frontend SSR/preview build output
+frontend/.ssr-out/
