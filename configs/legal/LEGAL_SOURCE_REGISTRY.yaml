@@ -1,0 +1,237 @@
+version: legal-source-registry-v0.1
+generated: '2026-08-09'
+defaults:
+  jurisdiction: VN
+  language: vi
+  preferred_sources:
+  - vanban.chinhphu.vn
+  - vbpl.vn
+  - congbao.chinhphu.vn
+documents:
+- id: QD21-2025-QD-TTg
+  document_number: 21/2025/QĐ-TTg
+  title: Quy định tiêu chí môi trường và việc xác nhận dự án đầu tư thuộc danh mục phân loại xanh
+  doc_type: quyet_dinh
+  authority: Thủ tướng Chính phủ
+  issued_date: '2025-07-04'
+  effective_from: '2025-08-22'
+  effective_to: null
+  status: effective
+  legal_issues:
+  - green_taxonomy
+  - green_credit
+  - green_bond
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/21-ttg.signed.pdf
+  vbpl_item_id: '186290'
+  text_acquisition: ok_ocr
+  text_acquisition_note: OCR (vie+eng, tesseract v5.4.0.20240606), mean confidence 93.25. Lower trust
+    than a publisher text layer; verify before binding a rule.
+  legal_basis:
+  - LUAT-BVMT-2020
+  - ND08-2022-ND-CP
+  - ND05-2025-ND-CP
+  ocr_used: true
+  clauses_file: data/legal/clauses/QD21-2025-QD-TTg.jsonl
+- id: LUAT-BVMT-2020
+  document_number: 72/2020/QH14
+  title: Luật Bảo vệ môi trường
+  doc_type: luat
+  authority: Quốc hội
+  issued_date: '2020-11-17'
+  effective_from: '2022-01-01'
+  status: effective
+  legal_issues:
+  - environmental_protection
+  - emissions
+  - permits
+  landing_url: https://vanban.chinhphu.vn/?pageid=27160&docid=202613
+  text_acquisition: ok
+  text_acquisition_note: 'Công báo typeset edition: 94 pages, 177,001 chars, 938 clauses parsed (89 Điều,
+    473 điểm). No OCR needed.'
+  congbao_url: https://congbao.chinhphu.vn/van-ban/luat-so-72-2020-qh14-32703.htm
+  original_url: https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2020/11/32703/33751-1-20201185-118672-2020-qh14.pdf
+  clauses_file: data/legal/clauses/LUAT-BVMT-2020.jsonl
+- id: ND08-2022-ND-CP
+  document_number: 08/2022/NĐ-CP
+  title: Quy định chi tiết một số điều của Luật Bảo vệ môi trường
+  doc_type: nghi_dinh
+  authority: Chính phủ
+  issued_date: '2022-01-10'
+  effective_from: '2022-01-10'
+  status: effective_with_amendments
+  legal_issues:
+  - environmental_protection
+  - permits
+  - emissions
+  implements:
+  - LUAT-BVMT-2020
+  amended_by:
+  - ND05-2025-ND-CP
+  - ND48-2026-ND-CP
+  text_acquisition: ok_ocr
+  text_acquisition_note: OCR (vie+eng, tesseract v5.4.0.20240606), mean confidence 95.9. Lower trust than
+    a publisher text layer; verify before binding a rule.
+  landing_url: https://vanban.chinhphu.vn/?pageid=27160&docid=205092
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2022/01/08-nd.signed.pdf
+  ocr_used: true
+  clauses_file: data/legal/clauses/ND08-2022-ND-CP.jsonl
+- id: ND05-2025-ND-CP
+  document_number: 05/2025/NĐ-CP
+  title: Sửa đổi, bổ sung một số điều của Nghị định 08/2022/NĐ-CP
+  doc_type: nghi_dinh
+  authority: Chính phủ
+  issued_date: '2025-01-06'
+  effective_from: '2025-01-06'
+  status: effective
+  legal_issues:
+  - environmental_protection
+  - permits
+  amends:
+  - ND08-2022-ND-CP
+  text_acquisition: ok_ocr
+  text_acquisition_note: OCR (vie+eng, tesseract v5.4.0.20240606), mean confidence 93.96. Lower trust
+    than a publisher text layer; verify before binding a rule.
+  landing_url: https://vanban.chinhphu.vn/?pageid=27160&docid=212284
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/05-2nd.signed.pdf
+  ocr_used: true
+  clauses_file: data/legal/clauses/ND05-2025-ND-CP.jsonl
+- id: ND06-2022-ND-CP
+  document_number: 06/2022/NĐ-CP
+  title: Quy định giảm nhẹ phát thải khí nhà kính và bảo vệ tầng ô-dôn
+  doc_type: nghi_dinh
+  authority: Chính phủ
+  issued_date: '2022-01-07'
+  effective_from: '2022-01-07'
+  status: effective
+  legal_issues:
+  - emissions
+  - ghg_inventory
+  implements:
+  - LUAT-BVMT-2020
+  text_acquisition: ok_ocr
+  text_acquisition_note: OCR (vie+eng, tesseract v5.4.0.20240606), mean confidence 93.49. Lower trust
+    than a publisher text layer; verify before binding a rule.
+  landing_url: https://vanban.chinhphu.vn/?pageid=27160&docid=205039
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2022/01/06-nd.signed.pdf
+  amended_by:
+  - ND119-2025-ND-CP
+  - ND83-2026-ND-CP
+  ocr_used: true
+  clauses_file: data/legal/clauses/ND06-2022-ND-CP.jsonl
+- id: QD13-2024-QD-TTg
+  document_number: 13/2024/QĐ-TTg
+  title: Ban hành danh mục lĩnh vực, cơ sở phát thải khí nhà kính phải kiểm kê
+  doc_type: quyet_dinh
+  authority: Thủ tướng Chính phủ
+  issued_date: '2024-08-13'
+  effective_from: '2024-10-01'
+  status: effective
+  legal_issues:
+  - ghg_inventory
+  - emissions
+  implements:
+  - ND06-2022-ND-CP
+  text_acquisition: ok_ocr
+  text_acquisition_note: OCR (vie+eng, tesseract v5.4.0.20240606), mean confidence 88.08. Lower trust
+    than a publisher text layer; verify before binding a rule.
+  landing_url: https://vanban.chinhphu.vn/?pageid=27160&docid=210939
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2024/8/13-ttg.signed.pdf
+  ocr_used: true
+  clauses_file: data/legal/clauses/QD13-2024-QD-TTg.jsonl
+- id: TT17-2022-TT-NHNN
+  document_number: 17/2022/TT-NHNN
+  title: Hướng dẫn thực hiện quản lý rủi ro về môi trường trong hoạt động cấp tín dụng của tổ chức tín
+    dụng
+  doc_type: thong_tu
+  authority: Ngân hàng Nhà nước
+  issued_date: '2022-12-23'
+  effective_from: '2023-06-01'
+  status: effective
+  legal_issues:
+  - green_credit
+  - environmental_risk_management
+  implements:
+  - LUAT-BVMT-2020
+  text_acquisition: ok
+  text_acquisition_note: URL verified 2026-08-14; harvest pending.
+  landing_url: https://congbao.chinhphu.vn/van-ban/thong-tu-so-17-2022-tt-nhnn-38402.htm
+  original_url: https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2022/12/38402/42729-1-202301-0217-2022-tt-nhnn.pdf
+  clauses_file: data/legal/clauses/TT17-2022-TT-NHNN.jsonl
+- id: TT96-2020-TT-BTC
+  document_number: 96/2020/TT-BTC
+  title: Hướng dẫn công bố thông tin trên thị trường chứng khoán
+  doc_type: thong_tu
+  authority: Bộ Tài chính
+  issued_date: '2020-11-16'
+  effective_from: '2021-01-01'
+  status: effective_with_amendments
+  legal_issues:
+  - disclosure
+  - listed_company_obligations
+  text_acquisition: ok_ocr
+  text_acquisition_note: OCR (vie+eng, tesseract v5.4.0.20240606), mean confidence 93.11. Lower trust
+    than a publisher text layer; verify before binding a rule.
+  landing_url: https://vanban.chinhphu.vn/?pageid=27160&docid=201902
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2020/12/96-btc.pdf
+  ocr_used: true
+  clauses_file: data/legal/clauses/TT96-2020-TT-BTC.jsonl
+- id: ND119-2025-ND-CP
+  document_number: 119/2025/NĐ-CP
+  title: Sửa đổi, bổ sung một số điều của Nghị định 06/2022/NĐ-CP
+  doc_type: nghi_dinh
+  authority: Chính phủ
+  issued_date: '2025-06-09'
+  effective_from: '2025-06-09'
+  status: effective
+  legal_issues:
+  - emissions
+  - ghg_inventory
+  amends:
+  - ND06-2022-ND-CP
+  landing_url: https://vanban.chinhphu.vn/?pageid=27160&docid=213875
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/6/119-nd.signed.pdf
+  text_acquisition: ok_ocr
+  text_acquisition_note: OCR (vie+eng, tesseract v5.4.0.20240606), mean confidence 90.43. Lower trust
+    than a publisher text layer; verify before binding a rule.
+  ocr_used: true
+  clauses_file: data/legal/clauses/ND119-2025-ND-CP.jsonl
+- id: ND48-2026-ND-CP
+  document_number: 48/2026/NĐ-CP
+  title: Sửa đổi, bổ sung một số điều của Nghị định 08/2022/NĐ-CP (đã sửa bởi 05/2025/NĐ-CP)
+  doc_type: nghi_dinh
+  authority: Chính phủ
+  issued_date: '2026-01-01'
+  effective_from: '2026-01-01'
+  status: effective
+  legal_issues:
+  - environmental_protection
+  - permits
+  amends:
+  - ND08-2022-ND-CP
+  landing_url: https://vanban.chinhphu.vn/?pageid=27160&docid=216867
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/48-cp.signed.pdf
+  text_acquisition: ok_ocr
+  text_acquisition_note: OCR (vie+eng, tesseract v5.4.0.20240606), mean confidence 93.72. Lower trust
+    than a publisher text layer; verify before binding a rule.
+  ocr_used: true
+  clauses_file: data/legal/clauses/ND48-2026-ND-CP.jsonl
+- id: ND83-2026-ND-CP
+  document_number: 83/2026/NĐ-CP
+  title: Sửa đổi, bổ sung một số điều của Nghị định 06/2022/NĐ-CP (đã sửa bởi 119/2025/NĐ-CP)
+  doc_type: nghi_dinh
+  authority: Chính phủ
+  issued_date: '2026-03-01'
+  effective_from: '2026-03-01'
+  status: effective
+  legal_issues:
+  - emissions
+  - ghg_inventory
+  amends:
+  - ND06-2022-ND-CP
+  landing_url: https://vanban.chinhphu.vn/?pageid=27160&docid=217277
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/3/83-ndcp.signed.pdf
+  text_acquisition: ok_ocr
+  text_acquisition_note: OCR (vie+eng, tesseract v5.4.0.20240606), mean confidence 91.38. Lower trust
+    than a publisher text layer; verify before binding a rule.
+  ocr_used: true
+  clauses_file: data/legal/clauses/ND83-2026-ND-CP.jsonl

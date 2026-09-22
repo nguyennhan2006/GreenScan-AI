@@ -1,0 +1,56 @@
+# L3 — policy-as-code. Human-authored, version-locked.
+#
+# A rule may be DRAFTED by a model but reaches production only through:
+#   draft -> human legal review -> unit tests -> version bump
+# Nothing reads a statute and generates its own rule at runtime.
+#
+# `machine_executable` is honest about how much of the rule the code decides:
+#   full     every condition is decidable from structured evidence
+#   partial  some conditions need a reviewer
+#   none     documentation only
+#
+# STATUS 2026-08-09: no rule is bound to real clause text yet, because the
+# authoritative QD 21/2025 PDF is a scan and could not be extracted. The rule
+# below is therefore marked `draft_unbound` and the checker will not use it in
+# production until its source_clauses resolve against parsed clauses.
+
+version: vn-green-v0.1-draft
+source_registry: configs/legal/LEGAL_SOURCE_REGISTRY.yaml
+
+rules:
+  - rule_id: VN_GREEN_TAXONOMY_001
+    title: Dự án được tuyên bố thuộc danh mục phân loại xanh
+    source_document: QD21-2025-QD-TTg
+    source_clauses: []          # unbound: see STATUS above
+    claim_types: [green_project, green_taxonomy_eligibility]
+    legal_issue: green_taxonomy
+    effective_from: '2025-08-22'
+    machine_executable: partial
+    reviewed_by: ''             # REQUIRED before production use
+    reviewed_at: ''
+    notes: >-
+      DRAFT. Conditions below encode the shape of the check (project identified,
+      environmental criteria evidenced, confirmation obtained) but are NOT yet
+      traced to specific clauses of 21/2025/QD-TTg. Do not present output from
+      this rule as a legal finding until source_clauses are bound and a reviewer
+      has signed off.
+    conditions:
+      - id: project_identified
+        description: Xác định được dự án đầu tư cụ thể mà tuyên bố nói tới
+        source_clause: QD21-2025:UNBOUND
+        check: terms_present
+        any_of_terms: ['dự án', 'nhà máy', 'công trình', 'project']
+        requires_evidence: [project_activity]
+      - id: environmental_criteria_evidenced
+        description: Có dữ liệu môi trường đối chiếu được với tiêu chí phân loại xanh
+        source_clause: QD21-2025:UNBOUND
+        check: terms_present
+        any_of_terms: ['tiêu chí môi trường', 'phát thải', 'tiết kiệm năng lượng', 'tái chế']
+        requires_evidence: [environmental_category, eligibility_metric]
+      - id: confirmation_obtained
+        description: Có văn bản xác nhận dự án thuộc danh mục phân loại xanh
+        source_clause: QD21-2025:UNBOUND
+        # Manual on purpose: whether a confirmation document is valid is a legal
+        # judgement about the issuing body and its date, not a keyword match.
+        check: manual
+        requires_evidence: [confirmation_document]

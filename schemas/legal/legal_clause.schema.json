@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenscan.ai/schemas/legal/legal_clause.schema.json",
+  "title": "Legal clause (L1)",
+  "description": "One clause at its own legal boundary. Never a fixed-size chunk: a window that cuts through khoản/điểm cannot be cited and can be half-evaluated.",
+  "type": "object",
+  "required": [
+    "clause_id",
+    "document_id",
+    "text"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "clause_id": {
+      "type": "string",
+      "description": "Legal path, e.g. QD21-2025:article_3:paragraph_2:item_b"
+    },
+    "document_id": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string",
+      "description": "Verbatim. Never summarised or rewritten."
+    },
+    "chapter": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "section": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "article": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "paragraph": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "item": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "annex": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "heading": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "parent_path": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Walk back up to the full article"
+    },
+    "char_start": {
+      "type": "integer"
+    },
+    "char_end": {
+      "type": "integer"
+    },
+    "clause_type": {
+      "enum": [
+        "DEFINITION",
+        "OBLIGATION",
+        "PROHIBITION",
+        "PERMISSION",
+        "CONDITION",
+        "EXCEPTION",
+        "PROCEDURE",
+        "REPORTING_REQUIREMENT",
+        "THRESHOLD",
+        "CLASSIFICATION_CRITERION",
+        "REFERENCE_ONLY"
+      ],
+      "description": "Only CONDITION/THRESHOLD/CLASSIFICATION_CRITERION/REPORTING_REQUIREMENT/PROHIBITION can become executable rules."
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "case_id": "KLM-2024",
+  "organization": "KLM Royal Dutch Airlines",
+  "jurisdiction": "Netherlands",
+  "sector": "Aviation",
+  "case_type": "vague sustainability, SAF and offset/reforestation claims",
+  "case_status": "DUTCH_COURT_FOUND_15_OF_19_STATEMENTS_MISLEADING",
+  "adjudication_date": "2024-03-20",
+  "split": "evaluation",
+  "primary_claim_id": "KLM-CLAIM-001",
+  "expected_verification": "CONTRADICTED",
+  "risk_band": "CRITICAL",
+  "claim_text": "Join us in creating a more sustainable future.",
+  "claim_is_paraphrase": false,
+  "claim_source": "One of the advertisements summarized in reporting on the official court judgment",
+  "claim_source_pages": [],
+  "evidence_summary": "The Amsterdam court found 15 of 19 assessed environmental statements misleading. It found that some were vague and general and that the presentation of sustainable aviation fuel and reforestation painted an overly positive picture of measures that only marginally reduced harm.",
+  "expected_reasoning": [
+    "Classify vague superiority/future language separately from quantified emissions claims.",
+    "Assess whether the communication specifies mechanism, magnitude, scope and time.",
+    "Do not treat SAF or offsets as equivalent to zero-impact flying.",
+    "Use the official judgment for exact ad-level labels before training."
+  ],
+  "source_ids": [
+    "KLM_JUDGMENT_2024",
+    "KLM_ANNUAL_REPORT_2020"
+  ],
+  "training_eligibility": "silver_until_exact_19_statements_archived",
+  "legal_caution": "The judgment concerned specific past advertisements, not every KLM sustainability statement."
+}

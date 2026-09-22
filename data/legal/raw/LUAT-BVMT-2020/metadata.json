@@ -1,0 +1,25 @@
+{
+  "document_number": "72/2020/QH14",
+  "title": "Luật Bảo vệ môi trường",
+  "authority": "Quốc hội",
+  "issued_date": "2020-11-17",
+  "effective_from": "2022-01-01",
+  "status": "effective",
+  "id": "LUAT-BVMT-2020",
+  "checked_at": "2026-08-14T02:07:20.246195+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\LUAT-BVMT-2020\\original.pdf",
+      "sha256": "2254ce1fa475bcce0c565f18e25d7ad18dd2fe15a170ef907935498eb4969a70",
+      "bytes": 1272998,
+      "source_url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2020/11/32703/33751-1-20201185-118672-2020-qh14.pdf",
+      "final_url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2020/11/32703/33751-1-20201185-118672-2020-qh14.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf; charset=utf-8",
+      "retrieved_at": "2026-08-14T02:07:21.617942+00:00",
+      "pages": 94,
+      "text_chars": 176991
+    }
+  ],
+  "text_acquisition": "ok"
+}

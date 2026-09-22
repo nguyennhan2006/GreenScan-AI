@@ -1,0 +1,29 @@
+{
+  "case_id": "VN-BVH-CONTROL",
+  "organization": "Bao Viet Holdings",
+  "jurisdiction": "Vietnam",
+  "sector": "Insurance and financial services",
+  "case_type": "Vietnamese real-document control",
+  "case_status": "NOT_ADJUDICATED_NO_GREENWASHING_LABEL",
+  "adjudication_date": null,
+  "split": "control",
+  "primary_claim_id": null,
+  "expected_verification": "SOURCE_DISCOVERY_EXTRACTION_AND_CONSISTENCY_TEST",
+  "risk_band": "UNASSESSED",
+  "claim_text": null,
+  "claim_is_paraphrase": false,
+  "claim_source": "Official sustainability and investor-relations pages",
+  "claim_source_pages": [],
+  "evidence_summary": "Use official report links to obtain sustainability and audited financial PDFs, then test source discovery, claim extraction, quantitative reconciliation and citation provenance. It is not a labelled greenwashing case.",
+  "expected_reasoning": [
+    "Archive exact PDF version and checksum.",
+    "Pair sustainability metrics with audited financial disclosures where relevant.",
+    "Do not assign greenwashing based on missing data alone."
+  ],
+  "source_ids": [
+    "BVH_SUSTAINABILITY_PAGE_2025",
+    "BVH_INVESTOR_RELATIONS"
+  ],
+  "training_eligibility": "annotation_required",
+  "legal_caution": "No allegation or conclusion is encoded in this control case."
+}

@@ -16,3 +16,28 @@ frontend/dist/
 .DS_Store
 .idea/
 .vscode/
+
+# Crawled bytes: third-party PDFs are not redistributed through this repo.
+# The metadata that makes them reproducible (manifests, normalized JSONL,
+# coverage, checksums) IS committed -- see data/crawl/README.md.
+data/crawl/**/objects/
+data/crawl/**/metadata.sqlite3*
+data/real_cases/sources/originals/*
+!data/real_cases/sources/originals/download_manifest.json
+
+# LaTeX build artefacts (docs/07-presentation)
+*.aux
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.toc
+*.out
+docs/07-presentation/**/*.log
+
+# International legal-case packs: third-party corporate PDFs are not redistributed
+# (same policy as data/crawl). Case packets, HTML captures, manifests ARE committed.
+data/legal_cases/**/*.pdf
+
+# Local copies / backups that must never enter history
+outside_resource/*.zip
+*.backup_*.docx

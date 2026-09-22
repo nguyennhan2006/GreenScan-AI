@@ -1,0 +1,25 @@
+{
+  "document_number": "17/2022/TT-NHNN",
+  "title": "Hướng dẫn thực hiện quản lý rủi ro về môi trường trong hoạt động cấp tín dụng của tổ chức tín dụng",
+  "authority": "Ngân hàng Nhà nước",
+  "issued_date": "2022-12-23",
+  "effective_from": "2023-06-01",
+  "status": "effective",
+  "id": "TT17-2022-TT-NHNN",
+  "checked_at": "2026-08-14T02:07:28.120828+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\TT17-2022-TT-NHNN\\original.pdf",
+      "sha256": "7b9a6f48d0da76ab0bbacf466987faf1e608c8bd9f0f1778c5c4253d1ad04f0c",
+      "bytes": 333660,
+      "source_url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2022/12/38402/42729-1-202301-0217-2022-tt-nhnn.pdf",
+      "final_url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2022/12/38402/42729-1-202301-0217-2022-tt-nhnn.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf; charset=utf-8",
+      "retrieved_at": "2026-08-14T02:07:28.901499+00:00",
+      "pages": 4,
+      "text_chars": 7765
+    }
+  ],
+  "text_acquisition": "ok"
+}

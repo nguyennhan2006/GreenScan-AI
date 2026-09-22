@@ -1,0 +1,26 @@
+{
+  "document_number": "13/2024/QĐ-TTg",
+  "title": "Ban hành danh mục lĩnh vực, cơ sở phát thải khí nhà kính phải kiểm kê",
+  "authority": "Thủ tướng Chính phủ",
+  "issued_date": "2024-08-13",
+  "effective_from": "2024-10-01",
+  "status": "effective",
+  "id": "QD13-2024-QD-TTg",
+  "checked_at": "2026-08-14T02:07:27.455160+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\QD13-2024-QD-TTg\\original.pdf",
+      "sha256": "e7fa41b67aa4b60b9b7ee3058ecc0f3d63b1eb5713a6b44d3e8d5a5663d7cb87",
+      "bytes": 7243303,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2024/8/13-ttg.signed.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2024/8/13-ttg.signed.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-08-14T02:07:28.051747+00:00",
+      "pages": 181,
+      "text_chars": 148
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 181 pages, 148 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

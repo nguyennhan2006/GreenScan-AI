@@ -1,0 +1,29 @@
+{
+  "case_id": "VN-HPG-CONTROL",
+  "organization": "Hoa Phat Group",
+  "jurisdiction": "Vietnam",
+  "sector": "Steel and manufacturing",
+  "case_type": "Vietnamese real-document control",
+  "case_status": "NOT_ADJUDICATED_NO_GREENWASHING_LABEL",
+  "adjudication_date": null,
+  "split": "control",
+  "primary_claim_id": null,
+  "expected_verification": "EXTRACTION_AND_CONSISTENCY_TEST",
+  "risk_band": "UNASSESSED",
+  "claim_text": null,
+  "claim_is_paraphrase": false,
+  "claim_source": "Official annual and sustainability reports",
+  "claim_source_pages": [],
+  "evidence_summary": "Use this pair to test OCR, Vietnamese claim extraction, cross-year comparison, table extraction, unit normalization, Scope/period matching and ESG-to-financial consistency. It is not a labelled greenwashing case.",
+  "expected_reasoning": [
+    "Extract claims before assigning any risk label.",
+    "Compare annual-report and sustainability-report periods and consolidation scope.",
+    "Require independent evidence before contradiction classification."
+  ],
+  "source_ids": [
+    "HPG_ANNUAL_REPORT_2024",
+    "HPG_SUSTAINABILITY_REPORT_2025"
+  ],
+  "training_eligibility": "annotation_required",
+  "legal_caution": "No allegation or conclusion is encoded in this control case."
+}

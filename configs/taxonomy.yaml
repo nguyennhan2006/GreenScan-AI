@@ -1,0 +1,138 @@
+version: greenwashing-taxonomy-v3
+# v3 is bilingual. v1/v2 held Vietnamese keywords only, which silently dropped
+# every English claim: the KDP-2024 recyclability claim matched no claim_type at
+# all and never reached verification, and KLM-2024's "a more sustainable future"
+# came back is_vague=False because every vague term was Vietnamese. Terms are
+# kept in separate `vi`/`en` lists rather than one merged list so the extractor
+# can report which lexicon fired, which is the language signal the rest of the
+# pipeline needs.
+#
+# Matching is substring-based over accent-folded, lowercased text, so stems are
+# preferred over inflected forms: "recycl" covers recycle/recycled/recyclable/
+# recycling, and Vietnamese terms may be written accented here.
+#
+# `priority` breaks ties when a sentence matches several types with equal hit
+# counts. Higher wins. generic_sustainability is 0 because it is the fallback
+# bucket, not a finding; esg_process_integration is 2 because its claims almost
+# always also contain the bare token "esg" and would otherwise be swallowed by
+# the generic type.
+claim_types:
+  emissions_reduction:
+    priority: 1
+    vi: ["phát thải", "carbon", "co2", "ghg", "net zero", "net-zero", "trung hòa carbon",
+         "khí nhà kính", "bù đắp carbon", "trồng rừng"]
+    en: ["emission", "carbon", "co2", "ghg", "greenhouse gas", "net zero", "net-zero",
+         "carbon neutral", "climate neutral", "decarboni", "scope 1", "scope 2", "scope 3",
+         "offset", "reforestation", "sustainable aviation fuel", "saf"]
+  renewable_energy:
+    priority: 1
+    vi: ["năng lượng tái tạo", "tái tạo", "điện mặt trời", "điện gió"]
+    en: ["renewable energy", "solar power", "wind power", "clean energy", "green electricity"]
+  resource_efficiency:
+    priority: 1
+    vi: ["tiết kiệm năng lượng", "hiệu quả tài nguyên", "tiết kiệm nước"]
+    en: ["resource efficiency", "energy efficiency", "water efficiency", "water saving",
+         "energy saving"]
+  waste_and_circularity:
+    priority: 1
+    vi: ["tái chế", "chất thải", "kinh tế tuần hoàn", "phân hủy sinh học", "dùng một lần"]
+    en: ["recycl", "waste", "circular economy", "compostable", "biodegradable",
+         "landfill", "single-use", "reusable"]
+  green_finance:
+    priority: 1
+    vi: ["tín dụng xanh", "trái phiếu xanh", "sử dụng vốn"]
+    en: ["green bond", "green loan", "green credit", "sustainable finance",
+         "use of proceeds", "sustainability-linked"]
+  biodiversity:
+    priority: 1
+    vi: ["đa dạng sinh học", "hệ sinh thái"]
+    en: ["biodiversity", "ecosystem", "deforestation", "habitat"]
+  esg_process_integration:
+    # Claims about *how the firm works* rather than about a physical outcome:
+    # "ESG is integrated into our investment process", "every holding receives a
+    # quality review". Two of the four adjudicated cases (BNY-2022, DWS-2023) are
+    # exactly this shape, and they are refuted by control and coverage gaps
+    # rather than by any number, so they need their own type to be routed to the
+    # right legal issue (disclosure) instead of the green taxonomy.
+    priority: 2
+    vi: ["tích hợp esg", "quy trình esg", "quy trình đầu tư", "quy trình nghiên cứu",
+         "đánh giá esg", "chấm điểm esg", "rà soát chất lượng", "chính sách esg"]
+    en: ["esg integration", "esg was integrated", "integrated esg", "esg engine",
+         "esg risks", "esg factors", "esg score", "esg rating", "esg policy",
+         "research process", "investment process", "quality review", "due diligence",
+         "proprietary", "portfolio decision"]
+  generic_sustainability:
+    priority: 0
+    vi: ["xanh", "bền vững", "thân thiện môi trường", "esg"]
+    en: ["sustainable", "sustainability", "eco-friendly", "environmentally friendly",
+         "esg", "green", "responsible"]
+
+risk_patterns:
+  vague_terms:
+    vi: ["hướng tới", "cam kết mạnh mẽ", "thân thiện", "xanh hơn", "hàng đầu",
+         "đáng kể", "tích cực", "toàn diện", "nỗ lực", "không ngừng"]
+    en: ["more sustainable", "sustainable future", "better future", "greener",
+         "eco-friendly", "environmentally friendly", "committed to", "strive",
+         "aim to", "leading", "world-class", "significant", "comprehensive",
+         "responsibly", "join us", "help the planet", "our journey"]
+  reduction_terms:
+    vi: ["giảm", "cắt giảm", "thấp hơn"]
+    en: ["decrease", "reduce", "reduction", "lower", "cut", "decline"]
+  increase_terms:
+    vi: ["tăng", "cao hơn"]
+    en: ["increase", "rose", "grew", "higher", "growth"]
+  future_terms:
+    vi: ["sẽ", "dự kiến", "mục tiêu", "cam kết", "lộ trình"]
+    en: ["will", "plan to", "plans to", "target", "pledge", "commit",
+         "by 2030", "by 2035", "by 2040", "by 2045", "by 2050"]
+
+# Which boundary a claim applies to. "Giảm 30% phát thải" is not checkable until
+# the boundary is known: one plant behaves very differently from a consolidated
+# group, and Scope 1 from Scope 3. No match is the informative answer — it is
+# what makes the Scope/Boundary attribute show as missing instead of silently
+# passing. These lived as a hardcoded dict in claim_extractor.py; they are
+# language-dependent term lists like everything else here, so they belong in the
+# same bilingual file.
+scope_buckets:
+  ghg_scope_1_2_3:
+    vi: ["phạm vi 1", "phạm vi 2", "phạm vi 3", "trực tiếp", "gián tiếp"]
+    en: ["scope 1", "scope 2", "scope 3", "direct emission", "indirect emission"]
+  group_consolidated:
+    vi: ["toàn tập đoàn", "tập đoàn", "hợp nhất", "toàn hệ thống", "toàn công ty"]
+    en: ["consolidated", "group-wide", "firm-wide", "enterprise-wide",
+         "across investment teams", "all holdings", "every holding", "company-wide"]
+  parent_only:
+    vi: ["công ty mẹ", "riêng lẻ"]
+    en: ["parent company", "standalone"]
+  site_or_facility:
+    vi: ["nhà máy", "chi nhánh", "cơ sở", "khu công nghiệp", "văn phòng"]
+    en: ["facility", "plant", "site", "office"]
+  product_or_service:
+    vi: ["sản phẩm", "dòng sản phẩm", "dịch vụ"]
+    en: ["product line", "product", "service", "fund", "portfolio"]
+  geography:
+    vi: ["việt nam", "toàn cầu", "khu vực"]
+    en: ["global", "domestic", "worldwide", "nationwide"]
+
+# The quantity a claim is about, when it names one. Order matters: the first
+# bucket whose terms appear wins, so narrower buckets precede broader ones
+# (renewable_energy before energy).
+metrics:
+  emissions:
+    vi: ["phát thải", "khí nhà kính"]
+    en: ["emission", "carbon", "co2", "ghg", "greenhouse gas"]
+  renewable_energy:
+    vi: ["năng lượng tái tạo", "tái tạo", "điện mặt trời", "điện gió"]
+    en: ["renewable", "solar", "wind power"]
+  energy:
+    vi: ["năng lượng", "điện năng"]
+    en: ["energy", "electricity"]
+  water:
+    vi: ["nước"]
+    en: ["water"]
+  waste:
+    vi: ["chất thải", "tái chế"]
+    en: ["waste", "recycl"]
+  green_finance:
+    vi: ["trái phiếu xanh", "tín dụng xanh"]
+    en: ["green bond", "green loan", "proceeds"]

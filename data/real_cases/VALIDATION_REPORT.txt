@@ -1,0 +1,7 @@
+VALID
+cases: 6
+adjudicated demo/eval: 4
+control cases: 2
+sources: 14
+claims: 4
+evidence records: 8

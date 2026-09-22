@@ -1,0 +1,26 @@
+{
+  "document_number": "08/2022/NĐ-CP",
+  "title": "Quy định chi tiết một số điều của Luật Bảo vệ môi trường",
+  "authority": "Chính phủ",
+  "issued_date": "2022-01-10",
+  "effective_from": "2022-01-10",
+  "status": "effective_with_amendments",
+  "id": "ND08-2022-ND-CP",
+  "checked_at": "2026-08-14T02:07:21.850467+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\ND08-2022-ND-CP\\original.pdf",
+      "sha256": "28f893ccbba3a8e3b13f15816840140a2bcb6838d2fd6a1c053afc05ac82d35f",
+      "bytes": 12723260,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2022/01/08-nd.signed.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2022/01/08-nd.signed.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-08-14T02:07:25.991507+00:00",
+      "pages": 215,
+      "text_chars": 148
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 215 pages, 148 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

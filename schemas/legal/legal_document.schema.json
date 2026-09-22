@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenscan.ai/schemas/legal/legal_document.schema.json",
+  "title": "Legal document (L0/L2)",
+  "description": "A registered legal instrument. Registration does not imply the text was read: `text_acquisition` gates whether any clause may be cited.",
+  "type": "object",
+  "required": [
+    "id",
+    "document_number",
+    "title",
+    "doc_type",
+    "authority",
+    "status",
+    "text_acquisition"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable internal id, e.g. QD21-2025-QD-TTg"
+    },
+    "document_number": {
+      "type": "string",
+      "description": "Official number, e.g. 21/2025/QĐ-TTg"
+    },
+    "title": {
+      "type": "string"
+    },
+    "doc_type": {
+      "enum": [
+        "luat",
+        "phap_lenh",
+        "nghi_dinh",
+        "quyet_dinh",
+        "thong_tu",
+        "thong_tu_lien_tich",
+        "chi_thi",
+        "cong_van",
+        "khac"
+      ]
+    },
+    "authority": {
+      "type": "string"
+    },
+    "issued_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "effective_from": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "effective_to": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date",
+      "description": "null while still in force"
+    },
+    "status": {
+      "enum": [
+        "effective",
+        "effective_with_amendments",
+        "expired",
+        "repealed",
+        "not_yet_effective",
+        "unknown"
+      ]
+    },
+    "legal_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "text_acquisition": {
+      "enum": [
+        "ok",
+        "scanned_no_text",
+        "source_unavailable",
+        "not_attempted"
+      ],
+      "description": "Only `ok` permits the document to support a legal finding."
+    },
+    "text_acquisition_note": {
+      "type": "string"
+    },
+    "landing_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "original_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "retrieved_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "amends": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "amended_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "implements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "legal_basis": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "repeals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "repealed_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

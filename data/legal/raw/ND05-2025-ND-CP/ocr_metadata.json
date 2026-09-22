@@ -1,0 +1,1009 @@
+{
+  "ocr_used": true,
+  "engine": "tesseract v5.4.0.20240606",
+  "languages": "vie+eng",
+  "dpi": 300,
+  "tessdata_prefix": "C:/Users/ASUS/tessdata",
+  "pages": 165,
+  "total_chars": 340165,
+  "mean_confidence": 93.96,
+  "low_confidence_pages": [
+    92,
+    93
+  ],
+  "per_page": [
+    {
+      "page": 1,
+      "words": 416,
+      "mean_confidence": 92.76,
+      "chars": 1929
+    },
+    {
+      "page": 2,
+      "words": 540,
+      "mean_confidence": 96.21,
+      "chars": 2467
+    },
+    {
+      "page": 3,
+      "words": 501,
+      "mean_confidence": 94.81,
+      "chars": 2210
+    },
+    {
+      "page": 4,
+      "words": 619,
+      "mean_confidence": 95.95,
+      "chars": 2761
+    },
+    {
+      "page": 5,
+      "words": 620,
+      "mean_confidence": 95.78,
+      "chars": 2724
+    },
+    {
+      "page": 6,
+      "words": 510,
+      "mean_confidence": 95.53,
+      "chars": 2315
+    },
+    {
+      "page": 7,
+      "words": 438,
+      "mean_confidence": 95.96,
+      "chars": 1988
+    },
+    {
+      "page": 8,
+      "words": 616,
+      "mean_confidence": 96.15,
+      "chars": 2693
+    },
+    {
+      "page": 9,
+      "words": 560,
+      "mean_confidence": 96.2,
+      "chars": 2440
+    },
+    {
+      "page": 10,
+      "words": 580,
+      "mean_confidence": 95.88,
+      "chars": 2515
+    },
+    {
+      "page": 11,
+      "words": 651,
+      "mean_confidence": 95.6,
+      "chars": 2878
+    },
+    {
+      "page": 12,
+      "words": 557,
+      "mean_confidence": 95.64,
+      "chars": 2514
+    },
+    {
+      "page": 13,
+      "words": 561,
+      "mean_confidence": 95.86,
+      "chars": 2495
+    },
+    {
+      "page": 14,
+      "words": 533,
+      "mean_confidence": 95.62,
+      "chars": 2446
+    },
+    {
+      "page": 15,
+      "words": 622,
+      "mean_confidence": 95.86,
+      "chars": 2731
+    },
+    {
+      "page": 16,
+      "words": 548,
+      "mean_confidence": 95.45,
+      "chars": 2474
+    },
+    {
+      "page": 17,
+      "words": 551,
+      "mean_confidence": 95.6,
+      "chars": 2519
+    },
+    {
+      "page": 18,
+      "words": 566,
+      "mean_confidence": 96.28,
+      "chars": 2570
+    },
+    {
+      "page": 19,
+      "words": 661,
+      "mean_confidence": 95.07,
+      "chars": 2944
+    },
+    {
+      "page": 20,
+      "words": 587,
+      "mean_confidence": 95.75,
+      "chars": 2683
+    },
+    {
+      "page": 21,
+      "words": 542,
+      "mean_confidence": 96.04,
+      "chars": 2373
+    },
+    {
+      "page": 22,
+      "words": 565,
+      "mean_confidence": 95.96,
+      "chars": 2501
+    },
+    {
+      "page": 23,
+      "words": 699,
+      "mean_confidence": 95.57,
+      "chars": 3146
+    },
+    {
+      "page": 24,
+      "words": 653,
+      "mean_confidence": 95.76,
+      "chars": 2976
+    },
+    {
+      "page": 25,
+      "words": 621,
+      "mean_confidence": 96.02,
+      "chars": 2768
+    },
+    {
+      "page": 26,
+      "words": 641,
+      "mean_confidence": 95.91,
+      "chars": 2843
+    },
+    {
+      "page": 27,
+      "words": 574,
+      "mean_confidence": 95.78,
+      "chars": 2600
+    },
+    {
+      "page": 28,
+      "words": 548,
+      "mean_confidence": 96.2,
+      "chars": 2488
+    },
+    {
+      "page": 29,
+      "words": 617,
+      "mean_confidence": 95.59,
+      "chars": 2790
+    },
+    {
+      "page": 30,
+      "words": 611,
+      "mean_confidence": 95.92,
+      "chars": 2715
+    },
+    {
+      "page": 31,
+      "words": 597,
+      "mean_confidence": 95.85,
+      "chars": 2693
+    },
+    {
+      "page": 32,
+      "words": 519,
+      "mean_confidence": 95.92,
+      "chars": 2328
+    },
+    {
+      "page": 33,
+      "words": 584,
+      "mean_confidence": 96.28,
+      "chars": 2625
+    },
+    {
+      "page": 34,
+      "words": 606,
+      "mean_confidence": 96.36,
+      "chars": 2733
+    },
+    {
+      "page": 35,
+      "words": 610,
+      "mean_confidence": 96.13,
+      "chars": 2765
+    },
+    {
+      "page": 36,
+      "words": 567,
+      "mean_confidence": 96.18,
+      "chars": 2557
+    },
+    {
+      "page": 37,
+      "words": 481,
+      "mean_confidence": 95.77,
+      "chars": 2145
+    },
+    {
+      "page": 38,
+      "words": 521,
+      "mean_confidence": 95.74,
+      "chars": 2314
+    },
+    {
+      "page": 39,
+      "words": 548,
+      "mean_confidence": 95.48,
+      "chars": 2518
+    },
+    {
+      "page": 40,
+      "words": 453,
+      "mean_confidence": 95.81,
+      "chars": 2027
+    },
+    {
+      "page": 41,
+      "words": 645,
+      "mean_confidence": 96.2,
+      "chars": 2931
+    },
+    {
+      "page": 42,
+      "words": 472,
+      "mean_confidence": 95.1,
+      "chars": 2097
+    },
+    {
+      "page": 43,
+      "words": 501,
+      "mean_confidence": 93.48,
+      "chars": 2157
+    },
+    {
+      "page": 44,
+      "words": 435,
+      "mean_confidence": 95.34,
+      "chars": 1978
+    },
+    {
+      "page": 45,
+      "words": 472,
+      "mean_confidence": 95.38,
+      "chars": 2144
+    },
+    {
+      "page": 46,
+      "words": 523,
+      "mean_confidence": 95.86,
+      "chars": 2340
+    },
+    {
+      "page": 47,
+      "words": 548,
+      "mean_confidence": 95.68,
+      "chars": 2454
+    },
+    {
+      "page": 48,
+      "words": 434,
+      "mean_confidence": 95.8,
+      "chars": 1897
+    },
+    {
+      "page": 49,
+      "words": 546,
+      "mean_confidence": 96.15,
+      "chars": 2398
+    },
+    {
+      "page": 50,
+      "words": 521,
+      "mean_confidence": 95.59,
+      "chars": 2309
+    },
+    {
+      "page": 51,
+      "words": 522,
+      "mean_confidence": 95.97,
+      "chars": 2297
+    },
+    {
+      "page": 52,
+      "words": 562,
+      "mean_confidence": 96.12,
+      "chars": 2479
+    },
+    {
+      "page": 53,
+      "words": 475,
+      "mean_confidence": 95.61,
+      "chars": 2107
+    },
+    {
+      "page": 54,
+      "words": 488,
+      "mean_confidence": 96.25,
+      "chars": 2198
+    },
+    {
+      "page": 55,
+      "words": 524,
+      "mean_confidence": 95.98,
+      "chars": 2366
+    },
+    {
+      "page": 56,
+      "words": 538,
+      "mean_confidence": 95.35,
+      "chars": 2434
+    },
+    {
+      "page": 57,
+      "words": 567,
+      "mean_confidence": 95.88,
+      "chars": 2539
+    },
+    {
+      "page": 58,
+      "words": 589,
+      "mean_confidence": 95.83,
+      "chars": 2663
+    },
+    {
+      "page": 59,
+      "words": 606,
+      "mean_confidence": 96.0,
+      "chars": 2754
+    },
+    {
+      "page": 60,
+      "words": 537,
+      "mean_confidence": 95.61,
+      "chars": 2407
+    },
+    {
+      "page": 61,
+      "words": 508,
+      "mean_confidence": 95.26,
+      "chars": 2273
+    },
+    {
+      "page": 62,
+      "words": 533,
+      "mean_confidence": 95.63,
+      "chars": 2382
+    },
+    {
+      "page": 63,
+      "words": 615,
+      "mean_confidence": 94.73,
+      "chars": 2638
+    },
+    {
+      "page": 64,
+      "words": 502,
+      "mean_confidence": 95.19,
+      "chars": 2285
+    },
+    {
+      "page": 65,
+      "words": 561,
+      "mean_confidence": 95.71,
+      "chars": 2567
+    },
+    {
+      "page": 66,
+      "words": 592,
+      "mean_confidence": 95.88,
+      "chars": 2662
+    },
+    {
+      "page": 67,
+      "words": 462,
+      "mean_confidence": 94.24,
+      "chars": 2075
+    },
+    {
+      "page": 68,
+      "words": 503,
+      "mean_confidence": 94.22,
+      "chars": 2165
+    },
+    {
+      "page": 69,
+      "words": 493,
+      "mean_confidence": 96.09,
+      "chars": 2270
+    },
+    {
+      "page": 70,
+      "words": 558,
+      "mean_confidence": 96.0,
+      "chars": 2544
+    },
+    {
+      "page": 71,
+      "words": 290,
+      "mean_confidence": 94.58,
+      "chars": 1277
+    },
+    {
+      "page": 72,
+      "words": 144,
+      "mean_confidence": 92.51,
+      "chars": 640
+    },
+    {
+      "page": 73,
+      "words": 369,
+      "mean_confidence": 88.43,
+      "chars": 1695
+    },
+    {
+      "page": 74,
+      "words": 399,
+      "mean_confidence": 86.1,
+      "chars": 1805
+    },
+    {
+      "page": 75,
+      "words": 442,
+      "mean_confidence": 88.82,
+      "chars": 2009
+    },
+    {
+      "page": 76,
+      "words": 464,
+      "mean_confidence": 85.62,
+      "chars": 2109
+    },
+    {
+      "page": 77,
+      "words": 216,
+      "mean_confidence": 93.32,
+      "chars": 990
+    },
+    {
+      "page": 78,
+      "words": 360,
+      "mean_confidence": 95.65,
+      "chars": 1575
+    },
+    {
+      "page": 79,
+      "words": 454,
+      "mean_confidence": 95.65,
+      "chars": 1977
+    },
+    {
+      "page": 80,
+      "words": 382,
+      "mean_confidence": 96.03,
+      "chars": 1703
+    },
+    {
+      "page": 81,
+      "words": 384,
+      "mean_confidence": 95.69,
+      "chars": 1642
+    },
+    {
+      "page": 82,
+      "words": 371,
+      "mean_confidence": 95.59,
+      "chars": 1629
+    },
+    {
+      "page": 83,
+      "words": 369,
+      "mean_confidence": 95.13,
+      "chars": 1585
+    },
+    {
+      "page": 84,
+      "words": 501,
+      "mean_confidence": 96.04,
+      "chars": 2212
+    },
+    {
+      "page": 85,
+      "words": 355,
+      "mean_confidence": 95.84,
+      "chars": 1536
+    },
+    {
+      "page": 86,
+      "words": 450,
+      "mean_confidence": 95.27,
+      "chars": 1987
+    },
+    {
+      "page": 87,
+      "words": 162,
+      "mean_confidence": 92.65,
+      "chars": 701
+    },
+    {
+      "page": 88,
+      "words": 348,
+      "mean_confidence": 95.15,
+      "chars": 1469
+    },
+    {
+      "page": 89,
+      "words": 77,
+      "mean_confidence": 96.21,
+      "chars": 332
+    },
+    {
+      "page": 90,
+      "words": 318,
+      "mean_confidence": 95.63,
+      "chars": 1411
+    },
+    {
+      "page": 91,
+      "words": 231,
+      "mean_confidence": 95.14,
+      "chars": 1032
+    },
+    {
+      "page": 92,
+      "words": 432,
+      "mean_confidence": 48.16,
+      "chars": 2505
+    },
+    {
+      "page": 93,
+      "words": 388,
+      "mean_confidence": 38.13,
+      "chars": 1740
+    },
+    {
+      "page": 94,
+      "words": 167,
+      "mean_confidence": 93.55,
+      "chars": 698
+    },
+    {
+      "page": 95,
+      "words": 331,
+      "mean_confidence": 84.8,
+      "chars": 1817
+    },
+    {
+      "page": 96,
+      "words": 453,
+      "mean_confidence": 95.43,
+      "chars": 2098
+    },
+    {
+      "page": 97,
+      "words": 558,
+      "mean_confidence": 96.08,
+      "chars": 2557
+    },
+    {
+      "page": 98,
+      "words": 546,
+      "mean_confidence": 96.3,
+      "chars": 2459
+    },
+    {
+      "page": 99,
+      "words": 537,
+      "mean_confidence": 96.16,
+      "chars": 2397
+    },
+    {
+      "page": 100,
+      "words": 472,
+      "mean_confidence": 95.23,
+      "chars": 2132
+    },
+    {
+      "page": 101,
+      "words": 395,
+      "mean_confidence": 94.88,
+      "chars": 1720
+    },
+    {
+      "page": 102,
+      "words": 426,
+      "mean_confidence": 93.13,
+      "chars": 1926
+    },
+    {
+      "page": 103,
+      "words": 522,
+      "mean_confidence": 94.68,
+      "chars": 2335
+    },
+    {
+      "page": 104,
+      "words": 501,
+      "mean_confidence": 93.72,
+      "chars": 2235
+    },
+    {
+      "page": 105,
+      "words": 427,
+      "mean_confidence": 95.46,
+      "chars": 1921
+    },
+    {
+      "page": 106,
+      "words": 541,
+      "mean_confidence": 95.88,
+      "chars": 2375
+    },
+    {
+      "page": 107,
+      "words": 257,
+      "mean_confidence": 93.29,
+      "chars": 1168
+    },
+    {
+      "page": 108,
+      "words": 167,
+      "mean_confidence": 93.44,
+      "chars": 694
+    },
+    {
+      "page": 109,
+      "words": 327,
+      "mean_confidence": 83.75,
+      "chars": 1813
+    },
+    {
+      "page": 110,
+      "words": 388,
+      "mean_confidence": 94.77,
+      "chars": 1688
+    },
+    {
+      "page": 111,
+      "words": 550,
+      "mean_confidence": 95.4,
+      "chars": 2528
+    },
+    {
+      "page": 112,
+      "words": 486,
+      "mean_confidence": 95.88,
+      "chars": 2192
+    },
+    {
+      "page": 113,
+      "words": 497,
+      "mean_confidence": 95.86,
+      "chars": 2280
+    },
+    {
+      "page": 114,
+      "words": 555,
+      "mean_confidence": 95.61,
+      "chars": 2503
+    },
+    {
+      "page": 115,
+      "words": 437,
+      "mean_confidence": 96.25,
+      "chars": 1977
+    },
+    {
+      "page": 116,
+      "words": 463,
+      "mean_confidence": 95.35,
+      "chars": 2103
+    },
+    {
+      "page": 117,
+      "words": 456,
+      "mean_confidence": 95.73,
+      "chars": 2124
+    },
+    {
+      "page": 118,
+      "words": 453,
+      "mean_confidence": 95.09,
+      "chars": 2038
+    },
+    {
+      "page": 119,
+      "words": 396,
+      "mean_confidence": 94.73,
+      "chars": 1794
+    },
+    {
+      "page": 120,
+      "words": 421,
+      "mean_confidence": 94.88,
+      "chars": 1872
+    },
+    {
+      "page": 121,
+      "words": 418,
+      "mean_confidence": 95.84,
+      "chars": 1835
+    },
+    {
+      "page": 122,
+      "words": 455,
+      "mean_confidence": 95.5,
+      "chars": 2055
+    },
+    {
+      "page": 123,
+      "words": 391,
+      "mean_confidence": 95.55,
+      "chars": 1771
+    },
+    {
+      "page": 124,
+      "words": 134,
+      "mean_confidence": 93.87,
+      "chars": 560
+    },
+    {
+      "page": 125,
+      "words": 423,
+      "mean_confidence": 78.84,
+      "chars": 2311
+    },
+    {
+      "page": 126,
+      "words": 420,
+      "mean_confidence": 94.91,
+      "chars": 1915
+    },
+    {
+      "page": 127,
+      "words": 513,
+      "mean_confidence": 96.24,
+      "chars": 2353
+    },
+    {
+      "page": 128,
+      "words": 565,
+      "mean_confidence": 95.99,
+      "chars": 2560
+    },
+    {
+      "page": 129,
+      "words": 519,
+      "mean_confidence": 95.75,
+      "chars": 2327
+    },
+    {
+      "page": 130,
+      "words": 437,
+      "mean_confidence": 94.45,
+      "chars": 1954
+    },
+    {
+      "page": 131,
+      "words": 397,
+      "mean_confidence": 94.69,
+      "chars": 1801
+    },
+    {
+      "page": 132,
+      "words": 488,
+      "mean_confidence": 93.59,
+      "chars": 2240
+    },
+    {
+      "page": 133,
+      "words": 564,
+      "mean_confidence": 96.15,
+      "chars": 2582
+    },
+    {
+      "page": 134,
+      "words": 503,
+      "mean_confidence": 95.98,
+      "chars": 2284
+    },
+    {
+      "page": 135,
+      "words": 406,
+      "mean_confidence": 95.41,
+      "chars": 1844
+    },
+    {
+      "page": 136,
+      "words": 442,
+      "mean_confidence": 95.78,
+      "chars": 1956
+    },
+    {
+      "page": 137,
+      "words": 528,
+      "mean_confidence": 95.44,
+      "chars": 2376
+    },
+    {
+      "page": 138,
+      "words": 131,
+      "mean_confidence": 94.45,
+      "chars": 557
+    },
+    {
+      "page": 139,
+      "words": 352,
+      "mean_confidence": 84.24,
+      "chars": 1826
+    },
+    {
+      "page": 140,
+      "words": 479,
+      "mean_confidence": 96.0,
+      "chars": 2190
+    },
+    {
+      "page": 141,
+      "words": 588,
+      "mean_confidence": 95.79,
+      "chars": 2670
+    },
+    {
+      "page": 142,
+      "words": 523,
+      "mean_confidence": 96.09,
+      "chars": 2372
+    },
+    {
+      "page": 143,
+      "words": 465,
+      "mean_confidence": 94.43,
+      "chars": 2051
+    },
+    {
+      "page": 144,
+      "words": 140,
+      "mean_confidence": 94.36,
+      "chars": 603
+    },
+    {
+      "page": 145,
+      "words": 355,
+      "mean_confidence": 92.62,
+      "chars": 1785
+    },
+    {
+      "page": 146,
+      "words": 243,
+      "mean_confidence": 95.08,
+      "chars": 1093
+    },
+    {
+      "page": 147,
+      "words": 361,
+      "mean_confidence": 87.44,
+      "chars": 1756
+    },
+    {
+      "page": 148,
+      "words": 451,
+      "mean_confidence": 91.68,
+      "chars": 1986
+    },
+    {
+      "page": 149,
+      "words": 453,
+      "mean_confidence": 93.56,
+      "chars": 1992
+    },
+    {
+      "page": 150,
+      "words": 487,
+      "mean_confidence": 95.25,
+      "chars": 2277
+    },
+    {
+      "page": 151,
+      "words": 335,
+      "mean_confidence": 95.86,
+      "chars": 1491
+    },
+    {
+      "page": 152,
+      "words": 252,
+      "mean_confidence": 94.49,
+      "chars": 1149
+    },
+    {
+      "page": 153,
+      "words": 302,
+      "mean_confidence": 92.11,
+      "chars": 1426
+    },
+    {
+      "page": 154,
+      "words": 252,
+      "mean_confidence": 94.35,
+      "chars": 1288
+    },
+    {
+      "page": 155,
+      "words": 257,
+      "mean_confidence": 95.3,
+      "chars": 1228
+    },
+    {
+      "page": 156,
+      "words": 150,
+      "mean_confidence": 94.83,
+      "chars": 713
+    },
+    {
+      "page": 157,
+      "words": 289,
+      "mean_confidence": 91.36,
+      "chars": 1274
+    },
+    {
+      "page": 158,
+      "words": 315,
+      "mean_confidence": 92.92,
+      "chars": 1455
+    },
+    {
+      "page": 159,
+      "words": 262,
+      "mean_confidence": 92.77,
+      "chars": 1167
+    },
+    {
+      "page": 160,
+      "words": 336,
+      "mean_confidence": 91.93,
+      "chars": 1554
+    },
+    {
+      "page": 161,
+      "words": 304,
+      "mean_confidence": 85.91,
+      "chars": 1249
+    },
+    {
+      "page": 162,
+      "words": 350,
+      "mean_confidence": 91.31,
+      "chars": 1498
+    },
+    {
+      "page": 163,
+      "words": 424,
+      "mean_confidence": 92.61,
+      "chars": 1906
+    },
+    {
+      "page": 164,
+      "words": 446,
+      "mean_confidence": 94.97,
+      "chars": 2060
+    },
+    {
+      "page": 165,
+      "words": 110,
+      "mean_confidence": 94.55,
+      "chars": 481
+    }
+  ],
+  "ocr_at": "2026-08-14T02:36:49.680416+00:00",
+  "source_pdf": "data\\legal\\raw\\ND05-2025-ND-CP\\original.pdf",
+  "note": "OCR output, not a publisher text layer. Diacritics are the weak point for Vietnamese; verify low-confidence pages before citing."
+}

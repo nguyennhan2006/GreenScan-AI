@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenscan.ai/schemas/legal/legal_rule.schema.json",
+  "title": "Policy-as-code rule (L3)",
+  "description": "Human-authored and version-locked. A model may draft one; production requires review, tests and a version bump.",
+  "type": "object",
+  "required": [
+    "rule_id",
+    "title",
+    "source_document",
+    "legal_issue",
+    "conditions"
+  ],
+  "properties": {
+    "rule_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "source_document": {
+      "type": "string"
+    },
+    "source_clauses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Empty means UNBOUND — not usable in production."
+    },
+    "claim_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "legal_issue": {
+      "type": "string"
+    },
+    "effective_from": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "effective_to": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "machine_executable": {
+      "enum": [
+        "full",
+        "partial",
+        "none"
+      ]
+    },
+    "reviewed_by": {
+      "type": "string",
+      "description": "Required before production use."
+    },
+    "reviewed_at": {
+      "type": "string"
+    },
+    "conditions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "description",
+          "source_clause"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "source_clause": {
+            "type": "string"
+          },
+          "check": {
+            "enum": [
+              "manual",
+              "terms_present",
+              "numeric_threshold"
+            ]
+          },
+          "requires_evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "any_of_terms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "numeric_field": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "operator": {
+            "enum": [
+              ">=",
+              "<=",
+              ">",
+              "<",
+              null
+            ]
+          },
+          "threshold": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
