@@ -10,7 +10,7 @@ import pdfplumber
 
 from quantum_gw.domain.models import DocumentInput, EvidenceChunk
 from quantum_gw.settings import IntakeSettings
-from quantum_gw.utils.text import normalize_text, stable_id
+from quantum_gw.utils.text import join_wrapped_lines, normalize_text, stable_id
 
 from .ocr import TesseractOCR
 
@@ -172,6 +172,7 @@ def _sentences(paragraph: str) -> list[str]:
     sentence rather than becoming a passage of their own, so a citation still
     lands on readable text.
     """
+    paragraph = join_wrapped_lines(paragraph)
     parts = [p.strip(" •\t") for p in re.split(r"(?<=[.!?;])\s+|\n+", paragraph) if p.strip()]
     merged: list[str] = []
     for part in parts:

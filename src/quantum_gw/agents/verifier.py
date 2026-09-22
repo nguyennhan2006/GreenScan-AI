@@ -181,11 +181,35 @@ class VerificationAgent:
         # The passage that supports the claim must itself clear the retrieval
         # floor; the best-ranked passage may be a different, merely similar one.
         external = [e for e in external if e.score >= self.settings.partial_support_score]
+        # A figure that agrees is support on its own. A cue phrase ("chứng
+        # nhận", "xác nhận") is not: 3 of 3 Hòa Phát SUPPORTED verdicts on
+        # 2026-09-22 rested on one such word in the annual report (ISSUES N4).
+        # A phrase confirms a claim only when the sentence it sits in also
+        # names what the claim is about -- its metric, and every period and
+        # scope the claim states -- and at least two of those line up. The
+        # count is a hypothesis to sweep on the gold set (RESEARCH_PROGRAM RQ7).
+        for item in external:
+            if item.relation_method == "numeric":
+                return (
+                    VerificationStatus.SUPPORTED,
+                    f"Một nguồn ngoài tài liệu tuyên bố xác nhận: {item.relation_reason}",
+                )
+        weak: list[str] = []
+        for item in external:
+            matched, stated = self._attributes_matched(claim, item.text)
+            required = {"metric"} | (stated & {"period", "scopes"})
+            if required <= matched and len(matched) >= self.settings.support_min_attributes:
+                return (
+                    VerificationStatus.SUPPORTED,
+                    f"Một nguồn ngoài tài liệu tuyên bố xác nhận: {item.relation_reason} "
+                    f"Thuộc tính khớp: {', '.join(sorted(matched))}.",
+                )
+            weak.append(", ".join(sorted(matched)) or "không")
         if external:
-            reason = external[0].relation_reason
             return (
-                VerificationStatus.SUPPORTED,
-                f"Một nguồn ngoài tài liệu tuyên bố xác nhận: {reason}",
+                VerificationStatus.PARTIALLY_SUPPORTED,
+                "Có xác nhận định tính từ nguồn khác nhưng chưa có số liệu và câu xác nhận "
+                f"không nêu đủ chỉ số/kỳ/phạm vi của tuyên bố (thuộc tính khớp: {weak[0]}); cần người xem.",
             )
         if any(e.score >= self.settings.partial_support_score for e in supporting):
             return (
@@ -292,6 +316,7 @@ class VerificationAgent:
             lexicon=self.lexicon,
             claim_tokens=self._topic_tokens(claim),
             claim_bigrams=content_bigrams(claim.text),
+            topic_terms=self._taxonomy_terms(claim),
         )
         if cue is not None:
             # A quantified claim is confirmed by its figure, not by a phrase. An
@@ -538,6 +563,47 @@ class VerificationAgent:
             return True
         return False
 
+    def _attributes_matched(self, claim: Claim, text: str) -> tuple[set[str], set[str]]:
+        """(attributes of the claim found in the passage, attributes the claim states).
+
+        Read on the sentences about the claim's metric so a period found in a
+        sentence about revenue does not count for an emissions claim.
+        """
+        stated: set[str] = set()
+        matched: set[str] = set()
+        sentences = self._metric_sentences(claim, text)
+        joined = " ".join(sentences)
+        folded = normalize_for_match(joined)
+        if claim.metric:
+            stated.add("metric")
+            if sentences and any(term in folded for term in self._metric_terms(claim)):
+                matched.add("metric")
+        if claim.period:
+            stated.add("period")
+            if claim.period in YEAR_RE.findall(joined):
+                matched.add("period")
+        if claim.baseline:
+            stated.add("baseline")
+            if claim.baseline in YEAR_RE.findall(joined):
+                matched.add("baseline")
+        claim_scopes = emission_scopes(claim.text)
+        if claim_scopes:
+            stated.add("scopes")
+            if emission_scopes(joined) == claim_scopes:
+                matched.add("scopes")
+        elif claim.scope:
+            stated.add("scopes")
+            entry = (self.taxonomy.get("scope_buckets") or {}).get(claim.scope) or {}
+            terms = [normalize_for_match(t) for lang in ("vi", "en") for t in entry.get(lang) or []]
+            if any(term in folded for term in terms):
+                matched.add("scopes")
+        if claim.direction:
+            stated.add("direction")
+            regex = _DECREASE_RE if claim.direction == "decrease" else _INCREASE_RE
+            if regex.search(joined.lower()):
+                matched.add("direction")
+        return matched, stated
+
     @staticmethod
     def _metric_overlap(claim: Claim, evidence: list[RetrievedEvidence]) -> float:
         """Share of the claim's content tokens present in the top passages.
@@ -563,6 +629,15 @@ class VerificationAgent:
                 for term in (entry or {}).get(language) or []:
                     tokens.update(content_tokens(term))
         return tokens
+
+    def _taxonomy_terms(self, claim: Claim) -> set[str]:
+        """Accented vocabulary of the claim's type and metric from the taxonomy."""
+        terms: set[str] = set()
+        for section, key in (("claim_types", claim.claim_type), ("metrics", claim.metric)):
+            entry = (self.taxonomy.get(section) or {}).get(key) if key else None
+            for language in ("vi", "en"):
+                terms.update((entry or {}).get(language) or [])
+        return terms
 
     def _metric_terms(self, claim: Claim) -> list[str]:
         entry = (self.taxonomy.get("metrics") or {}).get(claim.metric) if claim.metric else None

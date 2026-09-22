@@ -74,15 +74,50 @@ NEGATIONS = ("không", "chưa", "chẳng", "khong", "chua", "chang",
              "not", "no", "never", "without", "neither", "nor", "lack", "lacked", "lacking", "lacks")
 _NEGATION_WINDOW = 4
 
+# A refutation cue that names what the subject *prevents* is not a refutation:
+# "ngăn chặn hành vi thiếu minh bạch", "tránh sai lệch", "policies to prevent
+# misleading statements". Read as two-word phrases as well as single words so
+# "ngăn chặn" and "phòng ngừa" are caught after tokenisation.
+PREVENTIONS = ("ngăn chặn", "ngăn ngừa", "phòng ngừa", "phòng chống", "tránh", "loại bỏ", "chống",
+               "không để", "hạn chế", "giảm thiểu", "khắc phục",
+               "ngan chan", "ngan ngua", "phong ngua", "phong chong", "tranh", "loai bo", "chong",
+               "khong de", "han che", "giam thieu", "khac phuc",
+               "prevent", "prevents", "preventing", "avoid", "avoids", "avoiding", "eliminate",
+               "eliminates", "eliminating", "mitigate", "mitigates", "mitigating", "against", "remedy", "remedied")
 
-def _negated(sentence: str, term: str) -> bool:
-    """Is any occurrence of `term` in `sentence` preceded by a negation within the window."""
+
+def _preceded_by(sentence: str, term: str, words: tuple[str, ...], window: int) -> bool:
     haystack = normalize_text(sentence).lower()
     folded = normalize_for_match(sentence)
     for text, needle in ((haystack, term), (folded, normalize_for_match(term))):
         for match in re.finditer(r"(?<!\w)" + re.escape(needle) + r"(?!\w)", text):
-            before = re.findall(r"[\w]+", text[: match.start()])[-_NEGATION_WINDOW:]
-            if any(word in NEGATIONS for word in before):
+            before = re.findall(r"[\w]+", text[: match.start()])[-window:]
+            joined = " ".join(before)
+            if any(word in before for word in words) or any(" " in w and w in joined for w in words):
+                return True
+    return False
+
+
+def _negated(sentence: str, term: str) -> bool:
+    """Is any occurrence of `term` in `sentence` preceded by a negation within the window."""
+    return _preceded_by(sentence, term, NEGATIONS, _NEGATION_WINDOW)
+
+
+def _prevented(sentence: str, term: str) -> bool:
+    """Is the refutation cue the object of a prevention verb in the same clause.
+
+    "ngăn chặn mọi hình thức trốn thuế hoặc hành vi thiếu minh bạch": the verb
+    governs everything up to the next clause boundary, so the clause (from the
+    last comma/semicolon) is read rather than a fixed word window.
+    """
+    haystack = normalize_text(sentence).lower()
+    folded = normalize_for_match(sentence)
+    for text, needle in ((haystack, term), (folded, normalize_for_match(term))):
+        for match in re.finditer(r"(?<!\w)" + re.escape(needle) + r"(?!\w)", text):
+            clause = re.split(r"[,;:()]", text[: match.start()])[-1]
+            words = re.findall(r"[\w]+", clause)
+            joined = " ".join(words)
+            if any(re.search(r"(?<!\w)" + re.escape(w) + r"(?!\w)", joined) for w in PREVENTIONS):
                 return True
     return False
 
@@ -134,10 +169,17 @@ class StanceLexicon:
         return [term for term, pattern in table[family] if pattern.search(haystack)]
 
     def strip_benign(self, text: str) -> str:
+        """Remove benign phrases together with the clause they govern.
+
+        "không phát sinh vi phạm liên quan đến bảo vệ môi trường": stripping only
+        "không phát sinh" left "vi phạm" standing as a refutation of a claim it
+        in fact confirms. The phrase and everything up to the next clause
+        boundary go together.
+        """
         accented = _has_diacritics(text)
         haystack = normalize_text(text).lower() if accented else normalize_for_match(text)
         for _, pattern in (self._accented if accented else self._folded)["benign"]:
-            haystack = pattern.sub(" ", haystack)
+            haystack = re.sub(pattern.pattern + r"[^,;:.!?]*", " ", haystack)
         return haystack
 
 
@@ -150,6 +192,7 @@ def qualitative_stance(
     lexicon: StanceLexicon,
     claim_tokens: set[str] | None = None,
     claim_bigrams: set[str] | None = None,
+    topic_terms: set[str] | None = None,
 ) -> StanceSignal | None:
     """Stance from cue phrases, or None when the passage does not speak to the claim.
 
@@ -166,7 +209,17 @@ def qualitative_stance(
     Returning None is the honest outcome for a passage that mentions the topic
     but takes no position; the caller falls back to its similarity-based reading.
     """
-    adjudicative = bool(lexicon.hits("adjudicative", evidence_text))
+    # A passage speaks with authority when its source is a legal/standard
+    # document, or when one of its sentences is a ruling *on statements* (an
+    # adjudicative voice and a statement noun together). The adjudicative
+    # voice alone is not enough: a company's own report saying it "builds
+    # trust with regulators" contains an adjudicative term and is nobody's
+    # finding -- that passage refuted a Hòa Phát tax-compliance sentence
+    # with the cue "thiếu" from "thiếu minh bạch" (ISSUES N2).
+    adjudicative = any(
+        _rules_on_statements(lexicon, sentence)
+        for sentence in (split_sentences(evidence_text) or [evidence_text])
+    )
     authoritative = adjudicative or source_type in AUTHORITATIVE_SOURCES
     on_topic = overlap >= minimum_overlap
 
@@ -185,6 +238,7 @@ def qualitative_stance(
         refuting = _cues_in_claim_sentences(
             lexicon, "refutes", evidence_text, claim_tokens,
             require_shared=True, authoritative=authoritative,
+            shared_bigrams=None if authoritative else _topic_bigrams(claim_bigrams, topic_terms),
         )
         if refuting:
             return StanceSignal(
@@ -252,9 +306,27 @@ def _cues_in_claim_sentences(
         for term in lexicon.hits(family, cleaned):
             if family == "supports" and _negated(sentence, term):
                 continue
+            if family == "refutes" and _prevented(sentence, term):
+                continue
             if term not in found:
                 found.append(term)
     return found
+
+
+def _topic_bigrams(claim_bigrams: set[str] | None, topic_terms: set[str] | None) -> set[str] | None:
+    """Syllable bigrams of the claim plus of its taxonomy vocabulary; None keeps the token rule.
+
+    A company's own passage refutes a claim only when the refuting sentence is
+    about the claim's subject in these terms. "thiếu tiêu chuẩn thống nhất"
+    about imported steel shared "sản phẩm" with a consumer-products sentence
+    and contradicted it (Hòa Phát, 2026-09-22).
+    """
+    if claim_bigrams is None and topic_terms is None:
+        return None
+    bigrams: set[str] = set(claim_bigrams or ())
+    for term in topic_terms or ():
+        bigrams |= content_bigrams(term)
+    return bigrams or None
 
 
 def _rules_on_statements(lexicon: StanceLexicon, sentence: str) -> bool:
