@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "greenscan-vn30-dataset-crawler"
+version = "1.0.0"
+description = "Crawler and dataset builder for 30 Vietnamese CSI companies, 2021-2025."
+requires-python = ">=3.10"
+dependencies = [
+  "httpx>=0.27,<1", "beautifulsoup4>=4.12,<5", "lxml>=5,<7",
+  "PyYAML>=6,<7", "pydantic>=2.8,<3", "tenacity>=9,<10",
+  "rich>=13.7,<15", "PyMuPDF>=1.24,<2", "pypdf>=5,<7",
+  "python-docx>=1.1,<2", "openpyxl>=3.1,<4", "rapidfuzz>=3.9,<4",
+  "pandas>=2.2,<3"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9", "ruff>=0.8,<1"]
+ocr = ["pytesseract>=0.3.13,<1", "Pillow>=10,<12"]
+
+[project.scripts]
+greenscan-vn-crawl = "crawler.cli:main"
+greenscan-vn-dataset = "dataset.cli:main"
+
+[tool.setuptools]
+packages = ["crawler", "dataset"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,329 @@
+INFO === bid (BID) ===
+INFO HTTP Request: GET https://bidv.com.vn/robots.txt "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://bidv.com.vn/wps/wcm/connect/fa0ea9f4-b9dd-47e5-a5e2-2d45c99b5b9f/20260730+-+BID+-+CBTT+BCTC+HN+giua+nien+do+Q2.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-fa0ea9f4-b9dd-47e5-a5e2-2d45c99b5b9f-p-TOwvP "HTTP/1.1 200 OK"
+INFO downloaded https://bidv.com.vn/wps/wcm/connect/fa0ea9f4-b9dd-47e5-a5e2-2d45c99b5b9f/20260730+-+B -> d754ea79667f01a7d65959327b72094734ec3631997787750e040f3994438eca.pdf
+INFO HTTP Request: GET https://bidv.com.vn/wps/wcm/connect/e9a9be39-3718-4acd-bd1d-cb70702f0497/20260730+-+BID+-+CBTT+BCTC+RL+giua+nien+do+Q2.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-e9a9be39-3718-4acd-bd1d-cb70702f0497-p-TOh2K "HTTP/1.1 200 OK"
+INFO downloaded https://bidv.com.vn/wps/wcm/connect/e9a9be39-3718-4acd-bd1d-cb70702f0497/20260730+-+B -> aa877358f91d051a3d8fe9b555efade158e827b44480efaa6b5df76dd080e1b5.pdf
+INFO HTTP Request: GET https://bidv.com.vn/wps/wcm/connect/faa3ea1f-a866-4361-aa00-dd5928999f6f/20260424+-+BID+-+CBTT+BCTC+HN+giua+nien+do+Q1.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-faa3ea1f-a866-4361-aa00-dd5928999f6f-pS-QcnJ "HTTP/1.1 200 OK"
+INFO downloaded https://bidv.com.vn/wps/wcm/connect/faa3ea1f-a866-4361-aa00-dd5928999f6f/20260424+-+B -> d36307231ba799a3f7c0609eeeb74cce5dc58480a4a06d15b37182ec4c3367fe.pdf
+INFO HTTP Request: GET https://bidv.com.vn/wps/wcm/connect/490ca31d-6056-4998-92e5-a1c1fd8b2653/20260424+-+BID+-+CBTT+BCTC+RL+giua+nien+do+Q1.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-490ca31d-6056-4998-92e5-a1c1fd8b2653-pS-PY0O "HTTP/1.1 200 OK"
+INFO downloaded https://bidv.com.vn/wps/wcm/connect/490ca31d-6056-4998-92e5-a1c1fd8b2653/20260424+-+B -> de11632af293c8b6029f107ba1a3974e706fc05b66938ca390f25a095be1756b.pdf
+INFO HTTP Request: GET https://bidv.com.vn/wps/wcm/connect/f40205f8-b854-48ab-aab5-e3bfcb5d7d40/20260330+-+BID+-+CBTT+BCTC+HN+2025.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-f40205f8-b854-48ab-aab5-e3bfcb5d7d40-pR1RUJh "HTTP/1.1 200 OK"
+INFO downloaded https://bidv.com.vn/wps/wcm/connect/f40205f8-b854-48ab-aab5-e3bfcb5d7d40/20260330+-+B -> 8ed91e0b19b0ec628f77d20befbbca6ef06f620d3b6689280769c0e17ef3befd.pdf
+INFO HTTP Request: GET https://bidv.com.vn/wps/wcm/connect/b65aa4e1-cf9d-4e53-88ef-e4bf9bf65f0b/20260330+-+BID+-+CBTT+BCTC+RL+2025.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-b65aa4e1-cf9d-4e53-88ef-e4bf9bf65f0b-pR1RPhz "HTTP/1.1 200 OK"
+INFO downloaded https://bidv.com.vn/wps/wcm/connect/b65aa4e1-cf9d-4e53-88ef-e4bf9bf65f0b/20260330+-+B -> 5fe05f3321a377349cf4ba114a163ecea13e290feafe3d6b4a0412a676ca57f2.pdf
+INFO HTTP Request: GET https://bidv.com.vn/bidv/quan-he-nha-dau-tu/bao-cao-va-tai-lieu/baocaothuongnien/2026/baocaophattrienbenvungbidv2025 "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://bidv.com.vn/bidv/quan-he-nha-dau-tu/bao-cao-va-tai-lieu/baocaothuongnien/2026/bctn+2025 "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://bidv.com.vn/bidv/quan-he-nha-dau-tu/bao-cao-va-tai-lieu/baocaothuongnien/2025/bcptbv2024 "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://bidv.com.vn/bidv/quan-he-nha-dau-tu/bao-cao-va-tai-lieu/baocaothuongnien/2025/bctn+2024 "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://bidv.com.vn/bidv/quan-he-nha-dau-tu/bao-cao-va-tai-lieu/baocaothuongnien/2024/bctn2023 "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://bidv.com.vn/bidv/quan-he-nha-dau-tu/bao-cao-va-tai-lieu/baocaothuongnien/2024/bcptbv2023 "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://bidv.com.vn/bidv/quan-he-nha-dau-tu/bao-cao-va-tai-lieu/baocaothuongnien/2023/cbttbaocaothuongnien2022 "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://bidv.com.vn/bidv/quan-he-nha-dau-tu/bao-cao-va-tai-lieu/baocaothuongnien/2022/cbttbctn2021 "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://bidv.com.vn/bidv/quan-he-nha-dau-tu/bao-cao-va-tai-lieu/baocaothuongnien/2021/baocaothuongnien2020 "HTTP/1.1 200 OK"
+INFO === ctg (CTG) ===
+INFO HTTP Request: GET https://www.vietinbank.vn/robots.txt "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://investor.vietinbank.vn/robots.txt "HTTP/1.1 200 "
+INFO === pan (PAN) ===
+INFO HTTP Request: GET https://thepangroup.vn/robots.txt "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://thepangroup.vn/invitation-and-documents-for-the-2026-annual-general-meeting-of-shareholders-4502.htm "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://thepangroup.vn/invitation-letter-documents-for-the-2025-annual-general-meeting-of-shareholders-4413.htm "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://thepangroup.vn/invitation-letter-documents-for-the-annual-general-meeting-of-shareholders-in-2024-4276.htm "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://thepangroup.vn/invitation-letter-documents-for-the-annual-general-meeting-of-shareholders-in-2023-4193.htm "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://thepangroup.vn/invitation-to-attend-2022-annual-general-meeting-of-shareholders-agm-of-the-pan-group-and-disclosing-documents-of-the-agm-4108.htm "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://thepangroup.vn/invitation-to-attend-2021-annual-general-meeting-of-shareholders-agm-of-the-pan-group-and-disclosing-documents-of-the-agm-2841.htm "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://thepangroup.vn/invitation-to-attend-2019-annual-general-meeting-of-shareholders-agm-of-the-pan-group-and-disclosing-documents-of-the-agm-2668.htm "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://thepangroup.vn/invitation-to-attend-2019-annual-general-meeting-of-shareholders-agm-of-the-pan-group-and-disclosing-documents-of-the-agm-2506.htm "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://storage.thepangroup.vn/robots.txt "HTTP/1.1 404 Not Found"
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2026/04/19/the-pan-group-ar-pan-eng-639121904546925420.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2026/04/19/the-pan-group-ar-pan-eng-6391219045469 -> b09c44a7a28c9f1144c4533ed4c0f907028942ee28dc08782d3c673e83622d62.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2025/05/21/bctn2024-view-eng-1-638834220678048356.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2025/05/21/bctn2024-view-eng-1-638834220678048356 -> da72e17d30cb9e4a71abbc430c8ee9194b895931040b74c1d9e2429e995372d9.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2024/06/17/bctn-view-eng-240614-638542415945116624.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2024/06/17/bctn-view-eng-240614-63854241594511662 -> 4bb04e4fc30cc5bd2d024da9d35985c6a7e4efe60ac6dc025fd587d3971ea07a.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2023/06/22/bctn-eng-final-view-230621-638230418225109645.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2023/06/22/bctn-eng-final-view-230621-63823041822 -> c96265ecc5cfe3d99a191da9deee5aa4ab3a6ceacabf5f75cf7588c9bb1ecf65.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2022/06/09/pan-bctn2021-eng-fa-view-compressed-637903946159486134.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2022/06/09/pan-bctn2021-eng-fa-view-compressed-63 -> 433d3c2e7f5283a906b322efb47e1fa731a03662c4330bd1c0be3261c4c0cedf.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2021/06/18/the-pan-group-bctn-2020-eng-0618-637596149153748967.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2021/06/18/the-pan-group-bctn-2020-eng-0618-63759 -> dae2855175aa4014d347bbbd9c70a2333f764dfac2c32afe3b10b1fa318ab3ef.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2020/06/11/the-pan-group-bctn-2019-eng-637275063581446768.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2020/06/11/the-pan-group-bctn-2019-eng-6372750635 -> d269012c273ca8de1bec5719cadd53d601daeb2fd845597a5a16a8dbb38b8582.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2019/06/13/pan-ar-eng-190610-compressed-2-636960319864565524.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2019/06/13/pan-ar-eng-190610-compressed-2-6369603 -> 3e5257ef2314c646db1e62b820bddfdf7373ed0f8a9fbeea023e8a71c07bb1dc.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/Upload/Reports/AnnualReport/PAN-AR-Eng2105-Review_1_2018_10_f84b7ccdb08a43298f9f9309724f10e0.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/Upload/Reports/AnnualReport/PAN-AR-Eng2105-Review -> 10da019513e0410616222c6d8d5104fa78c23cb1ececac3488fe2d9c388b3415.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2019/03/30/ar-en-1-2018-12-e5ce371f1ef04ad7a4acaa13f6daedde-636895851230166349.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2019/03/30/ar-en-1-2018-12-e5ce371f1ef04ad7a4acaa -> 767eaa471aad056c4f37fa268a4d37a33340ae4e6a5050e6300092a5124dc7dc.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2026/04/19/the-pan-group-sr-pan-eng-639121911328657212.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2026/04/19/the-pan-group-sr-pan-eng-6391219113286 -> 6a7170ffe7de7d941a0a2c40d6489a444cdb54d420514ed64c40405c93f147d4.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2025/05/21/bcptbv2024-view-eng-1-638834223601647864.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2025/05/21/bcptbv2024-view-eng-1-6388342236016478 -> ddf0c13e14816d38c8a452c59627b8599e6cdfcd72e3247a403895898e5dcd8d.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2024/06/17/bcptbv-view-eng-240617-min-638542427625295934.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2024/06/17/bcptbv-view-eng-240617-min-63854242762 -> db8e065c48fb7442c23261b85c5d29b4242de0f26fe50b5dc39d39e895423441.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2023/06/22/bcptbv-eng-view-638230419252612102.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2023/06/22/bcptbv-eng-view-638230419252612102.pdf -> c8316d068e94546865b1974322ea3b2f4a36eddb2129fc1b3c8f72cda683057c.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2022/06/16/pan-bcptbv2021-eng-v6-01062022-compressed-637909760708528671.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2022/06/16/pan-bcptbv2021-eng-v6-01062022-compres -> a093a66f1c5c63aed0873c39afefa980a2be2310beb9a728463f875a498cf52b.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2021/08/16/the-pan-group-sr-2020-en-2-637647225443432370.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2021/08/16/the-pan-group-sr-2020-en-2-63764722544 -> 90da9a635f95b47d72357232f4c1bd0dc24190237eb86dfb36ea222817ee3e37.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2020/05/15/bc-ptbv-2019-eng-final-637251504802750169.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2020/05/15/bc-ptbv-2019-eng-final-637251504802750 -> 138e91dfd95a83b0ef776d8f5b498ef589ba0442ee22de84614fa3aa20a4189c.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2019/07/25/sr-pan-2018-english-final-636996603806370799.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2019/07/25/sr-pan-2018-english-final-636996603806 -> 829bd7cca793353b06eeb9d387024708622043c23139a6f7045e1b51df5108f7.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/Upload/Reports/AnnualReport/(EN)%20PAN%20SR%202017_View_1_2018_10_ed623f5c483344ac81eb156e5e158a18.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/Upload/Reports/AnnualReport/(EN) PAN SR 2017_View -> 90b11e8d7d353d1b259401e5745f2228e8e8e7b9aab9f889c62f246aaf3219f2.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2019/03/30/sr-en-1-2018-12-5834277fb9684ac5ba9c52a8eb097e43-636895498917469048.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2019/03/30/sr-en-1-2018-12-5834277fb9684ac5ba9c52 -> 0b79c8ada81855026bc2bfb567cbf3c165cae6c4868003ccff69ee5093c3e2b0.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2026/01/30/20260130-pan-report-on-company-governance-2025-censored-signed-639053937144009338.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2026/01/30/20260130-pan-report-on-company-governa -> 687f78a18e2490967172d4915247e63f73d4ba6148c7ebd570f1aa490540c61e.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2025/01/24/20250124-pan-bao-cao-quan-tri-2024-eng-cen-638733451249310175.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2025/01/24/20250124-pan-bao-cao-quan-tri-2024-eng -> 124755d0ab68c56412ec00193e5d7528fc64dc04aee3be928bea80a9702392e4.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2026/03/31/20260331-pan-audited-2025-separate-financial-statements-signed-639105562402478240.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2026/03/31/20260331-pan-audited-2025-separate-fin -> 16072fe064c00c9ab0200533794f180c8ec4a4645de1b83ee922cb26119838db.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2026/03/31/20260331-pan-audited-2025-consolidated-financial-statements-signed-639105562721072899.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2026/03/31/20260331-pan-audited-2025-consolidated -> 751e86f5fea3865d955fa55a64876e3a73daba560d42b676ac83bab8f7a7b38b.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2025/03/31/20250331-pan-audited-2024-consolidated-fs-638790383114311854.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2025/03/31/20250331-pan-audited-2024-consolidated -> f1d6fb0dde557d9e098e13cc10ca0b0506e10e446f3ac6dc8122c4fa560df006.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2025/03/31/20250331-pan-audited-2024-seperate-fs-638790382949311121.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2025/03/31/20250331-pan-audited-2024-seperate-fs- -> 4ae58686011817332036b09515ab76a9e7b0e0d0507a0eeda63f7e6b830ddd41.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2024/04/02/vfs-consol-pan-group-31-dec-2023-e-638476667405562123.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2024/04/02/vfs-consol-pan-group-31-dec-2023-e-638 -> 224a301b6340a6c2c132b3b7b70f85b25ddc18845337d460b32f75d2712413c3.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2024/04/02/vfs-sepa-pan-group-31-dec-2023-e-638476666977592647.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2024/04/02/vfs-sepa-pan-group-31-dec-2023-e-63847 -> f62cf4ce260002fd733b1b4d42cf200f7178c0e963853558d2fc45a97e5ce259.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2023/04/19/efs-sepa-pan-group-31-12-2022-638175107866009475.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2023/04/19/efs-sepa-pan-group-31-12-2022-63817510 -> 1cfc00e329b1f9839c5e8869a176cfa27e561717e71df445732b720107ae308d.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2023/04/19/efs-consol-pan-group-31-12-2022-638175108928980628.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2023/04/19/efs-consol-pan-group-31-12-2022-638175 -> ed9298d58902b0e81a6d5fe2adecce0fcbbe4e1c5f36b0aefae17a20352ce3d6.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2022/03/31/pan-group-efs-separate-31-12-2021-637843598641858621.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2022/03/31/pan-group-efs-separate-31-12-2021-6378 -> 4ea0205706dc2e45ed42e0cc87a03e0e088fe553bebeb6d4f0264834ba9b9955.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2022/03/31/pan-group-efs-consolitedated-31-12-2021-637843598825921765.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2022/03/31/pan-group-efs-consolitedated-31-12-202 -> bf08df2836254a849cd76ce181c9dbb2648b18511f95cac406982ff60b0a0567.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2021/05/26/pan-group-efs-consol-31-12-637576459895801744.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2021/05/26/pan-group-efs-consol-31-12-63757645989 -> 97e5b9798266292d8d3a35690e8262991250a7e3285670ddf3dfc5564a13de04.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2021/03/30/pan-group-separate-vfs-31-12-2020-637526859506686210.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2021/03/30/pan-group-separate-vfs-31-12-2020-6375 -> e591fdd7b1bd107df88897ee8467e3b33166ddff018e57c1ee1a1ddaa53b3843.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2020/03/30/pan-00-31-12-2019-fs-consol-e-637211691317978609.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2020/03/30/pan-00-31-12-2019-fs-consol-e-63721169 -> 5f16c942cfe02dc17adefedcf1480c51ee428c0d371cff5328b7031464946ea3.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2020/03/30/pan-00-fs-sep-e-637211691512129729.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2020/03/30/pan-00-fs-sep-e-637211691512129729.pdf -> 2c8022abb6824ad9b55cb90a40553687e7296e7534c3a38b485e64c963e91e53.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2019/03/30/pan-group-bctc-hop-nhat-31-12-18-e-version-cbtt-636895821181036763.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2019/03/30/pan-group-bctc-hop-nhat-31-12-18-e-ver -> 26b6ac6341a3f95b999024e3c290eae4669a936eccc17b574041b8b861904172.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2019/03/30/pan-01-31-12-18-bctc-rieng-e-v25-3-formatted-636895818096343234.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2019/03/30/pan-01-31-12-18-bctc-rieng-e-v25-3-for -> 82cf07c1ea907350e1d3d697379919a1786bab49b5c5cb0c72e7d457986588d6.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2019/04/08/2017-q4-e-bctc-rieng-audited-636903345446350637.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2019/04/08/2017-q4-e-bctc-rieng-audited-636903345 -> f97da26bb2fae56202dc2bc70898eaba2af429f0b4f30c6df716372a3e2589f3.pdf
+INFO HTTP Request: GET https://storage.thepangroup.vn/Data/2019/04/08/2017-q4-e-bctc-hop-nhat-audited-636903345445881923.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://storage.thepangroup.vn/Data/2019/04/08/2017-q4-e-bctc-hop-nhat-audited-636903 -> 0b6adea1c624e06069f1303d8e639b204c5f9306edc4d99c150824d75452439b.pdf
+INFO === dhg (DHG) ===
+INFO HTTP Request: GET https://dhgpharma.com.vn/robots.txt "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2026-04/VN-Annual-Report-2025.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2026-04/VN-Annual-Report-2025.pdf -> 3a834bf068c3f53e75881bf90a8040540be91db3ac5a020e5df63d2bb18a77b0.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2025-04/1.%20Bao-cao-thuong-nien-2024.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2025-04/1.%20Bao-cao-thuong-nien-2024.pd -> 2035fdc39ce8985122a930228e030b1a3815d24f52e158039615fc6c25dcc633.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2024-08/Bao-cao-Thuong-nien-2023%20%281%29_0.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2024-08/Bao-cao-Thuong-nien-2023%20%281% -> 80cec2bb585e4bb9bf125e20553796bb12ff17f1ca2539eeddfe6d546937356f.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2024-08/DHG-Bao-cao-ben-vung-2022.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2024-08/DHG-Bao-cao-ben-vung-2022.pdf -> 45eccd00742fcfe8f3f5b5991c5f16600670130b8b36304de0764974d065820b.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2024-08/Bao-cao-quan-tri-Cong-ty-2022.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2024-08/Bao-cao-quan-tri-Cong-ty-2022.pd -> 06eddf5bafca5792f83502975e471b07813a403ddca9994d21b8e27779f5a706.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2024-08/Bao-cao-thuong-nien-2022.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2024-08/Bao-cao-thuong-nien-2022.pdf -> 3ea6cc5eab6e2026e19000952d0398c1953550c8da6f52938a097f46ce0b1677.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2026-07/DHG-BCTC-Q2.2026.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2026-07/DHG-BCTC-Q2.2026.pdf -> 1392719107c3fbaba041bce44dd361e660643e8c089e876c6c3c6aa27cec7460.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2026-07/DHG-CBTT-giai-trinh-BCTC-Q2.2026.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2026-07/DHG-CBTT-giai-trinh-BCTC-Q2.2026 -> 56a375926711c8603f737c684530bd043059b56a2f4e48523d25e3579a8c9343.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2026-04/DHG-BCTC-Q1.2026.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2026-04/DHG-BCTC-Q1.2026.pdf -> bd4ba49dfdefffd11d0d1992c4ff6c9326a3048e0a8aab3d8c2fab13f93c1883.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2026-04/DHG-CBTT-giai-trinh-BCTC-Q1.2026.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2026-04/DHG-CBTT-giai-trinh-BCTC-Q1.2026 -> 665fdc76a34fe0dec602b9d0d65b6eef1828d51d231cfbb099e80d8163132d55.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2026-03/DHG-Audited-FS-2025-VN.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2026-03/DHG-Audited-FS-2025-VN.pdf -> abaaac8d3813329db1987e769f325fbee7b8c4776b4205b26a4673f95b589973.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2026-03/DHG-CBTT-giai-trinh-chenh-lech-BCTC-kiem-toan-2025.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2026-03/DHG-CBTT-giai-trinh-chenh-lech-B -> 44e1a5a5753f2e32d27aa0b438291e5cc0642f2cd0a947dfd09a337370b6ffb7.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2026-01/VN-DHG-BCTC-Q4.2025.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2026-01/VN-DHG-BCTC-Q4.2025.pdf -> 380e9b3181ddac599ed737ac5d07ff7a767428f7f360aea73ff06dab51bc6e60.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2026-01/DHG-CBTT-giai-trinh-KQKD-Q4.2025.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2026-01/DHG-CBTT-giai-trinh-KQKD-Q4.2025 -> db259dffb00df4f64661a6b0f68b38f1aa8e522d43af7a747ed3ffd855524e08.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2025-10/DHG-BCTC-Q3.2025_1.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2025-10/DHG-BCTC-Q3.2025_1.pdf -> 2cee63dfc3cd53893bfc693ca6c1afd19a5c59e9044822709f8925f923f54d0a.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2025-10/DHG-CBTT-giai-trinh-KQKD-Q3.2025_1.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2025-10/DHG-CBTT-giai-trinh-KQKD-Q3.2025 -> 995d5a1696715f2e83bc84f6b6b74856f41cb1407bbcbb3510ec7c757ecfd0e2.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2025-08/DHG-BCTC-6T.2025-soat-xet.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2025-08/DHG-BCTC-6T.2025-soat-xet.pdf -> 575995507c66790742e512212ae70ef3bbc15803cb1c733c1d30123a8c58346d.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2025-08/DHG-CBTT-giai-trinh-KQKD-6T.2025-SX.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2025-08/DHG-CBTT-giai-trinh-KQKD-6T.2025 -> 4f28b32621f8b975d1b5ab751e4d52d209a21627680f4559ee1daa87f9df69f3.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2026-07/VN-Bao-cao-quan-tri-Cong-ty-1H.2026.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2026-07/VN-Bao-cao-quan-tri-Cong-ty-1H.2 -> 101b0cca7f6788716fb14a413cb49e725b5de528d5b797159e72662512721ab0.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2026-01/VN-Bao-cao-quan-tri-Cong-ty-2025_0.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2026-01/VN-Bao-cao-quan-tri-Cong-ty-2025 -> 426a0105f94654f7fc1d881a5c74b653e399eb92fe5f3132baed5cc56f5e0088.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2025-07/VN-DHG-Bao-cao-quan-tri-Cong-ty-1H.2025.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2025-07/VN-DHG-Bao-cao-quan-tri-Cong-ty- -> 1b070c5b1bc370d85374681c48b049030d6e4aa3e6de0967d9d5bbb09342e7cc.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2025-01/VN-Bao-cao-quan-tri-Cong-ty-2024.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2025-01/VN-Bao-cao-quan-tri-Cong-ty-2024 -> 4199e0504b6100d75945b71686650a566119b4a239719214977c64a74983e802.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/images/2024/BCQT/Q3/VN-Bao-cao-quan-tri-Cong-ty-6T.2024.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/images/2024/BCQT/Q3/VN-Bao-cao-quan-tri- -> 1cf0bc58a1b28928b97f0c6cd7737482c37a67a9673267788b499d3a66ed5852.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/images/2024/BCQT/Q1/VN-Bao-cao-quan-tri-Cong-ty-2023.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/images/2024/BCQT/Q1/VN-Bao-cao-quan-tri- -> 9ca4b548b8d88ef70ada9e1961f7a7e5f7f39361f1a6b247e0721ac39edc8beb.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2026-07/DHG-disclosure-about-the-tax-related-violations.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2026-07/DHG-disclosure-about-the-tax-rel -> 3d6f130ffa331915b8ce2784743ef99784af705ad0f35b601f91fd367f1d8663.pdf
+INFO HTTP Request: GET https://dhgpharma.com.vn/sites/default/files/2026-06/DHG-Disclosure-on-signing-the-audit-contract-FY2026.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://dhgpharma.com.vn/sites/default/files/2026-06/DHG-Disclosure-on-signing-the-au -> 338b935a6f8e6929087d9e101a71098af3c7ffd34807dec01b7d55c4e884cd4d.pdf
+INFO === tra (TRA) ===
+INFO HTTP Request: GET https://traphaco.com.vn/robots.txt "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://traphaco.com.vn/media/investor_relation/files/Mgrv1g/20260415_tra_ar2025_vn.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/media/investor_relation/files/Mgrv1g/20260415_tra_ar2025_vn.p -> f1a715242af35d175d64754b34f602f9794c069d2b3150c3a097bf9d25519524.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/media/investor_relation/files/XBjwWN/20250416_tra_ar2024---vn_2.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/media/investor_relation/files/XBjwWN/20250416_tra_ar2024---vn -> 60842c5adcd5d5a88ce5fdeeb621ada61f471cd326d632b736d3197f1bf293a8.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/media/investor_relation/files/jgk3Yg/20240411_tra_ar2023_biadon_nen1.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/media/investor_relation/files/jgk3Yg/20240411_tra_ar2023_biad -> 92139ea9952d977a60347620d88214012b1424876e647bd0e2fec91896b3f099.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/upload/shareholder/attach/20230413_TRA_AR2022%20-%20VN.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/upload/shareholder/attach/20230413_TRA_AR2022 - VN.pdf -> 5ba9d210281c0bff023639724443fa103113d7ceb521ec4fcf63af1705853588.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/upload/shareholder/attach/20220329_TRA_AR2021%20-%20VN%20-%20web.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/upload/shareholder/attach/20220329_TRA_AR2021 - VN - web.pdf -> 11abcdc4dcbb70b3a609b1517504ea508c9af75aecef6827acefe09fe5230f83.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/upload/shareholder/attach/20210322_TRA_AR2020%20-%20kyduyet%20(1).pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/upload/shareholder/attach/20210322_TRA_AR2020 - kyduyet (1).p -> e816b43c78b8cfd45a5c2172b5a1e12c7e59fb2493692926b9632338b2013223.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/upload/shareholder/attach/20200730_TRA_SR2019_nen.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/upload/shareholder/attach/20200730_TRA_SR2019_nen.pdf -> 584d28da0cd417d9dc9384597f047c4ac422abd2a9e2cbb44e14351359dafafc.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/upload/shareholder/attach/20200330_TRA_AR2019_VN%20-%20web.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/upload/shareholder/attach/20200330_TRA_AR2019_VN - web.pdf -> 2077fb7f2b39563e22931421a371b4afce4eaf47b1ef9e03c1f72067f24324dd.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/upload/shareholder/attach/TRA_SR2018_VN%20-%20Final.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/upload/shareholder/attach/TRA_SR2018_VN - Final.pdf -> 2c4dd5d6c9cb60fe5d9694ec8a496e31ec96b045be32b3a153bb233dcd38b315.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/upload/shareholder/attach/20190513_TRA_AR2018_VN_Final_double-nen.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/upload/shareholder/attach/20190513_TRA_AR2018_VN_Final_double -> 686ed6926ac7cec71392f7b23e46aeae7121f17bf110684dc76482eddf6d66b6.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/upload/shareholder/attach/2018-11-26_TRA_SR2017_VN-compressed.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/upload/shareholder/attach/2018-11-26_TRA_SR2017_VN-compressed -> 3bcfe7abbe29c49bc754ff80658db6f24a82379951d0a5d0606dde111e690415.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/upload/shareholder/attach/20180328_TRA_AR2017_doi.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/upload/shareholder/attach/20180328_TRA_AR2017_doi.pdf -> a6172fdc55eaf0825b5f6121c13eb8494544d0e36cc1e2114e43ad871006110e.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/upload/shareholder/attach/BCTN%202016_TRAPHACO_doi_final.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/upload/shareholder/attach/BCTN 2016_TRAPHACO_doi_final.pdf -> 4d355160818ab293f94ed7e3997a150956075f35220794df41ff2eadadcc6ac1.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/upload/shareholder/attach/20160328-TRAPHACO-VN-WEB-Don.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/upload/shareholder/attach/20160328-TRAPHACO-VN-WEB-Don.pdf -> c937487e56ec8bb5d8c3265e591fbd1d32a3244338750772e2a445d8c95a193e.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/media/investor_relation/files/qgPzNw/4e6ed85ac26336d4dc5b5be3453d050d.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/media/investor_relation/files/qgPzNw/4e6ed85ac26336d4dc5b5be3 -> 1652370c95c7dbdf814f84078b63a2db937faf049ac594e308a94aff42694680.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/upload/shareholder/attach/traphaco-ar_2013_.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/upload/shareholder/attach/traphaco-ar_2013_.pdf -> afb6d2f55c63a2795d58ad420c7501f3c97f7ed942bf325f88666e1df8951163.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/upload/shareholder/attach/bctn_2012_final.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/upload/shareholder/attach/bctn_2012_final.pdf -> 9d0b182045ae9b9527b71975f844a971d31798e72c97131e7ab0a3c38f25eafc.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/upload/shareholder/attach/20120416%20Traphaco%20AR%202011%20VN%20web.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/upload/shareholder/attach/20120416 Traphaco AR 2011 VN web.pd -> 2bc51ebce9c09f14abfc045bd9d6cc9554c258cdcd63265a253120580b54d695.pdf
+INFO HTTP Request: GET https://traphaco.com.vn/upload/shareholder/attach/BCTN2010final.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://traphaco.com.vn/upload/shareholder/attach/BCTN2010final.pdf -> f6b33ecb13e0c0e2d0a75f2e70e4311d8fc60081614aaefd14d20a57e1f497b8.pdf
+INFO === tng (TNG) ===
+INFO HTTP Request: GET https://tng.vn/robots.txt "HTTP/1.1 404 Not Found"
+INFO === vcs (VCS) ===
+INFO HTTP Request: GET https://vicostone.com/robots.txt "HTTP/1.1 200 OK"
+INFO === bmp (BMP) ===
+INFO HTTP Request: GET https://binhminhplastic.com.vn/robots.txt "HTTP/1.1 200 OK"
+INFO === msr (MSR) ===
+INFO HTTP Request: GET https://masanhightechmaterials.com/robots.txt "HTTP/1.1 200 OK"
+INFO === pow (POW) ===
+INFO HTTP Request: GET https://pvpower.vn/robots.txt "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://pvpower.vn/pow-media/to-ir/20260730---POW---Bao-cao-tai-chinh-hop-nhat-Quy-2-2026.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://pvpower.vn/pow-media/to-ir/20260730---POW---Bao-cao-tai-chinh-hop-nhat-Quy-2- -> 4e888f2979eda1f503d154a66a7e90e29886bf5ef5b208ff6f8a4684a55ae697.pdf
+INFO HTTP Request: GET https://pvpower.vn/pow-media/to-ir/20260730---POW---Bao-cao-tai-chinh-rieng-Quy-2-2026.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://pvpower.vn/pow-media/to-ir/20260730---POW---Bao-cao-tai-chinh-rieng-Quy-2-202 -> 5a6493f7b7c76f53ac2815b959e5386f07292cb597617770ce81b7bdd43d8e75.pdf
+INFO HTTP Request: GET https://pvpower.vn/pow-media/to-ir/20260730---POW---Giai-trinh-mot-so-chi-tieu-tren-BCTC-Quy-2--2026.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://pvpower.vn/pow-media/to-ir/20260730---POW---Giai-trinh-mot-so-chi-tieu-tren-B -> a1770787e25987bed280903d83f32fd6377f3d2c228c6b8cfd011c5ec7926c7f.pdf
+INFO === hdb (HDB) ===
+INFO HTTP Request: GET https://hdbank.com.vn/robots.txt "HTTP/1.1 200 OK"
+INFO === mwg (MWG) ===
+INFO HTTP Request: GET https://mwg.vn/robots.txt "HTTP/1.1 200 OK"
+INFO === acg (ACG) ===
+INFO HTTP Request: GET https://ancuong.com/robots.txt "HTTP/1.1 200 OK"
+INFO === phr (PHR) ===
+INFO HTTP Request: GET https://phr.vn/robots.txt "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://phr.vn/thong-tin-co-dong.aspx?catid=6&newsid=6387&pageview=1 "HTTP/1.1 200 OK"
+INFO === fmc (FMC) ===
+INFO HTTP Request: GET https://www.fimexvn.com/robots.txt "HTTP/1.1 200 OK"
+INFO === cng (CNG) ===
+INFO HTTP Request: GET https://cngvietnam.com/robots.txt "HTTP/1.1 200 OK"
+INFO === ocb (OCB) ===
+INFO HTTP Request: GET https://www.ocb.com.vn/robots.txt "HTTP/1.1 200 OK"
+INFO === dgw (DGW) ===
+INFO HTTP Request: GET https://digiworld.com.vn/robots.txt "HTTP/1.1 200 OK"
+INFO === cdn (CDN) ===
+INFO HTTP Request: GET https://danangport.com/robots.txt "HTTP/1.1 200 OK"
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/03/02.-Thong-bao-moi-hop_VI_ban-dong-dau.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/03/02.-Thong-bao-moi-hop_VI_ban-dong-d -> d019e4faa097a942841598a6b6f60dc4405b99872be4aedff5b24e6edabff97d.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/04/1.-Du-thao-Chuong-trinh-Dai-hoi.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/04/1.-Du-thao-Chuong-trinh-Dai-hoi.pdf -> a84504ae15ce399a6c8b80969c53d9cc08666b2ff28e85bd3d864a3530338b65.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/03/4.-Giay-dang-ky-tham-du-Dai-hoi.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/03/4.-Giay-dang-ky-tham-du-Dai-hoi.pdf -> 141719a8ef75d4be0d2c96910ed85697116630ca207a0d31c2623a94ba575839.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/03/4.3.-Giay-uy-quyen-nhom-co-dong.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/03/4.3.-Giay-uy-quyen-nhom-co-dong.pdf -> 92eab50b8e0323bdc26d963d37df322d045a73ce8da9c587569e9d940d6d4902.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/03/4.2.-Giay-uy-quyen-ca-nhan.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/03/4.2.-Giay-uy-quyen-ca-nhan.pdf -> 317a91ac3a32f8c5a637eb8421f5ab969a86b1bf5897f703529e76d4fa08fcc5.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/03/4.1.-Giay-uy-quyen-to-chuc.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/03/4.1.-Giay-uy-quyen-to-chuc.pdf -> 90b30f9abcdd1efbd39a3f37bfed470975551c349bad94dbacc0f0a2da3bdd01.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/03/4.4.-Phieu-dong-gop-y-kien.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/03/4.4.-Phieu-dong-gop-y-kien.pdf -> 87744ae03c185811b4ed3c5c96e969b72c908c1331b2583a45683277c7722e71.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/03/3.-Du-thao-Quy-che-lam-viec-tai-Dai-hoi.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/03/3.-Du-thao-Quy-che-lam-viec-tai-Dai -> d8d93b7fcd00949d54e549cfcb022bc42f31bc3cdee54b35b714ca1660928397.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/04/10.-Quy-che-bau-cu.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/04/10.-Quy-che-bau-cu.pdf -> 59eff84e245cff576c0c0356806a6206873108a9bf5c60c48043dc324d4ccdde.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/04/3.-Bao-cao-hoat-dong-HDQT-42-BC-CDN.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/04/3.-Bao-cao-hoat-dong-HDQT-42-BC-CDN -> 928c2427ce866d0bc3a64cadd5775f17a35ef93b5feefffd6a32262b9e0af470.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/04/43-BC-CDN-27.03.2026.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/04/43-BC-CDN-27.03.2026.pdf -> 186d82b5c1cd9d2697f9d66ea565ad814c162931503ecd7d5c618a6c1e6531b3.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/04/6.-Bao-cao-so-454-BKS-Cang-Da-Nang-DHCD-2026.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/04/6.-Bao-cao-so-454-BKS-Cang-Da-Nang- -> 9c549f10bc0aa7139efae7b5e91fd25303059ef6055606ef53970a628a5aeb34.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/03/7.1.-Bao-cao-tu-danh-gia-ket-qua-hoat-dong-2025-cua-BKS-1.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/03/7.1.-Bao-cao-tu-danh-gia-ket-qua-ho -> 5a443d92ddac9cc2e605b35e201d1afa51f4fd810fe0a7df44d72f4854352519.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/03/8.-To-trinh-329-TTr-BKS-ve-Danh-sach-don-vi-kiem-toan-BCTC-2026.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/03/8.-To-trinh-329-TTr-BKS-ve-Danh-sac -> b129b1a3dca94842d933bc962082f72f1422807a24ea410a551058602a702df5.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/04/SIGNED1.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/04/SIGNED1.pdf -> a0c78edc8c7661ee67c745b461e0f043a0d3c04efa0f513d400a9c3f1af6772d.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/04/9.-To-trinh-ve-cong-tac-nhan-du-tai-Dai-hoi-1.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/04/9.-To-trinh-ve-cong-tac-nhan-du-tai -> 5fe68c4a61f84fcc034bbb9423d74e14b49298b7ecdc53a2d71f53901169ab36.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/03/09.-To-trinh-DHDCD-2026_VI_ban-dong-dau.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/03/09.-To-trinh-DHDCD-2026_VI_ban-dong -> 965dda09dda036bb31a6710530c9e67efa9b0b76a489e9c820e2934e821582b3.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/04/12.1.-Du-thao-Nghi-quyet-DHDCD-2026-ver-17042026-1.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/04/12.1.-Du-thao-Nghi-quyet-DHDCD-2026 -> 042659641a9401c27d4fab357fe5d869719a4e49876caf8dc4b915e4b5ba75ec.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/04/So-yeu-ly-lich-cua-ung-vien.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/04/So-yeu-ly-lich-cua-ung-vien.pdf -> b3944ca84cb6eaf4811a3b9f5c537a7685f85adbb12e476b5c01629228d14206.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/04/1.-Du-thao-Chuong-trinh-Dai-hoi-co-dong.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/04/1.-Du-thao-Chuong-trinh-Dai-hoi-co- -> 33c64b34cf0038f3ea8e5391adb3b02c547fb95ec949ae0b4fbafa92d5aeb8fa.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/04/42-BC-CDN-27.3.2026.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/04/42-BC-CDN-27.3.2026.pdf -> 0692c469fe723f3c7d2b5d6399bfa4b08c019514f01535400ed5eeab5f2508fd.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/03/10.-Du-thao-Nghi-quyet-DHDCD-2026-ver-25.3.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/03/10.-Du-thao-Nghi-quyet-DHDCD-2026-v -> 657b86238dbd9637a5179886cff6b921329163f6ec7a0b5b1228a29da16e843a.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/02/25-NQ-CDN-26.02.2026.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/02/25-NQ-CDN-26.02.2026.pdf -> 8c88284cb7e0a074f4a1146fa0a90a187c21047cc1331be436388da79ab12130.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2026/02/24-QD-CDN-12.02.2026.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2026/02/24-QD-CDN-12.02.2026.pdf -> 91899a11a07e43a78908665c2ef0241194f42d311147777b975898bd656edef8.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/07/905-CDN-TCKT-30.06.2025_0001.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/07/905-CDN-TCKT-30.06.2025_0001.pdf -> 770944639c1b1bc592c557e00b256a01892445c51e0529a1b5fcb8d76e080f89.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/04/ilovepdf_merged-14.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/04/ilovepdf_merged-14.pdf -> 0370fd542ab5d1c9cc355871de9916324c434b206f101fdb3a4695dc80e17f37.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/03/1.-Thong-bao-moi-hop.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/03/1.-Thong-bao-moi-hop.pdf -> 333d5d5e31f0414b606ac37585eda5afc8b1ab6ca0f3cecd38b742fb13e96893.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/03/2.-Du-thao-Chuong-trinh-Dai-hoi-co-dong.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/03/2.-Du-thao-Chuong-trinh-Dai-hoi-co- -> 72bd6213b5c8e229632794edb9524b2fd4615d7309f677bee040c63db37a63d0.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/03/3.-Giay-dang-ky-tham-du-Dai-hoi.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/03/3.-Giay-dang-ky-tham-du-Dai-hoi.pdf -> c03c326b171dddde0a9d6333dd11d4257fb1be82c44d73ebefb13d3076e9b4de.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/03/4.3.-Giay-uy-quyen-nhom-co-dong.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/03/4.3.-Giay-uy-quyen-nhom-co-dong.pdf -> b70c1ce364336b29fc7fd694af25cbd8a79d19f5e0d677d382cc3612e9411aeb.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/03/4.2.-Giay-uy-quyen-ca-nhan.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/03/4.2.-Giay-uy-quyen-ca-nhan.pdf -> ae797b45e673c58b78fa6427ba1255f96ae8be1ef0c5bad5cb2c9612d66bc4a7.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/03/4.1.-Giay-uy-quyen-to-chuc.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/03/4.1.-Giay-uy-quyen-to-chuc.pdf -> 3da160ae88e6a6c443edc66bbebb2d2668e8a0b69794f5a677f8ae859b145c8e.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/03/4.4.-Phieu-dong-gop-y-kien.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/03/4.4.-Phieu-dong-gop-y-kien.pdf -> dc9cfb054a7f8aa67996aff7731a1e0648c8179a8f89cd7e28663843450dbaa2.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/04/6.-Quy-che-lam-viec-Dai-hoi-dong-co-dong-nam-2025_0001-1.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/04/6.-Quy-che-lam-viec-Dai-hoi-dong-co -> fe36161a6c2f55169425d9484428e57468771d8f60241af7411bda091a5bc2c7.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/04/4.1.-Bao-cao-hoat-dong-HDQT-tai-Dai-hoi.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/04/4.1.-Bao-cao-hoat-dong-HDQT-tai-Dai -> 2a957f28f87b7c971e35371fabbc4eb96418a202b1851fecd42d25b495e31faf.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/04/4.2-Bao-cao-hoat-dong-cua-Thanh-vien-HDQT-doc-lap-nam-2025.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/04/4.2-Bao-cao-hoat-dong-cua-Thanh-vie -> 9d81a84b2be14ba7236a3bb24da7f44a4df96803772c23d5f0b81658ba8312fb.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/04/4.3.-Bao-cao-Ban-kiem-soat-nam-2024.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/04/4.3.-Bao-cao-Ban-kiem-soat-nam-2024 -> 0204f9d18cd97285d3bca310fe53b7f8ebbbe78af03ad4a324c181a69ff5fd99.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/04/4.4.-Bao-cao-tu-danh-gia-ket-qua-Ban-kiem-soat.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/04/4.4.-Bao-cao-tu-danh-gia-ket-qua-Ba -> a2a6de82e8cf967a162b8043b8d26f59aa087c033d3a1a03776c0ce490c2d203.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/04/3.1.-To-trinh-DHDCD-2025-ve-cong-tac-nhan-su-33-TTr-CDN-04.04.2025_0001-1.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/04/3.1.-To-trinh-DHDCD-2025-ve-cong-ta -> 562b99843630c0672ec30af2975b445ff366065506596f7c4908b8d92d357f2a.pdf
+INFO HTTP Request: GET https://danangport.com/wp-content/uploads/2025/04/3.3.-410-TTr-BKS-25.03.2025_0001-1.pdf "HTTP/1.1 200 OK"
+INFO downloaded https://danangport.com/wp-content/uploads/2025/04/3.3.-410-TTr-BKS-25.03.2025_0001-1. -> 38e0ee680f160e6ed527907ea2632ebcc6b2263b406fed2ccc8ce20925cf6e0b.pdf
+INFO === dmc (DMC) ===
+INFO HTTP Request: GET https://domesco.com/robots.txt "HTTP/1.1 200 OK"
+JS harvest totals: {'discovered': 590, 'downloaded': 134, 'duplicate': 0, 'skipped': 438}

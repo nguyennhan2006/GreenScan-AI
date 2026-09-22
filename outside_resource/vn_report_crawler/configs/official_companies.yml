@@ -1,0 +1,77 @@
+# Website chính thức của doanh nghiệp -- nguồn gốc, ưu tiên cao nhất sau sở giao dịch.
+defaults:
+  adapter: generic_html
+  authority: official_company
+  max_depth: 2
+  delay_seconds: 2.0
+  allowed_file_types: [pdf]
+  # Nhiễu quan sát được trong dry-run thật (hoaphat.com.vn, vinamilk.com.vn):
+  # công bố thay đổi ĐKDN, giao dịch cổ phiếu nội bộ, quy chế sàn TMĐT.
+  # Đây là công bố thông tin, không phải báo cáo -> loại khỏi corpus.
+  exclude_patterns:
+    - tuyển dụng
+    - sản phẩm
+    - khuyến mãi
+    - quy chế
+    - thay đổi đkdn
+    - thay-doi-dkdn
+    - giao dịch cổ phiếu
+    - giao-dich-co-phieu
+    - góp vốn thành lập
+    - gop-von-thanh-lap
+    - trả cổ tức
+    - tra-co-tuc
+  report_types:
+    sustainability:
+      - báo cáo phát triển bền vững
+      - sustainability report
+      - esg report
+    annual:
+      - báo cáo thường niên
+      - annual report
+    financial:
+      - báo cáo tài chính
+      - bctc
+      - financial statements
+    governance:
+      - báo cáo quản trị
+      - tình hình quản trị
+      - qtct
+      - corporate governance report
+    explanatory:
+      - giải trình
+      - kqkd
+
+sources:
+  # Dry-run 2026-07-29: 49 tài liệu, 49/49 phân loại được (100%), 2014-2026.
+  - id: vinamilk
+    company: Công ty Cổ phần Sữa Việt Nam
+    ticker: VNM
+    enabled: true
+    start_urls:
+      - https://www.vinamilk.com.vn/investor/reports/sustainability
+    # BẮT BUỘC có CDN: toàn bộ PDF nằm trên CloudFront, không phải vinamilk.com.vn.
+    # Thiếu domain này thì crawler chạy xong với 0 tài liệu.
+    allowed_domains: [vinamilk.com.vn, d8um25gjecm9v.cloudfront.net]
+
+  # Dry-run 2026-07-29: 29 tài liệu, 24/29 phân loại được (82%).
+  # 5 mục còn lại là công bố nghiệp vụ (ĐKCC cổ tức, tổng quan kinh doanh quý).
+  - id: hoaphat
+    company: Công ty Cổ phần Tập đoàn Hòa Phát
+    ticker: HPG
+    enabled: true
+    start_urls:
+      - https://www.hoaphat.com.vn/quan-he-co-dong/bao-cao-phat-trien-ben-vung
+      - https://www.hoaphat.com.vn/
+    allowed_domains: [hoaphat.com.vn, file.hoaphat.com.vn]
+
+  # CHẶN BOT: trả HTTP 403 cho cả httpx lẫn UA trình duyệt (kiểm tra 2026-07-29).
+  # Cần thoả thuận truy cập hoặc lấy tài liệu qua HNX/HOSE thay vì crawl trực tiếp.
+  - id: vingroup
+    company: Tập đoàn Vingroup
+    ticker: VIC
+    enabled: false
+    start_urls:
+      - https://vingroup.net/quan-he-co-dong/bao-cao-thuong-nien
+      - https://vingroup.net/phat-trien-ben-vung
+    allowed_domains: [vingroup.net, ircdn.vingroup.net]

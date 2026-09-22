@@ -1,0 +1,1066 @@
+companies:
+- id: vnm
+  ticker: VNM
+  exchange: HOSE
+  company: Công ty Cổ phần Sữa Việt Nam
+  sector: Thực phẩm - sữa
+  aliases:
+  - VNM
+  - Công ty Cổ phần Sữa Việt Nam
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - vinamilk.com.vn
+  attachment_domains:
+  - d8um25gjecm9v.cloudfront.net
+  official_start_urls:
+  - https://www.vinamilk.com.vn/investor/reports/annual/
+  - https://www.vinamilk.com.vn/investor/reports/sustainability/
+  - https://www.vinamilk.com.vn/investor/reports/financial/
+  - https://www.vinamilk.com.vn/investor/reports/governance/
+  - https://www.vinamilk.com.vn/investor/reports/amg/
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/vnm-tai-lieu.chn
+  - https://cafef.vn/du-lieu/vnm/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: pnj
+  ticker: PNJ
+  exchange: HOSE
+  company: Công ty Cổ phần Vàng bạc Đá quý Phú Nhuận
+  sector: Bán lẻ - trang sức
+  aliases:
+  - PNJ
+  - Công ty Cổ phần Vàng bạc Đá quý Phú Nhuận
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - pnj.com.vn
+  attachment_domains:
+  - cdn.pnj.io
+  official_start_urls:
+  - https://www.pnj.com.vn/quan-he-co-dong/bao-cao-thuong-nien/
+  - https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tai-chinh/
+  - https://www.pnj.com.vn/quan-he-co-dong/bao-cao-tinh-hinh-quan-tri-cong-ty/
+  - https://www.pnj.com.vn/quan-he-co-dong/dai-hoi-dong-co-dong/
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/pnj-tai-lieu.chn
+  - https://cafef.vn/du-lieu/pnj/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: bid
+  ticker: BID
+  exchange: HOSE
+  company: Ngân hàng TMCP Đầu tư và Phát triển Việt Nam
+  sector: Ngân hàng
+  aliases:
+  - BID
+  - Ngân hàng TMCP Đầu tư và Phát triển Việt Nam
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - bidv.com.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://bidv.com.vn/vn/quan-he-nha-dau-tu/bao-cao-va-tai-lieu
+  - https://bidv.com.vn/vn/quan-he-nha-dau-tu/cong-bo-thong-tin
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/bid-tai-lieu.chn
+  - https://cafef.vn/du-lieu/bid/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: ctg
+  ticker: CTG
+  exchange: HOSE
+  company: Ngân hàng TMCP Công Thương Việt Nam
+  sector: Ngân hàng
+  aliases:
+  - CTG
+  - Ngân hàng TMCP Công Thương Việt Nam
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - vietinbank.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://www.vietinbank.vn/vi/phat-trien-ben-vung
+  - https://investor.vietinbank.vn/
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/ctg-tai-lieu.chn
+  - https://cafef.vn/du-lieu/ctg/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: bvh
+  ticker: BVH
+  exchange: HOSE
+  company: Tập đoàn Bảo Việt
+  sector: Bảo hiểm - tài chính
+  aliases:
+  - BVH
+  - Tập đoàn Bảo Việt
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - baoviet.com.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://www.baoviet.com.vn/vi/quan-he-co-dong
+  - https://www.baoviet.com.vn/vi/bao-cao-ptbv
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/bvh-tai-lieu.chn
+  - https://cafef.vn/du-lieu/bvh/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: ctd
+  ticker: CTD
+  exchange: HOSE
+  company: Công ty Cổ phần Xây dựng Coteccons
+  sector: Xây dựng
+  aliases:
+  - CTD
+  - Công ty Cổ phần Xây dựng Coteccons
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - coteccons.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://www.coteccons.vn/investor-relations-vn/
+  - https://www.coteccons.vn/annual-report-vn/
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/ctd-tai-lieu.chn
+  - https://cafef.vn/du-lieu/ctd/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: sab
+  ticker: SAB
+  exchange: HOSE
+  company: Tổng Công ty Cổ phần Bia - Rượu - Nước giải khát Sài Gòn
+  sector: Đồ uống
+  aliases:
+  - SAB
+  - Tổng Công ty Cổ phần Bia - Rượu - Nước giải khát Sài Gòn
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - sabeco.com.vn
+  attachment_domains:
+  - stsbcwebsitemedia.blob.core.windows.net
+  official_start_urls:
+  - https://www.sabeco.com.vn/en-US/Default.aspx?zoneid=99
+  - https://www.sabeco.com.vn/en-US/investors/financial-statements
+  - https://www.sabeco.com.vn/en-US/investors/corporate-governance/governance-reports
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/sab-tai-lieu.chn
+  - https://cafef.vn/du-lieu/sab/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: pan
+  ticker: PAN
+  exchange: HOSE
+  company: Công ty Cổ phần Tập đoàn PAN
+  sector: Nông nghiệp - thực phẩm
+  aliases:
+  - PAN
+  - Công ty Cổ phần Tập đoàn PAN
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - thepangroup.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://thepangroup.vn/investor-relation/
+  - https://thepangroup.vn/investor-relation/investor-library/annual-report/
+  - https://thepangroup.vn/investor-relation/investor-library/sustainability-report/
+  - https://thepangroup.vn/investor-relation/investor-library/governance-report/
+  - https://thepangroup.vn/investor-relation/investor-library/financial-statements/
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/pan-tai-lieu.chn
+  - https://cafef.vn/du-lieu/pan/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: dhg
+  ticker: DHG
+  exchange: HOSE
+  company: Công ty Cổ phần Dược Hậu Giang
+  sector: Dược phẩm
+  aliases:
+  - DHG
+  - Công ty Cổ phần Dược Hậu Giang
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - dhgpharma.com.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://dhgpharma.com.vn/vi/bao-cao-thuong-nien
+  - https://dhgpharma.com.vn/vi/bao-cao-tai-chinh
+  - https://dhgpharma.com.vn/vi/bao-cao-quan-tri-cong-ty
+  - https://dhgpharma.com.vn/vi/thong-bao-co-dong
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/dhg-tai-lieu.chn
+  - https://cafef.vn/du-lieu/dhg/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: tra
+  ticker: TRA
+  exchange: HOSE
+  company: Công ty Cổ phần Traphaco
+  sector: Dược phẩm
+  aliases:
+  - TRA
+  - Công ty Cổ phần Traphaco
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - traphaco.com.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://traphaco.com.vn/shareholder/annual-report
+  - https://traphaco.com.vn/shareholder/financial-reports
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/tra-tai-lieu.chn
+  - https://cafef.vn/du-lieu/tra/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: tng
+  ticker: TNG
+  exchange: HNX
+  company: Công ty Cổ phần Đầu tư và Thương mại TNG
+  sector: Dệt may
+  aliases:
+  - TNG
+  - Công ty Cổ phần Đầu tư và Thương mại TNG
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - tng.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://tng.vn/quan-he-co-dong/
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hnx/tng-tai-lieu.chn
+  - https://cafef.vn/du-lieu/tng/bao-cao-tai-chinh.chn
+  hnx_urls:
+  - https://www.hnx.vn/vi-vn/cophieu-etfs/chi-tiet-chung-khoan-ny-tng.html
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: vcs
+  ticker: VCS
+  exchange: HNX
+  company: Công ty Cổ phần Vicostone
+  sector: Vật liệu xây dựng
+  aliases:
+  - VCS
+  - Công ty Cổ phần Vicostone
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - vicostone.com
+  attachment_domains: []
+  official_start_urls:
+  - https://vicostone.com/vi-vn/quan-he-co-dong
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hnx/vcs-tai-lieu.chn
+  - https://cafef.vn/du-lieu/vcs/bao-cao-tai-chinh.chn
+  hnx_urls:
+  - https://www.hnx.vn/vi-vn/cophieu-etfs/chi-tiet-chung-khoan-ny-vcs.html
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: bmp
+  ticker: BMP
+  exchange: HOSE
+  company: Công ty Cổ phần Nhựa Bình Minh
+  sector: Nhựa - vật liệu
+  aliases:
+  - BMP
+  - Công ty Cổ phần Nhựa Bình Minh
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - binhminhplastic.com.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://binhminhplastic.com.vn/tin-tuc/tin-tuc/nhua-binh-minh-tu-hao-don-nhan-giai-thuong-doanh-nghiep-tien-phong-phat-trien-ben-vung-cua-nganh-xay-dung-viet-nam-2026-vscf
+  - https://binhminhplastic.com.vn/phat-trien-ben-vung
+  - https://binhminhplastic.com.vn/co-dong/thong-tin-co-dong
+  - https://binhminhplastic.com.vn/co-dong/dieu-le-quy-che
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/bmp-tai-lieu.chn
+  - https://cafef.vn/du-lieu/bmp/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: msr
+  ticker: MSR
+  exchange: UPCOM
+  company: Công ty Cổ phần Masan High-Tech Materials
+  sector: Khai khoáng - vật liệu
+  aliases:
+  - MSR
+  - Công ty Cổ phần Masan High-Tech Materials
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - masanhightechmaterials.com
+  attachment_domains: []
+  official_start_urls:
+  - https://masanhightechmaterials.com/investor-relations/
+  cafef_urls:
+  - https://cafef.vn/du-lieu/upcom/msr-tai-lieu.chn
+  - https://cafef.vn/du-lieu/msr/bao-cao-tai-chinh.chn
+  hnx_urls:
+  - https://www.hnx.vn/vi-vn/cophieu-etfs/chi-tiet-chung-khoan-uc-msr.html
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: pow
+  ticker: POW
+  exchange: HOSE
+  company: Tổng Công ty Điện lực Dầu khí Việt Nam - CTCP
+  sector: Điện - năng lượng
+  aliases:
+  - POW
+  - Tổng Công ty Điện lực Dầu khí Việt Nam - CTCP
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - pvpower.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://pvpower.vn/vi/tag/bao-cao-tai-chinh-10.htm
+  - https://pvpower.vn/vi/post/bao-cao-tai-chinh-quy-ii-nam-2026-7007.htm
+  - https://pvpower.vn/vi/post/pv-power-bao-cao-tien-do-su-dung-so-tien-thu-duoc-tu-dot-chao-ban-6997.htm
+  - https://pvpower.vn/vi/post/bao-cao-tinh-hinh-quan-tri-cong-ty-6-thang-dau-nam-2026-7010.htm
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/pow-tai-lieu.chn
+  - https://cafef.vn/du-lieu/pow/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: nt2
+  ticker: NT2
+  exchange: HOSE
+  company: Công ty Cổ phần Điện lực Dầu khí Nhơn Trạch 2
+  sector: Điện - năng lượng
+  aliases:
+  - NT2
+  - Công ty Cổ phần Điện lực Dầu khí Nhơn Trạch 2
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - pvpowernt2.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://pvpowernt2.vn/quan-he-co-dong/
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/nt2-tai-lieu.chn
+  - https://cafef.vn/du-lieu/nt2/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: qns
+  ticker: QNS
+  exchange: UPCOM
+  company: Công ty Cổ phần Đường Quảng Ngãi
+  sector: Thực phẩm - nông nghiệp
+  aliases:
+  - QNS
+  - Công ty Cổ phần Đường Quảng Ngãi
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - qns.com.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://qns.com.vn/quan-he-co-dong/
+  cafef_urls:
+  - https://cafef.vn/du-lieu/upcom/qns-tai-lieu.chn
+  - https://cafef.vn/du-lieu/qns/bao-cao-tai-chinh.chn
+  hnx_urls:
+  - https://www.hnx.vn/vi-vn/cophieu-etfs/chi-tiet-chung-khoan-uc-qns.html
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: hdb
+  ticker: HDB
+  exchange: HOSE
+  company: Ngân hàng TMCP Phát triển Thành phố Hồ Chí Minh
+  sector: Ngân hàng
+  aliases:
+  - HDB
+  - Ngân hàng TMCP Phát triển Thành phố Hồ Chí Minh
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - hdbank.com.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://hdbank.com.vn/vi/investor
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/hdb-tai-lieu.chn
+  - https://cafef.vn/du-lieu/hdb/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: mwg
+  ticker: MWG
+  exchange: HOSE
+  company: Công ty Cổ phần Đầu tư Thế Giới Di Động
+  sector: Bán lẻ
+  aliases:
+  - MWG
+  - Công ty Cổ phần Đầu tư Thế Giới Di Động
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - mwg.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://mwg.vn/phat-trien-ben-vung
+  - https://mwg.vn/bao-cao
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/mwg-tai-lieu.chn
+  - https://cafef.vn/du-lieu/mwg/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: tlg
+  ticker: TLG
+  exchange: HOSE
+  company: Công ty Cổ phần Tập đoàn Thiên Long
+  sector: Hàng tiêu dùng
+  aliases:
+  - TLG
+  - Công ty Cổ phần Tập đoàn Thiên Long
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - thienlonggroup.com
+  attachment_domains: []
+  official_start_urls:
+  - https://thienlonggroup.com/quan-he-co-dong/
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/tlg-tai-lieu.chn
+  - https://cafef.vn/du-lieu/tlg/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: acg
+  ticker: ACG
+  exchange: HOSE
+  company: Công ty Cổ phần Gỗ An Cường
+  sector: Gỗ - vật liệu
+  aliases:
+  - ACG
+  - Công ty Cổ phần Gỗ An Cường
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - ancuong.com
+  attachment_domains: []
+  official_start_urls:
+  - https://ancuong.com/quan-he-co-dong/
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/acg-tai-lieu.chn
+  - https://cafef.vn/du-lieu/acg/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: phr
+  ticker: PHR
+  exchange: HOSE
+  company: Công ty Cổ phần Cao su Phước Hòa
+  sector: Cao su - nông nghiệp
+  aliases:
+  - PHR
+  - Công ty Cổ phần Cao su Phước Hòa
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - phr.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://phr.vn/thong-tin-co-dong.aspx?catid=2
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/phr-tai-lieu.chn
+  - https://cafef.vn/du-lieu/phr/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: dpr
+  ticker: DPR
+  exchange: HOSE
+  company: Công ty Cổ phần Cao su Đồng Phú
+  sector: Cao su - nông nghiệp
+  aliases:
+  - DPR
+  - Công ty Cổ phần Cao su Đồng Phú
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - doruco.com.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://www.doruco.com.vn/quan-he-co-dong/bao-cao-thuong-nien-vn-b-88-0.html
+  - https://www.doruco.com.vn/quan-he-co-dong/bao-cao-tai-chinh-vn-b-87-0.html
+  - https://www.doruco.com.vn/quan-he-co-dong/thong-tin-co-dong-vn-b-86-0.html
+  - https://www.doruco.com.vn/quan-he-co-dong/bao-cao-quan-tri-6-thang-2026-vn-n-1357-0.html
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/dpr-tai-lieu.chn
+  - https://cafef.vn/du-lieu/dpr/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: fmc
+  ticker: FMC
+  exchange: HOSE
+  company: Công ty Cổ phần Thực phẩm Sao Ta
+  sector: Thủy sản
+  aliases:
+  - FMC
+  - Công ty Cổ phần Thực phẩm Sao Ta
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - fimexvn.com
+  attachment_domains: []
+  official_start_urls:
+  - https://www.fimexvn.com/vi/m-phat-trien-ben-vung/388-fmc-báo-cáo-phát-triển-bền-vững-2023.html
+  - https://www.fimexvn.com/vi/m-phat-trien-ben-vung/352-fmc-báo-cáo-phát-triển-bền-vững-2022.html
+  - https://www.fimexvn.com/vi/m-phat-trien-ben-vung.html
+  - https://www.fimexvn.com/vi/m-qh-co-dong.html
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/fmc-tai-lieu.chn
+  - https://cafef.vn/du-lieu/fmc/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: cng
+  ticker: CNG
+  exchange: HOSE
+  company: Công ty Cổ phần CNG Việt Nam
+  sector: Khí - năng lượng
+  aliases:
+  - CNG
+  - Công ty Cổ phần CNG Việt Nam
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - cngvietnam.com
+  attachment_domains: []
+  official_start_urls:
+  - https://cngvietnam.com/quan-he-co-dong/
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/cng-tai-lieu.chn
+  - https://cafef.vn/du-lieu/cng/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: chp
+  ticker: CHP
+  exchange: HOSE
+  company: Công ty Cổ phần Thủy điện Miền Trung
+  sector: Thủy điện
+  aliases:
+  - CHP
+  - Công ty Cổ phần Thủy điện Miền Trung
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - chp.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://chp.vn/quan-he-co-dong/
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/chp-tai-lieu.chn
+  - https://cafef.vn/du-lieu/chp/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: ocb
+  ticker: OCB
+  exchange: HOSE
+  company: Ngân hàng TMCP Phương Đông
+  sector: Ngân hàng
+  aliases:
+  - OCB
+  - Ngân hàng TMCP Phương Đông
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - ocb.com.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://www.ocb.com.vn/vi/quan-he-nha-dau-tu
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/ocb-tai-lieu.chn
+  - https://cafef.vn/du-lieu/ocb/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: dgw
+  ticker: DGW
+  exchange: HOSE
+  company: Công ty Cổ phần Thế Giới Số
+  sector: Phân phối công nghệ
+  aliases:
+  - DGW
+  - Công ty Cổ phần Thế Giới Số
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - digiworld.com.vn
+  attachment_domains: []
+  official_start_urls:
+  - https://digiworld.com.vn/quan-he-nha-dau-tu
+  - https://digiworld.com.vn/phat-trien-ben-vung
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/dgw-tai-lieu.chn
+  - https://cafef.vn/du-lieu/dgw/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: cdn
+  ticker: CDN
+  exchange: HNX
+  company: Công ty Cổ phần Cảng Đà Nẵng
+  sector: Cảng - logistics
+  aliases:
+  - CDN
+  - Công ty Cổ phần Cảng Đà Nẵng
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - danangport.com
+  attachment_domains:
+  - danangport.com.vn
+  official_start_urls:
+  - https://danangport.com/thong-tin-co-dong/
+  - https://danangport.com/bao-cao-dinh-ky-bat-thuong/
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hnx/cdn-tai-lieu.chn
+  - https://cafef.vn/du-lieu/cdn/bao-cao-tai-chinh.chn
+  hnx_urls:
+  - https://www.hnx.vn/vi-vn/cophieu-etfs/chi-tiet-chung-khoan-ny-cdn.html
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true
+- id: dmc
+  ticker: DMC
+  exchange: HOSE
+  company: Công ty Cổ phần Xuất nhập khẩu Y tế Domesco
+  sector: Dược phẩm
+  aliases:
+  - DMC
+  - Công ty Cổ phần Xuất nhập khẩu Y tế Domesco
+  years:
+  - 2021
+  - 2022
+  - 2023
+  - 2024
+  - 2025
+  enabled: true
+  official_domains:
+  - domesco.com
+  attachment_domains: []
+  official_start_urls:
+  - https://domesco.com/quan-he-co-dong/
+  cafef_urls:
+  - https://cafef.vn/du-lieu/hose/dmc-tai-lieu.chn
+  - https://cafef.vn/du-lieu/dmc/bao-cao-tai-chinh.chn
+  hnx_urls: []
+  policy:
+    max_depth: 4
+    delay_seconds: 2.5
+    max_requests_per_minute: 18
+    verify_ssl: true
+    robots_on_missing: allow
+    robots_on_error: skip
+    use_sitemaps: true
+    max_sitemap_urls: 5000
+    save_relevant_html: true

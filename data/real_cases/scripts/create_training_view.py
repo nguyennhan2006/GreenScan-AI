@@ -7,7 +7,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 def load_jsonl(path: Path):
-    return [json.loads(x) for x in path.read_text(encoding="utf-8").splitlines() if x.strip()]
+    # split("\n") not splitlines(): splitlines() also breaks on U+2028/U+2029/
+    # U+0085, which appear in text extracted from Vietnamese PDFs and are legal
+    # inside a JSON string.
+    return [json.loads(x) for x in path.read_text(encoding="utf-8").split("\n") if x.strip()]
 
 def main() -> int:
     claims = load_jsonl(ROOT / "claims/claims.jsonl")

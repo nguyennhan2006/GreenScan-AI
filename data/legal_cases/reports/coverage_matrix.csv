@@ -1,0 +1,175 @@
+target_id,year,required_family,status,doc_count,source_url,notes
+INT-VANGUARD-AU,case,authority_case_pack,collected,6,https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2024-releases/24-213mr-asic-s-vanguard-greenwashing-action-results-in-record-12-9-million-penalty/,Court penalty; preserve exact ASIC/court wording and scope of admitted misleading conduct. Do not propagate to unrelated Vanguard claims.
+INT-VANGUARD-AU,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-VANGUARD-AU,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-VANGUARD-AU,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-VANGUARD-AU,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-VANGUARD-AU,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-MERCER-AU,case,authority_case_pack,collected,10,https://asic.gov.au/about-asic/news-centre/find-a-media-release/2024-releases/24-173mr-asic-s-first-greenwashing-case-results-in-landmark-11-3-million-penalty-for-mercer/,Court outcome on Sustainable Plus representations. Keep claim/product scope exact.
+INT-MERCER-AU,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-MERCER-AU,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-MERCER-AU,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-MERCER-AU,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-MERCER-AU,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-ACTIVE-SUPER-AU,case,authority_case_pack,collected,2,https://asic.gov.au/about-asic/news-centre/find-a-media-release/2025-releases/25-042mr-active-super-ordered-to-pay-10-5-million-penalty-in-asic-s-third-greenwashing-court-action/,Court finding/penalty. Active Super products became part of Vision Super from 1 Mar 2025; keep pre-merger and post-merger entity periods separate.
+INT-ACTIVE-SUPER-AU,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-ACTIVE-SUPER-AU,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-ACTIVE-SUPER-AU,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-ACTIVE-SUPER-AU,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-ACTIVE-SUPER-AU,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-CLOROX-AU,case,authority_case_pack,blocked,0,https://www.accc.gov.au/media-release/clorox-ordered-to-pay-825m-in-penalties-for-misleading-ocean-plastic-claims-about-certain-glad-products,Clorox admitted misleading conduct concerning specified Glad ocean-plastic claims. Label only challenged representations/artifacts.
+INT-CLOROX-AU,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-CLOROX-AU,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-CLOROX-AU,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-CLOROX-AU,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-CLOROX-AU,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-INVESCO-US,case,authority_case_pack,collected,7,https://www.sec.gov/newsroom/press-releases/2024-179,SEC settlement without admitting or denying findings. Preserve qualifier in metadata and any narrative output.
+INT-INVESCO-US,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-INVESCO-US,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-INVESCO-US,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-INVESCO-US,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-INVESCO-US,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-WISDOMTREE-US,case,authority_case_pack,collected,2,https://www.sec.gov/newsroom/press-releases/2024-173,SEC settlement without admitting or denying findings. Exact funds/exclusion statements are the positive legal scope.
+INT-WISDOMTREE-US,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-WISDOMTREE-US,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-WISDOMTREE-US,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-WISDOMTREE-US,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-WISDOMTREE-US,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-GSAM-US,case,authority_case_pack,collected,2,https://www.sec.gov/newsroom/press-releases/2022-209,SEC settlement without admitting or denying findings. Scope is policies/procedures and specified ESG products/processes.
+INT-GSAM-US,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-GSAM-US,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-GSAM-US,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-GSAM-US,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-GSAM-US,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-TLOU-AU,case,authority_case_pack,collected,2,https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2022-releases/22-294mr-asic-acts-against-greenwashing-by-energy-company/,Payment of ASIC infringement notices is not an admission of guilt or liability. Keep this qualifier machine-readable.
+INT-TLOU-AU,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-TLOU-AU,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-TLOU-AU,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-TLOU-AU,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-TLOU-AU,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-BLACK-MOUNTAIN-AU,case,authority_case_pack,collected,5,https://asic.gov.au/about-asic/news-centre/find-a-media-release/2023-releases/23-001mr-asic-issues-infringement-notices-to-energy-company-for-greenwashing/,Payment of infringement notices is not an admission of guilt or liability.
+INT-BLACK-MOUNTAIN-AU,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-BLACK-MOUNTAIN-AU,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-BLACK-MOUNTAIN-AU,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-BLACK-MOUNTAIN-AU,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-BLACK-MOUNTAIN-AU,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-FERTOZ-AU,case,authority_case_pack,collected,5,https://asic.gov.au/about-asic/news-centre/find-a-media-release/2024-releases/24-133mr-asx-listed-company-pays-two-infringement-notices-for-greenwashing-in-market-announcements/,ASIC infringement notice payment is not an admission of guilt or liability. Verify corporate rename/entity continuity before parent mapping.
+INT-FERTOZ-AU,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-FERTOZ-AU,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-FERTOZ-AU,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-FERTOZ-AU,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-FERTOZ-AU,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-MORNINGSTAR-AU,case,authority_case_pack,collected,1,https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2023-releases/23-324mr-asic-issues-infringement-notices-to-morningstar-for-statements-regarding-exposure-to-weapon-investments/,Payment is not an admission of guilt or liability. Scope relates to specified exclusion/weapon-exposure representations.
+INT-MORNINGSTAR-AU,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-MORNINGSTAR-AU,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-MORNINGSTAR-AU,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-MORNINGSTAR-AU,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-MORNINGSTAR-AU,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-NORTHERN-TRUST-AU,case,authority_case_pack,collected,1,https://asic.gov.au/about-asic/news-centre/find-a-media-release/2023-releases/23-344mr-asic-issues-infringement-notices-to-northern-trust-asset-management-for-greenwashing/,Payment is not an admission of guilt or liability. Keep exact screen/product scope.
+INT-NORTHERN-TRUST-AU,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-NORTHERN-TRUST-AU,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-NORTHERN-TRUST-AU,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-NORTHERN-TRUST-AU,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-NORTHERN-TRUST-AU,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-SHELL-UK,case,authority_case_pack,collected,25,https://www.asa.org.uk/rulings/shell-uk-ltd-g22-1170842-shell-uk-ltd.html,ASA ruling upheld for specified advertisements/overall impression. Not a court finding of fraud; label exact ads/claims only.
+INT-SHELL-UK,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-SHELL-UK,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-SHELL-UK,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-SHELL-UK,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-SHELL-UK,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-REPSOL-ES,case,authority_case_pack,collected,7,https://www.asa.org.uk/rulings/repsol-sa-a23-1185942-repsol-sa.html,ASA ruling scope is specified ads/claims; not company-wide greenwashing label.
+INT-REPSOL-ES,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-REPSOL-ES,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-REPSOL-ES,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-REPSOL-ES,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-REPSOL-ES,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-PETRONAS-MY,case,authority_case_pack,collected,5,https://www.asa.org.uk/rulings/petroliam-nasional-berhad-a22-1169312-petroliam-nasional-berhad.html,ASA ruling scope is specified advertisement/overall environmental impression. Do not substitute PETRONAS Gas Berhad subsidiary reports for group reports.
+INT-PETRONAS-MY,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-PETRONAS-MY,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-PETRONAS-MY,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-PETRONAS-MY,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-PETRONAS-MY,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-EQUINOR-NO,case,authority_case_pack,collected,5,https://www.asa.org.uk/rulings/equinor-asa-a23-1204534-equinor-asa.html,ASA ruling applies to specified ad/overall impression.
+INT-EQUINOR-NO,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-EQUINOR-NO,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-EQUINOR-NO,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-EQUINOR-NO,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-EQUINOR-NO,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-TOTALENERGIES-FR,case,authority_case_pack,collected,4,https://www.asa.org.uk/rulings/totalenergies-se-a24-1246357-totalenergies-se.html,ASA ruling applies to specified advertisement and omitted material context; not a company-wide legal label.
+INT-TOTALENERGIES-FR,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-TOTALENERGIES-FR,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-TOTALENERGIES-FR,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-TOTALENERGIES-FR,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-TOTALENERGIES-FR,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-HSBC-UK,case,authority_case_pack,collected,4,https://www.asa.org.uk/rulings/hsbc-uk-bank-plc-g21-1127656-hsbc-uk-bank-plc.html,ASA ruling scope is specified advertisements and omission of material financed-emissions/context.
+INT-HSBC-UK,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-HSBC-UK,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-HSBC-UK,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-HSBC-UK,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-HSBC-UK,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-LLOYDS-UK,case,authority_case_pack,collected,4,https://www.asa.org.uk/rulings/lloyds-bank-plc-a24-1244509-lloyds-bank-plc.html,Keep which advertisement/claim was upheld vs not upheld. Do not flatten mixed ruling into all-positive label.
+INT-LLOYDS-UK,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-LLOYDS-UK,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-LLOYDS-UK,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-LLOYDS-UK,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-LLOYDS-UK,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-UNILEVER-UK,case,authority_case_pack,collected,5,https://www.asa.org.uk/rulings/unilever-uk-ltd-a22-1150985-unilever-uk-ltd.html,Scope is specified Persil environmental advertisement/lifecycle substantiation.
+INT-UNILEVER-UK,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-UNILEVER-UK,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-UNILEVER-UK,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-UNILEVER-UK,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-UNILEVER-UK,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-TESCO-UK,case,authority_case_pack,collected,4,https://www.asa.org.uk/rulings/tesco-stores-ltd-g21-1128264-tesco-stores-ltd.html,Scope is specified Plant Chef environmental claims and substantiation.
+INT-TESCO-UK,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-TESCO-UK,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-TESCO-UK,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-TESCO-UK,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-TESCO-UK,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-OATLY-UK,case,authority_case_pack,collected,3,https://www.asa.org.uk/rulings/oatly-uk-ltd-g21-1096286-oatly-uk-ltd.html,ASA ruling contains multiple challenged environmental claims; preserve per-claim upheld/not-upheld status if mixed.
+INT-OATLY-UK,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-OATLY-UK,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-OATLY-UK,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-OATLY-UK,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-OATLY-UK,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-LUFTHANSA-DE,case,authority_case_pack,collected,4,https://www.asa.org.uk/rulings/deutsche-lufthansa-ag-a22-1169419-deutsche-lufthansa-ag.html,"Scope is specified environmental advertising claim(s), not company-wide finding."
+INT-LUFTHANSA-DE,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-LUFTHANSA-DE,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-LUFTHANSA-DE,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-LUFTHANSA-DE,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-LUFTHANSA-DE,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-ETIHAD-AE,case,authority_case_pack,collected,5,https://www.asa.org.uk/rulings/etihad-airways-a23-1206008-etihad-airways.html,Scope is specified advertising/environmental advocacy representations.
+INT-ETIHAD-AE,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-ETIHAD-AE,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-ETIHAD-AE,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-ETIHAD-AE,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-ETIHAD-AE,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-MAZDA-UK,case,authority_case_pack,collected,4,https://www.asa.org.uk/rulings/mazda-motors-uk-ltd-a24-1247950-mazda-motors-uk-ltd.html,Scope is specified vehicle sustainability claim.
+INT-MAZDA-UK,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-MAZDA-UK,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-MAZDA-UK,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-MAZDA-UK,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-MAZDA-UK,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-NIKE-UK,case,authority_case_pack,collected,3,https://www.asa.org.uk/rulings/nike-retail-bv-a25-1309100-nike-retail-bv.html,Scope is specified “Sustainable Materials” advertising claim. Maintain case_entity != reporting_entity.
+INT-NIKE-UK,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-NIKE-UK,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-NIKE-UK,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-NIKE-UK,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-NIKE-UK,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-UNIQLO-UK,case,authority_case_pack,collected,3,https://www.asa.org.uk/rulings/uniqlo--uk--ltd-a26-1327727-uniqlo--uk--ltd.html,"Scope is specified recycled-materials advertisement. Case year is 2026, but corporate corpus window remains 2021–2025 for comparability."
+INT-UNIQLO-UK,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-UNIQLO-UK,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-UNIQLO-UK,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-UNIQLO-UK,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-UNIQLO-UK,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-ADIDAS-UK,case,authority_case_pack,collected,4,https://www.asa.org.uk/rulings/adidas-uk-ltd-a26-1327728-adidas-uk-ltd.html,Scope is specified recycled-running-shoes advertisement. Corporate benchmark window remains 2021–2025.
+INT-ADIDAS-UK,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-ADIDAS-UK,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-ADIDAS-UK,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-ADIDAS-UK,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-ADIDAS-UK,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-CALVIN-KLEIN-UK,case,authority_case_pack,collected,2,https://www.asa.org.uk/rulings/calvin-klein-europe-bv--a26-1327724-calvin-klein-europe-bv.html,Scope is specified responsibly-sourced/recycled/organic advertising claim. Corporate benchmark window remains 2021–2025.
+INT-CALVIN-KLEIN-UK,2021,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-CALVIN-KLEIN-UK,2022,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-CALVIN-KLEIN-UK,2023,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-CALVIN-KLEIN-UK,2024,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds
+INT-CALVIN-KLEIN-UK,2025,disclosure,not_found_after_official_seed_crawl,0,,no in-window document discovered from official seeds

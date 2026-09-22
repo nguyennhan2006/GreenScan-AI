@@ -1,0 +1,683 @@
+19:32:38 INFO    29 target(s) | phase=disclosure | cap=25/target | dry_run=False
+19:32:38 INFO    ---------- [1/29] INT-VANGUARD-AU ----------
+19:32:38 INFO    === INT-VANGUARD-AU | disclosure seed | https://www.vanguard.com.au/personal/support/forms-and-notices
+19:32:39 INFO    HTTP Request: GET https://www.vanguard.com.au/robots.txt "HTTP/1.1 200 OK"
+19:32:41 INFO    HTTP Request: GET https://www.vanguard.com.au/personal/support/forms-and-notices "HTTP/1.1 200 OK"
+19:32:42 WARNING INT-VANGUARD-AU | zero_documents_found | https://www.vanguard.com.au/personal/support/forms-and-notices
+19:32:42 INFO    === INT-VANGUARD-AU | disclosure seed | https://www.vanguard.com.au/personal/about-us/investment-stewardship/reports-and-policies
+19:32:43 INFO    HTTP Request: GET https://www.vanguard.com.au/personal/about-us/investment-stewardship/reports-and-policies "HTTP/1.1 200 OK"
+19:32:44 WARNING INT-VANGUARD-AU | zero_documents_found | https://www.vanguard.com.au/personal/about-us/investment-stewardship/reports-and-policies
+19:32:44 INFO    === INT-VANGUARD-AU | disclosure seed | https://www.vanguard.com.au/personal/about-us/our-esg-approach/our-approach-to-esg
+19:32:45 INFO    HTTP Request: GET https://www.vanguard.com.au/personal/about-us/our-esg-approach/our-approach-to-esg "HTTP/1.1 200 OK"
+19:32:46 WARNING INT-VANGUARD-AU | zero_documents_found | https://www.vanguard.com.au/personal/about-us/our-esg-approach/our-approach-to-esg
+19:32:46 INFO    ---------- [2/29] INT-MERCER-AU ----------
+19:32:46 INFO    === INT-MERCER-AU | disclosure seed | https://www.mercersuper.com.au/documents/annual-reports/
+19:32:47 INFO    HTTP Request: GET https://www.mercersuper.com.au/robots.txt "HTTP/1.1 200 OK"
+19:32:49 INFO    HTTP Request: GET https://www.mercersuper.com.au/documents/annual-reports/ "HTTP/1.1 200 OK"
+19:32:51 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/AnnualReport-FundInformationStatement-2025-mst-part1.pdf "HTTP/1.1 200 OK"
+19:32:53 INFO    stored INT-MERCER-AU          disclosure  b214c39cf64e0402.pdf
+19:32:54 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/AnnualReport-FundInformationStatement-2025-mst-part2.pdf "HTTP/1.1 200 OK"
+19:32:56 INFO    stored INT-MERCER-AU          disclosure  668f3c260d770f3a.pdf
+19:32:56 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/AnnualReport-FundInformationStatement-2024-mst-part1.pdf "HTTP/1.1 200 OK"
+19:32:58 INFO    stored INT-MERCER-AU          disclosure  7ec08573fa43f9d7.pdf
+19:32:58 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/AnnualReport-FundInformationStatement-2024-MST-InvestmentOptions-part2.pdf "HTTP/1.1 200 OK"
+19:33:00 INFO    stored INT-MERCER-AU          disclosure  62c3368cd890352e.pdf
+19:33:01 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/AnnualReport2023Part1.pdf "HTTP/1.1 200 OK"
+19:33:03 INFO    stored INT-MERCER-AU          disclosure  9a98c982bab661c7.pdf
+19:33:04 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/AnnualReport2023Part2.pdf "HTTP/1.1 200 OK"
+19:33:06 INFO    stored INT-MERCER-AU          disclosure  28d5d87f8a1189a7.pdf
+19:33:07 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/AnnualReport2022Part1.pdf "HTTP/1.1 200 OK"
+19:33:10 INFO    stored INT-MERCER-AU          disclosure  8c5d7733943c6637.pdf
+19:33:11 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/AnnualReport2022Part2.pdf "HTTP/1.1 200 OK"
+19:33:13 INFO    stored INT-MERCER-AU          disclosure  abe34cb40d6696a2.pdf
+19:33:13 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/AnnualReport2021Part1.pdf "HTTP/1.1 200 OK"
+19:33:15 INFO    stored INT-MERCER-AU          disclosure  a5251add9446375d.pdf
+19:33:16 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/AnnualReport2021Part2.pdf "HTTP/1.1 200 OK"
+19:33:18 INFO    stored INT-MERCER-AU          disclosure  1c70b57cc0e5873f.pdf
+19:33:19 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/Mercer-EasyNewcastle2024FundInformationStatement-AnnualReport.pdf "HTTP/1.1 200 OK"
+19:33:20 INFO    stored INT-MERCER-AU          disclosure  88451377ae179842.pdf
+19:33:21 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/Mercer_EasyNewcastle2023SupplementaryAnnualReport.pdf "HTTP/1.1 200 OK"
+19:33:23 INFO    stored INT-MERCER-AU          disclosure  b03713dd99d185dc.pdf
+19:33:24 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/Mercer_EasyNewcastle2022SupplementaryAnnualReport.pdf "HTTP/1.1 200 OK"
+19:33:26 INFO    stored INT-MERCER-AU          disclosure  5650eaff19ae8952.pdf
+19:33:27 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/Mercer_EasyNewcastle2021SupplementaryAnnualReport.pdf "HTTP/1.1 200 OK"
+19:33:29 INFO    stored INT-MERCER-AU          disclosure  881bb49f1b2b794e.pdf
+19:33:30 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/KoganSuper-AnnualReport-FundInformationStatement-2024%E2%80%93Supplementary-Part-3.pdf "HTTP/1.1 200 OK"
+19:33:32 INFO    stored INT-MERCER-AU          disclosure  705b5454dcb90e4e.pdf
+19:33:32 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/KoganSuper-AnnualReport-FundInformationStatement-2023%E2%80%93Supplementary-Part-3.pdf "HTTP/1.1 200 OK"
+19:33:33 INFO    stored INT-MERCER-AU          disclosure  941169f78dec53b6.pdf
+19:33:34 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/KoganSuper-AnnualReport-FundInformationStatement-2022%E2%80%93Supplementary-Part-3.pdf "HTTP/1.1 200 OK"
+19:33:36 INFO    stored INT-MERCER-AU          disclosure  856aca3322c6d795.pdf
+19:33:36 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/annual-reports/KoganSuper-AnnualReport-FundInformationStatement-2021%E2%80%93Supplementary-Part-3.pdf "HTTP/1.1 200 OK"
+19:33:38 INFO    stored INT-MERCER-AU          disclosure  477472acab40863c.pdf
+19:33:39 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/governance-and-trustee-documents/MSAL_FinancialServicesGuide.pdf "HTTP/1.1 200 OK"
+19:33:41 INFO    stored INT-MERCER-AU          disclosure  8c0fda392fa05b1e.pdf
+19:33:41 INFO    === INT-MERCER-AU | disclosure seed | https://www.mercersuper.com.au/documents/product-disclosure-statement/
+19:33:42 INFO    HTTP Request: GET https://www.mercersuper.com.au/documents/product-disclosure-statement/ "HTTP/1.1 200 OK"
+19:33:44 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/portfolio-holdings-disclosure/BTSuper/Mercer-Business-Super-Product-Disclosure-Statement.pdf "HTTP/1.1 200 OK"
+19:33:46 INFO    stored INT-MERCER-AU          disclosure  ead6b3cb1bd613da.pdf
+19:33:46 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/portfolio-holdings-disclosure/Mercer-Business-Super-HowYourSuperWorks.pdf "HTTP/1.1 200 OK"
+19:33:49 INFO    stored INT-MERCER-AU          disclosure  631d8b7159476051.pdf
+19:33:49 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/portfolio-holdings-disclosure/BTSuper/Mercer-Business-Super-Insurance-booklet-1.pdf "HTTP/1.1 200 OK"
+19:33:51 INFO    stored INT-MERCER-AU          disclosure  dd4b9213c4a72442.pdf
+19:33:52 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/portfolio-holdings-disclosure/BTSuper/Mercer-Business-Super-Insurance-booklet-2.pdf "HTTP/1.1 200 OK"
+19:33:54 INFO    stored INT-MERCER-AU          disclosure  50406657848282ad.pdf
+19:33:55 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/portfolio-holdings-disclosure/BTSuper/Mercer-Business-Super-Insurance-booklet-3.pdf "HTTP/1.1 200 OK"
+19:33:58 INFO    stored INT-MERCER-AU          disclosure  7be4846e7295ab2e.pdf
+19:33:58 INFO    HTTP Request: GET https://www.mercersuper.com.au/content/dam/mercer-super/australia/documents/portfolio-holdings-disclosure/BTSuper/Mercer-Business-Super-Insurance-booklet-4.pdf "HTTP/1.1 200 OK"
+19:34:01 INFO    stored INT-MERCER-AU          disclosure  f05cdfdc8c68a556.pdf
+19:34:01 INFO    ---------- [3/29] INT-ACTIVE-SUPER-AU ----------
+19:34:01 INFO    === INT-ACTIVE-SUPER-AU | disclosure seed | https://www.activesuper.com.au/news-and-events/annual-members-meeting/
+19:34:02 INFO    HTTP Request: GET https://www.activesuper.com.au/robots.txt "HTTP/1.1 301 Moved Permanently"
+19:34:03 INFO    HTTP Request: GET https://www.visionsuper.com.au/robots.txt "HTTP/1.1 200 OK"
+19:34:03 INFO    HTTP Request: GET https://www.activesuper.com.au/news-and-events/annual-members-meeting/ "HTTP/1.1 301 Moved Permanently"
+19:34:03 INFO    HTTP Request: GET https://www.visionsuper.com.au/news-and-events/annual-members-meeting/ "HTTP/1.1 308 Permanent Redirect"
+19:34:04 INFO    HTTP Request: GET https://www.visionsuper.com.au/news-and-events/annual-members-meeting "HTTP/1.1 404 Not Found"
+19:34:04 WARNING INT-ACTIVE-SUPER-AU | http_404 | https://www.activesuper.com.au/news-and-events/annual-members-meeting/
+19:34:04 INFO    === INT-ACTIVE-SUPER-AU | disclosure seed | https://www.activesuper.com.au/the-basics/tools-and-resources/
+19:34:04 INFO    HTTP Request: GET https://www.activesuper.com.au/the-basics/tools-and-resources/ "HTTP/1.1 301 Moved Permanently"
+19:34:05 INFO    HTTP Request: GET https://www.visionsuper.com.au/the-basics/tools-and-resources/ "HTTP/1.1 301 Moved Permanently"
+19:34:05 INFO    HTTP Request: GET https://www.visionsuper.com.au/forms-and-resources "HTTP/1.1 200 OK"
+19:34:06 WARNING INT-ACTIVE-SUPER-AU | zero_documents_found | https://www.activesuper.com.au/the-basics/tools-and-resources/
+19:34:06 INFO    === INT-ACTIVE-SUPER-AU | disclosure seed | https://www.activesuper.com.au/product-disclosure-statement/defined-benefit-scheme/defined
+19:34:06 INFO    HTTP Request: GET https://www.activesuper.com.au/product-disclosure-statement/defined-benefit-scheme/defined-benefit-scheme-pds/ "HTTP/1.1 301 Moved Permanently"
+19:34:07 INFO    HTTP Request: GET https://www.visionsuper.com.au/product-disclosure-statement/defined-benefit-scheme/defined-benefit-scheme-pds/ "HTTP/1.1 308 Permanent Redirect"
+19:34:07 INFO    HTTP Request: GET https://www.visionsuper.com.au/product-disclosure-statement/defined-benefit-scheme/defined-benefit-scheme-pds "HTTP/1.1 404 Not Found"
+19:34:07 WARNING INT-ACTIVE-SUPER-AU | http_404 | https://www.activesuper.com.au/product-disclosure-statement/defined-benefit-scheme/defined-benefit-s
+19:34:07 INFO    ---------- [4/29] INT-CLOROX-AU ----------
+19:34:07 INFO    === INT-CLOROX-AU | disclosure seed | https://investors.thecloroxcompany.com/financial-reporting/annual-reports/default.aspx
+19:34:08 INFO    HTTP Request: GET https://investors.thecloroxcompany.com/robots.txt "HTTP/1.1 429 Too Many Requests"
+19:34:08 INFO    HTTP Request: GET https://investors.thecloroxcompany.com/financial-reporting/annual-reports/default.aspx "HTTP/1.1 429 Too Many Requests"
+19:34:08 WARNING INT-CLOROX-AU | http_429 | https://investors.thecloroxcompany.com/financial-reporting/annual-reports/default.aspx
+19:34:08 INFO    === INT-CLOROX-AU | disclosure seed | https://www.thecloroxcompany.com/annualreport/
+19:34:09 INFO    HTTP Request: GET https://www.thecloroxcompany.com/robots.txt "HTTP/1.1 200 OK"
+19:34:09 INFO    HTTP Request: GET https://www.thecloroxcompany.com/annualreport/ "HTTP/1.1 302 Found"
+19:34:09 INFO    HTTP Request: GET https://investors.thecloroxcompany.com/investors/financial-information/annual-reports/ "HTTP/1.1 429 Too Many Requests"
+19:34:09 WARNING INT-CLOROX-AU | http_429 | https://www.thecloroxcompany.com/annualreport/
+19:34:09 INFO    === INT-CLOROX-AU | disclosure seed | https://www.thecloroxcompany.com/
+19:34:09 INFO    HTTP Request: GET https://www.thecloroxcompany.com/ "HTTP/1.1 200 OK"
+19:34:10 WARNING INT-CLOROX-AU | zero_documents_found | https://www.thecloroxcompany.com/
+19:34:10 INFO    ---------- [5/29] INT-INVESCO-US ----------
+19:34:10 INFO    === INT-INVESCO-US | disclosure seed | https://www.invesco.com/corporate/en/investor-relations/annual-reports-and-proxy-statement
+19:34:11 INFO    HTTP Request: GET https://www.invesco.com/robots.txt "HTTP/1.1 200 OK"
+19:34:11 INFO    HTTP Request: GET https://www.invesco.com/corporate/en/investor-relations/annual-reports-and-proxy-statements.html "HTTP/1.1 200 OK"
+19:34:12 INFO    HTTP Request: GET https://www.invesco.com/content/dam/invesco/corporate/en/pdfs/reports/2025-annual-report.pdf "HTTP/1.1 200 OK"
+19:34:14 INFO    stored INT-INVESCO-US         disclosure  39842f7a49af7ea1.pdf
+19:34:14 INFO    HTTP Request: GET https://www.invesco.com/content/dam/invesco/corporate/en/pdfs/reports/2024-Annual-Report.pdf "HTTP/1.1 200 OK"
+19:34:15 INFO    stored INT-INVESCO-US         disclosure  416da78df2904e2c.pdf
+19:34:16 INFO    HTTP Request: GET https://www.invesco.com/content/dam/invesco/corporate/en/pdfs/regulatory/2025-Proxy.pdf "HTTP/1.1 200 OK"
+19:34:18 INFO    stored INT-INVESCO-US         disclosure  f46ef47c11ec1464.pdf
+19:34:18 INFO    HTTP Request: GET https://www.invesco.com/content/dam/invesco/corporate/en/pdfs/reports/2023-Annual-Report.pdf "HTTP/1.1 200 OK"
+19:34:20 INFO    stored INT-INVESCO-US         disclosure  793b2050a5941a7d.pdf
+19:34:20 INFO    HTTP Request: GET https://www.invesco.com/content/dam/invesco/corporate/en/pdfs/reports/2022_Annual_Report_10_K.pdf "HTTP/1.1 200 OK"
+19:34:22 INFO    stored INT-INVESCO-US         disclosure  a6e883f35bbdd873.pdf
+19:34:22 INFO    HTTP Request: GET https://www.invesco.com/content/dam/invesco/corporate/en/pdfs/reports/2021_10-K.pdf "HTTP/1.1 200 OK"
+19:34:23 INFO    stored INT-INVESCO-US         disclosure  c4ab61aaf1b5bce8.pdf
+19:34:24 INFO    HTTP Request: GET https://www.invesco.com/content/dam/invesco/corporate/en/pdfs/reports/2009_10-K.pdf "HTTP/1.1 200 OK"
+19:34:25 INFO    stored INT-INVESCO-US         disclosure  b156729348314658.pdf
+19:34:25 INFO    === INT-INVESCO-US | disclosure seed | https://www.invesco.com/corporate/en/investor-relations.html
+19:34:25 INFO    HTTP Request: GET https://www.invesco.com/corporate/en/investor-relations.html "HTTP/1.1 200 OK"
+19:34:27 WARNING INT-INVESCO-US | zero_documents_found | https://www.invesco.com/corporate/en/investor-relations.html
+19:34:27 INFO    ---------- [6/29] INT-WISDOMTREE-US ----------
+19:34:27 INFO    === INT-WISDOMTREE-US | disclosure seed | https://ir.wisdomtree.com/company-information/annual-reports-proxy
+19:34:27 INFO    HTTP Request: GET https://ir.wisdomtree.com/robots.txt "HTTP/1.1 200 OK"
+19:34:27 INFO    HTTP Request: GET https://ir.wisdomtree.com/company-information/annual-reports-proxy "HTTP/1.1 200 OK"
+19:34:28 WARNING INT-WISDOMTREE-US | zero_documents_found | https://ir.wisdomtree.com/company-information/annual-reports-proxy
+19:34:28 INFO    === INT-WISDOMTREE-US | disclosure seed | https://ir.wisdomtree.com/sec-filings/annual-reports
+19:34:29 INFO    HTTP Request: GET https://ir.wisdomtree.com/sec-filings/annual-reports "HTTP/1.1 200 OK"
+19:34:31 INFO    HTTP Request: GET https://ir.wisdomtree.com/sec-filings/all-sec-filings/content/0001214659-26-005248/wt424263ars.pdf "HTTP/1.1 200 OK"
+19:34:33 INFO    stored INT-WISDOMTREE-US      disclosure  d577350c5bbf838f.pdf
+19:34:36 INFO    HTTP Request: GET https://ir.wisdomtree.com/sec-filings/all-sec-filings/content/0001214659-25-006570/wt411250ars10k.pdf "HTTP/1.1 200 OK"
+19:34:37 INFO    stored INT-WISDOMTREE-US      disclosure  1b3d94fabee85b2f.pdf
+19:34:39 INFO    HTTP Request: GET https://ir.wisdomtree.com/sec-filings/all-sec-filings/content/0001214659-24-007721/wt422241ars10k.pdf "HTTP/1.1 200 OK"
+19:34:40 INFO    stored INT-WISDOMTREE-US      disclosure  f842a1ea93e3c048.pdf
+19:34:42 INFO    HTTP Request: GET https://ir.wisdomtree.com/sec-filings/all-sec-filings/content/0001193125-23-130409/d426509dars.pdf "HTTP/1.1 200 OK"
+19:34:44 INFO    stored INT-WISDOMTREE-US      disclosure  f04a98f397b505dc.pdf
+19:34:44 INFO    ---------- [7/29] INT-GSAM-US ----------
+19:34:44 INFO    === INT-GSAM-US | disclosure seed | https://www.goldmansachs.com/investor-relations/
+19:34:45 INFO    HTTP Request: GET https://www.goldmansachs.com/robots.txt "HTTP/1.1 200 OK"
+19:34:45 INFO    HTTP Request: GET https://www.goldmansachs.com/investor-relations/ "HTTP/1.1 200 OK"
+19:34:46 INFO    HTTP Request: GET https://www.goldmansachs.com/investor-relations/financials/10k/2025/2025-10-k.pdf "HTTP/1.1 302 Moved Temporarily"
+19:34:46 INFO    HTTP Request: GET https://www.goldmansachs.com/static-libs/pdf-redirect/prod/index.html?path=/investor-relations/financials/10k/2025/2025-10-k.pdf&originalQuery=&referrer= "HTTP/1.1 200 OK"
+19:34:47 WARNING INT-GSAM-US | zero_documents_found | https://www.goldmansachs.com/investor-relations/
+19:34:47 INFO    === INT-GSAM-US | disclosure seed | https://www.goldmansachs.com/investor-relations/corporate-governance/sustainability-report
+19:34:47 INFO    HTTP Request: GET https://www.goldmansachs.com/investor-relations/corporate-governance/sustainability-reporting/ "HTTP/1.1 200 OK"
+19:34:48 INFO    HTTP Request: GET https://www.goldmansachs.com/our-firm/sustainable-finance/documents/Sustainability-Report-December-2025.pdf "HTTP/1.1 302 Moved Temporarily"
+19:34:48 INFO    HTTP Request: GET https://www.goldmansachs.com/static-libs/pdf-redirect/prod/index.html?path=/our-firm/sustainable-finance/documents/Sustainability-Report-December-2025.pdf&originalQuery=&referrer= "HTTP/1.1 200 OK"
+19:34:49 INFO    HTTP Request: GET https://www.goldmansachs.com/our-commitments/sustainability/2023-tcfd-report/report.pdf "HTTP/1.1 302 Moved Temporarily"
+19:34:49 INFO    HTTP Request: GET https://www.goldmansachs.com/static-libs/pdf-redirect/prod/index.html?path=/our-commitments/sustainability/2023-tcfd-report/report.pdf&originalQuery=&referrer= "HTTP/1.1 200 OK"
+19:34:50 INFO    HTTP Request: GET https://www.goldmansachs.com/investor-relations/corporate-governance/sustainability-reporting/accelerating-transition-report.pdf "HTTP/1.1 302 Moved Temporarily"
+19:34:50 INFO    HTTP Request: GET https://www.goldmansachs.com/static-libs/pdf-redirect/prod/index.html?path=/investor-relations/corporate-governance/sustainability-reporting/accelerating-transition-report.pdf&originalQuery=&referrer= "HTTP/1.1 200 OK"
+19:34:51 INFO    HTTP Request: GET https://www.goldmansachs.com/our-commitments/sustainability/2023-people-strategy-report/multimedia/report.pdf "HTTP/1.1 302 Moved Temporarily"
+19:34:52 INFO    HTTP Request: GET https://www.goldmansachs.com/static-libs/pdf-redirect/prod/index.html?path=/our-commitments/sustainability/2023-people-strategy-report/multimedia/report.pdf&originalQuery=&referrer= "HTTP/1.1 200 OK"
+19:34:53 WARNING INT-GSAM-US | zero_documents_found | https://www.goldmansachs.com/investor-relations/corporate-governance/sustainability-reporting/
+19:34:53 INFO    === INT-GSAM-US | disclosure seed | https://www.goldmansachs.com/investor-relations/corporate-governance/sustainability-report
+19:34:53 INFO    HTTP Request: GET https://www.goldmansachs.com/investor-relations/corporate-governance/sustainability-reporting/historical-reports "HTTP/1.1 200 OK"
+19:34:54 INFO    HTTP Request: GET https://www.goldmansachs.com/our-commitments/sustainability/2023-sustainability-report/multimedia/report.pdf "HTTP/1.1 302 Moved Temporarily"
+19:34:54 INFO    HTTP Request: GET https://www.goldmansachs.com/static-libs/pdf-redirect/prod/index.html?path=/our-commitments/sustainability/2023-sustainability-report/multimedia/report.pdf&originalQuery=&referrer= "HTTP/1.1 200 OK"
+19:34:55 INFO    HTTP Request: GET https://www.goldmansachs.com/our-commitments/sustainability/2022-sustainability-report/multimedia/report.pdf "HTTP/1.1 302 Moved Temporarily"
+19:34:55 INFO    HTTP Request: GET https://www.goldmansachs.com/static-libs/pdf-redirect/prod/index.html?path=/our-commitments/sustainability/2022-sustainability-report/multimedia/report.pdf&originalQuery=&referrer= "HTTP/1.1 200 OK"
+19:34:56 INFO    HTTP Request: GET https://www.goldmansachs.com/our-commitments/sustainability/sustainable-finance/documents/2021-sustainability-report.pdf "HTTP/1.1 302 Moved Temporarily"
+19:34:56 INFO    HTTP Request: GET https://www.goldmansachs.com/static-libs/pdf-redirect/prod/index.html?path=/our-commitments/sustainability/sustainable-finance/documents/2021-sustainability-report.pdf&originalQuery=&referrer= "HTTP/1.1 200 OK"
+19:34:57 INFO    HTTP Request: GET https://www.goldmansachs.com/our-commitments/sustainability/sustainable-finance/documents/esg-report-doc.pdf "HTTP/1.1 302 Moved Temporarily"
+19:34:57 INFO    HTTP Request: GET https://www.goldmansachs.com/static-libs/pdf-redirect/prod/index.html?path=/our-commitments/sustainability/sustainable-finance/documents/esg-report-doc.pdf&originalQuery=&referrer= "HTTP/1.1 200 OK"
+19:34:58 INFO    HTTP Request: GET https://www.goldmansachs.com/our-commitments/sustainability/sustainable-finance/documents/env-report-2009.pdf "HTTP/1.1 302 Moved Temporarily"
+19:34:58 INFO    HTTP Request: GET https://www.goldmansachs.com/static-libs/pdf-redirect/prod/index.html?path=/our-commitments/sustainability/sustainable-finance/documents/env-report-2009.pdf&originalQuery=&referrer= "HTTP/1.1 200 OK"
+19:34:59 INFO    HTTP Request: GET https://www.goldmansachs.com/our-commitments/sustainability/sustainable-finance/documents/env-report-2008.pdf "HTTP/1.1 302 Moved Temporarily"
+19:34:59 INFO    HTTP Request: GET https://www.goldmansachs.com/static-libs/pdf-redirect/prod/index.html?path=/our-commitments/sustainability/sustainable-finance/documents/env-report-2008.pdf&originalQuery=&referrer= "HTTP/1.1 200 OK"
+19:35:00 INFO    HTTP Request: GET https://www.goldmansachs.com/our-commitments/sustainability/sustainable-finance/documents/env-report-2007.pdf "HTTP/1.1 302 Moved Temporarily"
+19:35:00 INFO    HTTP Request: GET https://www.goldmansachs.com/static-libs/pdf-redirect/prod/index.html?path=/our-commitments/sustainability/sustainable-finance/documents/env-report-2007.pdf&originalQuery=&referrer= "HTTP/1.1 200 OK"
+19:35:01 INFO    HTTP Request: GET https://www.goldmansachs.com/our-commitments/sustainability/sustainable-finance/documents/env-report-2006.pdf "HTTP/1.1 302 Moved Temporarily"
+19:35:02 INFO    HTTP Request: GET https://www.goldmansachs.com/static-libs/pdf-redirect/prod/index.html?path=/our-commitments/sustainability/sustainable-finance/documents/env-report-2006.pdf&originalQuery=&referrer= "HTTP/1.1 200 OK"
+19:35:03 WARNING INT-GSAM-US | zero_documents_found | https://www.goldmansachs.com/investor-relations/corporate-governance/sustainability-reporting/histor
+19:35:03 INFO    === INT-GSAM-US | disclosure seed | https://am.gs.com/en-int/institutions/creating-impact/reports
+19:35:03 INFO    HTTP Request: GET https://am.gs.com/robots.txt "HTTP/1.1 200 OK"
+19:35:04 INFO    HTTP Request: GET https://am.gs.com/en-int/institutions/creating-impact/reports "HTTP/1.1 200 OK"
+19:35:05 INFO    HTTP Request: GET https://am.gs.com/cms-assets/gsam-app/documents/insights/en/2026/gs-awm-tcfd-report_2025.pdf?view=true "HTTP/1.1 200 OK"
+19:35:07 INFO    stored INT-GSAM-US            disclosure  33e385d3cd67e35e.pdf
+19:35:08 INFO    HTTP Request: GET https://am.gs.com/cms-assets/gsam-app/documents/insights/en/2025/gs-awm-tcfd-report_2024.pdf?view=true "HTTP/1.1 200 OK"
+19:35:15 INFO    stored INT-GSAM-US            disclosure  f28181c91026f421.pdf
+19:35:15 INFO    HTTP Request: GET https://www.goldmansachs.com/investor-relations/corporate-governance/sustainability-reporting/2023-awm-tcfd-report.pdf "HTTP/1.1 302 Moved Temporarily"
+19:35:15 INFO    HTTP Request: GET https://www.goldmansachs.com/static-libs/pdf-redirect/prod/index.html?path=/investor-relations/corporate-governance/sustainability-reporting/2023-awm-tcfd-report.pdf&originalQuery=&referrer= "HTTP/1.1 200 OK"
+19:35:16 INFO    HTTP Request: GET https://www.goldmansachs.com/investor-relations/corporate-governance/sustainability-reporting/2022-awm-tcfd-report.pdf "HTTP/1.1 302 Moved Temporarily"
+19:35:16 INFO    HTTP Request: GET https://www.goldmansachs.com/static-libs/pdf-redirect/prod/index.html?path=/investor-relations/corporate-governance/sustainability-reporting/2022-awm-tcfd-report.pdf&originalQuery=&referrer= "HTTP/1.1 200 OK"
+19:35:17 INFO    ---------- [8/29] INT-TLOU-AU ----------
+19:35:17 INFO    === INT-TLOU-AU | disclosure seed | https://tlouenergy.com/reports/
+19:35:18 INFO    HTTP Request: GET https://tlouenergy.com/robots.txt "HTTP/1.1 200 OK"
+19:35:19 INFO    HTTP Request: GET https://tlouenergy.com/reports/ "HTTP/1.1 200 OK"
+19:35:20 WARNING INT-TLOU-AU | zero_documents_found | https://tlouenergy.com/reports/
+19:35:20 INFO    ---------- [9/29] INT-BLACK-MOUNTAIN-AU ----------
+19:35:20 INFO    === INT-BLACK-MOUNTAIN-AU | disclosure seed | https://blackmountainenergy.com/archives/
+19:35:20 INFO    HTTP Request: GET https://blackmountainenergy.com/robots.txt "HTTP/1.1 403 Forbidden"
+19:35:20 INFO    HTTP Request: GET https://blackmountainenergy.com/archives/ "HTTP/1.1 403 Forbidden"
+19:35:20 WARNING INT-BLACK-MOUNTAIN-AU | http_403 | https://blackmountainenergy.com/archives/
+19:35:20 INFO    === INT-BLACK-MOUNTAIN-AU | disclosure seed | https://blackmountainenergy.com/preliminary-documentation/
+19:35:20 INFO    HTTP Request: GET https://blackmountainenergy.com/preliminary-documentation/ "HTTP/1.1 403 Forbidden"
+19:35:20 WARNING INT-BLACK-MOUNTAIN-AU | http_403 | https://blackmountainenergy.com/preliminary-documentation/
+19:35:20 INFO    === INT-BLACK-MOUNTAIN-AU | disclosure seed | https://blackmountainenergy.com/media-toolkit/
+19:35:21 INFO    HTTP Request: GET https://blackmountainenergy.com/media-toolkit/ "HTTP/1.1 403 Forbidden"
+19:35:21 WARNING INT-BLACK-MOUNTAIN-AU | http_403 | https://blackmountainenergy.com/media-toolkit/
+19:35:21 INFO    ---------- [10/29] INT-FERTOZ-AU ----------
+19:35:21 INFO    === INT-FERTOZ-AU | disclosure seed | https://fertoz.com/investors/
+19:35:23 INFO    HTTP Request: GET https://fertoz.com/robots.txt "HTTP/1.1 200 OK"
+19:35:25 INFO    HTTP Request: GET https://fertoz.com/investors/ "HTTP/1.1 200 OK"
+19:35:26 WARNING INT-FERTOZ-AU | zero_documents_found | https://fertoz.com/investors/
+19:35:26 INFO    ---------- [11/29] INT-MORNINGSTAR-AU ----------
+19:35:26 INFO    === INT-MORNINGSTAR-AU | disclosure seed | https://shareholders.morningstar.com/filings-and-stock-quote/annual-reports/default.aspx
+19:35:27 INFO    HTTP Request: GET https://shareholders.morningstar.com/robots.txt "HTTP/1.1 200 OK"
+19:35:29 INFO    HTTP Request: GET https://shareholders.morningstar.com/filings-and-stock-quote/annual-reports/default.aspx "HTTP/1.1 200 OK"
+19:35:30 WARNING INT-MORNINGSTAR-AU | zero_documents_found | https://shareholders.morningstar.com/filings-and-stock-quote/annual-reports/default.aspx
+19:35:30 INFO    === INT-MORNINGSTAR-AU | disclosure seed | https://www.morningstar.com/company/corporate-sustainability-policies-reports
+19:35:30 INFO    HTTP Request: GET https://www.morningstar.com/robots.txt "HTTP/1.1 200 OK"
+19:35:30 INFO    HTTP Request: GET https://www.morningstar.com/company/corporate-sustainability-policies-reports "HTTP/1.1 403 Forbidden"
+19:35:30 WARNING INT-MORNINGSTAR-AU | http_403 | https://www.morningstar.com/company/corporate-sustainability-policies-reports
+19:35:30 INFO    ---------- [12/29] INT-NORTHERN-TRUST-AU ----------
+19:35:30 INFO    === INT-NORTHERN-TRUST-AU | disclosure seed | https://www.northerntrust.com/united-states/about-us/investor-relations/annual-reports
+19:35:31 INFO    HTTP Request: GET https://www.northerntrust.com/robots.txt "HTTP/1.1 200 OK"
+19:35:53 WARNING INT-NORTHERN-TRUST-AU | ReadError | https://www.northerntrust.com/united-states/about-us/investor-relations/annual-reports
+19:35:53 INFO    === INT-NORTHERN-TRUST-AU | disclosure seed | https://www.northerntrust.com/japan/about-us/corporate-social-responsibility/policy
+19:37:23 WARNING INT-NORTHERN-TRUST-AU | ReadTimeout | https://www.northerntrust.com/japan/about-us/corporate-social-responsibility/policy
+19:37:23 INFO    ---------- [13/29] INT-SHELL-UK ----------
+19:37:23 INFO    === INT-SHELL-UK | disclosure seed | https://www.shell.com/investors/results-and-reporting/annual-report-archive.html
+19:37:23 INFO    HTTP Request: GET https://www.shell.com/robots.txt "HTTP/1.1 200 OK"
+19:37:24 INFO    HTTP Request: GET https://www.shell.com/investors/results-and-reporting/annual-report-archive.html "HTTP/1.1 200 OK"
+19:37:25 WARNING INT-SHELL-UK | zero_documents_found | https://www.shell.com/investors/results-and-reporting/annual-report-archive.html
+19:37:25 INFO    === INT-SHELL-UK | disclosure seed | https://www.shell.com/sustainability/reporting-centre/reporting-centre-archive.html
+19:37:25 INFO    HTTP Request: GET https://www.shell.com/sustainability/reporting-centre/reporting-centre-archive.html "HTTP/1.1 200 OK"
+19:37:26 WARNING INT-SHELL-UK | zero_documents_found | https://www.shell.com/sustainability/reporting-centre/reporting-centre-archive.html
+19:37:26 INFO    === INT-SHELL-UK | disclosure seed | https://www.shell.com/sustainability/reporting-centre.html
+19:37:26 INFO    HTTP Request: GET https://www.shell.com/sustainability/reporting-centre.html "HTTP/1.1 200 OK"
+19:37:27 WARNING INT-SHELL-UK | zero_documents_found | https://www.shell.com/sustainability/reporting-centre.html
+19:37:27 INFO    ---------- [14/29] INT-REPSOL-ES ----------
+19:37:27 INFO    === INT-REPSOL-ES | disclosure seed | https://www.repsol.com/en/shareholders-and-investors/financial-information/annual-reports/
+19:37:28 INFO    HTTP Request: GET https://www.repsol.com/robots.txt "HTTP/1.1 200 OK"
+19:37:28 INFO    HTTP Request: GET https://www.repsol.com/en/shareholders-and-investors/financial-information/annual-reports/index.cshtml "HTTP/1.1 200 OK"
+19:37:30 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/informes-anuales/2025/consolidated-financial-statements.pdf "HTTP/1.1 200 OK"
+19:37:31 INFO    stored INT-REPSOL-ES          disclosure  a1476c1aaeb16626.pdf
+19:37:31 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/informes-anuales/2025/consolidated-annual-financial-report-2025.pdf "HTTP/1.1 200 OK"
+19:37:33 INFO    stored INT-REPSOL-ES          disclosure  327faaafa8d2b122.pdf
+19:37:33 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/informes-anuales/2025/individual-financial-statements-and-management-report.pdf "HTTP/1.1 200 OK"
+19:37:35 INFO    stored INT-REPSOL-ES          disclosure  5c708b2d3fe975e8.pdf
+19:37:35 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/informes-anuales/2025/individual-annual-financial-report.pdf "HTTP/1.1 200 OK"
+19:37:37 INFO    stored INT-REPSOL-ES          disclosure  0808b3641d4a05a1.pdf
+19:37:37 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/informes-anuales/2025/annual-report-on-the-remuneration-of-directors.pdf "HTTP/1.1 200 OK"
+19:37:38 INFO    stored INT-REPSOL-ES          disclosure  837c0983ec0dd7cb.pdf
+19:37:38 INFO    === INT-REPSOL-ES | disclosure seed | https://www.repsol.com/en/shareholders-and-investors/financial-information/annual-reports/
+19:37:39 INFO    HTTP Request: GET https://www.repsol.com/en/shareholders-and-investors/financial-information/annual-reports/archive/index.cshtml "HTTP/1.1 200 OK"
+19:37:41 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/informes-anuales/2024/consolidated-financial-statements.pdf "HTTP/1.1 200 OK"
+19:37:43 INFO    stored INT-REPSOL-ES          disclosure  2672a1fd4cdeb7c0.pdf
+19:37:43 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/informes-anuales/2024/consolidated-annual-financial-report-2024.pdf "HTTP/1.1 200 OK"
+19:37:45 INFO    stored INT-REPSOL-ES          disclosure  7ab699c1b7a1316a.pdf
+19:37:46 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/informes-anuales/2024/individual-financial-statements-and-management-report.pdf "HTTP/1.1 200 OK"
+19:37:47 INFO    stored INT-REPSOL-ES          disclosure  9760516f62f4a229.pdf
+19:37:47 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/informes-anuales/2024/individual-annual-financial-report.pdf "HTTP/1.1 200 OK"
+19:37:49 INFO    stored INT-REPSOL-ES          disclosure  2038da8aa6bfb6ed.pdf
+19:37:49 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/cnmv/2025/ori20022025-2024-annual-report-on-the-remuneration-of-directors.pdf "HTTP/1.1 200 OK"
+19:37:50 INFO    stored INT-REPSOL-ES          disclosure  2b79947cf50b573d.pdf
+19:37:51 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/informes-anuales/2023/consolidated-financial-statements.pdf "HTTP/1.1 200 OK"
+19:37:52 INFO    stored INT-REPSOL-ES          disclosure  78c4fc48b7ba9d92.pdf
+19:37:52 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/informes-anuales/2023/consolidated-annual-financial-report-2023.pdf "HTTP/1.1 200 OK"
+19:37:55 INFO    stored INT-REPSOL-ES          disclosure  85b8740ad6c6942f.pdf
+19:37:56 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/es/accionistas-e-inversores/informes-anuales/2023/cuentas-anuales-informe-gestion-individual.pdf "HTTP/1.1 200 OK"
+19:37:57 INFO    stored INT-REPSOL-ES          disclosure  94a0746a49c87f60.pdf
+19:37:57 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/es/accionistas-e-inversores/informes-anuales/2023/informe-financiero-anual-individual.pdf "HTTP/1.1 200 OK"
+19:37:59 INFO    stored INT-REPSOL-ES          disclosure  8e8858d83723f777.pdf
+19:37:59 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/cnmv/2024/ori22022024-2023-annual-report-on-the-remuneration-of-directors.pdf "HTTP/1.1 200 OK"
+19:38:01 INFO    stored INT-REPSOL-ES          disclosure  3ff90de20c5ddb2f.pdf
+19:38:01 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/resultados/2022/q4/consolidated-financial-statements.pdf "HTTP/1.1 200 OK"
+19:38:02 INFO    stored INT-REPSOL-ES          disclosure  0d46a1a13bae831b.pdf
+19:38:03 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/resultados/2022/q4/consolidated-annual-financial-report-2022.pdf "HTTP/1.1 200 OK"
+19:38:06 INFO    stored INT-REPSOL-ES          disclosure  2b8bbb0fa1c82c0e.pdf
+19:38:06 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/es/accionistas-e-inversores/informes-anuales/2022/cuentas-anuales-informe-gestion-individual-2022.pdf "HTTP/1.1 200 OK"
+19:38:08 INFO    stored INT-REPSOL-ES          disclosure  2e916c0af2cc1dcf.pdf
+19:38:08 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/es/accionistas-e-inversores/informes-anuales/2022/informe-financiero-anual-individual-2022.pdf "HTTP/1.1 200 OK"
+19:38:09 INFO    stored INT-REPSOL-ES          disclosure  0256f3068a1a6cc0.pdf
+19:38:10 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/cnmv/2023/ori16022023-annual-report-on-the-remuneration-of-directors.pdf "HTTP/1.1 200 OK"
+19:38:11 INFO    stored INT-REPSOL-ES          disclosure  3a1f268429418a5d.pdf
+19:38:11 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/informes-anuales/2021/consolidated-financial-statement-2021.pdf "HTTP/1.1 200 OK"
+19:38:13 INFO    stored INT-REPSOL-ES          disclosure  bd31791fe5755e99.pdf
+19:38:13 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/informes-anuales/2021/consolidated-annual-financial-report-2021.pdf "HTTP/1.1 200 OK"
+19:38:15 INFO    stored INT-REPSOL-ES          disclosure  c8c9c9299b6f0673.pdf
+19:38:16 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/es/accionistas-e-inversores/informes-anuales/2021/cuentas-anuales-informe-gestion-individual-2021.pdf "HTTP/1.1 200 OK"
+19:38:17 INFO    stored INT-REPSOL-ES          disclosure  a27d984cf7097b24.pdf
+19:38:18 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/es/accionistas-e-inversores/informes-anuales/2021/informe-financiero-anual-individual-2021.pdf "HTTP/1.1 200 OK"
+19:38:19 INFO    stored INT-REPSOL-ES          disclosure  a9e017b5adf9f24f.pdf
+19:38:19 INFO    HTTP Request: GET https://www.repsol.com/content/dam/repsol-corporate/en_gb/accionistas-e-inversores/cnmv/2022/ori17022022-2021-annual-report-on-the-remuneration-of-directors.pdf "HTTP/1.1 200 OK"
+19:38:21 INFO    stored INT-REPSOL-ES          disclosure  125d0fc333f06cbe.pdf
+19:38:21 INFO    ---------- [15/29] INT-PETRONAS-MY ----------
+19:38:21 INFO    === INT-PETRONAS-MY | disclosure seed | https://www.petronas.com/sustainability/reporting
+19:38:21 INFO    HTTP Request: GET https://www.petronas.com/robots.txt "HTTP/1.1 200 OK"
+19:38:22 INFO    HTTP Request: GET https://www.petronas.com/sustainability/reporting "HTTP/1.1 200 OK"
+19:38:23 WARNING INT-PETRONAS-MY | zero_documents_found | https://www.petronas.com/sustainability/reporting
+19:38:23 INFO    === INT-PETRONAS-MY | disclosure seed | https://www.petronas.com/media/reports
+19:38:23 INFO    HTTP Request: GET https://www.petronas.com/media/reports "HTTP/1.1 200 OK"
+19:38:24 INFO    HTTP Request: GET https://www.petronas.com/sites/default/files/uploads/content/2026/PETRONAS%20Integrated%20Report%202025.pdf "HTTP/1.1 200 OK"
+19:38:26 INFO    stored INT-PETRONAS-MY        disclosure  a4758ac4ce5fab5d.pdf
+19:38:26 INFO    HTTP Request: GET https://www.petronas.com/sites/default/files/uploads/content/2025/PETRONAS-Integrated-Report-2024.pdf "HTTP/1.1 200 OK"
+19:38:29 INFO    stored INT-PETRONAS-MY        disclosure  1484cb77d5ffeac4.pdf
+19:38:29 INFO    === INT-PETRONAS-MY | disclosure seed | https://www.petronas.com/integrated-report-2025/
+19:38:29 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2025/ "HTTP/1.1 200 OK"
+19:38:30 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2025/assets/pdf/PETRONAS_IR25_Interactive.pdf "HTTP/1.1 200 OK"
+19:38:32 INFO    stored INT-PETRONAS-MY        disclosure  a4758ac4ce5fab5d.pdf
+19:38:32 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2025/assets/pdf/by-section/6_PETRONAS_IR25_SustainabilityPerformance.pdf "HTTP/1.1 200 OK"
+19:38:35 INFO    stored INT-PETRONAS-MY        disclosure  3c42d1767c41d3ff.pdf
+19:38:35 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2025/assets/pdf/PETRONAS_AFS25.pdf "HTTP/1.1 200 OK"
+19:38:36 INFO    stored INT-PETRONAS-MY        disclosure  a151d5d75069425e.pdf
+19:38:36 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2025/assets/pdf/specific-cta/PETRONAS_IR25_NZCE.pdf "HTTP/1.1 200 OK"
+19:38:38 INFO    stored INT-PETRONAS-MY        disclosure  c447424c660610fa.pdf
+19:38:38 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2025/assets/pdf/specific-cta/PETRONAS_IR25_Material_Topics.pdf "HTTP/1.1 200 OK"
+19:38:39 INFO    stored INT-PETRONAS-MY        disclosure  28078bd8cbb11705.pdf
+19:38:39 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2025/assets/pdf/specific-cta/PETRONAS_IR25_OurApproachToSustainability.pdf "HTTP/1.1 200 OK"
+19:38:41 INFO    stored INT-PETRONAS-MY        disclosure  557076fcae2151ad.pdf
+19:38:41 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2025/assets/pdf/specific-cta/PETRONAS_IR25_DeliveringNetZero.pdf "HTTP/1.1 200 OK"
+19:38:43 INFO    stored INT-PETRONAS-MY        disclosure  53b8188ee153850d.pdf
+19:38:43 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2025/assets/pdf/specific-cta/PETRONAS_IR25_FosteringAJustTransition.pdf "HTTP/1.1 200 OK"
+19:38:44 INFO    stored INT-PETRONAS-MY        disclosure  aa75b31e667778a9.pdf
+19:38:44 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2025/assets/pdf/specific-cta/PETRONAS_IR25_ThrivingWithNature.pdf "HTTP/1.1 200 OK"
+19:38:46 INFO    stored INT-PETRONAS-MY        disclosure  7d63fd68beda0d68.pdf
+19:38:46 INFO    HTTP Request: GET https://www.petronas.com/sites/default/files/uploads/PIR%202025/PETRONAS%20Integrated%20Report%202025.pdf "HTTP/1.1 200 OK"
+19:38:48 INFO    stored INT-PETRONAS-MY        disclosure  a4758ac4ce5fab5d.pdf
+19:38:48 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2025/assets/pdf/PETRONAS_2025_Audited_Financial_Statements.pdf "HTTP/1.1 200 OK"
+19:38:49 INFO    stored INT-PETRONAS-MY        disclosure  a151d5d75069425e.pdf
+19:38:49 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2025/assets/pdf/PETRONAS_Limited_Assurance_Statement_PIR2025.pdf "HTTP/1.1 200 OK"
+19:38:51 INFO    stored INT-PETRONAS-MY        disclosure  9fc123f8439322aa.pdf
+19:38:51 INFO    === INT-PETRONAS-MY | disclosure seed | https://www.petronas.com/integrated-report-2024/
+19:38:51 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2024/ "HTTP/1.1 200 OK"
+19:38:52 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2024/assets/pdf/2024/PETRONAS-Integrated-Report-Interactive-2024.pdf "HTTP/1.1 200 OK"
+19:38:55 INFO    stored INT-PETRONAS-MY        disclosure  1484cb77d5ffeac4.pdf
+19:38:55 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2024/assets/pdf/by-section/6.%20PIR24_Sustainability%20Performance%20Review.pdf "HTTP/1.1 200 OK"
+19:38:58 INFO    stored INT-PETRONAS-MY        disclosure  f09d2afa169a5280.pdf
+19:38:58 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2024/assets/pdf/PIR%202024_Audited%20Financial%20Statements.pdf "HTTP/1.1 200 OK"
+19:38:59 INFO    stored INT-PETRONAS-MY        disclosure  fe5d4971bf6ee37a.pdf
+19:38:59 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2024/assets/pdf/PIR%202024_Audited%20Financial%20Statements.pdf "HTTP/1.1 200 OK"
+19:39:01 INFO    stored INT-PETRONAS-MY        disclosure  fe5d4971bf6ee37a.pdf
+19:39:01 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2024/assets/pdf/2024/PETRONAS-Integrated-Report-2024.pdf "HTTP/1.1 200 OK"
+19:39:03 INFO    stored INT-PETRONAS-MY        disclosure  2622b599768ec997.pdf
+19:39:03 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2024/assets/pdf/2024/4.6%20PIR24_Material%20Topics.pdf "HTTP/1.1 200 OK"
+19:39:04 INFO    stored INT-PETRONAS-MY        disclosure  733cfcb16d429810.pdf
+19:39:04 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2024/assets/pdf/2024/4.5%20PIR24_Our%20Approach%20to%20Sustainability.pdf "HTTP/1.1 200 OK"
+19:39:06 INFO    stored INT-PETRONAS-MY        disclosure  a4a97bcfe5e61e5a.pdf
+19:39:06 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2024/assets/pdf/Selected-Sustainability-Topics-Independence-Assurance%20Statement_PIR2024.pdf "HTTP/1.1 200 OK"
+19:39:07 INFO    stored INT-PETRONAS-MY        disclosure  b6c7b023b7f57419.pdf
+19:39:08 INFO    HTTP Request: GET https://www.petronas.com/integrated-report-2024/assets/pdf/PETRONAS%20Activity%20Outlook%202025-2027.pdf "HTTP/1.1 200 OK"
+19:39:11 INFO    stored INT-PETRONAS-MY        disclosure  355de69fa14c6831.pdf
+19:39:11 INFO    ---------- [16/29] INT-EQUINOR-NO ----------
+19:39:11 INFO    === INT-EQUINOR-NO | disclosure seed | https://www.equinor.com/investors/annual-reports
+19:39:12 INFO    HTTP Request: GET https://www.equinor.com/robots.txt "HTTP/1.1 200 OK"
+19:39:19 INFO    HTTP Request: GET https://www.equinor.com/investors/annual-reports "HTTP/1.1 200 OK"
+19:39:20 WARNING INT-EQUINOR-NO | zero_documents_found | https://www.equinor.com/investors/annual-reports
+19:39:20 INFO    === INT-EQUINOR-NO | disclosure seed | https://www.equinor.com/sustainability/sustainability-reports-archive
+19:39:26 INFO    HTTP Request: GET https://www.equinor.com/sustainability/sustainability-reports-archive "HTTP/1.1 200 OK"
+19:39:28 WARNING INT-EQUINOR-NO | zero_documents_found | https://www.equinor.com/sustainability/sustainability-reports-archive
+19:39:28 INFO    ---------- [17/29] INT-TOTALENERGIES-FR ----------
+19:39:28 INFO    === INT-TOTALENERGIES-FR | disclosure seed | https://totalenergies.com/investors/publications-and-regulated-information/regulated-infor
+19:39:29 INFO    HTTP Request: GET https://totalenergies.com/robots.txt "HTTP/1.1 200 OK"
+19:39:29 INFO    HTTP Request: GET https://totalenergies.com/investors/publications-and-regulated-information/regulated-information/annual-financial-reports "HTTP/1.1 200 OK"
+19:39:31 INFO    HTTP Request: GET https://totalenergies.com/system/files/documents/totalenergies_universal-registration-document-2025_2026_en.pdf "HTTP/1.1 200 OK"
+19:39:35 INFO    stored INT-TOTALENERGIES-FR   disclosure  58e1798ad874228b.pdf
+19:39:36 INFO    HTTP Request: GET https://totalenergies.com/system/files/documents/totalenergies_form-20-f-2025_2026_en.pdf "HTTP/1.1 200 OK"
+19:39:48 INFO    stored INT-TOTALENERGIES-FR   disclosure  3b95e44ec0805b27.pdf
+19:39:49 INFO    HTTP Request: GET https://totalenergies.com/system/files/documents/totalenergies_universal-registration-document-2024_2025_en.pdf "HTTP/1.1 200 OK"
+19:39:51 INFO    stored INT-TOTALENERGIES-FR   disclosure  c0294fa903042125.pdf
+19:39:52 INFO    HTTP Request: GET https://totalenergies.com/system/files/documents/totalenergies_form-20-f-2024_2025_en.pdf "HTTP/1.1 200 OK"
+19:40:02 INFO    stored INT-TOTALENERGIES-FR   disclosure  ed997e5b996d0a50.pdf
+19:40:03 INFO    HTTP Request: GET https://totalenergies.com/system/files/documents/2024-03/totalenergies_universal-registration-document-2023_2023_en_pdf.pdf "HTTP/1.1 200 OK"
+19:40:05 INFO    stored INT-TOTALENERGIES-FR   disclosure  dba48e9f5e7e6fc9.pdf
+19:40:06 INFO    HTTP Request: GET https://totalenergies.com/system/files/documents/2024-03/totalenergies_form-20-f-2023_2023_en_pdf.pdf "HTTP/1.1 200 OK"
+19:40:16 INFO    stored INT-TOTALENERGIES-FR   disclosure  922629ab19b66fdc.pdf
+19:40:16 INFO    HTTP Request: GET https://totalenergies.com/sites/g/files/nytnzq121/files/documents/2023-03/TotalEnergies_URD_2022_EN.pdf "HTTP/1.1 200 OK"
+19:40:18 INFO    stored INT-TOTALENERGIES-FR   disclosure  efa31d9afeca05cd.pdf
+19:40:18 INFO    HTTP Request: GET https://totalenergies.com/sites/g/files/nytnzq121/files/documents/2023-03/TotalEnergies_Form_20-F_2022.pdf "HTTP/1.1 200 OK"
+19:40:27 INFO    stored INT-TOTALENERGIES-FR   disclosure  383f30b4f865def7.pdf
+19:40:27 INFO    HTTP Request: GET https://totalenergies.com/system/files/documents/2022-03/DEU_21_VA.pdf "HTTP/1.1 200 OK"
+19:40:29 INFO    stored INT-TOTALENERGIES-FR   disclosure  b812c3e1d51c1432.pdf
+19:40:30 INFO    HTTP Request: GET https://totalenergies.com/system/files/documents/2022-03/Form_20-F_2021.pdf "HTTP/1.1 200 OK"
+19:40:31 INFO    stored INT-TOTALENERGIES-FR   disclosure  cde3e9937dd253f0.pdf
+19:40:31 INFO    HTTP Request: GET https://totalenergies.com/system/files/documents/2021-03/2020-universal-registration-document.pdf "HTTP/1.1 200 OK"
+19:40:33 INFO    stored INT-TOTALENERGIES-FR   disclosure  e33e8b6b34a9ec1b.pdf
+19:40:34 INFO    HTTP Request: GET https://totalenergies.com/system/files/documents/2021-03/2020-total-form-20-f.pdf "HTTP/1.1 200 OK"
+19:40:36 INFO    stored INT-TOTALENERGIES-FR   disclosure  eda7f0e2665f35ef.pdf
+19:40:36 INFO    HTTP Request: GET https://totalenergies.com/sites/g/files/nytnzq111/files/atoms/files/form_20-f_2009.pdf "HTTP/1.1 301 Moved Permanently"
+19:40:36 INFO    HTTP Request: GET http://totalenergies.com/sites/g/files/nytnzq121/files/atoms/files/form_20-f_2009.pdf "HTTP/1.1 301 Moved Permanently"
+19:40:37 INFO    HTTP Request: GET https://totalenergies.com/sites/g/files/nytnzq121/files/atoms/files/form_20-f_2009.pdf "HTTP/1.1 200 OK"
+19:40:40 INFO    stored INT-TOTALENERGIES-FR   disclosure  46c33ba804a3de15.pdf
+19:40:40 INFO    HTTP Request: GET https://totalenergies.com/sites/g/files/nytnzq111/files/atoms/files/form_20-f_2008.pdf "HTTP/1.1 301 Moved Permanently"
+19:40:40 INFO    HTTP Request: GET http://totalenergies.com/sites/g/files/nytnzq121/files/atoms/files/form_20-f_2008.pdf "HTTP/1.1 301 Moved Permanently"
+19:40:41 INFO    HTTP Request: GET https://totalenergies.com/sites/g/files/nytnzq121/files/atoms/files/form_20-f_2008.pdf "HTTP/1.1 200 OK"
+19:40:43 INFO    stored INT-TOTALENERGIES-FR   disclosure  71031c15318d30fb.pdf
+19:40:44 INFO    HTTP Request: GET https://totalenergies.com/sites/g/files/nytnzq111/files/atoms/files/form_20-f_2007.pdf "HTTP/1.1 301 Moved Permanently"
+19:40:44 INFO    HTTP Request: GET http://totalenergies.com/sites/g/files/nytnzq121/files/atoms/files/form_20-f_2007.pdf "HTTP/1.1 301 Moved Permanently"
+19:40:45 INFO    HTTP Request: GET https://totalenergies.com/sites/g/files/nytnzq121/files/atoms/files/form_20-f_2007.pdf "HTTP/1.1 200 OK"
+19:40:47 INFO    stored INT-TOTALENERGIES-FR   disclosure  3aaf6040d0e873ba.pdf
+19:40:48 INFO    HTTP Request: GET https://totalenergies.com/sites/g/files/nytnzq111/files/atoms/files/form_20-f_2006.pdf "HTTP/1.1 301 Moved Permanently"
+19:40:48 INFO    HTTP Request: GET http://totalenergies.com/sites/g/files/nytnzq121/files/atoms/files/form_20-f_2006.pdf "HTTP/1.1 301 Moved Permanently"
+19:40:49 INFO    HTTP Request: GET https://totalenergies.com/sites/g/files/nytnzq121/files/atoms/files/form_20-f_2006.pdf "HTTP/1.1 200 OK"
+19:40:51 INFO    stored INT-TOTALENERGIES-FR   disclosure  bc33dbb13211d950.pdf
+19:40:51 INFO    === INT-TOTALENERGIES-FR | disclosure seed | https://totalenergies.com/investors/reports
+19:40:52 INFO    HTTP Request: GET https://totalenergies.com/investors/reports "HTTP/1.1 200 OK"
+19:40:54 INFO    HTTP Request: GET https://totalenergies.com/system/files/documents/totalenergies_esg-databook-2025_2026_fr_en.xlsx "HTTP/1.1 200 OK"
+19:40:55 INFO    stored INT-TOTALENERGIES-FR   disclosure  83b9206f5addc113.xlsx
+19:40:56 INFO    HTTP Request: GET https://totalenergies.com/system/files/documents/totalenergies_sustainability-climate-2025-progress-report_2025_en.pdf "HTTP/1.1 200 OK"
+19:40:58 INFO    stored INT-TOTALENERGIES-FR   disclosure  54cb1fc8554f9ff1.pdf
+19:40:58 INFO    HTTP Request: GET https://totalenergies.com/sites/g/files/nytnzq121/files/documents/totalenergies_esg-databook-2024_2025_fr_en.xlsx "HTTP/1.1 200 OK"
+19:41:00 INFO    stored INT-TOTALENERGIES-FR   disclosure  66edc68cb84a3018.xlsx
+19:41:01 INFO    HTTP Request: GET https://totalenergies.com/system/files/documents/2024-03/totalenergies_sustainability-climate-2024-progress-report_2024_en_pdf.pdf "HTTP/1.1 200 OK"
+19:41:04 INFO    stored INT-TOTALENERGIES-FR   disclosure  8e664f5bdb7d481c.pdf
+19:41:05 INFO    HTTP Request: GET https://totalenergies.com/sites/g/files/nytnzq121/files/documents/2024-03/totalenergies_ESG-Databook-2023_2024_EN_xlsx.xlsx "HTTP/1.1 200 OK"
+19:41:07 INFO    stored INT-TOTALENERGIES-FR   disclosure  7f38ff9821e2e142.xlsx
+19:41:07 INFO    HTTP Request: GET https://totalenergies.com/system/files/documents/2023-03/Sustainability_Climate_2023_Progress_Report_EN.pdf "HTTP/1.1 200 OK"
+19:41:09 INFO    stored INT-TOTALENERGIES-FR   disclosure  933ef41abf9cba53.pdf
+19:41:10 INFO    HTTP Request: GET https://totalenergies.com/sites/g/files/nytnzq121/files/documents/2023-03/TotalEnergies_ESG_Databook_2022.xlsx "HTTP/1.1 200 OK"
+19:41:12 INFO    stored INT-TOTALENERGIES-FR   disclosure  e903c9ad7c40c23b.xlsx
+19:41:13 INFO    HTTP Request: GET https://totalenergies.com/sites/g/files/nytnzq121/files/documents/2022-05/Sustainability_Climate_2022_Progress_Report_accessible_version_EN.pdf "HTTP/1.1 200 OK"
+19:41:15 INFO    stored INT-TOTALENERGIES-FR   disclosure  a2c85db9a93fb364.pdf
+19:41:15 INFO    ---------- [18/29] INT-HSBC-UK ----------
+19:41:15 INFO    === INT-HSBC-UK | disclosure seed | https://www.hsbc.com/who-we-are/esg-and-responsible-business/esg-reporting-centre
+19:41:16 INFO    HTTP Request: GET https://www.hsbc.com/robots.txt "HTTP/1.1 200 OK"
+19:41:17 INFO    HTTP Request: GET https://www.hsbc.com/who-we-are/esg-and-responsible-business/esg-reporting-centre "HTTP/1.1 200 OK"
+19:41:19 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2025/annual/pdfs/hsbc-holdings-plc/260225-annual-report-and-accounts-2025.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:21 INFO    stored INT-HSBC-UK            disclosure  94aab2f5c83d1060.pdf
+19:41:22 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2025/annual/pdfs/hsbc-holdings-plc/260225-strategic-report-2025.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:23 INFO    stored INT-HSBC-UK            disclosure  804c60edc5bf1a29.pdf
+19:41:24 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2025/annual/pdfs/hsbc-holdings-plc/260225-esg-datapack-2025-excel.xlsx?sc_lang=en-gb&download=1 "HTTP/1.1 200 OK"
+19:41:25 INFO    stored INT-HSBC-UK            disclosure  381dc1f66e0b689c.xlsx
+19:41:25 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2025/annual/pdfs/hsbc-holdings-plc/260225-esg-datapack-2025.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:26 INFO    stored INT-HSBC-UK            disclosure  056338e2e038aa10.pdf
+19:41:27 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2025/annual/pdfs/hsbc-holdings-plc/260225-financed-emissions-and-thermal-coal-exposures-methodology-published-february-2026.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:28 INFO    stored INT-HSBC-UK            disclosure  6d8e86139ef1bee4.pdf
+19:41:29 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2025/annual/pdfs/hsbc-holdings-plc/260225-ghg-reporting-guidance-2025.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:30 INFO    stored INT-HSBC-UK            disclosure  1f1b3d55ef5ad7b6.pdf
+19:41:30 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2025/annual/pdfs/hsbc-holdings-plc/260225-hsbcs-usd750-bn-usd-1-trn-sustainable-financing-and-investment-ambition-data-dictionary-2025.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:32 INFO    stored INT-HSBC-UK            disclosure  ba354ccfa997cdb7.pdf
+19:41:32 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2025/annual/pdfs/hsbc-holdings-plc/260225-2025-uk-gender-pay-gap-disclosures.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:34 INFO    stored INT-HSBC-UK            disclosure  1d864fb0241dc279.pdf
+19:41:34 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/esg-investors/260629-carbon-reduction-plan.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:35 INFO    stored INT-HSBC-UK            disclosure  cd0a7fd556dd871f.pdf
+19:41:35 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/who-we-are/esg-and-responsible-business/esg-reporting-centre/pdfs/260701-california-ab-1305-compliance-statement.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:37 INFO    stored INT-HSBC-UK            disclosure  8dc15c1387816c90.pdf
+19:41:37 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2025/annual/pdfs/hsbc-holdings-plc/260225-pricewaterhousecoopers-llp-assurance-report-for-2025.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:38 INFO    stored INT-HSBC-UK            disclosure  cd07f23e5cd51e63.pdf
+19:41:39 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/who-we-are/esg-and-responsible-business/esg-reporting-centre/pdfs/250220-pwc-assurance-report-for-2024.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:40 INFO    stored INT-HSBC-UK            disclosure  0cd011d720e00ced.pdf
+19:41:40 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/who-we-are/esg-and-responsible-business/esg-reporting-centre/pdfs/260629-communication-on-progress-sustainable-insurance-2025.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:42 INFO    stored INT-HSBC-UK            disclosure  3b1fd1e72a52e8c7.pdf
+19:41:42 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/who-we-are/pdf/251106-our-net-zero-transition-plan.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:44 INFO    stored INT-HSBC-UK            disclosure  8d6a160da759bd1e.pdf
+19:41:44 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/who-we-are/pdf/251106-sustainability-risk-policies-framework.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:45 INFO    stored INT-HSBC-UK            disclosure  818906cc0c66f10e.pdf
+19:41:46 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/our-approach/corporate-governance/pdfs/251205-hsbc-holdings-diversity-and-inclusion-policy-2025.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:47 INFO    stored INT-HSBC-UK            disclosure  88d055e7383291f0.pdf
+19:41:47 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/who-we-are/esg-and-responsible-business/esg-reporting-centre/pdfs/260713-customer-operational-resilience-statement.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:49 INFO    stored INT-HSBC-UK            disclosure  87020f052c3a946a.pdf
+19:41:49 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/who-we-are/esg-and-responsible-business/esg-reporting-centre/pdfs/251211-california-ab-1305-compliance-statement.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:50 INFO    stored INT-HSBC-UK            disclosure  4e4b72cdbe4837b0.pdf
+19:41:51 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2024/annual/pdfs/hsbc-holdings-plc/250219-financed-emissions-methodology-update-published-february-2025.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:52 INFO    stored INT-HSBC-UK            disclosure  a0ce0a2dba7624b3.pdf
+19:41:52 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/esg-investors/250722-carbon-reduction-plan.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:54 INFO    stored INT-HSBC-UK            disclosure  81347666ba7c9e84.pdf
+19:41:54 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2024/annual/pdfs/hsbc-holdings-plc/250219-annual-report-and-accounts-2024.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:56 INFO    stored INT-HSBC-UK            disclosure  c998d20da18afa77.pdf
+19:41:56 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2024/annual/pdfs/hsbc-holdings-plc/250219-strategic-report-2024.pdf?download=1 "HTTP/1.1 200 OK"
+19:41:58 INFO    stored INT-HSBC-UK            disclosure  81b2fd1839632613.pdf
+19:41:58 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2024/annual/pdfs/hsbc-holdings-plc/250219-esg-datapack-2024-excel.xlsx?sc_lang=en-gb&download=1 "HTTP/1.1 200 OK"
+19:41:59 INFO    stored INT-HSBC-UK            disclosure  24e9012a51972ac3.xlsx
+19:41:59 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2024/annual/pdfs/hsbc-holdings-plc/250219-esg-datapack-2024.pdf?download=1 "HTTP/1.1 200 OK"
+19:42:01 INFO    stored INT-HSBC-UK            disclosure  f7dd6a05486beba3.pdf
+19:42:01 INFO    HTTP Request: GET https://www.hsbc.com/-/files/hsbc/investors/hsbc-results/2024/annual/pdfs/hsbc-holdings-plc/250219-ghg-reporting-guidance-2024.pdf?download=1 "HTTP/1.1 200 OK"
+19:42:03 INFO    stored INT-HSBC-UK            disclosure  a229e101d07ca9b1.pdf
+19:42:03 INFO    ---------- [19/29] INT-LLOYDS-UK ----------
+19:42:03 INFO    === INT-LLOYDS-UK | disclosure seed | https://www.lloydsbankinggroup.com/investors/annual-report/annual-report-archive.html
+19:42:04 INFO    HTTP Request: GET https://www.lloydsbankinggroup.com/robots.txt "HTTP/1.1 200 OK"
+19:42:04 INFO    HTTP Request: GET https://www.lloydsbankinggroup.com/investors/annual-report/annual-report-archive.html "HTTP/1.1 200 OK"
+19:42:05 WARNING INT-LLOYDS-UK | zero_documents_found | https://www.lloydsbankinggroup.com/investors/annual-report/annual-report-archive.html
+19:42:05 INFO    ---------- [20/29] INT-UNILEVER-UK ----------
+19:42:05 INFO    === INT-UNILEVER-UK | disclosure seed | https://www.unilever.com/investors/annual-report-and-accounts/
+19:42:06 INFO    HTTP Request: GET https://www.unilever.com/robots.txt "HTTP/1.1 403 Forbidden"
+19:42:06 INFO    HTTP Request: GET https://www.unilever.com/investors/annual-report-and-accounts/ "HTTP/1.1 403 Forbidden"
+19:42:06 WARNING INT-UNILEVER-UK | http_403 | https://www.unilever.com/investors/annual-report-and-accounts/
+19:42:06 INFO    === INT-UNILEVER-UK | disclosure seed | https://www.unilever.com/
+19:42:06 INFO    HTTP Request: GET https://www.unilever.com/ "HTTP/1.1 403 Forbidden"
+19:42:06 WARNING INT-UNILEVER-UK | http_403 | https://www.unilever.com/
+19:42:06 INFO    ---------- [21/29] INT-TESCO-UK ----------
+19:42:06 INFO    === INT-TESCO-UK | disclosure seed | https://www.tescoplc.com/investors/
+19:42:07 INFO    HTTP Request: GET https://www.tescoplc.com/robots.txt "HTTP/1.1 200 OK"
+19:42:08 INFO    HTTP Request: GET https://www.tescoplc.com/investors/ "HTTP/1.1 200 OK"
+19:42:09 WARNING INT-TESCO-UK | zero_documents_found | https://www.tescoplc.com/investors/
+19:42:09 INFO    === INT-TESCO-UK | disclosure seed | https://www.tescoplc.com/investors/reports-results-and-presentations/
+19:42:09 INFO    HTTP Request: GET https://www.tescoplc.com/investors/reports-results-and-presentations/ "HTTP/1.1 200 OK"
+19:42:10 WARNING INT-TESCO-UK | zero_documents_found | https://www.tescoplc.com/investors/reports-results-and-presentations/
+19:42:10 INFO    === INT-TESCO-UK | disclosure seed | https://origin.tescoplc.com/investors
+19:42:11 INFO    HTTP Request: GET https://origin.tescoplc.com/robots.txt "HTTP/1.1 200 OK"
+19:42:11 INFO    HTTP Request: GET https://origin.tescoplc.com/investors "HTTP/1.1 200 OK"
+19:42:12 WARNING INT-TESCO-UK | zero_documents_found | https://origin.tescoplc.com/investors
+19:42:12 INFO    === INT-TESCO-UK | disclosure seed | https://origin.tescoplc.com/investors/shareholder-centre/
+19:42:13 INFO    HTTP Request: GET https://origin.tescoplc.com/investors/shareholder-centre/ "HTTP/1.1 200 OK"
+19:42:14 WARNING INT-TESCO-UK | zero_documents_found | https://origin.tescoplc.com/investors/shareholder-centre/
+19:42:14 INFO    ---------- [22/29] INT-OATLY-UK ----------
+19:42:14 INFO    === INT-OATLY-UK | disclosure seed | https://investors.oatly.com/financials-filings
+19:43:45 WARNING INT-OATLY-UK | robots_denied | https://investors.oatly.com/financials-filings
+19:43:45 INFO    ---------- [23/29] INT-LUFTHANSA-DE ----------
+19:43:45 INFO    === INT-LUFTHANSA-DE | disclosure seed | https://investor-relations.lufthansagroup.com/en/financial-reports-publications.html
+19:43:47 INFO    HTTP Request: GET https://investor-relations.lufthansagroup.com/robots.txt "HTTP/1.1 200 OK"
+19:43:47 INFO    HTTP Request: GET https://investor-relations.lufthansagroup.com/en/financial-reports-publications.html "HTTP/1.1 200 OK"
+19:43:49 INFO    HTTP Request: GET https://investor-relations.lufthansagroup.com/fileadmin/downloads/en/financial-reports/annual-reports/LH-AR-2025-e.pdf "HTTP/1.1 200 OK"
+19:43:53 INFO    stored INT-LUFTHANSA-DE       disclosure  d39c75b65e16f7c8.pdf
+19:43:53 INFO    HTTP Request: GET https://investor-relations.lufthansagroup.com/fileadmin/downloads/en/financial-reports/interims-reports/LH-QR-2026-2-e.pdf "HTTP/1.1 200 OK"
+19:43:55 INFO    stored INT-LUFTHANSA-DE       disclosure  40607c6f77f697ca.pdf
+19:43:55 INFO    === INT-LUFTHANSA-DE | disclosure seed | https://www.lufthansagroup.com/en/responsibility/news-and-data/reporting.html
+19:43:56 INFO    HTTP Request: GET https://www.lufthansagroup.com/robots.txt "HTTP/1.1 403 Forbidden"
+19:43:56 INFO    HTTP Request: GET https://www.lufthansagroup.com/en/responsibility/news-and-data/reporting.html "HTTP/1.1 403 Forbidden"
+19:43:56 WARNING INT-LUFTHANSA-DE | http_403 | https://www.lufthansagroup.com/en/responsibility/news-and-data/reporting.html
+19:43:56 INFO    ---------- [24/29] INT-ETIHAD-AE ----------
+19:43:56 INFO    === INT-ETIHAD-AE | disclosure seed | https://www.etihad.com/en/about-us/sustainability
+19:45:26 WARNING INT-ETIHAD-AE | robots_denied | https://www.etihad.com/en/about-us/sustainability
+19:45:26 INFO    === INT-ETIHAD-AE | disclosure seed | https://www.etihad.com/en-cd/about-us/sustainability
+19:45:26 WARNING INT-ETIHAD-AE | robots_denied | https://www.etihad.com/en-cd/about-us/sustainability
+19:45:26 INFO    === INT-ETIHAD-AE | disclosure seed | https://www.etihad.com/en-gb/news/etihad-publishes-2022-sustainability-report
+19:45:26 WARNING INT-ETIHAD-AE | robots_denied | https://www.etihad.com/en-gb/news/etihad-publishes-2022-sustainability-report
+19:45:26 INFO    ---------- [25/29] INT-MAZDA-UK ----------
+19:45:26 INFO    === INT-MAZDA-UK | disclosure seed | https://www.mazda.com/en/sustainability/report/
+19:45:27 INFO    HTTP Request: GET https://www.mazda.com/robots.txt "HTTP/1.1 404 Not Found"
+19:45:28 INFO    HTTP Request: GET https://www.mazda.com/en/sustainability/report/ "HTTP/1.1 200 OK"
+19:45:29 INFO    HTTP Request: GET https://www.mazda.com/content/dam/mazda/corporate/mazda-com/en/pdf/sustainability/report/2025e_all.pdf "HTTP/1.1 200 OK"
+19:45:31 INFO    stored INT-MAZDA-UK           disclosure  d5ae1f50fd7f4aca.pdf
+19:45:32 INFO    HTTP Request: GET https://www.mazda.com/content/dam/mazda/corporate/mazda-com/en/pdf/sustainability/report/2024e_all.pdf "HTTP/1.1 200 OK"
+19:45:33 INFO    stored INT-MAZDA-UK           disclosure  6dad4c31efc02889.pdf
+19:45:34 INFO    HTTP Request: GET https://www.mazda.com/content/dam/mazda/corporate/mazda-com/ja/pdf/sustainability/esg-data/Environmental_data_FY_March_2024.xlsx "HTTP/1.1 200 OK"
+19:45:35 INFO    stored INT-MAZDA-UK           disclosure  db4c8ebbd65f8c75.xlsx
+19:45:35 INFO    HTTP Request: GET https://www.mazda.com/content/dam/mazda/corporate/mazda-com/ja/pdf/sustainability/esg-data/Social_data_FY_March_2024.xlsx "HTTP/1.1 200 OK"
+19:45:36 INFO    stored INT-MAZDA-UK           disclosure  50c5beaddfa8a2a4.xlsx
+19:45:36 INFO    HTTP Request: GET https://www.mazda.com/content/dam/mazda/corporate/mazda-com/en/pdf/sustainability/report/2023e_all.pdf "HTTP/1.1 200 OK"
+19:45:38 INFO    stored INT-MAZDA-UK           disclosure  e42bfb22ea0e1809.pdf
+19:45:38 INFO    HTTP Request: GET https://www.mazda.com/content/dam/mazda/corporate/mazda-com/en/pdf/sustainability/2023gri_e.pdf "HTTP/1.1 200 OK"
+19:45:40 INFO    stored INT-MAZDA-UK           disclosure  ad47ab8b519ae2ae.pdf
+19:45:40 INFO    HTTP Request: GET https://www.mazda.com/content/dam/mazda/corporate/mazda-com/en/pdf/sustainability/report/2022e_all.pdf "HTTP/1.1 200 OK"
+19:45:42 INFO    stored INT-MAZDA-UK           disclosure  f80e2f342fec0a96.pdf
+19:45:42 INFO    HTTP Request: GET https://www.mazda.com/content/dam/mazda/corporate/mazda-com/en/pdf/sustainability/report/2022gri_e.pdf "HTTP/1.1 200 OK"
+19:45:43 INFO    stored INT-MAZDA-UK           disclosure  a40d102ff238604e.pdf
+19:45:44 INFO    HTTP Request: GET https://www.mazda.com/content/dam/mazda/corporate/mazda-com/en/pdf/sustainability/report/2021_all.pdf "HTTP/1.1 200 OK"
+19:45:46 INFO    stored INT-MAZDA-UK           disclosure  3dacb89deaec7b4d.pdf
+19:45:46 INFO    HTTP Request: GET https://www.mazda.com/content/dam/mazda/corporate/mazda-com/en/pdf/sustainability/report/2021_d_all.pdf "HTTP/1.1 200 OK"
+19:45:48 INFO    stored INT-MAZDA-UK           disclosure  2d1e1eb962053892.pdf
+19:45:48 INFO    === INT-MAZDA-UK | disclosure seed | https://www.mazda.com/en/investors/library/integrated-report/
+19:45:48 INFO    HTTP Request: GET https://www.mazda.com/en/investors/library/integrated-report/ "HTTP/1.1 200 OK"
+19:45:49 INFO    HTTP Request: GET https://www.mazda.com/content/dam/mazda/corporate/mazda-com/en/pdf/investors/library/integrated-report/ir2025e_all.pdf "HTTP/1.1 200 OK"
+19:45:50 INFO    stored INT-MAZDA-UK           disclosure  3cfdf4d16522ad1a.pdf
+19:45:51 INFO    HTTP Request: GET https://www.mazda.com/content/dam/mazda/corporate/mazda-com/en/pdf/investors/library/integrated-report/ir2025e_all_printing.pdf "HTTP/1.1 200 OK"
+19:45:52 INFO    stored INT-MAZDA-UK           disclosure  9dfb23de98adba48.pdf
+19:45:52 INFO    === INT-MAZDA-UK | disclosure seed | https://www.mazda.com/en/sustainability/
+19:45:52 INFO    HTTP Request: GET https://www.mazda.com/en/sustainability/ "HTTP/1.1 200 OK"
+19:45:53 WARNING INT-MAZDA-UK | zero_documents_found | https://www.mazda.com/en/sustainability/
+19:45:53 INFO    ---------- [26/29] INT-NIKE-UK ----------
+19:45:53 INFO    === INT-NIKE-UK | disclosure seed | https://investors.nike.com/investors/news-events-and-reports/
+19:45:54 INFO    HTTP Request: GET https://investors.nike.com/robots.txt "HTTP/1.1 429 Too Many Requests"
+19:45:54 INFO    HTTP Request: GET https://investors.nike.com/investors/news-events-and-reports/ "HTTP/1.1 429 Too Many Requests"
+19:45:54 WARNING INT-NIKE-UK | http_429 | https://investors.nike.com/investors/news-events-and-reports/
+19:45:54 INFO    === INT-NIKE-UK | disclosure seed | https://about.nike.com/en/resources/nike-inc-impact-report-archive
+19:45:54 INFO    HTTP Request: GET https://about.nike.com/robots.txt "HTTP/1.1 200 OK"
+19:45:55 INFO    HTTP Request: GET https://about.nike.com/en/resources/nike-inc-impact-report-archive "HTTP/1.1 200 OK"
+19:45:57 INFO    HTTP Request: GET https://nmp.about.nike.com/robots.txt "HTTP/1.1 400 Bad Request"
+19:45:58 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/be19ec03-e139-46b6-9b6c-d44a5c699110/FY23_Nike_Impact_Report.pdf?s=f925bbe4e72d90d9425b5e7afd9b6ace067caf3371a22b15a6a04aeb1a53c026&dl=0 "HTTP/1.1 200 OK"
+19:46:00 INFO    stored INT-NIKE-UK            disclosure  275cc7e8fb6ec0eb.pdf
+19:46:01 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/b15e2e36-a0f5-494f-9227-deb4508b7500/FY23-NIR-Data-File_For-Publication.xlsx?s=ef79dbc86ab8fe273c18ab6aa3e99f0d0b07a05698d53bef6de18539f1e2e738&dl=1 "HTTP/1.1 200 OK"
+19:46:02 INFO    stored INT-NIKE-UK            disclosure  16529334b87d934d.xlsx
+19:46:02 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/598ea21b-1f07-4bc7-b340-bfe66fff5847/FY22-NIKE,-Inc.-Impact-Report.pdf?s=91ee8e756850a0f44f78cc6f4335fd3b8dfe185d37d2f3f58208c0ecfef9c419&dl=0 "HTTP/1.1 200 OK"
+19:46:06 INFO    stored INT-NIKE-UK            disclosure  f549ede4452077e2.pdf
+19:46:06 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/4db405fa-c107-4c7b-bda9-beb7acd767f2/FY22-NIKE,-Inc.-Impact-Report-Executive-Summary.pdf?s=81fa58a173f300bcc6efcc4e84c4a563e00983c399909ddc21470a7734f955ac&dl=0 "HTTP/1.1 200 OK"
+19:46:07 INFO    stored INT-NIKE-UK            disclosure  6cc84856ae037c87.pdf
+19:46:08 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/3ea266d0-37f5-4a9a-9e8a-0a158936f51f/FY22-NIKE,-Inc.-Impact-Report-Geo-Spotlights.pdf?s=6f562d7b4e14e18b9d38c1a3ad3a8c7df4abed668068ca57299ec299e807a1ef&dl=0 "HTTP/1.1 200 OK"
+19:46:09 INFO    stored INT-NIKE-UK            disclosure  669146c510f3b78a.pdf
+19:46:10 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/85dce9ab-d97d-4035-919d-8ac29dc3475b/FY22,-NIKE,-Inc.-Impact-Report-SASB-Summary.pdf?s=d6058e3fb9f105ff841c7b041479da9f4cce21c941b284aaa2d308af25b3ca22&dl=0 "HTTP/1.1 200 OK"
+19:46:11 INFO    stored INT-NIKE-UK            disclosure  aad3ce587b0e3e51.pdf
+19:46:11 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/a42e4086-24c4-4ad2-849e-bef34abb19b3/FY22-NIR-Data.pdf?s=d6d839175f834abbb101d4b5bba57a008b3963cb947d9941565b2986e9f5e2b8&dl=0 "HTTP/1.1 200 OK"
+19:46:13 INFO    stored INT-NIKE-UK            disclosure  e2c34465744c6e07.pdf
+19:46:14 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/a9da025c-fc41-486c-99df-bfb41bef2d41/FY21_NIKE-Impact-Report.pdf?s=1b83e0bd219538617f6714dab7d659fe4ee67c0cf9c86bb996b8eee60e5021a3&dl=0 "HTTP/1.1 200 OK"
+19:46:16 INFO    stored INT-NIKE-UK            disclosure  66c3f41c5bc8cd55.pdf
+19:46:16 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/a9da025c-fc41-486c-99df-bfb41bef2d41/FY21-NIKE-Impact-Report_Executive-Summary-3.pdf?s=7a286e165c752f5ed81cacb62bd896d44d944f2ac23854910e6fcacc66d20489&dl=0 "HTTP/1.1 200 OK"
+19:46:17 INFO    stored INT-NIKE-UK            disclosure  023160f37b354b83.pdf
+19:46:18 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/a9da025c-fc41-486c-99df-bfb41bef2d41/FY21_NIKE-Impact-Report_Executive-Summary_Geo.pdf?s=1c4a3139cb5377fb0a82b76f93e1ceb00d396ce28dcc42f691fd6457f62c8de5&dl=0 "HTTP/1.1 200 OK"
+19:46:20 INFO    stored INT-NIKE-UK            disclosure  420fae44d1722336.pdf
+19:46:20 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/a9da025c-fc41-486c-99df-bfb41bef2d41/FY21-NIKE-Impact-Report_SASB-Summary.pdf?s=b744ada00fd83865623567f9470eeeaeed2885148f8cd2ebe4b692ab1421203f&dl=0 "HTTP/1.1 200 OK"
+19:46:21 INFO    stored INT-NIKE-UK            disclosure  2d0dbc2f034e3d46.pdf
+19:46:22 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/a9da025c-fc41-486c-99df-bfb41bef2d41/Nike-Inc.-FY21-Impact-Report_Data_Master_5.20.2022.xlsx?s=1d28482390d7a969ea0f460318352cab693d3894161265d289876b866270ddc4&dl=1 "HTTP/1.1 200 OK"
+19:46:23 INFO    stored INT-NIKE-UK            disclosure  36405e0a383c2b1d.xlsx
+19:46:23 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/e1963fb1-0138-4a54-ae37-e73c8a4fc4cd/FY20_NIKE_Inc_Impact_Report2-2.pdf?s=473cd808a476d0f37304ed6ea9238905c8edf7fbd7b8fa99d8fcc459aeaa2b91&dl=0 "HTTP/1.1 200 OK"
+19:46:25 INFO    stored INT-NIKE-UK            disclosure  36f0843df42d3312.pdf
+19:46:25 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/e1963fb1-0138-4a54-ae37-e73c8a4fc4cd/FY20-NIKE-Inc.-Impact-Report_Executive-Summary1.pdf?s=1c177ff904de06f26050925ffd83a8b51c259a1748aa06d7e0a120caa9906ae9&dl=0 "HTTP/1.1 200 OK"
+19:46:27 INFO    stored INT-NIKE-UK            disclosure  20c0314e71ca52a5.pdf
+19:46:28 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/e1963fb1-0138-4a54-ae37-e73c8a4fc4cd/FY20-NIKE-Inc.-Impact-Report_SASB-Summary.pdf?s=9aaad4b7a23861c71edd4ad51d828976effa5a473880e23c69f68b0bb1e7f507&dl=0 "HTTP/1.1 200 OK"
+19:46:29 INFO    stored INT-NIKE-UK            disclosure  0d8166ed85a25bab.pdf
+19:46:29 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/7bf37705-b9a3-4635-aa30-e45273c1b562/FY19-Nike-Inc.-Impact-Report.pdf?s=f13a175a9eec69f1eede1bc963949f369dcdccdda8e2e2cb741ffa9743a815cb&dl=0 "HTTP/1.1 200 OK"
+19:46:31 INFO    stored INT-NIKE-UK            disclosure  7db5c0439c711204.pdf
+19:46:31 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/7bf37705-b9a3-4635-aa30-e45273c1b562/FY19-Nike-Inc.-Impact-Report_Executive-Summary_Final-1.pdf?s=ad0c0ab81ce619360fa8372341649b6bfc98658d56d71c081aeff79083fafa3f&dl=0 "HTTP/1.1 200 OK"
+19:46:33 INFO    stored INT-NIKE-UK            disclosure  1f505d38ac665f10.pdf
+19:46:33 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/7bf37705-b9a3-4635-aa30-e45273c1b562/FY19-Nike-Inc.-Impact-Report-SASB.pdf?s=0cef0911197e3f84668707dbe21676b64db33d05f0550583d30967bd03f7eb0f&dl=0 "HTTP/1.1 200 OK"
+19:46:34 INFO    stored INT-NIKE-UK            disclosure  a454ccd02f75d00d.pdf
+19:46:35 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/7bf37705-b9a3-4635-aa30-e45273c1b562/FY19-Nike-Inc-Impact-Report_Data_Master.xlsx?s=8ed5dc81a1e55d939aadd206859a08da5490ac33da275e5dbe1678251664ac9b&dl=1 "HTTP/1.1 200 OK"
+19:46:36 INFO    stored INT-NIKE-UK            disclosure  9d608e751eb7568f.xlsx
+19:46:36 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/d3df5655-4772-41c7-af0d-9f1c99badb4b/FY18_Nike_Impact-Report_Final.pdf?s=8aca66ea01964fa982ab8ac993cc56e5bd33cade19ec126a1681d97041e8533c&dl=0 "HTTP/1.1 200 OK"
+19:46:38 INFO    stored INT-NIKE-UK            disclosure  53aad83c8d5f9f09.pdf
+19:46:38 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/d3df5655-4772-41c7-af0d-9f1c99badb4b/FY18-Nike-Summary-Report_Final.pdf?s=1ca7efb6bdf37d36d05bfaa462bc82206b460a5538d48350719180eb50586788&dl=0 "HTTP/1.1 200 OK"
+19:46:40 INFO    stored INT-NIKE-UK            disclosure  afe6af280eb293d1.pdf
+19:46:40 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/d3df5655-4772-41c7-af0d-9f1c99badb4b/FY18-Nike-SASB_Final1.pdf?s=0303c227c0b89abc7d781eb67cc8947b4f42bca179a8775917dd1a2b772d57a6&dl=0 "HTTP/1.1 200 OK"
+19:46:41 INFO    stored INT-NIKE-UK            disclosure  b32536f1bf69197f.pdf
+19:46:42 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/d3df5655-4772-41c7-af0d-9f1c99badb4b/FY18-NIKE-Inc-Impact-Report-GRI-Index.pdf?s=2adfa06c7a03ab0be31d7ba3732c07c5012681306bbe3d1aa9e80c4af90de74b&dl=0 "HTTP/1.1 200 OK"
+19:46:43 INFO    stored INT-NIKE-UK            disclosure  53aad83c8d5f9f09.pdf
+19:46:44 INFO    HTTP Request: GET https://nmp.about.nike.com/originals/about/prod/6cbd26ae-7222-45f8-ae29-885429852268/FY16-17-NIKE-SASB-SBR.pdf?s=37f77e566fc4ee96dfee3b0df16ab69c52dbb926bd082c5981e217db947e03ec&dl=0 "HTTP/1.1 200 OK"
+19:46:45 INFO    stored INT-NIKE-UK            disclosure  ee3919ad7b909188.pdf
+19:46:45 INFO    === INT-NIKE-UK | disclosure seed | https://about.nike.com/en/mission/focus-areas/sustainability
+19:46:46 INFO    HTTP Request: GET https://about.nike.com/en/mission/focus-areas/sustainability "HTTP/1.1 200 OK"
+19:46:47 WARNING INT-NIKE-UK | zero_documents_found | https://about.nike.com/en/mission/focus-areas/sustainability
+19:46:47 INFO    ---------- [27/29] INT-UNIQLO-UK ----------
+19:46:47 INFO    === INT-UNIQLO-UK | disclosure seed | https://www.fastretailing.com/eng/ir/library/annual.html
+19:46:48 INFO    HTTP Request: GET https://www.fastretailing.com/robots.txt "HTTP/1.1 404 Not Found"
+19:46:48 INFO    HTTP Request: GET https://www.fastretailing.com/eng/ir/library/annual.html "HTTP/1.1 200 OK"
+D:\Sinh viên CNhan\AI quantum\docs\ai-quantum-greenwashing-agent\tools\crawl_legal_cases.py:438: XMLParsedAsHTMLWarning: It looks like you're using an HTML parser to parse an XML document.
+
+Assuming this really is an XML document, what you're doing might work, but you should know that using an XML parser will be more reliable. To parse this document as XML, make sure you have the Python package 'lxml' installed, and pass the keyword argument `features="xml"` into the BeautifulSoup constructor.
+
+If you want or need to use an HTML parser on this document, you can make this warning go away by filtering it. To do that, run this code before calling the BeautifulSoup constructor:
+
+    from bs4 import XMLParsedAsHTMLWarning
+    import warnings
+
+    warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
+
+  soup = BeautifulSoup(resp.text, "lxml")
+19:46:50 INFO    HTTP Request: GET https://www.fastretailing.com/eng/ir/library/pdf/ar2009_e.pdf "HTTP/1.1 200 OK"
+19:46:53 INFO    stored INT-UNIQLO-UK          disclosure  53d9c76aab32dac0.pdf
+19:46:53 INFO    HTTP Request: GET https://www.fastretailing.com/eng/ir/library/pdf/ar2008_e.pdf "HTTP/1.1 200 OK"
+19:46:55 INFO    stored INT-UNIQLO-UK          disclosure  c8beb8fd53c2a4ed.pdf
+19:46:56 INFO    HTTP Request: GET https://www.fastretailing.com/eng/ir/library/pdf/ar2007_e.pdf "HTTP/1.1 200 OK"
+19:46:57 INFO    stored INT-UNIQLO-UK          disclosure  f4472575bac1a433.pdf
+19:46:57 INFO    HTTP Request: GET https://www.fastretailing.com/eng/ir/library/pdf/annual2006.pdf "HTTP/1.1 200 OK"
+19:46:59 INFO    stored INT-UNIQLO-UK          disclosure  853859e81c99192c.pdf
+19:46:59 INFO    HTTP Request: GET https://www.fastretailing.com/eng/ir/library/pdf/annual2005.pdf "HTTP/1.1 200 OK"
+19:47:01 INFO    stored INT-UNIQLO-UK          disclosure  0e5ffd496134568c.pdf
+19:47:01 INFO    HTTP Request: GET https://www.fastretailing.com/eng/ir/library/pdf/annual2004.pdf "HTTP/1.1 200 OK"
+19:47:02 INFO    stored INT-UNIQLO-UK          disclosure  444bb9dc71ca1874.pdf
+19:47:02 INFO    HTTP Request: GET https://www.fastretailing.com/eng/ir/library/pdf/annual2003.pdf "HTTP/1.1 200 OK"
+19:47:04 INFO    stored INT-UNIQLO-UK          disclosure  b9d2bd06aa657ed3.pdf
+19:47:04 INFO    HTTP Request: GET https://www.fastretailing.com/eng/ir/library/pdf/annual2002.pdf "HTTP/1.1 200 OK"
+19:47:05 INFO    stored INT-UNIQLO-UK          disclosure  30239fb8c4c57868.pdf
+19:47:06 INFO    HTTP Request: GET https://www.fastretailing.com/eng/ir/library/pdf/annual2001.pdf "HTTP/1.1 200 OK"
+19:47:07 INFO    stored INT-UNIQLO-UK          disclosure  32c92fd33d4c063d.pdf
+19:47:07 INFO    HTTP Request: GET https://www.fastretailing.com/eng/ir/library/pdf/annual2000.pdf "HTTP/1.1 200 OK"
+19:47:09 INFO    stored INT-UNIQLO-UK          disclosure  86030b91a185ab2f.pdf
+19:47:09 INFO    === INT-UNIQLO-UK | disclosure seed | https://www.fastretailing.com/eng/sustainability/report/
+19:47:09 INFO    HTTP Request: GET https://www.fastretailing.com/eng/sustainability/report/ "HTTP/1.1 200 OK"
+19:47:10 WARNING INT-UNIQLO-UK | zero_documents_found | https://www.fastretailing.com/eng/sustainability/report/
+19:47:10 INFO    === INT-UNIQLO-UK | disclosure seed | https://www.fastretailing.com/eng/sustainability/report/data.html
+19:47:11 INFO    HTTP Request: GET https://www.fastretailing.com/eng/sustainability/report/data.html "HTTP/1.1 200 OK"
+19:47:12 INFO    HTTP Request: GET https://www.fastretailing.com/eng/sustainability/report/excel/FastRetailingSustainabilityDataBook_eng.xlsx?=260630r "HTTP/1.1 200 OK"
+19:47:13 INFO    stored INT-UNIQLO-UK          disclosure  3b1ba1a82404641c.xlsx
+19:47:13 INFO    HTTP Request: GET https://www.fastretailing.com/eng/sustainability/report/pdf/EnvironmentalDataAssuranceReport_eng.pdf "HTTP/1.1 200 OK"
+19:47:15 INFO    stored INT-UNIQLO-UK          disclosure  9e416f37b8cd93af.pdf
+19:47:15 INFO    HTTP Request: GET https://www.fastretailing.com/eng/sustainability/report/pdf/VerificationReport_eng.pdf "HTTP/1.1 200 OK"
+19:47:16 INFO    stored INT-UNIQLO-UK          disclosure  39aeb785308914bc.pdf
+19:47:16 INFO    ---------- [28/29] INT-ADIDAS-UK ----------
+19:47:16 INFO    === INT-ADIDAS-UK | disclosure seed | https://www.adidas-group.com/en/sustainability/resource-center/reports
+19:48:47 WARNING INT-ADIDAS-UK | robots_denied | https://www.adidas-group.com/en/sustainability/resource-center/reports
+19:48:47 INFO    === INT-ADIDAS-UK | disclosure seed | https://www.adidas-group.com/en/sustainability
+19:48:47 WARNING INT-ADIDAS-UK | robots_denied | https://www.adidas-group.com/en/sustainability
+19:48:47 INFO    === INT-ADIDAS-UK | disclosure seed | https://report.adidas-group.com/2025/en/
+19:48:49 INFO    HTTP Request: GET https://report.adidas-group.com/robots.txt "HTTP/1.1 200 OK"
+19:48:49 INFO    HTTP Request: GET https://report.adidas-group.com/2025/en/ "HTTP/1.1 200 OK"
+19:48:51 WARNING INT-ADIDAS-UK | zero_documents_found | https://report.adidas-group.com/2025/en/
+19:48:51 INFO    ---------- [29/29] INT-CALVIN-KLEIN-UK ----------
+19:48:51 INFO    === INT-CALVIN-KLEIN-UK | disclosure seed | https://www.pvh.com/investor-relations
+19:48:51 INFO    HTTP Request: GET https://www.pvh.com/robots.txt "HTTP/1.1 403 Forbidden"
+19:48:51 INFO    HTTP Request: GET https://www.pvh.com/investor-relations "HTTP/1.1 403 Forbidden"
+19:48:51 WARNING INT-CALVIN-KLEIN-UK | http_403 | https://www.pvh.com/investor-relations
+19:48:51 INFO    === INT-CALVIN-KLEIN-UK | disclosure seed | https://www.pvh.com/investor-relations/sec-filings?group=Annual
+19:48:51 INFO    HTTP Request: GET https://www.pvh.com/investor-relations/sec-filings?group=Annual "HTTP/1.1 403 Forbidden"
+19:48:51 WARNING INT-CALVIN-KLEIN-UK | http_403 | https://www.pvh.com/investor-relations/sec-filings?group=Annual
+19:48:51 INFO    === INT-CALVIN-KLEIN-UK | disclosure seed | https://www.pvh.com/responsibility
+19:48:52 INFO    HTTP Request: GET https://www.pvh.com/responsibility "HTTP/1.1 403 Forbidden"
+19:48:52 WARNING INT-CALVIN-KLEIN-UK | http_403 | https://www.pvh.com/responsibility
+19:48:52 INFO    === INT-CALVIN-KLEIN-UK | disclosure seed | https://www.pvh.com/responsibility/resources
+19:48:52 INFO    HTTP Request: GET https://www.pvh.com/responsibility/resources "HTTP/1.1 403 Forbidden"
+19:48:52 WARNING INT-CALVIN-KLEIN-UK | http_403 | https://www.pvh.com/responsibility/resources
+
+Documents: 186 | failures: 52 | reports: D:\Sinh viên CNhan\AI quantum\docs\ai-quantum-greenwashing-agent\data\legal_cases_disclosure\reports
+Status: PARTIAL — see failure_queue.csv (non-zero exit per pack §10 stop conditions)

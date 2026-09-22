@@ -1,0 +1,196 @@
+{
+  "input": [
+    {
+      "file": "claim_candidates",
+      "records": 7960,
+      "companies": 18,
+      "documents": 177,
+      "text_len_median": 267,
+      "text_len_p95": 936,
+      "by_split": {
+        "review": 2446,
+        "dev": 1020,
+        "test": 945,
+        "future_holdout": 2689,
+        "train": 860
+      },
+      "by_doc_type": {
+        "sustainability_report": 3895,
+        "annual_report": 1746,
+        "financial_statement": 1468,
+        "integrated_report": 427,
+        "agm_document": 295,
+        "governance_report": 84,
+        "other": 45
+      },
+      "with_number": 4089
+    },
+    {
+      "file": "evidence_candidates",
+      "records": 3786,
+      "companies": 17,
+      "documents": 289,
+      "text_len_median": 383,
+      "text_len_p95": 1777,
+      "by_split": {
+        "future_holdout": 1553,
+        "review": 1081,
+        "dev": 408,
+        "test": 461,
+        "train": 283
+      },
+      "by_doc_type": {
+        "sustainability_report": 1503,
+        "annual_report": 876,
+        "financial_statement": 738,
+        "agm_document": 262,
+        "integrated_report": 228,
+        "governance_report": 113,
+        "other": 66
+      },
+      "with_number": 0
+    }
+  ],
+  "duplication": {
+    "unique_texts": 6976,
+    "duplicate_records": 984,
+    "duplicate_rate": 0.1236,
+    "worst_offenders": [
+      {
+        "count": 44,
+        "text": "báo cáo phát triển bền vững theo 5 mục tiêu của coteccons"
+      },
+      {
+        "count": 23,
+        "text": "báo cáo phát triển bền vững 2017"
+      },
+      {
+        "count": 19,
+        "text": "báo cáo phát triển bền vững 2019"
+      },
+      {
+        "count": 16,
+        "text": "sustainable development report sabeco annual report 2021"
+      },
+      {
+        "count": 15,
+        "text": "dhg pharma  |  báo cáo phát triển bền vững 2022 các lĩnh vực trọng yếu"
+      }
+    ]
+  },
+  "boilerplate": {
+    "flagged_records": 2493,
+    "flagged_rate": 0.3132,
+    "by_reason": {
+      "no_predicate": 2188,
+      "title_case_fragment": 758,
+      "too_short": 123,
+      "navigation_menu": 100,
+      "section_header": 46,
+      "too_few_unique_tokens": 21,
+      "standards_index_row": 12,
+      "layout_artifact": 4
+    },
+    "examples": [
+      {
+        "reasons": [
+          "navigation_menu",
+          "no_predicate"
+        ],
+        "text": "Công văn công bố thông tin Tầm nhìn - Chiến lược Thương hiệu Bảo Việt Giải thưởng & Danh hiệu Chứng khoán Bảo Việt Quản "
+      },
+      {
+        "reasons": [
+          "no_predicate"
+        ],
+        "text": "Bảo Việt vì môi trường Báo cáo phát triển bền vững Chương trình khuyến mãi liên hệ truyền thông Ban Truyền thông - Thươn"
+      },
+      {
+        "reasons": [
+          "navigation_menu"
+        ],
+        "text": "Bảo hiểm Phi nhân thọ Sản phẩm Dịch vụ Chứng khoán Sản phẩm Dịch vụ Quản lý Quỹ Sản phẩm Dịch vụ Ngân hàng Dịch vụ Quản "
+      },
+      {
+        "reasons": [
+          "navigation_menu"
+        ],
+        "text": "Bảo hiểm Phi nhân thọ Sản phẩm Dịch vụ Chứng khoán Sản phẩm Dịch vụ Quản lý Quỹ Sản phẩm Dịch vụ Ngân hàng Dịch vụ Quản "
+      },
+      {
+        "reasons": [
+          "navigation_menu",
+          "no_predicate"
+        ],
+        "text": "Tầm nhìn - Chiến lược Thương hiệu Bảo Việt Giải thưởng & Danh hiệu Chứng khoán Bảo Việt Quản lý Quỹ Bảo Việt Đại hội đồn"
+      }
+    ]
+  },
+  "concentration": {
+    "companies": 18,
+    "top5": [
+      [
+        "tra",
+        2157
+      ],
+      [
+        "pan",
+        1687
+      ],
+      [
+        "bvh",
+        1150
+      ],
+      [
+        "sab",
+        779
+      ],
+      [
+        "pnj",
+        772
+      ]
+    ],
+    "hhi": 0.1686,
+    "effective_companies": 5.9,
+    "note": "HHI over claim counts. Low effective_companies means a benchmark mostly measures one issuer's writing style."
+  },
+  "output": {
+    "kept": 5028,
+    "dropped": 2932,
+    "kept_rate": 0.6317,
+    "annotation_priority_pool": 3682,
+    "priority_by_company": {
+      "tra": 1098,
+      "bvh": 803,
+      "pan": 698,
+      "dhg": 376,
+      "pnj": 267,
+      "ctd": 167,
+      "vnm": 113,
+      "sab": 109,
+      "pow": 24,
+      "dpr": 16,
+      "ctg": 4,
+      "mwg": 3,
+      "cdn": 2,
+      "vcs": 1,
+      "cng": 1
+    },
+    "priority_by_doc_type": {
+      "sustainability_report": 2298,
+      "annual_report": 572,
+      "financial_statement": 345,
+      "integrated_report": 313,
+      "agm_document": 118,
+      "governance_report": 29,
+      "other": 7
+    },
+    "priority_by_split": {
+      "future_holdout": 1602,
+      "review": 1058,
+      "test": 378,
+      "dev": 376,
+      "train": 268
+    }
+  }
+}

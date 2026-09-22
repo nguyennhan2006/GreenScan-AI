@@ -1,0 +1,12 @@
+{
+  "documents": 297,
+  "unique_doc_ids": 297,
+  "unique_content_hashes": 288,
+  "content_groups_with_duplicates": 8,
+  "rows_marked_duplicate": 9,
+  "by_ingestion_phase": {
+    "phase1_case_pack": 117,
+    "phase2_disclosure": 180
+  },
+  "note": "union(legal_cases, legal_cases_disclosure) -> one corpus. Duplicates are marked, never deleted: a second copy carries real provenance from a different target. Any split must group by content_group, not doc_id."
+}

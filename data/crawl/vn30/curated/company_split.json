@@ -1,0 +1,24 @@
+{
+  "strategy": "company_held_out_then_temporal",
+  "test_companies": [
+    "cdn",
+    "cng",
+    "ctg",
+    "mwg",
+    "pan",
+    "pow",
+    "vcs"
+  ],
+  "train_companies": [
+    "bvh",
+    "ctd",
+    "dhg",
+    "dpr",
+    "pnj",
+    "sab",
+    "tra",
+    "vnm"
+  ],
+  "test_claim_share": 0.1991,
+  "note": "Hold out the company first; split by year only within train."
+}

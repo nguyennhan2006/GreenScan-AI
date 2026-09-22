@@ -1,0 +1,53 @@
+target_id,url,stage,error_class,http_status,retryable,attempts,next_action
+INT-VANGUARD-AU,https://www.vanguard.com.au/personal/support/forms-and-notices,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-VANGUARD-AU,https://www.vanguard.com.au/personal/about-us/investment-stewardship/reports-and-policies,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-VANGUARD-AU,https://www.vanguard.com.au/personal/about-us/our-esg-approach/our-approach-to-esg,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-ACTIVE-SUPER-AU,https://www.activesuper.com.au/news-and-events/annual-members-meeting/,disclosure_listing,http_404,404,false,1,manual acquisition
+INT-ACTIVE-SUPER-AU,https://www.activesuper.com.au/the-basics/tools-and-resources/,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-ACTIVE-SUPER-AU,https://www.activesuper.com.au/product-disclosure-statement/defined-benefit-scheme/defined-benefit-scheme-pds/,disclosure_listing,http_404,404,false,1,manual acquisition
+INT-CLOROX-AU,https://investors.thecloroxcompany.com/financial-reporting/annual-reports/default.aspx,disclosure_listing,http_429,429,true,1,manual acquisition
+INT-CLOROX-AU,https://www.thecloroxcompany.com/annualreport/,disclosure_listing,http_429,429,true,1,manual acquisition
+INT-CLOROX-AU,https://www.thecloroxcompany.com/,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-INVESCO-US,https://www.invesco.com/corporate/en/investor-relations.html,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-WISDOMTREE-US,https://ir.wisdomtree.com/company-information/annual-reports-proxy,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-GSAM-US,https://www.goldmansachs.com/investor-relations/,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-GSAM-US,https://www.goldmansachs.com/investor-relations/corporate-governance/sustainability-reporting/,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-GSAM-US,https://www.goldmansachs.com/investor-relations/corporate-governance/sustainability-reporting/historical-reports,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-TLOU-AU,https://tlouenergy.com/reports/,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-BLACK-MOUNTAIN-AU,https://blackmountainenergy.com/archives/,disclosure_listing,http_403,403,false,1,manual acquisition
+INT-BLACK-MOUNTAIN-AU,https://blackmountainenergy.com/preliminary-documentation/,disclosure_listing,http_403,403,false,1,manual acquisition
+INT-BLACK-MOUNTAIN-AU,https://blackmountainenergy.com/media-toolkit/,disclosure_listing,http_403,403,false,1,manual acquisition
+INT-FERTOZ-AU,https://fertoz.com/investors/,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-MORNINGSTAR-AU,https://shareholders.morningstar.com/filings-and-stock-quote/annual-reports/default.aspx,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-MORNINGSTAR-AU,https://www.morningstar.com/company/corporate-sustainability-policies-reports,disclosure_listing,http_403,403,false,1,manual acquisition
+INT-NORTHERN-TRUST-AU,https://www.northerntrust.com/united-states/about-us/investor-relations/annual-reports,disclosure_listing,ReadError,,true,1,retry
+INT-NORTHERN-TRUST-AU,https://www.northerntrust.com/japan/about-us/corporate-social-responsibility/policy,disclosure_listing,ReadTimeout,,true,1,retry
+INT-SHELL-UK,https://www.shell.com/investors/results-and-reporting/annual-report-archive.html,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-SHELL-UK,https://www.shell.com/sustainability/reporting-centre/reporting-centre-archive.html,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-SHELL-UK,https://www.shell.com/sustainability/reporting-centre.html,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-PETRONAS-MY,https://www.petronas.com/sustainability/reporting,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-EQUINOR-NO,https://www.equinor.com/investors/annual-reports,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-EQUINOR-NO,https://www.equinor.com/sustainability/sustainability-reports-archive,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-LLOYDS-UK,https://www.lloydsbankinggroup.com/investors/annual-report/annual-report-archive.html,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-UNILEVER-UK,https://www.unilever.com/investors/annual-report-and-accounts/,disclosure_listing,http_403,403,false,1,manual acquisition
+INT-UNILEVER-UK,https://www.unilever.com/,disclosure_listing,http_403,403,false,1,manual acquisition
+INT-TESCO-UK,https://www.tescoplc.com/investors/,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-TESCO-UK,https://www.tescoplc.com/investors/reports-results-and-presentations/,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-TESCO-UK,https://origin.tescoplc.com/investors,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-TESCO-UK,https://origin.tescoplc.com/investors/shareholder-centre/,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-OATLY-UK,https://investors.oatly.com/financials-filings,disclosure_listing,robots_denied,,false,1,manual review (robots_error)
+INT-LUFTHANSA-DE,https://www.lufthansagroup.com/en/responsibility/news-and-data/reporting.html,disclosure_listing,http_403,403,false,1,manual acquisition
+INT-ETIHAD-AE,https://www.etihad.com/en/about-us/sustainability,disclosure_listing,robots_denied,,false,1,manual review (robots_error)
+INT-ETIHAD-AE,https://www.etihad.com/en-cd/about-us/sustainability,disclosure_listing,robots_denied,,false,1,manual review (robots_error)
+INT-ETIHAD-AE,https://www.etihad.com/en-gb/news/etihad-publishes-2022-sustainability-report,disclosure_listing,robots_denied,,false,1,manual review (robots_error)
+INT-MAZDA-UK,https://www.mazda.com/en/sustainability/,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-NIKE-UK,https://investors.nike.com/investors/news-events-and-reports/,disclosure_listing,http_429,429,true,1,manual acquisition
+INT-NIKE-UK,https://about.nike.com/en/mission/focus-areas/sustainability,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-UNIQLO-UK,https://www.fastretailing.com/eng/sustainability/report/,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-ADIDAS-UK,https://www.adidas-group.com/en/sustainability/resource-center/reports,disclosure_listing,robots_denied,,false,1,manual review (robots_error)
+INT-ADIDAS-UK,https://www.adidas-group.com/en/sustainability,disclosure_listing,robots_denied,,false,1,manual review (robots_error)
+INT-ADIDAS-UK,https://report.adidas-group.com/2025/en/,disclosure_listing,zero_documents_found,200,false,1,check JS rendering (harvest_js_listings.py) or wrong seed
+INT-CALVIN-KLEIN-UK,https://www.pvh.com/investor-relations,disclosure_listing,http_403,403,false,1,manual acquisition
+INT-CALVIN-KLEIN-UK,https://www.pvh.com/investor-relations/sec-filings?group=Annual,disclosure_listing,http_403,403,false,1,manual acquisition
+INT-CALVIN-KLEIN-UK,https://www.pvh.com/responsibility,disclosure_listing,http_403,403,false,1,manual acquisition
+INT-CALVIN-KLEIN-UK,https://www.pvh.com/responsibility/resources,disclosure_listing,http_403,403,false,1,manual acquisition
