@@ -261,8 +261,24 @@ def emission_scopes(text: str) -> frozenset[int]:
     return frozenset(scopes)
 
 
+# A line break inside a sentence: the line before it ends without terminal
+# punctuation and the line after it starts in lower case. PDF text flow breaks
+# every sentence this way ("...phù\nhợp với định hướng..."), and each half then
+# looked like a sentence of its own -- 449 chunk-boundary fragments in one
+# Hòa Phát run, several of them the half that carried the figure.
+# The line before must end in running text (lower-case letter, digit, comma,
+# percent, closing bracket): "4.1 | PHÁT THẢI" ends in capitals and stays a
+# heading of its own.
+_WRAPPED_LINE_RE = re.compile(r"(?<=[a-zà-ỹ0-9,%)\]])[ \t]*\n+[ \t]*(?=[a-zà-ỹ])")
+
+
+def join_wrapped_lines(text: str) -> str:
+    """Rejoin sentences that a PDF line break split in two."""
+    return _WRAPPED_LINE_RE.sub(" ", text)
+
+
 def split_sentences(text: str) -> list[str]:
-    text = normalize_text(text)
+    text = join_wrapped_lines(normalize_text(text))
     parts = re.split(r"(?<=[.!?])\s+|\n+|(?<=;)\s+", text)
     return [part.strip(" •\t") for part in parts if len(part.strip()) >= 12]
 

@@ -46,6 +46,7 @@ reranker:
 verification:
   numeric_relative_tolerance: 0.10   # cap on precision-derived tolerance (precision-v1), not a global tolerance
   numeric_contradiction_error: 0.35  # comparable figures this far apart contradict; hypothesis to sweep on numeric-pair gold (ISSUES N1)
+  support_min_attributes: 2       # cue-only support needs >= 2 matched claim attributes to be SUPPORTED (ISSUES N4; sweep on gold)
   strong_support_score: 0.46
   partial_support_score: 0.22
   injection_policy: exclude

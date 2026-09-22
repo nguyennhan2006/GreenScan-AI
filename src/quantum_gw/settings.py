@@ -110,6 +110,10 @@ class VerificationSettings(BaseModel):
     # named setting (was a literal 0.35 in two places) so it can be swept on the
     # numeric-pair gold set; the value itself is not yet evidence-based (ISSUES N1).
     numeric_contradiction_error: float = 0.35
+    # A cue-phrase support (no figure) becomes SUPPORTED only when this many of
+    # the claim's stated attributes (metric, period, baseline, scopes, direction)
+    # appear in the confirming sentences. Hypothesis pending the gold sweep (RQ7).
+    support_min_attributes: int = 2
     strong_support_score: float = 0.46
     partial_support_score: float = 0.22
     injection_policy: str = "exclude"

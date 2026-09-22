@@ -38,7 +38,12 @@ refutes:
        "không có tài liệu", "không có quy trình", "không đầy đủ", "không chính xác", "không đúng",
        "không phù hợp", "không đạt", "không tuân thủ", "không kiểm chứng", "không được kiểm chứng",
        "chưa thực hiện", "chưa đầy đủ", "chưa được kiểm chứng", "chưa kiểm chứng",
-       "thiếu", "bỏ sót", "sai lệch", "gây hiểu nhầm", "gây nhầm lẫn",
+       # "thiếu" alone fired on "thiếu tiêu chuẩn thống nhất" (imported steel) and
+       # "thiếu minh bạch" inside a prevention clause; only these objects refute.
+       "thiếu bằng chứng", "thiếu dữ liệu", "thiếu số liệu", "thiếu kiểm soát", "thiếu cơ sở",
+       "thiếu tài liệu", "thiếu quy trình", "thiếu kiểm chứng", "thiếu căn cứ", "thiếu xác nhận",
+       "thiếu đảm bảo", "thiếu minh bạch", "thiếu thông tin", "thiếu chính xác", "thiếu đầy đủ",
+       "bỏ sót", "sai lệch", "gây hiểu nhầm", "gây nhầm lẫn",
        "vi phạm", "xử phạt", "phóng đại", "thổi phồng", "mâu thuẫn", "trái ngược"]
   en: ["did not", "does not", "do not", "was not", "were not", "had not", "has not",
        "have not", "is not", "are not", "cannot", "unable to",
@@ -65,12 +70,18 @@ supports:
 # finding of fact rather than someone's opinion, which is what lets a decisive
 # passage count even when it shares few words with the claim. BNY-2022's
 # refutation shares only "esg" and "the" with the claim it refutes.
+# Only phrases that name an act of adjudication. "cơ quan quản lý", "kết luận"
+# and "quyết định của" were removed 2026-09-22: they occur in every company's
+# own prose ("củng cố niềm tin với cơ quan quản lý") and made an internal
+# passage count as an authority's finding (ISSUES N2). A sentence counts as a
+# ruling only when one of these sits next to a statement noun.
 adjudicative:
   vi: ["quyết định xử phạt", "kết luận thanh tra", "kết luận kiểm tra", "bản án",
-       "tòa án", "cơ quan quản lý", "quyết định của", "kết luận"]
+       "tòa án", "phán quyết", "xử phạt vi phạm", "cưỡng chế"]
   en: ["sec order", "the order", "the court", "court found", "judgment", "judgement",
        "enforcement", "settled charges", "cease-and-desist", "penalty",
-       "found that", "order found", "order states", "regulator"]
+       "found that", "order found", "order states", "the commission finds",
+       "the regulator found", "ruled that"]
 benign:
   vi: ["không có sự cố", "không có tai nạn", "không có vi phạm", "không có trường hợp",
        "không có khiếu nại", "không có sai sót", "không phát sinh", "không xảy ra",

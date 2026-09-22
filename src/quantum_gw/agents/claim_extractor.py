@@ -150,7 +150,14 @@ class ClaimExtractionAgent:
         for chunk in chunks:
             if chunk.role != DocumentRole.CLAIM_SOURCE:
                 continue
-            for sentence in split_sentences(chunk.text):
+            for index, sentence in enumerate(split_sentences(chunk.text)):
+                # The first "sentence" of a chunk that opens in lower case is the
+                # tail of a sentence cut by the chunker; it cannot be quoted as a
+                # claim ("quốc gia về giảm phát thải... Duy trì cơ chế kê khai").
+                first = next((c for c in sentence if c.isalpha()), "")
+                if index == 0 and first and first.islower():
+                    rejected["chunk_boundary_fragment"] = rejected.get("chunk_boundary_fragment", 0) + 1
+                    continue
                 normalized = normalize_for_match(sentence)
                 claim_type = self._claim_type(normalized)
                 if not claim_type:

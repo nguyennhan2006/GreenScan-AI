@@ -442,3 +442,98 @@ def test_same_basis_same_boundary_still_contradicts(settings):
         SourceType.STANDARD,
     )
     assert _statuses(result) == [VerificationStatus.CONTRADICTED]
+
+
+# --- N2: an adjudicative word in a company's own prose is not an authority's finding ---
+
+def test_authority_cue_requires_topic_overlap(settings):
+    """'cơ quan quản lý' + 'thiếu minh bạch' in the company's own report is not a refutation."""
+    result = _run(
+        settings,
+        "Tập đoàn duy trì cơ chế kê khai và nộp thuế minh bạch và tuân thủ pháp luật về giảm phát thải khí nhà kính.",
+        "Tập đoàn duy trì cơ chế giám sát và kiểm soát nội bộ chặt chẽ đối với các quy trình thuế, "
+        "ngăn chặn mọi hình thức trốn thuế hoặc hành vi thiếu minh bạch, từ đó củng cố niềm tin với cơ quan quản lý.",
+        SourceType.INTERNAL,
+    )
+    assert VerificationStatus.CONTRADICTED not in _statuses(result)
+
+
+def test_inspection_conclusion_on_statements_still_refutes(settings):
+    """Guard: a Vietnamese inspection conclusion ruling on the company's disclosures is a finding."""
+    result = _run(
+        settings,
+        "Công ty đã hoàn thành kiểm kê khí nhà kính và công bố đầy đủ theo quy định.",
+        "Kết luận thanh tra: báo cáo kiểm kê khí nhà kính của công ty không đầy đủ và thông tin đã công bố không chính xác.",
+        SourceType.LEGAL,
+    )
+    assert _statuses(result) == [VerificationStatus.CONTRADICTED]
+
+
+def test_chunk_boundary_fragment_is_not_a_claim(settings):
+    """A chunk whose first 'sentence' starts mid-sentence yields no claim from that fragment."""
+    result = _run(
+        settings,
+        "quốc gia về giảm phát thải khí nhà kính Duy trì cơ chế kê khai và nộp thuế minh bạch và tuân thủ pháp luật.",
+        "Phát thải năm 2024 là 1.000 tấn CO2e.",
+    )
+    assert result.claims == []
+
+
+# --- N4: one confirming phrase is not SUPPORTED ----------------------------------
+
+def test_single_support_cue_is_not_supported(settings):
+    """'chứng nhận' in another document, with no figure and no period/scope, is PARTIAL at most."""
+    result = _run(
+        settings,
+        "Đào tạo lập Báo cáo kiểm kê khí nhà kính cho các đơn vị thành viên.",
+        "Công ty đã được chứng nhận hệ thống quản lý và hoàn thành đào tạo lập báo cáo kiểm kê khí nhà kính.",
+        SourceType.FINANCIAL,
+    )
+    assert VerificationStatus.SUPPORTED not in _statuses(result)
+    assert VerificationStatus.CONTRADICTED not in _statuses(result)
+
+
+def test_support_cue_with_metric_and_period_is_supported(settings):
+    """Guard: a confirmation that names the metric and the period still supports."""
+    result = _run(
+        settings,
+        "Tập đoàn đã hoàn thành kiểm kê khí nhà kính năm 2024 theo ISO 14064-1.",
+        "Đơn vị kiểm định xác nhận báo cáo kiểm kê khí nhà kính năm 2024 của Tập đoàn phù hợp với ISO 14064-1.",
+        SourceType.STANDARD,
+    )
+    assert _statuses(result) == [VerificationStatus.SUPPORTED]
+
+
+def test_numeric_match_same_metric_is_supported(settings):
+    """Guard: a matching figure from another document is SUPPORTED without any cue phrase."""
+    result = _run(
+        settings,
+        "Tỷ lệ tái chế chất thải rắn đạt 99% trong năm 2024.",
+        "Kiểm toán môi trường: tỷ lệ tái chế chất thải rắn năm 2024 là 99%.",
+        SourceType.EXTERNAL,
+    )
+    assert _statuses(result) == [VerificationStatus.SUPPORTED]
+
+
+def test_benign_phrase_swallows_its_object(settings):
+    """'không phát sinh vi phạm' confirms; the cue 'vi phạm' inside it must not refute."""
+    result = _run(
+        settings,
+        "Hệ thống quan trắc hỗ trợ cảnh báo sớm khi chỉ số môi trường vượt ngưỡng, nâng cao tuân thủ trong quản lý phát thải.",
+        "Các đơn vị kiểm tra định kỳ việc vận hành thiết bị, đảm bảo tuân thủ các ngưỡng cho phép tại các nguồn thải. "
+        "Trong năm 2025, các đơn vị thành viên không phát sinh vi phạm liên quan đến bảo vệ môi trường.",
+        SourceType.INTERNAL,
+    )
+    assert VerificationStatus.CONTRADICTED not in _statuses(result)
+
+
+def test_internal_refutation_must_share_the_claims_topic(settings):
+    """'thiếu tiêu chuẩn' about imported steel does not refute an energy-saving product sentence."""
+    result = _run(
+        settings,
+        "Điện máy gia dụng của Tập đoàn có các tính năng bảo vệ sức khỏe và tiết kiệm năng lượng cho người tiêu dùng.",
+        "Thép từ nhiều nguồn với chất lượng không đồng đều vẫn xâm nhập thị trường; hệ quả là sự đa dạng về chủng loại "
+        "sản phẩm nhưng thiếu tiêu chuẩn thống nhất, ảnh hưởng tiêu cực đến ngành thép nội địa.",
+        SourceType.INTERNAL,
+    )
+    assert VerificationStatus.CONTRADICTED not in _statuses(result)
