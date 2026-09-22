@@ -54,6 +54,7 @@ class Claim(BaseModel):
     text: str
     claim_type: str
     source_chunk_id: str
+    source_doc_id: str = ""
     source_name: str
     source_page: int | None = None
     metric: str | None = None
@@ -62,13 +63,30 @@ class Claim(BaseModel):
     units: list[str] = Field(default_factory=list)
     period: str | None = None
     baseline: str | None = None
+    # Which entities/facilities/emission scopes the claim covers. The rubric
+    # treats this as a mandatory attribute: "giảm 30%" is unverifiable until you
+    # know whether it means one plant, the parent company or the whole group.
+    scope: str | None = None
     is_future_commitment: bool = False
     is_vague: bool = False
+    # Vague/promotional terms found in the claim, whether or not it also carries
+    # a figure. The rubric scores promotional language from this list so there is
+    # one lexicon (configs/taxonomy.yaml) rather than a second copy in the
+    # scorer, which had drifted and covered Vietnamese only.
+    vague_terms_matched: list[str] = Field(default_factory=list)
+    # Which taxonomy lexicon matched this claim: "vi", "en" or "unknown". Carried
+    # so a reviewer can see when a Vietnamese rubric was applied to an English
+    # claim -- the failure that silently dropped every English claim before the
+    # taxonomy became bilingual.
+    language: str = "unknown"
     confidence: float = 0.5
 
 
 class RetrievedEvidence(BaseModel):
     chunk_id: str
+    # Needed to build the deep-link back to the stored original. Without it the
+    # UI knows the page number but not which document to open.
+    doc_id: str = ""
     source_name: str
     source_type: SourceType
     text: str
@@ -78,6 +96,25 @@ class RetrievedEvidence(BaseModel):
     semantic_score: float = 0.0
     citation: str
     suspicious_instruction: bool = False
+    is_table: bool = False
+    # Returned by the retrieval floor despite scoring below minimum_score. Such a
+    # passage can carry a refutation from an authoritative source but can never
+    # establish support — see HybridRetriever._admissible.
+    below_threshold: bool = False
+    # Scope limits carried from the source document's metadata (settlement
+    # status, adjudication scope, legal caution). See legal/qualifiers.py: a
+    # finding read without these says more than the source supports.
+    source_qualifiers: list[str] = Field(default_factory=list)
+    # How this passage stands towards the claim: SUPPORTS | CONTRADICTS |
+    # PARTIAL | CONTEXT. Retrieval rank answers "how similar", which is not the
+    # same question — a passage can rank first and still contradict the claim.
+    relation: str = "CONTEXT"
+    relation_reason: str = ""
+    # How the stance was reached: numeric | qualitative_cue | direction | llm |
+    # similarity. Carried so a reviewer can weigh a deterministic figure
+    # comparison differently from a cue phrase or a model's opinion, and so the
+    # evaluation harness can report stance accuracy per method.
+    relation_method: str = "similarity"
 
 
 class VerificationResult(BaseModel):
@@ -87,7 +124,11 @@ class VerificationResult(BaseModel):
     evidence: list[RetrievedEvidence] = Field(default_factory=list)
     computed_values: dict[str, Any] = Field(default_factory=dict)
     warnings: list[str] = Field(default_factory=list)
-    verification_tool_version: str = "verifier-v1"
+    # True when a language model decided at least one passage's stance. Such a
+    # result always goes to a human: a model may point a reviewer at a passage,
+    # it may not close a finding.
+    requires_llm_review: bool = False
+    verification_tool_version: str = "verifier-v2"
 
 
 class RiskComponent(BaseModel):
@@ -150,12 +191,23 @@ class ClaimSuggestion(BaseModel):
 
 
 class AnalysisResult(BaseModel):
-    schema_version: str = "analysis-result-v1"
+    schema_version: str = "analysis-result-v2"
     run_id: str
     manifest: RunManifest
     claims: list[Claim]
     verifications: list[VerificationResult]
     risks: list[RiskAssessment]
+    # One record per claim from the legal layer: which instrument governs it,
+    # which clause, which conditions held, which are unknown, and the scope
+    # limits its sources carry. Kept as the legal layer's own dict rather than a
+    # mirrored model so the two cannot drift -- see legal/checker.py
+    # LegalCheckResult. Empty when the layer is disabled or its corpus could not
+    # be loaded; the reason is reported on gate G7.
+    legal_checks: list[dict[str, Any]] = Field(default_factory=list)
+    # What kind of corpus the run had (agents/corpus.py): which document kinds
+    # were present, which years, and whether absence of support may be read as
+    # UNSUPPORTED. Shown as "evidence coverage" on the overview.
+    corpus: dict[str, Any] = Field(default_factory=dict)
     quality_gates: list[QualityGate]
     summary: AnalysisSummary
     output_directory: str

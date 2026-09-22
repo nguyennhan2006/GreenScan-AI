@@ -4,6 +4,7 @@ import math
 from collections import Counter
 
 from quantum_gw.domain.models import Claim, EvidenceChunk, RetrievedEvidence
+from quantum_gw.legal.qualifiers import from_metadata as qualifiers_from_metadata
 from quantum_gw.settings import RetrievalSettings
 from quantum_gw.utils.security import contains_prompt_injection
 from quantum_gw.utils.text import tokenize
@@ -14,6 +15,18 @@ try:
 except Exception:  # pragma: no cover
     TfidfVectorizer = None
     cosine_similarity = None
+
+# A small rank prior by how probative the source is, not by how similar it looks.
+# An enforcement order or a standard states findings about the subject; the
+# subject's own report states its own account of itself. Kept small so it breaks
+# ties without overriding relevance.
+ADMISSIBILITY_PRIOR = {
+    "legal": 0.030,
+    "standard": 0.030,
+    "external": 0.015,
+    "environmental": 0.015,
+    "financial": 0.015,
+}
 
 
 class HybridRetriever:
@@ -54,18 +67,17 @@ class HybridRetriever:
             # Evidence and external/legal sources get a small prior; claim-source restatements do not dominate.
             if chunk.role.value != "claim_source":
                 score += 0.025
-            if chunk.source_type.value in {"legal", "external", "financial", "environmental"}:
-                score += 0.015
-            if score >= self.settings.minimum_score:
-                combined.append((score, l_score, s_score, chunk))
+            score += ADMISSIBILITY_PRIOR.get(chunk.source_type.value, 0.0)
+            combined.append((score, l_score, s_score, chunk))
         if self.settings.fusion == "rrf":
             combined = self._rrf_order(combined)
         else:
             combined.sort(key=lambda item: item[0], reverse=True)
-        selected = combined[: top_k or self.settings.top_k]
+        selected = self._admissible(combined)[: top_k or self.settings.top_k]
         return [
             RetrievedEvidence(
                 chunk_id=chunk.chunk_id,
+                doc_id=chunk.doc_id,
                 source_name=chunk.source_name,
                 source_type=chunk.source_type,
                 text=chunk.text,
@@ -75,9 +87,40 @@ class HybridRetriever:
                 semantic_score=round(s_score, 6),
                 citation=chunk.citation,
                 suspicious_instruction=contains_prompt_injection(chunk.text),
+                # Carried through so the evidence card can say "page 45, table"
+                # rather than just "page 45" -- a figure quoted from a table is
+                # stronger evidence than the same figure in prose.
+                is_table=chunk.is_table,
+                below_threshold=score < self.settings.minimum_score,
+                source_qualifiers=qualifiers_from_metadata(chunk.metadata),
             )
             for score, l_score, s_score, chunk in selected
         ]
+
+    def _admissible(self, combined: list[tuple]) -> list[tuple]:
+        """Candidates above `minimum_score`, plus a floor of the best ones below it.
+
+        The threshold used to drop weak candidates outright, which conflated two
+        different answers: "nothing in this corpus speaks to the claim" and
+        "nothing in this corpus *looked like* the claim". KLM-2024 is the second
+        one — "Join us in creating a more sustainable future" shares no content
+        word with the court finding that held it misleading, so every passage
+        scored below 0.12 and the claim came back INSUFFICIENT_EVIDENCE with an
+        adjudicated refutation sitting one rank below the cut.
+
+        The floor keeps the best `floor_k` candidates and marks them
+        `below_threshold`. They cannot manufacture support: every SUPPORTED and
+        PARTIALLY_SUPPORTED path in the verifier still gates on the raw score.
+        What they can do is carry a refutation from an authoritative source,
+        which is the asymmetry the domain actually has — a regulator's order is
+        no less a finding for sharing few words with the marketing copy it
+        refutes.
+        """
+        passing = [item for item in combined if item[0] >= self.settings.minimum_score]
+        if len(passing) >= self.settings.floor_k:
+            return passing
+        below = [item for item in combined if item[0] < self.settings.minimum_score]
+        return passing + below[: self.settings.floor_k - len(passing)]
 
     def _rrf_order(self, combined: list[tuple]) -> list[tuple]:
         """Reciprocal Rank Fusion over the lexical and semantic rankings.

@@ -18,7 +18,9 @@ from quantum_gw.storage.audit import AuditLogger
 from quantum_gw.utils.text import file_sha256
 
 from .claim_extractor import ClaimExtractionAgent
+from .corpus import profile_corpus
 from .intake import DocumentIntakeAgent
+from .legal_check import LegalCheckAgent
 from .reporter import ReportingAgent
 from .retriever import EvidenceRetrievalAgent
 from .reviewer import ReviewerAgent
@@ -34,6 +36,7 @@ class OrchestratorAgent:
         "build_hybrid_retrieval_index",
         "retrieve_evidence_per_claim",
         "verify_claim_evidence_pairs",
+        "check_applicable_law",
         "score_greenwashing_risk",
         "apply_quality_gates",
         "write_evidence_pack",
@@ -64,20 +67,32 @@ class OrchestratorAgent:
         )
 
         chunks = DocumentIntakeAgent(self.settings.intake, audit).run(documents)
+        corpus = profile_corpus(documents, chunks)
+        audit.write("corpus_profiled", corpus.to_json())
         claims = ClaimExtractionAgent(self.settings.claim_extraction, audit).run(chunks)
         retrieval_agent = EvidenceRetrievalAgent(chunks, self.settings, audit)
         verifier = VerificationAgent(self.settings.verification, audit)
-        scorer = RiskScoringAgent(self.settings.scoring["rubric_file"], audit)
+        verifier.corpus = corpus
+        legal_agent = LegalCheckAgent(self.settings.legal, audit)
+        scorer = RiskScoringAgent(
+            self.settings.scoring["rubric_file"], audit, review=self.settings.review
+        )
 
         verifications = []
         risks = []
+        legal_checks = []
         for claim in claims:
             evidence = retrieval_agent.run(claim)
             verification = verifier.run(claim, evidence)
             verifications.append(verification)
+            legal_check = legal_agent.run(verification)
+            if legal_check is not None:
+                legal_checks.append(legal_check)
             risks.append(scorer.run(verification))
 
-        gates = ReviewerAgent(audit).run(chunks, verifications, risks, manifest)
+        gates = ReviewerAgent(audit).run(
+            chunks, verifications, risks, manifest, legal_checks, legal_agent.unavailable_reason
+        )
         release_status = self._release_status(gates, risks)
         summary = AnalysisSummary(
             total_documents=len(documents),
@@ -93,6 +108,8 @@ class OrchestratorAgent:
             claims=claims,
             verifications=verifications,
             risks=risks,
+            legal_checks=legal_checks,
+            corpus=corpus.to_json(),
             quality_gates=gates,
             summary=summary,
             output_directory=str(output_dir),

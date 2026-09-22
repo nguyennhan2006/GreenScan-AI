@@ -9,6 +9,7 @@ import uvicorn
 from quantum_gw.agents.orchestrator import OrchestratorAgent
 from quantum_gw.domain.enums import DocumentRole, SourceType
 from quantum_gw.domain.models import DocumentInput
+from quantum_gw.evaluation.real_cases import evaluate_real_cases
 from quantum_gw.evaluation.runner import evaluate_golden_set
 from quantum_gw.settings import load_settings
 
@@ -64,7 +65,22 @@ def evaluate(
     golden_set: str = typer.Option("data/golden/golden_cases.jsonl"),
     config: str = typer.Option("configs/default.yaml"),
 ) -> None:
+    """Evaluate against the synthetic golden set."""
     metrics = evaluate_golden_set(golden_set, load_settings(config))
+    typer.echo(json.dumps(metrics, ensure_ascii=False, indent=2))
+
+
+@app.command()
+def evaluate_real(
+    pack: str = typer.Option("data/real_cases", help="Root of the adjudicated case pack"),
+    config: str = typer.Option("configs/default.yaml"),
+) -> None:
+    """Evaluate against the adjudicated case pack (regulator and court decisions).
+
+    Reports verification status, per-evidence stance and risk band separately:
+    they fail independently and a single blended number hides which one moved.
+    """
+    metrics = evaluate_real_cases(load_settings(config), pack)
     typer.echo(json.dumps(metrics, ensure_ascii=False, indent=2))
 
 

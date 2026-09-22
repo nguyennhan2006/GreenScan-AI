@@ -17,7 +17,10 @@ def evaluate_golden_set(path: str, settings: AppSettings) -> dict:
     gate_pass_rate = MetricAccumulator()
     case_results = []
 
-    for line in Path(path).read_text(encoding="utf-8").splitlines():
+    # split("\n"), not splitlines(): splitlines() also breaks on U+2028, U+2029
+    # and U+0085, which occur inside text extracted from Vietnamese PDFs and are
+    # legal inside a JSON string. Using it here corrupts one record per occurrence.
+    for line in Path(path).read_text(encoding="utf-8").split("\n"):
         if not line.strip():
             continue
         case = json.loads(line)

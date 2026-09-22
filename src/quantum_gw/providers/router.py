@@ -15,9 +15,28 @@ from .registry import build_provider
 NON_LLM_TARGETS = {"none", "deterministic"}
 
 
+def _dedupe(chain: list[str]) -> list[str]:
+    """Ordered, unique, with non-LLM targets removed."""
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for name in chain:
+        key = (name or "").strip()
+        if not key or key in seen or key in NON_LLM_TARGETS:
+            continue
+        seen.add(key)
+        ordered.append(key)
+    return ordered
+
+
 class RoutingPolicy(BaseModel):
     primary: str = "local"
     fallback: str = "none"
+    # Per-task model choice, keyed by provider name:
+    #   models: {fpt: GLM-5.2, local: qwen3:8b}
+    # A provider endpoint typically hosts many models, and tasks differ enough
+    # that one model id per provider is the wrong granularity. Keyed by provider
+    # so a fallback hop still uses a model that provider actually serves.
+    models: dict[str, str] = {}
 
 
 class ModelGateway:
@@ -59,24 +78,35 @@ class ModelGateway:
         chain: list[str] = []
         policy = self.routing.get(task_type or "")
         if policy:
+            # A policy naming only non-LLM targets is a hard boundary, not a
+            # preference. `quantitative_verification` is deterministic/none
+            # precisely so a language model can never arbitrate arithmetic;
+            # appending the global fallback order would hand it to one anyway.
+            if policy.primary in NON_LLM_TARGETS and policy.fallback in NON_LLM_TARGETS:
+                return []
             chain.extend([policy.primary, policy.fallback])
+            # An explicit `fallback: none` means stop here, not "carry on down
+            # the global chain".
+            if policy.fallback == "none":
+                return _dedupe(chain)
         else:
             chain.append(self.settings.provider)
         chain.extend(self.settings.fallback_order)
-        seen: set[str] = set()
-        ordered = []
-        for name in chain:
-            key = (name or "").strip()
-            if not key or key in seen or key in NON_LLM_TARGETS:
-                continue
-            seen.add(key)
-            ordered.append(key)
-        return ordered
+        return _dedupe(chain)
+
+    def _for_task(self, name: str, task_type: str | None) -> LLMProvider | None:
+        """Provider `name`, aimed at whatever model this task asks it for."""
+        provider = self._provider(name)
+        if provider is None:
+            return None
+        policy = self.routing.get(task_type or "")
+        override = (policy.models or {}).get(name) if policy else None
+        return provider.bind_model(override) if override else provider
 
     def resolve(self, task_type: str | None = None) -> LLMProvider | None:
         """First *configured* provider in the chain, or None when keys are empty."""
         for name in self.provider_chain(task_type):
-            provider = self._provider(name)
+            provider = self._for_task(name, task_type)
             if provider is not None and provider.is_configured():
                 return provider
         return None
@@ -89,7 +119,7 @@ class ModelGateway:
     ) -> LLMResponse:
         errors: list[str] = []
         for name in self.provider_chain(task_type):
-            provider = self._provider(name)
+            provider = self._for_task(name, task_type)
             if provider is None or not provider.is_configured():
                 continue
             try:

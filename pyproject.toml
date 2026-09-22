@@ -32,6 +32,21 @@ dev = [
   "mypy>=1.10,<2",
   "build>=1.2,<2",
 ]
+# tools/crawl_*.py and tools/verify_regressions.py import the crawler stack;
+# tests/test_cli_smoke.py exercises them, so `pip install -e ".[dev,crawl]"`
+# is what makes the full suite green.
+crawl = [
+  "beautifulsoup4>=4.12,<5",
+  "lxml>=5,<7",
+  "tenacity>=9,<10",
+  "requests>=2.31,<3",
+  "openpyxl>=3.1,<4",
+  "python-docx>=1.1,<2",
+  "pypdf>=5,<7",
+  "rapidfuzz>=3.9,<4",
+  "pandas>=2.2,<3",
+  "rich>=13.7,<15",
+]
 
 [project.scripts]
 quantum-agent = "quantum_gw.cli:app"

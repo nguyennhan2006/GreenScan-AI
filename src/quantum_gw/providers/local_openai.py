@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 from typing import Any
 
 import httpx
@@ -44,6 +45,14 @@ class OpenAICompatibleProvider(LLMProvider):
         self.extra_headers = extra_headers or {}
         if name:
             self.name = name
+
+    def bind_model(self, model: str):
+        """Same endpoint and credentials, different model id."""
+        if not model or model == self.model:
+            return self
+        clone = copy.copy(self)
+        clone.model = model
+        return clone
 
     def is_configured(self) -> bool:
         if not self.base_url or not self.model:

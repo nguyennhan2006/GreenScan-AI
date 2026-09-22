@@ -1,0 +1,22 @@
+### FIXTURE — NOT THE TEXT OF 21/2025/QĐ-TTg ###
+# Written by hand to exercise the clause parser while the authoritative signed
+# PDF remains un-extracted (scan, no OCR available). The wording below is
+# illustrative only and must never be cited as law or bound to a rule.
+
+Chương I
+QUY ĐỊNH CHUNG
+
+Điều 1. Phạm vi điều chỉnh
+Văn bản mẫu này chỉ dùng để kiểm thử bộ phân tách cấu trúc.
+
+Điều 3. Tiêu chí môi trường (mẫu)
+1. Dự án đầu tư được xem xét theo các tiêu chí mẫu sau:
+a) Có tài liệu môi trường được phê duyệt;
+b) Tỷ lệ tái chế đạt tối thiểu 50%;
+c) Không thuộc nhóm ngành bị hạn chế.
+2. Việc xác nhận thực hiện theo trình tự tại Điều 5.
+
+PHỤ LỤC I
+DANH MỤC TIÊU CHÍ (MẪU)
+1. Năng lượng tái tạo.
+2. Xử lý và tái chế chất thải.

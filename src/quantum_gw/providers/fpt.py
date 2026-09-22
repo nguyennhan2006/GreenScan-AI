@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 from typing import Any
 
 from .base import LLMProvider, LLMResponse, ModelInfo, ProviderUnavailableError
@@ -40,6 +41,15 @@ class FPTProvider(LLMProvider):
             name="fpt",
             require_api_key=True,
         )
+
+    def bind_model(self, model: str) -> FPTProvider:
+        """FPT Marketplace serves many models from one endpoint; rebind the delegate too."""
+        if not model or model == self.model:
+            return self
+        clone = copy.copy(self)
+        clone.model = model
+        clone._delegate = self._delegate.bind_model(model)
+        return clone
 
     def is_configured(self) -> bool:
         return bool(self.base_url and self.api_key and self.model)
