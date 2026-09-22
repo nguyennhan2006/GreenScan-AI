@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GreenScan Legal Case Metadata",
+  "type": "object",
+  "required": [
+    "target_id",
+    "case_entity",
+    "reporting_entity",
+    "authority",
+    "case_id",
+    "case_url",
+    "legal_strength",
+    "authority_outcome",
+    "qualifier"
+  ],
+  "properties": {
+    "target_id": {
+      "type": "string"
+    },
+    "case_entity": {
+      "type": "string"
+    },
+    "reporting_entity": {
+      "type": "string"
+    },
+    "brand": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "relationship": {
+      "type": "string"
+    },
+    "authority": {
+      "type": "string"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "case_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "legal_strength": {
+      "enum": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "authority_outcome": {
+      "type": "string"
+    },
+    "qualifier": {
+      "type": "string"
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "challenged_claims": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "accessed_at": {
+      "type": "string"
+    }
+  }
+}

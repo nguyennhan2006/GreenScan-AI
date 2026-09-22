@@ -1,0 +1,118 @@
+profiles:
+  asset_manager:
+    required:
+    - authority_case_pack
+    - parent_or_adviser_annual_report_or_filing
+    - esg_or_responsible_investment_policy
+    - case_product_pds_prospectus_or_methodology
+    - case_product_holdings_or_screen_evidence_if_official
+    preferred:
+    - stewardship_report
+    - sustainable_investing_report
+    - product_webpage_snapshot_metadata
+    note: Do not force a sustainability report if the legal claim is product-level; product disclosure is primary evidence.
+  super_fund:
+    required:
+    - authority_case_pack
+    - fund_annual_report
+    - pds_or_member_disclosure
+    - investment_or_responsible_investment_policy
+    - case_product_document
+    preferred:
+    - annual_member_meeting_material
+    - holdings_or_exclusion_policy
+    note: Track trustee/entity changes and mergers by effective date.
+  energy_company:
+    required:
+    - authority_case_pack
+    - annual_or_integrated_report
+    - sustainability_or_climate_report_if_separate
+    - challenged_ad_or_market_announcement_if_official
+    preferred:
+    - climate_transition_plan
+    - assurance_statement
+    - esg_data_book
+    note: If sustainability is integrated in annual report, mark integrated; do not duplicate the same PDF as two docs.
+  mining_agriculture:
+    required:
+    - authority_case_pack
+    - annual_report_or_asx_filing
+    - market_announcements_related_to_case
+    - sustainability_or_project_environmental_material_if_official
+    preferred:
+    - project_technical_or_reforestation_document
+    note: Use official company/ASX sources for historical announcements.
+  consumer_brand:
+    required:
+    - authority_case_pack
+    - parent_annual_or_integrated_report
+    - sustainability_or_esg_report_if_separate
+    - challenged_ad_packaging_or_product_claim_artifact
+    preferred:
+    - product_lca_or_substantiation_document
+    - assurance_or_esg_data
+    note: Exact challenged marketing representation is more important than unrelated parent ESG statements.
+  retail_brand:
+    required:
+    - authority_case_pack
+    - parent_annual_report
+    - sustainability_report_or_plan
+    - challenged_ad_or_product_claim_artifact
+    preferred:
+    - product_lca_or_methodology
+    - esg_data_book
+    note: Keep product claim scope separate from corporate sustainability statements.
+  bank:
+    required:
+    - authority_case_pack
+    - annual_report
+    - esg_or_climate_report
+    - financed_emissions_or_climate_datapack
+    - challenged_ad_artifact
+    preferred:
+    - transition_plan
+    - sector_policy
+    - assurance_statement
+    note: Financed-emissions context is often material; retrieve quantitative disclosure and methodology.
+  airline_public:
+    required:
+    - authority_case_pack
+    - annual_report
+    - sustainability_or_nonfinancial_statement
+    - challenged_ad_artifact
+    preferred:
+    - sustainability_fact_sheet
+    - tcfd_or_sasb_report
+    - fleet_emissions_data
+    note: Collect aviation emissions methodology where available.
+  airline_private:
+    required:
+    - authority_case_pack
+    - sustainability_or_environment_report
+    - challenged_ad_artifact
+    preferred:
+    - official_financial_or_annual_disclosure_if_public
+    - saf_or_offset_methodology
+    note: Do not invent annual-report coverage for private entities; mark official unavailability.
+  automotive:
+    required:
+    - authority_case_pack
+    - integrated_or_annual_report
+    - sustainability_report
+    - challenged_ad_or_vehicle_claim_artifact
+    preferred:
+    - lca_methodology
+    - environmental_data
+    - third_party_verification
+    note: Vehicle/product lifecycle claims require product-specific substantiation.
+  fashion_brand:
+    required:
+    - authority_case_pack
+    - parent_annual_or_integrated_report
+    - sustainability_or_impact_report
+    - challenged_product_or_material_claim_artifact
+    preferred:
+    - material_standard_or_methodology
+    - supply_chain_environmental_data
+    - assurance_report
+    note: Map local advertising entity/brand to parent reporting entity; do not transfer labels to all products.

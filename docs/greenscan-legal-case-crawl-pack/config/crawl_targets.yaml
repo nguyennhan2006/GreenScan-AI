@@ -1,0 +1,22 @@
+corpus_baseline:
+  existing_companies: 21
+  existing_documents: 670
+  existing_claim_candidates: 7960
+  existing_evidence_candidates: 3786
+  existing_size_gb: 3.9
+  window: 2021-2025
+expansion:
+  new_legal_case_entities: 29
+  target_total_primary_entities: 50
+  window: 2021-2025
+  case_pack_required_for_all: true
+  do_not_pad_missing_years: true
+coverage_targets:
+  authority_case_url_present: 29/29
+  authority_case_pack_downloaded: 29/29 or blocked with explicit reason
+  year_coverage_goal: For each entity, attempt 2021-2025 according to profile; unavailable years are explicitly coded, never
+    fabricated.
+  reporting_coverage_goal: At least one primary corporate/fund disclosure per available year; ESG/sustainability disclosure
+    when separately published.
+  leakage: 0 cross-split exact/near duplicates before gold annotation
+  annotation: Raw documents/candidates are not labels; legal-positive only at exact challenged-claim scope.

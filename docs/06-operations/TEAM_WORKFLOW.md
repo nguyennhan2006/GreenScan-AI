@@ -2,7 +2,7 @@
 
 ## Research Lead
 
-Owns problem definition, taxonomy, legal/standards sources, user needs and ground-truth policy. Reviews changes under `configs/taxonomy_vi.yaml`, legal rules and dataset annotation guidance.
+Owns problem definition, taxonomy, legal/standards sources, user needs and ground-truth policy. Reviews changes under `configs/taxonomy.yaml`, legal rules and dataset annotation guidance.
 
 ## Reviewer / QA
 

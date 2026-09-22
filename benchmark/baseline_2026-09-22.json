@@ -1,0 +1,186 @@
+{
+  "snapshot_date": "2026-09-22",
+  "git_head": "582bedf1c99e1ccd25069b6ce1661d35f21fb9c2",
+  "git_dirty_files": 159,
+  "note": "Baseline đo tay 22/09 (đường chạy mặc định: heuristic, LLM off, embedding lite, reranker none, không key). Mọi tuyên bố 'đã cải thiện' phải so với file này. Không sửa số trong file này; snapshot mới = file mới.",
+  "config": {
+    "claim_extraction": "heuristic",
+    "llm_stance": "off",
+    "embedding": "lite",
+    "reranker": "none",
+    "config_hash": "75814e976ab8339938f2e2517884d2a833fdc13218a2e94df31f8d1d2cc5fd64",
+    "pipeline_version": "pipeline-v1"
+  },
+  "tests": {
+    "pytest": "all passed (233 per CORE_FEATURE_TEST_REPORT_2026-09-20)",
+    "verdict_traps": "21 green"
+  },
+  "golden_evaluate": {
+    "cases": 4,
+    "claim_recall": 1.0,
+    "verification_status_accuracy": 1.0,
+    "citation_coverage": 1.0,
+    "mandatory_gate_pass_rate": 1.0
+  },
+  "real_cases_evaluate": {
+    "cases": 4,
+    "status_match": "4/4",
+    "evidence_stance": 1.0,
+    "risk_band_match": "2/4",
+    "legal_check_coverage": 1.0
+  },
+  "gold_set": {
+    "adjudicated_pairs": 5,
+    "trial_rows": 8,
+    "target_before_2026-10-10": 60
+  },
+  "hpg_control_run": {
+    "run_id": "d160226875ec4144",
+    "created_at": "2026-09-21T23:53:08.738673Z",
+    "inputs": {
+      "0:HPG_Sustainability_Report_2025.pdf": "6ec039f79b65354c2cc5464ba4d29a26ef8085d859a1f65af9b274c0edf530ad",
+      "1:HPG_Annual_Report_2024.pdf": "4f203765a2c39a14aa8c78838d3b21db5b03f663b2c4490b801d17427830446d"
+    },
+    "roles": "claim_source,evidence",
+    "source_types": "internal,internal",
+    "elapsed_seconds_wall": 79,
+    "machine": "dev laptop Windows, CPU, no OCR",
+    "total_chunks": 3234,
+    "total_claims": 181,
+    "claims_with_digits": 66,
+    "claim_type_counts": {
+      "biodiversity": 7,
+      "emissions_reduction": 66,
+      "generic_sustainability": 34,
+      "renewable_energy": 10,
+      "resource_efficiency": 6,
+      "waste_and_circularity": 58
+    },
+    "status_counts": {
+      "CONTRADICTED": 8,
+      "INSUFFICIENT_EVIDENCE": 2,
+      "PARTIALLY_SUPPORTED": 168,
+      "SUPPORTED": 3
+    },
+    "severity_counts": {
+      "CRITICAL": 1,
+      "HIGH": 65,
+      "LOW": 5,
+      "MEDIUM": 110
+    },
+    "legal_finding_counts": {
+      "INSUFFICIENT_EVIDENCE": 181
+    },
+    "requires_llm_review": 0,
+    "quality_gates": [
+      {
+        "G0": "PASS"
+      },
+      {
+        "G1": "PASS"
+      },
+      {
+        "G2": "PASS"
+      },
+      {
+        "G3": "PASS"
+      },
+      {
+        "G4": "PASS"
+      },
+      {
+        "G5": "PENDING_HUMAN_REVIEW"
+      },
+      {
+        "G6": "PASS"
+      },
+      {
+        "G7": "PASS"
+      }
+    ],
+    "contradicted_claims": [
+      {
+        "claim_id": "be1f56c521c20020",
+        "text": "trung bình (Scrap-EAF): 0,70 tấn CO2 / tấn thép thô Điểm nổi bật về phát triển bền vững năm 2025 Cường độ phát thải CO2 Cường độ phát thải CO2",
+        "source_page": 21,
+        "rationale": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu lệch: tuyên bố 0.7, tài liệu 1.43."
+      },
+      {
+        "claim_id": "90c39dfce9447549",
+        "text": "quốc gia về giảm phát thải khí nhà kính Duy trì cơ chế kê khai và nộp thuế minh bạch và tuân thủ pháp luật.",
+        "source_page": 33,
+        "rationale": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Bằng chứng phủ định tuyên bố (nguồn có thẩm quyền): “thiếu”."
+      },
+      {
+        "claim_id": "7164eabad456a0e7",
+        "text": "trung vào các lĩnh vực có cường độ phát thải cao nhất — đặc biệt là ngành gang thép, chiếm hơn 99% tổng lượng phát thải KNK của Tập đoàn.",
+        "source_page": 35,
+        "rationale": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu lệch: tuyên bố 99.0, tài liệu 24.0."
+      },
+      {
+        "claim_id": "9c4cec554a9e720f",
+        "text": "Hành động giảm thiểu và thích ứng với biến đổi khí hậu Trong năm 2025, tổng lượng phát thải khí nhà kính của Tập đoàn Hòa Phát là 23.474.480 tCO2e, bao gồm các ",
+        "source_page": 40,
+        "rationale": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu lệch: tuyên bố 23474480.0, tài liệu 90846.0."
+      },
+      {
+        "claim_id": "a97e4dd7519e38c3",
+        "text": "Lĩnh vực sản xuất gang thép và sản phẩm thép của Tập đoàn Hòa Phát tiếp tục là nguồn phát thải khí nhà kính lớn nhất, chiếm tỷ trọng vượt trội trên 99% tổng lượ",
+        "source_page": 40,
+        "rationale": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu lệch: tuyên bố 99.0, tài liệu 0.39."
+      },
+      {
+        "claim_id": "f507d026941a891e",
+        "text": "Từ tháng 9 năm 2025, Hòa Phát Dung Quất 2 đi vào vận hành, Tổng sản lượng thép thô tăng 24%, tương ứng với mức tăng phát thải của toàn tập đoàn.",
+        "source_page": 40,
+        "rationale": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu lệch: tuyên bố 24.0, tài liệu 99.0."
+      },
+      {
+        "claim_id": "5e14b7f7cf7978d8",
+        "text": "GJ 193.403.521 302-1 Tiêu thụ năng lượng trong tổ chức Năng lượng tiêu thụ được cung cấp từ lưới điện tại các địa điểm % 4,5% Năng lượng tiêu thụ là năng lượng ",
+        "source_page": 104,
+        "rationale": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu lệch: tuyên bố 4.5, tài liệu 0.03."
+      },
+      {
+        "claim_id": "188432884cfe8b40",
+        "text": "Năng lượng tiêu thụ là năng lượng tái tạo tại các % 0,03%",
+        "source_page": 104,
+        "rationale": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu lệch: tuyên bố 0.03, tài liệu 4.5."
+      }
+    ],
+    "supported_claims": [
+      {
+        "claim_id": "c21a7eaa52f33654",
+        "text": "Tuân thủ nghiêm túc các quy định pháp luật trong nước Thực hiện kiểm kê khí nhà kính theo tiêu chuẩn ISO 14064-1:2018 và báo cáo đầy đủ theo quy định Hợp tác và",
+        "source_page": 33,
+        "rationale": "Một nguồn ngoài tài liệu tuyên bố xác nhận: Bằng chứng xác nhận tuyên bố: “xác nhận”."
+      },
+      {
+        "claim_id": "04735e1ed7f66c4a",
+        "text": "động thực hiện kiểm kê dấu chân carbon cho các sản phẩm, thực hiện theo chuẩn ISO 14067 và đã được kiểm định bởi bên thứ ba – Tổ chức CARE (Cơ quan chứng nhận s",
+        "source_page": 35,
+        "rationale": "Một nguồn ngoài tài liệu tuyên bố xác nhận: Bằng chứng xác nhận tuyên bố: “chứng nhận”."
+      },
+      {
+        "claim_id": "daeeba55dde8d018",
+        "text": "Đào tạo lập Báo cáo kiểm kê khí nhà kính",
+        "source_page": 61,
+        "rationale": "Một nguồn ngoài tài liệu tuyên bố xác nhận: Bằng chứng xác nhận tuyên bố: “chứng nhận”."
+      }
+    ],
+    "manual_review_2026-09-22": {
+      "contradicted_judged_wrong": 7,
+      "contradicted_judged_correct_or_unclear": 1,
+      "reason": "5 cặp so hai chỉ số khác nhau trong cùng bảng (N1); 1 cue 'thiếu' trên câu thuế/tuân thủ (N2); 'Cường độ 0,70 Scrap-EAF vs 1,43' là khác công nghệ (N1)",
+      "supported_judged_weak": "3/3 SUPPORTED chỉ nhờ một cue ủng hộ ('xác nhận'/'chứng nhận') từ BCTN (N4)"
+    }
+  },
+  "acceptance_targets": {
+    "hpg_contradicted_pct_max": 15,
+    "hpg_claims_max": 80,
+    "hpg_claims_with_digits_pct_min": 70,
+    "hpg_contradicted_wrong_after_manual_review": 0,
+    "hpg_partial_severity_high_max": 0,
+    "legal_findings_not_insufficient_min": 1
+  }
+}

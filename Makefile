@@ -1,7 +1,7 @@
 .PHONY: install test lint format demo evaluate serve build clean
 
 install:
-	python -m pip install -e ".[dev]"
+	python -m pip install -e ".[dev,crawl]"
 
 test:
 	pytest --cov=quantum_gw --cov-report=term-missing
