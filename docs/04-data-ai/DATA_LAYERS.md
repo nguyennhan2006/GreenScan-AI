@@ -104,6 +104,10 @@ Hai con số này là việc phải làm, không phải lỗi code:
 1. **`page` 0% ở corpus** — runtime có trang cho mọi đoạn, corpus crawl thì không. Mọi cặp gold lấy từ corpus hiện **không** trích dẫn được tới trang. Đợt thu thập v2 phải giữ `page` ngay từ bước chuẩn hoá.
 2. **`split` 29% chưa gán** — đúng số tài liệu chưa xác định năm (`review` split trong `data/crawl/README.md`). Không được mặc định coi là `train`.
 
-## 7. Liên quan
+## 7. Bản cho người không chuyên kỹ thuật
+
+[`GreenScan_Mo_ta_truong_du_lieu_v1.pdf`](GreenScan_Mo_ta_truong_du_lieu_v1.pdf) — 10 trang, tiếng Việt, giải thích từng trường bằng ngôn ngữ thông thường kèm ví dụ thật, dùng để gửi khách hàng / kiểm toán viên / thành viên nghiệp vụ. Dựng lại bằng `python tools/make_data_fields_pdf.py` (cần `pip install -e ".[docs]"`). **Khi contract đổi, sửa cả hai tài liệu cùng lúc** — script có kiểm tra ký tự thiếu glyph nên sẽ báo lỗi thay vì in ra ô vuông.
+
+## 8. Liên quan
 
 [DATA_SCHEMA.md](DATA_SCHEMA.md) (object nghiệp vụ tầng trên: Claim, Evidence, Verification, Score) · [DATA_CONTRACTS.md](DATA_CONTRACTS.md) · [../../data/COLLECTION_PLAN_v2.md](../../data/COLLECTION_PLAN_v2.md) · [../../data/gold/LABELING_CONVENTIONS.md](../../data/gold/LABELING_CONVENTIONS.md) · [../00-project/RESEARCH_PROGRAM_2026-09-22.md](../00-project/RESEARCH_PROGRAM_2026-09-22.md) (RQ2 numeric fact schema)
