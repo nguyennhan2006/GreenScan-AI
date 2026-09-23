@@ -139,10 +139,30 @@ class RiskComponent(BaseModel):
 
 
 class RiskAssessment(BaseModel):
+    """Screening priority for one claim — not a probability that a company lied.
+
+    `risk_score` and `severity` answer "how soon should a reviewer look at
+    this". They used to answer three questions at once, which is how a claim
+    that merely omitted its base year reached HIGH on a control company
+    (ISSUES N5). The three are now reported apart:
+
+        evidence_strength       how well the corpus substantiates the claim
+        contradiction_strength  whether something positively contradicts it
+        materiality             how much it would matter if it were wrong
+
+    Only `contradiction_strength` may lift a claim above MEDIUM. `materiality`
+    stays UNKNOWN until there is a measured basis for it (RESEARCH_PROGRAM RQ8);
+    inventing a number here would be the same mistake in a new place.
+    """
+
     claim_id: str
     risk_score: float
     severity: Severity
     components: list[RiskComponent]
+    evidence_strength: str = "unknown"        # strong | moderate | weak | none | unknown
+    contradiction_strength: str = "none"      # numeric | authoritative_cue | trend_only | none
+    materiality: str = "unknown"
+    severity_cap_reason: str | None = None
     requires_human_review: bool = False
     rubric_version: str = "risk-rubric-v1"
 

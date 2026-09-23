@@ -83,21 +83,31 @@ class RiskScoringAgent:
         ))
 
         risk_score = round(min(100.0, sum(item.score for item in components)), 2)
-        severity = self._severity(risk_score)
+        evidence_strength = _evidence_strength(verification)
+        contradiction_strength = _contradiction_strength(verification)
+        severity, cap_reason = self._capped_severity(risk_score, contradiction_strength)
         # A claim contradicted by a legal source is a reviewer's decision even
         # when the arithmetic lands in a low band: the consequence of being wrong
         # is a public accusation against a named company.
         legal_conflict = verification.status == VerificationStatus.CONTRADICTED and any(
             e.source_type.value == "legal" for e in verification.evidence
         )
+        # A contradiction is a reviewer's decision whatever the band says. The
+        # bands are not calibrated yet (B6: 2 of 4 adjudicated cases land in the
+        # expected band), so a numeric contradiction from an external auditor can
+        # score 47 and sit in MEDIUM; it must still be looked at.
         requires_review = severity in {Severity.HIGH, Severity.CRITICAL} or (
             legal_conflict and self.review.require_human_for_legal_conflict
-        ) or verification.requires_llm_review
+        ) or verification.requires_llm_review or contradiction_strength != "none"
         assessment = RiskAssessment(
             claim_id=claim.claim_id,
             risk_score=risk_score,
             severity=severity,
             components=components,
+            evidence_strength=evidence_strength,
+            contradiction_strength=contradiction_strength,
+            materiality="unknown",
+            severity_cap_reason=cap_reason,
             requires_human_review=requires_review,
             rubric_version=self.version,
         )
@@ -113,6 +123,79 @@ class RiskScoringAgent:
             if score >= lower:
                 return severity
         return Severity.LOW
+
+    def _capped_severity(self, score: float, contradiction: str) -> tuple[Severity, str | None]:
+        """Band from the score, then capped when nothing contradicts the claim.
+
+        Missing attributes and missing evidence add up to 65 of 100 on their
+        own, which put 65 of 181 claims of a control company in HIGH on
+        2026-09-22 with no contradiction anywhere. A claim nobody has
+        contradicted is a disclosure gap: a reviewer should see it, but not
+        before the claims something actually contradicts. The cap holds until
+        the bands are calibrated on the gold set (D-2026-09-22-03, RQ8).
+        """
+        severity = self._severity(score)
+        if contradiction in _CONTRADICTION_ABOVE_CAP:
+            return severity, None
+        cap = Severity(self.review.severity_cap_without_contradiction.upper())
+        note = {
+            "none": "không có bằng chứng nào bác bỏ tuyên bố",
+            "trend_only": "chỉ có xu hướng ngược, không có số liệu đối chiếu",
+        }.get(contradiction, contradiction)
+        order = [Severity.LOW, Severity.MEDIUM, Severity.HIGH, Severity.CRITICAL]
+        if order.index(severity) <= order.index(cap):
+            return severity, None
+        return cap, (
+            f"Hạ từ {severity.value} xuống {cap.value}: {note}; "
+            "điểm đến từ thuộc tính còn thiếu và mức độ đầy đủ của bằng chứng."
+        )
+
+
+# Only a positive contradiction lifts a claim above the cap. `trend_only` -- the
+# claim says "giảm" and a passage about the same metric says "tăng", with no
+# figure either side -- is a reviewer's flag, not a finding (verifier._status),
+# so it is reviewed but not ranked as high risk.
+_CONTRADICTION_ABOVE_CAP = frozenset({"numeric", "authoritative_cue", "qualitative_cue", "unspecified"})
+
+
+def _evidence_strength(verification) -> str:
+    """How well the corpus substantiates the claim — read from the verdict and its evidence."""
+    status = verification.status
+    if status == VerificationStatus.SUPPORTED:
+        independent = any(
+            e.source_type.value in {"legal", "external", "standard"} for e in verification.evidence
+        )
+        return "strong" if independent else "moderate"
+    if status == VerificationStatus.PARTIALLY_SUPPORTED:
+        return "moderate" if verification.evidence else "weak"
+    if status == VerificationStatus.CONTRADICTED:
+        return "moderate"
+    if status == VerificationStatus.UNSUPPORTED:
+        return "weak"
+    return "none"
+
+
+def _contradiction_strength(verification) -> str:
+    """What positively contradicts the claim, if anything — never "absence of support"."""
+    if verification.status != VerificationStatus.CONTRADICTED:
+        # A reversed trend with no figure is flagged on the passage, not the verdict.
+        if any(e.relation_method == "direction" for e in verification.evidence):
+            return "trend_only"
+        return "none"
+    contradicting = [e for e in verification.evidence if e.relation == "CONTRADICTS"]
+    if any(e.relation_method == "numeric" for e in contradicting):
+        return "numeric"
+    if any(
+        e.source_type.value in {"legal", "standard"} or "thẩm quyền" in (e.relation_reason or "")
+        for e in contradicting
+    ):
+        return "authoritative_cue"
+    if contradicting:
+        return "qualitative_cue"
+    # The verdict says contradicted but no passage carries the stance: a fixture,
+    # or a caller that built the result by hand. Not "none" -- the cap exists to
+    # stop absence of support from looking like a finding, not to soften findings.
+    return "unspecified"
 
 
 def _bands(rubric: dict) -> list[tuple[Severity, float]]:

@@ -141,6 +141,10 @@ class LegalSettings(BaseModel):
 
 class ReviewSettings(BaseModel):
     require_human_for_legal_conflict: bool = True
+    # A claim nothing contradicts may not exceed this band, whatever the
+    # missing-attribute penalties add up to (ISSUES N5, D-2026-09-22-03).
+    # Lift only when the bands are calibrated on the gold set.
+    severity_cap_without_contradiction: str = "medium"
 
 
 class GatewaySettings(BaseModel):

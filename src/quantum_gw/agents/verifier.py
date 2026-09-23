@@ -233,17 +233,19 @@ class VerificationAgent:
                 VerificationStatus.INSUFFICIENT_EVIDENCE,
                 "Tuyên bố mơ hồ và không có tài liệu nào đủ liên quan để đối chiếu.",
             )
+        # Say which of the five attributes is missing. 168 of 181 Hòa Phát claims
+        # came back with the same two English sentences on 2026-09-22, which tells
+        # a reviewer nothing about what to do next (ISSUES N3).
         if best.score >= self.settings.strong_support_score and overlap >= 0.30:
             return (
                 VerificationStatus.PARTIALLY_SUPPORTED,
-                "Relevant evidence was found, but the claim is not fully verified at the "
-                "same scope, period or precision.",
+                "Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. "
+                + _gap_sentence(claim),
             )
         if best.score >= self.settings.partial_support_score and overlap >= 0.25:
             return (
                 VerificationStatus.PARTIALLY_SUPPORTED,
-                "Evidence is related but incomplete; additional baseline, scope or "
-                "assurance is required.",
+                "Bằng chứng liên quan nhưng chưa đủ để xác minh. " + _gap_sentence(claim),
             )
         # UNSUPPORTED asserts that related material was found and does not
         # substantiate the claim. A passage that merely shares surface form with
@@ -711,6 +713,39 @@ def _measurements(text: str) -> list[tuple[float, str | None, float]]:
     the 2023 in a table produces a 0.05% relative error and a false SUPPORTS.
     """
     return [q for q in parse_quantities(text) if q[0] < 1900 or q[0] > 2100]
+
+
+# The five attributes the rubric scores, in the order a reviewer fills them in.
+_ATTRIBUTE_LABELS = {
+    "metric": "chỉ số cụ thể",
+    "values": "số liệu",
+    "period": "kỳ báo cáo",
+    "baseline": "năm gốc để so sánh",
+    "scope": "phạm vi / ranh giới",
+}
+
+
+def missing_attributes(claim: Claim) -> list[str]:
+    """Which of the five mandatory attributes the claim itself does not state."""
+    missing = []
+    if not claim.metric:
+        missing.append("metric")
+    if not claim.values:
+        missing.append("values")
+    if not claim.period:
+        missing.append("period")
+    if (claim.direction or claim.is_future_commitment) and not claim.baseline:
+        missing.append("baseline")
+    if not claim.scope and not emission_scopes(claim.text):
+        missing.append("scope")
+    return missing
+
+
+def _gap_sentence(claim: Claim) -> str:
+    gaps = missing_attributes(claim)
+    if not gaps:
+        return "Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
+    return "Tuyên bố thiếu: " + ", ".join(_ATTRIBUTE_LABELS[name] for name in gaps) + "."
 
 
 def _claim_facts(text: str) -> list[NumericFact]:

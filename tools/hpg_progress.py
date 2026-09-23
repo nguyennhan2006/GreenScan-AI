@@ -64,7 +64,7 @@ def summarise(run: dict, elapsed: float, git_head: str) -> dict:
          "components": {x["name"]: x["score"] for x in r["components"] if x["score"]}}
         for c, v, r in zip(claims, ver, risks, strict=False) if r["severity"] in ("HIGH", "CRITICAL")
     ]
-    rationales = collections.Counter((v.get("rationale") or "")[:60] for v in ver if v["status"] == "PARTIALLY_SUPPORTED")
+    rationales = collections.Counter(v.get("rationale") or "" for v in ver if v["status"] == "PARTIALLY_SUPPORTED")
     return {
         "snapshot_date": dt.date.today().isoformat(),
         "git_head": git_head,
