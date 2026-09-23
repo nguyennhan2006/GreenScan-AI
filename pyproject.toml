@@ -25,6 +25,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+# tools/make_data_fields_pdf.py builds the customer-facing data-field guide.
+docs = [
+  "reportlab>=4,<6",
+]
 dev = [
   "pytest>=8,<10",
   "pytest-cov>=5,<8",
