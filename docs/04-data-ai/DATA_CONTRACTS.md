@@ -1,5 +1,9 @@
 # Data contracts
 
+> **Tầng dữ liệu (raw · clean · extract) ở [DATA_LAYERS.md](DATA_LAYERS.md)** — contract
+> `data-layers-v1`, nguồn sự thật `src/quantum_gw/data/layers.py`, JSON Schema ở
+> `schemas/data/`. Tài liệu này mô tả các object nghiệp vụ chạy trong pipeline.
+
 ## DocumentInput
 
 A document must have either `path` or `text`, plus:

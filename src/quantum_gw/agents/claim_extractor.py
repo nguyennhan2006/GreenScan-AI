@@ -147,6 +147,9 @@ class ClaimExtractionAgent:
         claims: list[Claim] = []
         seen: set[str] = set()
         rejected: dict[str, int] = {}
+        # Every refused sentence, kept for the extract layer and for the
+        # reviewer's "what did it ignore" question (data/layers.py).
+        self.rejected_sentences: list[tuple[EvidenceChunk, int, str, str]] = []
         for chunk in chunks:
             if chunk.role != DocumentRole.CLAIM_SOURCE:
                 continue
@@ -156,7 +159,7 @@ class ClaimExtractionAgent:
                 # claim ("quốc gia về giảm phát thải... Duy trì cơ chế kê khai").
                 first = next((c for c in sentence if c.isalpha()), "")
                 if index == 0 and first and first.islower():
-                    rejected["chunk_boundary_fragment"] = rejected.get("chunk_boundary_fragment", 0) + 1
+                    self._reject(rejected, chunk, index, sentence, "chunk_boundary_fragment")
                     continue
                 normalized = normalize_for_match(sentence)
                 claim_type = self._claim_type(normalized)
@@ -164,7 +167,7 @@ class ClaimExtractionAgent:
                     continue
                 reason = heading_reason(sentence)
                 if reason:
-                    rejected[reason] = rejected.get(reason, 0) + 1
+                    self._reject(rejected, chunk, index, sentence, reason)
                     continue
                 # A bare year is a label, not a figure: "năm 2025" must not turn the
                 # chairman's letter into a quantified claim (ISSUES N3).
@@ -174,16 +177,18 @@ class ClaimExtractionAgent:
                 # make the claim checkable, which is what is_vague is about.
                 is_vague = bool(vague_matched) and not numbers
                 if is_vague and not self.settings.include_vague_claims:
+                    self._reject(rejected, chunk, index, sentence, "vague_without_figure")
                     continue
                 future = any(term in normalized for term in self.future_terms)
                 # The generic bucket matches on words like "ESG" or "bền vững"
                 # alone. Such a sentence is a claim only when it commits to
                 # something: a figure, a promotional adjective or a future pledge.
                 if claim_type == "generic_sustainability" and not (numbers or vague_matched or future):
-                    rejected["generic_without_commitment"] = rejected.get("generic_without_commitment", 0) + 1
+                    self._reject(rejected, chunk, index, sentence, "generic_without_commitment")
                     continue
                 confidence = min(0.96, 0.48 + (0.18 if numbers else 0) + (0.12 if claim_type != "generic_sustainability" else 0))
                 if confidence < self.settings.minimum_confidence:
+                    self._reject(rejected, chunk, index, sentence, "below_minimum_confidence")
                     continue
                 canonical = re.sub(r"\s+", " ", normalized).strip()
                 if canonical in seen:
@@ -227,6 +232,10 @@ class ClaimExtractionAgent:
             },
         )
         return claims
+
+    def _reject(self, tally: dict[str, int], chunk, index: int, sentence: str, reason: str) -> None:
+        tally[reason] = tally.get(reason, 0) + 1
+        self.rejected_sentences.append((chunk, index, sentence, reason))
 
     def _claim_type(self, normalized: str) -> str | None:
         """Best-matching claim type, or None when the sentence makes no green claim.
