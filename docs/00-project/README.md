@@ -22,6 +22,7 @@ Bộ tài liệu này trả lời bốn câu hỏi nền tảng:
 | `ROADMAP.md` · `IMPLEMENTATION_BACKLOG.md` | Lộ trình phiên bản và backlog ưu tiên | Product owner, developer |
 | `ISSUES_REGISTER_2026-09.md` | Sổ khúc mắc A–G với phương án, chủ sở hữu, nghiệm thu; tick khi đóng | Toàn team |
 | `EXECUTION_PLAN_2026-09.md` | **Kế hoạch 6 tuần tới sản phẩm trình bày được** — trạng thái đo được, Definition of Done, sprint, kịch bản demo | Toàn team |
+| `INDEX.md` | **Bản đồ đường dẫn**: đọc gì theo thứ tự, dữ liệu ở đâu, sửa code ở file nào, lệnh hay dùng | Toàn team |
 | `ROUND2_READINESS_2026-09-22.md` | **Source of truth readiness Vòng 2** (snapshot 22/09, không sửa số): số đo, chấm thử 6 tiêu chí, N1–N5, thứ tự ưu tiên, hard gate, chuẩn bị Chung kết (§9). Số đo gốc: `benchmark/baseline_2026-09-22.json` | Toàn team |
 | `RESEARCH_PROGRAM_2026-09-22.md` | **Đi kèm readiness:** audit code 15 câu (file:line), bảng research ↔ code ↔ test ↔ dữ liệu ↔ thí nghiệm ↔ nghiệm thu (RQ1–RQ10), 4 trạng thái năng lực, 4 gate, tuyên bố được/chưa được phép nói | Toàn team |
 | `CORE_FEATURE_TEST_REPORT_2026-09-20.md` | Báo cáo kiểm thử tính năng cốt lõi 20/09 (D1–D9 đã sửa) | Nhân, reviewer |
