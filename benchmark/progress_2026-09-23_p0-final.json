@@ -1,0 +1,54 @@
+{
+  "snapshot_date": "2026-09-23",
+  "git_head": "235e3540fb35dec3ad06dc15e13e1ea4f109c6fe",
+  "run_id": "930920f872804f69",
+  "elapsed_seconds_wall": 108.8,
+  "total_claims": 156,
+  "claims_with_digits": 49,
+  "claim_type_counts": {
+    "biodiversity": 7,
+    "emissions_reduction": 55,
+    "generic_sustainability": 35,
+    "renewable_energy": 8,
+    "resource_efficiency": 5,
+    "waste_and_circularity": 46
+  },
+  "status_counts": {
+    "INSUFFICIENT_EVIDENCE": 1,
+    "PARTIALLY_SUPPORTED": 153,
+    "SUPPORTED": 2
+  },
+  "severity_counts": {
+    "LOW": 2,
+    "MEDIUM": 154
+  },
+  "legal_finding_counts": {
+    "INSUFFICIENT_EVIDENCE": 156
+  },
+  "partial_rationale_variety": 4,
+  "contradicted_claims": [],
+  "supported_claims": [
+    {
+      "claim_id": "f656cb618eaebec0",
+      "text": "Hoàn thành kiểm kê khí nhà kính theo tiêu 90%",
+      "source_page": 9,
+      "rationale": "Một nguồn ngoài tài liệu tuyên bố xác nhận: Số liệu khớp: 90.0 ≈ 90.0 (dung sai ±5.6% theo độ chính xác công bố).",
+      "severity": "MEDIUM"
+    },
+    {
+      "claim_id": "a5c82f7543ddeed2",
+      "text": "Thực hiện kiểm kê khí nhà kính theo tiêu chuẩn ISO 14064-1:2018 và báo cáo đầy đủ theo quy định Hợp tác và phối hợp với chính quyền địa phương.",
+      "source_page": 33,
+      "rationale": "Một nguồn ngoài tài liệu tuyên bố xác nhận: Bằng chứng xác nhận tuyên bố: “xác nhận”. Thuộc tính khớp: metric, period.",
+      "severity": "MEDIUM"
+    }
+  ],
+  "high_or_critical": [],
+  "manual_review": {
+    "contradicted_judged_wrong": null,
+    "supported_judged_weak": null,
+    "high_judged_wrong": null,
+    "reviewer": "",
+    "note": "điền tay sau khi soát"
+  }
+}

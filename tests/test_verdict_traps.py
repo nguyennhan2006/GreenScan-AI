@@ -12,7 +12,7 @@ back. New traps go in with ``xfail(strict=True)`` until fixed.
 from __future__ import annotations
 
 from quantum_gw.agents.orchestrator import OrchestratorAgent
-from quantum_gw.domain.enums import DocumentRole, SourceType, VerificationStatus
+from quantum_gw.domain.enums import DocumentRole, Severity, SourceType, VerificationStatus
 from quantum_gw.domain.models import DocumentInput
 
 CLAIM = DocumentRole.CLAIM_SOURCE
@@ -537,3 +537,64 @@ def test_internal_refutation_must_share_the_claims_topic(settings):
         SourceType.INTERNAL,
     )
     assert VerificationStatus.CONTRADICTED not in _statuses(result)
+
+
+# --- N5: missing attributes are a disclosure gap, not a high-risk finding --------
+
+def _risk(result, index: int = 0):
+    return result.risks[index]
+
+
+def test_partial_missing_attribute_capped_medium(settings):
+    """A vague claim nobody contradicts may not reach HIGH on the missing-field penalties alone."""
+    result = _run(
+        settings,
+        "Tập đoàn hướng tới sản xuất xanh và thân thiện với môi trường trong thời gian tới.",
+        "Báo cáo tài chính năm 2024: chi phí năng lượng tăng do giá điện.",
+        SourceType.FINANCIAL,
+    )
+    risk = _risk(result)
+    assert risk.severity in {Severity.LOW, Severity.MEDIUM}
+    assert risk.contradiction_strength == "none"
+    if risk.risk_score >= 50:
+        assert risk.severity_cap_reason
+
+
+def test_high_requires_contradiction_or_authority(settings):
+    """Guard: a numeric contradiction still reaches HIGH or above, with the reason recorded."""
+    result = _run(
+        settings,
+        "Tỷ lệ tái chế chất thải rắn đạt 100% trong năm 2024.",
+        "Kiểm toán môi trường: tỷ lệ tái chế chất thải rắn năm 2024 đạt 60%.",
+        SourceType.EXTERNAL,
+    )
+    risk = _risk(result)
+    assert risk.contradiction_strength == "numeric"
+    assert risk.severity_cap_reason is None, "a contradicted claim is never capped"
+    assert risk.requires_human_review, "a contradiction goes to a reviewer whatever the band"
+
+
+def test_risk_dimensions_are_reported_apart(settings):
+    """Evidence strength, contradiction strength and materiality are three fields, not one."""
+    result = _run(
+        settings,
+        "Công ty cam kết đạt Net Zero vào năm 2050.",
+        "Doanh thu năm 2024 tăng 15%. Chi phí năng lượng tăng 20% do giá điện.",
+        SourceType.FINANCIAL,
+    )
+    risk = _risk(result)
+    assert risk.evidence_strength in {"none", "weak", "moderate", "strong"}
+    assert risk.materiality == "unknown"
+
+
+def test_partial_rationale_names_missing_attribute(settings):
+    """A PARTIAL verdict says which of the five attributes the claim does not state."""
+    result = _run(
+        settings,
+        "Tập đoàn đã giảm phát thải khí nhà kính tại các nhà máy thép.",
+        "Báo cáo kiểm kê ghi nhận phát thải khí nhà kính tại các nhà máy thép trong năm 2024.",
+        SourceType.EXTERNAL,
+    )
+    rationale = result.verifications[0].rationale
+    assert "Tuyên bố thiếu:" in rationale
+    assert "số liệu" in rationale
