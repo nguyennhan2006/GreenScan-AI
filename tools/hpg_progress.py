@@ -57,12 +57,12 @@ def summarise(run: dict, elapsed: float, git_head: str) -> dict:
             {"claim_id": c["claim_id"], "text": c["text"][:160], "source_page": c.get("source_page"),
              "rationale": (v.get("rationale") or "")[:220],
              "severity": r["severity"]}
-            for c, v, r in zip(claims, ver, risks) if v["status"] == status
+            for c, v, r in zip(claims, ver, risks, strict=False) if v["status"] == status
         ]
     high = [
         {"claim_id": c["claim_id"], "status": v["status"], "text": c["text"][:120],
          "components": {x["name"]: x["score"] for x in r["components"] if x["score"]}}
-        for c, v, r in zip(claims, ver, risks) if r["severity"] in ("HIGH", "CRITICAL")
+        for c, v, r in zip(claims, ver, risks, strict=False) if r["severity"] in ("HIGH", "CRITICAL")
     ]
     rationales = collections.Counter((v.get("rationale") or "")[:60] for v in ver if v["status"] == "PARTIALLY_SUPPORTED")
     return {

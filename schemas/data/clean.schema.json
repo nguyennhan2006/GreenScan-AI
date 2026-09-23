@@ -1,0 +1,302 @@
+{
+  "$defs": {
+    "Origin": {
+      "enum": [
+        "corpus",
+        "run"
+      ],
+      "title": "Origin",
+      "type": "string"
+    },
+    "Split": {
+      "enum": [
+        "train",
+        "dev",
+        "test",
+        "holdout",
+        "review",
+        "unassigned"
+      ],
+      "title": "Split",
+      "type": "string"
+    },
+    "UnitType": {
+      "enum": [
+        "paragraph",
+        "table",
+        "table_row",
+        "heading",
+        "list_item",
+        "caption",
+        "clause"
+      ],
+      "title": "UnitType",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "One unit of text after parsing, OCR, normalisation and dedup.",
+  "properties": {
+    "contract_version": {
+      "default": "data-layers-v1",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "origin": {
+      "$ref": "#/$defs/Origin"
+    },
+    "producer": {
+      "description": "crawler | parser | claim_extractor | verifier | manual",
+      "title": "Producer",
+      "type": "string"
+    },
+    "producer_version": {
+      "title": "Producer Version",
+      "type": "string"
+    },
+    "produced_at": {
+      "format": "date-time",
+      "title": "Produced At",
+      "type": "string"
+    },
+    "run_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "set when origin=run",
+      "title": "Run Id"
+    },
+    "layer": {
+      "const": "clean",
+      "default": "clean",
+      "title": "Layer",
+      "type": "string"
+    },
+    "unit_id": {
+      "title": "Unit Id",
+      "type": "string"
+    },
+    "doc_id": {
+      "description": "the raw row this came from",
+      "title": "Doc Id",
+      "type": "string"
+    },
+    "doc_sha256": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "integrity link to the raw row",
+      "title": "Doc Sha256"
+    },
+    "source_name": {
+      "title": "Source Name",
+      "type": "string"
+    },
+    "text": {
+      "title": "Text",
+      "type": "string"
+    },
+    "text_sha256": {
+      "title": "Text Sha256",
+      "type": "string"
+    },
+    "char_count": {
+      "title": "Char Count",
+      "type": "integer"
+    },
+    "language": {
+      "default": "vi",
+      "title": "Language",
+      "type": "string"
+    },
+    "page": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Page"
+    },
+    "block_index": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Block Index"
+    },
+    "unit_type": {
+      "$ref": "#/$defs/UnitType",
+      "default": "paragraph"
+    },
+    "is_table": {
+      "default": false,
+      "title": "Is Table",
+      "type": "boolean"
+    },
+    "table_index": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Table Index"
+    },
+    "row_index": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "cell provenance; null until E3 lands",
+      "title": "Row Index"
+    },
+    "column_index": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Column Index"
+    },
+    "used_ocr": {
+      "default": false,
+      "title": "Used Ocr",
+      "type": "boolean"
+    },
+    "ocr_confidence": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ocr Confidence"
+    },
+    "normalizations": {
+      "description": "applied steps, e.g. nfkc, join_wrapped_lines, whitespace",
+      "items": {
+        "type": "string"
+      },
+      "title": "Normalizations",
+      "type": "array"
+    },
+    "duplicate_of": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "unit_id kept instead of this one",
+      "title": "Duplicate Of"
+    },
+    "split": {
+      "$ref": "#/$defs/Split",
+      "default": "unassigned"
+    },
+    "company_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Company Id"
+    },
+    "reporting_year": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reporting Year"
+    },
+    "quality_flags": {
+      "description": "low_text | scan_like | suspicious_instruction | truncated | table_parse_low_confidence",
+      "items": {
+        "type": "string"
+      },
+      "title": "Quality Flags",
+      "type": "array"
+    },
+    "role": {
+      "default": "evidence",
+      "title": "Role",
+      "type": "string"
+    },
+    "source_type": {
+      "default": "internal",
+      "title": "Source Type",
+      "type": "string"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    }
+  },
+  "required": [
+    "origin",
+    "producer",
+    "producer_version",
+    "produced_at",
+    "unit_id",
+    "doc_id",
+    "source_name",
+    "text",
+    "text_sha256",
+    "char_count"
+  ],
+  "title": "GreenScan clean layer (data-layers-v1)",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenscan.local/schemas/data/clean.schema.json"
+}

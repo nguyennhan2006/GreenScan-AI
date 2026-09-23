@@ -6,6 +6,7 @@ import uuid
 from collections import Counter
 from pathlib import Path
 
+from quantum_gw.data.export import write_run_layers
 from quantum_gw.domain.enums import Severity
 from quantum_gw.domain.models import (
     AnalysisResult,
@@ -69,7 +70,8 @@ class OrchestratorAgent:
         chunks = DocumentIntakeAgent(self.settings.intake, audit).run(documents)
         corpus = profile_corpus(documents, chunks)
         audit.write("corpus_profiled", corpus.to_json())
-        claims = ClaimExtractionAgent(self.settings.claim_extraction, audit).run(chunks)
+        extractor = ClaimExtractionAgent(self.settings.claim_extraction, audit)
+        claims = extractor.run(chunks)
         retrieval_agent = EvidenceRetrievalAgent(chunks, self.settings, audit)
         verifier = VerificationAgent(self.settings.verification, audit)
         verifier.corpus = corpus
@@ -115,6 +117,16 @@ class OrchestratorAgent:
             output_directory=str(output_dir),
         )
         ReportingAgent().write(result)
+        layer_counts = write_run_layers(
+            output_dir / "contract",
+            run_id=run_id,
+            producer_version=self.settings.version,
+            documents=documents,
+            chunks=chunks,
+            claims=claims,
+            rejected=getattr(extractor, "rejected_sentences", []),
+        )
+        audit.write("data_layers_written", layer_counts)
         audit.write("run_completed", {"release_status": release_status})
         return result
 

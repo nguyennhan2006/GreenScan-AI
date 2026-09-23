@@ -1,0 +1,422 @@
+{
+  "$defs": {
+    "ExtractType": {
+      "enum": [
+        "claim",
+        "rejected_sentence",
+        "evidence_candidate",
+        "numeric_fact"
+      ],
+      "title": "ExtractType",
+      "type": "string"
+    },
+    "NumericFactFields": {
+      "additionalProperties": false,
+      "description": "The dimensions that decide whether two figures may be compared (N1/RQ2).",
+      "properties": {
+        "value": {
+          "title": "Value",
+          "type": "number"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "half_precision": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "half of the last significant digit",
+          "title": "Half Precision"
+        },
+        "basis": {
+          "default": "unknown",
+          "title": "Basis",
+          "type": "string"
+        },
+        "boundary": {
+          "default": "unknown",
+          "title": "Boundary",
+          "type": "string"
+        },
+        "technology": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Technology"
+        },
+        "variant": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Variant",
+          "type": "array"
+        },
+        "scopes": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Scopes",
+          "type": "array"
+        },
+        "is_target": {
+          "default": false,
+          "title": "Is Target",
+          "type": "boolean"
+        },
+        "policy_id": {
+          "default": "comparison-policy-v2",
+          "description": "the eligibility rule that read these",
+          "title": "Policy Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "title": "NumericFactFields",
+      "type": "object"
+    },
+    "Origin": {
+      "enum": [
+        "corpus",
+        "run"
+      ],
+      "title": "Origin",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "One object read out of a clean unit — or one sentence the extractor refused.",
+  "properties": {
+    "contract_version": {
+      "default": "data-layers-v1",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "origin": {
+      "$ref": "#/$defs/Origin"
+    },
+    "producer": {
+      "description": "crawler | parser | claim_extractor | verifier | manual",
+      "title": "Producer",
+      "type": "string"
+    },
+    "producer_version": {
+      "title": "Producer Version",
+      "type": "string"
+    },
+    "produced_at": {
+      "format": "date-time",
+      "title": "Produced At",
+      "type": "string"
+    },
+    "run_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "set when origin=run",
+      "title": "Run Id"
+    },
+    "layer": {
+      "const": "extract",
+      "default": "extract",
+      "title": "Layer",
+      "type": "string"
+    },
+    "extract_id": {
+      "title": "Extract Id",
+      "type": "string"
+    },
+    "extract_type": {
+      "$ref": "#/$defs/ExtractType"
+    },
+    "unit_id": {
+      "description": "the clean row this came from",
+      "title": "Unit Id",
+      "type": "string"
+    },
+    "doc_id": {
+      "title": "Doc Id",
+      "type": "string"
+    },
+    "page": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Page"
+    },
+    "sentence_index": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Sentence Index"
+    },
+    "text": {
+      "title": "Text",
+      "type": "string"
+    },
+    "text_sha256": {
+      "title": "Text Sha256",
+      "type": "string"
+    },
+    "language": {
+      "default": "vi",
+      "title": "Language",
+      "type": "string"
+    },
+    "claim_type": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Claim Type"
+    },
+    "metric": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Metric"
+    },
+    "direction": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "increase | decrease",
+      "title": "Direction"
+    },
+    "values": {
+      "items": {
+        "type": "number"
+      },
+      "title": "Values",
+      "type": "array"
+    },
+    "units": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Units",
+      "type": "array"
+    },
+    "period": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Period"
+    },
+    "baseline": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Baseline"
+    },
+    "scope": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Scope"
+    },
+    "is_future_commitment": {
+      "default": false,
+      "title": "Is Future Commitment",
+      "type": "boolean"
+    },
+    "is_vague": {
+      "default": false,
+      "title": "Is Vague",
+      "type": "boolean"
+    },
+    "vague_terms_matched": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Vague Terms Matched",
+      "type": "array"
+    },
+    "confidence": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Confidence"
+    },
+    "rejected_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "caps_run | section_label | table_row | too_short | no_predicate | fragment | chunk_boundary_fragment | generic_without_commitment | table_of_contents",
+      "title": "Rejected Reason"
+    },
+    "numeric_facts": {
+      "items": {
+        "$ref": "#/$defs/NumericFactFields"
+      },
+      "title": "Numeric Facts",
+      "type": "array"
+    },
+    "has_number": {
+      "default": false,
+      "title": "Has Number",
+      "type": "boolean"
+    },
+    "candidate_type": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Candidate Type"
+    },
+    "label": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "see data/gold/LABELING_CONVENTIONS.md; null until adjudicated",
+      "title": "Label"
+    },
+    "annotator": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Annotator"
+    },
+    "adjudicated_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Adjudicated At"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    }
+  },
+  "required": [
+    "origin",
+    "producer",
+    "producer_version",
+    "produced_at",
+    "extract_id",
+    "extract_type",
+    "unit_id",
+    "doc_id",
+    "text",
+    "text_sha256"
+  ],
+  "title": "GreenScan extract layer (data-layers-v1)",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenscan.local/schemas/data/extract.schema.json"
+}

@@ -1,0 +1,443 @@
+{
+  "$defs": {
+    "DocumentType": {
+      "enum": [
+        "sustainability_report",
+        "annual_report",
+        "integrated_report",
+        "financial_statement",
+        "governance_report",
+        "agm_document",
+        "regulatory_record",
+        "legal_decision",
+        "assurance_statement",
+        "press",
+        "legal_instrument",
+        "other"
+      ],
+      "title": "DocumentType",
+      "type": "string"
+    },
+    "Origin": {
+      "enum": [
+        "corpus",
+        "run"
+      ],
+      "title": "Origin",
+      "type": "string"
+    },
+    "SourceAuthority": {
+      "description": "Who stands behind the document — the evidence hierarchy of NEXT_COLLECTION_PLAN.",
+      "enum": [
+        "government",
+        "court_or_regulator",
+        "auditor",
+        "assurance_provider",
+        "exchange",
+        "company",
+        "press",
+        "unknown"
+      ],
+      "title": "SourceAuthority",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "One acquired source document, as captured. Never edited after capture.",
+  "properties": {
+    "contract_version": {
+      "default": "data-layers-v1",
+      "title": "Contract Version",
+      "type": "string"
+    },
+    "origin": {
+      "$ref": "#/$defs/Origin"
+    },
+    "producer": {
+      "description": "crawler | parser | claim_extractor | verifier | manual",
+      "title": "Producer",
+      "type": "string"
+    },
+    "producer_version": {
+      "title": "Producer Version",
+      "type": "string"
+    },
+    "produced_at": {
+      "format": "date-time",
+      "title": "Produced At",
+      "type": "string"
+    },
+    "run_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "set when origin=run",
+      "title": "Run Id"
+    },
+    "layer": {
+      "const": "raw",
+      "default": "raw",
+      "title": "Layer",
+      "type": "string"
+    },
+    "doc_id": {
+      "description": "stable id; the clean layer references it",
+      "title": "Doc Id",
+      "type": "string"
+    },
+    "sha256": {
+      "description": "of the bytes as downloaded",
+      "maxLength": 64,
+      "minLength": 64,
+      "title": "Sha256",
+      "type": "string"
+    },
+    "url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Url"
+    },
+    "final_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "after redirects",
+      "title": "Final Url"
+    },
+    "source_page_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "the IR/listing page it was found on",
+      "title": "Source Page Url"
+    },
+    "source_authority": {
+      "$ref": "#/$defs/SourceAuthority",
+      "default": "unknown"
+    },
+    "retrieved_by": {
+      "default": "unknown",
+      "description": "crawler | manual | upload | fixture",
+      "title": "Retrieved By",
+      "type": "string"
+    },
+    "access_date": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "mandatory for corpus rows",
+      "title": "Access Date"
+    },
+    "licence_note": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "why this file may be stored and quoted (COLLECTION_PLAN_v2 §2.5)",
+      "title": "Licence Note"
+    },
+    "organization_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Organization Name"
+    },
+    "company_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Company Id"
+    },
+    "ticker": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ticker"
+    },
+    "exchange": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Exchange"
+    },
+    "jurisdiction": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Jurisdiction"
+    },
+    "sector": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Sector"
+    },
+    "title": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Title"
+    },
+    "document_type": {
+      "$ref": "#/$defs/DocumentType",
+      "default": "other"
+    },
+    "reporting_year": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "the period the document reports on",
+      "title": "Reporting Year"
+    },
+    "publication_date": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Publication Date"
+    },
+    "language": {
+      "default": "vi",
+      "title": "Language",
+      "type": "string"
+    },
+    "file_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "File Name"
+    },
+    "media_type": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Media Type"
+    },
+    "byte_size": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Byte Size"
+    },
+    "page_count": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Page Count"
+    },
+    "object_path": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "content-addressed path; bytes are not committed",
+      "title": "Object Path"
+    },
+    "native_text_chars": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "text layer size; 0 means a scan",
+      "title": "Native Text Chars"
+    },
+    "scan_like_ratio": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Scan Like Ratio"
+    },
+    "role": {
+      "default": "evidence",
+      "description": "claim_source | evidence | reference",
+      "title": "Role",
+      "type": "string"
+    },
+    "source_type": {
+      "default": "internal",
+      "description": "internal | financial | environmental | legal | external | standard",
+      "title": "Source Type",
+      "type": "string"
+    },
+    "status": {
+      "default": "ok",
+      "description": "ok | download_failed | parse_failed | excluded",
+      "title": "Status",
+      "type": "string"
+    },
+    "error_message": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Error Message"
+    },
+    "notes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Notes"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    }
+  },
+  "required": [
+    "origin",
+    "producer",
+    "producer_version",
+    "produced_at",
+    "doc_id",
+    "sha256"
+  ],
+  "title": "GreenScan raw layer (data-layers-v1)",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://greenscan.local/schemas/data/raw.schema.json"
+}

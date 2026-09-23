@@ -44,3 +44,6 @@ outside_resource/*.zip
 
 # Frontend SSR/preview build output
 frontend/.ssr-out/
+
+# Derived data layers: rebuilt in ~15s by tools/data_contract.py migrate-crawl
+data/crawl/**/contract/
