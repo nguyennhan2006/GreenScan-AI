@@ -14,6 +14,7 @@ Một trang để biết **đọc gì, chạy gì, sửa ở đâu**. Mọi đư
 | 6 | [00-project/DECISIONS_LOG.md](DECISIONS_LOG.md) | Quyết định có hiệu lực (D-2026-09-18-01…08, D-2026-09-22-01…06) |
 | 7 | [01-domain-audit/AUDIT_PROTOCOL.md](../01-domain-audit/AUDIT_PROTOCOL.md) · [MANUAL_SCORING_RUBRIC.md](../01-domain-audit/MANUAL_SCORING_RUBRIC.md) | Nghiệp vụ kiểm chứng |
 | 8 | [07-presentation/QA_BANK_100_2026-09-20.md](../07-presentation/QA_BANK_100_2026-09-20.md) · [QA_DRILL.md](../07-presentation/QA_DRILL.md) | Bộ câu hỏi phản biện |
+| 9 | [07-presentation/PIPELINE_DIAGRAM_BRIEF.md](../07-presentation/PIPELINE_DIAGRAM_BRIEF.md) | **Pipeline tổng quan để vẽ sơ đồ**: 8 bước, input/output từng bước, 5 mô hình được huấn luyện, prompt sẵn cho AI sinh ảnh + bản Mermaid |
 
 ## 2. Dữ liệu
 
