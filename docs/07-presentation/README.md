@@ -2,6 +2,8 @@
 
 | Thư mục | Nội dung | Biên dịch |
 | --- | --- | --- |
+| [PIPELINE_DIAGRAM_BRIEF.md](PIPELINE_DIAGRAM_BRIEF.md) · [diagrams/](diagrams/) | Sơ đồ pipeline 16:9 (vi + en), mô hình thông tin và bản dựng vector | `python tools/make_pipeline_diagram.py` |
+| [SLIDES_11_16_IMAGE_PROMPTS.md](SLIDES_11_16_IMAGE_PROMPTS.md) | Slide 11–16: prompt sinh ảnh, kịch bản nói 40 giây/slide, câu BGK hỏi + trả lời, bảng kiểm 7 dòng | — |
 | [QA_DRILL.md](QA_DRILL.md) | 24 câu BGK gần như chắc chắn + khối kiến thức bắt buộc (60 giây/mục) | — |
 | [QA_BANK_100_2026-09-20.md](QA_BANK_100_2026-09-20.md) | 100 câu đi sâu 4 mảng RAG · tài chính-kế toán · pháp lý · quantum: đáp án 30–60 giây theo *vấn đề → nguyên lý → triển khai → giới hạn*, câu truy vấn tiếp của BGK, nhãn ✅/🟡/📝 đã chạy / có hook / trên giấy | — |
 | [technical_brief/](technical_brief/) | Tài liệu kỹ thuật tóm tắt 9 trang (LaTeX + PDF): công nghệ, phương pháp, logic kiểm chứng, dữ liệu, đánh giá, giới hạn, hướng phát triển (QUBO), giá trị | `xelatex GreenScan_Technical_Brief.tex` × 2 |
