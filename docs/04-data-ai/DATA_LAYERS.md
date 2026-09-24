@@ -108,6 +108,10 @@ Hai con số này là việc phải làm, không phải lỗi code:
 
 [`GreenScan_Mo_ta_truong_du_lieu_v1.pdf`](GreenScan_Mo_ta_truong_du_lieu_v1.pdf) — 10 trang, tiếng Việt, giải thích từng trường bằng ngôn ngữ thông thường kèm ví dụ thật, dùng để gửi khách hàng / kiểm toán viên / thành viên nghiệp vụ. Dựng lại bằng `python tools/make_data_fields_pdf.py` (cần `pip install -e ".[docs]"`). **Khi contract đổi, sửa cả hai tài liệu cùng lúc** — script có kiểm tra ký tự thiếu glyph nên sẽ báo lỗi thay vì in ra ô vuông.
 
-## 8. Liên quan
+## 8. Dữ liệu này dùng để huấn luyện gì
+
+Hiện **không huấn luyện mô hình nào** (D-2026-09-18-02). Ba tầng được thiết kế để sau này sinh ra dữ liệu huấn luyện cho **phần đọc cấu trúc**, không phải cho verdict: câu bị loại là lớp âm có sẵn, `numeric_facts` là nhãn bạc, nhãn người chỉ dùng để đo. Thiết kế đầy đủ: [TARGET_PIPELINE_AND_TRAINING.md](TARGET_PIPELINE_AND_TRAINING.md).
+
+## 9. Liên quan
 
 [DATA_SCHEMA.md](DATA_SCHEMA.md) (object nghiệp vụ tầng trên: Claim, Evidence, Verification, Score) · [DATA_CONTRACTS.md](DATA_CONTRACTS.md) · [../../data/COLLECTION_PLAN_v2.md](../../data/COLLECTION_PLAN_v2.md) · [../../data/gold/LABELING_CONVENTIONS.md](../../data/gold/LABELING_CONVENTIONS.md) · [../00-project/RESEARCH_PROGRAM_2026-09-22.md](../00-project/RESEARCH_PROGRAM_2026-09-22.md) (RQ2 numeric fact schema)
