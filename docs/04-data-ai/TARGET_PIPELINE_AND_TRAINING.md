@@ -249,6 +249,10 @@ Kết quả âm là kết quả hợp lệ. Nếu B2 không hơn B1, bản trìn
 
 ---
 
-## 10. Liên quan
+## 10. Bản tổng quan để trình bày
+
+Khi cần một trang duy nhất cho slide hoặc để vẽ sơ đồ: [../07-presentation/PIPELINE_DIAGRAM_BRIEF.md](../07-presentation/PIPELINE_DIAGRAM_BRIEF.md) — cùng pipeline, diễn đạt cho người nghe, kèm ngân sách huấn luyện theo giả định T4 không giới hạn / A100 10 giờ (khác giả định CPU của tài liệu này: M2 có thể lên 7–8B).
+
+## 11. Liên quan
 
 [RESEARCH_PROGRAM_2026-09-22.md](../00-project/RESEARCH_PROGRAM_2026-09-22.md) (RQ1, RQ2, RQ3, RQ6, RQ7) · [DATA_LAYERS.md](DATA_LAYERS.md) · [EVALUATION.md](EVALUATION.md) · [ACCURACY_IMPROVEMENT_PLAYBOOK.md](ACCURACY_IMPROVEMENT_PLAYBOOK.md) · [../../configs/routing.yaml](../../configs/routing.yaml) · [LABELING_CONVENTIONS.md](../../data/gold/LABELING_CONVENTIONS.md)
