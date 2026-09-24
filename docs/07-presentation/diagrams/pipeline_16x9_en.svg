@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif">
+<defs><marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2B4055"/></marker><marker id="head-dot" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5B6B7B"/></marker></defs>
+<rect width="1920" height="1080" fill="#F7F7F4"/>
+<text x="56" y="78" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="40" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="-0.5">GreenScan AI</text>
+<text x="56" y="110" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">Verify each claim against evidence, numbers and law</text>
+<g transform="translate(1719,62)"><rect x="0" y="0" width="145" height="32" rx="16.0" ry="16.0" fill="#FFFFFF" stroke="#16283B" stroke-width="1.2"/><text x="72.42" y="21.04" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="14" fill="#16283B" font-weight="500" text-anchor="middle" letter-spacing="0">Humans review</text></g>
+<g transform="translate(1571,62)"><rect x="0" y="0" width="136" height="32" rx="16.0" ry="16.0" fill="#FFFFFF" stroke="#16283B" stroke-width="1.2"/><text x="68.08" y="21.04" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="14" fill="#16283B" font-weight="500" text-anchor="middle" letter-spacing="0">Rules decide</text></g>
+<g transform="translate(1432,62)"><rect x="0" y="0" width="127" height="32" rx="16.0" ry="16.0" fill="#FFFFFF" stroke="#16283B" stroke-width="1.2"/><text x="63.739999999999995" y="21.04" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="14" fill="#16283B" font-weight="500" text-anchor="middle" letter-spacing="0">Models read</text></g>
+<line x1="56" y1="136" x2="1864" y2="136" stroke="#C3CDC7" stroke-width="1.4"/>
+<rect x="56" y="160" width="344" height="130" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M61 160 h-0 a5 5 0 0 0 -5 5 v120 a5 5 0 0 0 5 5 h0 z" fill="#5B6B7B"/>
+<text x="78" y="190" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="14" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0.8">CORPORATE REPORTS</text>
+<text x="78" y="214" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">sustainability · annual · financial · scanned</text>
+<rect x="56" y="310" width="344" height="80" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M61 310 h-0 a5 5 0 0 0 -5 5 v70 a5 5 0 0 0 5 5 h0 z" fill="#5B6B7B"/>
+<text x="78" y="340" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="14" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0.8">INDEPENDENT EVIDENCE</text>
+<text x="78" y="364" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">audit · regulator · penalty decisions</text>
+<rect x="56" y="410" width="344" height="80" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M61 410 h-0 a5 5 0 0 0 -5 5 v70 a5 5 0 0 0 5 5 h0 z" fill="#5B6B7B"/>
+<text x="78" y="440" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="14" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0.8">LAW</text>
+<text x="78" y="464" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">acts · decrees · circulars · effective dates</text>
+<rect x="440" y="160" width="330" height="130" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M445 160 h-0 a5 5 0 0 0 -5 5 v120 a5 5 0 0 0 5 5 h0 z" fill="#1F7A52"/>
+<text x="462" y="194" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">READ</text>
+<rect x="462" y="206" width="149" height="22" rx="11" ry="11" fill="none" stroke="#1F7A52" stroke-width="1.2"/><text x="536.4" y="221.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#1F7A52" font-weight="600" text-anchor="middle" letter-spacing="0.6">PARSER + MODEL</text>
+<text x="462" y="256" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">pages · tables · OCR</text>
+<rect x="794" y="160" width="330" height="130" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M799 160 h-0 a5 5 0 0 0 -5 5 v120 a5 5 0 0 0 5 5 h0 z" fill="#1F7A52"/>
+<text x="816" y="194" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">FILTER CLAIMS</text>
+<rect x="816" y="206" width="66" height="22" rx="11" ry="11" fill="none" stroke="#1F7A52" stroke-width="1.2"/><text x="849.0" y="221.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#1F7A52" font-weight="600" text-anchor="middle" letter-spacing="0.6">MODEL</text>
+<text x="816" y="256" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">verifiable · vague ·</text><text x="816" y="272" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">non-claim · boilerplate</text>
+<rect x="1148" y="160" width="330" height="130" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M1153 160 h-0 a5 5 0 0 0 -5 5 v120 a5 5 0 0 0 5 5 h0 z" fill="#1F7A52"/>
+<text x="1170" y="194" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">STRUCTURE CLAIM</text>
+<rect x="1170" y="206" width="66" height="22" rx="11" ry="11" fill="none" stroke="#1F7A52" stroke-width="1.2"/><text x="1203.0" y="221.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#1F7A52" font-weight="600" text-anchor="middle" letter-spacing="0.6">MODEL</text>
+<text x="1170" y="256" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">metric · period · baseline ·</text><text x="1170" y="272" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">scope · value</text>
+<rect x="1502" y="160" width="330" height="130" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M1507 160 h-0 a5 5 0 0 0 -5 5 v120 a5 5 0 0 0 5 5 h0 z" fill="#1F7A52"/>
+<text x="1524" y="194" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">FIND EVIDENCE</text>
+<rect x="1524" y="206" width="66" height="22" rx="11" ry="11" fill="none" stroke="#1F7A52" stroke-width="1.2"/><text x="1557.0" y="221.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#1F7A52" font-weight="600" text-anchor="middle" letter-spacing="0.6">MODEL</text>
+<text x="1524" y="256" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">30 → rerank → 5</text>
+<rect x="1734" y="204" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1734" y="211" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1734" y="218" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1734" y="225" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1734" y="232" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1743" y="204" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1743" y="211" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1743" y="218" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1743" y="225" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1743" y="232" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1752" y="204" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1752" y="211" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1752" y="218" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1752" y="225" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1752" y="232" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1761" y="204" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1761" y="211" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1761" y="218" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1761" y="225" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1761" y="232" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1770" y="204" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1770" y="211" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1770" y="218" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1770" y="225" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1770" y="232" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1779" y="204" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1779" y="211" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1779" y="218" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1779" y="225" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1779" y="232" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<path d="M1734 246 L1785 246 L1768 262 L1751 262 z" fill="none" stroke="#1F7A52" stroke-width="1.6"/>
+<rect x="1751" y="268" width="5" height="9" rx="1" fill="#1F7A52"/>
+<rect x="1758" y="268" width="5" height="9" rx="1" fill="#1F7A52"/>
+<rect x="1765" y="268" width="5" height="9" rx="1" fill="#1F7A52"/>
+<rect x="1772" y="268" width="5" height="9" rx="1" fill="#1F7A52"/>
+<rect x="1779" y="268" width="5" height="9" rx="1" fill="#1F7A52"/>
+<path d="M770 225.0 L792 225.0" fill="none" stroke="#2B4055" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M1124 225.0 L1146 225.0" fill="none" stroke="#2B4055" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M1478 225.0 L1500 225.0" fill="none" stroke="#2B4055" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M400 225 L438 225" fill="none" stroke="#2B4055" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M400 350 L1667 350 L1667 294" fill="none" stroke="#2B4055" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<line x1="440" y1="412" x2="1864" y2="412" stroke="#16283B" stroke-width="1.6" stroke-dasharray="2 7" opacity="0.55"/>
+<text x="448" y="402" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#1F7A52" font-weight="700" text-anchor="start" letter-spacing="1.6">MODELS READ</text>
+<text x="448" y="432" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="1.6">RULES DECIDE</text>
+<path d="M400 450 L424 450 L424 390 L1600 390 L1600 448" fill="none" stroke="#2B4055" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<rect x="440" y="452" width="680" height="344" rx="10" ry="10" fill="#FFFFFF" stroke="#16283B" stroke-width="2.0"/>
+<path d="M445 452 h-0 a5 5 0 0 0 -5 5 v334 a5 5 0 0 0 5 5 h0 z" fill="#16283B"/>
+<text x="464" y="488" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="20" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">COMPARABILITY GATE</text>
+<rect x="464" y="500" width="57" height="22" rx="11" ry="11" fill="none" stroke="#16283B" stroke-width="1.2"/><text x="492.4" y="515.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#16283B" font-weight="600" text-anchor="middle" letter-spacing="0.6">RULE</text>
+<text x="464" y="548" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="13.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">May these two figures be compared at all?</text>
+<rect x="480" y="564" width="290" height="52" rx="8" ry="8" fill="#E7F0EA" stroke="#1F7A52" stroke-width="1.2"/>
+<text x="496" y="584" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">Claim value</text><text x="496" y="601" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">−30%</text>
+<rect x="810" y="564" width="290" height="52" rx="8" ry="8" fill="#E7F0EA" stroke="#1F7A52" stroke-width="1.2"/>
+<text x="826" y="584" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">Evidence value</text><text x="826" y="601" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">1.2 MtCO₂e</text>
+<path d="M625 616 L625 636 L780 636 L780 648" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M955 616 L955 636 L780 636" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="480" y="648" width="600" height="76" rx="8" ry="8" fill="#FBFCFB" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M498 669 l4 4 l7 -9" fill="none" stroke="#1F7A52" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="518" y="674" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">value type</text>
+<path d="M698 669 l4 4 l7 -9" fill="none" stroke="#1F7A52" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="718" y="674" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">organisational boundary</text>
+<path d="M898 669 l4 4 l7 -9" fill="none" stroke="#1F7A52" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="918" y="674" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">technology</text>
+<path d="M498 697 l4 4 l7 -9" fill="none" stroke="#1F7A52" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="518" y="702" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">sub-metric</text>
+<path d="M698 697 l4 4 l7 -9" fill="none" stroke="#1F7A52" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="718" y="702" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">emission scope</text>
+<path d="M898 697 l4 4 l7 -9" fill="none" stroke="#1F7A52" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="918" y="702" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">target / actual</text>
+<path d="M640 724 L640 744" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M920 724 L920 744" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<rect x="480" y="744" width="290" height="40" rx="8" ry="8" fill="#FFFFFF" stroke="#1F7A52" stroke-width="1.6"/>
+<text x="498" y="763" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="13" fill="#1F7A52" font-weight="700" text-anchor="start" letter-spacing="0">COMPARABLE</text>
+<text x="498" y="779" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">compute · tolerance from published precision</text>
+<rect x="790" y="744" width="290" height="40" rx="8" ry="8" fill="#FFFFFF" stroke="#A32C1E" stroke-width="1.6"/>
+<text x="808" y="763" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="13" fill="#A32C1E" font-weight="700" text-anchor="start" letter-spacing="0">NOT COMPARABLE</text>
+<text x="808" y="779" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">no contradiction asserted · send to reviewer</text>
+<path d="M1667 290 L1667 432 L640 432 L640 448" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<rect x="1180" y="452" width="684" height="104" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M1185 452 h-0 a5 5 0 0 0 -5 5 v94 a5 5 0 0 0 5 5 h0 z" fill="#16283B"/>
+<text x="1204" y="486" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">CHECK LAW</text>
+<rect x="1204" y="498" width="57" height="22" rx="11" ry="11" fill="none" stroke="#16283B" stroke-width="1.2"/><text x="1232.4" y="513.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#16283B" font-weight="600" text-anchor="middle" letter-spacing="0.6">RULE</text>
+<text x="1204" y="544" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">applicable instrument · effective date · obligation evidenced?</text>
+<path d="M1120 512 L1176 512" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<rect x="1180" y="588" width="684" height="208" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M1185 588 h-0 a5 5 0 0 0 -5 5 v198 a5 5 0 0 0 5 5 h0 z" fill="#16283B"/>
+<text x="1204" y="622" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">PER-CLAIM VERDICT</text>
+<rect x="1204" y="634" width="57" height="22" rx="11" ry="11" fill="none" stroke="#16283B" stroke-width="1.2"/><text x="1232.4" y="649.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#16283B" font-weight="600" text-anchor="middle" letter-spacing="0.6">RULE</text>
+<path d="M1522.0 556 L1522.0 584" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<g transform="translate(1204,672)"><rect x="0" y="0" width="89" height="25" rx="12.5" ry="12.5" fill="#FFFFFF" stroke="#2B4055" stroke-width="1.2"/><text x="44.48" y="16.82" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#2B4055" font-weight="500" text-anchor="middle" letter-spacing="0">Supported</text></g>
+<g transform="translate(1301,672)"><rect x="0" y="0" width="163" height="25" rx="12.5" ry="12.5" fill="#FFFFFF" stroke="#2B4055" stroke-width="1.2"/><text x="81.67999999999999" y="16.82" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#2B4055" font-weight="500" text-anchor="middle" letter-spacing="0">Partially supported</text></g>
+<g transform="translate(1472,672)"><rect x="0" y="0" width="111" height="25" rx="12.5" ry="12.5" fill="#FFFFFF" stroke="#2B4055" stroke-width="1.2"/><text x="55.64" y="16.82" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#2B4055" font-weight="500" text-anchor="middle" letter-spacing="0">Contradicted</text></g>
+<g transform="translate(1592,672)"><rect x="0" y="0" width="104" height="25" rx="12.5" ry="12.5" fill="#FFFFFF" stroke="#2B4055" stroke-width="1.2"/><text x="51.919999999999995" y="16.82" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#2B4055" font-weight="500" text-anchor="middle" letter-spacing="0">Unsupported</text></g>
+<line x1="1204" y1="712" x2="1840" y2="712" stroke="#C3CDC7" stroke-width="1.2"/>
+<rect x="1204" y="724" width="300" height="52" rx="8" ry="8" fill="#FBF1DF" stroke="#B8792B" stroke-width="1.6"/>
+<text x="1220" y="748" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="13.5" fill="#B8792B" font-weight="700" text-anchor="start" letter-spacing="0">INSUFFICIENT EVIDENCE</text>
+<text x="1220" y="766" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">missing: baseline · scope · independent source</text>
+<text x="1530" y="746" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="13" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">Risk profile</text>
+<text x="1530" y="766" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">evidence strength · contradiction strength · materiality</text>
+<rect x="440" y="830" width="680" height="118" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M445 830 h-0 a5 5 0 0 0 -5 5 v108 a5 5 0 0 0 5 5 h0 z" fill="#5B6B7B"/>
+<text x="464" y="864" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">QUALITY GATES + HUMAN REVIEW</text>
+<rect x="464" y="876" width="130" height="22" rx="11" ry="11" fill="none" stroke="#5B6B7B" stroke-width="1.2"/><text x="529.2" y="891.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#5B6B7B" font-weight="600" text-anchor="middle" letter-spacing="0.6">RULE + HUMAN</text>
+<text x="464" y="922" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">8 gates: provenance · citation · deterministic maths · reproducibility</text><text x="464" y="938" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">high risk → reviewer required</text>
+<path d="M1180 756 L1150 756 L1150 812 L980 812 L980 826" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<rect x="1180" y="830" width="684" height="118" rx="10" ry="10" fill="#16283B" stroke="#16283B" stroke-width="1.4"/>
+<text x="1204" y="868" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="18" fill="#FFFFFF" font-weight="700" text-anchor="start" letter-spacing="0">CLAIM EVIDENCE DOSSIER</text>
+<g transform="translate(1204,890)"><rect x="0" y="0" width="74" height="26" rx="13.0" ry="13.0" fill="#16283B" stroke="#FFFFFF" stroke-width="1.2"/><text x="37.04" y="17.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#FFFFFF" font-weight="500" text-anchor="middle" letter-spacing="0">verdict</text></g>
+<g transform="translate(1286,890)"><rect x="0" y="0" width="104" height="26" rx="13.0" ry="13.0" fill="#16283B" stroke="#FFFFFF" stroke-width="1.2"/><text x="51.919999999999995" y="17.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#FFFFFF" font-weight="500" text-anchor="middle" letter-spacing="0">source p.47</text></g>
+<g transform="translate(1398,890)"><rect x="0" y="0" width="104" height="26" rx="13.0" ry="13.0" fill="#16283B" stroke="#FFFFFF" stroke-width="1.2"/><text x="51.919999999999995" y="17.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#FFFFFF" font-weight="500" text-anchor="middle" letter-spacing="0">calculation</text></g>
+<g transform="translate(1510,890)"><rect x="0" y="0" width="44" height="26" rx="13.0" ry="13.0" fill="#16283B" stroke="#FFFFFF" stroke-width="1.2"/><text x="22.16" y="17.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#FFFFFF" font-weight="500" text-anchor="middle" letter-spacing="0">law</text></g>
+<g transform="translate(1562,890)"><rect x="0" y="0" width="134" height="26" rx="13.0" ry="13.0" fill="#16283B" stroke="#FFFFFF" stroke-width="1.2"/><text x="66.8" y="17.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#FFFFFF" font-weight="500" text-anchor="middle" letter-spacing="0">what is missing</text></g>
+<path d="M1120 889.0 L1176 889.0" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M580 948 L580 978" fill="none" stroke="#5B6B7B" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="3 5" marker-end="url(#head-dot)"/>
+<g transform="translate(440,982)"><rect x="0" y="0" width="160" height="28" rx="14.0" ry="14.0" fill="#FFFFFF" stroke="#5B6B7B" stroke-width="1.2"/><text x="79.96" y="18.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#5B6B7B" font-weight="500" text-anchor="middle" letter-spacing="0">Reviewer decisions</text></g>
+<path d="M603.92 996 L621.92 996" fill="none" stroke="#5B6B7B" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="3 4" marker-end="url(#head-dot)"/>
+<g transform="translate(626,982)"><rect x="0" y="0" width="130" height="28" rx="14.0" ry="14.0" fill="#FFFFFF" stroke="#5B6B7B" stroke-width="1.2"/><text x="65.08" y="18.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#5B6B7B" font-weight="500" text-anchor="middle" letter-spacing="0">Curated labels</text></g>
+<path d="M760.0799999999999 996 L778.0799999999999 996" fill="none" stroke="#5B6B7B" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="3 4" marker-end="url(#head-dot)"/>
+<g transform="translate(782,982)"><rect x="0" y="0" width="212" height="28" rx="14.0" ry="14.0" fill="#FFFFFF" stroke="#5B6B7B" stroke-width="1.2"/><text x="106.0" y="18.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#5B6B7B" font-weight="500" text-anchor="middle" letter-spacing="0">Training / evaluation set</text></g>
+<path d="M998.0799999999999 996 L1016.0799999999999 996" fill="none" stroke="#5B6B7B" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="3 4" marker-end="url(#head-dot)"/>
+<g transform="translate(1020,982)"><rect x="0" y="0" width="182" height="28" rx="14.0" ry="14.0" fill="#FFFFFF" stroke="#5B6B7B" stroke-width="1.2"/><text x="91.11999999999999" y="18.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#5B6B7B" font-weight="500" text-anchor="middle" letter-spacing="0">Periodic model update</text></g>
+<path d="M1208.32 996 L1232.32 996" fill="none" stroke="#5B6B7B" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="3 4" marker-end="url(#head-dot)"/>
+<text x="1242.32" y="1001" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">back to STRUCTURE CLAIM</text>
+<text x="56" y="560" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="1.4">LEGEND</text>
+<rect x="56" y="579" width="14" height="14" rx="3" fill="#1F7A52"/>
+<text x="80" y="590" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">MODEL — learned from data</text>
+<rect x="56" y="609" width="14" height="14" rx="3" fill="#16283B"/>
+<text x="80" y="620" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">RULE — deterministic, reproducible</text>
+<rect x="56" y="639" width="14" height="14" rx="3" fill="#B8792B"/>
+<text x="80" y="650" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">ABSTAIN — declines to conclude</text>
+<rect x="56" y="669" width="14" height="14" rx="3" fill="#5B6B7B"/>
+<text x="80" y="680" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">HUMAN — final decision</text>
+<line x1="56" y1="736" x2="400" y2="736" stroke="#C3CDC7" stroke-width="1.2"/>
+<text x="56" y="764" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="13" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">The unit of assessment is one claim, never a company.</text>
+</svg>

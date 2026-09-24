@@ -28,6 +28,7 @@ dependencies = [
 # tools/make_data_fields_pdf.py builds the customer-facing data-field guide.
 docs = [
   "reportlab>=4,<6",
+  "cairosvg>=2.7,<3",
 ]
 dev = [
   "pytest>=8,<10",

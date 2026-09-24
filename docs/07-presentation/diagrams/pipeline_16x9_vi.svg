@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif">
+<defs><marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2B4055"/></marker><marker id="head-dot" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5B6B7B"/></marker></defs>
+<rect width="1920" height="1080" fill="#F7F7F4"/>
+<text x="56" y="78" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="40" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="-0.5">GreenScan AI</text>
+<text x="56" y="110" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">Kiểm chứng từng tuyên bố bằng bằng chứng, con số và pháp luật</text>
+<g transform="translate(1737,62)"><rect x="0" y="0" width="127" height="32" rx="16.0" ry="16.0" fill="#FFFFFF" stroke="#16283B" stroke-width="1.2"/><text x="63.739999999999995" y="21.04" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="14" fill="#16283B" font-weight="500" text-anchor="middle" letter-spacing="0">Người duyệt</text></g>
+<g transform="translate(1562,62)"><rect x="0" y="0" width="162" height="32" rx="16.0" ry="16.0" fill="#FFFFFF" stroke="#16283B" stroke-width="1.2"/><text x="81.1" y="21.04" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="14" fill="#16283B" font-weight="500" text-anchor="middle" letter-spacing="0">Luật quyết định</text></g>
+<g transform="translate(1423,62)"><rect x="0" y="0" width="127" height="32" rx="16.0" ry="16.0" fill="#FFFFFF" stroke="#16283B" stroke-width="1.2"/><text x="63.739999999999995" y="21.04" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="14" fill="#16283B" font-weight="500" text-anchor="middle" letter-spacing="0">Mô hình đọc</text></g>
+<line x1="56" y1="136" x2="1864" y2="136" stroke="#C3CDC7" stroke-width="1.4"/>
+<rect x="56" y="160" width="344" height="130" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M61 160 h-0 a5 5 0 0 0 -5 5 v120 a5 5 0 0 0 5 5 h0 z" fill="#5B6B7B"/>
+<text x="78" y="190" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="14" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0.8">BÁO CÁO DOANH NGHIỆP</text>
+<text x="78" y="214" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">phát triển bền vững · thường niên · tài chính · bản scan</text>
+<rect x="56" y="310" width="344" height="80" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M61 310 h-0 a5 5 0 0 0 -5 5 v70 a5 5 0 0 0 5 5 h0 z" fill="#5B6B7B"/>
+<text x="78" y="340" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="14" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0.8">BẰNG CHỨNG ĐỘC LẬP</text>
+<text x="78" y="364" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">kiểm toán · cơ quan quản lý · quyết định xử phạt</text>
+<rect x="56" y="410" width="344" height="80" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M61 410 h-0 a5 5 0 0 0 -5 5 v70 a5 5 0 0 0 5 5 h0 z" fill="#5B6B7B"/>
+<text x="78" y="440" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="14" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0.8">VĂN BẢN PHÁP LUẬT</text>
+<text x="78" y="464" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">luật · nghị định · thông tư · ngày hiệu lực</text>
+<rect x="440" y="160" width="330" height="130" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M445 160 h-0 a5 5 0 0 0 -5 5 v120 a5 5 0 0 0 5 5 h0 z" fill="#1F7A52"/>
+<text x="462" y="194" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">ĐỌC TÀI LIỆU</text>
+<rect x="462" y="206" width="167" height="22" rx="11" ry="11" fill="none" stroke="#1F7A52" stroke-width="1.2"/><text x="545.6" y="221.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#1F7A52" font-weight="600" text-anchor="middle" letter-spacing="0.6">PARSER + MÔ HÌNH</text>
+<text x="462" y="256" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">trang · bảng · OCR</text>
+<rect x="794" y="160" width="330" height="130" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M799 160 h-0 a5 5 0 0 0 -5 5 v120 a5 5 0 0 0 5 5 h0 z" fill="#1F7A52"/>
+<text x="816" y="194" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">LỌC TUYÊN BỐ</text>
+<rect x="816" y="206" width="84" height="22" rx="11" ry="11" fill="none" stroke="#1F7A52" stroke-width="1.2"/><text x="858.2" y="221.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#1F7A52" font-weight="600" text-anchor="middle" letter-spacing="0.6">MÔ HÌNH</text>
+<text x="816" y="256" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">kiểm chứng được · mơ hồ ·</text><text x="816" y="272" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">không phải tuyên bố · văn mẫu</text>
+<rect x="1148" y="160" width="330" height="130" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M1153 160 h-0 a5 5 0 0 0 -5 5 v120 a5 5 0 0 0 5 5 h0 z" fill="#1F7A52"/>
+<text x="1170" y="194" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">CẤU TRÚC HOÁ</text>
+<rect x="1170" y="206" width="84" height="22" rx="11" ry="11" fill="none" stroke="#1F7A52" stroke-width="1.2"/><text x="1212.2" y="221.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#1F7A52" font-weight="600" text-anchor="middle" letter-spacing="0.6">MÔ HÌNH</text>
+<text x="1170" y="256" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">chỉ số · kỳ · năm gốc ·</text><text x="1170" y="272" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">phạm vi · giá trị</text>
+<rect x="1502" y="160" width="330" height="130" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M1507 160 h-0 a5 5 0 0 0 -5 5 v120 a5 5 0 0 0 5 5 h0 z" fill="#1F7A52"/>
+<text x="1524" y="194" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">TÌM BẰNG CHỨNG</text>
+<rect x="1524" y="206" width="84" height="22" rx="11" ry="11" fill="none" stroke="#1F7A52" stroke-width="1.2"/><text x="1566.2" y="221.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#1F7A52" font-weight="600" text-anchor="middle" letter-spacing="0.6">MÔ HÌNH</text>
+<text x="1524" y="256" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">30 → xếp hạng lại → 5</text>
+<rect x="1734" y="204" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1734" y="211" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1734" y="218" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1734" y="225" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1734" y="232" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1743" y="204" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1743" y="211" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1743" y="218" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1743" y="225" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1743" y="232" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1752" y="204" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1752" y="211" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1752" y="218" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1752" y="225" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1752" y="232" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1761" y="204" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1761" y="211" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1761" y="218" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1761" y="225" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1761" y="232" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1770" y="204" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1770" y="211" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1770" y="218" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1770" y="225" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1770" y="232" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1779" y="204" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1779" y="211" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1779" y="218" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1779" y="225" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<rect x="1779" y="232" width="6" height="4.5" rx="1" fill="#1F7A52" opacity="0.28"/>
+<path d="M1734 246 L1785 246 L1768 262 L1751 262 z" fill="none" stroke="#1F7A52" stroke-width="1.6"/>
+<rect x="1751" y="268" width="5" height="9" rx="1" fill="#1F7A52"/>
+<rect x="1758" y="268" width="5" height="9" rx="1" fill="#1F7A52"/>
+<rect x="1765" y="268" width="5" height="9" rx="1" fill="#1F7A52"/>
+<rect x="1772" y="268" width="5" height="9" rx="1" fill="#1F7A52"/>
+<rect x="1779" y="268" width="5" height="9" rx="1" fill="#1F7A52"/>
+<path d="M770 225.0 L792 225.0" fill="none" stroke="#2B4055" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M1124 225.0 L1146 225.0" fill="none" stroke="#2B4055" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M1478 225.0 L1500 225.0" fill="none" stroke="#2B4055" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M400 225 L438 225" fill="none" stroke="#2B4055" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M400 350 L1667 350 L1667 294" fill="none" stroke="#2B4055" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<line x1="440" y1="412" x2="1864" y2="412" stroke="#16283B" stroke-width="1.6" stroke-dasharray="2 7" opacity="0.55"/>
+<text x="448" y="402" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#1F7A52" font-weight="700" text-anchor="start" letter-spacing="1.6">MÔ HÌNH ĐỌC</text>
+<text x="448" y="432" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="1.6">LUẬT QUYẾT ĐỊNH</text>
+<path d="M400 450 L424 450 L424 390 L1600 390 L1600 448" fill="none" stroke="#2B4055" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<rect x="440" y="452" width="680" height="344" rx="10" ry="10" fill="#FFFFFF" stroke="#16283B" stroke-width="2.0"/>
+<path d="M445 452 h-0 a5 5 0 0 0 -5 5 v334 a5 5 0 0 0 5 5 h0 z" fill="#16283B"/>
+<text x="464" y="488" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="20" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">CỔNG KHẢ NĂNG SO SÁNH</text>
+<rect x="464" y="500" width="57" height="22" rx="11" ry="11" fill="none" stroke="#16283B" stroke-width="1.2"/><text x="492.4" y="515.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#16283B" font-weight="600" text-anchor="middle" letter-spacing="0.6">LUẬT</text>
+<text x="464" y="548" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="13.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">Hai con số này có được phép so với nhau không?</text>
+<rect x="480" y="564" width="290" height="52" rx="8" ry="8" fill="#E7F0EA" stroke="#1F7A52" stroke-width="1.2"/>
+<text x="496" y="584" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">Số trong tuyên bố</text><text x="496" y="601" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">giảm 30%</text>
+<rect x="810" y="564" width="290" height="52" rx="8" ry="8" fill="#E7F0EA" stroke="#1F7A52" stroke-width="1.2"/>
+<text x="826" y="584" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">Số trong bằng chứng</text><text x="826" y="601" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">1,2 triệu tCO₂e</text>
+<path d="M625 616 L625 636 L780 636 L780 648" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M955 616 L955 636 L780 636" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="480" y="648" width="600" height="76" rx="8" ry="8" fill="#FBFCFB" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M498 669 l4 4 l7 -9" fill="none" stroke="#1F7A52" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="518" y="674" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">loại giá trị</text>
+<path d="M698 669 l4 4 l7 -9" fill="none" stroke="#1F7A52" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="718" y="674" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">ranh giới tổ chức</text>
+<path d="M898 669 l4 4 l7 -9" fill="none" stroke="#1F7A52" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="918" y="674" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">công nghệ</text>
+<path d="M498 697 l4 4 l7 -9" fill="none" stroke="#1F7A52" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="518" y="702" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">chỉ số con</text>
+<path d="M698 697 l4 4 l7 -9" fill="none" stroke="#1F7A52" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="718" y="702" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">phạm vi phát thải</text>
+<path d="M898 697 l4 4 l7 -9" fill="none" stroke="#1F7A52" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="918" y="702" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">mục tiêu / thực hiện</text>
+<path d="M640 724 L640 744" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M920 724 L920 744" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<rect x="480" y="744" width="290" height="40" rx="8" ry="8" fill="#FFFFFF" stroke="#1F7A52" stroke-width="1.6"/>
+<text x="498" y="763" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="13" fill="#1F7A52" font-weight="700" text-anchor="start" letter-spacing="0">ĐƯỢC SO</text>
+<text x="498" y="779" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">tính toán · dung sai theo độ chính xác đã công bố</text>
+<rect x="790" y="744" width="290" height="40" rx="8" ry="8" fill="#FFFFFF" stroke="#A32C1E" stroke-width="1.6"/>
+<text x="808" y="763" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="13" fill="#A32C1E" font-weight="700" text-anchor="start" letter-spacing="0">KHÔNG SO ĐƯỢC</text>
+<text x="808" y="779" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">không kết luận mâu thuẫn · chuyển người xem</text>
+<path d="M1667 290 L1667 432 L640 432 L640 448" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<rect x="1180" y="452" width="684" height="104" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M1185 452 h-0 a5 5 0 0 0 -5 5 v94 a5 5 0 0 0 5 5 h0 z" fill="#16283B"/>
+<text x="1204" y="486" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">ĐỐI CHIẾU PHÁP LUẬT</text>
+<rect x="1204" y="498" width="57" height="22" rx="11" ry="11" fill="none" stroke="#16283B" stroke-width="1.2"/><text x="1232.4" y="513.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#16283B" font-weight="600" text-anchor="middle" letter-spacing="0.6">LUẬT</text>
+<text x="1204" y="544" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">văn bản áp dụng · ngày hiệu lực · nghĩa vụ đã chứng minh chưa</text>
+<path d="M1120 512 L1176 512" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<rect x="1180" y="588" width="684" height="208" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M1185 588 h-0 a5 5 0 0 0 -5 5 v198 a5 5 0 0 0 5 5 h0 z" fill="#16283B"/>
+<text x="1204" y="622" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">KẾT LUẬN TỪNG TUYÊN BỐ</text>
+<rect x="1204" y="634" width="57" height="22" rx="11" ry="11" fill="none" stroke="#16283B" stroke-width="1.2"/><text x="1232.4" y="649.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#16283B" font-weight="600" text-anchor="middle" letter-spacing="0.6">LUẬT</text>
+<path d="M1522.0 556 L1522.0 584" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<g transform="translate(1204,672)"><rect x="0" y="0" width="52" height="25" rx="12.5" ry="12.5" fill="#FFFFFF" stroke="#2B4055" stroke-width="1.2"/><text x="25.88" y="16.82" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#2B4055" font-weight="500" text-anchor="middle" letter-spacing="0">Khớp</text></g>
+<g transform="translate(1264,672)"><rect x="0" y="0" width="119" height="25" rx="12.5" ry="12.5" fill="#FFFFFF" stroke="#2B4055" stroke-width="1.2"/><text x="59.36" y="16.82" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#2B4055" font-weight="500" text-anchor="middle" letter-spacing="0">Khớp một phần</text></g>
+<g transform="translate(1390,672)"><rect x="0" y="0" width="89" height="25" rx="12.5" ry="12.5" fill="#FFFFFF" stroke="#2B4055" stroke-width="1.2"/><text x="44.48" y="16.82" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#2B4055" font-weight="500" text-anchor="middle" letter-spacing="0">Bị bác bỏ</text></g>
+<g transform="translate(1487,672)"><rect x="0" y="0" width="178" height="25" rx="12.5" ry="12.5" fill="#FFFFFF" stroke="#2B4055" stroke-width="1.2"/><text x="89.11999999999999" y="16.82" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#2B4055" font-weight="500" text-anchor="middle" letter-spacing="0">Không được chứng minh</text></g>
+<line x1="1204" y1="712" x2="1840" y2="712" stroke="#C3CDC7" stroke-width="1.2"/>
+<rect x="1204" y="724" width="300" height="52" rx="8" ry="8" fill="#FBF1DF" stroke="#B8792B" stroke-width="1.6"/>
+<text x="1220" y="748" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="13.5" fill="#B8792B" font-weight="700" text-anchor="start" letter-spacing="0">CHƯA ĐỦ BẰNG CHỨNG</text>
+<text x="1220" y="766" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">thiếu: năm gốc · phạm vi · nguồn độc lập</text>
+<text x="1530" y="746" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="13" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">Hồ sơ rủi ro</text>
+<text x="1530" y="766" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">độ mạnh bằng chứng · mức mâu thuẫn · mức trọng yếu</text>
+<rect x="440" y="830" width="680" height="118" rx="10" ry="10" fill="#FFFFFF" stroke="#C3CDC7" stroke-width="1.4"/>
+<path d="M445 830 h-0 a5 5 0 0 0 -5 5 v108 a5 5 0 0 0 5 5 h0 z" fill="#5B6B7B"/>
+<text x="464" y="864" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="17" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="0">CỔNG KIỂM SOÁT + NGƯỜI DUYỆT</text>
+<rect x="464" y="876" width="130" height="22" rx="11" ry="11" fill="none" stroke="#5B6B7B" stroke-width="1.2"/><text x="529.2" y="891.5" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="11" fill="#5B6B7B" font-weight="600" text-anchor="middle" letter-spacing="0.6">LUẬT + NGƯỜI</text>
+<text x="464" y="922" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">8 cổng: nguồn · trích dẫn · phép tính tất định · tái lập</text><text x="464" y="938" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">rủi ro cao → bắt buộc người duyệt</text>
+<path d="M1180 756 L1150 756 L1150 812 L980 812 L980 826" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<rect x="1180" y="830" width="684" height="118" rx="10" ry="10" fill="#16283B" stroke="#16283B" stroke-width="1.4"/>
+<text x="1204" y="868" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="18" fill="#FFFFFF" font-weight="700" text-anchor="start" letter-spacing="0">HỒ SƠ KIỂM CHỨNG</text>
+<g transform="translate(1204,890)"><rect x="0" y="0" width="82" height="26" rx="13.0" ry="13.0" fill="#16283B" stroke="#FFFFFF" stroke-width="1.2"/><text x="40.76" y="17.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#FFFFFF" font-weight="500" text-anchor="middle" letter-spacing="0">kết luận</text></g>
+<g transform="translate(1294,890)"><rect x="0" y="0" width="104" height="26" rx="13.0" ry="13.0" fill="#16283B" stroke="#FFFFFF" stroke-width="1.2"/><text x="51.919999999999995" y="17.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#FFFFFF" font-weight="500" text-anchor="middle" letter-spacing="0">nguồn tr.47</text></g>
+<g transform="translate(1405,890)"><rect x="0" y="0" width="89" height="26" rx="13.0" ry="13.0" fill="#16283B" stroke="#FFFFFF" stroke-width="1.2"/><text x="44.48" y="17.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#FFFFFF" font-weight="500" text-anchor="middle" letter-spacing="0">phép tính</text></g>
+<g transform="translate(1502,890)"><rect x="0" y="0" width="89" height="26" rx="13.0" ry="13.0" fill="#16283B" stroke="#FFFFFF" stroke-width="1.2"/><text x="44.48" y="17.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#FFFFFF" font-weight="500" text-anchor="middle" letter-spacing="0">điều luật</text></g>
+<g transform="translate(1599,890)"><rect x="0" y="0" width="82" height="26" rx="13.0" ry="13.0" fill="#16283B" stroke="#FFFFFF" stroke-width="1.2"/><text x="40.76" y="17.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#FFFFFF" font-weight="500" text-anchor="middle" letter-spacing="0">thiếu gì</text></g>
+<path d="M1120 889.0 L1176 889.0" fill="none" stroke="#2B4055" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#head)"/>
+<path d="M580 948 L580 978" fill="none" stroke="#5B6B7B" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="3 5" marker-end="url(#head-dot)"/>
+<g transform="translate(440,982)"><rect x="0" y="0" width="190" height="28" rx="14.0" ry="14.0" fill="#FFFFFF" stroke="#5B6B7B" stroke-width="1.2"/><text x="94.83999999999999" y="18.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#5B6B7B" font-weight="500" text-anchor="middle" letter-spacing="0">Quyết định người duyệt</text></g>
+<path d="M633.68 996 L651.68 996" fill="none" stroke="#5B6B7B" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="3 4" marker-end="url(#head-dot)"/>
+<g transform="translate(656,982)"><rect x="0" y="0" width="123" height="28" rx="14.0" ry="14.0" fill="#FFFFFF" stroke="#5B6B7B" stroke-width="1.2"/><text x="61.36" y="18.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#5B6B7B" font-weight="500" text-anchor="middle" letter-spacing="0">Nhãn đã tuyển</text></g>
+<path d="M782.4 996 L800.4 996" fill="none" stroke="#5B6B7B" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="3 4" marker-end="url(#head-dot)"/>
+<g transform="translate(804,982)"><rect x="0" y="0" width="212" height="28" rx="14.0" ry="14.0" fill="#FFFFFF" stroke="#5B6B7B" stroke-width="1.2"/><text x="106.0" y="18.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#5B6B7B" font-weight="500" text-anchor="middle" letter-spacing="0">Tập huấn luyện / đánh giá</text></g>
+<path d="M1020.4 996 L1038.4 996" fill="none" stroke="#5B6B7B" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="3 4" marker-end="url(#head-dot)"/>
+<g transform="translate(1042,982)"><rect x="0" y="0" width="205" height="28" rx="14.0" ry="14.0" fill="#FFFFFF" stroke="#5B6B7B" stroke-width="1.2"/><text x="102.28" y="18.32" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#5B6B7B" font-weight="500" text-anchor="middle" letter-spacing="0">Cập nhật mô hình định kỳ</text></g>
+<path d="M1252.96 996 L1276.96 996" fill="none" stroke="#5B6B7B" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="3 4" marker-end="url(#head-dot)"/>
+<text x="1286.96" y="1001" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">quay lại bước CẤU TRÚC HOÁ</text>
+<text x="56" y="560" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12" fill="#16283B" font-weight="700" text-anchor="start" letter-spacing="1.4">KÝ HIỆU</text>
+<rect x="56" y="579" width="14" height="14" rx="3" fill="#1F7A52"/>
+<text x="80" y="590" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">MÔ HÌNH — học từ dữ liệu</text>
+<rect x="56" y="609" width="14" height="14" rx="3" fill="#16283B"/>
+<text x="80" y="620" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">LUẬT — mã tất định, tái lập được</text>
+<rect x="56" y="639" width="14" height="14" rx="3" fill="#B8792B"/>
+<text x="80" y="650" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">ABSTAIN — từ chối kết luận</text>
+<rect x="56" y="669" width="14" height="14" rx="3" fill="#5B6B7B"/>
+<text x="80" y="680" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="12.5" fill="#5B6B7B" font-weight="400" text-anchor="start" letter-spacing="0">NGƯỜI — quyết định cuối</text>
+<line x1="56" y1="736" x2="400" y2="736" stroke="#C3CDC7" stroke-width="1.2"/>
+<text x="56" y="764" font-family="Segoe UI, Inter, IBM Plex Sans, Aptos, sans-serif" font-size="13" fill="#16283B" font-weight="400" text-anchor="start" letter-spacing="0">Đơn vị đánh giá là một tuyên bố, không phải một doanh nghiệp.</text>
+</svg>
