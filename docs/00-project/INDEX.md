@@ -20,6 +20,8 @@ Một trang để biết **đọc gì, chạy gì, sửa ở đâu**. Mọi đư
 | Đường dẫn | Nội dung |
 | --- | --- |
 | [docs/04-data-ai/DATA_LAYERS.md](../04-data-ai/DATA_LAYERS.md) | **Contract 3 tầng raw · clean · extract** (`data-layers-v1`), trường bắt buộc theo `origin`, số đo khoảng trống |
+| [docs/04-data-ai/TARGET_PIPELINE_AND_TRAINING.md](../04-data-ai/TARGET_PIPELINE_AND_TRAINING.md) | **Luồng đích đang nghiên cứu**: chỗ nào có mô hình, mô hình nào cho việc nào, dữ liệu thành dữ liệu huấn luyện ra sao, công thức QLoRA, thang B0–B4, việc cố ý không làm |
+| [docs/04-data-ai/GreenScan_Mo_ta_truong_du_lieu_v1.pdf](../04-data-ai/GreenScan_Mo_ta_truong_du_lieu_v1.pdf) | Bản PDF cho khách hàng / thành viên không chuyên kỹ thuật (10 trang, tiếng Việt) |
 | [src/quantum_gw/data/layers.py](../../src/quantum_gw/data/layers.py) | Nguồn sự thật của contract (pydantic) |
 | [schemas/data/](../../schemas/data/) | JSON Schema sinh ra từ contract: `raw`, `clean`, `extract` |
 | [data/README.md](../../data/README.md) | Bản đồ 6 vùng dữ liệu |
