@@ -3,6 +3,7 @@
     "ExtractType": {
       "enum": [
         "claim",
+        "disclosed_figure",
         "rejected_sentence",
         "evidence_candidate",
         "numeric_fact"

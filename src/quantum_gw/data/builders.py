@@ -225,6 +225,40 @@ def extract_from_claim(claim: Claim, *, run_id: str, producer_version: str) -> E
     )
 
 
+def extract_from_figure(figure, *, run_id: str, producer_version: str) -> ExtractRecord:
+    """A disclosed figure as an extract row: the number, its label and its dimensions."""
+    return ExtractRecord(
+        origin=Origin.RUN,
+        producer="figure_reader",
+        producer_version=producer_version,
+        produced_at=_now(),
+        run_id=run_id,
+        extract_id=figure.figure_id,
+        extract_type=ExtractType.DISCLOSED_FIGURE,
+        unit_id=figure.source_chunk_id,
+        doc_id=figure.source_doc_id,
+        page=figure.source_page,
+        text=figure.raw_line or figure.label,
+        text_sha256=text_sha256(figure.raw_line or figure.label),
+        metric=figure.metric,
+        values=[figure.value],
+        units=[figure.unit],
+        period=figure.period,
+        has_number=True,
+        candidate_type="total" if figure.is_total else "component",
+        numeric_facts=[
+            NumericFactFields(
+                value=figure.value,
+                unit=figure.unit,
+                basis="absolute",
+                scopes=list(figure.scopes),
+                policy_id=POLICY_ID,
+            )
+        ],
+        metadata={"label": figure.label, "is_total": figure.is_total},
+    )
+
+
 def extract_from_rejected(
     chunk: EvidenceChunk,
     sentence: str,

@@ -34,7 +34,13 @@ from quantum_gw.verification.numeric_facts import facts_in
 
 @dataclass
 class ReviewPriority:
-    claim_id: str
+    # A queue holds two kinds of item: a claim (a sentence to verify) and a
+    # disclosed figure (a published number to test). They are ranked together
+    # because the auditor's question -- what do I open first -- does not care
+    # which kind the answer is.
+    item_type: str          # claim | figure
+    item_id: str
+    text: str
     priority_score: float
     rank: int = 0
     in_queue: bool = False
@@ -44,7 +50,10 @@ class ReviewPriority:
 
     def to_json(self) -> dict:
         return {
-            "claim_id": self.claim_id,
+            "item_type": self.item_type,
+            "item_id": self.item_id,
+            "claim_id": self.item_id if self.item_type == "claim" else None,
+            "text": self.text,
             "priority_score": self.priority_score,
             "rank": self.rank,
             "in_queue": self.in_queue,
@@ -74,9 +83,13 @@ class PrioritizationAgent:
         self,
         verifications: list[VerificationResult],
         legal_checks: list[dict] | None = None,
+        figures: list | None = None,
+        figure_checks: list | None = None,
     ) -> list[ReviewPriority]:
         legal_by_claim = {item.get("claim_id"): item for item in (legal_checks or [])}
-        scale = _magnitude_scale(v.claim for v in verifications)
+        scale = _magnitude_scale(
+            (v.claim for v in verifications), figures or []
+        )
 
         priorities: list[ReviewPriority] = []
         for verification in verifications:
@@ -87,16 +100,21 @@ class PrioritizationAgent:
                 self._evidence_gap(verification),
                 self._anomaly(),
             ]
-            score = round(sum(c.score for c in components), 2)
-            priorities.append(
-                ReviewPriority(
-                    claim_id=claim.claim_id,
-                    priority_score=score,
-                    components=components,
-                    reasons=[c.reason for c in components if c.score > 0.35 * c.max_score],
-                    policy_version=self.version,
-                )
-            )
+            priorities.append(self._priority("claim", claim.claim_id, claim.text, components))
+
+        checks_by_figure: dict[str, list] = {}
+        for check in figure_checks or []:
+            for figure_id in check.figure_ids:
+                checks_by_figure.setdefault(figure_id, []).append(check)
+        for figure in figures or []:
+            components = [
+                self._figure_materiality(figure, scale),
+                self._figure_obligation(figure),
+                self._figure_gap(checks_by_figure.get(figure.figure_id, [])),
+                self._anomaly(),
+            ]
+            label = f"{figure.label}: {figure.value:,.0f} {figure.unit}"
+            priorities.append(self._priority("figure", figure.figure_id, label, components))
 
         # Rank, then cut the queue.
         for rank, priority in enumerate(
@@ -120,6 +138,72 @@ class PrioritizationAgent:
             },
         )
         return priorities
+
+    def _priority(self, kind: str, item_id: str, text: str, components: list[RiskComponent]) -> ReviewPriority:
+        return ReviewPriority(
+            item_type=kind,
+            item_id=item_id,
+            text=text,
+            priority_score=round(sum(c.score for c in components), 2),
+            components=components,
+            reasons=[c.reason for c in components if c.score > 0.35 * c.max_score],
+            policy_version=self.version,
+        )
+
+    # ------------------------------------------------------- disclosed figures
+
+    def _figure_materiality(self, figure, scale: dict[str, list[float]]) -> RiskComponent:
+        """A published figure has a real magnitude, which is the whole point of it."""
+        policy = self.policy["materiality"]
+        families = policy["metric_family"]
+        family_weight = families.get(figure.metric or "unknown", families["unknown"])
+        peers = scale.get(figure.unit, [])
+        if figure.unit == "%":
+            magnitude, note = policy["magnitude"]["percentage_only"], "là tỷ lệ phần trăm"
+        elif len(peers) < policy["magnitude"]["minimum_peers"]:
+            magnitude = policy["magnitude"]["too_few_peers"]
+            note = f"{figure.value:,.0f} {figure.unit}, chưa đủ số cùng đơn vị để so độ lớn"
+        else:
+            magnitude = _percentile(abs(figure.value), peers)
+            note = f"{figure.value:,.0f} {figure.unit}, lớn bằng hoặc hơn {magnitude * 100:.0f}% số cùng đơn vị"
+        prominence, prominence_note = _prominence(figure, policy["prominence"])
+        blended = policy["magnitude_share"] * magnitude + policy["prominence_share"] * prominence
+        total_note = " (là dòng tổng cộng)" if figure.is_total else ""
+        return self._component(
+            "materiality", family_weight * blended,
+            f"Trọng yếu: số liệu công bố{total_note}; {note}; {prominence_note}.",
+        )
+
+    def _figure_obligation(self, figure) -> RiskComponent:
+        """Read from the metric, not from a rule: the legal layer runs per claim."""
+        policy = self.policy["obligation"]
+        if figure.metric:
+            return self._component(
+                "obligation", policy["applicable_instrument"],
+                f"Nghĩa vụ: chỉ số `{figure.metric}` thuộc nhóm có nghĩa vụ công bố theo quy định hiện hành.",
+            )
+        return self._component(
+            "obligation", policy["no_instrument"],
+            "Nghĩa vụ: chưa gắn được chỉ số này với một nghĩa vụ công bố cụ thể.",
+        )
+
+    def _figure_gap(self, checks: list) -> RiskComponent:
+        """For a figure the gap is not missing attributes but missing corroboration."""
+        policy = self.policy["evidence_gap"]
+        if any(c.status == "INCONSISTENT" for c in checks):
+            return self._component(
+                "evidence_gap", policy["status"]["CONTRADICTED"],
+                "Khoảng trống bằng chứng: thủ tục kiểm tra cho kết quả **không nhất quán**.",
+            )
+        if checks:
+            return self._component(
+                "evidence_gap", policy["status"]["SUPPORTED"],
+                "Khoảng trống bằng chứng: đã qua thủ tục kiểm tra và nhất quán.",
+            )
+        return self._component(
+            "evidence_gap", policy["status"]["INSUFFICIENT_EVIDENCE"],
+            "Khoảng trống bằng chứng: chưa có thủ tục nào đối chiếu được số này.",
+        )
 
     def _component(self, name: str, fraction: float, reason: str) -> RiskComponent:
         maximum = float(self.weights[name])
@@ -238,7 +322,7 @@ def _claim_facts(claim: Claim):
     return facts_in(claim.text)
 
 
-def _magnitude_scale(claims) -> dict[str, list[float]]:
+def _magnitude_scale(claims, figures=()) -> dict[str, list[float]]:
     """Every figure in the run, grouped by unit, so magnitude is read as a rank.
 
     "Large" is relative to what this company reports. 23,474,480 tCO2e is the
@@ -252,6 +336,9 @@ def _magnitude_scale(claims) -> dict[str, list[float]]:
             # ranking 99% against 4% would say the wrong thing about materiality.
             if fact.unit and fact.unit != "%":
                 scale.setdefault(fact.unit, []).append(abs(fact.value))
+    for figure in figures:
+        if figure.unit and figure.unit != "%":
+            scale.setdefault(figure.unit, []).append(abs(figure.value))
     for values in scale.values():
         values.sort()
     return scale
@@ -279,12 +366,18 @@ def _magnitude(claim: Claim, scale: dict[str, list[float]], policy: dict) -> tup
     if not quantities:
         return policy["magnitude"]["percentage_only"], "chỉ nêu tỷ lệ phần trăm, không có đại lượng tuyệt đối"
     best = max(quantities, key=lambda f: _percentile(abs(f.value), scale.get(f.unit, [])))
-    rank = _percentile(abs(best.value), scale.get(best.unit, []))
+    peers = scale.get(best.unit, [])
+    if len(peers) < policy["magnitude"]["minimum_peers"]:
+        return policy["magnitude"]["too_few_peers"], (
+            f"số liệu {best.value:g} {best.unit}, chưa đủ số cùng đơn vị để so độ lớn"
+        )
+    rank = _percentile(abs(best.value), peers)
     return rank, f"số liệu {best.value:g} {best.unit} lớn bằng hoặc hơn {rank * 100:.0f}% số cùng đơn vị trong báo cáo"
 
 
-def _prominence(claim: Claim, policy: dict) -> tuple[float, str]:
-    page = claim.source_page
+def _prominence(item, policy: dict) -> tuple[float, str]:
+    """Where it sits in the document; works for a claim or a disclosed figure."""
+    page = item.source_page
     if page is None:
         return policy["unknown_page"], "không rõ vị trí trong tài liệu"
     if page <= policy["front_pages"]:

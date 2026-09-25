@@ -20,6 +20,7 @@ from quantum_gw.utils.text import file_sha256
 
 from .claim_extractor import ClaimExtractionAgent
 from .corpus import profile_corpus
+from .figures import DisclosedFigureAgent, corroborate, cross_foot
 from .intake import DocumentIntakeAgent
 from .legal_check import LegalCheckAgent
 from .prioritizer import PrioritizationAgent
@@ -93,9 +94,15 @@ class OrchestratorAgent:
                 legal_checks.append(legal_check)
             risks.append(scorer.run(verification))
 
+        figures = DisclosedFigureAgent(audit).run(chunks)
+        figure_checks = cross_foot(figures) + corroborate(figures)
+        audit.write("figure_checks_completed", {
+            "checks": len(figure_checks),
+            "inconsistent": sum(1 for c in figure_checks if c.status == "INCONSISTENT"),
+        })
+
         prioritizer = PrioritizationAgent(self.settings.priority_policy, audit)
-        priorities = prioritizer.run(verifications, legal_checks)
-        by_claim = {p.claim_id: p for p in priorities}
+        priorities = prioritizer.run(verifications, legal_checks, figures, figure_checks)
 
         gates = ReviewerAgent(audit).run(
             chunks, verifications, risks, manifest, legal_checks, legal_agent.unavailable_reason
@@ -116,7 +123,9 @@ class OrchestratorAgent:
             verifications=verifications,
             risks=risks,
             legal_checks=legal_checks,
-            priorities=[by_claim[v.claim.claim_id].to_json() for v in verifications],
+            priorities=[p.to_json() for p in priorities],
+            disclosed_figures=figures,
+            figure_checks=figure_checks,
             scope_note=prioritizer.scope_note(priorities),
             corpus=corpus.to_json(),
             quality_gates=gates,
@@ -132,6 +141,7 @@ class OrchestratorAgent:
             chunks=chunks,
             claims=claims,
             rejected=getattr(extractor, "rejected_sentences", []),
+            figures=figures,
         )
         audit.write("data_layers_written", layer_counts)
         audit.write("run_completed", {"release_status": release_status})

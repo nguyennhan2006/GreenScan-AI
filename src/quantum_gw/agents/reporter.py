@@ -20,25 +20,33 @@ class ReportingAgent:
         """Where to start, why, and what this pass left alone."""
         if not result.priorities:
             return []
-        claims = {claim.claim_id: claim for claim in result.claims}
         status = {v.claim.claim_id: v.status for v in result.verifications}
+        pages = {claim.claim_id: claim.source_page for claim in result.claims}
+        pages.update({f.figure_id: f.source_page for f in result.disclosed_figures})
         queued = sorted(
             (p for p in result.priorities if p.get("in_queue")),
             key=lambda p: p.get("rank", 0),
         )
         lines = ["", "## Review queue — start here", ""]
         for item in queued:
-            claim = claims.get(item["claim_id"])
-            if claim is None:
-                continue
-            page = f"p.{claim.source_page}" if claim.source_page is not None else "—"
+            page_number = pages.get(item["item_id"])
+            page = f"p.{page_number}" if page_number is not None else "—"
+            kind = "SỐ LIỆU CÔNG BỐ" if item["item_type"] == "figure" else "TUYÊN BỐ"
+            state = status.get(item["item_id"], "")
             lines.append(
-                f"{item['rank']}. **{item['priority_score']:.0f}/100** · {page} · "
-                f"`{status.get(claim.claim_id, '')}` — {claim.text[:160]}"
+                f"{item['rank']}. **{item['priority_score']:.0f}/100** · {kind} · {page}"
+                + (f" · `{state}`" if state else "")
+                + f" — {item['text'][:160]}"
             )
             for reason in item.get("reasons", []):
                 lines.append(f"   - {reason}")
         lines.extend(["", "### Scope of this pass", "", result.scope_note, ""])
+        if result.figure_checks:
+            lines.extend(["", "### Procedures performed on disclosed figures", ""])
+            for check in result.figure_checks:
+                lines.append(f"- **{check.kind} — {check.status}**: `{check.calculation}`")
+                lines.append(f"  - {check.note}")
+            lines.append("")
         return lines
 
     def _markdown(self, result: AnalysisResult) -> str:
