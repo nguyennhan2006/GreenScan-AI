@@ -7,15 +7,16 @@ Một trang để biết **đọc gì, chạy gì, sửa ở đâu**. Mọi đư
 | # | Tài liệu | Trả lời câu hỏi |
 | --- | --- | --- |
 | 1 | [00-project/PROBLEM_DEFINITION.md](PROBLEM_DEFINITION.md) · [PROJECT_BRIEF.md](PROJECT_BRIEF.md) | Bài toán là gì, cho ai |
-| 2 | [00-project/ROUND2_READINESS_2026-09-22.md](ROUND2_READINESS_2026-09-22.md) | **Đang ở đâu** — snapshot số đo, chấm thử 6 tiêu chí, chuẩn bị Chung kết (§9). Không sửa số |
-| 3 | [00-project/RESEARCH_PROGRAM_2026-09-22.md](RESEARCH_PROGRAM_2026-09-22.md) | **Cái gì đã chứng minh, cái gì là giả thuyết** — audit code 15 câu, RQ1–RQ10, 4 gate, câu được/không được nói trước BGK |
-| 4 | [00-project/EXECUTION_PLAN_2026-09.md](EXECUTION_PLAN_2026-09.md) | Lịch tới 10/10 và 25/10, DoD D1–D15, kịch bản demo 7 phút |
-| 5 | [00-project/ISSUES_REGISTER_2026-09.md](ISSUES_REGISTER_2026-09.md) | Sổ khúc mắc A–G + **mục N (N1–N5, đã đóng 23/09)** |
-| 6 | [00-project/DECISIONS_LOG.md](DECISIONS_LOG.md) | Quyết định có hiệu lực (D-2026-09-18-01…08, D-2026-09-22-01…06) |
-| 7 | [01-domain-audit/AUDIT_PROTOCOL.md](../01-domain-audit/AUDIT_PROTOCOL.md) · [MANUAL_SCORING_RUBRIC.md](../01-domain-audit/MANUAL_SCORING_RUBRIC.md) | Nghiệp vụ kiểm chứng |
-| 8 | [07-presentation/QA_BANK_100_2026-09-20.md](../07-presentation/QA_BANK_100_2026-09-20.md) · [QA_DRILL.md](../07-presentation/QA_DRILL.md) | Bộ câu hỏi phản biện |
-| 9 | [02-product/AUDITOR_WORKFLOW_POSITIONING.md](../02-product/AUDITOR_WORKFLOW_POSITIONING.md) | **Định vị sản phẩm (25/09)**: người dùng là kiểm toán viên thủ công; tự động hoá đọc·định vị·ghi chép; hàng đợi ưu tiên thay bảng verdict; ba lớp phải thêm |
-| 10 | [07-presentation/PIPELINE_DIAGRAM_BRIEF.md](../07-presentation/PIPELINE_DIAGRAM_BRIEF.md) | **Pipeline tổng quan để vẽ sơ đồ**: 8 bước, input/output từng bước, 5 mô hình được huấn luyện, prompt sẵn cho AI sinh ảnh + bản Mermaid |
+| 2 | [00-project/ARCHITECTURE_INVARIANTS.md](ARCHITECTURE_INVARIANTS.md) | **Hiến pháp kỹ thuật**: 10 bất biến, điều cấm, thứ tự làm việc — thi hành bằng `tests/test_architecture_invariants.py` |
+| 3 | [00-project/ROUND2_READINESS_2026-09-22.md](ROUND2_READINESS_2026-09-22.md) | **Đang ở đâu** — snapshot số đo, chấm thử 6 tiêu chí, chuẩn bị Chung kết (§9). Không sửa số |
+| 4 | [00-project/RESEARCH_PROGRAM_2026-09-22.md](RESEARCH_PROGRAM_2026-09-22.md) | **Cái gì đã chứng minh, cái gì là giả thuyết** — audit code 15 câu, RQ1–RQ10, 4 gate, câu được/không được nói trước BGK |
+| 5 | [00-project/EXECUTION_PLAN_2026-09.md](EXECUTION_PLAN_2026-09.md) | Lịch tới 10/10 và 25/10, DoD D1–D15, kịch bản demo 7 phút |
+| 6 | [00-project/ISSUES_REGISTER_2026-09.md](ISSUES_REGISTER_2026-09.md) | Sổ khúc mắc A–G + **mục N (N1–N5, đã đóng 23/09)** |
+| 7 | [00-project/DECISIONS_LOG.md](DECISIONS_LOG.md) | Quyết định có hiệu lực (D-2026-09-18-01…08, D-2026-09-22-01…06) |
+| 8 | [01-domain-audit/AUDIT_PROTOCOL.md](../01-domain-audit/AUDIT_PROTOCOL.md) · [MANUAL_SCORING_RUBRIC.md](../01-domain-audit/MANUAL_SCORING_RUBRIC.md) | Nghiệp vụ kiểm chứng |
+| 9 | [07-presentation/QA_BANK_100_2026-09-20.md](../07-presentation/QA_BANK_100_2026-09-20.md) · [QA_DRILL.md](../07-presentation/QA_DRILL.md) | Bộ câu hỏi phản biện |
+| 10 | [02-product/AUDITOR_WORKFLOW_POSITIONING.md](../02-product/AUDITOR_WORKFLOW_POSITIONING.md) | **Định vị sản phẩm (25/09)**: người dùng là kiểm toán viên thủ công; tự động hoá đọc·định vị·ghi chép; hàng đợi ưu tiên thay bảng verdict; ba lớp phải thêm |
+| 11 | [07-presentation/PIPELINE_DIAGRAM_BRIEF.md](../07-presentation/PIPELINE_DIAGRAM_BRIEF.md) | **Pipeline tổng quan để vẽ sơ đồ**: 8 bước, input/output từng bước, 5 mô hình được huấn luyện, prompt sẵn cho AI sinh ảnh + bản Mermaid |
 
 ## 2. Dữ liệu
 
