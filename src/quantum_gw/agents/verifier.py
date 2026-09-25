@@ -371,9 +371,26 @@ class VerificationAgent:
         Only sentences about the claim's metric are read, and -- when the claim
         names a period -- a sentence dated to some other year is not support.
         """
+        # A continuity claim ("giảm liên tục hằng năm") usually carries no figure
+        # of its own, so this runs before the "no figures, nothing to compare"
+        # exit: what it checks is the completeness of the evidence series.
+        continuity = self._continuity_gap(claim, item)
+        if continuity is not None:
+            return continuity
+
         claim_facts = _claim_facts(claim.text)
         if not claim_facts:
             return None
+
+        # A claim of the form "giảm 20%" is not a figure to match against another
+        # figure; it is an assertion about two figures. Recompute it from the
+        # base and current values when the evidence carries both -- until this
+        # existed, "giảm 20%" against "100.000 → 80.000 tCO2e" could not be
+        # decided at all, because "%" and "tCO2e" are different units (B9(c)).
+        recomputed = self._recomputed_change(claim, item)
+        if recomputed is not None:
+            return recomputed
+
         best = None        # (error, claim_fact, evidence_fact, sentence)
         ambiguous = None   # (error, claim_fact, evidence_fact, reason)
         blocked = None     # (reason, claim_fact, evidence_fact)
@@ -457,6 +474,141 @@ class VerificationAgent:
             reason=(
                 f"Số liệu gần nhưng lệch ngoài dung sai công bố: tuyên bố {c_value}, "
                 f"tài liệu {e_value} (dung sai ±{tolerance * 100:.2g}%)."
+            ),
+            method="numeric",
+        )
+
+    def _continuity_gap(self, claim: Claim, item: RetrievedEvidence) -> StanceSignal | None:
+        """"Giảm liên tục từ 2020 đến 2025" needs every year, not two endpoints.
+
+        A claim about a *continuous* trend asserts something at each step of the
+        period. Two endpoints support "lower in 2025 than in 2020" and say
+        nothing about the years between, so a missing year is reported as a gap
+        rather than read as a smooth decline (P9).
+        """
+        if not _CONTINUOUS_RE.search(normalize_for_match(claim.text)):
+            return None
+        if not claim.baseline or not claim.period:
+            return None
+        try:
+            first, last = sorted((int(claim.baseline), int(claim.period)))
+        except ValueError:
+            return None
+        if last - first < 2:
+            return None  # two adjacent years have nothing in between to miss
+
+        seen: dict[str, float] = {}
+        for sentence in self._metric_sentences(claim, item.text):
+            for year, fact in _dated_quantities(sentence):
+                seen.setdefault(year, fact.value)
+        wanted = [str(year) for year in range(first, last + 1)]
+        missing = [year for year in wanted if year not in seen]
+        if not missing:
+            return None  # the full series is present; the usual checks apply
+        if len(missing) == len(wanted):
+            return None  # nothing to say: no series at all, fall through
+        return StanceSignal(
+            relation=PARTIAL,
+            reason=(
+                f"Tuyên bố nói xu hướng **liên tục** {first}–{last} nhưng kho tài liệu thiếu "
+                f"số liệu năm {', '.join(missing)}; hai đầu kỳ không chứng minh được từng năm đều giảm."
+            ),
+            method="numeric",
+        )
+
+    def _recomputed_change(self, claim: Claim, item: RetrievedEvidence) -> StanceSignal | None:
+        """Re-derive the percentage the claim asserts from the figures behind it.
+
+        Needs a claim that states a direction and a percentage, and evidence that
+        carries a figure for the baseline period and one for the claim's period,
+        in the same unit and with no dimension mismatch between them. Anything
+        less is not enough to do the arithmetic, and the caller falls back to
+        comparing figures directly.
+
+        When the two figures are themselves percentages the answer is ambiguous
+        by construction -- 20% to 30% is +10 percentage points and also +50%
+        relative -- so both readings are computed and the claim is never called
+        contradicted on the strength of one of them (P8).
+        """
+        claimed = next(
+            (f for f in _claim_facts(claim.text) if f.unit == "%" and not f.is_target), None
+        )
+        if claimed is None or not claim.direction or not claim.baseline or not claim.period:
+            return None
+
+        base = current = None
+        for sentence in self._metric_sentences(claim, item.text):
+            for year, fact in _dated_quantities(sentence):
+                if fact.unit == "%" and fact.value == claimed.value:
+                    continue  # the claim's own figure quoted back
+                if year == claim.baseline and base is None:
+                    base = fact
+                elif year == claim.period and current is None:
+                    current = fact
+        if base is None or current is None or base.value == 0:
+            return None
+        verdict, reason = eligibility(base, current)
+        if verdict == NOT_COMPARABLE:
+            return StanceSignal(
+                relation=CONTEXT,
+                reason=(
+                    f"Có số liệu kỳ gốc và kỳ báo cáo nhưng {describe(reason)}, "
+                    "nên không tính lại được mức thay đổi."
+                ),
+                method="numeric",
+            )
+
+        relative = (current.value - base.value) / abs(base.value) * 100.0
+        claimed_signed = -claimed.value if claim.direction == "decrease" else claimed.value
+        unit = base.unit
+        calculation = (
+            f"({current.value:,.4g} − {base.value:,.4g}) / {base.value:,.4g} = {relative:+.4g}%"
+        )
+        tolerance = max(0.5, _half_digit(claimed.value))
+
+        if base.unit == "%":
+            # Two percentages: report both readings and let a reviewer choose.
+            points = current.value - base.value
+            matches = (
+                abs(points - claimed_signed) <= tolerance
+                or abs(relative - claimed_signed) <= tolerance
+            )
+            return StanceSignal(
+                relation=PARTIAL,
+                reason=(
+                    f"Hai giá trị đều là tỷ lệ: chênh {points:+.4g} điểm phần trăm, "
+                    f"tương đương {relative:+.4g}% tương đối. Tuyên bố nêu {claimed_signed:+.4g}% — "
+                    + ("khớp một trong hai cách đọc; cần người xác nhận cách đo."
+                       if matches else "không khớp cách đọc nào; cần người xem.")
+                ),
+                method="numeric",
+            )
+
+        difference = relative - claimed_signed
+        if abs(difference) <= tolerance:
+            return StanceSignal(
+                relation=SUPPORTS,
+                reason=(
+                    f"Tính lại từ số liệu: {calculation} {unit}, khớp mức {claimed_signed:+.4g}% "
+                    f"của tuyên bố (dung sai ±{tolerance:.2g} điểm phần trăm)."
+                ),
+                method="numeric",
+            )
+        material = max(tolerance, self.settings.numeric_contradiction_error * abs(claimed_signed))
+        if abs(difference) >= material:
+            return StanceSignal(
+                relation=CONTRADICTS,
+                reason=(
+                    f"Tính lại từ số liệu: {calculation} {unit}, trong khi tuyên bố nêu "
+                    f"{claimed_signed:+.4g}% — lệch {difference:+.4g} điểm phần trăm."
+                ),
+                method="numeric",
+            )
+        return StanceSignal(
+            relation=PARTIAL,
+            reason=(
+                f"Tính lại từ số liệu: {calculation} {unit}, gần nhưng chưa khớp mức "
+                f"{claimed_signed:+.4g}% của tuyên bố."
             ),
             method="numeric",
         )
@@ -746,6 +898,59 @@ def _gap_sentence(claim: Claim) -> str:
     if not gaps:
         return "Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
     return "Tuyên bố thiếu: " + ", ".join(_ATTRIBUTE_LABELS[name] for name in gaps) + "."
+
+
+# Words that turn a claim about a period into a claim about every year in it.
+_CONTINUOUS_RE = re.compile(
+    r"(?<!\w)(?:lien tuc|hang nam|tung nam|moi nam|nam nao cung|deu dan|"
+    r"year[- ]on[- ]year|every year|each year|consistently|continuously)(?!\w)"
+)
+
+
+def _half_digit(value: float) -> float:
+    """Half of the last digit the figure was written to: 20 -> 0.5, 20.5 -> 0.05."""
+    text = f"{value:g}"
+    decimals = len(text.split(".")[1]) if "." in text else 0
+    return 0.5 * (10 ** -decimals)
+
+
+def _dated_quantities(sentence: str) -> list[tuple[str, NumericFact]]:
+    """Figures in the sentence paired with the year each one belongs to.
+
+    A disclosure writes both endpoints in one line -- "năm 2020 là 100.000 tấn
+    CO2e, năm 2025 là 80.000 tấn CO2e" -- so a figure is attributed to the
+    nearest year stated before it. A figure with no year before it is dropped
+    rather than guessed at.
+    """
+    pairs: list[tuple[str, NumericFact]] = []
+    for fact in facts_in(sentence):
+        position = _position_of(sentence, fact.value)
+        if position is None:
+            continue
+        years = YEAR_RE.findall(sentence[:position])
+        if not years:
+            continue
+        pairs.append((years[-1], fact))
+    return pairs
+
+
+def _position_of(sentence: str, value: float) -> int | None:
+    """Where the figure is written, matched on digit boundaries.
+
+    A plain substring search puts "20" inside "2020" and attributes a figure to
+    the wrong year -- or to no year at all.
+    """
+    written = {
+        f"{value:g}",
+        f"{value:g}".replace(".", ","),
+        f"{value:,.0f}".replace(",", "."),
+        f"{value:,.0f}",
+    }
+    for text in sorted(written, key=len, reverse=True):
+        match = re.search(r"(?<![\d.,])" + re.escape(text) + r"(?![\d])", sentence)
+        if match:
+            return match.start()
+    return None
 
 
 def _claim_facts(text: str) -> list[NumericFact]:

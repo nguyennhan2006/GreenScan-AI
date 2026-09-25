@@ -63,6 +63,11 @@ class OrchestratorAgent:
             config_hash=self.settings.stable_hash(),
             input_hashes=self._input_hashes(documents),
             plan=self.PLAN,
+            corpus_version=self.settings.corpus_version,
+            rule_pack_version=self.settings.legal.rule_pack_file,
+            prompt_version=(
+                "" if self.settings.verification.llm_stance == "off" else self.settings.version
+            ),
         )
         (output_dir / "manifest.json").write_text(
             json.dumps(manifest.model_dump(mode="json"), ensure_ascii=False, indent=2, default=str),
@@ -77,7 +82,18 @@ class OrchestratorAgent:
         retrieval_agent = EvidenceRetrievalAgent(chunks, self.settings, audit)
         verifier = VerificationAgent(self.settings.verification, audit)
         verifier.corpus = corpus
-        legal_agent = LegalCheckAgent(self.settings.legal, audit)
+        sectors = {
+            str(d.metadata.get("sector")).strip()
+            for d in documents if d.metadata.get("sector")
+        }
+        legal_agent = LegalCheckAgent(
+            self.settings.legal, audit,
+            sector=sectors.pop() if len(sectors) == 1 else None,
+            subject_type=next(
+                (str(d.metadata["subject_type"]) for d in documents if d.metadata.get("subject_type")),
+                None,
+            ),
+        )
         scorer = RiskScoringAgent(
             self.settings.scoring["rubric_file"], audit, review=self.settings.review
         )

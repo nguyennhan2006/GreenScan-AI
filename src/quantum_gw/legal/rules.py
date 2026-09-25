@@ -75,6 +75,12 @@ class Rule:
     conditions: list[Condition]
     effective_from: date | None = None
     effective_to: date | None = None
+    # Who the rule governs. A rule that resolves for an issue is *relevant*; it
+    # is *applicable* only to the subjects and sectors it names. A banking
+    # circular retrieved for an environmental keyword governs banks, not a steel
+    # mill, and the difference has to be in the data, not in a reviewer's head.
+    applies_to_sectors: list[str] = field(default_factory=list)
+    applies_to_subjects: list[str] = field(default_factory=list)
     machine_executable: str = "partial"
     reviewed_by: str = ""
     reviewed_at: str = ""
@@ -118,6 +124,8 @@ class RulePack:
                 source_clauses=list(r.get("source_clauses") or []),
                 claim_types=list(r.get("claim_types") or []),
                 legal_issue=r["legal_issue"], conditions=conditions,
+                applies_to_sectors=[str(x).lower() for x in r.get("applies_to_sectors", [])],
+                applies_to_subjects=[str(x).lower() for x in r.get("applies_to_subjects", [])],
                 effective_from=_date(r.get("effective_from")),
                 effective_to=_date(r.get("effective_to")),
                 machine_executable=r.get("machine_executable", "partial"),
@@ -134,6 +142,29 @@ class RulePack:
             and (not r.claim_types or claim_type in r.claim_types)
             and r.in_force_on(as_of)
         ]
+
+
+def applies_to(rule: Rule, sector: str | None, subject: str | None) -> tuple[bool, str]:
+    """Does this rule govern this subject, or is it merely about the same topic?
+
+    An empty list means the rule is silent about that dimension, and silence is
+    not a match: it is treated as "governs all", because narrowing a rule that
+    never declared its scope would silently drop findings. What is rejected is
+    an explicit mismatch.
+    """
+    if rule.applies_to_sectors and sector:
+        if sector.lower() not in rule.applies_to_sectors:
+            return False, (
+                f"quy tắc áp cho ngành {', '.join(rule.applies_to_sectors)}, "
+                f"không áp cho ngành {sector}"
+            )
+    if rule.applies_to_subjects and subject:
+        if subject.lower() not in rule.applies_to_subjects:
+            return False, (
+                f"quy tắc áp cho đối tượng {', '.join(rule.applies_to_subjects)}, "
+                f"không áp cho {subject}"
+            )
+    return True, ""
 
 
 def _date(value: Any) -> date | None:
