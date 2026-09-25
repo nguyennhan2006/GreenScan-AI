@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-25",
+  "sessions": [
+    "2026-09-17_trial01.jsonl"
+  ],
+  "rows_total": 8,
+  "rows_adjudicated": 0,
+  "splits": {
+    "companies": 7,
+    "by_split": {
+      "dev": 6,
+      "train": 2
+    },
+    "companies_in_more_than_one_split": {}
+  },
+  "retrieval": {
+    "rows": 0
+  },
+  "verification": {
+    "rows": 0
+  },
+  "claims": {
+    "rows": 0
+  }
+}

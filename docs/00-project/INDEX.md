@@ -68,6 +68,7 @@ Một trang để biết **đọc gì, chạy gì, sửa ở đâu**. Mọi đư
 .venv/Scripts/python.exe tools/data_contract.py migrate-crawl    # dựng lại corpus theo contract (~15 s)
 .venv/Scripts/python.exe tools/data_contract.py report <thư mục> # độ phủ từng trường
 .venv/Scripts/python.exe tools/label_session.py sample --name <tên>   # tạo phiên gán nhãn
+.venv/Scripts/python.exe tools/evaluate_gold.py                   # đo truy xuất và kiểm chứng, tách riêng
 
 # chạy sản phẩm
 .venv/Scripts/python.exe -m quantum_gw.cli demo

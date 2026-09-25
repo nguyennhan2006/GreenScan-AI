@@ -102,6 +102,10 @@ Kiểm chứng:   gold claim + gold evidence → verdict đúng không?      (ma
 
 Một chỉ số end-to-end duy nhất không cho biết lỗi nằm ở đâu. Truy xuất hỏng → sửa truy xuất. Truy xuất đúng mà verdict sai → sửa verifier.
 
+Khung đo: `python tools/evaluate_gold.py` — đọc `data/gold/sessions/*.jsonl` (đúng định dạng `label_session.py` sinh ra), tính **tách riêng** hai bộ chỉ số, kèm khoảng tin cậy bootstrap vì n sẽ luôn nhỏ, và **báo riêng tỷ lệ mâu thuẫn sai** thay vì trung bình hoá nó vào accuracy. Nó cũng kiểm doanh nghiệp có nằm ở hai split không — nếu có thì mọi con số phía trên vô nghĩa.
+
+Chạy được ngay trên gold **rỗng**: nó nói "0 hàng đã trọng tài, không tính gì" thay vì in số 0. Tám test trong `tests/test_evaluation_framework.py` kiểm khung bằng gold giả có đáp án biết trước (Recall@k theo thứ hạng dựng sẵn, MRR, phát hiện rò rỉ split, mẫu quá nhỏ thì không bịa khoảng tin cậy).
+
 ---
 
 ## Liên quan
