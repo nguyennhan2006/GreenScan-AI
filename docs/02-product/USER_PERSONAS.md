@@ -1,5 +1,8 @@
 # USER_PERSONAS.md
 
+> **Định vị sản phẩm đã được viết lại 2026-09-25** — xem [AUDITOR_WORKFLOW_POSITIONING.md](AUDITOR_WORKFLOW_POSITIONING.md). Người dùng là **kiểm toán viên đang làm thủ công**, không phải sáu persona; sản phẩm tự động hoá **đọc · định vị · ghi chép** và trả về một **hàng đợi đã xếp ưu tiên**, không phải một bảng verdict. Tài liệu này giữ lại phần mô tả nhu cầu và phạm vi còn dùng được.
+
+
 Version: 0.1  
 Status: Draft for MVP planning  
 Owner: Product Owner / Research Lead  
