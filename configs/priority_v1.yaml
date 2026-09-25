@@ -65,6 +65,12 @@ materiality:
     # ranked against each other, and a large percentage is not a large quantity.
     # Such a claim counts as quantified, and stops there.
     percentage_only: 0.55
+    # A rank needs peers to mean anything. With fewer than this many figures of
+    # the same unit in the run, the rank says more about the parser than about
+    # the company, so a neutral value is used instead: a stray "3 kWh" once
+    # ranked above the group's emissions total purely for being alone.
+    minimum_peers: 3
+    too_few_peers: 0.55
 
   # Where the claim sits in the document. A claim on the highlights page is a
   # headline the company chose to lead with; one on page 105 is a line in an

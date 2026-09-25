@@ -91,6 +91,10 @@ class UnitType(StrEnum):
 
 class ExtractType(StrEnum):
     CLAIM = "claim"
+    # A published indicator row: read by agents/figures.py, tested by arithmetic
+    # rather than against prose. Kept in the same layer as claims because both
+    # are things read out of a clean unit and both enter the same review queue.
+    DISCLOSED_FIGURE = "disclosed_figure"
     REJECTED_SENTENCE = "rejected_sentence"
     EVIDENCE_CANDIDATE = "evidence_candidate"
     NUMERIC_FACT = "numeric_fact"

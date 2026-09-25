@@ -19,6 +19,7 @@ from pathlib import Path
 from quantum_gw.data.builders import (
     clean_from_chunk,
     extract_from_claim,
+    extract_from_figure,
     extract_from_rejected,
     raw_from_document,
     write_jsonl,
@@ -53,6 +54,7 @@ def write_run_layers(
     chunks: list[EvidenceChunk],
     claims: list[Claim],
     rejected: list[tuple[EvidenceChunk, int, str, str]],
+    figures: list | None = None,
 ) -> dict[str, int]:
     directory = Path(directory)
     ids = _doc_ids(documents, chunks)
@@ -76,6 +78,10 @@ def write_run_layers(
     extract_rows = [
         extract_from_claim(claim, run_id=run_id, producer_version=producer_version)
         for claim in claims
+    ]
+    extract_rows += [
+        extract_from_figure(figure, run_id=run_id, producer_version=producer_version)
+        for figure in (figures or [])
     ]
     extract_rows += [
         extract_from_rejected(

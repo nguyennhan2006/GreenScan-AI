@@ -29,7 +29,7 @@ def _run(settings):
                       source_type=SourceType.EXTERNAL),
     ]
     result = OrchestratorAgent(settings).run(documents)
-    by_id = {p["claim_id"]: p for p in result.priorities}
+    by_id = {p["item_id"]: p for p in result.priorities}
     ranked = [
         (by_id[c.claim_id]["rank"], by_id[c.claim_id], c)
         for c in result.claims if c.claim_id in by_id
@@ -40,7 +40,7 @@ def _run(settings):
 
 def test_every_claim_gets_a_priority_with_reasons(settings):
     result, ranked = _run(settings)
-    assert len(result.priorities) == len(result.claims)
+    assert len(result.priorities) == len(result.claims) + len(result.disclosed_figures)
     for _, priority, _ in ranked:
         assert 0 <= priority["priority_score"] <= 100
         assert {c["name"] for c in priority["components"]} == {
@@ -59,8 +59,9 @@ def test_a_quantified_emissions_claim_outranks_promotional_prose(settings):
 
 
 def test_the_ranking_is_a_total_order_starting_at_one(settings):
-    _, ranked = _run(settings)
-    assert [rank for rank, _, _ in ranked] == list(range(1, len(ranked) + 1))
+    result, _ = _run(settings)
+    ranks = sorted(p["rank"] for p in result.priorities)
+    assert ranks == list(range(1, len(result.priorities) + 1))
 
 
 def test_the_pass_states_what_it_did_not_examine(settings):
@@ -86,3 +87,60 @@ def test_percentages_do_not_count_as_magnitude(settings):
         claim_type="waste_and_circularity", source_chunk_id="x", source_name="doc",
     )
     assert _magnitude_scale([claim]) == {}
+
+
+# --- disclosed figures share the queue (ISSUES P2) --------------------------
+
+TABLE = (
+    "PHÁT THẢI TOÀN TẬP ĐOÀN NĂM 2025 (tCO2e)\n"
+    "Phạm vi 1 22.540.603\n"
+    "Phạm vi 2 933.876\n"
+    "Cộng 23.474.480\n"
+)
+
+
+def _table_run(settings, text: str = TABLE):
+    from quantum_gw.agents.orchestrator import OrchestratorAgent
+
+    documents = [
+        DocumentInput(name="report.txt", text=text, role=DocumentRole.CLAIM_SOURCE,
+                      source_type=SourceType.INTERNAL),
+    ]
+    return OrchestratorAgent(settings).run(documents)
+
+
+def test_disclosed_figures_are_extracted_from_indicator_rows(settings):
+    """The rows the claim extractor rejects are read here instead of being lost."""
+    result = _table_run(settings)
+    by_value = {f.value: f for f in result.disclosed_figures}
+    assert 22540603.0 in by_value and 933876.0 in by_value and 23474480.0 in by_value
+    assert by_value[22540603.0].unit == "tco2e"          # unit taken from the heading
+    assert by_value[22540603.0].scopes == [1]
+    assert by_value[23474480.0].is_total
+
+
+def test_cross_foot_reperforms_the_companys_own_addition(settings):
+    """22,540,603 + 933,876 = 23,474,479 against a disclosed 23,474,480."""
+    result = _table_run(settings)
+    checks = [c for c in result.figure_checks if c.kind == "cross_foot"]
+    assert checks, "a table with two scope rows and a total must be cross-footed"
+    check = checks[0]
+    assert check.status == "CONSISTENT"      # one tonne apart: rounding, not an error
+    assert check.difference == -1.0
+    assert "23,474,479" in check.calculation
+
+
+def test_a_total_that_does_not_add_up_is_inconsistent(settings):
+    broken = TABLE.replace("Cộng 23.474.480", "Cộng 25.000.000")
+    result = _table_run(settings, broken)
+    checks = [c for c in result.figure_checks if c.kind == "cross_foot"]
+    assert checks and checks[0].status == "INCONSISTENT"
+    assert checks[0].note
+
+
+def test_figures_are_ranked_in_the_same_queue_as_claims(settings):
+    result = _table_run(settings)
+    kinds = {p["item_type"] for p in result.priorities}
+    assert "figure" in kinds
+    top = min(result.priorities, key=lambda p: p["rank"])
+    assert top["item_type"] == "figure", "a published group total outranks nothing else here"

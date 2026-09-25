@@ -210,6 +210,44 @@ class ClaimSuggestion(BaseModel):
     items: list[SuggestionItem] = Field(default_factory=list)
 
 
+class DisclosedFigure(BaseModel):
+    """One published indicator row: the number itself, with what it is a number of.
+
+    A claim is a sentence and is verified against prose; a disclosed figure is a
+    table row and is verified by arithmetic and by comparison with the same row
+    elsewhere. Keeping them apart is what lets the claim extractor go on
+    rejecting table rows (they are not sentences) without the system losing the
+    figures an auditor actually tests (agents/figures.py, ISSUES P2).
+    """
+
+    figure_id: str
+    label: str
+    value: float
+    unit: str
+    period: str | None = None
+    scopes: list[int] = Field(default_factory=list)
+    is_total: bool = False
+    metric: str | None = None
+    source_doc_id: str
+    source_chunk_id: str
+    source_name: str
+    source_page: int | None = None
+    raw_line: str = ""
+
+
+class FigureCheck(BaseModel):
+    """A procedure performed on disclosed figures, with the arithmetic it ran."""
+
+    check_id: str
+    kind: str                      # cross_foot | cross_document
+    status: str                    # CONSISTENT | INCONSISTENT
+    figure_ids: list[str] = Field(default_factory=list)
+    calculation: str = ""
+    difference: float = 0.0
+    tolerance: float = 0.0
+    note: str = ""
+
+
 class AnalysisResult(BaseModel):
     schema_version: str = "analysis-result-v2"
     run_id: str
@@ -222,6 +260,11 @@ class AnalysisResult(BaseModel):
     # breakdown behind it. A verdict list says what each claim is; this says which
     # ones to open first, which is the question an auditor asks before the others.
     priorities: list[dict[str, Any]] = Field(default_factory=list)
+    # Published indicator rows and the procedures run on them (agents/figures.py).
+    # Separate from `claims` because they are verified by arithmetic and by
+    # comparison with the same row in another document, not against prose.
+    disclosed_figures: list[DisclosedFigure] = Field(default_factory=list)
+    figure_checks: list[FigureCheck] = Field(default_factory=list)
     # What this pass deliberately did not examine, and why -- the scope paragraph a
     # working paper needs and a claim-by-claim dump cannot give.
     scope_note: str = ""
