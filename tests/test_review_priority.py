@@ -144,3 +144,41 @@ def test_figures_are_ranked_in_the_same_queue_as_claims(settings):
     assert "figure" in kinds
     top = min(result.priorities, key=lambda p: p["rank"])
     assert top["item_type"] == "figure", "a published group total outranks nothing else here"
+
+
+# --- what the score does not know, it must say (external review, 2026-09-25) ---
+
+def test_a_factor_that_was_never_computed_is_not_reported_as_zero(settings):
+    """An unscored factor reads as "checked, nothing found" unless it says otherwise."""
+    result = _table_run(settings)
+    item = result.priorities[0]
+    anomaly = next(c for c in item["components"] if c["name"] == "anomaly")
+    assert anomaly["status"] == "not_computed"
+    assert "chưa tính" in anomaly["reason"]
+    assert item["not_computed"] == ["anomaly"]
+    # and its weight is not counted as points the item could have earned
+    assert item["max_available"] == 90.0
+
+
+def test_absence_of_support_never_scores_as_high_as_contradiction(settings):
+    """UNSUPPORTED plus missing attributes must stay below CONTRADICTED's ceiling."""
+    import tempfile
+    from pathlib import Path
+
+    from quantum_gw.agents.prioritizer import PrioritizationAgent
+    from quantum_gw.domain.enums import VerificationStatus
+    from quantum_gw.domain.models import Claim, VerificationResult
+    from quantum_gw.storage.audit import AuditLogger
+
+    agent = PrioritizationAgent(
+        "configs/priority_v1.yaml", AuditLogger(Path(tempfile.mkdtemp()) / "a.jsonl")
+    )
+    bare = Claim(claim_id="c", text="Công ty thân thiện với môi trường.",
+                 claim_type="generic_sustainability", source_chunk_id="x", source_name="d")
+    gaps = {
+        status: agent._evidence_gap(
+            VerificationResult(claim=bare, status=status, rationale="")
+        ).score
+        for status in (VerificationStatus.UNSUPPORTED, VerificationStatus.CONTRADICTED)
+    }
+    assert gaps[VerificationStatus.UNSUPPORTED] < gaps[VerificationStatus.CONTRADICTED]

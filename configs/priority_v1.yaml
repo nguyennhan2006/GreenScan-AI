@@ -98,9 +98,13 @@ evidence_gap:
     INSUFFICIENT_EVIDENCE: 0.75
     PARTIALLY_SUPPORTED: 0.55
     SUPPORTED: 0.10
-  # Each of the five mandatory attributes the claim fails to state adds this,
-  # capped at 1.0 together with the status score.
+  # Each of the five mandatory attributes the claim fails to state adds this.
   per_missing_attribute: 0.08
+  # ... but only a positive contradiction reaches the ceiling. Without this,
+  # UNSUPPORTED plus two missing attributes scored the same as CONTRADICTED, and
+  # "nobody could substantiate it" became indistinguishable from "the evidence
+  # says otherwise".
+  max_without_contradiction: 0.95
 
 # --- the queue --------------------------------------------------------------
 # An audit does not examine everything; it examines enough, and records what it

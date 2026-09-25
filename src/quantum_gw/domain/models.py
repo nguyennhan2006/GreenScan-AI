@@ -136,6 +136,11 @@ class RiskComponent(BaseModel):
     score: float
     max_score: float
     reason: str
+    # "computed" or "not_computed". A factor the system cannot evaluate yet
+    # scores 0, and a bare 0 reads as "checked, nothing found" -- the opposite of
+    # the truth. The status says which of the two a reader is looking at, and
+    # `max_score` is excluded from the achievable total when it is not computed.
+    status: str = "computed"
 
 
 class RiskAssessment(BaseModel):
