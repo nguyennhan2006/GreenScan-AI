@@ -58,6 +58,9 @@ verification:
 scoring:
   rubric_file: configs/scoring_v1.yaml
 
+# Thứ tự soát: câu nào nên mở trước (configs/priority_v1.yaml)
+priority_policy: configs/priority_v1.yaml
+
 review:
   # high_risk_threshold / critical_risk_threshold used to live here and were read
   # by nothing: the scorer had its own hardcoded ladder. Severity bands now come

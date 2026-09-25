@@ -22,6 +22,7 @@ from .claim_extractor import ClaimExtractionAgent
 from .corpus import profile_corpus
 from .intake import DocumentIntakeAgent
 from .legal_check import LegalCheckAgent
+from .prioritizer import PrioritizationAgent
 from .reporter import ReportingAgent
 from .retriever import EvidenceRetrievalAgent
 from .reviewer import ReviewerAgent
@@ -92,6 +93,10 @@ class OrchestratorAgent:
                 legal_checks.append(legal_check)
             risks.append(scorer.run(verification))
 
+        prioritizer = PrioritizationAgent(self.settings.priority_policy, audit)
+        priorities = prioritizer.run(verifications, legal_checks)
+        by_claim = {p.claim_id: p for p in priorities}
+
         gates = ReviewerAgent(audit).run(
             chunks, verifications, risks, manifest, legal_checks, legal_agent.unavailable_reason
         )
@@ -111,6 +116,8 @@ class OrchestratorAgent:
             verifications=verifications,
             risks=risks,
             legal_checks=legal_checks,
+            priorities=[by_claim[v.claim.claim_id].to_json() for v in verifications],
+            scope_note=prioritizer.scope_note(priorities),
             corpus=corpus.to_json(),
             quality_gates=gates,
             summary=summary,

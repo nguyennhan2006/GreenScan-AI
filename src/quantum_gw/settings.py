@@ -229,6 +229,9 @@ class AppSettings(BaseModel):
     reranker: RerankerSettings = Field(default_factory=RerankerSettings)
     verification: VerificationSettings = Field(default_factory=VerificationSettings)
     scoring: dict[str, Any] = Field(default_factory=lambda: {"rubric_file": "configs/scoring_v1.yaml"})
+    # Where a reviewer should start (agents/prioritizer.py). Separate file from the
+    # risk rubric because they answer different questions and change at different times.
+    priority_policy: str = "configs/priority_v1.yaml"
     review: ReviewSettings = Field(default_factory=ReviewSettings)
     legal: LegalSettings = Field(default_factory=LegalSettings)
     raw: dict[str, Any] = Field(default_factory=dict, exclude=True)

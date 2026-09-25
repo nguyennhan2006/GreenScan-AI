@@ -1,6 +1,6 @@
 # Sổ khúc mắc và phương án giải quyết
 
-**Ngày lập:** 2026-09-17 · **Cập nhật:** 2026-09-22 (mục N — lỗi verdict từ run HPG baseline; trước đó 2026-09-18 rà soát chiến lược) · Nguồn: khảo sát hệ thống, chạy thử Hòa Phát, lô gán nhãn thử, kế hoạch v2, lịch BTC
+**Ngày lập:** 2026-09-17 · **Cập nhật:** 2026-09-25 (mục P — định vị kiểm toán; trước đó 2026-09-22 mục N — lỗi verdict từ run HPG baseline; trước đó 2026-09-18 rà soát chiến lược) · Nguồn: khảo sát hệ thống, chạy thử Hòa Phát, lô gán nhãn thử, kế hoạch v2, lịch BTC
 
 > **Mốc chính thức (BTC, xác nhận 2026-09-18):** phát triển prototype **25/08–10/10/2026** · Bán kết **25/10/2026** · Chung kết **10/11/2026**. Kế hoạch cũ giả định demo-ready 02/11 là **sai** — muộn hơn Bán kết. Lịch mới: **product freeze 10/10 → presentation freeze 25/10**; xem `EXECUTION_PLAN_2026-09.md` mục 3.
 
@@ -70,6 +70,19 @@
 Commit: `aa49ecd` (N1, N3a), `12c352b` (N2, N4), `b9b9cd6` (N5, N3b). Còn mở sau P0: số claim và tỷ lệ có số (cần chuẩn hoá bằng LLM — S2.1/RQ6); B6 dải rủi ro chưa hiệu chỉnh (2/4 real case) — chờ gold; B7 legal rule pack.
 
 Thứ tự cũ (giữ để tham chiếu): N1 → N4 → N5 → N2 → N3. Sau mỗi bước: `pytest`, `run_case.py --all`, `tools/hpg_progress.py`, ghi `benchmark/progress_<ngày>.json` (không sửa baseline).
+
+---
+
+## P. Định vị kiểm toán (mở 2026-09-25)
+
+> Nguồn: `../02-product/AUDITOR_WORKFLOW_POSITIONING.md`. Người dùng là kiểm toán viên đang làm thủ công; sản phẩm phải trả lời "soát cái nào trước" trước khi trả lời "câu này đúng không".
+
+| # | Khúc mắc | Số đo | Phương án | Nghiệm thu | Trạng thái |
+| --- | --- | --- | --- | --- | --- |
+| P1 🔴 | Đầu ra là 156 dòng cùng một dải, không dùng được làm danh sách việc | 23/09: 153 PARTIAL / 154 MEDIUM / 0 gắn cờ | Lớp xếp ưu tiên 4 yếu tố (trọng yếu · nghĩa vụ công bố · khoảng trống bằng chứng · bất thường) + hàng đợi có giới hạn + câu ghi phạm vi không soát | Điểm có phân bố; hàng đợi ≤ 25 mục; có câu "không soát gì và vì sao" | ✅ **đóng 25/09** — `agents/prioritizer.py`, `configs/priority_v1.yaml`, 6 test. HPG: 21/156 vào hàng đợi, điểm 41,3–62,9 |
+| P2 🔴 | **Con số công bố quan trọng nhất không có trong danh sách claim.** Bộ lọc `table_row` (thêm ở N3) loại toàn bộ dòng bảng chỉ số GRI — mà với kiểm toán viên, chính dòng bảng đó mới là cơ sở dẫn liệu cần kiểm (tính chính xác của số đã công bố) | HPG: **4/156** claim có đại lượng tuyệt đối; "23.474.480 tCO2e" của Tập đoàn **không có** trong danh sách claim; hàng đợi ưu tiên vì thế toàn văn tường thuật | Tách **"số liệu đã công bố"** thành loại đối tượng riêng bên cạnh "tuyên bố": trích từ bảng chỉ số kèm nhãn hàng + đơn vị + kỳ, đưa vào cùng hàng đợi với thủ tục kiểm tra riêng (đối chiếu chéo tài liệu/kỳ, không phải đối chiếu văn xuôi) | HPG: ≥ 30 số liệu công bố được trích; ≥ 5 mục đầu hàng đợi là số liệu kiểm được; N3 trap vẫn xanh (dòng bảng **không** thành "tuyên bố") | 🔲 mở — chặn giá trị của P1 |
+| P3 🟠 | Corpus 670 tài liệu chưa dùng cho thủ tục phân tích | — | So chéo kỳ (cùng DN, nhiều năm) và chéo DN cùng ngành; cờ "im lặng có chọn lọc" | Ít nhất 1 cờ bất thường trên dữ liệu thật, có thể kiểm bằng tay | 🔲 mở — là yếu tố thứ 4 của P1, hiện chấm 0 |
+| P4 🟠 | Chưa có giấy làm việc đúng nghĩa | `evidence_pack.md` thiếu mục phạm vi, người thực hiện, người soát | Mở rộng theo `OUTPUT_SPEC`; mục "không kiểm gì và vì sao" đã có từ P1 | Xuất được file kiểm toán viên ký | 🔲 mở |
 
 ---
 

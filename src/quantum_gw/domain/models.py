@@ -217,6 +217,14 @@ class AnalysisResult(BaseModel):
     claims: list[Claim]
     verifications: list[VerificationResult]
     risks: list[RiskAssessment]
+    # Where a reviewer should start. One record per claim (agents/prioritizer.py):
+    # priority score, rank, whether it made this pass's queue, and the component
+    # breakdown behind it. A verdict list says what each claim is; this says which
+    # ones to open first, which is the question an auditor asks before the others.
+    priorities: list[dict[str, Any]] = Field(default_factory=list)
+    # What this pass deliberately did not examine, and why -- the scope paragraph a
+    # working paper needs and a claim-by-claim dump cannot give.
+    scope_note: str = ""
     # One record per claim from the legal layer: which instrument governs it,
     # which clause, which conditions held, which are unknown, and the scope
     # limits its sources carry. Kept as the legal layer's own dict rather than a

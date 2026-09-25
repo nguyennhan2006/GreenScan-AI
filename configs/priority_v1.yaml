@@ -1,0 +1,111 @@
+# Review priority — where an auditor should spend attention first.
+#
+# The verdict answers "is this claim supported". This answers a different and,
+# for an auditor, earlier question: "of the 156 claims in this report, which
+# ones do I open first, and why". On 2026-09-23 the Hòa Phát run produced 153
+# PARTIALLY_SUPPORTED and 154 MEDIUM -- correct, and useless as a work list.
+#
+# Every number here is a deliberate, reviewable choice, not a tuned parameter.
+# None of it is learned: a queue an auditor cannot argue with is a queue they
+# will not trust. When the gold set exists, the ORDER this produces is what
+# gets measured (RESEARCH_PROGRAM RQ8), not the score itself.
+
+version: priority-v1
+
+# Weights sum to 100. A claim's priority is the weighted sum of four factors,
+# each normalised to 0..1.
+weights:
+  # How much it would matter if this claim were wrong.
+  materiality: 40
+  # Whether a disclosure obligation actually attaches to this claim. A gap
+  # inside an obligation is a finding; the same gap outside one is an opinion.
+  obligation: 25
+  # How far the claim is from being verifiable at all.
+  evidence_gap: 25
+  # Departure from the company's own prior periods and from its peers.
+  # Not computed yet (cross-period procedures are the next layer); the weight is
+  # declared here so the scale does not shift when it lands.
+  anomaly: 10
+
+# --- materiality ------------------------------------------------------------
+# family_weight * (magnitude_share * magnitude + prominence_share * prominence),
+# then reduced for promotional prose.
+#
+# The first version used max(magnitude, prominence) and the Hòa Phát queue came
+# back led by narrative sentences from the opening pages -- "the life cycle of
+# steel has two stages" -- while the group's total emissions figure sat outside
+# the top ten. Prominence alone must not carry an unquantified sentence to the
+# front: a headline matters, but a large number an auditor can test matters more.
+materiality:
+  magnitude_share: 0.65
+  prominence_share: 0.35
+  # Promotional prose with no metric and no figure is a presentation question,
+  # handled by a different procedure; it does not lead a substantive work list.
+  vague_unquantified_factor: 0.70
+  # Which metric families carry the most consequence if misstated, for this
+  # product and this jurisdiction. Emissions sit at the top because they are
+  # what the Vietnamese disclosure regime measures and what investors price.
+  metric_family:
+    emissions: 1.00
+    green_finance: 0.95
+    energy: 0.75
+    waste: 0.65
+    water: 0.60
+    renewable_energy: 0.75
+    unknown: 0.45
+
+  # A figure's magnitude is read as its rank among all figures of the same unit
+  # in the same run: the group total stands out from a single plant's number
+  # without anyone hard-coding what "large" means.
+  magnitude:
+    # A claim with no figure at all is not weightless: an unquantified claim
+    # about a material metric is itself a disclosure gap worth opening.
+    unquantified: 0.45
+    # A ratio carries no magnitude: 99% of emissions and 4% of energy are not
+    # ranked against each other, and a large percentage is not a large quantity.
+    # Such a claim counts as quantified, and stops there.
+    percentage_only: 0.55
+
+  # Where the claim sits in the document. A claim on the highlights page is a
+  # headline the company chose to lead with; one on page 105 is a line in an
+  # index table. Prominence is a proxy for how far the claim travels.
+  prominence:
+    front_pages: 20        # pages 1..20 count as the front of the report
+    front_score: 0.85
+    rest_score: 0.40
+    unknown_page: 0.40
+
+# --- obligation -------------------------------------------------------------
+# Scores the strength of the duty attached, not whether the duty was met.
+obligation:
+  applicable_instrument: 0.70   # the legal layer resolved an instrument in force
+  finding_present: 1.00         # a rule ran and returned something other than "insufficient"
+  no_instrument: 0.20
+
+# --- evidence gap -----------------------------------------------------------
+# Distance from "verifiable". Absence of support and positive contradiction are
+# both reasons to look, for different reasons, so both score high.
+evidence_gap:
+  status:
+    CONTRADICTED: 1.00
+    UNSUPPORTED: 0.85
+    INSUFFICIENT_EVIDENCE: 0.75
+    PARTIALLY_SUPPORTED: 0.55
+    SUPPORTED: 0.10
+  # Each of the five mandatory attributes the claim fails to state adds this,
+  # capped at 1.0 together with the status score.
+  per_missing_attribute: 0.08
+
+# --- the queue --------------------------------------------------------------
+# An audit does not examine everything; it examines enough, and records what it
+# left out. These two cuts define "enough" for a screening pass, and the
+# remainder is reported as deliberately not examined (ISA-style scope note).
+queue:
+  # Always queue claims at or above this priority.
+  attention_threshold: 55
+  # Never present a first pass longer than this, whatever the scores say: a
+  # queue nobody finishes is the same as no queue.
+  max_items: 25
+  # ... but always offer at least this many, so a quiet report still gets a
+  # sample rather than an empty work list.
+  min_items: 5
