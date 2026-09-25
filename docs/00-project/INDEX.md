@@ -76,7 +76,11 @@ Một trang để biết **đọc gì, chạy gì, sửa ở đâu**. Mọi đư
 uvicorn quantum_gw.api:app --reload ; cd frontend && npm run dev
 ```
 
-## 5. Mốc và trạng thái
+## 5. Bàn giao việc
+
+[06-operations/HANDOFF_2026-09-25.md](../06-operations/HANDOFF_2026-09-25.md) — mỗi người một phần: Quỳnh (gold set, soát hàng đợi, bài đo thời gian) · Thảo (3 quy tắc pháp lý + khai phạm vi áp dụng) · Nhân (đang chờ gì, làm được gì ngay, không làm gì).
+
+## 6. Mốc và trạng thái
 
 | Mốc | Ngày | Trạng thái |
 | --- | --- | --- |
