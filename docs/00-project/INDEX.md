@@ -61,6 +61,7 @@ Một trang để biết **đọc gì, chạy gì, sửa ở đâu**. Mọi đư
 .venv/Scripts/python.exe -m quantum_gw.cli evaluate              # golden 4 case
 .venv/Scripts/python.exe data/real_cases/scripts/run_case.py --all   # 4 case có phán quyết
 .venv/Scripts/python.exe tools/hpg_progress.py --label <nhãn>    # chạy HPG, so với baseline
+.venv/Scripts/python.exe tools/hpg_semantic_audit.py              # vì sao mỗi mâu thuẫn cũ biến mất
 
 # dữ liệu
 .venv/Scripts/python.exe tools/data_contract.py validate-run     # kiểm tra 3 tầng của run mới nhất

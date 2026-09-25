@@ -80,6 +80,19 @@ Khi một mâu thuẫn cũ biến mất, câu hỏi **không** phải *"vì sao 
 
 > Tuyên bố và bằng chứng có cùng chỉ số không? Cùng Scope không? Cùng ranh giới tổ chức không? Giá trị là tuyệt đối hay mức thay đổi? Nếu tuyên bố nói −20%, code đã tính lại từ kỳ gốc chưa? Nếu không so được, **vì sao trước đây lại kết luận mâu thuẫn**?
 
+Công cụ trả lời sáu câu đó: `python tools/hpg_semantic_audit.py` — với **mỗi** mâu thuẫn trong bản trước, nó chạy lại quy tắc hiện tại trên **đúng đoạn văn đã tạo ra kết luận cũ**, in ra sáu chiều của từng cặp số và chiều nào chặn. Kết quả lần chạy 25/09 (`benchmark/semantic_audit_2026-09-25.md`):
+
+| Chiều khiến hai con số không so được | Số cặp |
+| --- | ---: |
+| khác công nghệ sản xuất | 2 |
+| khác cơ sở đo (tỷ trọng / mức thay đổi / tuyệt đối / cường độ) | 2 |
+| chênh hàng chục lần → cần người xem | 2 |
+| khác loại chỉ số con | 2 |
+| mục tiêu vs số thực hiện | 1 |
+| không phải kết luận số học ngay từ đầu | 1 |
+
+**Không mâu thuẫn nào trong bản cũ sống sót.** Comparator cũ chỉ kiểm **đơn vị** — đó là toàn bộ nguyên nhân. Đây là câu trả lời cho *"vì sao trước đây lại kết luận mâu thuẫn"*, và nó nằm trong một tệp chạy lại được, không nằm trong trí nhớ.
+
 ### Đánh giá phải tách đôi
 
 ```text
