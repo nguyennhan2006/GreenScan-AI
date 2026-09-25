@@ -266,3 +266,38 @@ def test_prohibited_shortcuts_are_absent_from_the_source():
 def _status(result) -> VerificationStatus:
     assert result.verifications, "no claim was extracted"
     return result.verifications[0].status
+
+
+# --- the audit itself must stay honest ---------------------------------------
+
+def test_the_semantic_audit_names_a_dimension_for_every_disappeared_contradiction():
+    """An audit that cannot say *why* a verdict changed is a diff wearing a costume."""
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location(
+        "hpg_semantic_audit", Path(__file__).resolve().parents[1] / "tools" / "hpg_semantic_audit.py"
+    )
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    # the four shapes that produced false contradictions on 2026-09-22
+    cases = [
+        ("Cường độ phát thải trung bình (Scrap-EAF) là 0,70 tấn CO2 trên mỗi tấn thép thô.",
+         "Cường độ phát thải trung bình (BF-BOF): 2,32 tấn CO2 trên mỗi tấn thép thô.",
+         "different_technology"),
+        ("Ngành gang thép chiếm hơn 99% tổng lượng phát thải của Tập đoàn.",
+         "Tổng sản lượng thép thô tăng 24% trong năm 2025.",
+         "different_basis"),
+        ("Năng lượng tiêu thụ từ lưới điện chiếm 4,5% trong năm 2025.",
+         "Năng lượng tiêu thụ là năng lượng tái tạo chiếm 0,03% trong năm 2025.",
+         "different_variant"),
+        # The group total against one member company: the boundary answers this
+        # before the size gap does, and naming the boundary is the better answer.
+        ("Tổng phát thải khí nhà kính của Tập đoàn năm 2025 là 23.474.480 tấn CO2e.",
+         "Phát thải tại một đơn vị thành viên năm 2025 là 90.846 tấn CO2e.",
+         {"different_boundary", "magnitude_gap"}),
+    ]
+    for claim, evidence, expected in cases:
+        wanted = expected if isinstance(expected, set) else {expected}
+        reasons = set(module.blocking_reasons(claim, evidence))
+        assert reasons & wanted, f"{claim[:40]} -> {reasons}"
