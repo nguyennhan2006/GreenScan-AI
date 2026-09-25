@@ -46,6 +46,11 @@ class ReviewPriority:
     in_queue: bool = False
     components: list[RiskComponent] = field(default_factory=list)
     reasons: list[str] = field(default_factory=list)
+    # Points actually available: the weights of the factors that could be
+    # computed. Reporting 51.6/100 when 10 of those points can never be earned
+    # in this release would overstate how sure the number is.
+    max_available: float = 100.0
+    not_computed: list[str] = field(default_factory=list)
     policy_version: str = "priority-v1"
 
     def to_json(self) -> dict:
@@ -58,6 +63,8 @@ class ReviewPriority:
             "rank": self.rank,
             "in_queue": self.in_queue,
             "components": [c.model_dump(mode="json") for c in self.components],
+            "max_available": self.max_available,
+            "not_computed": self.not_computed,
             "reasons": self.reasons,
             "policy_version": self.policy_version,
         }
@@ -140,13 +147,16 @@ class PrioritizationAgent:
         return priorities
 
     def _priority(self, kind: str, item_id: str, text: str, components: list[RiskComponent]) -> ReviewPriority:
+        computed = [c for c in components if c.status == "computed"]
         return ReviewPriority(
             item_type=kind,
             item_id=item_id,
             text=text,
-            priority_score=round(sum(c.score for c in components), 2),
+            priority_score=round(sum(c.score for c in computed), 2),
             components=components,
-            reasons=[c.reason for c in components if c.score > 0.35 * c.max_score],
+            max_available=round(sum(c.max_score for c in computed), 2),
+            not_computed=[c.name for c in components if c.status != "computed"],
+            reasons=[c.reason for c in computed if c.score > 0.35 * c.max_score],
             policy_version=self.version,
         )
 
@@ -205,13 +215,16 @@ class PrioritizationAgent:
             "Khoảng trống bằng chứng: chưa có thủ tục nào đối chiếu được số này.",
         )
 
-    def _component(self, name: str, fraction: float, reason: str) -> RiskComponent:
+    def _component(
+        self, name: str, fraction: float, reason: str, status: str = "computed"
+    ) -> RiskComponent:
         maximum = float(self.weights[name])
         return RiskComponent(
             name=name,
             score=round(min(1.0, max(0.0, fraction)) * maximum, 2),
             max_score=maximum,
             reason=reason,
+            status=status,
         )
 
     def _materiality(self, claim: Claim, scale: dict[str, list[float]]) -> RiskComponent:
@@ -268,7 +281,15 @@ class PrioritizationAgent:
         status = VerificationStatus(verification.status)
         base = policy["status"].get(status.value, 0.5)
         gaps = missing_attributes(verification.claim)
-        fraction = min(1.0, base + policy["per_missing_attribute"] * len(gaps))
+        # Missing attributes may raise the gap but must never lift a claim that
+        # nothing contradicts to the ceiling reserved for one that something
+        # does: absence of support and positive contradiction are different
+        # findings and must stay distinguishable in the score.
+        ceiling = (
+            1.0 if status == VerificationStatus.CONTRADICTED
+            else policy["max_without_contradiction"]
+        )
+        fraction = min(ceiling, base + policy["per_missing_attribute"] * len(gaps))
         note = f"thiếu {len(gaps)} thuộc tính" if gaps else "đủ năm thuộc tính"
         return self._component(
             "evidence_gap", fraction,
@@ -276,12 +297,18 @@ class PrioritizationAgent:
         )
 
     def _anomaly(self) -> RiskComponent:
-        """Departure from prior periods and peers. Reserved: the cross-period
-        procedures are the next layer, and scoring it as 0 keeps the scale
-        honest rather than quietly redistributing its weight."""
+        """Departure from prior periods and peers — declared, not yet computed.
+
+        Marked `not_computed` rather than scored 0: a zero here would read as
+        "checked the prior years and found nothing unusual", which is the
+        opposite of what the system knows. Its weight is excluded from the
+        achievable total until the cross-period procedures land (ISSUES P3).
+        """
         return self._component(
             "anomaly", 0.0,
-            "Bất thường so với kỳ trước: chưa tính (thủ tục so sánh chéo kỳ là lớp kế tiếp).",
+            "Bất thường so với kỳ trước: **chưa tính** — thủ tục so sánh chéo kỳ chưa có, "
+            "đây không phải kết luận 'không có bất thường'.",
+            status="not_computed",
         )
 
     # ------------------------------------------------------------------ queue
