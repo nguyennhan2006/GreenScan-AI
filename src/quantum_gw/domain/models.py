@@ -187,6 +187,12 @@ class RunManifest(BaseModel):
     config_hash: str
     input_hashes: dict[str, str]
     deterministic_seed: int = 0
+    # What a re-run needs beyond the code: which corpus was searched, which rule
+    # pack decided the legal layer, and which prompts were used if any model was
+    # called. Without these, "same config hash" does not mean "same run" (P11).
+    corpus_version: str = ""
+    rule_pack_version: str = ""
+    prompt_version: str = ""
     plan: list[str]
 
 

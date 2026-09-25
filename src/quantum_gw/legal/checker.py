@@ -23,6 +23,7 @@ from .rules import (
     NOT_MATCH,
     PARTIAL_MATCH,
     RulePack,
+    applies_to,
     combine,
     evaluate_condition,
 )
@@ -83,6 +84,10 @@ class LegalCheckResult:
     legal_risk: str = "MEDIUM"
     rule_pack_version: str = ""
     rules_applied: list[str] = field(default_factory=list)
+    # Rules that govern the issue but not this subject, with the reason. Kept so
+    # a reviewer can see what was considered and rejected, not only what ran.
+    rules_relevant: list[str] = field(default_factory=list)
+    not_applicable_rules: list[dict] = field(default_factory=list)
     requires_human_review: bool = True
     notes: str = ""
 
@@ -168,8 +173,34 @@ class LegalChecker:
                     "role": "base" if member.id == doc.id else "amendment_in_force",
                 })
 
-        rules = self.rule_pack.for_claim(claim_type, issue, as_of)
+        candidates = self.rule_pack.for_claim(claim_type, issue, as_of)
+        # Relevance is not applicability. A rule resolves because it governs this
+        # issue; whether it governs *this* subject depends on the sector and the
+        # kind of entity it names. Keeping the two apart is what stops a banking
+        # circular retrieved on an environmental keyword from being applied to a
+        # steel mill (P10).
+        sector = (claim.get("sector") or "").strip() or None
+        subject = (claim.get("subject_type") or "").strip() or None
+        rules = []
+        for rule in candidates:
+            governs, why = applies_to(rule, sector, subject)
+            if governs:
+                rules.append(rule)
+            else:
+                result.not_applicable_rules.append({"rule_id": rule.rule_id, "reason": why})
+        result.rules_relevant = [r.rule_id for r in candidates]
         result.rules_applied = [r.rule_id for r in rules]
+        if candidates and not rules:
+            result.legal_finding = INSUFFICIENT_EVIDENCE
+            result.legal_risk = "LOW"
+            result.requires_human_review = True
+            result.notes = (
+                f"{len(candidates)} quy tắc cùng vấn đề pháp lý nhưng **không quy tắc nào áp cho "
+                f"đối tượng này**: "
+                + "; ".join(item["reason"] for item in result.not_applicable_rules[:3])
+                + ". Có liên quan không đồng nghĩa có hiệu lực áp dụng."
+            )
+            return result
         if not rules:
             result.legal_finding = INSUFFICIENT_EVIDENCE
             result.notes = (

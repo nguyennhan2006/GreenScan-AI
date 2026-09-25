@@ -26,9 +26,20 @@ from quantum_gw.storage.audit import AuditLogger
 
 
 class LegalCheckAgent:
-    def __init__(self, settings: LegalSettings, audit: AuditLogger):
+    def __init__(
+        self,
+        settings: LegalSettings,
+        audit: AuditLogger,
+        sector: str | None = None,
+        subject_type: str | None = None,
+    ):
         self.settings = settings
         self.audit = audit
+        # Who the documents belong to. Declared by the caller from document
+        # metadata rather than inferred from the text: applying a rule to the
+        # wrong sector is a worse failure than applying none (P10).
+        self.sector = sector
+        self.subject_type = subject_type
         self.checker: LegalChecker | None = None
         self.unavailable_reason = ""
         if not settings.enabled:
@@ -64,7 +75,14 @@ class LegalCheckAgent:
             for item in verification.evidence
         ]
         result = self.checker.check(
-            claim={"claim_id": claim.claim_id, "claim_type": claim.claim_type},
+            claim={
+                "claim_id": claim.claim_id,
+                "claim_type": claim.claim_type,
+                # Declared by the caller on the document, not guessed from text:
+                # applying a rule to the wrong sector is worse than applying none.
+                "sector": self.sector,
+                "subject_type": self.subject_type,
+            },
             evidence=evidence,
             check_mode=self.settings.check_mode,
             claim_published=_published(claim.period),

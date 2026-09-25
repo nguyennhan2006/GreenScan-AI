@@ -60,6 +60,57 @@ _UNIT_LEAD_RE = re.compile(
 )
 
 
+# A clause boundary that can carry its own assertion. Splitting on anything
+# looser turns one statement into fragments; splitting on nothing gives a single
+# blurred verdict for a sentence making three separate claims (P7).
+# "và" is deliberately NOT here. It joins measurements as often as it joins
+# clauses -- "Phạm vi 1 và 2", "nước và chất thải" -- and splitting on it cut a
+# scope in half and broke eight tests. Only connectors that cannot appear inside
+# a single measurement are used.
+_CLAUSE_SPLIT_RE = re.compile(r"\s*;\s+|\s+(?:đồng thời|trong khi đó|mặt khác)\s+(?=[^,;]{12,})")
+_MEASURED_RE = re.compile(r"\d")
+
+
+def split_assertions(sentence: str) -> list[str]:
+    """One sentence, one or more checkable assertions.
+
+    "Phát thải giảm 20% và tỷ lệ tái chế đạt 99%" is two claims with two
+    verdicts, not one claim with a blurred one. A split is only made when each
+    side carries its own figure: without that, the parts are a subject and its
+    continuation, and separating them destroys the statement.
+
+    The original sentence is returned unchanged whenever the test fails, so the
+    default behaviour of the extractor is untouched.
+    """
+    parts = [part.strip(" ,;") for part in _CLAUSE_SPLIT_RE.split(sentence) if part and part.strip()]
+    if len(parts) < 2:
+        return [sentence]
+    if not all(len(part.split()) >= 6 and _MEASURED_RE.search(part) for part in parts):
+        return [sentence]
+    if any(re.match(r"^\d", part) for part in parts):
+        return [sentence]  # a part starting with a digit is the tail of a figure
+    return parts
+
+
+def _assertions(sentences: list[str]) -> list[tuple[str, bool]]:
+    """Each assertion with a flag saying whether it came from splitting a sentence.
+
+    A split part legitimately begins in lower case, so the checks that exist to
+    catch sentences cut in half by the PDF chunker must not fire on it.
+    """
+    out: list[tuple[str, bool]] = []
+    previous = ""
+    for sentence in sentences:
+        # A clause that follows a semicolon is a second assertion, not a line the
+        # PDF broke in half: the sentence splitter has already separated them, so
+        # the only evidence left is how the previous one ended.
+        after_semicolon = previous.rstrip().endswith(";")
+        parts = split_assertions(sentence)
+        out.extend((part, len(parts) > 1 or after_semicolon) for part in parts)
+        previous = sentence
+    return out
+
+
 def heading_reason(sentence: str) -> str | None:
     """Why this line is a heading, a caption or a table-of-contents entry -- or None.
 
@@ -153,12 +204,12 @@ class ClaimExtractionAgent:
         for chunk in chunks:
             if chunk.role != DocumentRole.CLAIM_SOURCE:
                 continue
-            for index, sentence in enumerate(split_sentences(chunk.text)):
+            for index, (sentence, from_split) in enumerate(_assertions(split_sentences(chunk.text))):
                 # The first "sentence" of a chunk that opens in lower case is the
                 # tail of a sentence cut by the chunker; it cannot be quoted as a
                 # claim ("quốc gia về giảm phát thải... Duy trì cơ chế kê khai").
                 first = next((c for c in sentence if c.isalpha()), "")
-                if index == 0 and first and first.islower():
+                if index == 0 and not from_split and first and first.islower():
                     self._reject(rejected, chunk, index, sentence, "chunk_boundary_fragment")
                     continue
                 normalized = normalize_for_match(sentence)
@@ -166,6 +217,8 @@ class ClaimExtractionAgent:
                 if not claim_type:
                     continue
                 reason = heading_reason(sentence)
+                if reason == "fragment" and from_split:
+                    reason = None  # a clause of a split sentence, not a broken line
                 if reason:
                     self._reject(rejected, chunk, index, sentence, reason)
                     continue

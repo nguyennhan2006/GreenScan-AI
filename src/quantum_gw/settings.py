@@ -232,6 +232,9 @@ class AppSettings(BaseModel):
     # Where a reviewer should start (agents/prioritizer.py). Separate file from the
     # risk rubric because they answer different questions and change at different times.
     priority_policy: str = "configs/priority_v1.yaml"
+    # Which body of documents a run searched. Recorded in the manifest so a
+    # re-run can be told apart from a run over a different corpus (P11).
+    corpus_version: str = "run-inputs"
     review: ReviewSettings = Field(default_factory=ReviewSettings)
     legal: LegalSettings = Field(default_factory=LegalSettings)
     raw: dict[str, Any] = Field(default_factory=dict, exclude=True)
