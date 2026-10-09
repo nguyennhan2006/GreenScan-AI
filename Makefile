@@ -1,4 +1,4 @@
-.PHONY: install test lint format demo evaluate serve build clean
+.PHONY: install ui app test lint format demo evaluate serve build clean
 
 install:
 	python -m pip install -e ".[dev,crawl]"
@@ -22,6 +22,13 @@ evaluate:
 
 serve:
 	quantum-agent serve --host 0.0.0.0 --port 8000
+
+# Build the web UI once; `make app` then serves API + UI on http://localhost:8000.
+ui:
+	cd frontend && npm ci && npm run build
+
+app:
+	quantum-agent app
 
 build:
 	python -m build

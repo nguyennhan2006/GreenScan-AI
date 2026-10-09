@@ -100,5 +100,31 @@ def serve(
     uvicorn.run("quantum_gw.api:app", host=host, port=port, reload=reload)
 
 
+@app.command("app")
+def run_app(
+    host: str = typer.Option("127.0.0.1"),
+    port: int = typer.Option(8000),
+    browser: bool = typer.Option(True, "--browser/--no-browser", help="Open the web UI when ready"),
+) -> None:
+    """Start GreenScan for a reviewer: API and web UI on one port, browser opened.
+
+    The web UI is served from frontend/dist when it has been built
+    (`cd frontend && npm ci && npm run build`, done once by GreenScan.bat).
+    """
+    import threading
+    import webbrowser
+
+    from quantum_gw.api import ui_dir
+
+    url = f"http://{'localhost' if host in {'127.0.0.1', '0.0.0.0'} else host}:{port}/"
+    if ui_dir() is None:
+        typer.echo("Chưa có giao diện đã build (frontend/dist). Chạy một lần: cd frontend && npm ci && npm run build")
+        url += "docs"
+    typer.echo(f"GreenScan đang chạy tại {url}  — Ctrl+C để dừng.")
+    if browser:
+        threading.Timer(1.5, webbrowser.open, args=(url,)).start()
+    uvicorn.run("quantum_gw.api:app", host=host, port=port)
+
+
 if __name__ == "__main__":
     app()

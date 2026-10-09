@@ -7,7 +7,7 @@ function RelationBadge({ relation }) {
   const r = RELATIONS[relation] || RELATIONS.CONTEXT
   return (
     <span className={`rounded-full border px-2 py-0.5 text-xs font-semibold ${r.className}`}>
-      {r.label} · {r.labelVi}
+      {r.label}
     </span>
   )
 }

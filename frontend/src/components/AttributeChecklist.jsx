@@ -57,7 +57,7 @@ export default function AttributeChecklist({ attributes, penalties, variant = 'l
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-baseline gap-x-2">
                   <span className={`text-sm font-medium ${s.text}`}>{a.label}</span>
-                  <span className="text-xs text-slate-400">{a.labelVi}</span>
+                  <span className="text-xs text-slate-400" title="Cơ sở dẫn liệu kiểm toán">{a.assertion}</span>
                   <span className="ml-auto text-xs text-slate-500">{s.label}</span>
                 </div>
                 <p className="mt-0.5 text-xs text-slate-500">{a.hint}</p>

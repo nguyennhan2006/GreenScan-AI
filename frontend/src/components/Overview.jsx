@@ -130,7 +130,7 @@ export default function Overview({ summary, lastRunAt, onOpenQueue }) {
                 >
                   <div className="flex items-baseline justify-between text-xs">
                     <span className="font-medium text-slate-800">
-                      {a.label} <span className="text-slate-400">{a.labelVi}</span>
+                      {a.label} <span className="text-slate-400">{a.assertion}</span>
                     </span>
                     <span className="tabular-nums text-slate-600">
                       {a.count}/{s.total}

@@ -101,3 +101,38 @@ export async function legalCorpus() {
 export async function exportGold() {
   return handle(await fetch(`${base()}/v1/reviews-export/gold`))
 }
+
+// ---------- background analyses (progress instead of one long request) ----------
+
+/** Start an analysis of uploaded files; resolves with the job status at once. */
+export async function startAnalysisFiles(files, roles, sourceTypes, label = '', company = '') {
+  const form = new FormData()
+  for (const file of files) form.append('files', file)
+  form.append('roles', roles.join(','))
+  form.append('source_types', sourceTypes.join(','))
+  form.append('label', label)
+  form.append('company', company)
+  return handle(await fetch(`${base()}/v1/jobs/analyze/files`, { method: 'POST', body: form }))
+}
+
+export async function startAnalysisText(documents, label = '', company = '') {
+  return handle(await fetch(`${base()}/v1/jobs/analyze/text`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ documents, label, company }),
+  }))
+}
+
+export async function jobStatus(jobId) {
+  return handle(await fetch(`${base()}/v1/jobs/${encodeURIComponent(jobId)}`))
+}
+
+/** Which engine serves which task on this installation (header + settings). */
+export async function runtimeInfo() {
+  return handle(await fetch(`${base()}/v1/runtime`))
+}
+
+/** The Vietnamese working paper; `print` opens the browser's print dialog. */
+export function workpaperUrl(runId, print = false) {
+  return `${base()}/v1/runs/${encodeURIComponent(runId)}/workpaper${print ? '?print=true' : ''}`
+}
