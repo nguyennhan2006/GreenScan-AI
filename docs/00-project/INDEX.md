@@ -1,4 +1,4 @@
-# Bản đồ đường dẫn — cập nhật 2026-09-23
+# Bản đồ đường dẫn — cập nhật 2026-10-06
 
 Một trang để biết **đọc gì, chạy gì, sửa ở đâu**. Mọi đường dẫn dưới đây đã kiểm tra tồn tại tại commit `b9b9cd6`.
 
@@ -6,6 +6,8 @@ Một trang để biết **đọc gì, chạy gì, sửa ở đâu**. Mọi đư
 
 | # | Tài liệu | Trả lời câu hỏi |
 | --- | --- | --- |
+| 0 | [00-project/AUDIT_2026-10-06.md](AUDIT_2026-10-06.md) | **Rà soát toàn diện 06/10**: đã đạt gì, đang sai gì, trạng thái D1–D15, việc tới 10/10 và 25/10 |
+| 0b | [08-knowledge/README.md](../08-knowledge/README.md) | **Kho tri thức**: tẩy xanh là gì (21 mẫu hình), pháp lý Việt Nam đã đối chiếu bản ký, thực trạng và nghiên cứu Việt Nam, án lệ, AI/NLP và cách đo trên gold nhỏ |
 | 1 | [00-project/PROBLEM_DEFINITION.md](PROBLEM_DEFINITION.md) · [PROJECT_BRIEF.md](PROJECT_BRIEF.md) | Bài toán là gì, cho ai |
 | 2 | [00-project/ARCHITECTURE_INVARIANTS.md](ARCHITECTURE_INVARIANTS.md) | **Hiến pháp kỹ thuật**: 10 bất biến, điều cấm, thứ tự làm việc — thi hành bằng `tests/test_architecture_invariants.py` |
 | 3 | [00-project/ROUND2_READINESS_2026-09-22.md](ROUND2_READINESS_2026-09-22.md) | **Đang ở đâu** — snapshot số đo, chấm thử 6 tiêu chí, chuẩn bị Chung kết (§9). Không sửa số |
@@ -23,6 +25,7 @@ Một trang để biết **đọc gì, chạy gì, sửa ở đâu**. Mọi đư
 | Đường dẫn | Nội dung |
 | --- | --- |
 | [docs/04-data-ai/DATA_LAYERS.md](../04-data-ai/DATA_LAYERS.md) | **Contract 3 tầng raw · clean · extract** (`data-layers-v1`), trường bắt buộc theo `origin`, số đo khoảng trống |
+| [docs/04-data-ai/MODEL_ROUTING_AND_HARDWARE.md](../04-data-ai/MODEL_ROUTING_AND_HARDWARE.md) | **Đúng mô hình cho đúng việc**: ba chế độ `offline/cloud/gpu`, giá FPT, vùng dữ liệu, số đo trên laptop, quy tắc gửi tài liệu ra ngoài |
 | [docs/04-data-ai/TARGET_PIPELINE_AND_TRAINING.md](../04-data-ai/TARGET_PIPELINE_AND_TRAINING.md) | **Luồng đích đang nghiên cứu**: chỗ nào có mô hình, mô hình nào cho việc nào, dữ liệu thành dữ liệu huấn luyện ra sao, công thức QLoRA, thang B0–B4, việc cố ý không làm |
 | [docs/04-data-ai/GreenScan_Mo_ta_truong_du_lieu_v1.pdf](../04-data-ai/GreenScan_Mo_ta_truong_du_lieu_v1.pdf) | Bản PDF cho khách hàng / thành viên không chuyên kỹ thuật (10 trang, tiếng Việt) |
 | [src/quantum_gw/data/layers.py](../../src/quantum_gw/data/layers.py) | Nguồn sự thật của contract (pydantic) |
@@ -70,10 +73,13 @@ Một trang để biết **đọc gì, chạy gì, sửa ở đâu**. Mọi đư
 .venv/Scripts/python.exe tools/label_session.py sample --name <tên>   # tạo phiên gán nhãn
 .venv/Scripts/python.exe tools/evaluate_gold.py                   # đo truy xuất và kiểm chứng, tách riêng
 
-# chạy sản phẩm
+# chạy sản phẩm (người dùng): nhấp đúp GreenScan.bat, hoặc
+.venv/Scripts/python.exe -m quantum_gw.cli app            # API + giao diện ở http://localhost:8000
+cd frontend && npm ci && npm run build                     # dựng giao diện (một lần, hoặc sau khi sửa UI)
+# phát triển giao diện (hot reload): uvicorn quantum_gw.api:app --reload ; cd frontend && npm run dev
 .venv/Scripts/python.exe -m quantum_gw.cli demo
 .venv/Scripts/python.exe -m quantum_gw.cli analyze <pdf...> --roles claim_source,evidence
-uvicorn quantum_gw.api:app --reload ; cd frontend && npm run dev
+.venv/Scripts/python.exe tools/prune_runs.py               # liệt kê phiên cũ có thể dọn (thêm --apply để xoá)
 ```
 
 ## 5. Bàn giao việc

@@ -6,7 +6,9 @@ The reference training deck frames an AI agent through environment, observation/
 
 ## Retrieval accuracy and prompt quality
 
-Zhao et al. (2024), arXiv:2411.19463, reports that distracting documents can degrade RAG, higher recall does not guarantee correct generation, adding documents can break previously correct cases, and advanced prompts are task/model specific. V1 therefore separates retrieval and verification metrics, keeps top-k configurable, tracks distractors and starts from a plain deterministic baseline.
+Zhao et al. (2024), arXiv:2411.19463 **v1** ("Towards Understanding Retrieval Accuracy and Prompt Quality in RAG Systems"), reports that distracting documents can degrade RAG, higher recall does not guarantee correct generation, adding documents can break previously correct cases, and advanced prompts are task/model specific. V1 therefore separates retrieval and verification metrics, keeps top-k configurable, tracks distractors and starts from a plain deterministic baseline.
+
+*Version note (checked 2026-10-06):* the paper was retitled in v3 (29/05/2026) as "Understanding the Fundamental Design Decisions of Retrieval-Augmented Generation Systems" and published in ACM TOSEM 2026. The findings above are quoted from v1; cite the TOSEM version on slides. Wider literature for the jury Q&A: [`../08-knowledge/05_AI_NLP_VA_DO_LUONG.md`](../08-knowledge/05_AI_NLP_VA_DO_LUONG.md).
 
 ## Graph-based retrieval
 
