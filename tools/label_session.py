@@ -9,6 +9,12 @@ human fills in, and prints it as a reading sheet.
     python tools/label_session.py sample --n 10 --name trial01 [--seed 7]
         -> data/gold/sessions/<date>_<name>.jsonl  (labels empty)
 
+       By default the sample is on-topic (COLLECTION_PLAN_v2 §5): a claim must
+       name an environmental subject, evidence published after the claim and
+       evidence that merely repeats the claim are dropped, and claims already in
+       an earlier session are not drawn again. `--raw` restores the old
+       informativeness-ranked draw, which was 74% off-topic.
+
     python tools/label_session.py show data/gold/sessions/<file>.jsonl
         -> reading sheet: claim + evidence candidates + what to decide
 
@@ -40,14 +46,29 @@ from __future__ import annotations
 import argparse
 import json
 import random
+import re
 import sys
 from collections import Counter, defaultdict
 from datetime import date, datetime, timezone
 from pathlib import Path
 
+import yaml
+
 REPO = Path(__file__).resolve().parents[1]
 CRAWL = REPO / "data" / "crawl" / "vn30"
 SESSIONS = REPO / "data" / "gold" / "sessions"
+# Per-labeller copies live one level down so evaluate_gold.py, which reads only
+# the top level, never counts the same claim twice.
+LABELER_COPIES = SESSIONS / "labelers"
+
+# Taxonomy terms that do not make a sentence environmental on their own:
+# "hệ sinh thái bán lẻ" and "sử dụng vốn" are business language, and short
+# English stems like "saf" match "safety".
+NOT_ON_TOPIC = {"hệ sinh thái", "ecosystem", "sử dụng vốn", "saf", "offset", "habitat"}
+EXTRA_ON_TOPIC = [
+    "nước thải", "tiêu thụ nước", "sử dụng nước", "khí thải", "rác thải", "năng lượng",
+    "điện năng", "iso 14001", "iso 14064", "nhựa",
+]
 
 ATTRS = ["metric", "value_unit", "period", "baseline", "scope"]
 ATTR_VALUES = {"present", "partial", "missing", "na"}
@@ -98,19 +119,87 @@ def blank_labels() -> dict:
     }
 
 
+def on_topic_terms() -> list[str]:
+    """Environmental subject terms: the specific claim types, never the generic bucket."""
+    tax = yaml.safe_load((REPO / "configs" / "taxonomy.yaml").read_text(encoding="utf-8"))
+    terms = set(EXTRA_ON_TOPIC)
+    for name, spec in tax["claim_types"].items():
+        if name in {"generic_sustainability", "esg_process_integration"}:
+            continue
+        terms.update(t.lower() for t in spec.get("vi", []) + spec.get("en", []))
+    return sorted(terms - NOT_ON_TOPIC)
+
+
+def is_on_topic(text: str, terms: list[str]) -> bool:
+    low = text.lower()
+    # Left word boundary only, so stems such as "recycl" still match.
+    return any(re.search(r"(?<!\w)" + re.escape(t), low) for t in terms)
+
+
+def _squash(text: str) -> str:
+    return " ".join(text.lower().split())
+
+
+def clean_candidates(claim: dict, claim_pairs: list[dict], evidence: dict) -> list[dict]:
+    """Drop evidence a labeller cannot use (ISSUES_REGISTER C5).
+
+    Evidence that contains the claim sentence is the claim, not support for it;
+    evidence published after the claim cannot have backed it when it was made.
+    Retriever order is kept, so retrieval metrics still score the retriever.
+    """
+    head = _squash(claim["text"])[:80]
+    year = claim.get("publication_year")
+    kept = []
+    for p in claim_pairs:
+        e = evidence.get(p["evidence_id"])
+        if not e:
+            continue
+        if head and head in _squash(e["text"]):
+            continue
+        if year and e.get("publication_year") and e["publication_year"] > year:
+            continue
+        kept.append(p)
+    return kept
+
+
+def already_sampled() -> set[str]:
+    seen: set[str] = set()
+    for path in list(SESSIONS.glob("*.jsonl")) + list(LABELER_COPIES.glob("*.jsonl")):
+        seen.update(r["claim_id"] for r in read_jsonl(path))
+    return seen
+
+
 def cmd_sample(args) -> None:
     claims, evidence, pairs = load_corpus()
+    splits = set(args.splits.split(","))
     pool = [
         c for c in claims.values()
-        if c["split"] in set(args.splits.split(","))
+        if c["split"] in splits
         and (c["has_number"] or not args.numeric_only)
         and c["candidate_id"] in pairs
     ]
-    pool.sort(key=lambda c: -c["informativeness"])
-    # Take the informative head, then spread across companies so one issuer
-    # (tra holds 30% of the queue) does not dominate a 10-claim session.
-    head = pool[: max(args.n * 8, 80)]
     rng = random.Random(args.seed)
+    if args.raw:
+        pool.sort(key=lambda c: -c["informativeness"])
+        # Take the informative head, then spread across companies so one issuer
+        # (tra holds 30% of the queue) does not dominate a 10-claim session.
+        head = pool[: max(args.n * 8, 80)]
+        candidates = {c["candidate_id"]: pairs[c["candidate_id"]] for c in head}
+    else:
+        terms = on_topic_terms()
+        seen = set() if args.allow_repeat else already_sampled()
+        head, candidates = [], {}
+        for c in pool:
+            if c["candidate_id"] in seen or not is_on_topic(c["text"], terms):
+                continue
+            kept = clean_candidates(c, pairs[c["candidate_id"]], evidence)
+            if len(kept) >= args.min_evidence:
+                head.append(c)
+                candidates[c["candidate_id"]] = kept
+        # Informativeness ranks by number density, which is what made the old
+        # queue off-topic; the on-topic draw is uniform within the pool.
+        head.sort(key=lambda c: c["candidate_id"])
+        print(f"on-topic pool: {len(head)} claims with >= {args.min_evidence} usable evidence")
     rng.shuffle(head)
     by_company = defaultdict(list)
     for c in head:
@@ -124,7 +213,7 @@ def cmd_sample(args) -> None:
     rows = []
     for i, c in enumerate(picked):
         ev_rows = []
-        for p in pairs[c["candidate_id"]][: args.k]:
+        for p in candidates[c["candidate_id"]][: args.k]:
             e = evidence.get(p["evidence_id"])
             if not e:
                 continue
@@ -153,6 +242,7 @@ def cmd_sample(args) -> None:
             "informativeness": c["informativeness"],
             "text": c["text"],
             "evidence_candidates": ev_rows,
+            "sampling": "raw" if args.raw else "on-topic-v2",
             "labels": blank_labels(),
         })
     out = SESSIONS / f"{date.today().isoformat()}_{args.name}.jsonl"
@@ -250,8 +340,18 @@ def main() -> None:
     s.add_argument("--k", type=int, default=5, help="evidence candidates per claim")
     s.add_argument("--name", required=True)
     s.add_argument("--seed", type=int, default=7)
-    s.add_argument("--splits", default="train,dev", help="comma list; keep test/future for hold-out")
+    # The verifier is rule-based, so labelling the held-out companies trains
+    # nothing; it is what makes `evaluate_gold.py --split test` possible at all.
+    # `review` rows have no reliable year, so the evidence-year filter cannot run.
+    s.add_argument("--splits", default="train,dev,test,future_holdout",
+                   help="comma list; the split is kept on every row")
     s.add_argument("--numeric-only", action="store_true")
+    s.add_argument("--min-evidence", type=int, default=3,
+                   help="usable evidence a claim needs to be drawn")
+    s.add_argument("--allow-repeat", action="store_true",
+                   help="allow claims that are already in an earlier session")
+    s.add_argument("--raw", action="store_true",
+                   help="old informativeness-ranked draw, no topic or evidence filter")
     s.set_defaults(func=cmd_sample)
 
     s = sub.add_parser("show")
