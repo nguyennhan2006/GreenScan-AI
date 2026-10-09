@@ -46,7 +46,7 @@ def test_every_claim_gets_a_priority_with_reasons(settings):
         assert {c["name"] for c in priority["components"]} == {
             "materiality", "obligation", "evidence_gap", "anomaly",
         }
-        assert priority["policy_version"] == "priority-v1"
+        assert priority["policy_version"] == "priority-v1.1"
 
 
 def test_a_quantified_emissions_claim_outranks_promotional_prose(settings):
@@ -182,3 +182,110 @@ def test_absence_of_support_never_scores_as_high_as_contradiction(settings):
         for status in (VerificationStatus.UNSUPPORTED, VerificationStatus.CONTRADICTED)
     }
     assert gaps[VerificationStatus.UNSUPPORTED] < gaps[VerificationStatus.CONTRADICTED]
+
+
+# --- disclosed-figure reading on real Hòa Phát lines (review 2026-10-05) -------
+#
+# On the HPG 2025 run 25 of 57 "disclosed figures" were not environmental rows:
+# folded, "cộng" (total) equals "công" (công ty, công suất, công nghiệp), "Tổng
+# công ty" is a corporation, a label reached back into the previous sentence,
+# "triệu" was dropped and a neighbouring column's "%" became the unit. Each line
+# below is copied from that run's raw text.
+
+def _figures(text: str):
+    import tempfile
+    from pathlib import Path
+
+    from quantum_gw.agents.figures import DisclosedFigureAgent
+    from quantum_gw.domain.models import EvidenceChunk
+    from quantum_gw.storage.audit import AuditLogger
+
+    chunk = EvidenceChunk(chunk_id="c1", doc_id="d1", source_name="hpg.pdf", text=text, page=57,
+                          role=DocumentRole.CLAIM_SOURCE, source_type=SourceType.INTERNAL)
+    agent = DisclosedFigureAgent(AuditLogger(Path(tempfile.mkdtemp()) / "a.jsonl"))
+    return agent.run([chunk])
+
+
+def test_a_corporation_is_not_a_total_row():
+    from quantum_gw.agents.figures import is_total_label
+
+    assert not is_total_label("Tổng công ty Gang thép")
+    assert not is_total_label("Công ty TNHH Tôn Hòa Phát")
+    assert not is_total_label("công suất thiết kế")
+    assert not is_total_label("cộng đồng")
+    assert is_total_label("Cộng")
+    assert is_total_label("TỔNG CỘNG")
+    assert is_total_label("Tổng phát thải khí nhà kính")
+    assert is_total_label("Tong cong")          # OCR without diacritics, unambiguous form
+    assert not is_total_label("cong suat")       # ... but a bare "cong" may be "công"
+
+
+def test_ownership_shares_and_headcount_ratios_are_not_disclosed_figures():
+    rows = (
+        "Quản trị nguồn nhân lực Tổng công ty Nông nghiệp 69,39% 30,61% Nhân quyền\n"
+        "Công ty TNHH Điện lạnh Hòa Phát 99,8001% 500 Khu công nghiệp Phố Nối A\n"
+        "65,47% 34,53% Phát triển cộng đồng Tổng cộng 89,19% 19,81% CƠ CẤU LAO ĐỘNG\n"
+    )
+    assert _figures(rows) == []
+
+
+def test_a_label_does_not_reach_back_into_the_previous_sentence():
+    line = "Hòa Phát coi quản trị tốt là điều kiện cần cho điều chỉnh carbon. GIỚI TÍNH QUỐC TỊCH: 100 %"
+    assert _figures(line) == [], "a headcount row is not an emissions figure"
+
+
+def test_country_is_not_water():
+    line = "Hòa Phát dẫn đầu cả nước về ống thép với 27,7% thị phần"
+    assert _figures(line) == []
+
+
+def test_a_multiplier_word_is_applied():
+    figures = _figures("Tổng lượng điện phát đạt 3,18 tỷ kWh trong năm 2024")
+    assert [(f.value, f.unit, f.metric) for f in figures] == [(3.18e9, "kwh", "energy")]
+
+
+def test_the_next_columns_percentage_is_not_the_unit():
+    text = "PHÁT THẢI THEO ĐƠN VỊ (tCO2e)\n1.631 0,01% Cộng 23.474.480 100% 39"
+    totals = [f for f in _figures(text) if f.is_total]
+    assert [(f.value, f.unit) for f in totals] == [(23474480.0, "tco2e")]
+
+
+# --- who is speaking (priority-v1.1, review 2026-10-05) -------------------------
+
+def test_the_entity_name_is_read_from_the_report():
+    from quantum_gw.agents.prioritizer import entity_names
+
+    text = (
+        "Tập đoàn Hòa Phát đã đầu tư lò điện. Năm 2025, Tập đoàn Hòa Phát giảm tiêu hao. "
+        "Công ty Cổ phần Hòa Phát cam kết minh bạch. Tập đoàn Hòa Phát công bố báo cáo."
+    )
+    assert "Hòa Phát" in entity_names([text])
+    assert entity_names([], declared=["Vinamilk"]) == ["Vinamilk"]
+
+
+def test_an_explanation_of_technology_ranks_below_the_entitys_own_statement(settings):
+    """The head of the HPG queue was textbook steelmaking, not Hòa Phát speaking."""
+    text = (
+        "Tập đoàn Hòa Phát đã triển khai giải pháp giảm phát thải khí nhà kính tại các nhà máy.\n"
+        "Ngược lại, EAF có mức phát thải thấp hơn, nhưng phụ thuộc vào nguồn thép phế.\n"
+    )
+    documents = [DocumentInput(name="r.txt", text=text, role=DocumentRole.CLAIM_SOURCE,
+                               source_type=SourceType.INTERNAL)]
+    result = OrchestratorAgent(settings).run(documents)
+    by_text = {p["text"][:20]: p for p in result.priorities if p["item_type"] == "claim"}
+    own, textbook = by_text["Tập đoàn Hòa Phát đã"], by_text["Ngược lại, EAF có mứ"]
+    assert own["priority_score"] > textbook["priority_score"]
+    materiality = next(c for c in textbook["components"] if c["name"] == "materiality")
+    assert "không nêu chủ thể" in materiality["reason"]
+    # moved down, not out: the verdict layer never sees this factor
+    assert {v.claim.text[:20] for v in result.verifications} >= set(by_text)
+
+
+def test_a_unit_with_a_digit_in_it_stays_whole():
+    figures = _figures("Cường độ phát thải CO2 trung bình (BF-BOF) 2,32 tấn CO2/tấn thép")
+    assert [(f.value, f.unit) for f in figures] == [(2.32, "tco2e")]
+
+
+def test_a_unit_alone_is_not_an_indicator_name():
+    line = "Phát thải của các công ty thành viên khác là 90.846 tCO2e, chiếm 0,39% tổng phát thải"
+    assert all(f.label != "tCO2e, chiếm" for f in _figures(line))

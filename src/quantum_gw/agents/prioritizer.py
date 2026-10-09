@@ -21,6 +21,9 @@ the part a claim-by-claim dump can never provide.
 
 from __future__ import annotations
 
+import re
+from collections import Counter
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -29,7 +32,82 @@ import yaml
 from quantum_gw.domain.enums import VerificationStatus
 from quantum_gw.domain.models import Claim, RiskComponent, VerificationResult
 from quantum_gw.storage.audit import AuditLogger
+from quantum_gw.utils.text import normalize_text
 from quantum_gw.verification.numeric_facts import facts_in
+
+# Who is speaking. A green claim is the reporting entity asserting something about
+# itself; these are the words a Vietnamese or English report uses for itself and
+# its units. Matched whole-word on the text's own orthography.
+_SELF_REFERENCE = (
+    "chúng tôi", "chúng ta", "tập đoàn", "công ty", "doanh nghiệp", "nhà máy",
+    "khu liên hợp", "tổng công ty", "đơn vị thành viên", "công ty con", "ban lãnh đạo",
+    "hội đồng quản trị", "ban điều hành", "ban giám đốc",
+    "we", "our", "the company", "the group",
+)
+# A sentence that leans on the one before it ("Qua đó, lượng CO2 … giảm tương
+# ứng") does not say on its own who did what.
+_ANAPHORIC_OPENING = re.compile(
+    r"^\s*(?:đây là|điều này|qua đó|nhờ đó|ngược lại|quan trọng hơn|biện pháp này"
+    r"|giải pháp này|việc này|quy trình này)(?!\w)"
+)
+# Merged columns: a run of parenthesised acronyms is a logo strip or a table
+# header read across, not prose ("VIỆT NAM (VSA) NAM (VCCI) (VAMI) (HUBA) …").
+_GARBLED_LAYOUT = re.compile(r"(?:\([A-ZĐ]{2,}\)\s*){3,}")
+# "Tập đoàn Hòa Phát", "Công ty Cổ phần Vinamilk": the capitalised words after
+# a legal-form prefix are the entity's own name.
+_ENTITY_PREFIX = re.compile(
+    r"(?:tập đoàn|tổng công ty|công ty cổ phần|công ty cp|công ty tnhh|công ty|ctcp)\s+",
+    re.IGNORECASE,
+)
+_LEGAL_FORM_WORDS = {"cổ", "phần", "cp", "tnhh", "mtv", "một", "thành", "viên"}
+
+# Reasons are read by a Vietnamese auditor and printed on the working paper:
+# no enum names, no English metric keys.
+_METRIC_VI = {
+    "emissions": "phát thải khí nhà kính",
+    "renewable_energy": "năng lượng tái tạo",
+    "energy": "năng lượng",
+    "water": "nước",
+    "waste": "chất thải",
+    "green_finance": "tài chính xanh",
+}
+_STATUS_VI = {
+    "SUPPORTED": "được ủng hộ",
+    "PARTIALLY_SUPPORTED": "ủng hộ một phần",
+    "UNSUPPORTED": "chưa được chứng minh trong kho đã kiểm",
+    "CONTRADICTED": "mâu thuẫn với nguồn",
+    "INSUFFICIENT_EVIDENCE": "chưa đủ bằng chứng",
+}
+
+
+def entity_names(texts: Iterable[str], declared: Iterable[str] = ()) -> list[str]:
+    """The reporting entity's own name: declared in metadata, else read from the text.
+
+    The most frequent capitalised name after "Tập đoàn"/"Công ty …" in the claim
+    source is taken as the entity ("Hòa Phát" on HPG 2025). Without it, "ESG Hòa
+    Phát tích hợp các mục tiêu …" reads as nobody's sentence.
+    """
+    names = [str(n).strip() for n in declared if str(n or "").strip()]
+    counts: Counter = Counter()
+    for text in texts:
+        for match in _ENTITY_PREFIX.finditer(text):
+            words: list[str] = []
+            for word in text[match.end(): match.end() + 60].split()[:5]:
+                word = word.strip(",.;:()\"“”")
+                if not words and word.lower() in _LEGAL_FORM_WORDS:
+                    continue  # "Công ty TNHH MTV …": the legal form is not the name
+                if not word or not word[0].isupper():
+                    break
+                words.append(word)
+                if len(words) == 3:
+                    break
+            if words:
+                counts[" ".join(words)] += 1
+    if counts:
+        name, seen = counts.most_common(1)[0]
+        if seen >= 3:
+            names.append(name)
+    return list(dict.fromkeys(names))  # one entry per name, declared first
 
 
 @dataclass
@@ -92,7 +170,12 @@ class PrioritizationAgent:
         legal_checks: list[dict] | None = None,
         figures: list | None = None,
         figure_checks: list | None = None,
+        entity: Iterable[str] = (),
     ) -> list[ReviewPriority]:
+        self._speakers = [
+            re.compile(rf"(?<!\w){re.escape(normalize_text(name).lower())}(?!\w)")
+            for name in (*_SELF_REFERENCE, *entity) if name
+        ]
         legal_by_claim = {item.get("claim_id"): item for item in (legal_checks or [])}
         scale = _magnitude_scale(
             (v.claim for v in verifications), figures or []
@@ -190,11 +273,11 @@ class PrioritizationAgent:
         if figure.metric:
             return self._component(
                 "obligation", policy["applicable_instrument"],
-                f"Nghĩa vụ: chỉ số `{figure.metric}` thuộc nhóm có nghĩa vụ công bố theo quy định hiện hành.",
+                f"Pháp lý: {_METRIC_VI.get(figure.metric, figure.metric)} thuộc nhóm chỉ tiêu phải công bố theo quy định hiện hành.",
             )
         return self._component(
             "obligation", policy["no_instrument"],
-            "Nghĩa vụ: chưa gắn được chỉ số này với một nghĩa vụ công bố cụ thể.",
+            "Pháp lý: chưa gắn được chỉ số này với một nghĩa vụ công bố cụ thể.",
         )
 
     def _figure_gap(self, checks: list) -> RiskComponent:
@@ -240,11 +323,38 @@ class PrioritizationAgent:
         if claim.is_vague and not claim.values:
             fraction *= policy["vague_unquantified_factor"]
             note = "; là ngôn từ quảng bá không kèm số liệu nên hạ bậc"
-        metric = claim.metric or "chưa xác định chỉ số"
+        factor, attribution_note = self._attribution(claim, policy)
+        fraction *= factor
+        note += attribution_note
+        metric = _METRIC_VI.get(claim.metric, claim.metric) if claim.metric else "chưa xác định chỉ số"
         return self._component(
             "materiality",
             fraction,
-            f"Trọng yếu: chỉ số {metric} (hệ số {family_weight:.2f}); {magnitude_note}; {prominence_note}{note}.",
+            f"Trọng yếu: nhóm {metric} (trọng số {family_weight:.2f}); {magnitude_note}; {prominence_note}{note}.",
+        )
+
+    def _attribution(self, claim: Claim, policy: dict) -> tuple[float, str]:
+        """Is this the entity asserting something about itself?
+
+        Moves a sentence down the queue, never out of the list and never to a
+        different verdict: whether it is a claim at all is the reviewer's call,
+        and P5 measures that on gold. A stated figure is checkable whoever says
+        it, so a sentence with one is never moved.
+        """
+        text = normalize_text(claim.text)
+        if _GARBLED_LAYOUT.search(text):
+            return policy["garbled_factor"], (
+                "; chữ có dấu hiệu dính cột hoặc lỗi trình bày nên hạ bậc — cần đọc trang gốc"
+            )
+        if any(fact.unit for fact in _claim_facts(claim)):
+            return 1.0, ""
+        lowered = text.lower()
+        speaks = any(pattern.search(lowered) for pattern in getattr(self, "_speakers", ()))
+        if speaks and not _ANAPHORIC_OPENING.search(lowered):
+            return 1.0, ""
+        return policy["unattributed_factor"], (
+            "; không nêu chủ thể là doanh nghiệp và không có số liệu "
+            "(câu giải thích hoặc nối ý câu trước) nên hạ bậc"
         )
 
     def _obligation(self, legal_check: dict | None) -> RiskComponent:
@@ -252,14 +362,14 @@ class PrioritizationAgent:
         if not legal_check:
             return self._component(
                 "obligation", policy["no_instrument"],
-                "Nghĩa vụ: chưa xác định được văn bản nào áp dụng cho loại tuyên bố này.",
+                "Pháp lý: chưa xác định được văn bản nào áp dụng cho loại tuyên bố này.",
             )
         finding = legal_check.get("legal_finding")
         sources = legal_check.get("applicable_sources") or []
         if finding and finding != "INSUFFICIENT_EVIDENCE":
             return self._component(
                 "obligation", policy["finding_present"],
-                f"Nghĩa vụ: quy tắc pháp lý đã chạy và cho kết quả `{finding}`.",
+                f"Pháp lý: quy tắc kiểm tra nghĩa vụ đã chạy và cho kết quả `{finding}`.",
             )
         if sources:
             names = ", ".join(
@@ -267,11 +377,14 @@ class PrioritizationAgent:
             )
             return self._component(
                 "obligation", policy["applicable_instrument"],
-                f"Nghĩa vụ: có văn bản đang hiệu lực điều chỉnh ({names or 'đã xác định'}).",
+                # Relevance by topic and date, not yet an obligation: no rule has
+                # tested this claim's subject (invariant 7, relevance ≠ applicability).
+                f"Pháp lý: có văn bản đang hiệu lực cùng chủ đề ({names or 'đã xác định'}); "
+                "chưa có quy tắc xác định nghĩa vụ cụ thể.",
             )
         return self._component(
             "obligation", policy["no_instrument"],
-            "Nghĩa vụ: không có văn bản nào trong kho điều chỉnh nội dung này.",
+            "Pháp lý: không có văn bản nào trong kho điều chỉnh nội dung này.",
         )
 
     def _evidence_gap(self, verification: VerificationResult) -> RiskComponent:
@@ -290,10 +403,10 @@ class PrioritizationAgent:
             else policy["max_without_contradiction"]
         )
         fraction = min(ceiling, base + policy["per_missing_attribute"] * len(gaps))
-        note = f"thiếu {len(gaps)} thuộc tính" if gaps else "đủ năm thuộc tính"
+        note = f"thiếu {len(gaps)}/5 thuộc tính" if gaps else "đủ năm thuộc tính"
         return self._component(
             "evidence_gap", fraction,
-            f"Khoảng trống bằng chứng: kết luận {status.value}, {note}.",
+            f"Khoảng trống bằng chứng: kết quả “{_STATUS_VI.get(status.value, status.value)}”, {note}.",
         )
 
     def _anomaly(self) -> RiskComponent:
@@ -326,15 +439,15 @@ class PrioritizationAgent:
         rest = [p for p in priorities if not p.in_queue]
         if not rest:
             return (
-                f"Toàn bộ {len(priorities)} tuyên bố đều nằm trong hàng đợi soát của lượt này "
+                f"Toàn bộ {len(priorities)} mục (tuyên bố và số liệu công bố) đều nằm trong hàng đợi soát của lượt này "
                 f"(chính sách `{self.version}`)."
             )
         cut = min((p.priority_score for p in queued), default=0.0)
         top = max((p.priority_score for p in rest), default=0.0)
         return (
-            f"Lượt sàng lọc này đưa {len(queued)}/{len(priorities)} tuyên bố vào hàng đợi soát, "
+            f"Lượt sàng lọc này đưa {len(queued)}/{len(priorities)} mục (tuyên bố và số liệu công bố) vào hàng đợi soát, "
             f"theo chính sách `{self.version}` (ngưỡng chú ý {policy['attention_threshold']}, "
-            f"tối đa {policy['max_items']} mục). {len(rest)} tuyên bố còn lại **không được soát trong lượt này** "
+            f"tối đa {policy['max_items']} mục). {len(rest)} mục còn lại **không được soát trong lượt này** "
             f"vì điểm ưu tiên dưới mức cắt ({top:.1f} so với {cut:.1f} của mục thấp nhất trong hàng đợi): "
             f"chúng có độ trọng yếu thấp hơn, không gắn với một nghĩa vụ công bố cụ thể, hoặc đã có bằng chứng "
             f"đối chiếu. Danh sách đầy đủ kèm điểm thành phần nằm trong `result.json`; người soát xét có thể "

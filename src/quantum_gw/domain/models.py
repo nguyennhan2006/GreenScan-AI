@@ -279,6 +279,11 @@ class AnalysisResult(BaseModel):
     # What this pass deliberately did not examine, and why -- the scope paragraph a
     # working paper needs and a claim-by-claim dump cannot give.
     scope_note: str = ""
+    # The reporting entity as the run understood it: declared in the documents'
+    # metadata or read from the claim source (prioritizer.entity_names). The
+    # working paper names it; the queue uses it to tell the entity's own
+    # statements from explanations of technology.
+    entity: list[str] = Field(default_factory=list)
     # One record per claim from the legal layer: which instrument governs it,
     # which clause, which conditions held, which are unknown, and the scope
     # limits its sources carry. Kept as the legal layer's own dict rather than a
