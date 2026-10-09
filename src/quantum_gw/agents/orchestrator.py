@@ -4,10 +4,11 @@ import hashlib
 import json
 import uuid
 from collections import Counter
+from collections.abc import Callable
 from pathlib import Path
 
 from quantum_gw.data.export import write_run_layers
-from quantum_gw.domain.enums import Severity
+from quantum_gw.domain.enums import DocumentRole, Severity
 from quantum_gw.domain.models import (
     AnalysisResult,
     AnalysisSummary,
@@ -23,7 +24,7 @@ from .corpus import profile_corpus
 from .figures import DisclosedFigureAgent, corroborate, cross_foot
 from .intake import DocumentIntakeAgent
 from .legal_check import LegalCheckAgent
-from .prioritizer import PrioritizationAgent
+from .prioritizer import PrioritizationAgent, entity_names
 from .reporter import ReportingAgent
 from .retriever import EvidenceRetrievalAgent
 from .reviewer import ReviewerAgent
@@ -48,7 +49,18 @@ class OrchestratorAgent:
     def __init__(self, settings: AppSettings | None = None):
         self.settings = settings or load_settings()
 
-    def run(self, documents: list[DocumentInput]) -> AnalysisResult:
+    def run(
+        self,
+        documents: list[DocumentInput],
+        progress: Callable[[str, int, int, str], None] | None = None,
+    ) -> AnalysisResult:
+        """Run the plan. `progress(step, index, total, detail)` hears each step."""
+
+        def step(name: str, detail: str = "") -> None:
+            if progress is not None:
+                progress(name, self.PLAN.index(name) + 1, len(self.PLAN), detail)
+
+        step("validate_inputs", f"{len(documents)} tài liệu")
         if not documents:
             raise ValueError("At least one document is required")
         run_id = uuid.uuid4().hex[:16]
@@ -57,6 +69,8 @@ class OrchestratorAgent:
         audit = AuditLogger(output_dir / "audit.jsonl")
         audit.write("run_started", {"run_id": run_id, "plan": self.PLAN})
 
+        verifier = VerificationAgent(self.settings.verification, audit)
+        judge = verifier.llm_judge
         manifest = RunManifest(
             run_id=run_id,
             pipeline_version=self.settings.version,
@@ -65,22 +79,24 @@ class OrchestratorAgent:
             plan=self.PLAN,
             corpus_version=self.settings.corpus_version,
             rule_pack_version=self.settings.legal.rule_pack_file,
-            prompt_version=(
-                "" if self.settings.verification.llm_stance == "off" else self.settings.version
-            ),
+            # The prompt version and the models that may answer it, e.g.
+            # "stance-v1@fpt:GLM-5.2"; empty when no model is consulted.
+            prompt_version=getattr(judge, "version", "") if judge is not None else "",
         )
         (output_dir / "manifest.json").write_text(
             json.dumps(manifest.model_dump(mode="json"), ensure_ascii=False, indent=2, default=str),
             encoding="utf-8",
         )
 
+        step("parse_and_ocr_documents", "PDF lớn có thể mất 1–2 phút")
         chunks = DocumentIntakeAgent(self.settings.intake, audit).run(documents)
         corpus = profile_corpus(documents, chunks)
         audit.write("corpus_profiled", corpus.to_json())
+        step("extract_green_claims", f"{len(chunks)} đoạn văn")
         extractor = ClaimExtractionAgent(self.settings.claim_extraction, audit)
         claims = extractor.run(chunks)
+        step("build_hybrid_retrieval_index", f"{len(claims)} tuyên bố")
         retrieval_agent = EvidenceRetrievalAgent(chunks, self.settings, audit)
-        verifier = VerificationAgent(self.settings.verification, audit)
         verifier.corpus = corpus
         sectors = {
             str(d.metadata.get("sector")).strip()
@@ -98,11 +114,25 @@ class OrchestratorAgent:
             self.settings.scoring["rubric_file"], audit, review=self.settings.review
         )
 
+        work = []
+        for index, claim in enumerate(claims, start=1):
+            step("retrieve_evidence_per_claim", f"{index}/{len(claims)} tuyên bố")
+            work.append((claim, retrieval_agent.run(claim)))
+        # With the stance model on, every escalated pair is asked in one
+        # concurrent batch here; the loop below then reads answers from cache.
+        step(
+            "verify_claim_evidence_pairs",
+            "hỏi mô hình cho các cặp luật chưa quyết được" if judge is not None else "luật và phép tính",
+        )
+        prefetch = verifier.prefetch_llm(work)
+        if prefetch is not None:
+            audit.write("llm_stance_prefetch", prefetch)
+
         verifications = []
         risks = []
         legal_checks = []
-        for claim in claims:
-            evidence = retrieval_agent.run(claim)
+        for index, (claim, evidence) in enumerate(work, start=1):
+            step("check_applicable_law", f"{index}/{len(work)} tuyên bố: kiểm chứng, pháp lý, rủi ro")
             verification = verifier.run(claim, evidence)
             verifications.append(verification)
             legal_check = legal_agent.run(verification)
@@ -110,6 +140,7 @@ class OrchestratorAgent:
                 legal_checks.append(legal_check)
             risks.append(scorer.run(verification))
 
+        step("score_greenwashing_risk", "số liệu công bố và hàng đợi soát")
         figures = DisclosedFigureAgent(audit).run(chunks)
         figure_checks = cross_foot(figures) + corroborate(figures)
         audit.write("figure_checks_completed", {
@@ -118,8 +149,19 @@ class OrchestratorAgent:
         })
 
         prioritizer = PrioritizationAgent(self.settings.priority_policy, audit)
-        priorities = prioritizer.run(verifications, legal_checks, figures, figure_checks)
+        entity = entity_names(
+            (c.text for c in chunks if c.role == DocumentRole.CLAIM_SOURCE),
+            declared=[
+                d.metadata.get(key) for d in documents
+                for key in ("company", "company_name", "issuer") if d.metadata.get(key)
+            ],
+        )
+        audit.write("entity_resolved", {"names": entity})
+        priorities = prioritizer.run(
+            verifications, legal_checks, figures, figure_checks, entity=entity
+        )
 
+        step("apply_quality_gates")
         gates = ReviewerAgent(audit).run(
             chunks, verifications, risks, manifest, legal_checks, legal_agent.unavailable_reason
         )
@@ -143,11 +185,13 @@ class OrchestratorAgent:
             disclosed_figures=figures,
             figure_checks=figure_checks,
             scope_note=prioritizer.scope_note(priorities),
+            entity=entity,
             corpus=corpus.to_json(),
             quality_gates=gates,
             summary=summary,
             output_directory=str(output_dir),
         )
+        step("write_evidence_pack")
         ReportingAgent().write(result)
         layer_counts = write_run_layers(
             output_dir / "contract",

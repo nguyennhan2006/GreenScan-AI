@@ -222,17 +222,10 @@ class ClaimExtractionAgent:
                 if reason:
                     self._reject(rejected, chunk, index, sentence, reason)
                     continue
-                # A bare year is a label, not a figure: "năm 2025" must not turn the
-                # chairman's letter into a quantified claim (ISSUES N3).
-                numbers = [(v, u) for v, u in parse_numbers(sentence) if u is not None or not 1900 <= v <= 2100]
-                vague_matched = [term for term in self.vague_terms if term in normalized]
-                # A figure does not make promotional language honest, but it does
-                # make the claim checkable, which is what is_vague is about.
-                is_vague = bool(vague_matched) and not numbers
+                numbers, vague_matched, is_vague, future = self._signals(sentence, normalized)
                 if is_vague and not self.settings.include_vague_claims:
                     self._reject(rejected, chunk, index, sentence, "vague_without_figure")
                     continue
-                future = any(term in normalized for term in self.future_terms)
                 # The generic bucket matches on words like "ESG" or "bền vững"
                 # alone. Such a sentence is a claim only when it commits to
                 # something: a figure, a promotional adjective or a future pledge.
@@ -247,34 +240,7 @@ class ClaimExtractionAgent:
                 if canonical in seen:
                     continue
                 seen.add(canonical)
-                years = YEAR_RE.findall(sentence)
-                direction = None
-                if any(term in normalized for term in self.reduction_terms):
-                    direction = "decrease"
-                elif any(term in normalized for term in self.increase_terms):
-                    direction = "increase"
-                claim = Claim(
-                    claim_id=stable_id(chunk.chunk_id, sentence),
-                    text=sentence,
-                    claim_type=claim_type,
-                    source_chunk_id=chunk.chunk_id,
-                    source_doc_id=chunk.doc_id,
-                    source_name=chunk.source_name,
-                    source_page=chunk.page,
-                    metric=self._first_bucket(self.metrics, normalized),
-                    direction=direction,
-                    values=[value for value, _ in numbers],
-                    units=[unit for _, unit in numbers if unit],
-                    period=years[0] if years else None,
-                    baseline=years[-1] if len(years) > 1 else None,
-                    scope=self._first_bucket(self.scope_buckets, normalized),
-                    is_future_commitment=future,
-                    is_vague=is_vague,
-                    vague_terms_matched=vague_matched,
-                    language=self._language(normalized),
-                    confidence=confidence,
-                )
-                claims.append(claim)
+                claims.append(self._claim(chunk, sentence, normalized, claim_type, confidence))
         self.audit.write(
             "claims_extracted",
             {
@@ -285,6 +251,59 @@ class ClaimExtractionAgent:
             },
         )
         return claims
+
+    def _signals(self, sentence: str, normalized: str):
+        # A bare year is a label, not a figure: "năm 2025" must not turn the
+        # chairman's letter into a quantified claim (ISSUES N3).
+        numbers = [(v, u) for v, u in parse_numbers(sentence) if u is not None or not 1900 <= v <= 2100]
+        vague_matched = [term for term in self.vague_terms if term in normalized]
+        # A figure does not make promotional language honest, but it does
+        # make the claim checkable, which is what is_vague is about.
+        is_vague = bool(vague_matched) and not numbers
+        future = any(term in normalized for term in self.future_terms)
+        return numbers, vague_matched, is_vague, future
+
+    def _claim(self, chunk, sentence: str, normalized: str, claim_type: str, confidence: float) -> Claim:
+        numbers, vague_matched, is_vague, future = self._signals(sentence, normalized)
+        years = YEAR_RE.findall(sentence)
+        direction = None
+        if any(term in normalized for term in self.reduction_terms):
+            direction = "decrease"
+        elif any(term in normalized for term in self.increase_terms):
+            direction = "increase"
+        return Claim(
+            claim_id=stable_id(chunk.chunk_id, sentence),
+            text=sentence,
+            claim_type=claim_type,
+            source_chunk_id=chunk.chunk_id,
+            source_doc_id=chunk.doc_id,
+            source_name=chunk.source_name,
+            source_page=chunk.page,
+            metric=self._first_bucket(self.metrics, normalized),
+            direction=direction,
+            values=[value for value, _ in numbers],
+            units=[unit for _, unit in numbers if unit],
+            period=years[0] if years else None,
+            baseline=years[-1] if len(years) > 1 else None,
+            scope=self._first_bucket(self.scope_buckets, normalized),
+            is_future_commitment=future,
+            is_vague=is_vague,
+            vague_terms_matched=vague_matched,
+            language=self._language(normalized),
+            confidence=confidence,
+        )
+
+    def describe(self, text: str, chunk: EvidenceChunk) -> Claim:
+        """The Claim this extractor would build for `text`, with no gate applied.
+
+        For measurement: a human already decided the sentence is a claim, so the
+        verifier must be shown it with exactly the attributes (metric, figures,
+        period, scope) production would give it, even where the gates here
+        would have dropped it.
+        """
+        normalized = normalize_for_match(text)
+        claim_type = self._claim_type(normalized) or "generic_sustainability"
+        return self._claim(chunk, text, normalized, claim_type, confidence=0.5)
 
     def _reject(self, tally: dict[str, int], chunk, index: int, sentence: str, reason: str) -> None:
         tally[reason] = tally.get(reason, 0) + 1

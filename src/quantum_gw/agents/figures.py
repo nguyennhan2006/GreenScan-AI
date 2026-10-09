@@ -40,6 +40,7 @@ from quantum_gw.utils.text import (
     YEAR_RE,
     emission_scopes,
     normalize_for_match,
+    normalize_text,
     parse_quantities,
     stable_id,
 )
@@ -47,12 +48,61 @@ from quantum_gw.utils.text import (
 # Row labels that mark a component or a total of a disclosure table. Scope rows
 # and total rows are what make the cross-foot possible.
 #
-# Written WITHOUT diacritics on purpose: both are matched against
-# `normalize_for_match`, which folds them away. Accented patterns here silently
-# matched nothing and cost the run its "Cộng 23.474.480" row.
+# The scope label is matched on folded text (`normalize_for_match`): "phạm vi"
+# has no accent-fold twin that could be mistaken for it.
 _SCOPE_LABEL = r"(?:pham vi|scope)\s*[123](?:\s*(?:va|and|\+|,|-)\s*[123])*"
-_TOTAL_LABEL = r"(?:tong cong|tong so|tong|cong|total)"
-_TOTAL_RE = re.compile(_TOTAL_LABEL, re.IGNORECASE)
+
+# The total label is matched on the label's OWN orthography (lower-cased, accents
+# kept). Folded, "cộng" (total) and "công" (công suất, công ty, công nghiệp) are
+# the same string "cong", and "tổng" opens "Tổng công ty" (a corporation): on the
+# Hòa Phát 2025 run 25 of 57 "disclosed figures" were subsidiaries' ownership
+# shares, gender ratios and plant capacities read as table totals -- the
+# "thiếu"/"thiêu" collision of 17/09 again, in a different module.
+_TOTAL_RE = re.compile(
+    r"^(?:tổng\s+cộng|tổng\s+số|grand\s+total|total|cộng(?!\s+đồng)"
+    r"|tổng(?!\s+(?:công\s+ty|cục|giám\s+đốc|quan|hợp|thể|kết|thống|biên\s+tập)))(?!\w)"
+)
+# A label typed without any diacritics (OCR output, an English report) can only
+# be read safely in its unambiguous forms: a bare "cong"/"tong" is "công"/"tổng"
+# as often as it is "cộng".
+_TOTAL_ASCII_RE = re.compile(r"^(?:tong\s+cong|tong\s+so|grand\s+total|total)(?!\w)")
+
+# "nước" is water and also country: "cả nước", "trong và ngoài nước", "nhà nước".
+# The country senses are removed before a label is read for its metric.
+_NOT_WATER_RE = re.compile(
+    r"(?:\b(?:cả|trong|ngoài|nhà|đất|các|mọi|nhiều|xuất\s+khẩu\s+ra)\s+nước\b|\bnước\s+(?:ngoài|bạn|ta|sở\s+tại)\b)"
+)
+
+# Units that name an environmental quantity by themselves. "tấn" and "%" do not:
+# a tonne may be steel, a percentage may be a gender ratio, so a row in those
+# units must also name what it measures.
+_ENVIRONMENTAL_UNITS = {"tco2e", "kgco2e", "gj", "mj", "tj", "kwh", "mwh", "gwh", "m3"}
+
+# A multiplier word between a figure and its unit: "5,6 triệu tấn".
+_MULTIPLIER_RE = re.compile(r"^\s*(nghin|ngan|trieu|ty|thousand|million|billion)(?!\w)")
+_MULTIPLIER_VALUE = {
+    "nghin": 1e3, "ngan": 1e3, "thousand": 1e3,
+    "trieu": 1e6, "million": 1e6,
+    "ty": 1e9, "billion": 1e9,
+}
+
+# Where the next number starts. A digit inside a unit ("CO2", "m3") is not one:
+# "2,32 tấn CO2/tấn thép" keeps its unit.
+_NEXT_NUMBER_RE = re.compile(r"(?<![^\W\d_])\d")
+
+# The end of the sentence before a row label. A label is the tail of the text
+# before its figure, and that tail must not reach back into the previous
+# sentence: "…điều chỉnh carbon. GIỚI TÍNH QUỐC TỊCH 100 %" is a headcount row,
+# not an emissions row.
+_SENTENCE_END_RE = re.compile(r"[.!?;]\s+(?=\S)")
+
+
+def is_total_label(label: str) -> bool:
+    """True for a table's total row ("Tổng cộng", "Cộng", "Tổng", "Total")."""
+    text = normalize_text(label).lower().strip(" .·-–—|:")
+    if _TOTAL_RE.match(text):
+        return True
+    return text == normalize_for_match(text) and bool(_TOTAL_ASCII_RE.match(text))
 
 # A label sits immediately before its figure on the same line of the table.
 # Keeping the label short is what stops a whole sentence being read as one.
@@ -157,10 +207,24 @@ class DisclosedFigureAgent:
                 value, unit, _ = quantities[0]
                 if 1900 <= value <= 2100 and unit is None:
                     continue  # a year standing next to a label is not a measurement
-                tail = line[match.end("value"): match.end("value") + 16]
-                unit = unit or _unit_in(tail) or page_unit
+                # Only what stands between this figure and the next number belongs
+                # to it: in "Cộng 23.474.480 100%" the per cent is the next
+                # column's share, not the unit of 23 million.
+                tail = line[match.end("value"): match.end("value") + 24]
+                head = _NEXT_NUMBER_RE.split(tail, maxsplit=1)[0]
+                value *= _multiplier_in(head)  # "5,6 triệu tấn" is 5,600,000 t
+                unit = unit or _unit_in(head) or _hinted_unit(label) or page_unit
                 if unit is None:
                     continue  # a number with no unit anywhere is not a disclosed figure
+                metric = (
+                    self._metric_of(label)
+                    or self._metric_of(chunk.text[:400])
+                    or _UNIT_METRIC.get(unit)
+                )
+                if metric is None and unit not in _ENVIRONMENTAL_UNITS:
+                    # A tonnage or a percentage that names no environmental
+                    # indicator: plant capacity, an ownership share, a headcount.
+                    continue
                 figures.append(
                     DisclosedFigure(
                         figure_id=stable_id(chunk.chunk_id, label, str(value), unit),
@@ -169,12 +233,8 @@ class DisclosedFigureAgent:
                         unit=unit,
                         period=_period_in(line) or page_period,
                         scopes=sorted(emission_scopes(label)),
-                        is_total=bool(_TOTAL_RE.search(normalize_for_match(label))),
-                        metric=(
-                            self._metric_of(label)
-                            or self._metric_of(chunk.text[:400])
-                            or _UNIT_METRIC.get(unit)
-                        ),
+                        is_total=is_total_label(label),
+                        metric=metric,
                         source_doc_id=chunk.doc_id,
                         source_chunk_id=chunk.chunk_id,
                         source_name=chunk.source_name,
@@ -192,8 +252,13 @@ class DisclosedFigureAgent:
         last few words; the longest tail that reads as an indicator wins, so
         "Tổng lượng chất thải nguy hại" is preferred over "nguy hại".
         """
+        raw = _SENTENCE_END_RE.split(raw)[-1]
         words = raw.strip(" .·-–—|:").split()
         for size in range(min(7, len(words)), 0, -1):
+            if size < len(words) and _NOT_WATER_RE.match(
+                normalize_text(f"{words[-size - 1]} {words[-size]}").lower()
+            ):
+                continue  # the label would start inside "cả nước" and read as water
             candidate = " ".join(words[-size:]).strip(" .·-–—|:")
             if candidate and self._is_indicator_label(candidate):
                 return candidate
@@ -204,12 +269,13 @@ class DisclosedFigureAgent:
         folded = normalize_for_match(label)
         if len(folded.split()) > 9:
             return False
-        if re.search(_SCOPE_LABEL, folded) or _TOTAL_RE.fullmatch(folded) or _TOTAL_RE.match(folded):
+        if re.search(_SCOPE_LABEL, folded) or is_total_label(label):
             return True
-        return self._metric_of(label) is not None
+        # A unit is not an indicator name: "tCO2e, chiếm 0,39 %" names nothing.
+        return self._metric_of(_UNIT_WORD_RE.sub(" ", label)) is not None
 
     def _metric_of(self, text: str) -> str | None:
-        folded = normalize_for_match(text)
+        folded = normalize_for_match(_NOT_WATER_RE.sub(" ", normalize_text(text).lower()))
         for metric, terms in self.metric_terms.items():
             if any(term in folded for term in terms):
                 return metric
@@ -344,6 +410,20 @@ def _page_period(chunks: list[EvidenceChunk]) -> str | None:
     for chunk in chunks:
         years.extend(YEAR_RE.findall(chunk.text))
     return max(set(years), key=years.count) if years else None
+
+
+def _hinted_unit(label: str) -> str | None:
+    """A unit declared inside the row label itself: "Tỷ trọng điện năng (%)"."""
+    for match in _UNIT_HINT_RE.finditer(label):
+        unit = _unit_in(match.group("unit") or match.group("unit2") or "")
+        if unit:
+            return unit
+    return None
+
+
+def _multiplier_in(head: str) -> float:
+    match = _MULTIPLIER_RE.match(normalize_for_match(head))
+    return _MULTIPLIER_VALUE[match.group(1)] if match else 1.0
 
 
 def _unit_in(text: str) -> str | None:

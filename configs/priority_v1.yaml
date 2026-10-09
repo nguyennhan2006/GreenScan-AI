@@ -10,7 +10,7 @@
 # will not trust. When the gold set exists, the ORDER this produces is what
 # gets measured (RESEARCH_PROGRAM RQ8), not the score itself.
 
-version: priority-v1
+version: priority-v1.1
 
 # Weights sum to 100. A claim's priority is the weighted sum of four factors,
 # each normalised to 0..1.
@@ -42,6 +42,17 @@ materiality:
   # Promotional prose with no metric and no figure is a presentation question,
   # handled by a different procedure; it does not lead a substantive work list.
   vague_unquantified_factor: 0.70
+  # Who is speaking (v1.1, 2026-10-05). A sentence that names neither the
+  # reporting entity nor one of its units, and states no figure, is not the
+  # entity asserting something about itself: on HPG 2025 these were
+  # explanations of steelmaking ("EAF có mức phát thải thấp hơn …"), section
+  # bullets and sentences leaning on the previous one ("Qua đó …"), and they
+  # filled the head of the queue. Moved down, never removed: whether a sentence
+  # is a claim stays the reviewer's call (ISSUES P5, measured on gold).
+  unattributed_factor: 0.75
+  # Merged columns read across the page ("(VSA) (VCCI) (VAMI) …"): the text
+  # is not reliable enough to lead a work list; the source page is.
+  garbled_factor: 0.50
   # Which metric families carry the most consequence if misstated, for this
   # product and this jurisdiction. Emissions sit at the top because they are
   # what the Vietnamese disclosure regime measures and what investors price.
