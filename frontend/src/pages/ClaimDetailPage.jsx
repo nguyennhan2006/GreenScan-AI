@@ -65,6 +65,7 @@ function highlightVague(text, terms) {
 export default function ClaimDetailPage({
   runId, rows, row, index, legal, gates, suggestion,
   reviewStates = {}, reviewHistory = {}, reviewer, onReviewerChange, onDecide, reviewBusy, onRecheck, loading, initialTab,
+  order = null,
 }) {
   const [tab, setTab] = useState('attributes')
   const [viewing, setViewing] = useState(null)
@@ -77,9 +78,12 @@ export default function ClaimDetailPage({
     else window.scrollTo({ top: 0 })
   }, [row?.id, initialTab])
 
-  const pos = useMemo(() => rows.findIndex((r) => r.id === row?.id), [rows, row?.id])
-  const prev = pos > 0 ? rows[pos - 1] : null
-  const next = pos >= 0 && pos < rows.length - 1 ? rows[pos + 1] : null
+  // Opened from the queue, previous/next walk the queue; otherwise the document.
+  const sequence = useMemo(() => (order?.length ? order : rows.map((r) => r.id)), [order, rows])
+  const suffix = order?.length ? '?from=queue' : ''
+  const pos = useMemo(() => sequence.indexOf(row?.id), [sequence, row?.id])
+  const prev = pos > 0 ? { id: sequence[pos - 1] } : null
+  const next = pos >= 0 && pos < sequence.length - 1 ? { id: sequence[pos + 1] } : null
 
   if (!row) {
     return <p className="rounded-xl border border-slate-200 bg-white p-6 text-sm text-slate-500">Không tìm thấy tuyên bố này trong phiên.</p>
@@ -98,12 +102,12 @@ export default function ClaimDetailPage({
       {viewing && <SourceViewer evidence={viewing} onClose={() => setViewing(null)} />}
       <div className="mx-auto max-w-6xl space-y-4">
         <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
-          <Link to={`/runs/${runId}/claims`} className="hover:underline">← Danh sách tuyên bố</Link>
+          <Link to={order?.length ? `/runs/${runId}` : `/runs/${runId}/claims`} className="hover:underline">{order?.length ? '← Hàng đợi soát' : '← Danh sách tuyên bố'}</Link>
           <span>·</span>
-          <span>Tuyên bố #{(index ?? pos) + 1} / {rows.length}</span>
+          <span>{order?.length ? `Mục ${pos + 1} / ${sequence.length} theo thứ tự ưu tiên` : `Tuyên bố #${(index ?? pos) + 1} / ${rows.length}`}</span>
           <span className="ml-auto flex gap-1">
-            <button type="button" disabled={!prev} onClick={() => navigate(`/runs/${runId}/claims/${prev.id}`)} className="rounded border border-slate-300 px-2 py-0.5 disabled:opacity-40">‹ trước</button>
-            <button type="button" disabled={!next} onClick={() => navigate(`/runs/${runId}/claims/${next.id}`)} className="rounded border border-slate-300 px-2 py-0.5 disabled:opacity-40">sau ›</button>
+            <button type="button" disabled={!prev} onClick={() => navigate(`/runs/${runId}/claims/${prev.id}${suffix}`)} className="rounded border border-slate-300 px-2 py-0.5 disabled:opacity-40">‹ trước</button>
+            <button type="button" disabled={!next} onClick={() => navigate(`/runs/${runId}/claims/${next.id}${suffix}`)} className="rounded border border-slate-300 px-2 py-0.5 disabled:opacity-40">sau ›</button>
           </span>
         </div>
 

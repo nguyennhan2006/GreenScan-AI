@@ -1,29 +1,22 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
-  analyzeFiles, analyzeText, checkHealth, exportGold, gatewayHealth, getRun, listReviews, setRunLabel, submitReview,
+  analyzeText, checkHealth, getRun, listReviews, runtimeInfo, setRunLabel, submitReview,
 } from './api.js'
 import { navigate, useHashRoute } from './lib/router.jsx'
 import { buildRows, summarise } from './lib/claims.js'
+import { buildQueue } from './lib/queue.js'
 import Shell from './components/Shell.jsx'
-import Overview from './components/Overview.jsx'
 import StartPage from './pages/StartPage.jsx'
 import NewAnalysisPage from './pages/NewAnalysisPage.jsx'
 import ClaimsPage from './pages/ClaimsPage.jsx'
 import ClaimDetailPage from './pages/ClaimDetailPage.jsx'
-import ReviewQueuePage from './pages/ReviewQueuePage.jsx'
+import QueuePage from './pages/QueuePage.jsx'
 import ExportPage from './pages/ExportPage.jsx'
 import HistoryPage from './pages/HistoryPage.jsx'
 import LegalLibraryPage from './pages/LegalLibraryPage.jsx'
 import SettingsPage from './pages/SettingsPage.jsx'
 
 const REVIEWER_KEY = 'greenscan.reviewer'
-
-/** Providers with a key/URL/model set. Liveness needs ?live=true, which costs a ping. */
-function configuredProviders(gateway) {
-  const providers = gateway?.providers
-  if (!providers || typeof providers !== 'object') return []
-  return Object.entries(providers).filter(([, v]) => v?.configured).map(([name, v]) => (v?.model ? `${name} (${v.model})` : name))
-}
 
 export default function App() {
   const route = useHashRoute()
@@ -35,16 +28,15 @@ export default function App() {
   const [runLoading, setRunLoading] = useState(false)
   const [error, setError] = useState(null)
   const [apiStatus, setApiStatus] = useState('checking')
-  const [gateway, setGateway] = useState(null)
+  const [runtime, setRuntime] = useState(null)
   const [reviewStates, setReviewStates] = useState({})
   const [reviewHistory, setReviewHistory] = useState({})
   const [reviewDecisions, setReviewDecisions] = useState([])
   const [reviewBusy, setReviewBusy] = useState(false)
-  const [goldStats, setGoldStats] = useState(null)
 
   useEffect(() => {
     checkHealth().then(() => setApiStatus('online')).catch(() => setApiStatus('offline'))
-    gatewayHealth().then(setGateway).catch(() => setGateway(null))
+    runtimeInfo().then(setRuntime).catch(() => setRuntime(null))
   }, [])
 
   const [seg0, seg1, seg2, seg3] = route.segments
@@ -53,8 +45,13 @@ export default function App() {
 
   // A run named in the URL that is not in memory is loaded from disk — this
   // is what makes a reload, a shared link and the saved-run demo work.
+  //
+  // `runLoading` must not be a dependency: setting it re-ran the effect, whose
+  // cleanup marked the request in flight as stale and whose new run returned
+  // early because loading was already true — so a run opened from History, a
+  // reload or a shared link stayed on "Đang mở phiên…" forever (found 06/10).
   useEffect(() => {
-    if (!routeRunId || routeRunId === runId || runLoading) return
+    if (!routeRunId || routeRunId === runId) return undefined
     let alive = true
     setRunLoading(true)
     setError(null)
@@ -63,12 +60,15 @@ export default function App() {
         if (!alive) return
         setAnalysis(data)
         setLastDocuments(null)
-        setLabel('')
+        setLabel(data.label || '')
       })
       .catch((exc) => alive && setError(exc.message || 'Không mở được phiên này.'))
       .finally(() => alive && setRunLoading(false))
-    return () => { alive = false }
-  }, [routeRunId, runId, runLoading])
+    return () => {
+      alive = false
+      setRunLoading(false)
+    }
+  }, [routeRunId, runId])
 
   const refreshReviews = useCallback(async (id) => {
     if (!id) return
@@ -82,7 +82,6 @@ export default function App() {
     } catch {
       /* the trail is additive; a failed refresh must not block reviewing */
     }
-    exportGold().then((g) => setGoldStats(g.stats)).catch(() => {})
   }, [])
 
   useEffect(() => { refreshReviews(runId) }, [runId, refreshReviews])
@@ -91,6 +90,10 @@ export default function App() {
   const summary = useMemo(() => summarise(rows, analysis?.result), [rows, analysis])
   const suggestionsById = useMemo(() => new Map((analysis?.suggestions || []).map((s) => [s.claim_id, s])), [analysis])
   const legalById = useMemo(() => new Map((analysis?.result?.legal_checks || []).map((l) => [l.claim_id, l])), [analysis])
+  const queue = useMemo(() => buildQueue(analysis?.result, rows), [analysis, rows])
+  // Claim ids in the order the queue presents them: "next" on a claim opened
+  // from the queue moves down the queue, not down the document.
+  const queueOrder = useMemo(() => queue.items.filter((i) => i.item_type === 'claim').map((i) => i.item_id), [queue])
 
   const saveReviewer = (name, remember = true) => {
     setReviewer(name)
@@ -114,13 +117,12 @@ export default function App() {
     }
   }
 
-  const handleAnalyzeText = (documents, label) => {
-    setLastDocuments(documents)
-    return run(() => analyzeText(documents), label)
-  }
-  const handleAnalyzeFiles = (files, roles, sourceTypes, label) => {
+  // A background job finished: open its queue. The run is read back from
+  // disk by the route effect above, exactly like a reload or a shared link.
+  const handleDone = (id, label) => {
     setLastDocuments(null)
-    return run(() => analyzeFiles(files, roles, sourceTypes), label)
+    setLabel(label || '')
+    navigate(`/runs/${id}`)
   }
 
   const handleRecheck = (claim, editedText) => {
@@ -174,10 +176,8 @@ export default function App() {
     return null
   }
 
-  const providers = configuredProviders(gateway)
-  const modelLabel = providers.length ? `Mô hình: ${providers.join(', ')}` : 'Chạy bằng heuristic'
-  const modelState = providers.length ? 'ok' : 'idle'
-  const badges = { review: summary.needsConfirmation.length }
+  const openInQueue = queue.queued.filter((i) => i.item_type !== 'claim' || reviewStates[i.item_id] !== 'FINALIZED').length
+  const badges = { queue: openInQueue }
 
   let active = seg0
   let title = ''
@@ -194,31 +194,27 @@ export default function App() {
 
   if (seg0 === 'new') {
     active = 'new'
-    title = 'Phân tích mới'
-    subtitle = 'Tải báo cáo hoặc dán tuyên bố → cấu hình → chạy'
-    body = (
-      <NewAnalysisPage
-        onAnalyzeText={handleAnalyzeText}
-        onAnalyzeFiles={handleAnalyzeFiles}
-        loading={loading}
-        error={error}
-        gatewayInfo={providers.length ? providers.join(', ') : 'heuristic (không LLM)'}
-      />
-    )
+    title = 'Tải tài liệu'
+    subtitle = 'Chọn báo cáo cần kiểm và tài liệu đối chiếu, rồi chạy'
+    body = <NewAnalysisPage onDone={handleDone} runtime={runtime} />
   } else if (seg0 === 'runs' && !seg1) {
     active = 'runs'
     title = 'Lịch sử phân tích'
     subtitle = 'Mở lại phiên đã lưu — không chạy lại pipeline'
     body = <HistoryPage currentRunId={runId} onLabelChanged={(id, l) => id === runId && setLabel(l)} />
-  } else if (seg0 === 'runs' && seg1 && !seg2) {
-    active = 'overview'
-    title = 'Tổng quan'
-    subtitle = runLabel || `Phiên ${seg1}`
+  } else if (seg0 === 'runs' && seg1 && (!seg2 || seg2 === 'review')) {
+    if (seg2 === 'review') navigate(`/runs/${seg1}`, { replace: true })  // old link to the review page
+    active = 'queue'
+    title = 'Soát theo hàng đợi'
+    subtitle = 'Mở các mục theo thứ tự; xác nhận hoặc sửa kết quả của AI'
     body = needRun(() => (
-      <Overview
+      <QueuePage
+        runId={runId}
+        runLabel={runLabel}
+        result={analysis.result}
+        rows={rows}
         summary={summary}
-        lastRunAt={analysis?.result?.manifest?.created_at ? new Date(analysis.result.manifest.created_at) : null}
-        onOpenQueue={(q, arg) => navigate(`/runs/${runId}/claims?filter=${q}${arg ? `&arg=${encodeURIComponent(arg)}` : ''}`)}
+        reviewStates={reviewStates}
       />
     ))
   } else if (seg0 === 'runs' && seg2 === 'claims' && !seg3) {
@@ -237,7 +233,8 @@ export default function App() {
       />
     ))
   } else if (seg0 === 'runs' && seg2 === 'claims' && seg3) {
-    active = 'claims'
+    const fromQueue = route.query.get('from') === 'queue'
+    active = fromQueue ? 'queue' : 'claims'
     title = 'Chi tiết tuyên bố'
     subtitle = runLabel || seg1
     body = needRun(() => {
@@ -261,20 +258,14 @@ export default function App() {
           onRecheck={handleRecheck}
           loading={loading}
           initialTab={route.query.get('tab') || null}
+          order={fromQueue ? queueOrder : null}
         />
       )
     })
-  } else if (seg0 === 'runs' && seg2 === 'review') {
-    active = 'review'
-    title = 'Xét duyệt'
-    subtitle = 'Người xem xét chốt; AI chỉ đề xuất'
-    body = needRun(() => (
-      <ReviewQueuePage runId={runId} rows={rows} reviewStates={reviewStates} reviewHistory={reviewHistory} goldStats={goldStats} />
-    ))
   } else if (seg0 === 'runs' && seg2 === 'export') {
     active = 'export'
-    title = 'Xuất hồ sơ'
-    subtitle = 'Gói bằng chứng của phiên hiện tại'
+    title = 'Giấy làm việc'
+    subtitle = 'In hoặc lưu PDF kèm quyết định của người soát xét'
     body = needRun(() => (
       <ExportPage runId={runId} runLabel={runLabel} analysis={analysis.result} summary={summary} reviewStates={reviewStates} reviewDecisions={reviewDecisions} />
     ))
@@ -300,8 +291,7 @@ export default function App() {
       runLabel={runLabel}
       reviewer={reviewer}
       apiStatus={apiStatus}
-      modelLabel={modelLabel}
-      modelState={modelState}
+      runtime={runtime}
       title={title}
       subtitle={subtitle}
       badges={badges}

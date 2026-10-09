@@ -1,10 +1,14 @@
 from __future__ import annotations
 
 import os
+import shutil
+from pathlib import Path
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, Response
+from fastapi.responses import FileResponse, HTMLResponse, Response
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from quantum_gw import __version__
@@ -12,6 +16,7 @@ from quantum_gw.agents.orchestrator import OrchestratorAgent
 from quantum_gw.agents.suggester import SuggestionAgent
 from quantum_gw.domain.enums import DocumentRole, SourceType
 from quantum_gw.domain.models import AnalysisResult, ClaimSuggestion, DocumentInput
+from quantum_gw.jobs import JobRunner
 from quantum_gw.providers import ModelGateway
 from quantum_gw.settings import load_settings
 from quantum_gw.storage.documents import (
@@ -24,6 +29,32 @@ from quantum_gw.storage.reviews import ReviewError, ReviewStore
 from quantum_gw.storage.runs import RunStore
 
 app = FastAPI(title="AI Quantum Greenwashing Agent", version=__version__)
+
+
+class _ApiPrefix:
+    """Serve every route under `/api` as well as at the root.
+
+    The web UI calls `/api/v1/...` (the Vite dev server strips the prefix on its
+    way to port 8000). When this process serves the built UI itself there is no
+    proxy in between, so the prefix is removed here and one port does both.
+    """
+
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] in {"http", "websocket"}:
+            path = scope.get("path", "")
+            if path == "/api" or path.startswith("/api/"):
+                scope = dict(scope)
+                scope["path"] = path[4:] or "/"
+                raw = scope.get("raw_path")
+                if raw:
+                    scope["raw_path"] = raw[4:] or b"/"
+        await self.app(scope, receive, send)
+
+
+app.add_middleware(_ApiPrefix)
 
 cors_origins = [
     origin.strip()
@@ -53,6 +84,10 @@ class InlineDocument(BaseModel):
 
 class AnalyzeTextRequest(BaseModel):
     documents: list[InlineDocument]
+    # Optional, for a background job: the session label shown in History and
+    # the reporting entity's name (read into every document's metadata).
+    label: str = ""
+    company: str = ""
 
 
 class AnalyzeResponse(BaseModel):
@@ -61,6 +96,9 @@ class AnalyzeResponse(BaseModel):
     run_id: str
     result: AnalysisResult
     suggestions: list[ClaimSuggestion]
+    # The session name a reviewer gave the run (History, sidebar); empty when
+    # the run was never named or has only just been produced.
+    label: str = ""
 
 
 def _analyze(documents: list[DocumentInput]) -> AnalyzeResponse:
@@ -70,6 +108,51 @@ def _analyze(documents: list[DocumentInput]) -> AnalyzeResponse:
 
 def _run_store() -> RunStore:
     return RunStore(load_settings().runs_dir)
+
+
+# One worker: the pipeline is CPU-bound and two runs side by side on a laptop
+# finish later than the same two in a row (QUANTUM_JOB_WORKERS to change).
+JOBS = JobRunner(workers=int(os.environ.get("QUANTUM_JOB_WORKERS", "1")))
+
+
+def _with_company(documents: list[DocumentInput], company: str) -> list[DocumentInput]:
+    name = (company or "").strip()
+    if not name:
+        return documents
+    return [d.model_copy(update={"metadata": {**d.metadata, "company": name}}) for d in documents]
+
+
+def _job(documents: list[DocumentInput], label: str):
+    def work(progress) -> str:
+        result = OrchestratorAgent(load_settings()).run(documents, progress=progress)
+        if label.strip():
+            _run_store().set_label(result.run_id, label.strip())
+        return result.run_id
+
+    return work
+
+
+async def _stored_uploads(files: list[UploadFile], roles: str, source_types: str) -> list[DocumentInput]:
+    role_values = [item.strip() for item in roles.split(",") if item.strip()]
+    type_values = [item.strip() for item in source_types.split(",") if item.strip()]
+    if len(role_values) not in {1, len(files)} or len(type_values) not in {1, len(files)}:
+        raise HTTPException(status_code=400, detail="roles/source_types must contain one value or one per file")
+    # Persist to the document store rather than a temp dir: a citation must
+    # still resolve after the request ends, and the parser derives doc_id
+    # from the file path, so a stable path is what makes the id reproducible.
+    store = DocumentStore()
+    documents = []
+    for index, upload in enumerate(files):
+        record = store.put(await upload.read(), upload.filename or f"upload-{index}.txt")
+        documents.append(
+            DocumentInput(
+                path=str(record.path),
+                name=upload.filename,
+                role=DocumentRole(role_values[index] if len(role_values) > 1 else role_values[0]),
+                source_type=SourceType(type_values[index] if len(type_values) > 1 else type_values[0]),
+            )
+        )
+    return documents
 
 
 @app.get("/health")
@@ -103,29 +186,126 @@ async def analyze_files(
     roles: str = Form("claim_source"),
     source_types: str = Form("internal"),
 ) -> AnalyzeResponse:
-    role_values = [item.strip() for item in roles.split(",") if item.strip()]
-    type_values = [item.strip() for item in source_types.split(",") if item.strip()]
-    if len(role_values) not in {1, len(files)} or len(type_values) not in {1, len(files)}:
-        raise HTTPException(status_code=400, detail="roles/source_types must contain one value or one per file")
     try:
-        # Persist to the document store rather than a temp dir: a citation must
-        # still resolve after the request ends, and the parser derives doc_id
-        # from the file path, so a stable path is what makes the id reproducible.
-        store = DocumentStore()
-        documents = []
-        for index, upload in enumerate(files):
-            record = store.put(await upload.read(), upload.filename or f"upload-{index}.txt")
-            documents.append(
-                DocumentInput(
-                    path=str(record.path),
-                    name=upload.filename,
-                    role=DocumentRole(role_values[index] if len(role_values) > 1 else role_values[0]),
-                    source_type=SourceType(type_values[index] if len(type_values) > 1 else type_values[0]),
-                )
-            )
-        return _analyze(documents)
+        documents = await _stored_uploads(files, roles, source_types)
+        # The pipeline is CPU-bound and synchronous: run on the event loop it
+        # froze every other request, /health included, for the whole analysis.
+        return await run_in_threadpool(_analyze, documents)
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+# ---------- background analyses with progress ----------
+
+
+@app.post("/v1/jobs/analyze/files", status_code=202)
+async def start_analysis_files(
+    files: list[UploadFile] = File(...),
+    roles: str = Form("claim_source"),
+    source_types: str = Form("internal"),
+    label: str = Form(""),
+    company: str = Form(""),
+) -> dict:
+    """Start an analysis and return at once; poll `GET /v1/jobs/{job_id}`."""
+    try:
+        documents = _with_company(await _stored_uploads(files, roles, source_types), company)
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    job = JOBS.submit(_job(documents, label), label=label)
+    return JOBS.status(job.job_id) or {}
+
+
+@app.post("/v1/jobs/analyze/text", status_code=202)
+def start_analysis_text(request: AnalyzeTextRequest) -> dict:
+    try:
+        documents = [DocumentInput(**item.model_dump()) for item in request.documents]
+    except Exception as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    job = JOBS.submit(_job(_with_company(documents, request.company), request.label), label=request.label)
+    return JOBS.status(job.job_id) or {}
+
+
+@app.get("/v1/jobs/{job_id}")
+def job_status(job_id: str) -> dict:
+    status = JOBS.status(job_id)
+    if status is None:
+        raise HTTPException(status_code=404, detail="Job not found (jobs are kept in memory until restart)")
+    return status
+
+
+# ---------- what this installation actually runs ----------
+
+
+_RETRIEVAL_DETAIL = {
+    "lite": "BM25 + n-gram ký tự, hợp nhất RRF (chạy trên CPU, không tải mô hình).",
+    "fpt": "BM25 + vector {fpt} qua FPT AI Marketplace.",
+    "local": "BM25 + vector {model} chạy trên máy ({device}).",
+    "http": "BM25 + vector qua dịch vụ nhúng nội bộ.",
+}
+
+
+@app.get("/v1/runtime")
+def runtime() -> dict:
+    """Which engine serves which task right now, in words a reviewer can read.
+
+    The header used to list every provider holding a key, e.g. "fpt
+    (Qwen3.6-27B)", whether or not anything called it, and a fresh checkout
+    listed a local Qwen3-8B that did not exist. This reports what a run would do.
+    """
+    settings = load_settings()
+    stance_on = settings.verification.llm_stance == "on_ambiguous"
+    route = ModelGateway().route("qualitative_stance") if stance_on else []
+    embedding = settings.embedding
+    retrieval = _RETRIEVAL_DETAIL.get(embedding.provider, embedding.provider).format(
+        fpt=embedding.fpt_model, model=embedding.model, device=embedding.device
+    )
+    if settings.reranker.provider != "none":
+        retrieval += f" Sắp xếp lại bằng cross-encoder ({settings.reranker.provider})."
+    if stance_on and route:
+        stance = (
+            f"Mô hình {route[0].split(':', 1)[-1]} đọc những cặp tuyên bố–bằng chứng mà luật và "
+            "phép tính không quyết được; mọi kết luận của nó chuyển người xác nhận."
+        )
+    elif stance_on:
+        stance = "Đã bật nhưng chưa cấu hình nhà cung cấp mô hình nào: các cặp này giữ kết quả của luật."
+    else:
+        stance = "Tắt: các cặp luật chưa quyết được dừng ở “khớp một phần” hoặc “chưa đủ bằng chứng”."
+    tasks = [
+        {"task": "claim_extraction", "label": "Trích tuyên bố", "engine": "rules",
+         "detail": "Luật tất định trên câu và dòng bảng (không dùng mô hình)."},
+        {"task": "retrieval", "label": "Tìm bằng chứng", "engine": embedding.provider, "detail": retrieval},
+        {"task": "quantitative_verification", "label": "So sánh số liệu", "engine": "deterministic",
+         "detail": "Phép tính bằng mã, không bao giờ giao cho mô hình ngôn ngữ."},
+        {"task": "qualitative_stance", "label": "Đọc các cặp khó",
+         "engine": "llm" if stance_on and route else "rules", "route": route, "detail": stance},
+    ]
+    cloud = any(not r.startswith("local:") for r in route) or "fpt" in {
+        embedding.provider, settings.reranker.provider
+    }
+    hardware: dict = {"cpu_count": os.cpu_count()}
+    try:
+        import psutil
+
+        hardware["ram_gb"] = round(psutil.virtual_memory().total / 1e9, 1)
+    except Exception:  # noqa: BLE001 - optional dependency
+        pass
+    return {
+        "profile": os.environ.get("QUANTUM_PROFILE", "") or "custom",
+        "mode": "cloud" if cloud else "offline",
+        "label": "Có dùng AI đám mây cho phần khó" if cloud else "Ngoại tuyến — không gửi tài liệu ra ngoài",
+        "sends_documents_out": cloud,
+        "tasks": tasks,
+        "ocr": {
+            "enabled": settings.intake.ocr_enabled,
+            "available": shutil.which(settings.intake.tesseract_command) is not None,
+            "languages": settings.intake.ocr_languages,
+        },
+        "hardware": hardware,
+    }
 
 
 @app.get("/v1/documents/{doc_id}")
@@ -255,7 +435,10 @@ def get_run(run_id: str) -> AnalyzeResponse:
         result = _run_store().load(run_id)
     except KeyError as exc:
         raise HTTPException(status_code=404, detail="Run not found") from exc
-    return AnalyzeResponse(run_id=result.run_id, result=result, suggestions=SuggestionAgent().run(result))
+    return AnalyzeResponse(
+        run_id=result.run_id, result=result, suggestions=SuggestionAgent().run(result),
+        label=_run_store().label_of(run_id),
+    )
 
 
 class RunLabelRequest(BaseModel):
@@ -293,6 +476,20 @@ def export_run(run_id: str, format: str = "json"):
         media_type=media_type,
         headers={"Content-Disposition": f'attachment; filename="greenscan-{run_id}-{name}"'},
     )
+
+
+@app.get("/v1/runs/{run_id}/workpaper", response_class=HTMLResponse)
+def workpaper(run_id: str, print: bool = False) -> HTMLResponse:  # noqa: A002 - query name
+    """The working paper in Vietnamese, with the review trail; print it to PDF."""
+    from quantum_gw.workpaper import render_workpaper
+
+    store = _run_store()
+    try:
+        result = store.load(run_id)
+    except KeyError as exc:
+        raise HTTPException(status_code=404, detail="Run not found") from exc
+    decisions = [r for r in ReviewStore().all() if r.get("run_id") == run_id]
+    return HTMLResponse(render_workpaper(result, decisions, store.label_of(run_id), auto_print=print))
 
 
 # ---------- legal corpus ----------
@@ -341,3 +538,42 @@ def legal_corpus() -> dict:
         "check_mode": settings.legal.check_mode,
         "documents": documents,
     }
+
+
+# ---------- the built web UI, on the same port ----------
+#
+# `npm run build` writes frontend/dist; when it is there, http://localhost:8000
+# is the whole product and nobody has to run Node or a second terminal. The UI
+# routes with `#/...`, so serving `/` and the static assets is all it needs.
+
+
+def ui_dir() -> Path | None:
+    """Where the built web UI is, if it has been built."""
+    candidates = [
+        os.environ.get("QUANTUM_UI_DIR", ""),
+        "frontend/dist",
+        str(Path(__file__).resolve().parents[2] / "frontend" / "dist"),
+    ]
+    for candidate in candidates:
+        if candidate and (Path(candidate) / "index.html").is_file():
+            return Path(candidate)
+    return None
+
+
+_UI = ui_dir()
+if _UI is not None:
+    if (_UI / "assets").is_dir():
+        app.mount("/assets", StaticFiles(directory=_UI / "assets"), name="ui-assets")
+
+    @app.get("/", include_in_schema=False)
+    def ui_index() -> HTMLResponse:
+        # no-cache: a rebuilt UI must replace the old one on the next reload
+        return HTMLResponse((_UI / "index.html").read_text(encoding="utf-8"),
+                            headers={"Cache-Control": "no-cache"})
+
+    @app.get("/{asset_name}.svg", include_in_schema=False)
+    def ui_icon(asset_name: str):
+        path = _UI / f"{asset_name}.svg"
+        if not path.is_file() or path.parent != _UI:
+            raise HTTPException(status_code=404, detail="Not found")
+        return FileResponse(path, media_type="image/svg+xml")

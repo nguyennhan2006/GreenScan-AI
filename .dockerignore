@@ -3,5 +3,22 @@
 .quantum
 __pycache__
 .pytest_cache
+.ruff_cache
 build
 dist
+.env
+
+# The image needs the code, the configs and the small reference data the
+# pipeline reads at run time (sample, golden, legal clauses, real cases).
+# The crawl corpus (4 GB) and the legal-case pack (1.4 GB) stay outside.
+data/crawl
+data/legal_cases
+docs
+outside_resource
+benchmark
+tests
+
+# Built inside the image for Linux; host builds (Windows) must not leak in.
+frontend/node_modules
+frontend/dist
+frontend/.ssr-out

@@ -9,6 +9,9 @@
 /**
  * The five mandatory attributes — the design-system primitive.
  *
+ * `assertion` names the audit assertion each one tests (ISA 315 vocabulary), so an
+ * auditor reads the checklist in terms they already use.
+ *
  * Each maps to scorer components (risk-rubric-v2). `components` lists every
  * component that must be satisfied; the attribute is only "present" when all
  * of them are, so Evidence/Methodology cannot pass on retrieval alone while
@@ -17,40 +20,40 @@
 export const ATTRIBUTES = [
   {
     key: 'specific_metric',
-    label: 'Specific metric',
-    labelVi: 'Chỉ số cụ thể',
+    label: 'Chỉ số cụ thể',
+    assertion: 'phân loại · chính xác',
     components: ['specificity', 'quantitative_evidence'],
     hint: 'Một chỉ số xác định kèm giá trị và đơn vị, không phải mô tả chung.',
     fix: 'Nêu rõ chỉ số, con số và đơn vị đo.',
   },
   {
     key: 'baseline',
-    label: 'Baseline',
-    labelVi: 'Năm gốc',
+    label: 'Năm gốc',
+    assertion: 'chính xác (so sánh)',
     components: ['baseline'],
     hint: 'Mốc so sánh cho mọi tuyên bố tăng/giảm.',
     fix: 'Bổ sung năm gốc: “giảm 30% so với 2019”.',
   },
   {
     key: 'period',
-    label: 'Period',
-    labelVi: 'Kỳ báo cáo',
+    label: 'Kỳ báo cáo',
+    assertion: 'đúng kỳ',
     components: ['period'],
     hint: 'Số liệu thuộc kỳ nào.',
     fix: 'Ghi rõ năm hoặc kỳ báo cáo của số liệu.',
   },
   {
     key: 'scope_boundary',
-    label: 'Scope / Boundary',
-    labelVi: 'Phạm vi áp dụng',
+    label: 'Phạm vi / ranh giới',
+    assertion: 'đầy đủ',
     components: ['scope_boundary'],
     hint: 'Một nhà máy, công ty mẹ hay toàn tập đoàn; Scope 1/2/3.',
     fix: 'Nêu phạm vi pháp nhân/cơ sở, hoặc phạm vi phát thải.',
   },
   {
     key: 'evidence_methodology',
-    label: 'Evidence / Methodology',
-    labelVi: 'Bằng chứng & phương pháp',
+    label: 'Bằng chứng & phương pháp',
+    assertion: 'căn cứ kiểm chứng',
     components: ['evidence_support', 'independent_assurance'],
     hint: 'Có nguồn đối chiếu và phương pháp tính kiểm chứng được.',
     fix: 'Dẫn bảng số liệu, phương pháp tính hoặc assurance statement.',
@@ -64,10 +67,10 @@ export const PENALTIES = [
 ]
 
 export const RELATIONS = {
-  SUPPORTS: { label: 'Supports', labelVi: 'Ủng hộ', className: 'bg-emerald-100 text-emerald-800 border-emerald-300' },
-  CONTRADICTS: { label: 'Contradicts', labelVi: 'Mâu thuẫn', className: 'bg-red-100 text-red-800 border-red-300' },
-  PARTIAL: { label: 'Partial', labelVi: 'Một phần', className: 'bg-amber-100 text-amber-800 border-amber-300' },
-  CONTEXT: { label: 'Context', labelVi: 'Ngữ cảnh', className: 'bg-slate-100 text-slate-700 border-slate-300' },
+  SUPPORTS: { label: 'Ủng hộ', labelVi: 'Ủng hộ', className: 'bg-emerald-100 text-emerald-800 border-emerald-300' },
+  CONTRADICTS: { label: 'Mâu thuẫn', labelVi: 'Mâu thuẫn', className: 'bg-red-100 text-red-800 border-red-300' },
+  PARTIAL: { label: 'Một phần', labelVi: 'Một phần', className: 'bg-amber-100 text-amber-800 border-amber-300' },
+  CONTEXT: { label: 'Ngữ cảnh', labelVi: 'Ngữ cảnh', className: 'bg-slate-100 text-slate-700 border-slate-300' },
 }
 
 /** Abstain is a normal workflow outcome, not a failure. */
@@ -189,7 +192,7 @@ export function summarise(rows, analysis) {
 
   const missingByAttribute = ATTRIBUTES.map((a) => {
     const claims = rows.filter((r) => r.missing.some((m) => m.key === a.key))
-    return { key: a.key, label: a.label, labelVi: a.labelVi, fix: a.fix, claims, count: claims.length }
+    return { key: a.key, label: a.label, assertion: a.assertion, fix: a.fix, claims, count: claims.length }
   }).sort((x, y) => y.count - x.count)
 
   const documents = [...new Set(rows.map((r) => r.claim.source_name))].map((name) => {

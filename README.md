@@ -1,5 +1,22 @@
 # AI Quantum Greenwashing Agent
 
+## Bắt đầu nhanh (GreenScan AI)
+
+**Windows:** nhấp đúp `GreenScan.bat`. Lần đầu tự cài (cần Python 3.11+ và Node.js 20+, mất vài phút), sau đó trình duyệt mở `http://localhost:8000`.
+**macOS / Linux:** `sh start.sh`. **Docker:** `docker compose up --build` rồi mở `http://localhost:8000` (image đa tầng có cả giao diện — viết 06/10, chưa build thử).
+
+Quy trình trên giao diện: **① Tải tài liệu** (báo cáo cần kiểm + tài liệu đối chiếu) → **② Soát theo hàng đợi** (các mục nên mở trước, kèm lý do) → **③ Giấy làm việc** (tiếng Việt, in hoặc lưu PDF).
+
+| Chế độ (`QUANTUM_PROFILE` trong `.env`) | Cần gì | Tài liệu rời máy? |
+| --- | --- | --- |
+| `offline` (mặc định) | mọi laptop, 8–16 GB RAM; báo cáo ~260 trang chạy ~2 phút | Không |
+| `cloud` | thêm khoá FPT AI Marketplace; mô hình chỉ đọc các cặp luật không quyết được | Có — chỉ dùng cho tài liệu công khai |
+| `gpu` | máy chủ có GPU chạy vLLM | Không |
+
+Chi tiết: [docs/04-data-ai/MODEL_ROUTING_AND_HARDWARE.md](docs/04-data-ai/MODEL_ROUTING_AND_HARDWARE.md) · Kho tri thức: [docs/08-knowledge/](docs/08-knowledge/README.md) · Trạng thái dự án: [docs/00-project/AUDIT_2026-10-06.md](docs/00-project/AUDIT_2026-10-06.md)
+
+---
+
 A production-oriented **Version 1 baseline** for analysing environmental and ESG claims in Vietnamese financial documents. The repository is designed to be pushed directly to GitHub, run locally without a paid LLM, and improved module-by-module as better OCR, retrieval, reranking, models and legal rules become available.
 
 > The system estimates **greenwashing risk**. It does not make a legal finding and does not replace an auditor, lawyer, regulator or domain reviewer.
