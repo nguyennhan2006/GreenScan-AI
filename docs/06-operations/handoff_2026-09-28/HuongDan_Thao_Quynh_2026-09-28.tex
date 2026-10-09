@@ -1,0 +1,650 @@
+% GreenScan AI — Hướng dẫn công việc cho Thảo và Quỳnh (28/09/2026)
+% Biên dịch: xelatex HuongDan_Thao_Quynh_2026-09-28.tex  (chạy 2 lần để có mục lục)
+% Dữ liệu đi kèm: python tools/make_handoff_packs.py build  → Goi_Quynh/, Goi_Thao/
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[top=2.1cm,bottom=2.2cm,left=2cm,right=2cm,headheight=14pt]{geometry}
+\usepackage{fontspec}
+\setmainfont{segoeui.ttf}[Path=C:/Windows/Fonts/, BoldFont=segoeuib.ttf,
+  ItalicFont=segoeuii.ttf, BoldItalicFont=segoeuiz.ttf]
+\newfontfamily\semib{seguisb.ttf}[Path=C:/Windows/Fonts/]
+\setmonofont{consola.ttf}[Path=C:/Windows/Fonts/, BoldFont=consolab.ttf, Scale=0.88]
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx,array,colortbl,multirow,xltabular}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,fit,backgrounds}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{pifont}
+\usepackage{fontawesome5}
+\usepackage{float}
+\usepackage{caption}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\urlstyle{tt}
+\makeatletter
+\g@addto@macro\UrlBreaks{\do\_\do\-}
+\makeatother
+
+\renewcommand{\contentsname}{Mục lục}
+\renewcommand{\tablename}{Bảng}
+\renewcommand{\figurename}{Hình}
+
+% ---- màu (khớp với file Excel: xanh = tiêu đề, vàng = ô cần điền)
+\definecolor{gsgreen}{HTML}{1B7F5A}
+\definecolor{gsdark}{HTML}{0F4D36}
+\definecolor{gsgray}{HTML}{5B6770}
+\definecolor{gslight}{HTML}{EEF5F1}
+\definecolor{gsamber}{HTML}{B7791F}
+\definecolor{gsamberlight}{HTML}{FBF1DF}
+\definecolor{gsred}{HTML}{B3261E}
+\definecolor{gsredlight}{HTML}{FDE2D8}
+\definecolor{todo}{HTML}{FFF4CC}
+\definecolor{okfill}{HTML}{E3F4EA}
+\definecolor{rule}{HTML}{C9D3CD}
+
+\titleformat{\section}{\semib\Large\color{gsdark}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\semib\large\color{gsgreen}}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\bfseries\normalsize}{}{0em}{}
+\titlespacing*{\section}{0pt}{16pt}{6pt}
+\titlespacing*{\subsection}{0pt}{12pt}{4pt}
+\titlespacing*{\subsubsection}{0pt}{8pt}{2pt}
+\setlist{nosep,leftmargin=1.5em,topsep=3pt}
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.25}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\captionsetup{font=small,labelfont=bf,skip=4pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{gsgray}GreenScan AI · Gói việc cho Thảo và Quỳnh}
+\fancyhead[R]{\small\color{gsgray}28/09/2026}
+\fancyfoot[C]{\small\color{gsgray}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{rule}\leaders\hrule height \headrulewidth\hfill}}
+
+% ---- hộp
+\newtcolorbox{note}[1][]{enhanced,breakable,colback=gslight,colframe=gsgreen,
+  boxrule=0pt,leftrule=3pt,arc=0pt,left=8pt,right=8pt,top=5pt,bottom=5pt,
+  fonttitle=\bfseries\color{gsdark},coltitle=gsdark,colbacktitle=gslight,
+  title={#1},attach title to upper={\ }}
+\newtcolorbox{warn}[1][]{enhanced,breakable,colback=gsredlight,colframe=gsred,
+  boxrule=0pt,leftrule=3pt,arc=0pt,left=8pt,right=8pt,top=5pt,bottom=5pt,
+  fonttitle=\bfseries,coltitle=gsred,title={#1},attach title to upper={\ }}
+\newtcolorbox{amber}[1][]{enhanced,breakable,colback=gsamberlight,colframe=gsamber,
+  boxrule=0pt,leftrule=3pt,arc=0pt,left=8pt,right=8pt,top=5pt,bottom=5pt,
+  fonttitle=\bfseries,coltitle=gsamber,title={#1},attach title to upper={\ }}
+\newtcolorbox{example}[1][]{enhanced,breakable,colback=white,colframe=rule,
+  boxrule=0.6pt,arc=2pt,left=8pt,right=8pt,top=6pt,bottom=6pt,
+  fonttitle=\bfseries\small,coltitle=white,colbacktitle=gsgreen,title={#1}}
+
+% ---- ký hiệu
+\newcommand{\file}[1]{\path{#1}}
+\newcommand{\val}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\ok}{\textcolor{gsgreen}{\ding{51}}}
+\newcommand{\no}{\textcolor{gsred}{\ding{55}}}
+\newcommand{\warnicon}{\textcolor{gsamber}{\faExclamationTriangle}}
+\newcommand{\who}[1]{\colorbox{gslight}{\strut\small\bfseries\color{gsdark}#1}}
+\newcommand{\cellyellow}{\cellcolor{todo}}
+\newcommand{\circled}[1]{\tikz[baseline=(c.base)]\node[circle,fill=gsamber,text=white,
+  inner sep=1pt,minimum size=12pt,font=\footnotesize\bfseries](c){#1};}
+
+\begin{document}
+
+% =====================================================================
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[gsgreen] (current page.north west) rectangle ([yshift=-3.35cm]current page.north east);
+  \node[anchor=north west,text=white,align=left,inner sep=0pt]
+    at ([xshift=2cm,yshift=-0.95cm]current page.north west)
+    {{\semib\fontsize{24}{28}\selectfont Gói việc cho Thảo và Quỳnh}\\[5pt]
+     {\large Hướng dẫn từng bước, kèm sẵn toàn bộ dữ liệu cần làm}\\[3pt]
+     {\small GreenScan AI · đội AQ2026-119 · soạn 28/09/2026 · product freeze \textbf{10/10} · bán kết \textbf{25/10}}};
+\end{tikzpicture}
+\vspace*{2.6cm}
+
+\begin{note}[Đọc trang này trước.]
+Phần code làm được mà chưa cần nhãn \textbf{đã xong}. Từ giờ, mọi con số nhóm được phép nói trước hội đồng đều nằm trong tay hai bạn: độ chính xác, recall, “hàng đợi xếp đúng”, “phần pháp lý làm được gì”.
+\begin{itemize}
+  \item \textbf{Không cần cài gì.} Không Python, không terminal, không mở repo. Chỉ cần Excel (hoặc Google Trang tính), Word và trình đọc PDF.
+  \item \textbf{Mỗi người một thư mục} (\file{Goi_Quynh_2026-09-28.zip}, \file{Goi_Thao_2026-09-28.zip}). Trong đó có Excel với ô chọn sẵn và ô tự kiểm tra, Word có sẵn đề xuất để bạn kiểm, trang văn bản gốc đã cắt đúng chỗ, và đoạn trích báo cáo thật để chọn ví dụ.
+  \item \textbf{Làm xong} thì lưu file, \emph{giữ nguyên tên}, gửi lại cho Nhân. Nhân nạp vào hệ thống rồi gửi kết quả lại cho hai bạn.
+\end{itemize}
+\end{note}
+
+\subsection*{Ai làm gì, khi nào}
+\small
+\begin{tabularx}{\textwidth}{@{}l Y L{4.2cm} l l@{}}
+\toprule
+\textbf{Ai} & \textbf{Việc} & \textbf{File trong gói} & \textbf{Ước tính} & \textbf{Hạn}\\
+\midrule
+\who{Quỳnh} & Soát 22 mục hàng đợi HPG (14 bắt buộc) & \file{04_HPG_Hang_doi_22muc.xlsx} & 30–45 phút & T3 29/9\\
+\who{Quỳnh} & Gán nhãn lô 1: 20 câu, \textbf{độc lập với Thảo} & \file{01_Gold_Lo1_kappa_20cau_Quynh.xlsx} & 1,5 giờ & T5 1/10\\
+\who{Thảo} & Gán nhãn lô 1: 20 câu, \textbf{độc lập với Quỳnh} & \file{01_Gold_Lo1_kappa_20cau_Thao.xlsx} & 1,5 giờ & T5 1/10\\
+\who{Cả hai} & Buổi trọng tài lô 1, có Nhân & bảng chỗ khác nhau (Nhân gửi) & 45 phút & T6 2/10\\
+\who{Thảo} & Quy tắc 1: QĐ 13/2024 (danh mục kiểm kê KNK) & \file{02_Phieu_3_quy_tac_phap_ly.docx} & 2–3 giờ & T6 2/10\\
+\who{Quỳnh} & Gán nhãn lô 2: 30 câu & \file{02_Gold_Lo2_30cau_Quynh.xlsx} & 2 giờ & CN 4/10\\
+\who{Thảo} & Quy tắc 3: TT 96/2020, mục 6 (trường môi trường) & như trên & 2 giờ & T2 5/10\\
+\who{Quỳnh} & Gán nhãn lô 3: 30 câu & \file{03_Gold_Lo3_30cau_Quynh.xlsx} & 2 giờ & T4 7/10\\
+\who{Thảo} & Quy tắc 2: kỳ báo cáo kiểm kê (NĐ 06 → 119 → 83) & như trên & 2–3 giờ & T4 7/10\\
+\who{Thảo} & Soát ngôn từ trên UI, slide, bộ Q\&A & \file{05_Soat_ngon_tu.xlsx} & 1–1,5 giờ & T4 14/10\\
+\who{Quỳnh} & Bài đo thời gian: 20 tuyên bố, làm tay và dùng GreenScan & \file{05_Bai_do_thoi_gian_20cau.xlsx} & 3 giờ & T3 20/10\\
+\bottomrule
+\end{tabularx}
+\normalsize
+
+\vspace{4pt}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[x=0.55cm,y=1cm,
+  ev/.style={font=\scriptsize,align=center,inner sep=1.5pt},
+  q/.style={ev,text=gsdark},
+  t/.style={ev,text=gsamber!80!black}]
+  % trục: ngày 0 = 28/9
+  \draw[rule,line width=2pt] (0,0) -- (27.4,0);
+  \foreach \d/\lab in {0/{28/9},3/{1/10},6/{4/10},9/{7/10},12/{10/10},16/{14/10},19/{17/10},22/{20/10},27/{25/10}}
+    {\draw[gsgray] (\d,-0.08) -- (\d,0.08); \node[font=\tiny,text=gsgray] at (\d,-0.28) {\lab};}
+  \fill[gsgreen] (12,0) circle (3.5pt); \fill[gsred] (27,0) circle (3.5pt);
+  \node[ev,font=\scriptsize\bfseries,text=gsgreen] at (12,-0.62) {freeze};
+  \node[ev,font=\scriptsize\bfseries,text=gsred] at (27,-0.62) {bán kết};
+  % Quỳnh (trên)
+  \node[font=\scriptsize\bfseries,text=gsdark,anchor=east] at (-0.3,0.75) {Quỳnh};
+  \foreach \d/\h/\lab in {1/0.55/HPG 22 mục,3/1.15/lô 1 (20),6/0.55/lô 2 (30),9/1.15/lô 3 (30),22/0.55/đo thời gian}
+    {\draw[gsgreen] (\d,0.1) -- (\d,\h-0.12); \node[q] at (\d,\h) {\lab};}
+  % Thảo (dưới)
+  \node[font=\scriptsize\bfseries,text=gsamber,anchor=east] at (-0.3,-0.95) {Thảo};
+  \foreach \d/\h/\lab in {3/-1.0/lô 1 (20),4/-1.55/quy tắc 1,7/-1.0/quy tắc 3,9/-1.55/quy tắc 2,16/-1.0/ngôn từ}
+    {\draw[gsamber] (\d,-0.42) -- (\d,\h+0.14); \node[t] at (\d,\h) {\lab};}
+  \node[ev,text=gsgray] at (4.4,1.75) {trọng tài (cả hai)};
+  \draw[gsgray,dashed] (4,0.1) -- (4,1.6);
+\end{tikzpicture}
+\caption{Lịch đề xuất. Mốc thật chỉ có hai: freeze 10/10 và bán kết 25/10. Các hạn khác lùi về trước để Nhân kịp code, chạy đo và đưa số lên slide. Lệch 1–2 ngày thì báo sớm.}
+\end{figure}
+
+\tableofcontents
+\vspace{6pt}
+\begin{amber}[Đọc phần nào?]
+\textbf{Quỳnh:} mục 1, 2, 3, 5 và thẻ tra nhanh ở Phụ lục A. \quad
+\textbf{Thảo:} mục 1, 2, 4, 5 và thẻ tra nhanh ở Phụ lục A.\\
+Mục 1–2 là phần chung. Cả hai đều gán nhãn lô 1, nên cả hai cần đọc kỹ mục 2.
+\end{amber}
+
+% =====================================================================
+\newpage
+\section{Ba điều cả hai cần hiểu trước}
+
+\subsection{Tuyên bố môi trường \emph{của chính doanh nghiệp}}
+Một câu chỉ được tính là tuyên bố khi doanh nghiệp nói về \textbf{kết quả, mục tiêu hoặc trạng thái môi trường của chính mình}. Hàng đợi được lọc bằng từ khoá môi trường, nhưng vẫn còn câu không đạt, và trả lời “không” cho những câu đó cũng là một nhãn có giá trị: nó đo xem bộ lọc lọt bao nhiêu.
+
+\small
+\begin{tabularx}{\textwidth}{@{}l Y@{}}
+\toprule
+\textbf{Trả lời} & \textbf{Ví dụ (từ lô thử 17/09, không nằm trong các lô mới)}\\
+\midrule
+\no\ \val{no} & DHG: “Tỷ lệ bao phủ bảo hiểm y tế… đạt 92\% dân số” (\emph{chỉ tiêu xã hội, số vĩ mô})\\
+\no\ \val{no} & DHG: “Tăng trưởng bình quân 2022–2025: 8\% – 10\%/năm” (\emph{kế hoạch kinh doanh})\\
+\no\ \val{no} & Tiêu đề mục, mục lục, dòng bảng rời rạc, tin tức trên website, câu giải thích quy trình chung (“Vòng đời của thép đi qua hai giai đoạn…”)\\
+\ok\ \val{yes} & PNJ: “đặt mục tiêu giảm thải khí nhà kính cho 02 nhà máy là 2\% (tấn carbon trên 1.000 đơn vị sản phẩm trong 1 năm)”\\
+\ok\ \val{yes} & VNM: “là công ty sữa đầu tiên tại Việt Nam có nhà máy và trang trại đạt trung hòa carbon theo PAS 2060”\\
+\textcolor{gsamber}{?}\ \val{unsure} & Không rõ chủ thể là doanh nghiệp hay ngành/quốc gia. Bắt buộc ghi lý do ở ô Ghi chú.\\
+\bottomrule
+\end{tabularx}
+\normalsize
+
+\subsection{Bằng chứng: mỗi đoạn đứng ở đâu so với tuyên bố}
+Dưới mỗi tuyên bố có 3–5 đoạn bằng chứng (E1…E5), do bộ truy xuất của hệ thống tìm trong các báo cáo của cùng doanh nghiệp. Hai loại đoạn đã được \textbf{loại sẵn}: đoạn chứa y nguyên câu tuyên bố, và đoạn trong tài liệu công bố \emph{sau} tuyên bố. Với mỗi đoạn còn lại, bạn chọn một trong năm quan hệ sau:
+
+\small
+\begin{tabularx}{\textwidth}{@{}l Y@{}}
+\toprule
+\val{supports}\ (xác nhận) & Xác nhận \textbf{đúng chỉ số}, cùng kỳ, cùng phạm vi.\\
+\val{partial}\ (một phần) & Cùng chủ đề nhưng chỉ xác nhận một phần: khác kỳ, chỉ số liên quan, hoặc chỉ cho thấy “có chương trình”.\\
+\val{contradicts}\ (mâu thuẫn) & Số hoặc xu hướng khác trên \textbf{cùng chỉ số, cùng kỳ}. Khác chỉ số thì \emph{không} tính là mâu thuẫn.\\
+\val{context}\ (bối cảnh) & Liên quan nhưng không xác nhận cũng không bác bỏ, kể cả khi đoạn đó lặp lại chính ý của tuyên bố.\\
+\val{not_relevant} & Không liên quan.\\
+\bottomrule
+\end{tabularx}
+\normalsize
+
+\subsection{Nhãn là \emph{mức đủ của bằng chứng}, không phải “doanh nghiệp có greenwashing”}
+\begin{warn}[Điều quan trọng nhất của cả tài liệu.]
+Bạn không chấm doanh nghiệp. Bạn trả lời: \emph{với những đoạn bằng chứng đang có, tuyên bố này được chứng minh tới mức nào?} Một doanh nghiệp làm thật nhưng thiếu tài liệu vẫn nhận \val{INSUFFICIENT_EVIDENCE}, và đó là câu trả lời \textbf{đúng}, không phải né tránh. Không ghi nhận xét kiểu “DN này tẩy xanh” ở bất kỳ ô nào.
+\end{warn}
+
+\small
+\begin{tabularx}{\textwidth}{@{}L{4.4cm} Y@{}}
+\toprule
+\val{SUPPORTED} & Có ít nhất 1 đoạn \val{supports}, và không còn đoạn \val{contradicts}.\\
+\val{PARTIALLY_SUPPORTED} & Chỉ có đoạn \val{partial}; hoặc có \val{supports} nhưng tuyên bố thiếu từ 2 thuộc tính trở lên.\\
+\val{CONTRADICTED} & Có ít nhất 1 đoạn \val{contradicts} trên \textbf{cùng chỉ số}.\\
+\val{UNSUPPORTED} & Nguồn được cấp \emph{lẽ ra phải} có số liệu (ví dụ mục 6 TT 96) nhưng không có.\\
+\val{INSUFFICIENT_EVIDENCE} & Không đoạn nào \val{supports}, \val{partial} hay \val{contradicts}.\\
+\bottomrule
+\end{tabularx}
+\normalsize
+
+\subsection{Vì sao lô 1 phải làm độc lập}
+Lô 1 (20 câu) được \textbf{cả hai} gán nhãn để đo độ đồng thuận Cohen's $\kappa$. $\kappa$ cho biết hai người đồng ý với nhau nhiều hơn mức ngẫu nhiên bao nhiêu. Hồ sơ Vòng 1 đã cam kết $\kappa \ge 0{,}7$. Nếu hai bạn bàn nhau trước khi nộp, $\kappa$ sẽ cao giả, và khi hội đồng hỏi cách đo thì nhóm không trả lời thẳng được. Cứ làm riêng, \textbf{kể cả khi không chắc}; chỗ nào lệch thì buổi trọng tài ngày 2/10 sẽ xử lý.
+
+% =====================================================================
+\section{Làm việc với file Excel gán nhãn (cả hai)}
+
+\subsection{Mở file}
+\begin{itemize}
+  \item \textbf{Excel}: bản nào từ 2007 trở lên cũng được. Khi mở mà Excel hỏi “Enable Editing” thì bấm đồng ý.
+  \item \textbf{Google Trang tính}: tải file lên Drive, chọn \emph{Mở bằng Google Trang tính}, làm xong thì chọn \emph{Tệp › Tải xuống › Microsoft Excel (.xlsx)} rồi gửi file đó. Danh sách chọn và ô kiểm tra vẫn hoạt động.
+  \item Mỗi file có 3 sheet: \textbf{Đọc trước} (tóm tắt quy tắc), \textbf{Gán nhãn} (nơi làm việc), \textbf{Tiến độ} (xem còn câu nào chưa xong).
+\end{itemize}
+
+\subsection{Một khối = một tuyên bố}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[font=\scriptsize,
+  cell/.style={draw=rule,minimum height=0.52cm,inner sep=2pt,anchor=north west,text depth=0pt},
+  A/.style={cell,text width=1.35cm,font=\scriptsize\bfseries,text=gsgreen},
+  B/.style={cell,text width=8.0cm,align=left},
+  C/.style={cell,text width=3.05cm,fill=todo},
+  Cd/.style={cell,text width=3.05cm,fill=white},
+  D/.style={cell,text width=2.45cm,text=gsgray,font=\tiny,align=left}]
+  \def\xa{0}\def\xb{1.55}\def\xc{9.75}\def\xd{13.0}
+  % \row{y}{height}{A}{B}{C}{D}{fill of C}: every cell of a row shares one height,
+  % and every text fits on one line, so no cell spills into the next row.
+  \newcommand{\row}[7]{%
+    \node[A,minimum height=#2] at (\xa,#1) {#3};
+    \node[B,minimum height=#2] at (\xb,#1) {#4};
+    \node[C,minimum height=#2,fill=#7] at (\xc,#1) {#5};
+    \node[D,minimum height=#2] at (\xd,#1) {#6};}
+  % hàng tiêu đề
+  \node[cell,fill=gsgreen,text=white,font=\scriptsize\bfseries,text width=1.35cm] at (\xa,0) {CÂU 4/20};
+  \node[cell,fill=gsgreen,text=white,text width=8.0cm] at (\xb,0) {DN X · BC PTBV · năm 2024 · trang 12 · nhóm train};
+  \node[cell,fill=gsgreen,text=white,font=\scriptsize\bfseries,text width=3.05cm] at (\xc,0) {\ding{51} Xong};
+  \node[cell,fill=gsgreen,text width=2.45cm] at (\xd,0) {\phantom{x}};
+  % tuyên bố
+  \node[cell,fill=gslight,text width=1.35cm,font=\scriptsize\bfseries,text=gsgreen,minimum height=0.62cm] at (\xa,-0.52) {Tuyên bố};
+  \node[cell,fill=gslight,text width=13.95cm,minimum height=0.62cm,font=\scriptsize\bfseries] at (\xb,-0.52)
+    {Năm 2024, tổng lượng nước tiêu thụ tại hai nhà máy giảm 8\% so với năm 2022.};
+  % câu hỏi
+  \row{-1.14}{0.52cm}{Q1}{Câu này có phải tuyên bố môi trường của CHÍNH DN?}{yes — có\hfill\faCaretDown}{no là xong câu}{todo}
+  \row{-1.66}{0.52cm}{Loại}{Tuyên bố thuộc loại nào?}{resource\_efficiency\hfill\faCaretDown}{loại cụ thể nhất}{todo}
+  \row{-2.18}{0.52cm}{Q2}{metric: chỉ số có được gọi tên không?}{present — có đủ\hfill\faCaretDown}{nước tiêu thụ}{todo}
+  \row{-2.70}{0.52cm}{Q2}{value\_unit · period · baseline · scope (4 dòng nữa)}{…\hfill\faCaretDown}{}{todo}
+  \row{-3.22}{0.95cm}{E1}{[BC PTBV 2024 · trang 31] Lượng nước sử dụng năm 2024 là 1,21 triệu m³, năm 2022 là 1,32 triệu m³ …}{supports — xác nhận\hfill\faCaretDown}{chọn 1 trong 5 quan hệ (mục 1.2)}{todo}
+  \row{-4.17}{0.52cm}{E2…E5}{các đoạn còn lại, mỗi đoạn một dòng}{\hfill\faCaretDown}{}{todo}
+  \row{-4.69}{0.52cm}{Q4}{Kết luận: bằng chứng ở trên đủ tới mức nào?}{SUPPORTED\hfill\faCaretDown}{mức đủ của bằng chứng}{todo}
+  \row{-5.21}{0.52cm}{Ghi chú}{(tuỳ chọn; bắt buộc khi chọn “không chắc”)}{}{INCONSISTENCY: …}{white}
+  % chú thích
+  \foreach \n/\x/\y in {1/-0.45/-0.83,2/-0.45/-1.40,3/-0.45/-3.70,4/-0.45/-4.95,5/11.25/0.42}
+    {\node[circle,fill=gsamber,text=white,inner sep=1pt,minimum size=12pt,
+           font=\footnotesize\bfseries] at (\x,\y) {\n};}
+\end{tikzpicture}
+\caption{Hình dạng một khối trong sheet \emph{Gán nhãn} (ví dụ minh hoạ, không có trong các lô). Cột C là nơi trả lời: ô \colorbox{todo}{vàng} là ô chưa điền, bấm vào sẽ hiện mũi tên chọn \faCaretDown. Cột D là gợi ý nhanh.}
+\end{figure}
+
+\begin{enumerate}[label=\protect\circled{\arabic*},leftmargin=2em,itemsep=2pt]
+  \item \textbf{Đọc tuyên bố} ở dòng xanh nhạt. Dòng xanh đậm phía trên cho biết doanh nghiệp, loại tài liệu, năm và trang.
+  \item \textbf{Q1}: đây có phải tuyên bố môi trường của chính doanh nghiệp không? Nếu chọn \val{no}, câu này \textbf{xong}, chuyển sang khối sau. Nếu \val{yes}, chọn \textbf{Loại} và 5 thuộc tính \textbf{Q2} (bảng ở mục~\ref{sec:attrs}).
+  \item \textbf{E1…E5}: đọc từng đoạn bằng chứng, chọn một trong 5 quan hệ ở mục 1.2. Đoạn nào có đánh dấu \val{[cắt bớt]} thì dài quá 2.200 ký tự và đã bị cắt; phần đầu thường đủ để quyết định.
+  \item \textbf{Q4}: chọn kết luận theo sơ đồ ở Hình~\ref{fig:tree}. Ghi chú là tuỳ chọn, trừ khi Q1 = \val{unsure}.
+  \item \textbf{Nhìn ô trạng thái} ở đầu khối. Ô này tự chuyển sang \textbf{\ding{51} Xong} khi đủ và hợp lệ, hoặc báo lỗi cụ thể (bảng dưới).
+\end{enumerate}
+
+\small
+\begin{tabularx}{\textwidth}{@{}L{6.3cm} Y@{}}
+\toprule
+\textbf{Ô trạng thái báo} & \textbf{Nghĩa là, và cách sửa}\\
+\midrule
+… chưa làm & Chưa trả lời Q1.\\
+\ding{51} Xong / \ding{51} Xong (không phải tuyên bố) & Đủ và hợp lệ.\\
+\warnicon\ Không chắc: ghi lý do ở ô Ghi chú & Chọn \val{unsure} thì phải viết một dòng lý do.\\
+\warnicon\ Thiếu loại hoặc thuộc tính / Thiếu nhãn cho đoạn bằng chứng / Thiếu kết luận Q4 & Còn ô vàng trong khối.\\
+\warnicon\ SUPPORTED cần ít nhất 1 đoạn supports & Hoặc đổi một đoạn thành \val{supports}, hoặc hạ kết luận xuống.\\
+\warnicon\ SUPPORTED nhưng còn đoạn contradicts & Hai lựa chọn này mâu thuẫn nhau; xem lại đoạn \val{contradicts}.\\
+\warnicon\ CONTRADICTED cần ít nhất 1 đoạn contradicts & Mâu thuẫn phải chỉ ra được đoạn nào.\\
+\warnicon\ INSUFFICIENT nhưng có đoạn liên quan & Nếu có đoạn \val{supports}/\val{partial}/\val{contradicts} thì kết luận không thể là “chưa đủ bằng chứng”.\\
+\bottomrule
+\end{tabularx}
+\normalsize
+
+\begin{warn}[Đừng làm những việc này — file sẽ không nạp lại được.]
+Đổi tên sheet · xoá hoặc chèn dòng · sửa cột ẩn · sắp xếp (sort) lại · dán từ file khác (nếu cần dán thì dùng \emph{Dán đặc biệt › Chỉ giá trị}). Muốn xoá một câu trả lời thì chọn ô rồi bấm \textsf{Delete}.
+\end{warn}
+
+\subsection{Năm thuộc tính Q2}\label{sec:attrs}
+Mỗi thuộc tính nhận một trong: \val{present} (có đủ) · \val{partial} (một phần) · \val{missing} (thiếu) · \val{na} (không áp dụng).
+
+\small
+\begin{tabularx}{\textwidth}{@{}l Y Y Y l@{}}
+\toprule
+& \val{present} & \val{partial} & \val{missing} & \val{na}\\
+\midrule
+\val{metric} & gọi tên chỉ số (KNK Scope 1+2, điện, nước…) & chỉ định tính (“trung hoà carbon”, “xanh”) & không có chỉ số & —\\
+\val{value_unit} & có số \textbf{và} đơn vị & có số, không đơn vị & không có số & tuyên bố trạng thái\\
+\val{period} & năm/kỳ rõ & “hằng năm”, “trong 1 năm” mà không nói năm nào & không có mốc & —\\
+\val{baseline} & năm gốc rõ & “so với trước” & có tăng/giảm/mục tiêu mà \textbf{không} có năm gốc & không phải tăng/giảm\\
+\val{scope} & Scope 1/2/3 \textbf{và} ranh giới (toàn tập đoàn / nhà máy) & chỉ một trong hai & không nói & —\\
+\bottomrule
+\end{tabularx}
+\normalsize
+
+\subsection{Chọn kết luận Q4}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=0.42cm and 1.0cm,font=\small,
+  q/.style={draw=gsgreen,fill=gslight,rounded corners=3pt,align=center,text width=5.0cm,inner sep=4pt},
+  out/.style={draw=none,fill=#1,text=white,rounded corners=3pt,align=center,font=\footnotesize\bfseries,
+              inner sep=4pt,text width=4.3cm,minimum height=0.7cm},
+  lab/.style={font=\scriptsize\bfseries,text=gsgray},
+  >={Stealth[length=5pt]}]
+  \node[q] (q1) {Q1 = \val{yes}?};
+  \node[q,below=of q1] (q2) {Có đoạn \val{contradicts} trên \textbf{cùng chỉ số, cùng kỳ}?};
+  \node[q,below=of q2] (q3) {Có đoạn \val{supports}?};
+  \node[q,below=of q3] (q4) {Có đoạn \val{partial}?};
+  \node[q,below=of q4] (q5) {Nguồn được cấp \emph{lẽ ra phải} có số liệu này (vd.\ mục 6 TT 96)?};
+  \node[out=gsgray,right=of q1] (o1) {Xong — không gán gì thêm};
+  \node[out=gsred,right=of q2] (o2) {CONTRADICTED};
+  \node[q,right=of q3,text width=3.4cm] (q3b) {Thiếu $\ge 2$ thuộc tính?};
+  \node[out=gsgreen,right=1.1cm of q3b,text width=2.3cm] (o3) {SUPPORTED};
+  \node[out=gsamber,right=of q4] (o4) {PARTIALLY\_SUPPORTED};
+  \node[out=gsred!70!gsamber,right=of q5] (o5) {UNSUPPORTED};
+  \node[out=gsgray!80!black,below=of q5,text width=5.0cm] (o6) {INSUFFICIENT\_EVIDENCE};
+  \draw[->] (q1) -- node[lab,right]{có} (q2);
+  \draw[->] (q2) -- node[lab,right]{không} (q3);
+  \draw[->] (q3) -- node[lab,right]{không} (q4);
+  \draw[->] (q4) -- node[lab,right]{không} (q5);
+  \draw[->] (q5) -- node[lab,right]{không} (o6);
+  \draw[->] (q1) -- node[lab,above]{không} (o1);
+  \draw[->] (q2) -- node[lab,above]{có} (o2);
+  \draw[->] (q3) -- node[lab,above]{có} (q3b);
+  \draw[->] (q3b) -- node[lab,above]{không} (o3);
+  \draw[->] (q3b.south) -- node[lab,right]{có} (q3b.south |- o4.north);
+  \draw[->] (q4) -- node[lab,above]{có} (o4);
+  \draw[->] (q5) -- node[lab,above]{có} (o5);
+\end{tikzpicture}
+\caption{Cây quyết định cho Q4, rút từ \texttt{data/gold/LABELING\_CONVENTIONS.md}. Đoạn chỉ lặp lại chính tuyên bố là \texttt{context}, không bao giờ là \texttt{supports}.}\label{fig:tree}
+\end{figure}
+
+\subsection{Ví dụ làm mẫu (từ lô thử, không nằm trong lô của bạn)}
+\begin{example}[PNJ · BC thường niên 2023 · trang 68]
+\textbf{Tuyên bố:} “… đặt mục tiêu giảm thải khí nhà kính cho 02 nhà máy là 2\% (đơn vị: tấn phát thải carbon trên 1.000 đơn vị sản phẩm trong 1 năm) – bám sát mục tiêu giảm phát thải ròng về ‘0’ của Chính phủ.”
+
+\textbf{Q1} \val{yes}: PNJ nói về mục tiêu môi trường của chính mình. \textbf{Loại} \val{emissions_reduction}.\\
+\textbf{Q2} metric \val{present} (cường độ phát thải) · value\_unit \val{present} (2\%, tấn C/1.000 sp) · period \val{partial} (“trong 1 năm” nhưng không nói năm mục tiêu) · baseline \val{missing} (giảm 2\% so với năm nào?) · scope \val{partial} (có “02 nhà máy” nhưng không nói Scope).\\
+\textbf{Bằng chứng:} trang 5 “minh bạch kiểm kê KNK trong phạm vi 1 và 2” → \val{context}; trang 67 “hoàn thành kiểm kê số liệu phát thải KNK…” → \val{partial}; trang 70 “mục tiêu giảm năng lượng… mỗi năm giảm 1\%” → \val{partial} (\emph{khác chỉ số}: năng lượng chứ không phải KNK, nên \textbf{không} phải \val{contradicts}).\\
+\textbf{Q4} \val{PARTIALLY_SUPPORTED}. \textbf{Ghi chú:} \texttt{INCONSISTENCY: 2\% KNK vs 1\%/năm năng lượng}.
+\end{example}
+
+\subsection{Hai quy ước chưa chốt: dùng tạm đề xuất sau}
+\begin{itemize}
+  \item \textbf{Chứng nhận bên thứ ba} (PAS 2060, ISO 14064, “đầu tiên tại Việt Nam”) mà bằng chứng chỉ là tài liệu của chính doanh nghiệp: chọn \val{INSUFFICIENT_EVIDENCE}, ghi chú “cần chứng chỉ công khai của tổ chức chứng nhận”.
+  \item \textbf{Hai mục tiêu khác nhau trong cùng báo cáo}: giữ kết luận như bình thường, ghi chú bắt đầu bằng \val{INCONSISTENCY:} để lọc lại được.
+\end{itemize}
+Buổi trọng tài 2/10 sẽ chốt hai quy ước này. Nếu đổi, Nhân sửa lại các câu đã gán bằng máy, bạn không phải làm lại.
+
+\subsection{Lỗi hay gặp và mẹo nhỏ}
+\small
+\begin{tabularx}{\textwidth}{@{}L{6.2cm} Y@{}}
+\toprule
+\textbf{Tình huống} & \textbf{Làm gì}\\
+\midrule
+Tuyên bố bị cắt cụt, dính tiêu đề mục & Nếu vẫn đọc ra một tuyên bố môi trường của DN thì \val{yes}; nếu không thì \val{no} và ghi “câu bị cắt”.\\
+Bằng chứng bằng tiếng Anh & Gán bình thường.\\
+Hai đoạn bằng chứng giống hệt nhau & Gán cùng một nhãn cho cả hai.\\
+Phân vân giữa \val{partial} và \val{context} & Đoạn đó có làm bạn \emph{tin hơn} vào tuyên bố không? Có thì \val{partial}, không thì \val{context}.\\
+Số trong bằng chứng khác số trong tuyên bố & Trước khi chọn \val{contradicts}, kiểm cùng chỉ số, cùng kỳ, cùng phạm vi chưa. Khác một trong ba thì là \val{partial} hoặc \val{context}.\\
+“Mục tiêu 2030” và “kết quả 2024” & Không so được với nhau; không phải mâu thuẫn.\\
+Chữ lạ trong văn bản & Đó là lỗi font của PDF gốc; các lỗi hay gặp (“ti”, “fi”) đã được sửa sẵn.\\
+\bottomrule
+\end{tabularx}
+\normalsize
+
+% =====================================================================
+\section{Việc của Quỳnh}
+
+\subsection{Việc 1: soát tay 22 mục hàng đợi HPG (làm trước, khoảng 30 phút)}
+\textbf{File:} \file{04_HPG_Hang_doi_22muc.xlsx}. PDF gốc nằm trong thư mục \file{06_Bao_cao_HPG}.
+
+Hệ thống vừa chạy trên hai báo cáo của Hòa Phát (BCPTBV 2025, BCTN 2024) và đưa 22 mục lên hàng đợi cho người xem. Với mỗi dòng bạn chỉ trả lời \textbf{một câu}: \emph{đây có thật là tuyên bố môi trường của chính Hòa Phát không?} Mục 1–14 là bắt buộc, 15–22 làm nếu còn thời gian. Câu nào khó hiểu vì bị cắt thì mở PDF đúng trang (cột \emph{Trang}).
+
+\begin{itemize}
+  \item Chọn \val{Có} / \val{Không} / \val{Không chắc} ở cột I. Nếu \val{Không} thì chọn lý do ở cột J: giải thích quy trình hoặc kiến thức chung · tiêu đề, mục lục, dòng bảng · câu bị cắt hoặc ghép lỗi · nói về ngành hoặc quốc gia · chính sách chung chung · khác. Cột K là một dòng lý do.
+  \item Ví dụ: mục 5, “Vòng đời của thép đi qua hai giai đoạn: gang lỏng, sau đó…”, là câu \emph{giải thích quy trình}, nên chọn \val{Không}.
+  \item Dòng 18–19 là \emph{số liệu} hệ thống nhặt ra (“GIỚI TÍNH QUỐC TỊCH: 100 \%”). Câu hỏi cho hai dòng này là: đây có phải số liệu môi trường của DN không?
+\end{itemize}
+\textbf{Vì sao cần:} Nhân nghi khoảng 5/14 mục là câu giải thích quy trình. Ô cuối bảng tự tính tỷ lệ \val{Có} trong 14 mục đầu. Nếu tỷ lệ này thấp, Nhân sẽ siết bước lọc tuyên bố (việc P5) trước khi đóng băng sản phẩm.
+
+\subsection{Việc 2: gold set, 3 lô, 80 câu}
+\textbf{File:} ba file \file{01_}, \file{02_}, \file{03_Gold_Lo…_Quynh.xlsx} (lô 1, 2, 3). Cách làm xem mục 2.
+\begin{itemize}
+  \item \textbf{Lô 1} (20 câu, 11 doanh nghiệp): Thảo cũng làm đúng 20 câu này. \textbf{Không bàn với Thảo trước khi cả hai nộp.}
+  \item \textbf{Lô 2, lô 3} (30 câu mỗi lô): chỉ bạn làm. Nên làm sau buổi trọng tài để dùng quy ước đã chốt.
+  \item \textbf{Vì sao 80 câu mà mục tiêu là $\ge 60$ cặp:} câu trả lời \val{no} ở Q1 không thành cặp tuyên bố–bằng chứng. Từ khi lọc theo chủ đề, dự kiến khoảng 75\% là tuyên bố thật, nên 80 câu cho ra khoảng 60 cặp.
+  \item Câu được rút từ 404 câu đúng chủ đề môi trường trong kho báo cáo cũ, không câu nào trùng giữa các lô. Mỗi câu giữ nguyên nhóm chia tập (\emph{train / dev / test / năm mới nhất}), và doanh nghiệp nhóm test không lọt sang nhóm khác. Bạn không cần làm gì với thông tin này; nó chỉ giải thích dòng “nhóm …” ở đầu mỗi khối.
+\end{itemize}
+
+\subsubsection*{Buổi trọng tài lô 1 (T6 2/10, khoảng 45 phút, Quỳnh + Thảo + Nhân)}
+Nhân nạp hai file, tính $\kappa$ và gửi bảng \emph{những chỗ hai bạn chọn khác nhau}. Với mỗi dòng, hai bạn nói lý do, thống nhất một đáp án, rồi \textbf{Quỳnh sửa file lô 1 của mình} thành bản thống nhất và gửi lại. Bản đó trở thành gold. Chỗ nào không thống nhất được thì ghi chú, Nhân để ngoài gold.
+
+\subsection{Việc 3: bài đo thời gian (sau 10/10, trước 20/10)}
+\textbf{File:} \file{05_Bai_do_thoi_gian_20cau.xlsx} và hai PDF trong \file{06_Bao_cao_HPG}.
+
+Đây là con số “bán được” của sản phẩm: \emph{tiết kiệm bao nhiêu thời gian ở cùng mức tin cậy}. Hiện nhóm \textbf{chưa có} con số này.
+\begin{itemize}
+  \item 20 tuyên bố của Hòa Phát đã được \textbf{chọn tay} (11 câu có số liệu, 9 câu cam kết hoặc hành động) và chia sẵn hai nhóm 10/10, cân chủ đề: \textbf{A làm tay} (mở PDF, Ctrl+F) và \textbf{B dùng GreenScan} (Nhân mở sẵn giao diện).
+  \item Mỗi câu làm \textbf{đúng một lần}, theo đúng nhóm. Nếu làm cùng một câu hai lần, lần thứ hai sẽ nhanh hơn vì bạn đã nhớ, và phép đo mất giá trị.
+  \item Mỗi câu ghi: giờ bắt đầu, giờ kết thúc (gõ dạng \val{14:05}; cột \emph{Số phút} tự tính), các trang bằng chứng tìm được, số đoạn, kết luận, mức tự tin 1–5. Dừng khi bạn đủ tự tin để ra kết luận, không cần tìm hết.
+  \item Cột “Số đoạn ĐÚNG” để trống; Nhân và bạn điền sau khi soát chung. Cuối bảng tự tính trung bình số phút của từng nhóm.
+  \item Có một cặp cài sẵn đáng chú ý: BCPTBV 2025 viết “Năm 2025 là năm \emph{đầu tiên} Tập đoàn lập báo cáo phát thải KNK toàn tập đoàn”, trong khi BCTN 2024 có tiêu đề “Hòa Phát hoàn thành kiểm kê khí nhà kính toàn tập đoàn”. Cứ làm như mọi câu khác và ghi lại điều bạn thấy.
+\end{itemize}
+n = 20 là nhỏ. Kết quả sẽ ghi rõ n nhỏ, và như vậy không sao.
+
+% =====================================================================
+\section{Việc của Thảo}
+
+\subsection{Việc 1: gán nhãn lô 1, độc lập (trước T5 1/10)}
+\textbf{File:} \file{01_Gold_Lo1_kappa_20cau_Thao.xlsx}. Đây là đúng 20 câu Quỳnh đang làm. Cách làm xem mục 2. \textbf{Không bàn với Quỳnh trước khi cả hai nộp}, kể cả khi thấy khó. Sau đó dự buổi trọng tài T6 2/10.
+
+\subsection{Việc 2: ba quy tắc pháp lý}
+\textbf{Tình hình:} tầng pháp lý của hệ thống chạy đúng về cơ chế nhưng chưa có nội dung. Rule pack chỉ có 1 quy tắc nháp, nên 100\% kết quả là “chưa đủ căn cứ”. Hội đồng sẽ hỏi “phần pháp lý của các em làm được gì”, và câu trả lời thật hiện là “chưa gì cả”. Ba quy tắc của bạn thay đổi câu trả lời đó.
+
+\textbf{File:} \file{02_Phieu_3_quy_tac_phap_ly.docx}. Mỗi quy tắc là một bảng 3 cột: \emph{Câu hỏi} · \emph{Đề xuất sẵn (cần kiểm)} · \colorbox{todo}{\emph{Thảo xác nhận / sửa}}. Cột giữa do Nhân soạn từ bản OCR nên \textbf{có thể sai}. Việc của bạn là đối chiếu từng ô với trang gốc, rồi ở cột phải ghi “Đúng”, viết lại, hoặc ghi “chưa chắc” kèm lý do. Đừng đoán.
+
+\subsubsection*{Đọc văn bản gốc ở đâu}
+Thư mục \file{03_Van_ban_goc_trich} chứa các trang được \textbf{cắt từ bản PDF có chữ ký} (không phải OCR):
+
+\small
+\begin{tabularx}{\textwidth}{@{}L{7.3cm} Y@{}}
+\toprule
+\file{QD13-2024_Dieu1-3_PhuLucI_dau-PhuLucII.pdf} & QĐ 13/2024: Điều 1–3, Phụ lục I, đầu Phụ lục II (trang gốc 1–5)\\
+\file{QD13-2024_trang_co_so_DN_niem_yet.pdf} & 14 trang phụ lục có cơ sở của HPG, VNM, SAB, NKG, HT1…; đầu Phụ lục IV và V\\
+\file{ND06-2022_Dieu11_kiem_ke.pdf} & NĐ 06/2022: trang đầu và Điều 11 (trang gốc 1, 9–11)\\
+\file{ND119-2025_sua_Dieu11_va_hieu_luc.pdf} & NĐ 119/2025: sửa Điều 11 (trang gốc 6–8) và điều khoản hiệu lực (trang 30)\\
+\file{ND83-2026_toan_van.pdf} & NĐ 83/2026: toàn văn, 19 trang\\
+\file{TT96-2020_Dieu10_PhuLucIV_muc6.pdf} & TT 96/2020: Điều 10, Phụ lục IV mục 6, ghi chú miễn trừ (trang gốc 8–9, 47, 54–57)\\
+\bottomrule
+\end{tabularx}
+\normalsize
+
+Mỗi trang cắt ra có \textcolor{gsred}{dòng chữ đỏ} ở góc trên: “\emph{trang PDF gốc N}”. Mọi số trang trong gói (trong Word, trong Excel, trong tài liệu này) đều là \textbf{số trang của file PDF}, không phải số in trên giấy (QĐ 13 in số “33” ở trang PDF 37). Khung bookmark bên trái của trình đọc PDF liệt kê các trang theo số gốc.
+
+\subsubsection*{Năm câu mỗi quy tắc phải trả lời}
+\small
+\begin{tabularx}{\textwidth}{@{}l L{5.3cm} Y@{}}
+\toprule
+& \textbf{Câu hỏi} & \textbf{Vì sao cần}\\
+\midrule
+\circled{1} & Đầu vào nào trích được tự động từ PDF? & Nếu phải có người đọc mới biết thì không mã hoá được thành từ khoá; khi đó ghi “người xem”.\\
+\circled{2} & Điều/khoản nào là nguồn chính thức? & Mọi kết luận pháp lý phải trỏ về được đúng điều khoản; không có nguồn thì không được nói.\\
+\circled{3} & Ngày hiệu lực; văn bản sửa đổi/thay thế? & Báo cáo năm 2023 không được chấm theo văn bản có hiệu lực năm 2025.\\
+\circled{4} & Áp cho ngành nào, đối tượng nào, trừ ngành nào? & Một thông tư ngân hàng không được áp cho nhà máy thép chỉ vì cùng có chữ “môi trường”.\\
+\circled{5} & Một ví dụ đạt, một ví dụ không đạt (trích thật) & Để Nhân viết unit test, và để demo có ví dụ thật trước hội đồng.\\
+\bottomrule
+\end{tabularx}
+\normalsize
+
+\begin{warn}[Hai quy tắc vàng]
+\textbf{(1)} Để trống ngành/đối tượng nghĩa là “áp cho mọi đối tượng”. Chỉ điền khi chắc chắn, vì điền sai sẽ \textbf{làm mất} những finding đúng.\\
+\textbf{(2)} Điều kiện nào không kiểm được bằng từ khoá thì ghi “\textbf{người xem}”. Hệ thống sẽ trả \emph{chưa biết} và chuyển cho người xem, chứ không bao giờ trả \emph{không đạt}. Chưa biết $\neq$ không đáp ứng.
+\end{warn}
+
+\subsubsection*{Những điểm Nhân phát hiện khi soạn gói, cần Thảo xác nhận}
+Các điểm dưới đây đã có sẵn trong cột “Đề xuất” của phiếu Word. Nếu đúng, chúng sẽ thay đổi cách hệ thống chạy, nên cần bạn xác nhận trước khi Nhân sửa code.
+
+\small
+\begin{xltabular}{\textwidth}{@{}l Y L{3.1cm} L{4.4cm}@{}}
+\toprule
+& \textbf{Phát hiện} & \textbf{Xem ở} & \textbf{Nếu đúng thì}\\
+\midrule
+\endhead
+1 & QĐ 13/2024 ký ngày 13/08/2024 nhưng \textbf{hiệu lực từ 01/10/2024} (Điều 3 khoản 1). Mẫu YAML trong bàn giao 25/09 đang ghi 2024-08-13. & QĐ 13, trang gốc 2 & sửa \val{effective_from} của quy tắc 1\\
+2 & Cột số ở Phụ lục II–IV QĐ 13 là \textbf{tiêu thụ năng lượng (TOE)}, ở Phụ lục V là công suất xử lý (tấn/năm). \textbf{Không có số tCO\textsubscript{2}e nào.} & QĐ 13, trang gốc 5, 37, 156, 175 & không được đem số này so với Scope 1+2 của DN (kế hoạch thu thập v2 đang giả định là được)\\
+3 & NĐ 119/2025 ký 09/06/2025 nhưng \textbf{hiệu lực 01/08/2025} (Điều 2). & NĐ 119, trang gốc 30 & sửa registry (đang ghi 09/06/2025)\\
+4 & NĐ 83/2026 có vẻ chỉ sửa quy định về \textbf{chất được kiểm soát} (HCFC, tầng ô-dôn), không đổi kỳ kiểm kê KNK. & NĐ 83, toàn văn & bỏ 83/2026 khỏi căn cứ cho tuyên bố phát thải (hệ thống đang dẫn)\\
+5 & NĐ 119 điểm c khoản 4: \textbf{nhiệt điện, sắt thép, xi măng} có lịch báo cáo riêng (hai năm một lần cho năm 2026 trở đi). & NĐ 119, trang gốc 7 & tách quy tắc 2 thành 2a (ba ngành này) và 2b\\
+6 & TT 96 Phụ lục IV: mục 6.1–6.3 \textbf{không bắt buộc} với DN tài chính, ngân hàng, chứng khoán, bảo hiểm. & TT 96, trang gốc 56 & tách quy tắc 3a (6.1–6.3, trừ tài chính) và 3b (6.4–6.5, mọi công ty đại chúng)\\
+7 & Nghĩa vụ QĐ 13 đặt lên \textbf{cơ sở}, còn báo cáo DN niêm yết là cấp tập đoàn. & QĐ 13, Điều 2 & đối tượng quy tắc 1 để trống hoặc ghi cả \val{facility, company, group}\\
+8 & TT 96 được ghi là “có văn bản sửa đổi” nhưng chưa ghi văn bản nào. & — & Thảo tra và điền: số hiệu, ngày hiệu lực, có đụng Phụ lục IV mục 6 không\\
+\bottomrule
+\end{xltabular}
+\normalsize
+
+\subsubsection*{Chọn ví dụ đạt / không đạt}
+\textbf{File:} \file{04_Ung_vien_vi_du.xlsx}, gồm 3 sheet:
+\begin{itemize}
+  \item \textbf{Trích báo cáo}: 45 đoạn từ báo cáo thật đã có trong kho (HPG xếp đầu), chia theo quy tắc. Mỗi dòng có doanh nghiệp, tài liệu, năm, trang, đoạn trích ±260 ký tự quanh từ khoá, và nguồn. Cột \emph{Thảo chọn} có 4 lựa chọn: \val{đạt} · \val{không đạt} · \val{miễn trừ (không áp dụng)} · \val{không dùng}.
+  \item \textbf{TT96 mục 6 — ma trận}: 52 báo cáo, mỗi báo cáo ghi trang đầu tiên có từ khoá của từng trường 6.1–6.5. Dấu “—” chỉ có nghĩa là \emph{không thấy từ khoá}; báo cáo có thể vẫn công bố bằng chữ khác, bằng tiếng Anh, hoặc trong trang ảnh. Dùng sheet này để tìm nhanh ứng viên “không đạt”, sau đó \textbf{mở trang gốc} để chắc chắn.
+  \item \textbf{QĐ13 — cơ sở DN niêm yết}: 67 dòng trong phụ lục có tên giống cơ sở của DN niêm yết. Bản OCR nhiễu và bảng bị xuống dòng, nên cột \emph{Khớp?} phải điền sau khi xem trang gốc.
+\end{itemize}
+Ứng viên “đạt” đã có sẵn trong phiếu Word, ví dụ HPG BCPTBV 2025 trang 35 (“Tất cả các công ty thành viên… thuộc danh mục phải kiểm kê… đã… nộp báo cáo kiểm kê KNK đầy đủ… từ năm 2024”). Thư mục \file{07_Bao_cao_HPG_trich} có sẵn các trang HPG để đọc nguyên văn. Việc còn thiếu là \textbf{ví dụ không đạt} cho mỗi quy tắc. Mỗi ví dụ cần: doanh nghiệp, tài liệu, năm, trang, và \textbf{trích nguyên văn}.
+
+\begin{amber}[Gợi ý thứ tự: 1 → 3 → 2.]
+Quy tắc 1 (QĐ 13) và 3 (TT 96) chủ yếu kiểm “có hay không” nên mã hoá được bằng từ khoá. Quy tắc 2 (kỳ báo cáo) phải so năm với quy định tại thời điểm công bố, là suy luận pháp lý, nhiều điều kiện sẽ là “người xem”. Làm hai quy tắc dễ trước thì đến 10/10 chắc chắn có ít nhất hai quy tắc chạy thật.
+\end{amber}
+
+\textbf{Nộp lại:} file Word đã điền. Viết ra giấy rồi chụp ảnh cũng được; Nhân sẽ chuyển thành YAML. Phần “của Nhân” ở cuối phiếu (\val{legal_issue}, \val{check}, mã điều khoản) bạn không cần điền. Cuối phiếu có sẵn bộ từ vựng ngành và đối tượng để chọn cho câu \circled{4}.
+
+\subsection{Việc 3: soát ngôn từ (trước T4 14/10, chậm nhất 17/10)}
+\textbf{File:} \file{05_Soat_ngon_tu.xlsx}; slide gốc ở \file{06_Slide_GREENSCAN.zip}.
+
+Sản phẩm \textbf{không kết luận doanh nghiệp vi phạm pháp luật}; sản phẩm chỉ nêu nghĩa vụ nào chưa được chứng minh bằng tài liệu hiện có. File đã tìm sẵn 61 chỗ trên giao diện, slide, bộ Q\&A và tài liệu kỹ thuật:
+\begin{itemize}
+  \item \textbf{16 chỗ mức “cấm”}: “vi phạm”, “gian lận”, “sai phạm”, “trung thực”, “lừa dối”… Làm những chỗ này trước.
+  \item \textbf{45 chỗ mức “cân nhắc”}: “tẩy xanh”, “greenwash”, “xếp hạng”, “chấm điểm”. Kiểm xem có câu nào ngầm gắn nhãn cho doanh nghiệp hoặc xếp hạng doanh nghiệp không; hồ sơ Vòng 1 đã cam kết không xếp hạng doanh nghiệp.
+  \item Mỗi dòng chọn \val{giữ nguyên} · \val{sửa} · \val{xoá}; nếu sửa thì viết câu thay thế. \textbf{Câu phủ định thường giữ được}: “không có nghĩa doanh nghiệp vi phạm” đang nói đúng điều sản phẩm muốn nói.
+  \item Sheet \emph{Toàn văn slide} có chữ của cả 19 slide. Slide 5 và 6 là ảnh nên không trích được chữ; hãy mở PDF để xem. Slide 1 có tiêu đề “Hệ thống chấm điểm rủi ro ‘tẩy xanh’…”, cần bạn cho ý kiến.
+\end{itemize}
+
+% =====================================================================
+\section{Nộp lại, và chuyện gì xảy ra sau đó}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=0.35cm and 0.45cm,font=\scriptsize,
+  box/.style={draw=gsgreen,fill=gslight,rounded corners=3pt,align=center,text width=2.35cm,minimum height=1.05cm,inner sep=3pt},
+  hot/.style={box,fill=gsgreen,text=white,font=\scriptsize\bfseries},
+  >={Stealth[length=5pt]}]
+  \node[box] (x) {File Excel\\của bạn};
+  \node[box,right=of x] (i) {Nhân nạp vào\\(kiểm lỗi, báo lại\\nếu còn thiếu)};
+  \node[box,right=of i] (k) {Lô 1: tính $\kappa$,\\bảng chỗ khác nhau};
+  \node[box,right=of k] (a) {Buổi trọng tài\\→ bản thống nhất};
+  \node[hot,right=of a] (g) {Gold set\\$\ge$ 60 cặp};
+  \node[box,below=0.55cm of g,text width=3.2cm] (e) {Khung đo chạy:\\truy xuất · kiểm chứng · hàng đợi};
+  \node[box,left=of e,text width=5.9cm,fill=white] (n) {\textbf{Con số được nói trước hội đồng:} Recall@k, độ chính xác verdict, \emph{tỷ lệ mâu thuẫn sai}, tỷ lệ câu thật trong hàng đợi, kèm khoảng tin cậy};
+  \draw[->] (x) -- (i); \draw[->] (i) -- (k); \draw[->] (k) -- (a); \draw[->] (a) -- (g);
+  \draw[->] (g) -- (e); \draw[->] (e) -- (n);
+\end{tikzpicture}
+\caption{Đường đi của nhãn. Lô 2 và lô 3 bỏ qua bước $\kappa$ và trọng tài, đi thẳng vào gold.}
+\end{figure}
+
+\begin{itemize}
+  \item \textbf{Gửi:} file đã lưu, \emph{giữ nguyên tên}, qua Zalo hoặc Drive. Gửi từng lô khi xong, không cần chờ gom đủ.
+  \item \textbf{Nhận lại trong ngày:} danh sách câu còn thiếu hoặc mâu thuẫn (nếu có) để bạn sửa đúng ô. Với lô 1: bảng $\kappa$ và bảng chỗ khác nhau.
+  \item \textbf{Nếu lỡ} xoá dòng hay đổi tên sheet: báo Nhân, Nhân xuất lại file và chép câu trả lời của bạn sang.
+\end{itemize}
+
+\begin{note}[Phần kỹ thuật (Nhân chạy; ghi ở đây để minh bạch).]
+{\small
+\val{python tools/labeling_pack.py import <file>.xlsx} → bản của từng người ở \file{data/gold/sessions/labelers/}\\
+\val{python tools/labeling_pack.py kappa <a>.jsonl <b>.jsonl} → \file{benchmark/kappa_*.md} và bảng chỗ khác nhau\\
+\val{python tools/labeling_pack.py import <file>.xlsx --final} → gold ở \file{data/gold/sessions/}\\
+\val{python tools/evaluate_gold.py} → \file{benchmark/evaluation_<ngày>.md}\\
+Dữ liệu và gói này sinh lại được bằng \val{python tools/make_handoff_packs.py build}.}
+\end{note}
+
+% =====================================================================
+\appendix
+\renewcommand{\thesection}{\Alph{section}}
+\newpage
+\section{Thẻ tra nhanh (in ra để cạnh máy)}
+\begin{tcolorbox}[enhanced,colback=white,colframe=gsgreen,boxrule=0.8pt,arc=2pt,left=8pt,right=8pt]
+\small
+\textbf{\color{gsdark}Q1: tuyên bố môi trường của CHÍNH doanh nghiệp?}\\
+\val{no}: số vĩ mô · kế hoạch kinh doanh · chỉ tiêu xã hội hoặc quản trị · tiêu đề, mục lục · tin tức · giải thích quy trình chung. Chọn \val{no} là xong câu.\\
+\val{unsure}: không rõ chủ thể, và \textbf{phải} ghi lý do.
+
+\medskip
+\textbf{\color{gsdark}Q2: năm thuộc tính} \quad \val{present} · \val{partial} · \val{missing} · \val{na}\\
+metric (chỉ số có tên?) · value\_unit (số + đơn vị?) · period (năm/kỳ?) · baseline (so với năm nào?) · scope (Scope 1/2/3 + ranh giới?)
+
+\medskip
+\textbf{\color{gsdark}E1…E5: mỗi đoạn bằng chứng}\\
+\val{supports}: đúng chỉ số, cùng kỳ, cùng phạm vi \quad
+\val{partial}: cùng chủ đề, xác nhận một phần\\
+\val{contradicts}: khác số/xu hướng trên \textbf{cùng chỉ số cùng kỳ} \quad
+\val{context}: liên quan, không xác nhận hay bác bỏ \quad
+\val{not_relevant}
+
+\medskip
+\textbf{\color{gsdark}Q4: kết luận = mức đủ của bằng chứng}\\
+có contradicts cùng chỉ số → \val{CONTRADICTED}\\
+có supports, thiếu $<2$ thuộc tính → \val{SUPPORTED}; thiếu $\ge 2$ → \val{PARTIALLY_SUPPORTED}\\
+chỉ có partial → \val{PARTIALLY_SUPPORTED}\\
+không có gì liên quan → \val{INSUFFICIENT_EVIDENCE} (nguồn \emph{lẽ ra phải có} mà không có → \val{UNSUPPORTED})
+
+\medskip
+\textbf{\color{gsdark}Ghi chú}: chứng nhận bên thứ ba chỉ do DN tự nói → \val{INSUFFICIENT_EVIDENCE} + “cần chứng chỉ công khai”. Hai mục tiêu khác nhau → bắt đầu bằng \val{INCONSISTENCY:}.
+
+\medskip
+\textcolor{gsred}{\textbf{Không bao giờ:}} ghi “DN tẩy xanh / vi phạm” · bàn nhau về lô 1 trước khi nộp · xoá/chèn dòng, đổi tên sheet.
+\end{tcolorbox}
+
+\section{Hỏi nhanh, đáp nhanh}
+\small
+\begin{tabularx}{\textwidth}{@{}L{6.4cm} Y@{}}
+\toprule
+Excel báo “giá trị không hợp lệ” & Bạn gõ tay thay vì chọn. Bấm \emph{Cancel} rồi chọn trong danh sách \faCaretDown.\\
+Máy không có Excel & Dùng Google Trang tính (mục 2.1), hoặc LibreOffice.\\
+Một câu mất quá 10 phút & Chọn \val{unsure} hoặc kết luận thận trọng nhất, ghi chú, rồi đi tiếp. Buổi trọng tài có để xử lý câu khó.\\
+Tuyên bố đúng nhưng bằng chứng không nói gì & \val{INSUFFICIENT_EVIDENCE}. Đó là câu trả lời đúng.\\
+Bằng chứng là trang khác của \emph{chính} báo cáo đó & Vẫn dùng được: chỉ đoạn \emph{lặp lại y nguyên câu tuyên bố} mới là \val{context} bắt buộc, và các đoạn đó đã được loại sẵn.\\
+Muốn xem cả trang báo cáo & Dòng đầu khối có năm, loại tài liệu và trang. Hỏi Nhân để lấy link PDF của doanh nghiệp đó.\\
+(Thảo) Văn bản gốc và OCR khác nhau & Luôn tin bản gốc. Ghi lại chỗ khác để Nhân sửa dữ liệu OCR.\\
+(Thảo) Không tìm được ví dụ “không đạt” & Ghi “chưa tìm được” và mô tả trường hợp không đạt trông như thế nào. Vẫn có ích cho unit test.\\
+\bottomrule
+\end{tabularx}
+\normalsize
+
+\section{Trong mỗi gói có gì}
+\small
+\begin{tabularx}{\textwidth}{@{}Y Y@{}}
+\toprule
+\textbf{\file{Goi_Quynh/}} & \textbf{\file{Goi_Thao/}}\\
+\midrule
+\file{00_DOC_TRUOC_Huong_dan.pdf} (tài liệu này) & \file{00_DOC_TRUOC_Huong_dan.pdf} (tài liệu này)\\
+\file{01_Gold_Lo1_kappa_20cau_Quynh.xlsx} & \file{01_Gold_Lo1_kappa_20cau_Thao.xlsx}\\
+\file{02_Gold_Lo2_30cau_Quynh.xlsx} & \file{02_Phieu_3_quy_tac_phap_ly.docx}\\
+\file{03_Gold_Lo3_30cau_Quynh.xlsx} & \file{03_Van_ban_goc_trich/} (6 PDF cắt từ bản có chữ ký)\\
+\file{04_HPG_Hang_doi_22muc.xlsx} & \file{04_Ung_vien_vi_du.xlsx} (3 sheet)\\
+\file{05_Bai_do_thoi_gian_20cau.xlsx} & \file{05_Soat_ngon_tu.xlsx} (61 chỗ + toàn văn slide)\\
+\file{06_Bao_cao_HPG/} (BCPTBV 2025, BCTN 2024) & \file{06_Slide_GREENSCAN.zip} (19 slide)\\
+ & \file{07_Bao_cao_HPG_trich/} (các trang HPG được dẫn trong phiếu)\\
+\bottomrule
+\end{tabularx}
+\normalsize
+
+\vspace{10pt}
+{\small\color{gsgray}Nguồn dữ liệu: lô gold rút từ \file{data/crawl/vn30} (lọc chủ đề môi trường, bỏ bằng chứng trùng câu tuyên bố hoặc ra đời sau tuyên bố, seed 28); hàng đợi HPG từ run \val{185480a0c8b747c4} (25/09/2026); văn bản pháp lý từ \file{data/legal/raw/*/original.pdf}. Quy ước nhãn gốc: \file{data/gold/LABELING_CONVENTIONS.md}; bàn giao trước: \file{docs/06-operations/HANDOFF_2026-09-25.md}.}
+
+\end{document}

@@ -1,0 +1,60 @@
+# Pre-registered decision rules for the gold measurement.
+#
+# Written 2026-09-29, BEFORE any gold label existed. tools/measure_all.py reads
+# this file and prints, for each rule, the measured value, the threshold and the
+# resulting decision. Changing a threshold after seeing the numbers defeats the
+# point: if one must change, add a new version below and say why in
+# docs/00-project/DECISIONS_LOG.md.
+#
+# Sources: RESEARCH_PROGRAM_2026-09-22.md (RQ4, RQ5, RQ7), DECISIONS_LOG
+# D-2026-09-22-05 (no accuracy claims below 60 gold), D-2026-09-28-01 (stance
+# model guard), COLLECTION_PLAN_v2 §6 (queue gate).
+
+version: measurement-decisions-v1
+registered: 2026-09-29
+# Same day, still before any gold: retrieval variants re-cut after measuring
+# this laptop's CPU (BGE-M3 0.49 pages/s, bge-reranker 0.28 pairs/s). Dense and
+# rerank are measured through FPT (Vietnamese_Embedding = bge-m3 fine-tune per
+# its model card; bge-reranker-v2-m3 unchanged); local BGE-M3 only when its
+# vectors were computed beforehand. Thresholds unchanged.
+
+gates:
+  # Below these, numbers are internal only: nothing is said to the jury.
+  kappa_min: 0.70                 # RQ7, Round-1 commitment; on is_claim and verdict
+  gold_rows_for_accuracy_claims: 60   # D-2026-09-22-05
+
+decisions:
+  dense_default:                  # RQ4, one row per dense variant measured
+    question: "Bật truy xuất dense làm mặc định?"
+    candidates: [vn-embedding, bge-m3-local]
+    baseline: lite
+    metric: recall@5
+    min_delta: 0.10               # +10 points
+    max_time_ratio: 2.0           # seconds per claim at query time, variant / lite
+  reranker_claim:                 # RQ5
+    question: "Được nói 'reranker giúp'?"
+    compare: [vn-embedding+rerank, vn-embedding]
+    metric: verdict_accuracy      # end to end, not ranking alone
+    min_delta_ci_low: 0.0         # the paired difference must be > 0
+  stance_model_keep_on:           # D-2026-09-28-01
+    question: "Giữ mô hình xét quan hệ (có chốt chặn)?"
+    metric: pair accuracy, model vs rules on the pairs the model decided
+    min_delta_ci_low: 0.0
+  lift_guard_supports:
+    question: "Cho mô hình tự quyết SUPPORTED?"
+    metric: precision of SUPPORTS decided by the model
+    min_precision: 0.80
+    min_ci_low: 0.65
+    min_n: 20
+  lift_guard_contradicts:
+    question: "Cho mô hình tự quyết CONTRADICTED?"
+    metric: precision of CONTRADICTS decided by the model
+    min_precision: 0.90
+    min_ci_low: 0.75
+    min_n: 10
+    # and the decisive verifier may not raise the false-contradiction rate
+    max_false_contradiction_rate_increase: 0.0
+  claim_filter_needed:            # COLLECTION_PLAN_v2 §6 gate
+    question: "Cần bộ lọc tuyên bố bằng LLM (việc D)?"
+    metric: share of queue rows a human called a claim
+    build_if_below: 0.70
