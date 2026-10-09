@@ -20,13 +20,19 @@ class EvidenceRetrievalAgent:
         chunks: list[EvidenceChunk],
         settings: AppSettings | RetrievalSettings,
         audit: AuditLogger,
+        *,
+        embedder=None,
+        reranker=None,
     ):
+        # `embedder` / `reranker` may be passed in already loaded: the gold
+        # measurement builds one retriever per claim and must not reload a
+        # 2 GB model each time.
         if isinstance(settings, RetrievalSettings):  # direct unit-test usage
-            retrieval, embedder, reranker = settings, None, None
+            retrieval = settings
         else:
             retrieval = settings.retrieval
-            embedder = build_embedder(settings.embedding)
-            reranker = build_reranker(settings.reranker)
+            embedder = embedder if embedder is not None else build_embedder(settings.embedding)
+            reranker = reranker if reranker is not None else build_reranker(settings.reranker)
         self.retrieval = retrieval
         self.retriever = HybridRetriever(chunks, retrieval, embedder=embedder)
         self.reranker = reranker

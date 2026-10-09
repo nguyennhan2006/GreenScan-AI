@@ -31,6 +31,10 @@ def _dedupe(chain: list[str]) -> list[str]:
 class RoutingPolicy(BaseModel):
     primary: str = "local"
     fallback: str = "none"
+    # "active" when code calls the task today, "planned" for a choice recorded
+    # ahead of the code. Reported, never used to route: a planned task has no
+    # caller, so it cannot reach a provider either way.
+    status: str = "active"
     # Per-task model choice, keyed by provider name:
     #   models: {fpt: GLM-5.2, local: qwen3:8b}
     # A provider endpoint typically hosts many models, and tasks differ enough
@@ -102,6 +106,19 @@ class ModelGateway:
         policy = self.routing.get(task_type or "")
         override = (policy.models or {}).get(name) if policy else None
         return provider.bind_model(override) if override else provider
+
+    def route(self, task_type: str | None = None) -> list[str]:
+        """The configured providers this task would try, in order, as "name:model".
+
+        What a cache key and a run manifest need: a verdict cached under GLM-5.2
+        must not be served once .env points the task at another model.
+        """
+        route = []
+        for name in self.provider_chain(task_type):
+            provider = self._for_task(name, task_type)
+            if provider is not None and provider.is_configured():
+                route.append(f"{name}:{getattr(provider, 'model', '?')}")
+        return route
 
     def resolve(self, task_type: str | None = None) -> LLMProvider | None:
         """First *configured* provider in the chain, or None when keys are empty."""

@@ -1,4 +1,11 @@
 # Model set locked for V1.1 (local-first). See docs/decisions/0002-local-first-model-gateway.md
+#
+# HISTORICAL (2026-10-06): no code reads this file. It describes a GPU server
+# the team does not have (Qwen3-8B on the dev laptop: 98 s per call). What runs
+# today, per hardware tier and per task, is configs/routing.yaml plus the
+# QUANTUM_PROFILE presets in src/quantum_gw/settings.py, documented in
+# docs/04-data-ai/MODEL_ROUTING_AND_HARDWARE.md. The "gpu" profile there is the
+# successor of this set.
 models:
   llm_primary:
     provider: local

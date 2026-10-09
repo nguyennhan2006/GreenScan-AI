@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import re
 from pathlib import Path
 
@@ -38,6 +39,22 @@ from quantum_gw.verification.stance import (
     StanceSignal,
     qualitative_stance,
 )
+
+
+class _RecordingJudge:
+    """Stands in for the model during the dry pass: notes the question, answers nothing."""
+
+    def __init__(self):
+        self.asked: list[tuple[str, str]] = []
+
+    def judge(self, claim_text: str, evidence_text: str) -> None:
+        self.asked.append((claim_text, evidence_text))
+        return None
+
+
+class _NullAudit:
+    def write(self, event: str, payload=None) -> None:
+        return None
 
 
 class VerificationAgent:
@@ -83,8 +100,29 @@ class VerificationAgent:
         if self._llm_judge is None and self.settings.llm_stance == "on_ambiguous":
             from quantum_gw.verification.llm_judge import LLMStanceJudge
 
-            self._llm_judge = LLMStanceJudge()
+            self._llm_judge = LLMStanceJudge(
+                cache_dir=self.settings.llm_cache_dir, workers=self.settings.llm_workers
+            )
         return self._llm_judge
+
+    def prefetch_llm(self, work: list[tuple[Claim, list[RetrievedEvidence]]]) -> dict | None:
+        """Ask the model about every pair this run will escalate, concurrently, up front.
+
+        Which pairs reach the judge is decided by the deterministic layers, so a
+        dry pass with a judge that only records the question finds exactly
+        them; the real pass then reads every answer from the judge's cache. The
+        dry pass writes no audit events and its verdicts are discarded.
+        """
+        judge = self.llm_judge
+        if judge is None or not hasattr(judge, "prefetch"):
+            return None
+        recorder = _RecordingJudge()
+        dry = copy.copy(self)
+        dry.audit = _NullAudit()
+        dry._llm_judge = recorder
+        for claim, evidence in work:
+            dry.run(claim, [item.model_copy() for item in evidence])
+        return judge.prefetch(recorder.asked)
 
     def run(self, claim: Claim, evidence: list[RetrievedEvidence]) -> VerificationResult:
         warnings: list[str] = []
@@ -109,19 +147,27 @@ class VerificationAgent:
 
         numeric = self._numeric_comparison(claim, clean_evidence)
 
-        escalated = False
+        by_rules: dict[int, StanceSignal] = {}
         for item in clean_evidence:
             signal = self._stance(claim, item)
-            if signal.method == "llm":
-                escalated = True
+            if signal.method == "llm" and signal.fallback is not None:
+                by_rules[id(item)] = signal.fallback
             item.relation = signal.relation
             item.relation_reason = signal.reason
             item.relation_method = signal.method
 
         status, rationale = self._status(claim, clean_evidence, numeric)
+        # A model's reading needs a human only where it matters: where it changed
+        # the verdict the rules would have given, or where it suspects a
+        # contradiction. Flagging every claim it touched (156 of 156 on HPG,
+        # 28/09) makes the flag meaningless.
+        escalated = bool(by_rules) and (
+            self._status_by_rules(claim, clean_evidence, numeric, by_rules)[0] != status
+            or any(i.relation == CONTRADICTS and i.relation_method == "llm" for i in clean_evidence)
+        )
         if escalated:
             warnings.append(
-                "Một phần lập trường bằng chứng do mô hình ngôn ngữ đề xuất; cần người xác nhận."
+                "Kết luận này phụ thuộc vào lập trường do mô hình ngôn ngữ đề xuất; cần người xác nhận."
             )
 
         result = VerificationResult(
@@ -138,6 +184,20 @@ class VerificationAgent:
 
     # ---------- status ----------
 
+    def _status_by_rules(self, claim, evidence, numeric, by_rules):
+        """The verdict with every model stance replaced by the rules' own reading."""
+        saved = [(i, i.relation, i.relation_reason, i.relation_method)
+                 for i in evidence if id(i) in by_rules]
+        for item, *_ in saved:
+            rule = by_rules[id(item)]
+            item.relation, item.relation_reason, item.relation_method = (
+                rule.relation, rule.reason, rule.method)
+        try:
+            return self._status(claim, evidence, numeric)
+        finally:
+            for item, relation, reason, method in saved:
+                item.relation, item.relation_reason, item.relation_method = relation, reason, method
+
     def _status(
         self,
         claim: Claim,
@@ -146,13 +206,32 @@ class VerificationAgent:
     ) -> tuple[VerificationStatus, str]:
         best = evidence[0]
         overlap = self._metric_overlap(claim, evidence)
-        contradicting = [item for item in evidence if item.relation == CONTRADICTS]
+        # A model's stance points a reviewer at a passage; it does not close a
+        # finding (verification/llm_judge.py). On HPG, 28/09, letting it decide
+        # produced 10 CONTRADICTED and 2 CRITICAL on a control company -- a
+        # garbled table row read as "100% male", a process description read as
+        # a refutation. Only the gold set may lift this (llm_stance_decisive).
+        decisive_model = self.settings.llm_stance_decisive
+        contradicting = [
+            item for item in evidence
+            if item.relation == CONTRADICTS and (decisive_model or item.relation_method != "llm")
+        ]
 
         if contradicting:
             reason = contradicting[0].relation_reason
             return (
                 VerificationStatus.CONTRADICTED,
                 f"Bằng chứng đã truy xuất bác bỏ tuyên bố. {reason}",
+            )
+        suspected = [
+            item for item in evidence
+            if item.relation == CONTRADICTS and item.relation_method == "llm"
+        ]
+        if suspected and best.score >= self.settings.partial_support_score:
+            return (
+                VerificationStatus.PARTIALLY_SUPPORTED,
+                "Mô hình ngôn ngữ nghi một đoạn mâu thuẫn với tuyên bố nhưng không có phép "
+                f"tính hay nguồn có thẩm quyền xác nhận; cần người xem. {suspected[0].relation_reason}",
             )
         # A reversed trend with no figure to anchor it ("giảm" in the claim,
         # "tăng" in a passage about the same metric) is a reviewer's flag, not a
@@ -195,7 +274,11 @@ class VerificationAgent:
                     f"Một nguồn ngoài tài liệu tuyên bố xác nhận: {item.relation_reason}",
                 )
         weak: list[str] = []
+        model_backed: list[RetrievedEvidence] = []
         for item in external:
+            if item.relation_method == "llm" and not decisive_model:
+                model_backed.append(item)
+                continue
             matched, stated = self._attributes_matched(claim, item.text)
             required = {"metric"} | (stated & {"period", "scopes"})
             if required <= matched and len(matched) >= self.settings.support_min_attributes:
@@ -205,11 +288,18 @@ class VerificationAgent:
                     f"Thuộc tính khớp: {', '.join(sorted(matched))}.",
                 )
             weak.append(", ".join(sorted(matched)) or "không")
-        if external:
+        if weak:
             return (
                 VerificationStatus.PARTIALLY_SUPPORTED,
                 "Có xác nhận định tính từ nguồn khác nhưng chưa có số liệu và câu xác nhận "
                 f"không nêu đủ chỉ số/kỳ/phạm vi của tuyên bố (thuộc tính khớp: {weak[0]}); cần người xem.",
+            )
+        if model_backed:
+            return (
+                VerificationStatus.PARTIALLY_SUPPORTED,
+                "Mô hình ngôn ngữ đánh giá một đoạn từ nguồn khác là xác nhận, nhưng không có "
+                "số liệu hay cụm từ xác nhận để luật chốt; cần người xem. "
+                f"{model_backed[0].relation_reason}",
             )
         if any(e.score >= self.settings.partial_support_score for e in supporting):
             return (
@@ -341,23 +431,26 @@ class VerificationAgent:
                 method="direction",
             )
 
-        judge = self.llm_judge
-        if judge is not None and overlap >= self.settings.llm_stance_min_overlap:
-            verdict = judge.judge(claim.text, item.text)
-            if verdict is not None:
-                return verdict
-
         if overlap >= 0.30:
-            return StanceSignal(
+            by_rules = StanceSignal(
                 relation=PARTIAL,
                 reason="Cùng chủ đề nhưng chưa đủ số liệu để xác nhận.",
                 method="similarity",
             )
-        return StanceSignal(
-            relation=CONTEXT,
-            reason="Liên quan về ngữ cảnh, không xác nhận hay bác bỏ.",
-            method="similarity",
-        )
+        else:
+            by_rules = StanceSignal(
+                relation=CONTEXT,
+                reason="Liên quan về ngữ cảnh, không xác nhận hay bác bỏ.",
+                method="similarity",
+            )
+
+        judge = self.llm_judge
+        if judge is not None and overlap >= self.settings.llm_stance_min_overlap:
+            verdict = judge.judge(claim.text, item.text)
+            if verdict is not None:
+                verdict.fallback = by_rules
+                return verdict
+        return by_rules
 
     def _numeric_relation(self, claim: Claim, item: RetrievedEvidence) -> StanceSignal | None:
         """Stance from comparable figures, or None when there is no pair to compare.

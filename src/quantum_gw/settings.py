@@ -49,6 +49,62 @@ def load_dotenv(path: str | Path = ".env", *, override: bool = False) -> int:
 load_dotenv(os.environ.get("QUANTUM_ENV_FILE", ".env"))
 
 
+# One switch instead of twenty variables. Choosing the hardware tier is the only
+# decision most operators should have to make; a profile fills in what the
+# environment and .env leave unset, so any variable written explicitly still wins.
+# Throughput behind each tier: docs/04-data-ai/MODEL_ROUTING_AND_HARDWARE.md.
+PROFILES: dict[str, dict[str, str]] = {
+    # Any laptop, no key, no network: rules, arithmetic and lexical retrieval.
+    # Measured 2026-10-05 on an i7-1355U without GPU: HPG BCPTBV 2025 + BCTN 2024
+    # in 116 s, 1.3 GB peak memory.
+    "offline": {
+        "QUANTUM_LLM_STANCE": "off",
+        "EMBEDDING_PROVIDER": "lite",
+        "RERANKER_PROVIDER": "none",
+        "LOCAL_LLM_BASE_URL": "",
+    },
+    # The same laptop plus a key for FPT AI Marketplace (Vietnamese cloud): a
+    # model reads only the claim-evidence pairs the rules could not decide, and
+    # answers are cached so a re-run calls nothing.
+    "cloud": {
+        "QUANTUM_LLM_STANCE": "on_ambiguous",
+        "LLM_PROVIDER": "fpt",
+        "LLM_FALLBACK_ORDER": "fpt",
+        "LOCAL_LLM_BASE_URL": "",
+        "EMBEDDING_PROVIDER": "lite",
+        "RERANKER_PROVIDER": "none",
+    },
+    # A server with one GPU serving an open model through vLLM on port 8001
+    # (8000 is GreenScan's own API), with local BGE-M3 and reranker on CUDA.
+    "gpu": {
+        "QUANTUM_LLM_STANCE": "on_ambiguous",
+        "LLM_PROVIDER": "local",
+        "LLM_FALLBACK_ORDER": "local,fpt",
+        "LOCAL_LLM_PROVIDER": "openai_compatible",
+        "LOCAL_LLM_BASE_URL": "http://localhost:8001/v1",
+        "EMBEDDING_PROVIDER": "local",
+        "LOCAL_EMBEDDING_DEVICE": "cuda",
+        "RERANKER_PROVIDER": "local",
+        "LOCAL_RERANKER_DEVICE": "cuda",
+    },
+}
+
+
+def apply_profile(name: str | None = None) -> str:
+    """Fill unset variables from `QUANTUM_PROFILE`; returns the profile applied."""
+    profile = (name or os.environ.get("QUANTUM_PROFILE") or "").strip().lower()
+    if not profile:
+        return ""
+    if profile not in PROFILES:
+        raise ValueError(f"QUANTUM_PROFILE must be one of {sorted(PROFILES)}, not {profile!r}")
+    for key, value in PROFILES[profile].items():
+        os.environ.setdefault(key, value)
+    return profile
+
+
+apply_profile()
+
+
 class IntakeSettings(BaseModel):
     # A passage is a few sentences of one paragraph: small enough to be about
     # one thing, so a stance cue or a figure in it belongs to the claim it is
@@ -90,6 +146,11 @@ class EmbeddingSettings(BaseModel):
     device: str = "cuda"
     batch_size: int = 16
     base_url: str = ""
+    max_length: int = 512
+    # Encoded passages are kept here by (model, text); empty disables the cache.
+    cache_dir: str = ".quantum/emb_cache"
+    # provider "fpt": the model served by FPT Marketplace /embeddings.
+    fpt_model: str = "Vietnamese_Embedding"
 
 
 class RerankerSettings(BaseModel):
@@ -99,6 +160,8 @@ class RerankerSettings(BaseModel):
     base_url: str = ""
     candidate_k: int = 30
     final_k: int = 5
+    # provider "fpt": the cross-encoder served by FPT Marketplace /rerank.
+    fpt_model: str = "bge-reranker-v2-m3"
 
 
 class VerificationSettings(BaseModel):
@@ -126,6 +189,14 @@ class VerificationSettings(BaseModel):
     # review. Off by default so the shipped pipeline stays reproducible.
     llm_stance: str = "off"
     llm_stance_min_overlap: float = 0.12
+    # Concurrent calls when the whole batch is asked up front, and where answers
+    # are kept so a re-run of the same documents calls nothing.
+    llm_workers: int = 8
+    llm_cache_dir: str = ".quantum/llm_cache"
+    # May a model's stance alone make a claim SUPPORTED or CONTRADICTED? No,
+    # until the gold set measures its precision per relation: unguarded on HPG
+    # (28/09) it produced 10 CONTRADICTED and 2 CRITICAL on a control company.
+    llm_stance_decisive: bool = False
 
 
 class LegalSettings(BaseModel):
@@ -161,7 +232,11 @@ class GatewaySettings(BaseModel):
     routing_file: str = "configs/routing.yaml"
 
     local_provider: str = "openai_compatible"  # openai_compatible (vLLM) | ollama
-    local_base_url: str = "http://localhost:8000/v1"
+    # Empty = not configured. The old default, http://localhost:8000/v1, is the
+    # port GreenScan's own API listens on: a fresh checkout reported a local
+    # Qwen3-8B as configured and, with the stance model on, sent its prompts to
+    # itself. A local model is something an operator starts and names.
+    local_base_url: str = ""
     local_api_key: str = ""
     local_model: str = "Qwen/Qwen3-8B"
     local_timeout_seconds: float = 180
@@ -196,7 +271,7 @@ def load_gateway_settings() -> GatewaySettings:
         fallback_order=fallback,
         routing_file=env("LLM_ROUTING_FILE", "configs/routing.yaml"),
         local_provider=env("LOCAL_LLM_PROVIDER", "openai_compatible"),
-        local_base_url=env("LOCAL_LLM_BASE_URL", "http://localhost:8000/v1"),
+        local_base_url=env("LOCAL_LLM_BASE_URL", ""),
         local_api_key=env("LOCAL_LLM_API_KEY", ""),
         local_model=env("LOCAL_LLM_MODEL", "Qwen/Qwen3-8B"),
         local_timeout_seconds=float(env("LOCAL_LLM_TIMEOUT_SECONDS", "180")),
@@ -274,6 +349,12 @@ def load_settings(path: str | None = None) -> AppSettings:
         os.getenv("LOCAL_EMBEDDING_BATCH_SIZE", str(settings.embedding.batch_size))
     )
     settings.embedding.base_url = os.getenv("EMBEDDING_BASE_URL", settings.embedding.base_url)
+    settings.embedding.max_length = int(
+        os.getenv("LOCAL_EMBEDDING_MAX_LENGTH", str(settings.embedding.max_length))
+    )
+    settings.embedding.cache_dir = os.getenv("EMBEDDING_CACHE_DIR", settings.embedding.cache_dir)
+    settings.embedding.fpt_model = os.getenv("FPT_EMBEDDING_MODEL", settings.embedding.fpt_model)
+    settings.reranker.fpt_model = os.getenv("FPT_RERANKER_MODEL", settings.reranker.fpt_model)
     settings.reranker.provider = os.getenv("RERANKER_PROVIDER", settings.reranker.provider)
     settings.reranker.model = os.getenv("LOCAL_RERANKER_MODEL", settings.reranker.model)
     settings.reranker.device = os.getenv("LOCAL_RERANKER_DEVICE", settings.reranker.device)
@@ -282,4 +363,16 @@ def load_settings(path: str | None = None) -> AppSettings:
         os.getenv("RERANK_CANDIDATE_K", str(settings.reranker.candidate_k))
     )
     settings.reranker.final_k = int(os.getenv("RERANK_FINAL_K", str(settings.reranker.final_k)))
+    # The deployment decides whether a language model is consulted; the YAML
+    # default stays off so a checkout without .env runs deterministically.
+    stance = os.getenv("QUANTUM_LLM_STANCE", settings.verification.llm_stance).strip().lower()
+    if stance not in {"off", "on_ambiguous"}:
+        raise ValueError(f"QUANTUM_LLM_STANCE must be off or on_ambiguous, not {stance!r}")
+    settings.verification.llm_stance = stance
+    settings.verification.llm_workers = int(
+        os.getenv("QUANTUM_LLM_WORKERS", str(settings.verification.llm_workers))
+    )
+    settings.verification.llm_cache_dir = os.getenv(
+        "QUANTUM_LLM_CACHE_DIR", settings.verification.llm_cache_dir
+    )
     return settings
