@@ -60,6 +60,9 @@ class StanceSignal:
     method: str
     cues: list[str] = field(default_factory=list)
     authoritative: bool = False
+    # For a model's stance: what the rules alone would have said about the same
+    # passage, so the verifier can tell whether the model changed the verdict.
+    fallback: StanceSignal | None = None
 
 
 def _has_diacritics(text: str) -> bool:

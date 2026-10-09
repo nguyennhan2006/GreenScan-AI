@@ -1,4 +1,4 @@
-# Task-level provider routing for the Model Gateway (v1.1 local-first).
+# Task-level provider routing for the Model Gateway.
 #
 # primary/fallback name a provider from the registry:
 #   local | ollama | fpt | gemini | openai | anthropic | openrouter
@@ -7,81 +7,104 @@
 #   none          — no fallback; fail fast instead of silently switching provider
 #
 # `models:` picks the model per provider for that task. One FPT endpoint serves
-# a dozen models, and these tasks have genuinely different cost/quality needs, so
-# the model belongs to the task rather than to the provider. Keyed by provider so
-# a fallback hop still names a model that provider actually hosts.
+# many models with very different price, region and language support, so the
+# model belongs to the task rather than to the provider.
 #
-# Models confirmed available on this account's FPT Marketplace (2026-08-08):
-#   chat/reasoning : GLM-5.2, DeepSeek-V4-Flash, gpt-oss-120b, gpt-oss-20b,
-#                    Llama-3.3-70B-Instruct, Qwen3.6-27B, gemma-4-31B-it,
-#                    gemma-4-26B-A4B-it, gemma-3-27b-it
-#   vision         : Qwen2.5-VL-7B-Instruct
-#   embedding      : Vietnamese_Embedding, multilingual-e5-large
-#   reranking      : bge-reranker-v2-m3
-#   speech         : whisper-large-v3-turbo, FPT.AI-whisper-medium,
-#                    FPT.AI-whisper-large-v3-turbo, FPT.AI-VITs
+# `status:` says whether code calls the task today. Only `active` tasks reach a
+# model; a `planned` entry is a decision recorded in advance, not a capability
+# (RESEARCH_PROGRAM §2 Q12: listing tasks nobody calls read as features).
 #
-# These assignments are a starting hypothesis, not a measured result. Validate
-# with `quantum-agent evaluate` per docs/04-data-ai/ACCURACY_IMPROVEMENT_PLAYBOOK.md before
-# treating any of them as settled.
+# Re-checked 2026-10-06 against FPT AI Marketplace's public catalogue (prices in
+# USD per 1M input/output tokens, data region) — details and sources in
+# docs/04-data-ai/MODEL_ROUTING_AND_HARDWARE.md:
+#   GLM-5.2               1.40 / 4.40   VN   150 RPM   the only active route
+#   gemma-4-26B-A4B-it    0.14 / 0.40   VN    50 RPM   cheap, MoE 3.8B active
+#   gemma-4-31B-it        0.15 / 0.45   VN    50 RPM
+#   gpt-oss-120b          0.143/ 0.605  VN    50 RPM
+#   Llama-3.3-70B-Instruct 0.209/0.451  VN    32k ctx; Vietnamese not an official language
+#   Qwen3.6-27B           0.30 / 3.25   JP    — dropped: user documents would leave VN
+#   DeepSeek-V4-Flash     0.14 / 0.28   JP    — dropped: same reason
+#   Qwen2.5-VL-7B (vision) 0.77 / 0.77  VN
+# FPT Serverless itself may route a request to Japan at peak load; only
+# Dedicated Inference pins the region. Confidential documents: offline or gpu
+# profile, never Serverless.
+#
+# Nothing below is a measured accuracy. Before promoting any planned task,
+# register its threshold in configs/measurement_decisions.yaml and measure on
+# gold (D-2026-09-22-05).
 
 routing:
-  # High volume, structured JSON out, runs over every chunk. Favour a fast mid
-  # model; a frontier model here costs a lot and buys little.
-  claim_extraction:
+  # The one task that calls a model today: the stance of a passage towards a
+  # claim, reached only when the cue lexicon and the numeric comparison both
+  # declined (713 of 780 pairs on HPG, 28/09). Never decisive on its own
+  # (llm_stance_decisive: false) and every answer is cached.
+  # GLM-5.2 stays until the gold A/B: it is what the 28/09 measurements and the
+  # 976 cached answers were made with. The cheaper cascade to test next —
+  # gemma-4-26B-A4B-it for every pair, GLM-5.2 only when gemma says SUPPORTS or
+  # CONTRADICTS (the two relations that change a verdict) — would cut the cost
+  # of a report from ~$0.8–2.0 to ~$0.2–0.8.
+  qualitative_stance:
+    status: active
     primary: local
     fallback: fpt
     models:
-      fpt: Qwen3.6-27B
-
-  # Mostly schema-filling from text already extracted. Same reasoning.
-  claim_normalization:
-    primary: local
-    fallback: fpt
-    models:
-      fpt: Qwen3.6-27B
-
-  # Short prompts, latency-sensitive, fires per retrieval round.
-  retrieval_query_generation:
-    primary: local
-    fallback: fpt
-    models:
-      fpt: DeepSeek-V4-Flash
+      fpt: GLM-5.2
 
   # Units, base years, ratios and trends. A language model must not arbitrate
   # arithmetic — this stays in Python and has no fallback by design.
   quantitative_verification:
+    status: active
     primary: deterministic
     fallback: none
 
-  # Stance of one passage towards one claim, reached only when the cue lexicon
-  # and the numeric comparison both declined. Never decisive on its own: every
-  # answer is marked for human review. Reasoning quality matters more than
-  # latency here because it only fires on the residual hard cases.
-  qualitative_stance:
+  # High volume, runs over every chunk: rules today. If a model is added, it
+  # sees only chunks the lexicon already flagged, several per call.
+  claim_extraction:
+    status: planned
     primary: local
     fallback: fpt
     models:
-      fpt: GLM-5.2
+      fpt: gemma-4-26B-A4B-it
 
-  # The hardest task: map a claim onto QD 21/2025, TT 17/2022, NĐ 06/2022 while
-  # preserving scope and qualifiers. Worth the largest available model.
+  # Filling five attributes from text already extracted: structured output,
+  # a mid-size model with a JSON schema is enough.
+  claim_normalization:
+    status: planned
+    primary: local
+    fallback: fpt
+    models:
+      fpt: gemma-4-26B-A4B-it
+
+  # Templates today; a model only when no keyword matches.
+  retrieval_query_generation:
+    status: planned
+    primary: local
+    fallback: fpt
+    models:
+      fpt: gemma-4-26B-A4B-it
+
+  # Mapping a claim onto QĐ 21/2025, QĐ 13/2024, NĐ 06/2022 (as amended by
+  # 119/2025) while preserving scope: low volume, hardest reasoning. Rules first
+  # (configs/legal/); the model only proposes, Thảo's rule pack decides.
   legal_reasoning:
+    status: planned
     primary: fpt
     fallback: local
     models:
       fpt: GLM-5.2
 
-  # Vietnamese prose quality matters and volume is low (one per run).
+  # Vietnamese prose, one call per run. Llama-3.3-70B was listed here: its card
+  # does not list Vietnamese and FPT serves it with a 32k context.
   final_report:
+    status: planned
     primary: fpt
     fallback: local
     models:
-      fpt: Llama-3.3-70B-Instruct
+      fpt: gemma-4-31B-it
 
-  # Scanned pages, chart images and complex table layouts. Only reached when the
-  # text-layer check says a page is not machine-readable.
+  # Scanned pages only, when Tesseract's text is unusable.
   document_vision:
+    status: planned
     primary: fpt
     fallback: none
     models:
