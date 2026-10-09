@@ -77,6 +77,8 @@ Thứ tự cũ (giữ để tham chiếu): N1 → N4 → N5 → N2 → N3. Sau m
 
 > Nguồn: `../02-product/AUDITOR_WORKFLOW_POSITIONING.md`. Người dùng là kiểm toán viên đang làm thủ công; sản phẩm phải trả lời "soát cái nào trước" trước khi trả lời "câu này đúng không".
 
+> **Cập nhật 06/10** ([`AUDIT_2026-10-06.md`](AUDIT_2026-10-06.md)): giao diện nay mở bằng hàng đợi `priorities` (trước đó không dùng). **P4** đóng ở mức in được — giấy làm việc tiếng Việt `GET /v1/runs/{id}/workpaper`, in/lưu PDF. **P5** giảm nhẹ bằng `priority-v1.1` (câu không nêu chủ thể và không có số → hạ bậc; chữ dính cột → hạ bậc; HPG: 10/22 mục đầu là câu giải thích → 0/9) nhưng **vẫn mở** — cần gold 100 câu. Bộ đọc số liệu công bố sửa lỗi gộp dấu "cộng/công" (57 → 16 số liệu, 25 trước đó là rác).
+
 | # | Khúc mắc | Số đo | Phương án | Nghiệm thu | Trạng thái |
 | --- | --- | --- | --- | --- | --- |
 | P1 🔴 | Đầu ra là 156 dòng cùng một dải, không dùng được làm danh sách việc | 23/09: 153 PARTIAL / 154 MEDIUM / 0 gắn cờ | Lớp xếp ưu tiên 4 yếu tố (trọng yếu · nghĩa vụ công bố · khoảng trống bằng chứng · bất thường) + hàng đợi có giới hạn + câu ghi phạm vi không soát | Điểm có phân bố; hàng đợi ≤ 25 mục; có câu "không soát gì và vì sao" | ✅ **đóng 25/09** — `agents/prioritizer.py`, `configs/priority_v1.yaml`, 6 test. HPG: 21/156 vào hàng đợi, điểm 41,3–62,9 |
@@ -121,6 +123,8 @@ Thứ tự cũ (giữ để tham chiếu): N1 → N4 → N5 → N2 → N3. Sau m
 ---
 
 ## E. Sản phẩm / UI (Sprint 3)
+
+> **Cập nhật 06/10:** E1 — PDF qua in giấy làm việc ✅; E2 — mở lại phiên đã lưu bị hỏng (effect tự huỷ request) đã sửa ✅; E4 — trang pháp lý chưa có finding (rule pack nháp) ✗; E6 — API phục vụ giao diện trên cùng cổng, `GreenScan.bat`, Dockerfile đa tầng (chưa build thử) ◐.
 
 | # | Khúc mắc | Phương án |
 | --- | --- | --- |
