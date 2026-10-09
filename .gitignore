@@ -34,6 +34,12 @@ data/real_cases/sources/originals/*
 *.out
 docs/07-presentation/**/*.log
 
+# Work packs for teammates (tools/make_handoff_packs.py) carry third-party report
+# PDFs and the slides, so they are rebuilt from the repo, not committed. The guide
+# (.tex/.pdf) next to them is committed.
+docs/06-operations/handoff_*/Goi_*/
+docs/06-operations/handoff_*/*.zip
+
 # International legal-case packs: third-party corporate PDFs are not redistributed
 # (same policy as data/crawl). Case packets, HTML captures, manifests ARE committed.
 data/legal_cases/**/*.pdf
@@ -41,6 +47,14 @@ data/legal_cases/**/*.pdf
 # Local copies / backups that must never enter history
 outside_resource/*.zip
 *.backup_*.docx
+# Office lock files (~$name.docx) exist only while Word has the document open.
+~$*
+
+# Slide exports and generated pictures stay beside the repo, not in history:
+# GREENSCAN.zip (19 slide PDFs, read by make_handoff_packs.py) is 20 MB and
+# changes with every rehearsal.
+docs/07-presentation/*.zip
+docs/07-presentation/*.png
 
 # Frontend SSR/preview build output
 frontend/.ssr-out/
