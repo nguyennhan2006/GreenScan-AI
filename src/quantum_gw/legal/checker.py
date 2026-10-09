@@ -159,7 +159,7 @@ class LegalChecker:
         # (a document reached as a base is a base, not an amendment).
         seen_sources: set[str] = set()
         for doc in usable:
-            for member in self.corpus.effective_chain(doc.id, as_of):
+            for member in self.corpus.effective_chain(doc.id, as_of, legal_issue=issue):
                 if member.id in seen_sources:
                     continue
                 seen_sources.add(member.id)

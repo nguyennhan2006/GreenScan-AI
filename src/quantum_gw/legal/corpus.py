@@ -207,11 +207,18 @@ class LegalCorpus:
             frontier = nxt
         return edges
 
-    def effective_chain(self, document_id: str, as_of: date) -> list[LegalDocument]:
+    def effective_chain(
+        self, document_id: str, as_of: date, legal_issue: str | None = None
+    ) -> list[LegalDocument]:
         """The base document plus any amendment in force on `as_of`.
 
         Reading a base decree without its amendment is how a system ends up
         applying a rule that was changed years ago.
+
+        With `legal_issue`, an amendment joins the chain only if it amends
+        provisions on that issue (its own `legal_issues`). NĐ 83/2026 amends
+        only the ozone-substance articles of NĐ 06/2022; followed blindly, the
+        chain cited it under every emissions claim (found 2026-10-06).
         """
         base = self.documents.get(document_id)
         if base is None:
@@ -219,8 +226,11 @@ class LegalCorpus:
         chain = [base]
         for amender in base.relations.get("amended_by", []):
             doc = self.documents.get(amender)
-            if doc and doc.in_force_on(as_of):
-                chain.append(doc)
+            if not doc or not doc.in_force_on(as_of):
+                continue
+            if legal_issue is not None and legal_issue not in doc.legal_issues:
+                continue
+            chain.append(doc)
         return chain
 
     def coverage(self) -> dict:
