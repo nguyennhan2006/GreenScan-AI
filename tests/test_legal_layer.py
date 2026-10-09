@@ -390,3 +390,27 @@ def test_unread_document_is_not_usable():
         status="effective", text_acquisition="scanned_no_text",
     )
     assert not doc.usable
+
+
+# --- registry corrections and amendment chains (review 2026-10-06) -----------------
+
+def test_an_amendment_is_cited_only_for_the_issue_it_amends(corpus):
+    """NĐ 83/2026 amends only NĐ 06/2022's controlled-substance (ozone) articles.
+
+    It used to be pulled into the chain of every emissions claim, and the queue
+    and the working paper listed it as governing GHG claims.
+    """
+    today = date(2026, 10, 6)
+    emissions_chain = {d.id for d in corpus.effective_chain("ND06-2022-ND-CP", today, legal_issue="emissions")}
+    assert "ND119-2025-ND-CP" in emissions_chain
+    assert "ND83-2026-ND-CP" not in emissions_chain
+    full_chain = {d.id for d in corpus.effective_chain("ND06-2022-ND-CP", today)}
+    assert {"ND119-2025-ND-CP", "ND83-2026-ND-CP"} <= full_chain
+
+
+def test_registry_dates_match_the_signed_decrees(corpus):
+    """Effective dates read from the signed PDFs (Điều 2 of NĐ 119/2025, signature dates of 48 and 83)."""
+    assert corpus.documents["ND119-2025-ND-CP"].effective_from == date(2025, 8, 1)
+    assert corpus.documents["ND48-2026-ND-CP"].effective_from == date(2026, 1, 29)
+    assert corpus.documents["ND83-2026-ND-CP"].effective_from == date(2026, 3, 23)
+    assert "emissions" not in corpus.documents["ND83-2026-ND-CP"].legal_issues

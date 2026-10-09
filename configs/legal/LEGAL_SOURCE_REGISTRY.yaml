@@ -181,7 +181,10 @@ documents:
   doc_type: nghi_dinh
   authority: Chính phủ
   issued_date: '2025-06-09'
-  effective_from: '2025-06-09'
+  # Corrected 2026-10-06 (was 2025-06-09, the signing date). Signed PDF, Điều 2:
+  # "Nghị định này có hiệu lực thi hành từ ngày 01 tháng 8 năm 2025"
+  # (data/legal/raw/ND119-2025-ND-CP/ocr.txt). Pending Thảo's confirmation.
+  effective_from: '2025-08-01'
   status: effective
   legal_issues:
   - emissions
@@ -200,8 +203,10 @@ documents:
   title: Sửa đổi, bổ sung một số điều của Nghị định 08/2022/NĐ-CP (đã sửa bởi 05/2025/NĐ-CP)
   doc_type: nghi_dinh
   authority: Chính phủ
-  issued_date: '2026-01-01'
-  effective_from: '2026-01-01'
+  # Corrected 2026-10-06 (was 2026-01-01): signed 29/01/2026 and "có hiệu lực thi
+  # hành kể từ ngày ký ban hành" (clauses file). Pending Thảo's confirmation.
+  issued_date: '2026-01-29'
+  effective_from: '2026-01-29'
   status: effective
   legal_issues:
   - environmental_protection
@@ -220,12 +225,19 @@ documents:
   title: Sửa đổi, bổ sung một số điều của Nghị định 06/2022/NĐ-CP (đã sửa bởi 119/2025/NĐ-CP)
   doc_type: nghi_dinh
   authority: Chính phủ
-  issued_date: '2026-03-01'
-  effective_from: '2026-03-01'
+  # Corrected 2026-10-06 (was 2026-03-01, tagged emissions + ghg_inventory).
+  # Signed 23/03/2026, effective on signing. It amends only the controlled-
+  # substance (ozone/HFC) provisions of NĐ 06/2022 -- registration (Điều 24),
+  # production/import quotas (Điều 26), Phụ lục VI forms; the clause text has
+  # "chất được kiểm soát" 66 times and "kiểm kê khí nhà kính" not once. Tagged
+  # emissions, it was cited as governing every GHG claim in every run.
+  # Pending Thảo's confirmation.
+  issued_date: '2026-03-23'
+  effective_from: '2026-03-23'
   status: effective
   legal_issues:
-  - emissions
-  - ghg_inventory
+  - ozone_protection
+  - controlled_substances
   amends:
   - ND06-2022-ND-CP
   landing_url: https://vanban.chinhphu.vn/?pageid=27160&docid=217277
