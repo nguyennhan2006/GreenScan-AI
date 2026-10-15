@@ -1,0 +1,25 @@
+{
+  "document_number": "63/2024/TT-BGTVT",
+  "title": "Quy định kỹ thuật đo đạc, báo cáo, thẩm định giảm nhẹ phát thải khí nhà kính và kiểm kê khí nhà kính lĩnh vực giao thông vận tải",
+  "authority": "Bộ Giao thông vận tải (nay chức năng thuộc Bộ Xây dựng)",
+  "issued_date": "2024-12-30",
+  "effective_from": "2025-02-15",
+  "status": "effective",
+  "id": "TT63-2024-TT-BGTVT",
+  "checked_at": "2026-10-13T12:20:34.284987+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\TT63-2024-TT-BGTVT\\original.pdf",
+      "sha256": "a41e1cbf25a795c39e1bac9c7a7ba760ae52aa7def0360867cceb84c0aad46d2",
+      "bytes": 437279,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/63-bgtvt.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/63-bgtvt.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:34.409015+00:00",
+      "pages": 12,
+      "text_chars": 23513
+    }
+  ],
+  "text_acquisition": "ok"
+}

@@ -1,0 +1,94 @@
+{
+  "ocr_used": true,
+  "engine": "tesseract v5.4.0.20240606",
+  "languages": "vie+eng",
+  "dpi": 300,
+  "tessdata_prefix": "C:\\Users\\ASUS\\tessdata",
+  "pages": 13,
+  "total_chars": 28166,
+  "mean_confidence": 95.44,
+  "low_confidence_pages": [],
+  "per_page": [
+    {
+      "page": 1,
+      "words": 470,
+      "mean_confidence": 93.29,
+      "chars": 2242
+    },
+    {
+      "page": 2,
+      "words": 421,
+      "mean_confidence": 94.25,
+      "chars": 1943
+    },
+    {
+      "page": 3,
+      "words": 468,
+      "mean_confidence": 95.3,
+      "chars": 2117
+    },
+    {
+      "page": 4,
+      "words": 441,
+      "mean_confidence": 96.0,
+      "chars": 2022
+    },
+    {
+      "page": 5,
+      "words": 536,
+      "mean_confidence": 95.77,
+      "chars": 2455
+    },
+    {
+      "page": 6,
+      "words": 528,
+      "mean_confidence": 95.47,
+      "chars": 2439
+    },
+    {
+      "page": 7,
+      "words": 546,
+      "mean_confidence": 96.42,
+      "chars": 2559
+    },
+    {
+      "page": 8,
+      "words": 500,
+      "mean_confidence": 96.22,
+      "chars": 2319
+    },
+    {
+      "page": 9,
+      "words": 502,
+      "mean_confidence": 96.07,
+      "chars": 2294
+    },
+    {
+      "page": 10,
+      "words": 438,
+      "mean_confidence": 95.74,
+      "chars": 2060
+    },
+    {
+      "page": 11,
+      "words": 474,
+      "mean_confidence": 95.44,
+      "chars": 2193
+    },
+    {
+      "page": 12,
+      "words": 442,
+      "mean_confidence": 95.67,
+      "chars": 2001
+    },
+    {
+      "page": 13,
+      "words": 322,
+      "mean_confidence": 95.14,
+      "chars": 1498
+    }
+  ],
+  "ocr_at": "2026-10-13T13:31:02.861312+00:00",
+  "source_pdf": "data\\legal\\raw\\LUAT-75-2025-QH15\\original.pdf",
+  "note": "OCR output, not a publisher text layer. Diacritics are the weak point for Vietnamese; verify low-confidence pages before citing."
+}

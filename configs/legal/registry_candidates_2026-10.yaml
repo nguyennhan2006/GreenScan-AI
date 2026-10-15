@@ -1,0 +1,937 @@
+version: legal-source-registry-candidates-2026-10
+generated: '2026-10-13'
+note: 'Candidates from the verified catalog. Nothing here binds a rule until review.reviewed_by is filled after
+  reading the signed original. Harvest: python tools/crawl_legal_sources.py --registry configs/legal/registry_candidates_2026-10.yaml
+  --all'
+defaults:
+  jurisdiction: VN
+  language: vi
+  preferred_sources:
+  - vanban.chinhphu.vn
+  - vbpl.vn
+  - congbao.chinhphu.vn
+documents:
+- id: LUAT-19-2023-QH15
+  document_number: 19/2023/QH15
+  title: Luật Bảo vệ quyền lợi người tiêu dùng
+  doc_type: luat
+  authority: Quốc hội (National Assembly)
+  issued_date: '2023-06-20'
+  effective_from: '2024-07-01'
+  effective_to: null
+  status: effective
+  legal_issues:
+  - advertising_consumer
+  - labeling
+  - sanctions
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2023/7/luat19_2023.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: VN-LUAT-19-2023-QH15
+    catalog_file: vn_consumer_ads_labeling.json
+    evidence_note: 'vanban.chinhphu.vn docid=208363: number, issued 20-06-2023, effective 01-07-2024, signer Vương
+      Đình Huệ. Official PDF (Công báo 865+866, 30-7-2023), read 2026-10-13: Điều 3.9–3.10 p.3; Điều 10.1(a) p.9;
+      Điều 21–22 pp.16–18; Điều 79 p.53.'
+    reviewed_by: null
+  sectors:
+  - consumer_goods_retail
+  - food_beverage
+  - plastics_packaging
+  - textiles_footwear
+  - electronics
+  - tourism
+  - all_sectors
+  process_types:
+  - advertising_consumer_protection
+  - product_standards_labeling
+  - enforcement_sanctions
+  claim_hooks:
+  - sản phẩm thân thiện với môi trường
+  - sản phẩm xanh
+  - bao bì phân hủy sinh học
+  - 100% nguyên liệu tái chế
+  - đạt chứng nhận của cơ quan nhà nước
+  - được Bộ Nông nghiệp và Môi trường chứng nhận
+  - tiêu dùng bền vững
+  - an toàn cho môi trường
+- id: ND55-2024-ND-CP
+  document_number: 55/2024/NĐ-CP
+  title: Nghị định quy định chi tiết một số điều của Luật Bảo vệ quyền lợi người tiêu dùng
+  doc_type: nghi_dinh
+  authority: Chính phủ (Government)
+  issued_date: '2024-05-16'
+  effective_from: '2024-07-01'
+  effective_to: null
+  status: effective
+  legal_issues:
+  - advertising_consumer
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2024/5/55-nd-cp.signed.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: VN-ND-55-2024-ND-CP
+    catalog_file: vn_consumer_ads_labeling.json
+    evidence_note: 'vanban.chinhphu.vn docid=210254: number, issued 16-05-2024, effective 01-07-2024, signer Lê
+      Minh Khái. The signed PDF opened (VGP timestamp 21.05.2024) has no text layer; contents not read.'
+    reviewed_by: null
+  sectors:
+  - consumer_goods_retail
+  - all_sectors
+  process_types:
+  - advertising_consumer_protection
+  - governance_institutions
+  claim_hooks: []
+- id: LUAT-16-2012-QH13
+  document_number: 16/2012/QH13
+  title: Luật Quảng cáo
+  doc_type: luat
+  authority: Quốc hội (National Assembly)
+  issued_date: '2012-06-21'
+  effective_from: '2013-01-01'
+  effective_to: null
+  status: effective
+  legal_issues:
+  - advertising_consumer
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2012/08/16_qcao.doc
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: VN-LUAT-16-2012-QH13
+    catalog_file: vn_consumer_ads_labeling.json
+    evidence_note: 'vanban.chinhphu.vn docid=163008 re-checked 2026-10-13: 16/2012/QH13, issued 21-06-2012, effective
+      01-01-2013, signer Nguyễn Sinh Hùng. Điều 8.9 and 8.11 wording verified by the team on 2026-10-05 (sources/2026-10-05
+      A.3.2); Law 75/2025 pages read today amend Điều 8 khoản 3 and 10 only, leaving 9 and 11 as in the base text.'
+    reviewed_by: null
+  sectors:
+  - all_sectors
+  - consumer_goods_retail
+  process_types:
+  - advertising_consumer_protection
+  claim_hooks:
+  - xanh nhất
+  - duy nhất đạt chứng nhận
+  - số một về phát triển bền vững
+  - dẫn đầu ngành về giảm phát thải
+  - tốt nhất cho môi trường
+- id: LUAT-75-2025-QH15
+  document_number: 75/2025/QH15
+  title: Luật sửa đổi, bổ sung một số điều của Luật Quảng cáo
+  doc_type: luat
+  authority: Quốc hội (National Assembly)
+  issued_date: '2025-06-16'
+  effective_from: '2026-01-01'
+  effective_to: null
+  status: effective
+  legal_issues:
+  - advertising_consumer
+  - sanctions
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/75qh.signed.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: VN-LUAT-75-2025-QH15
+    catalog_file: vn_consumer_ads_labeling.json
+    evidence_note: 'vanban.chinhphu.vn docid=214561: issued 16-06-2025, effective 01-01-2026, signer Trần Thanh
+      Mẫn. Signed PDF (13 pp.) read 2026-10-13: Điều 2 defs p.1; Điều 8.10 p.3; Điều 15a pp.3–4; Điều 19 pp.4–5;
+      Điều 2–3 and signature p.13. QĐ 1838/QĐ-TTg date from Tạp chí Công Thương (secondary).'
+    reviewed_by: null
+  sectors:
+  - all_sectors
+  - consumer_goods_retail
+  - food_beverage
+  - plastics_packaging
+  - textiles_footwear
+  - construction_real_estate
+  process_types:
+  - advertising_consumer_protection
+  - enforcement_sanctions
+  claim_hooks:
+  - thân thiện môi trường hơn sản phẩm cùng loại
+  - phát thải thấp nhất ngành
+  - xanh hơn đối thủ
+  - giảm 30% phát thải so với sản phẩm thông thường
+  - trung hòa các-bon
+  - Net Zero
+  - không phát thải
+  - sản phẩm xanh
+- id: ND342-2025-ND-CP
+  document_number: 342/2025/NĐ-CP
+  title: Nghị định quy định chi tiết một số điều của Luật Quảng cáo
+  doc_type: nghi_dinh
+  authority: Chính phủ (Government); proposed by Bộ Văn hóa, Thể thao và Du lịch
+  issued_date: '2025-12-26'
+  effective_from: '2026-02-15'
+  effective_to: null
+  status: effective
+  legal_issues:
+  - advertising_consumer
+  - labeling
+  landing_url: https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-342-2025-nd-cp-468584.htm
+  original_url: null
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: VN-ND-342-2025-ND-CP
+    catalog_file: vn_consumer_ads_labeling.json
+    evidence_note: 'Signed PDF 342-ndcp.signed.pdf (28 pp., VGP-signed 07.01.2026) served by the Nghệ An provincial
+      portal; read 2026-10-13: date line 26/12/2025 p.1; Điều 3 p.2; Điều 4–11 pp.2–5; Điều 17–19 pp.9–11; Điều
+      31–32 p.16; signer Mai Văn Chính p.17. Not found at a datafiles.chinhphu.vn URL.'
+    reviewed_by: null
+  sectors:
+  - agriculture
+  - fisheries
+  - food_beverage
+  - chemicals
+  - consumer_goods_retail
+  process_types:
+  - advertising_consumer_protection
+  - product_standards_labeling
+  - data_ai_operations
+  claim_hooks:
+  - phân bón hữu cơ thân thiện môi trường
+  - thức ăn chăn nuôi giảm phát thải
+  - chế phẩm sinh học xử lý môi trường
+  - thuốc bảo vệ thực vật sinh học an toàn cho môi trường
+  - bia sản xuất bằng năng lượng tái tạo
+- id: ND87-2026-ND-CP
+  document_number: 87/2026/NĐ-CP
+  title: Nghị định quy định xử phạt vi phạm hành chính trong lĩnh vực văn hóa và quảng cáo
+  doc_type: nghi_dinh
+  authority: Chính phủ (Government)
+  issued_date: '2026-03-27'
+  effective_from: '2026-05-15'
+  effective_to: null
+  status: effective
+  legal_issues:
+  - advertising_consumer
+  - sanctions
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/4/87-ndcp.signed.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: VN-ND-87-2026-ND-CP
+    catalog_file: vn_consumer_ads_labeling.json
+    evidence_note: 'Signed PDF 87-ndcp.signed.pdf (99 pp., VGP stamp 10.04.2026) read by the verifier: Điều 6 p.5;
+      Điều 50 pp.52–54; Điều 51 pp.54–55; Điều 70 pp.71–72; Điều 83 pp.81–82; Điều 93 p.98. vanban.chinhphu.vn docid=217695:
+      issued 27-03-2026, effective 15-05-2026, signer Mai Văn Chính.'
+    reviewed_by: null
+  sectors:
+  - all_sectors
+  - consumer_goods_retail
+  process_types:
+  - enforcement_sanctions
+  - advertising_consumer_protection
+  claim_hooks:
+  - xanh nhất
+  - thân thiện môi trường
+  - trung hòa các-bon
+  - KOL/KOC giới thiệu sản phẩm xanh
+- id: LUAT-23-2018-QH14
+  document_number: 23/2018/QH14
+  title: Luật Cạnh tranh
+  doc_type: luat
+  authority: Quốc hội (National Assembly)
+  issued_date: '2018-06-12'
+  effective_from: '2019-07-01'
+  effective_to: null
+  status: effective
+  legal_issues:
+  - advertising_consumer
+  - competition
+  landing_url: null
+  original_url: https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2018/6/26888/23064-1-2018773-77423-2018-qh14.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: VN-LUAT-23-2018-QH14
+    catalog_file: vn_consumer_ads_labeling.json
+    evidence_note: 'Công báo page fetched: 23/2018/QH14, issued 12/06/2018, effective 01/07/2019, signer Nguyễn
+      Thị Kim Ngân, Công báo 773+774. Công báo PDF (text layer) read: Điều 45 khoản 5 điểm a–b wording matches the
+      summary (p.50).'
+    reviewed_by: null
+  sectors:
+  - all_sectors
+  process_types:
+  - competition
+  - advertising_consumer_protection
+  claim_hooks:
+  - xanh hơn đối thủ
+  - phát thải thấp hơn sản phẩm của đối thủ
+  - doanh nghiệp duy nhất trong ngành đạt chuẩn xanh
+- id: ND75-2019-ND-CP
+  document_number: 75/2019/NĐ-CP
+  title: Nghị định quy định về xử phạt vi phạm hành chính trong lĩnh vực cạnh tranh
+  doc_type: nghi_dinh
+  authority: Chính phủ (Government)
+  issued_date: '2019-09-26'
+  effective_from: '2019-12-01'
+  effective_to: null
+  status: effective
+  legal_issues:
+  - competition
+  - sanctions
+  landing_url: null
+  original_url: https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2019/9/29759/28200-1-2019817-81875-2019-nd-cp.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: VN-ND-75-2019-ND-CP
+    catalog_file: vn_consumer_ads_labeling.json
+    evidence_note: 'Công báo page fetched: 75/2019/NĐ-CP, issued 26/09/2019, effective 01/12/2019, signer Nguyễn
+      Xuân Phúc, Công báo 817+818. Công báo PDF (text layer) read: Điều 20 khoản 1–4 and Điều 4 khoản 7 match. vanban.chinhphu.vn
+      docid=217417: NĐ 102/2026/NĐ-CP issued 31-03-2026, effective 20-05-2026, signer Bùi Thanh Sơn.'
+    reviewed_by: null
+  sectors:
+  - all_sectors
+  process_types:
+  - competition
+  - enforcement_sanctions
+  claim_hooks:
+  - xanh hơn đối thủ
+  - sản phẩm ít phát thải nhất thị trường
+- id: ND98-2020-ND-CP
+  document_number: 98/2020/NĐ-CP
+  title: Nghị định quy định xử phạt vi phạm hành chính trong hoạt động thương mại, sản xuất, buôn bán hàng giả,
+    hàng cấm và bảo vệ quyền lợi người tiêu dùng
+  doc_type: nghi_dinh
+  authority: Chính phủ (Government)
+  issued_date: '2020-08-26'
+  effective_from: '2020-10-15'
+  effective_to: null
+  status: effective
+  legal_issues:
+  - advertising_consumer
+  - labeling
+  - sanctions
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2020/08/98.signed.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: VN-ND-98-2020-ND-CP
+    catalog_file: vn_consumer_ads_labeling.json
+    evidence_note: 'vanban.chinhphu.vn docid=200841 fetched: 98/2020/NĐ-CP, issued 26-08-2020, effective 15-10-2020,
+      signer Nguyễn Xuân Phúc. Signed 2020 PDF p.7 read: Điều 4 khoản 4 điểm a–b. Signed NĐ 24/2025 p.2 read: Điều
+      1 khoản 2 rewrites Điều 4 khoản 4 điểm b.'
+    reviewed_by: null
+  sectors:
+  - consumer_goods_retail
+  - food_beverage
+  - all_sectors
+  process_types:
+  - enforcement_sanctions
+  - advertising_consumer_protection
+  - product_standards_labeling
+  claim_hooks:
+  - sản phẩm thân thiện môi trường
+  - đạt chứng nhận xanh
+- id: ND24-2025-ND-CP
+  document_number: 24/2025/NĐ-CP
+  title: Nghị định sửa đổi, bổ sung một số điều của Nghị định số 98/2020/NĐ-CP ngày 26 tháng 8 năm 2020 của Chính
+    phủ quy định xử phạt vi phạm hành chính trong hoạt động thương mại, sản xuất, buôn bán hàng giả, hàng cấm và
+    bảo vệ quyền lợi người tiêu dùng đã được sửa đổi, bổ sung một số điều theo quy định tại Nghị định số 17/2022/NĐ-CP
+  doc_type: nghi_dinh
+  authority: Chính phủ (Government); proposed by Bộ Công Thương
+  issued_date: '2025-02-21'
+  effective_from: '2025-02-21'
+  effective_to: null
+  status: effective
+  legal_issues:
+  - advertising_consumer
+  - sanctions
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/02/24-2025-nd-cp.signed.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: VN-ND-24-2025-ND-CP
+    catalog_file: vn_consumer_ads_labeling.json
+    evidence_note: 'vanban.chinhphu.vn docid=212837 fetched: issued 21-02-2025, effective 21-02-2025, signer Bùi
+      Thanh Sơn. Signed PDF (datafiles.chinhphu.vn, 37 pp.) read by the verifier: Điều 1 khoản 2 p.2; Điều 46b–47
+      pp.7–8; Điều 3–4 p.36 (''có hiệu lực thi hành kể từ ngày ký ban hành'').'
+    reviewed_by: null
+  sectors:
+  - consumer_goods_retail
+  - food_beverage
+  - textiles_footwear
+  - electronics
+  - all_sectors
+  process_types:
+  - enforcement_sanctions
+  - advertising_consumer_protection
+  claim_hooks:
+  - sản phẩm thân thiện môi trường
+  - đạt chứng nhận Nhãn sinh thái
+  - được Bộ chứng nhận sản phẩm xanh
+  - bao bì có thể phân hủy hoàn toàn
+  - KOL giới thiệu sản phẩm xanh
+- id: LUAT-78-2025-QH15
+  document_number: 78/2025/QH15
+  title: Luật sửa đổi, bổ sung một số điều của Luật Chất lượng sản phẩm, hàng hóa
+  doc_type: luat
+  authority: Quốc hội (National Assembly)
+  issued_date: '2025-06-18'
+  effective_from: '2026-01-01'
+  effective_to: null
+  status: effective
+  legal_issues:
+  - advertising_consumer
+  - inspection
+  - labeling
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/9/156-vbhn-vpqh.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: VN-LUAT-78-2025-QH15
+    catalog_file: vn_consumer_ads_labeling.json
+    evidence_note: 'Official consolidated text VBHN 156/VBHN-VPQH on datafiles.chinhphu.vn (42 pp., text layer),
+      read 2026-10-13: header p.1 states Law 78/2025/QH15 of 18/6/2025 effective 01/01/2026; Điều 3.8 p.3; Điều
+      5 p.3; Điều 6d–6đ pp.8–9; Điều 8 pp.9–10; Điều 34a–34b pp.30–31. The amending law itself was not opened.'
+    reviewed_by: null
+  sectors:
+  - consumer_goods_retail
+  - food_beverage
+  - agriculture
+  - fisheries
+  - textiles_footwear
+  - electronics
+  - plastics_packaging
+  - steel
+  - cement
+  - chemicals
+  process_types:
+  - product_standards_labeling
+  - supply_chain_due_diligence
+  - inspection
+  - advertising_consumer_protection
+  claim_hooks:
+  - truy xuất nguồn gốc minh bạch
+  - 100% sản phẩm có mã QR truy xuất
+  - hộ chiếu số sản phẩm
+  - chuỗi cung ứng minh bạch
+  - nguồn gốc rõ ràng
+  - đạt tiêu chuẩn công bố áp dụng
+  - chất lượng quốc tế
+- id: LUAT-70-2025-QH15
+  document_number: 70/2025/QH15
+  title: Luật sửa đổi, bổ sung một số điều của Luật Tiêu chuẩn và quy chuẩn kỹ thuật
+  doc_type: luat
+  authority: Quốc hội (National Assembly)
+  issued_date: '2025-06-14'
+  effective_from: '2026-01-01'
+  effective_to: null
+  status: effective
+  legal_issues:
+  - inspection
+  - labeling
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/70qh.signed.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: VN-LUAT-70-2025-QH15
+    catalog_file: vn_consumer_ads_labeling.json
+    evidence_note: 'Signed PDF 70qh.signed.pdf (18 pp., VGP stamp 16.07.2025) read 2026-10-13: Luật số 70/2025/QH15
+      and Điều 3 definitions p.1; repeal list, Điều 2 (effective 01/01/2026), Điều 3, adoption 14/6/2025 and signer
+      on the last page. QĐ 2138/QĐ-TTg facts from Tạp chí Công Thương (secondary).'
+    reviewed_by: null
+  sectors:
+  - all_sectors
+  - construction_real_estate
+  - steel
+  - cement
+  - electronics
+  - consumer_goods_retail
+  process_types:
+  - product_standards_labeling
+  - verification_assurance
+  - inspection
+  claim_hooks:
+  - đạt tiêu chuẩn TCVN
+  - chứng nhận hợp chuẩn
+  - công bố hợp quy
+  - đạt QCVN về môi trường
+  - chứng nhận ISO 14001
+  - số liệu phát thải đã được kiểm tra xác nhận
+  - được bên thứ ba thẩm định độc lập
+- id: LUAT-122-2025-QH15
+  document_number: 122/2025/QH15
+  title: Luật Thương mại điện tử
+  doc_type: luat
+  authority: Quốc hội (National Assembly)
+  issued_date: '2025-12-10'
+  effective_from: '2026-07-01'
+  effective_to: null
+  status: effective
+  legal_issues:
+  - advertising_consumer
+  - labeling
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat122.2025.qh15.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: VN-LUAT-122-2025-QH15
+    catalog_file: vn_consumer_ads_labeling.json
+    evidence_note: 'vanban.chinhphu.vn docid=216503 fetched: 122/2025/QH15, issued 10-12-2025, effective 01-07-2026,
+      signer Trần Thanh Mẫn, attachment luat122.2025.qh15.pdf (not opened). Related verified duties for online sales
+      exist in Law 78/2025 Điều 34b and NĐ 98/2020 Điều 53a.'
+    reviewed_by: null
+  sectors:
+  - consumer_goods_retail
+  - electronics
+  - food_beverage
+  - textiles_footwear
+  process_types:
+  - advertising_consumer_protection
+  - product_standards_labeling
+  claim_hooks:
+  - sản phẩm xanh trên sàn thương mại điện tử
+  - gian hàng chính hãng thân thiện môi trường
+- id: ND37-2026-ND-CP
+  document_number: 37/2026/NĐ-CP
+  title: Nghị định quy định chi tiết một số điều và biện pháp để tổ chức, hướng dẫn thi hành Luật Chất lượng sản
+    phẩm, hàng hóa
+  doc_type: nghi_dinh
+  authority: Chính phủ (Government); signed by Deputy PM Nguyễn Chí Dũng
+  issued_date: '2026-01-23'
+  effective_from: '2026-01-23'
+  effective_to: null
+  status: effective
+  legal_issues:
+  - labeling
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/37-1.signed.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: VN-ND-37-2026-ND-CP
+    catalog_file: vn_consumer_ads_labeling.json
+    evidence_note: 'vanban.chinhphu.vn docid=216764: 37/2026/NĐ-CP, issued 23-01-2026, effective 23-01-2026, signer
+      Nguyễn Chí Dũng. Signed PDF (92 pp.) read by the verifier: Điều 50 p.43; Điều 97 pp.89–90. Other article numbers
+      come from English-model OCR of headings.'
+    reviewed_by: null
+  sectors:
+  - agriculture
+  - chemicals
+  - consumer_goods_retail
+  - electronics
+  - fisheries
+  - food_beverage
+  - plastics_packaging
+  - textiles_footwear
+  process_types:
+  - product_standards_labeling
+  - supply_chain_due_diligence
+  claim_hooks:
+  - 100% cotton hữu cơ
+  - bao bì thân thiện môi trường
+  - giấy tái chế
+  - gỗ có nguồn gốc hợp pháp
+  - nguyên liệu tái chế
+  - nhựa sinh học
+  - sợi tái chế
+  - thành phần tự nhiên
+- id: ND110-2026-ND-CP
+  document_number: 110/2026/NĐ-CP
+  title: Quy định chi tiết thi hành một số điều của Luật Bảo vệ môi trường về trách nhiệm tái chế sản phẩm, bao
+    bì và trách nhiệm xử lý chất thải của nhà sản xuất, nhập khẩu
+  doc_type: nghi_dinh
+  authority: Chính phủ
+  issued_date: '2026-04-01'
+  effective_from: '2026-05-25'
+  effective_to: null
+  status: effective
+  legal_issues: []
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/4/110-ndcp.signed.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: ND110-2026-ND-CP
+    catalog_file: vn_delta.json
+    evidence_note: 'Bản ký số trên datafiles.chinhphu.vn (28 trang, ảnh quét; VPCP ký số 07/04/2026). Trang 1 đọc
+      trực tiếp từ ảnh (số, ''ngày 01 tháng 4 năm 2026'', trích yếu). Các điều còn lại qua OCR tesseract mô hình
+      eng (mất dấu): số điều, ngày và số liệu đọc rõ (Đ.24 ''25 thang 5 nam 2026''). Cần OCR tiếng Việt trước khi
+      gắn quy tắc. Chưa liệt kê số điều cụ thể của Chương VI NĐ 08/2022 bị bãi bỏ.'
+    reviewed_by: null
+  sectors:
+  - packaging
+  - plastics
+  - consumer_goods
+  - food_beverage
+  - electronics
+  - batteries
+  - tires
+  - lubricants
+  - vehicles
+  process_types:
+  - epr
+  - recycling
+  - waste
+  claim_hooks:
+  - hoàn thành trách nhiệm tái chế (EPR)
+  - trách nhiệm mở rộng của nhà sản xuất
+  - thu hồi, tái chế bao bì sau tiêu dùng
+  - đóng góp tài chính vào Quỹ Bảo vệ môi trường Việt Nam
+  - đạt tỷ lệ tái chế bắt buộc
+- id: TT24-2026-TT-BNNMT
+  document_number: 24/2026/TT-BNNMT
+  title: Quy định chi tiết, hướng dẫn thi hành một số điều của Nghị định số 110/2026/NĐ-CP ngày 01 tháng 4 năm 2026
+    của Chính phủ quy định chi tiết thi hành một số điều của Luật Bảo vệ môi trường về trách nhiệm tái chế sản phẩm,
+    bao bì và trách nhiệm xử lý chất thải của nhà sản xuất, nhập khẩu
+  doc_type: thong_tu
+  authority: Bộ Nông nghiệp và Môi trường
+  issued_date: '2026-05-25'
+  effective_from: '2026-05-25'
+  effective_to: null
+  status: effective
+  legal_issues: []
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/6/24-bnnmt.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: TT24-2026-TT-BNNMT
+    catalog_file: vn_delta.json
+    evidence_note: Số, ngày ký (25/5/2026) và điều hiệu lực đọc bằng OCR (eng) từ bản quét trên datafiles.chinhphu.vn.
+      Nội dung Phụ lục I chỉ theo báo chí.
+    reviewed_by: null
+  sectors:
+  - packaging
+  - plastics
+  - consumer_goods
+  - food_beverage
+  - electronics
+  - batteries
+  - tires
+  - lubricants
+  - vehicles
+  process_types:
+  - epr
+  - recycling
+  - waste
+  claim_hooks:
+  - đã nộp đóng góp tài chính EPR
+  - mức đóng góp tái chế bao bì
+  - báo cáo kết quả tái chế
+- id: QD46-2026-QD-TTg
+  document_number: 46/2026/QĐ-TTg
+  title: Hướng dẫn xác định dự án xanh, dự án đáp ứng tiêu chí tuần hoàn và áp dụng khung tiêu chuẩn môi trường,
+    xã hội, quản trị
+  doc_type: quyet_dinh
+  authority: Thủ tướng Chính phủ (Phó Thủ tướng Hồ Quốc Dũng ký)
+  issued_date: '2026-09-17'
+  effective_from: '2026-11-01'
+  effective_to: null
+  status: not_yet_effective
+  legal_issues: []
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/9/46_2026_qd-ttg_17092026-signed.signed.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: QD46-2026-QD-TTg
+    catalog_file: vn_delta.json
+    evidence_note: 'Metadata trên vanban.chinhphu.vn (docid 219550): ban hành 17-09-2026, hiệu lực 01-11-2026, người
+      ký Hồ Quốc Dũng. Bản ký số 73 trang (VPCP ký số 21/09/2026): trang 1–15 OCR (eng, mất dấu) — đọc được số,
+      ''ngay 17 thang 9 nam 2026'', Đ.4, Đ.5, Đ.7.5, Đ.8.1. Phụ lục I–VII chưa đọc.'
+    reviewed_by: null
+  sectors:
+  - energy
+  - transport
+  - construction
+  - water
+  - agriculture
+  - manufacturing
+  - environmental_services
+  process_types:
+  - green_taxonomy
+  - circular_economy
+  - esg_framework
+  - third_party_verification
+  - green_credit
+  claim_hooks:
+  - dự án xanh
+  - dự án đáp ứng tiêu chí tuần hoàn
+  - dự án kinh tế tuần hoàn
+  - cộng sinh công nghiệp
+  - áp dụng khung tiêu chuẩn ESG
+  - được tổ chức độc lập xác nhận là dự án xanh
+  - đủ điều kiện hỗ trợ lãi suất xanh
+- id: TT38-2023-TT-BCT
+  document_number: 38/2023/TT-BCT
+  title: Quy định kỹ thuật đo đạc, báo cáo, thẩm định giảm nhẹ phát thải khí nhà kính và kiểm kê khí nhà kính ngành
+    Công Thương
+  doc_type: thong_tu
+  authority: Bộ Công Thương
+  issued_date: '2023-12-27'
+  effective_from: '2024-02-11'
+  effective_to: null
+  status: effective
+  legal_issues: []
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2024/01/38-bct.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: TT38-2023-TT-BCT
+    catalog_file: vn_delta.json
+    evidence_note: Bản quét datafiles.chinhphu.vn; ngày ký 27/12/2023 và 'hiệu lực ... từ ngày 11 tháng 02 năm 2024'
+      đọc trực tiếp từ ảnh trang 1 và trang 17. Phân ngành nhiệt điện/thép thuộc Bộ Công Thương là suy luận theo
+      phân công trong QĐ 13/2024 — đối chiếu file QĐ 13 của nhóm.
+    reviewed_by: null
+  sectors:
+  - thermal_power
+  - steel
+  - chemicals
+  - industry_trade
+  process_types:
+  - ghg_inventory
+  - mrv
+  - mitigation_report
+  claim_hooks:
+  - kiểm kê khí nhà kính cấp cơ sở
+  - báo cáo kiểm kê đã được thẩm định
+  - giảm phát thải theo phương pháp MRV của Bộ Công Thương
+  - phát thải trên đơn vị sản phẩm
+- id: TT13-2024-TT-BXD
+  document_number: 13/2024/TT-BXD
+  title: Quy trình, quy định kỹ thuật kiểm kê khí nhà kính và đo đạc, báo cáo, thẩm định giảm nhẹ phát thải khí
+    nhà kính ngành Xây dựng
+  doc_type: thong_tu
+  authority: Bộ Xây dựng
+  issued_date: '2024-12-20'
+  effective_from: '2025-02-05'
+  effective_to: null
+  status: effective
+  legal_issues: []
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/13-bxd.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: TT13-2024-TT-BXD
+    catalog_file: vn_delta.json
+    evidence_note: 'Bản quét 67 trang trên datafiles.chinhphu.vn; OCR (eng) trang 1 (''So: 13/2024/TT-BXD ... ngay
+      20 thang 12 nam 2024'') và trang 13 (''hieu luc thi hanh ke tu ngay 05 thang 02 nam 2025''). Số điều cụ thể
+      chưa ghi vì OCR mất dấu.'
+    reviewed_by: null
+  sectors:
+  - cement
+  - construction_materials
+  process_types:
+  - ghg_inventory
+  - mrv
+  - mitigation_report
+  claim_hooks:
+  - giảm tỷ lệ clinker
+  - phát thải CO2 trên tấn xi măng
+  - kiểm kê khí nhà kính theo quy định Bộ Xây dựng
+  - giảm phát thải nhờ phụ gia thay thế clinker
+- id: TT63-2024-TT-BGTVT
+  document_number: 63/2024/TT-BGTVT
+  title: Quy định kỹ thuật đo đạc, báo cáo, thẩm định giảm nhẹ phát thải khí nhà kính và kiểm kê khí nhà kính lĩnh
+    vực giao thông vận tải
+  doc_type: thong_tu
+  authority: Bộ Giao thông vận tải (nay chức năng thuộc Bộ Xây dựng)
+  issued_date: '2024-12-30'
+  effective_from: '2025-02-15'
+  effective_to: null
+  status: effective
+  legal_issues: []
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/63-bgtvt.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: TT63-2024-TT-BGTVT
+    catalog_file: vn_delta.json
+    evidence_note: 'Lớp chữ bản PDF datafiles.chinhphu.vn: ''Thông tư này có hiệu lực thi hành kể từ ngày 15 tháng
+      02 năm 2025''; ngày ký để trống trong lớp chữ. Ngày ký và số điều theo caselaw.vn (thứ cấp).'
+    reviewed_by: null
+  sectors:
+  - transport
+  - aviation
+  - shipping
+  - logistics
+  process_types:
+  - ghg_inventory
+  - mrv
+  - mitigation_report
+  claim_hooks:
+  - giảm phát thải đội xe
+  - phát thải trên hành khách-km
+  - kiểm kê khí nhà kính lĩnh vực giao thông
+- id: TT11-2026-TT-BNNMT
+  document_number: 11/2026/TT-BNNMT
+  title: Quy định quản lý, vận hành Hệ thống đăng ký quốc gia về hạn ngạch phát thải khí nhà kính và tín chỉ các-bon
+  doc_type: thong_tu
+  authority: Bộ Nông nghiệp và Môi trường (Cục Biến đổi khí hậu vận hành)
+  issued_date: '2026-02-13'
+  effective_from: '2026-03-30'
+  effective_to: null
+  status: effective
+  legal_issues: []
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/02/11-bnnmt.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: TT11-2026-TT-BNNMT
+    catalog_file: vn_delta.json
+    evidence_note: Lớp chữ bản PDF datafiles.chinhphu.vn; số '11', ngày '13 tháng 02 năm 2026' và hiệu lực '30 tháng
+      3 năm 2026' đọc trực tiếp từ ảnh trang 1 và trang 23. Số liệu phiên giao dịch đầu chỉ từ báo chí; tổng 511.473.846
+      khớp đúng tổng hạn ngạch 2025+2026 trong QĐ 263/2026 → củng cố (vẫn SECONDARY) con số trong 02.
+    reviewed_by: null
+  sectors:
+  - thermal_power
+  - steel
+  - cement
+  - carbon_credit_projects
+  process_types:
+  - carbon_market
+  - registry
+  - offset
+  - allowance_surrender
+  claim_hooks:
+  - trung hòa các-bon nhờ tín chỉ
+  - đã hủy tín chỉ để bù trừ phát thải
+  - tín chỉ các-bon được cấp cho dự án
+  - đã nộp trả đủ hạn ngạch
+  - phát thải trong hạn ngạch được phân bổ
+- id: ND180-2026-ND-CP
+  document_number: 180/2026/NĐ-CP
+  title: Quy định về dịch vụ hấp thụ và lưu giữ các-bon của rừng
+  doc_type: nghi_dinh
+  authority: Chính phủ
+  issued_date: '2026-05-21'
+  effective_from: '2026-07-15'
+  effective_to: null
+  status: effective
+  legal_issues: []
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/5/180-ndcp.signed.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: ND180-2026-ND-CP
+    catalog_file: vn_delta.json
+    evidence_note: 'Bản ký số 79 trang (VPCP ký số 25/05/2026); OCR (eng) trang 1–21: ''So: 180/2026/ND-CP ... ngay
+      21 thang 5 nam 2026'', Đ.19 ''tu ngay 15 thang 7 nam 2026''. Mức trần ''xuất khẩu tối đa 50% tín chỉ'' do
+      báo chí đưa KHÔNG thấy trong thân Nghị định (Đ.1–20) — UNVERIFIED, có thể nằm ở văn bản khác.'
+    reviewed_by: null
+  sectors:
+  - forestry
+  - carbon_credit_buyers
+  - biomass_power
+  process_types:
+  - carbon_credit
+  - offset
+  - carbon_market
+  claim_hooks:
+  - tín chỉ các-bon rừng
+  - bù đắp phát thải bằng trồng rừng
+  - mua tín chỉ carbon rừng để trung hòa
+  - dự án carbon rừng
+  - hấp thụ các-bon
+- id: TT45-2024-TT-BTNMT
+  document_number: 45/2024/TT-BTNMT
+  title: Ban hành quy chuẩn kỹ thuật quốc gia về khí thải công nghiệp (QCVN 19:2024/BTNMT)
+  doc_type: thong_tu
+  authority: Bộ Tài nguyên và Môi trường (nay Bộ Nông nghiệp và Môi trường)
+  issued_date: '2024-12-30'
+  effective_from: '2025-07-01'
+  effective_to: null
+  status: effective
+  legal_issues: []
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/45-btnmt.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: TT45-2024-TT-BTNMT-QCVN19-2024
+    catalog_file: vn_delta.json
+    evidence_note: 'Ảnh trang 1 bản datafiles.chinhphu.vn: số 45, ''ngày 30 tháng 12 năm 2024'', ''hiệu lực ...
+      từ ngày 01 tháng 7 năm 2025''; lớp chữ có Đ.3 ''31 tháng 12 năm 2031'' và Đ.4.2 ''01 tháng 01 năm 2032''.
+      Hệ quả kiểm chứng: BCTN 2025 của nhà máy cũ ghi ''đạt QCVN 19:2009'' KHÔNG sai; ghi ''đạt QCVN 19:2024'' thì
+      là tuyên bố tự nguyện cần bằng chứng quan trắc.'
+    reviewed_by: null
+  sectors:
+  - thermal_power
+  - steel
+  - cement
+  - chemicals
+  - fertilizer
+  - waste_incineration
+  - all_industrial
+  process_types:
+  - emission_standard
+  - permit
+  - monitoring
+  claim_hooks:
+  - khí thải đạt QCVN 19:2024/BTNMT
+  - khí thải đạt quy chuẩn kỹ thuật quốc gia
+  - nồng độ bụi thấp hơn giới hạn cho phép
+  - đã áp dụng sớm quy chuẩn mới
+  - quan trắc khí thải tự động đạt chuẩn
+- id: TT09-2026-TT-BNNMT
+  document_number: 09/2026/TT-BNNMT
+  title: Sửa đổi, bổ sung một số điều của Thông tư số 02/2022/TT-BTNMT quy định chi tiết thi hành một số điều của
+    Luật Bảo vệ môi trường (đã sửa bởi Thông tư 07/2025/TT-BTNMT và 07/2025/TT-BNNMT)
+  doc_type: thong_tu
+  authority: Bộ Nông nghiệp và Môi trường
+  issued_date: '2026-01-29'
+  effective_from: '2026-01-29'
+  effective_to: null
+  status: effective
+  legal_issues: []
+  landing_url: null
+  original_url: https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/02/09-bnnmt.pdf
+  text_acquisition: not_attempted
+  review:
+    verification: VERIFIED_PRIMARY
+    catalog_id: TT09-2026-TT-BNNMT
+    catalog_file: vn_delta.json
+    evidence_note: Lớp chữ bản PDF datafiles.chinhphu.vn (30 trang). Số '09' và ngày '29' là phần đóng dấu/viết
+      tay (lớp chữ có '09', '29' sau tiêu đề); Đ.28 'kể từ ngày 29 tháng 01 năm 2026' là chữ in. Đăng Công báo số
+      123 ngày 26/02/2026 (theo bản vbpl.moj.gov.vn).
+    reviewed_by: null
+  sectors:
+  - all_industrial
+  process_types:
+  - permit
+  - environmental_report
+  - monitoring
+  - eia
+  claim_hooks:
+  - đã nộp báo cáo công tác bảo vệ môi trường
+  - được cấp giấy phép môi trường
+  - quan trắc chất thải đạt yêu cầu
+updates_to_existing:
+- id: ND08-2022-ND-CP
+  field: amended_by
+  proposed_value: + ND110-2026-ND-CP
+  evidence: NĐ 110/2026 amends Đ.69.1(b) and repeals Chương VI, Phụ lục XXII–XXIII (EPR) of NĐ 08/2022; catalog
+    vn_delta.json ND110-2026-ND-CP (VERIFIED_PRIMARY)
+skipped:
+- 'VN-DUTHAO-ND-SUADOI-ND-BVQLNTD-2026: status draft'
+- 'VN-ND-08-2022-ND-CP-NHAN-SINH-THAI: already in the live registry (see updates_to_existing)'
+- 'VN-QD-2229-2026-QD-BCT: not a numbered legal instrument (evidence list or official letter)'
+- 'TT96-REPLACEMENT-DRAFT-2026: status draft'
+- 'ND06-2022-ND-CP-AMENDMENT-CHECK: already in the live registry (see updates_to_existing)'
+- 'QD21-2025-QD-TTg-REPLACEMENT-CHECK: already in the live registry (see updates_to_existing)'
+- 'LUAT-TTNT-134-2025-QH15: relevance low (product operations, not claims)'
+- 'ND142-2026-ND-CP: relevance low (product operations, not claims)'
+- 'TT06-2025-TT-BTNMT-QCVN40-2025: no official URL'
+- 'ECOLABEL-VN-LIST-2025: not a numbered legal instrument (evidence list or official letter)'
+- 'DRAFT-ND-HTLS-XANH-2026: status draft'
+- 'ND45-2022-ND-CP: no official URL'
+- 'LUAT-THANH-TRA-84-2025-QH15: no official URL'

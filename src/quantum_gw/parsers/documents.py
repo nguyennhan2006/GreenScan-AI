@@ -13,6 +13,7 @@ from quantum_gw.settings import IntakeSettings
 from quantum_gw.utils.text import join_wrapped_lines, normalize_text, stable_id
 
 from .ocr import TesseractOCR
+from .office import docx_text, html_text
 
 
 class DocumentParser:
@@ -42,6 +43,12 @@ class DocumentParser:
         if suffix in {".txt", ".md", ".csv", ".yaml", ".yml"}:
             return self._chunks_from_text(
                 document, path.read_text(encoding="utf-8", errors="ignore"), doc_id=doc_id
+            )
+        if suffix == ".docx":
+            return self._chunks_from_text(document, docx_text(path), doc_id=doc_id)
+        if suffix in {".html", ".htm"}:
+            return self._chunks_from_text(
+                document, html_text(path.read_text(encoding="utf-8", errors="ignore")), doc_id=doc_id
             )
         raise ValueError(f"Unsupported file type: {suffix}")
 

@@ -3,6 +3,7 @@ import { workpaperUrl } from '../api.js'
 import { Link, navigate } from '../lib/router.jsx'
 import { Chip, StatusBadge, WorkflowPill } from '../components/badges.jsx'
 import Overview from '../components/Overview.jsx'
+import { Icon } from '../components/icons.jsx'
 import SourceViewer from '../components/SourceViewer.jsx'
 import { buildQueue, figureAsEvidence, formatFigure, reasonText, tagsFor } from '../lib/queue.js'
 
@@ -27,12 +28,22 @@ function stateOf(item, reviewStates) {
   return reviewStates[item.item_id] || 'AI_SUGGESTED'
 }
 
-function Stat({ label, value, hint }) {
+const STAT_TONE = {
+  slate: 'bg-slate-100 text-slate-600',
+  emerald: 'bg-emerald-50 text-emerald-700',
+  red: 'bg-red-50 text-red-600',
+  sky: 'bg-sky-50 text-sky-700',
+}
+
+function Stat({ label, value, hint, icon, tone = 'slate' }) {
   return (
-    <div className="rounded-lg bg-slate-50 px-3 py-2">
-      <p className="text-[11px] font-medium text-slate-500">{label}</p>
-      <p className="text-xl font-semibold tabular-nums text-slate-900">{value}</p>
-      {hint && <p className="text-[11px] text-slate-500">{hint}</p>}
+    <div className="flex items-start gap-3 rounded-xl border border-slate-200/80 bg-slate-50/60 px-4 py-3">
+      {icon && <span className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${STAT_TONE[tone]}`}><Icon name={icon} className="h-[18px] w-[18px]" /></span>}
+      <div className="min-w-0">
+        <p className="text-xs font-medium text-slate-500">{label}</p>
+        <p className="mt-0.5 text-2xl font-bold leading-tight tabular-nums text-slate-900">{value}</p>
+        {hint && <p className="mt-0.5 truncate text-xs text-slate-500">{hint}</p>}
+      </div>
     </div>
   )
 }
@@ -89,10 +100,10 @@ export default function QueuePage({ runId, runLabel, result, rows, summary, revi
           </div>
         </div>
         <div className="mt-3 grid gap-2 sm:grid-cols-4">
-          <Stat label="Nên soát trước" value={queue.queued.length} hint={`trên ${queue.items.length} mục đã sàng lọc`} />
-          <Stat label="Đã chốt" value={`${finalized}/${queue.queued.length}`} hint="mục trong hàng đợi" />
-          <Stat label="Có đoạn mâu thuẫn" value={summary.contradicted.length} hint="cần đọc kỹ nguồn" />
-          <Stat label="Độ phủ kho tài liệu" value={summary.corpus ? `${Math.round((summary.corpus.coverage || 0) * 100)}%` : '—'} hint={summary.corpus?.sufficient_for_absence ? 'đủ để kết luận vắng bằng chứng' : 'chưa đủ để kết luận vắng bằng chứng'} />
+          <Stat icon="file" label="Nên soát trước" value={queue.queued.length} hint={`trên ${queue.items.length} mục đã sàng lọc`} />
+          <Stat icon="checkCircle" tone="emerald" label="Đã chốt" value={`${finalized}/${queue.queued.length}`} hint="mục trong hàng đợi" />
+          <Stat icon="alert" tone={summary.contradicted.length ? 'red' : 'slate'} label="Có đoạn mâu thuẫn" value={summary.contradicted.length} hint="cần đọc kỹ nguồn" />
+          <Stat icon="database" tone="sky" label="Độ phủ kho tài liệu" value={summary.corpus ? `${Math.round((summary.corpus.coverage || 0) * 100)}%` : '—'} hint={summary.corpus?.sufficient_for_absence ? 'đủ để kết luận vắng bằng chứng' : 'chưa đủ để kết luận vắng bằng chứng'} />
         </div>
         {queue.legacy && (
           <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-900">

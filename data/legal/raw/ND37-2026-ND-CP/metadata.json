@@ -1,0 +1,26 @@
+{
+  "document_number": "37/2026/NĐ-CP",
+  "title": "Nghị định quy định chi tiết một số điều và biện pháp để tổ chức, hướng dẫn thi hành Luật Chất lượng sản phẩm, hàng hóa",
+  "authority": "Chính phủ (Government); signed by Deputy PM Nguyễn Chí Dũng",
+  "issued_date": "2026-01-23",
+  "effective_from": "2026-01-23",
+  "status": "effective",
+  "id": "ND37-2026-ND-CP",
+  "checked_at": "2026-10-13T12:20:27.319759+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\ND37-2026-ND-CP\\original.pdf",
+      "sha256": "30e8d339a0d86f6d3289c4fc88d7538c7b1eeba8f1e9bc10efcce86054e6f660",
+      "bytes": 4095271,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/37-1.signed.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/37-1.signed.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:27.713705+00:00",
+      "pages": 92,
+      "text_chars": 148
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 92 pages, 148 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

@@ -1,0 +1,26 @@
+{
+  "document_number": "55/2024/NĐ-CP",
+  "title": "Nghị định quy định chi tiết một số điều của Luật Bảo vệ quyền lợi người tiêu dùng",
+  "authority": "Chính phủ (Government)",
+  "issued_date": "2024-05-16",
+  "effective_from": "2024-07-01",
+  "status": "effective",
+  "id": "ND55-2024-ND-CP",
+  "checked_at": "2026-10-13T12:20:22.210030+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\ND55-2024-ND-CP\\original.pdf",
+      "sha256": "d138b52498f340fb556d664916813d8a9d3ba065391a57202f69b9ce731f6a85",
+      "bytes": 1429337,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2024/5/55-nd-cp.signed.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2024/5/55-nd-cp.signed.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:22.450785+00:00",
+      "pages": 38,
+      "text_chars": 148
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 38 pages, 148 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

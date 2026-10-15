@@ -1,0 +1,26 @@
+{
+  "document_number": "98/2020/NĐ-CP",
+  "title": "Nghị định quy định xử phạt vi phạm hành chính trong hoạt động thương mại, sản xuất, buôn bán hàng giả, hàng cấm và bảo vệ quyền lợi người tiêu dùng",
+  "authority": "Chính phủ (Government)",
+  "issued_date": "2020-08-26",
+  "effective_from": "2020-10-15",
+  "status": "effective",
+  "id": "ND98-2020-ND-CP",
+  "checked_at": "2026-10-13T12:20:24.567306+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\ND98-2020-ND-CP\\original.pdf",
+      "sha256": "8f2f590be07808ad6c2be5babf4f24c2517f99bb5c818b0d97cc1a2dbd3aa9c0",
+      "bytes": 5806027,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2020/08/98.signed.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2020/08/98.signed.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:25.195250+00:00",
+      "pages": 114,
+      "text_chars": 146
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 114 pages, 146 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

@@ -1,0 +1,1215 @@
+BỘ CÔNG THUONG CONG HÒA XÃ HỘI CHỊ Š~ ì
+Độc lập - Tự do - Hạnh phúc
+ttgố: 38 /2023/TT-BCT Hà Nội, ngàydL}- tháng 12 năm 2023
+THÔNG TƯ
+Quy định kỹ thuật đo đạc, báo cáo, thắm định giảm nhẹ phát thải
+khí nhà kính và kiếm kê khí nhà kính ngành Công Thương
+Căn cứ Luật Bảo vệ môi trường ngày 17 tháng 11 năm 2020;
+Căn cứ Nghị định số 96/2022/NĐ-CP ngày 24 tháng 11 năm 2022 của
+Chính phủ quy định chức năng, nhiệm vụ, quyền hạn và cơ cấu tô chức của Bộ
+Công Thương;
+Căn cứ Nghị định số 06/2022/NĐ-CP ngày 07 tháng 01 năm 2022 của
+Chính phủ quy định về giảm nhẹ phát thải khí nhà kính và bảo vệ tầng ô-dôn;
+Theo đề nghị của Vụ trưởng Vụ Tiết kiệm năng lượng và Phát triển bên vững;
+Bộ trưởng Bộ Công Thương ban hành Thông tư quy định kỹ thuật đo đạc,
+báo cáo, thẩm định giảm nhẹ phát thải khí nhà kính và kiểm kê khí nhà kính
+ngành Công Thương.
+Chương I
+QUY ĐỊNH CHUNG
+Điều 1. Phạm vi điều chỉnh
+Thông tư này quy định về kỹ thuật đo đạc, báo cáo, thẩm định giảm nhẹ
+phát thải khí nhà kính (KNK), kiêm kê KNK ngành Công Thương.
+Điều 2. Đối tượng áp dụng
+1. Thông tư này áp dụng đối với các cơ sở phát thải khí nhà kính phải
+kiểm kê khí nhà kính theo Quyết định của Thủ tướng Chính phủ, các cơ quan, tổ
+chức, cá nhân liên quan đến hoạt động kiểm kê KNK, đo đạc, báo cáo và thẩm
+định giảm nhẹ phát thải KNK ngành Công Thương theo quy định của pháp luật.
+2. Các cơ sở không thuộc danh mục cơ sở phát thải KNK phải kiểm kê
+KNK theo Quyêt định của Thủ tướng Chính phủ được khuyên khích áp dụng
+quy định tại Thông tư này.
+Điều 3. Giai thích từ ngữ
+1. Phát thải KNK là hoạt động giải phóng KNK vào trong khí quyền.
+2. Nguồn phát thải KNK là nơi xảy ra các quá trình vật lý, hóa học gay
+phát thải ra KNK hoặc các hoạt động sử dụng điện hoặc nhiệt trong sản xuất có
+nguồn gốc liên quan đến nhiên liệu hóa thạch.
+ %
+
+2
+3. Phát thai KNK trực tiếp là việc phát thải KNK sinh ra từ hoạt động dot
+nhiên liệu hóa thạch, khai thác khoáng sản trên bê mặt, trong lòng đât hoặc rò rỉ
+từ máy móc, trang thiêt bị lưu trữ của con người.
+4. Phát thải KNK gián tiếp là phát thải KNK do việc sử dụng các dạng
+năng lượng như điện, nhiệt hoặc hơi nước tạo ra từ quá trình đốt nhiên liệu hóa
+thạch và các nhiên liệu khác có liên quan.
+5. Số liệu hoạt động là số liệu định lượng của các loại nhiên liệu, vật chất
+sử dụng tại nguôn phát thải KNK.
+6. Hệ số phát thải của một loại KNK là khối lượng KNK phát thải hoặc
+loại bỏ trên mỗi đơn vị khối lượng của số liệu hoạt động.
+7. Cơ sở là các cơ sở phát thải KNK phải kiểm kê KNK thuộc ngành
+Công Thương do Thủ tướng Chính phủ ban hành (sau đây gọi tat là Cơ sở).
+8. Đường phát thải cơ sở là giả định có cơ sở khoa học về tổng mức phát
+thải KNK từng năm của một lĩnh vực hoặc cơ sở theo kịch bản phát triển thông
+thường của lĩnh vực hoặc cơ sở đó khi chưa thực hiện biện pháp giảm nhẹ phát
+thải KNK trong một giai đoạn nhât định.
+9. Đơn vị chủ trì kiểm kê KNK cấp lĩnh vực, xây dựng báo cáo giảm nhẹ
+phát thải KNK cấp lĩnh vực là đơn vị có đủ năng lực được Bộ Công Thương
+giao, đặt hàng hoặc lựa chọn thực hiện theo quy định của pháp luật.
+Điều 4. Nguyên tắc thực hiện kiểm kê KNK và đo đạc, báo cáo, thắm
+định giảm nhẹ phát thải KNK
+1. Kiểm kê KNK, đo đạc, báo cáo giảm nhẹ phát thải KNK cần tuân thủ
+các nguyên tắc sau:
+a) Tính đầy đủ: Việc kiểm kê KNK, đo đạc, báo cáo giảm nhẹ phát thải
+KNK phải thực hiện đối với tất cả các nguồn phát thải KNK, các nguồn hấp thụ
+KNK. Số liệu được thu thập liên tục, không bị gián đoạn;
+b) Tính nhất quán: Việc kiểm kê KNK, đo đạc, báo cáo giảm nhẹ phát thải
+KNK đảm bảo thống nhất về phương án giám sát, số liệu tính toán, phương pháp
+kiểm kê KNK, phương pháp tính toán kết quả giảm nhẹ phát thải KNK;
+c) Tính minh bạch: Các tài liệu, dữ liệu, giả định, số liệu hoạt động, hệ số
+áp dụng, phương pháp tính toán được giải thích rõ ràng, trích dẫn nguồn, được
+lưu giữ để đảm bảo độ tin cậy, tính chính xác cao;
+d) Tính chính xác: Tính toán kiểm kê KNK, đo đạc, báo cáo giảm nhẹ
+phát thải KNK đảm bảo độ tin cậy theo phương pháp luận lựa chọn và giảm tôi
+đa các sai lệch;
+đ) Tính so sánh được: Kết quả kiểm kê KNK, đo đạc, báo cáo giảm nhẹ
+phát thải KNK của một cơ sở, lĩnh vực đảm bảo các điều kiện về sé liệu, phương
+pháp luận có tính tương đồng để có thể so sánh được.
+2...7
+Lại
+
+3
+2. Thẩm định giảm nhẹ phát thải KNK cần tuân thủ các nguyên tắc sau:
+a) Tính độc lập: Duy trì tính độc lập với các bên liên quan trong quá trình
+thực hiện nhiệm vụ, khách quan trong quá trình đánh giá;
+b) Tính công bằng: Đảm bảo sự trung thực, chính xác, khách quan và
+không thiên lệch.
+Chương II
+QUY TRÌNH KỸ THUẬT KIEM KE KHÍ NHÀ KÍNH
+Mục 1
+KIEM KE KHÍ NHÀ KÍNH CAP LĨNH VỰC
+THUỘC NGÀNH CÔNG THƯƠNG
+Điều 5. Quy trình kỹ thuật kiểm kê KNK cấp lĩnh vực
+1. Xác định phạm vi kiểm kê KNK cấp lĩnh vực.
+2. Thu thập số liệu hoạt động phục vụ kiểm kê KNK cấp lĩnh vực.
+3. Lựa chọn hệ số phát thải KNK cấp lĩnh vực.
+4. Xác định phương pháp kiểm kê KNK cấp lĩnh vực.
+; 5. Thực hiện kiểm soát chất lượng và đảm bảo chất lượng kiểm kê KNK
+cap lĩnh vực.
+6. Đánh giá độ không chắc chắn kiểm kê KNK cấp lĩnh vực.
+7. Tính toán lại kết quả kiểm kê KNK cấp lĩnh vực.
+8. Xây dựng Báo cáo kiểm kê KNK cấp lĩnh vực.
+Điều 6. Phạm vi kiếm kê KNK cấp lĩnh vực
+Kiểm kê KNK lĩnh vực năng lượng, các quá trình công nghiệp và sử dụng
+sản phâm thuộc ngành Công Thương bao gồm:
+1. Kiểm kê KNK cho lĩnh vực năng lượng:
+a) Phát thải KNK từ các hoạt động đốt nhiên liệu trong quá trình sản xuất
+điện và tiêu thụ năng lượng trong các ngành công nghiệp thuộc phạm vi quản lý
+của Bộ Công Thương:
+b) Phát thải KNK từ các hoạt động phát tán từ khai thác khoáng sản.
+2. Kiểm kê KNK cho lĩnh vực các quá trình công nghiệp và sử dụng sản
+phâm:
+a) Phát thải KNK trong các quá trình hóa học, vật lý không tiêu thụ năng
+lượng thuộc các ngành công nghiệp hóa chât, luyện kim;
+b) Phát thải KNK là các dung môi chất lạnh từ thiết bị và quá trình sản
+xuất, kinh doanh môi chất lạnh.
+
+4
+Điều 7. Thu thập số liệu hoạt động phục vụ kiểm kê KNK cấp lĩnh vực
+1. Số liệu hoạt động phục vụ kiểm kê KNK cấp lĩnh vực quy định chỉ tiết
+tại Phụ lục I ban hành kèm theo Thông tư này.
+2. Nguồn số liệu hoạt động được thu thập từ cơ quan thống kê ở Trung
+ương, địa phương, các cơ quan, tổ chức có liên quan và từ kết quả điều tra, khảo
+sát của đơn vị chuyên môn.
+Điều 8. Lựa chọn hệ số phát thải KNK cấp lĩnh vực
+1. Don vị chủ trì kiểm kê KNK cấp lĩnh vực thực hiện tính toán, xác định
+và sử dụng hệ sô phát thải KNK phù hợp với thực tê của ngành sau khi được cơ
+quan có thâm quyên chap thuận.
+2. Trường hợp không tính toán, xác định và sử dụng hệ số phát thải KNK
+theo quy định tại khoản 1 Điều này, Đơn vị chủ trì kiểm kê KNK cấp lĩnh vực
+thực hiện áp dụng hệ số phát thải theo Danh mục hệ số phát thải phục vụ kiểm
+kê KNK do Bộ Tài nguyên và Môi trường công bố.
+3. Trường hợp các hệ số phát thải KNK chưa được quy định tại khoản 2
+Điều này thì áp dụng hệ số phát thải KNK theo hướng dẫn mới nhất của Ban
+Liên chính phủ về biến đồi khí hậu (IPCC).
+Điều 9. Phương pháp kiếm kê KNK cấp lĩnh vực
+1. Phương pháp kiểm kê KNK cho các hoạt động thuộc lĩnh vực năng
+lượng và các quá trình công nghiệp áp dụng theo Hướng dẫn kiểm kê KNK quốc
+gia của IPCC phiên bản năm 2006 (sau đây gọi tắt là Hướng dẫn IPCC 2006) và
+Hướng dẫn kiểm kê KNK quốc gia phiên bản năm 2019 hoàn thiện cho Hướng
+dẫn IPCC 2006.
+2. Công thức tính toán kiểm kê KNK cấp lĩnh vực
+a) Công thức tính lượng phát thai của từng loại KNK cho tiểu lĩnh vực
+KNK  = DAP «EF,,
+Trong đó:
+- ila loại KNK;
+- ‡ là tiểu lĩnh vực r;
+- KNK,, là tổng lượng phát thải KNK của tiểu lĩnh vực với KNK i (tấn);
+- AD,, là số liệu hoạt động của tiểu lĩnh vực t với KNK i;
+- EF;, là hệ số phát thải của loại KNK đối với loại số liệu hoạt động của
+tiêu lĩnh vực ¢ (tan/don vị của AD).
+b) Công thức tính lượng phát thải CO; tương đương của KNK i trong tiểu
+lĩnh vực t
+TPT; = KNK;, * GWP,
+tw,
+7 ws
+HƯỚNG
+mt!
+
+Trong đó:
+- 7PTụ là lượng phát thải CO, tương đương của khí KNK i trong tiểu lĩnh
+vực ¢ (tân CO);
+- GWP; là hệ số tiềm năng nóng lên toàn cầu của KNK i, áp dụng theo
+hướng dân mới nhât của IPCC.
+c) Công thức tính tổng phát thải KNK của tiểu lĩnh vực t
+Tổng lượng phát thải KNK là 7P7, (tắn CO;u) của tiều lĩnh vực í trong
+một giai đoạn băng tông lượng phat thai từ tat cả nguôn phát thải các KNK i
+trong giai đoạn báo cáo, công thức tính như sau:
+TPT, = > TPT,, = iJ KNK,, * GWP,
+d) Tính toán kiểm kê KNK cấp lĩnh vực
+Tổng lượng phát thải KNK là 7P7 (tắn COxa) của lĩnh vực trong một giai
+đoạn băng tông lượng phát thải KNK từ tât cả các tiêu lĩnh vực trong giai đoạn
+báo cáo, công thức tính như sau:
+[PT = >. TT
+Điều 10. Kiểm soát chất lượng va dam bảo chất lượng kiểm kê KNK
+cấp lĩnh vực
+ik. Don vi chu tri kiém ké KNK cap lĩnh vực thực hiện kiểm soát chất
+lượng kiêm kê KNK đôi với các nội dung sau:
+_ a) Các giả định, cách thức lựa chon số liệu hoạt động, hệ số phát thải và
+hệ sô chuyên đôi;
+b) Độ chính xác của việc nhập số liệu;
+c) Kết quả tính toán phát thải KNK;
+d) Sự minh bạch và tính nhất quán của số liệu;
+đ) Tính liên tục của số liệu;
+e) Rà soát, đánh giá sự đầy đủ của tài liệu lưu trữ nội bộ.
+2. Cơ quan, đơn vị không tham gia vào quá trình kiểm kê KNK thực hiện
+đảm bảo chât lượng kiêm kê KNK cấp lĩnh vực đôi với các nội dung sau:
+a) Các giả định tính toán, tiêu chuẩn lựa chọn số liệu hoạt động, hệ số
+phát thải và hệ sô chuyên đôi;
+_..b) Phương pháp kiểm kê được áp dụng và quy trình, cách thức triển khai
+kiêm kê KNK, chat lượng của sô liệu dau vào trong quá trình tính toán, kiêm kê;
+G) Kết quả tính toán phát thải KNK;
+d) Sự phù hợp lựa chọn hệ số chuyển déi trong các công thức tính toán;
+đ) Tinh minh bạch của dữ liệu;
+e) Tính nhất quán của dữ liệu;
+
+f) Tính liên tục của dữ liệu;
+g) Sự sai lệch trong quá trình nhập số liệu;
+h) Độ không chắc chắn của báo cáo kiểm kê;
+i) Rà soát hệ thống lưu trữ tài liệu nội bộ.
+Điều 11. Đánh giá độ không chắc chắn kiểm kê KNK cấp lĩnh vực
+1. Đánh giá độ không chắc chắn của kết quả kiểm kê KNK thực hiện đối
+với các nội dung sau:
+a) Tính hoàn thiện của báo cáo;
+b) Tính phù hợp thực tế của mô hình, phương pháp kiểm kê;
+c) Tính đầy đủ của dữ liệu tính toán;
+d) Tính đại diện của số liệu;
+đ) Tính bất thường của số liệu;
+e) Sự thiếu minh bạch, sai phạm vi kiểm kê.
+_ 2. Định lượng độ không chắc chắn kiểm kê KNK thực hiện theo hướng
+dẫn tại Chương 3, Quyền 1, Hướng dẫn IPCC 2006, Hướng dẫn IPCC 2019.
+Điều 12. Tính toán lại kết quả kiểm kê KNK cấp lĩnh vực
+1. Việc tính toán lại kết quả kiểm kê KNK cấp lĩnh vực của các kỳ kiểm
+kê trước được thực hiện khi xảy ra một trong các trường hợp sau:
+a) Thay đổi về phương pháp kiểm kê KNK dẫn đến sự thay đồi đáng kể
+trong kêt quả kiêm kê KNK gân nhât;
+b) Có sự thay đồi về nguồn phát thải KNK, hệ số phát thải KNK.
+2. Đơn vị chủ trì kiểm kê KNK cấp lĩnh vực có trách nhiệm bổ sung nội
+dung phân tính toán lại ket quả kiêm kê KNK của kỳ kiểm kê trước vào trong
+Báo cáo kiêm kê KNK cấp lĩnh vực của kỳ báo cáo.
+Điều 13. Xây dựng Báo cáo kiểm kê KNK cấp lĩnh vực
+Đơn vị chủ trì kiểm kê KNK cấp lĩnh vực xây dựng Báo cáo kiểm kê KNK
+thuộc phạm vi quản lý của Bộ Công Thương theo Mau sô 01 Phụ lục II Nghị định
+sô 06/2022/NĐ-CP ngày 07 tháng 01 năm 2022 của Chính phủ quy định giảm nhẹ
+phát thải KNK và bảo vệ tang ô-dôn (Nghị định sô 06/2022/NĐ-CP).
+Điều 14. Tham định và báo cáo kiểm kê KNK cấp lĩnh vực
+1. Vụ Tiết kiệm năng lượng và Phát triển bền vững chủ trì tổ chức thẩm
+định Báo cáo kiêm kê KNK cap lĩnh vực thuộc ngành Công Thương theo quy
+trình tại Điều 10 Thông tư sô 01/2022/TT-BTNMT ngày 07 tháng 01 năm 2022
+của Bộ Tài nguyên và Môi trường quy định chi tiệt thi hành Luật bảo vệ môi
+trường về ứng phó với biên đôi khí hậu (Thông tư sô 01/2022/TT-BTNMT).
+2. Đơn vị chủ trì kiểm kê KNK cấp lĩnh vực hoàn thiện Báo cáo kiểm kê
+KNK theo ket luận của Hội dong thâm định, gửi báo cáo Bộ Công Thương thông
+qua Vu Tiét kiệm năng lượng và Phát triên bên vững đê tông hợp.
+Sy
+er a a
+2
+
+x
+
+7
+3. Vụ Tiết kiệm năng lượng và Phát triển bền vững chủ trì thực hiện trách
+nhiệm báo cáo phục vụ kiểm kê KNK cấp quốc gia của Bộ Công Thương theo
+quy định tại điểm a khoản 3 Điều 11 Nghị định sô 06/2022/NĐ-CP.
+Mục 2
+KIEM KE KHÍ NHÀ KÍNH CAP CƠ SỞ THUỘC NGÀNH CÔNG THƯƠNG
+Điều 15. Quy trình kỹ thuật kiểm kê KNK cấp cơ sở
+. Xác định phạm vi kiểm kê KNK cấp cơ sở.
+. Thu thập số liệu hoạt động kiểm kê KNK cấp cơ sở.
+. Lựa chọn hệ số phát thải KNK cấp cơ sở.
+. Xác định phương pháp kiểm kê KNK cấp cơ sở.
+. Thực hiện kiểm soát chất lượng kiểm kê KNK cấp cơ sở.
+. Đánh giá độ không chắc chắn kiểm kê KNK cấp cơ sở.
+. Tính toán lại kết quả kiểm kê KNK cấp cơ sở.
+. Xây dựng Báo cáo kết quả kiểm kê KNK cấp cơ sở.
+Điều 16. Phạm vi kiểm kê KNK cấp cơ sở
+Kiểm kê KNK cấp cơ sở được thực hiện đối với các nguồn phát thải thuộc
+phạm vi quản lý của Cơ sở, cụ thê như sau:
+oN NN BW NY `”©
+1. Nguồn phát thai trực tiếp:
+a) Phát thải từ nguồn cố định gồm hoạt động đốt nhiên liệu trong các thiết
+bị lắp đặt cố định như nồi hơi, lò nung, đầu đốt, tua-bin, lò sưởi, lò đốt, v.v..
+b) Phát thải từ nguồn di động gồm hoạt động đốt nhiên liệu của các tiết
+bị vận tải;
+c) Phát thải từ các quá trình công nghiệp gồm phát thải từ các quá trình
+vật lý hoặc hóa học tạo ra KNK trong dây chuyền sản xuất của cơ sở;
+d) Phát thải do phát tán từ trong máy móc, thiết bị hoặc trong quá trình
+khai thác, chế biến khoáng sản,..;
+đ) Phát thải KNK là các dung môi chất lạnh từ thiết bị và quá trình sản xuất,
+kinh doanh môi chất lạnh;
+e) Phát thải từ thu gom, quản lý và xử lý chất thải.
+2. Nguồn phát thải gián tiếp:
+a) Phát thải do tiêu thụ năng lượng điện;
+b) Phát thải do sử dụng năng lượng hơi.
+Điều 17. Thu thập số liệu hoạt động kiếm kê KNK cấp cơ sở
+1. Cơ sở thực hiện việc thu thập, quản lý và lưu giữ số liệu hoạt động liên
+quan đến các nguồn phát thải trong phạm vi quản lý.
+x
+oo
+— a "2x
+~
+
+8
+2. Số liệu hoạt động cần thu thập phục vụ kiểm kê KNK cấp cơ sở quy
+định tại Mục 1 Phụ lục II ban hành kèm theo Thông tư này.
+Điều 18. Lựa chọn hệ số phát thải KNK cấp cơ sở
+1. Các cơ sở tính toán, xác định hệ số phát thải KNK phù hợp với hiện
+trạng công nghệ, quy trình sản xuât theo Hướng dân IPCC 2006 và được cơ
+quan có thâm quyên châp thuận.
+2. Trường hợp không áp dụng khoản 1 Điều này thì áp dụng hệ số phát
+thải theo Danh mục hệ sô phát thải phục vụ kiêm kê KNK do Bộ Tài nguyên và
+Môi trường công bô.
+3. Trường hợp các hệ số phát thải KNK chưa được quy định tại khoản 2
+Điều này thi áp dụng hệ sô phát thải KNK theo hướng dẫn mới nhất của IPCC.
+Điều 19. Phương pháp kiếm kê KNK cấp cơ sở
+1. Phương pháp tính toán cho các hoạt động phát thải KNK hướng dẫn tại
+Mục 2 Phụ lục II ban hành kèm theo Thông tư này.
+2. Công thức tính lượng phát thải KNK:
+KNK, = AD, *EE,
+Trong đó:
+- ila loại KNK;
+- KNK; là lượng phát thải của KNK i (tấn);
+- AD; là số liệu hoạt động của KNK i;
+- EF; là hệ số phát thải của KNK i.
+3. Công thức tính tổng lượng phát thải KNK của một cơ sở:
+TPT = > KNK, + GWP;
+i
+Trong đó:
+- TPT là tông lượng phát thải KNK của Cơ sở (tấn COna);
+- GWP; la hệ số tiềm năng nóng lên toàn cầu của KNK i, áp dụng theo
+hướng dân mới nhât của IPCC.
+Điều 20. Kiểm soát chất lượng kiếm kê KNK cấp cơ sở
+Quy trình kiểm soát chất lượng kiểm kê KNK cấp cơ sở được thực hiện
+theo tiểu mục 6.1.2 Mục 6 Tiêu chuẩn quốc gia TCVN ISO 14064-1:2011, Phan
+1: Quy định kỹ thuật và hướng dẫn định lượng và báo cáo phát thải và loại bỏ
+KNK ở cấp độ cơ sở.
+He
+a |
+LÔ on eee
+
+
+
+9
+Điều 21. Đánh giá độ không chắc chắn kiểm kê KNK cấp cơ sở
+Đánh giá độ không chắc chắn kiểm kê KNK cấp cơ sở thực hiện theo
+hướng dẫn quy định tại Điêu 11 của Thông tư này.
+Điều 22. Tính toán lại kết quả kiếm kê KNK cấp cơ sở
+1. Cơ sở có trách nhiệm giải trình và tính toán lại kết quả kiểm kê KNK
+của các kỳ kiêm kê trước khi xảy ra một trong các trường hợp sau:
+a) Có sự thay đồi về phạm vi kiểm kê KNK;
+b) Có sự thay đổi về phương pháp kiểm kê KNK dẫn đến sự thay đổi
+trong kết quả kiểm kê KNK gần nhất;
+c) Có sự thay đổi về nguồn và hệ số phát thai KNK.
+2. Cơ sở có trách nhiệm bô sung nội dung phân tính toán lại kêt quả kiêm
+kê KNK của kỳ kiêm kê trước vào trong Báo cáo kiêm kê KNK cấp cơ sở của kỳ
+báo cáo.
+Điều 23. Xây dựng Báo cáo kiếm kê KNK cấp cơ sở
+Cơ sở xây dựng Báo cáo kiểm kê KNK cấp cơ sở theo Mẫu số 06 Phụ lục
+H Nghị định sô 06/2022/NĐ-CP.
+Điều 24. Tham định và báo cáo kết quả kiểm kê KNK cấp cơ sở
+1. Quy trình thẩm định kết quả kiểm kê KNK cấp cơ sở thực hiện theo
+quy định tại khoản 4 và khoản 6 Điêu 11 Nghị định sô 06/2022/NĐ-CP và Điêu
+12 Thông tư sô 01/2022/TT-BTNMT.
+2. Cơ sở tổ chức hoàn thiện báo cáo kết quả kiểm kê KNK theo thông báo
+kết quả thẩm định và báo cáo kết quả kiểm kê KNK theo quy định tại điểm c
+khoản 4 Điều 11 Nghị định số 06/2022/NĐ-CP và khoản 4 Điều 12 Thông tư số
+01/2022/TT-BTNMT.
+3. Vụ Tiết kiệm năng lượng và Phát triển bền vững chủ trì tiếp nhận, tổng
+hợp báo cáo kiểm kê KNK cấp cơ sở dé cập nhật vào cơ sở dữ liệu trực tuyến về
+kiểm kê KNK trong phạm vi quản lý của Bộ Công Thương.
+Chương III
+DO DAC, BAO CÁO, THAM ĐỊNH GIẢM NHẸ PHÁT THÁI KHÍ NHÀ KÍNH
+Mục 1
+HƯỚNG DẪN BO DAC, BAO CÁO, THAM ĐỊNH GIẢM NHẸ PHÁT THAI
+KHÍ NHÀ KINH CAP LĨNH VỰC THUỘC NGÀNH CONG THƯƠNG
+Điều 25. Căn cứ thực hiện đo đạc, báo cáo và thẩm định giảm nhẹ
+phát thải KNK cấp lĩnh vực
+lì
+X ae oe,
+
+
+
+10
+Việc đo đạc, báo cáo và thẩm định giảm nhẹ phát thải KNK được thực
+hiện theo Kê hoạch giảm nhẹ phát thải KNK câp lĩnh vực và Phương án giám sát
+thực hiện Kê hoạch giảm nhẹ phát thải KNK cấp lĩnh vực, cụ thê:
+1. Kế hoạch giảm nhẹ phát thải KNK cấp lĩnh vực thuộc phạm vi quản lý
+của Bộ Công Thương xây dựng theo Mẫu số 01 Phụ luc IV của Nghị định số
+06/2022/NĐ-CP, gôm các nội dung chính sau:
+a) Kết quả kiểm kê KNK của lĩnh vực của kỳ kiểm kê gần nhất;
+b) Đường phát thải cơ sở theo kịch bản phát triển thông thường cho các
+lĩnh vực và tiểu lĩnh vực theo hướng dẫn tại Mục 1 Phụ lục III ban hành kèm
+theo Thông tư này;
+c) Tiềm năng, mục tiêu giảm nhẹ phát thải KNK;
+d) Các biện pháp, hoạt động giảm nhẹ phát thải KNK;
+đ) Tổ chức thực hiện;
+2. Phương án giám sát thực hiện Kế hoạch giảm nhẹ phát thải KNK cấp
+lĩnh vực gôm các nội dung sau:
+a) Thông tin về hệ thống giám sát;
+b) Các phương pháp tính toán mức giảm phát thải KNK cho các giải pháp
+giảm nhẹ phát thải KNK;
+c) Các biện pháp giám sát, đánh giá các mục tiêu giảm phát thải khí nhà
+kính của lĩnh vực.
+Điều 26. Do đạc, tính toán kết quả giảm nhẹ phát thải KNK cấp lĩnh
+vực thuộc ngành Công Thương
+1. Việc do dac giam nhe phat thai KNK cấp lĩnh vực phải phù hợp với
+phương án giám sát kê hoạch giảm nhẹ phát thải KNK của lĩnh vực đó.
+2. Tính toán kết quả giảm nhẹ phát thải KNK cấp lĩnh vực thuộc ngành
+Công Thương hàng năm theo công thức:
+GPT, = >. GPT,
+Trong do:
+- GPT cr là tổng lượng giảm phát thải KNK các lĩnh vực ngành Công
+Thương trong một năm (tân CO2q);
+- ‡ là tiểu lĩnh vực ¢;
+- GPT, là mức giảm phat thải trong một năm của tiểu lĩnh vực ¢ (tấn
+CO4t). GPT, được tính như sau:
+GPT, = 3 (PTCS,, — KNK,,)
+i
+Trong đó:
+i
+LP? A
+on x.
+
+
+
+11
+- PTCS;,; là mức phát thai KNK trong một năm theo kịch bản phát triển
+thông thường đôi với tiêu lĩnh vực ¢ và nguôn phát thải i (tân COxa);
+- KNK;, là mức phát thải KNK trong một năm của tiểu lĩnh vực t và nguồn
+phát thải i (tân COxa).
+Điều 27. Báo cáo giảm nhẹ phát thải KNK cấp lĩnh vực
+Đơn vị chủ trì xây dựng Báo cáo giảm nhẹ phát thải KNK cấp lĩnh vực
+thuộc phạm vi quản lý của Bộ Công Thương thực hiện theo Mẫu số 01 Phụ lục
+II Nghị định sô 06/2022/NĐ-CP.
+Điều 28. Tham định và báo cáo giảm nhẹ phát thai KNK cấp lĩnh vực
+1. Vụ Tiết kiệm năng lượng và Phát triển bền vững chủ trì tổ chức thẩm
+định giảm nhẹ phát thải KNK cấp lĩnh vực thuộc ngành Công Thương theo quy
+trình tại Điều 11 Thông tư sô 01/2022/TT-BTNMT.
+2. Đơn vị chủ trì xây dựng Báo cáo giảm nhẹ phát thải KNK cấp lĩnh vực
+hoàn thiện báo cáo theo kêt luận của Hội đông thâm định, gửi báo cáo Bộ Công
+Thương thông qua Vụ Tiêt kiệm năng lượng va Phát triên bên vững đê tông hợp.
+3. Vụ Tiết kiệm năng lượng và Phát triển bền vững chủ trì tổng hợp Báo
+cáo giảm nhẹ phát thải KNK cấp lĩnh vực của Bộ Công Thương hàng năm thực
+hiện theo quy định tại diém b khoản 3 Điêu 10 Nghị định sô 06/2022/NĐ-CP.
+Mục 2
+HƯỚNG DẪN ĐO DAC, BAO CÁO, THÂM ĐỊNH GIAM NHE PHÁT
+THÁI KHI NHÀ KINH CAP CƠ SO THUỘC NGANH CÔNG THƯƠNG
+Điều 29. Căn cứ thực hiện đo đạc, báo cáo và thắm định giảm nhẹ
+phát thải KNK cấp cơ sở
+Việc đo đạc, báo cáo và thẳm định giảm nhẹ phát thải KNK căn cứ theo
+Kê hoạch giảm nhẹ phát thải KNK cap cơ sở và Phương án giám sát kê hoạch
+giảm nhẹ phát thải KNK của cơ sở, cụ thê:
+1. Kế hoạch giảm nhẹ phát thải KNK cấp cơ sở xây dựng theo Mẫu số 02
+Phụ lục IV Nghị định sô 06/2022/NĐ-CP.
+2. Phương án giám sát thực hiện kế hoạch giảm nhẹ phát thải KNK của cơ
+sở theo quy định tại Mục 2 Phụ lục TI ban hành kèm theo Thông tu này.
+Điều 30. Đo đạc, tính toán kết quả giảm nhẹ phát thải KNK cấp cơ sở
+1. Việc đo đạc giảm nhẹ phát thải KNK của cơ sở phải phù hợp với
+phương án giám sát thực hiện kê hoạch giảm nhẹ phát thải KNK của cơ sở đó.
+2. Tính toán kết quả giảm nhẹ phát thải KNK của cơ sở trong một năm
+theo công thức sau:
+GPT = > GPty
+
+
+
+12
+Trong đó:
+- GPT là lượng giảm phát thải KNK của Cơ sở trong một năm (tấn COxa);
+- d là biện pháp giảm nhẹ phát thải KNK của Cơ sở;
+- GPT, là mức giảm phát thải KNK của Cơ sở trong một năm khi thực
+hiện biện pháp giảm nhẹ d (tân COnt4). GPT, được tính như sau:
+GPT, = PTCSq— PT
+Trong đó:
+- PT; là mức phát thải KNK của Cơ sở trong một năm khi thực hiện biện
+pháp giảm nhẹ d (tân COxa);
+- PTCS, là mức phát thải KNK dự kiến của Cơ sở trong một năm khi
+không thực hiện biện pháp giảm nhẹ phát thải d theo kịch bản phát trién thông
+thường (tân CO2qa).
+_ . 3. Phương pháp xác định mức phát thai dự kiến và phương pháp tính toán
+kêt quả giảm phát thải KNK của Cơ sở phải thông nhât với Kê hoạch giảm nhẹ
+phát thải KNK và Phương án giám sát kê hoạch giảm nhẹ phát thải KNK của Cơ
+sở.
+Điều 31. Báo cáo giảm nhẹ phát thải KNK cấp cơ sở
+Cơ sở xây dựng Báo cáo giảm nhẹ phát thải KNK cấp cơ sở theo Mẫu số
+02 Phụ lục III Nghị định sô 06/2022/NĐ-CP.
+Điều 32. Tham định và báo cáo giảm nhẹ phát thải KNK cấp cơ sở
+1. Thẩm định giảm nhẹ phát thải KNK cấp cơ sở thực hiện theo quy trình
+kỹ thuật tại Mục 3 Phụ lục III ban hành kèm theo Thông tư này.
+2. Báo cáo thầm định giảm nhẹ phát thải KNK cấp cơ sở được xây dựng
+theo mẫu tai Phụ lục II.2 Thông tư số 01/2022/TT-BTNMT.
+3. Cơ sở gửi báo cáo giảm nhẹ phát thải KNK theo quy định tại điểm a,
+khoản 3 Điều 10 Nghị định số 06/2022/NĐ-CP và khoản 4 Điều 13 Thông tư số
+01/2022/TT-BTNMT.
+Chuong IV
+DIEU KHOAN THI HANH
+Điều 33. Hiệu lực thi hành
+Thông tư này có hiệu lực thi hành ké từ ngày tháng 0 năm 2024.
+Điều 34. Tổ chức thực hiện
+_ 1. Vụ Tiết kiệm năng lượng và Phát triển bền vững có trách nhiệm hướng
+dân, kiêm tra, giám sát việc thực hiện Thông tư này.
+2. Khi các văn bản quy phạm pháp luật được dẫn chiếu áp dụng tại Thông
+tư này được sửa đôi, bô sung hoặc thay thê thì áp dụng theo quy định mới.
+YE ay
+
+
+
+13
+3. Trong quá trình thực hiện, nếu có khó khăn, , vướng mắc, đề nghị các cơ
+quan, tổ chức, cá nhân liên quan kịp thời phản ánh về Bộ Công Thương (qua Vụ
+Tiết kiệm năng lượng và Phát triển bền vững) dé kịp thời xem xét, giải quyết./. De
+Noi nhận: pe
+- Van phòng Trung ương và các Ban của Dang;
+- Văn phòng Quốc hội;
+- Văn phòng Chủ tịch nước;
+- Văn phòng Chính phủ;
+- Các Bộ, cơ quan ngang Bộ, cơ quan thuộc Chính phủ;
+- Uy ban Trung ương Mặt trận TỔ quốc Việt Nam;
+- Liên đoàn Công nghiệp và Thương mại Việt Nam;
+- HĐND, UBND các tinh, thành phố trực thuộc Trung ương; ;
+- Cục Kiểm tra văn bản QPPL (Bộ Tư pháp); — ẤN
+- Công báo, Công TTĐT của Chính phủ; x : —_—
+- Các ‘ton vi trực thuộc Bộ Công Thuong; Nguyên Sinh Nhật Tân
+- Sở Công Thương các tỉnh, thành phố trực thuộc Trung ương;
+- Lưu: VT, TKNL.
+BO TRUONG
+
+
+
+1
+Phu luc I
+DANH MUC SO LIEU HOAT DONG PHUC VU KIEM KE KNK
+CAP LĨNH VỰC THUỘC NGANH CONG THUONG
+(Ban hanh kèm theo Théng tu sé: 38 /2023/TT-BCT ngày) tháng 12 năm 2023
+cua Bộ trưởng Bộ Công Thuong)
+1. Số liệu hoạt động đối với lĩnh vực năng lượng
+1.1. Số liệu liên quan đến lượng nhiên liệu dạng lỏng
+- Dầu thô;
+- Khí tự nhiên hóa lỏng:
+- Khí đồng hành;
+- Các loại dầu hỏa khác;
+- Dầu DO;
+- Dầu FO;
+- Dầu nhờn;
+- LPG;
+- Ethan;
+- Nguyên liệu nhà máy lọc dầu;
+- Sáp Parafin;
+- Các sản phẩm dầu mỏ khác.
+1.2. Số liệu liên quan đến lượng nhiên liệu rắn và khí công nghiệp
+- Than anthracite;
+- Than cốc;
+- Than bitum;
+- Than bitum khác;
+- Than cốc luyện kim;
+- Khí nhà máy lọc dầu;
+- Khí than cốc;
+- Nhựa than;
+- Khí công nghiệp;
+- Khí lò luyện than cốc;
+- Khí lò cao.
+1.3. SỐ liệu liên quan đến dâu và khí tự nhiên
+- Lượng đốt đuốc;
+ye
+
+- Lượng xả vent;
+- Lượng condensate;
+- Lượng nhiên liệu được lưu chứa;
+- Lượng hoạt động phát tán khác;
+- Lượng khí tự nhiên (khô);
+- Các dạng nhiên liệu khác.
+„ +4 S6 liệu liên quan đến các dạng nhiên liệu khác có thành phần nguồn
+góc hóa thạch
+- Chất thải đô thị (thành phần có nguồn gốc hóa thạch);
+- Chất thải công nghiệp (thành phần có nguồn gốc hóa thạch);
+- Dầu thải.
+1.5. S6 liệu liên quan đến lượng nhiên liệu sinh khói
+- Gỗ hoặc các phế phẩm từ gỗ;
+- Dich đen (dịch kiềm thai, ...);
+- Than củi;
+- Than bùn;
+- Xăng sinh học;
+- Dầu sinh học;
+- Nhiên liệu sinh học lỏng khác;
+- Khí bãi chôn lắp;
+- Khí từ bùn;
+- Khí sinh học khác;
+- Các nhiên liệu sinh khối khác.
+1.6. Số liệu liên quan đến quá trình khai thác than
+- Lượng than được sản xuất trong giai đoạn khai thác;
+- Lượng than được sản xuất trong giai đoạn sau khai thác;
+- Lượng khí Mê-tan (CHL) được thu hồi;
+- Khoảng thời gian đóng cửa mỏ;
+- Số lượng mỏ bỏ hoang.
+2. Số liệu hoạt động đối với các quá trình công nghiệp
+2.1. Số liệu liên quan đến lượng khai khoáng và hóa chất
+- Đá vôi hoặc các muối các-bon-nát;
+- A-m6-ni-ac;
+« `
+Z. v
+Care DR
+
+- A-xit nito ric;
+- Cac loai a-xit khac;
+- Cac-bua;
+- Ti-tan;
+- Rutile téng hop;
+- Rutile T1O;
+- Trona;
+- Acrylonitrile;
+- Cac-bon den;
+- Héa chat huynh quang;
+- Hop chat flour;
+- Sap parafin (có hàm lượng carbon);
+- Chất bôi trơn (có hàm lượng carbon);
+- Các nhiên liệu gốc dầu mỏ, hóa thạch khác.
+2.2. Só liệu liên quan đến lượng sản phẩm sản xuất
+- Thép thô;
+- Gang;
+- Sắt hoàn nguyên trực tiếp;
+- Quang thiêu kêt hoặc quặng vé viên;
+- Hợp kim sắt;
+- Nhôm;
+- Ma-giê;
+- Chì;
+- Kẽm.
+3. Số liệu hoạt động liên quan đến quá trình sử dụng các sản phẩm
+gây phá hủy tầng ô-dôn và gây hiệu ứng nhà kính
+- SF6;
+- HFCs, HCFCs;
+- PFCs;
+- NF3.
+4. Các số liệu hoạt động khác có liên quan đến việc tinh toán, kiểm kê
+phát thải KNK cấp lĩnh vực thuộc ngành Công Thương.
+1%
+a SAN Ne
+v.
+a
+
+4
+Phụ lục H
+(Ban hanh kèm theo Théng tusé6: 38 /2023/IT-BCT ngagt7 thang 12 năm 2023
+cua Bộ trưởng Bộ Công Thuong)
+Mục 1
+SỐ LIEU HOẠT ĐỘNG PHỤC VỤ KIEM KE KNK CAP CƠ SỞ
+1. Số liệu hoạt động cho quá trình đốt nhiên liệu
+1.1. Nhiên liệu sử dụng trong quá trình đốt từ nguồn co định
+ak oA .
+gry, Loainhién | Luong | Đơn vị tính ko) Tổng tiêu thụ
+liệu tiêu thu | (lit/tan/m?, BTU...) jiu) (TJ)
+]
+2
+3
+1.2. Nhiên liệu sử dụng trong quá trình đốt nhiêu liệu từ nguồn di động
+Loai Thông tin phương Loại nhiên Lượng Quãng đường
+— tiện liệu - di chuyên
+STT] phương tiện we dom. erik s s tiêu thụ
+(étb/xe may) (nhãn hiệu, kiểu xe, | (xăng hoặc (lit) trong nam
+5 biên sô...) dau diesel) (km)
+]
+2
+3
+2. Số liệu về sử dụng môi chất lạnh
+2.1. Lượng môi chất lạnh nạp hàng năm
+STT Loại môi chất lạnh Lượng môi chất nap (kg)
+]
+2
+3
+2.2 Thông tin về các thiết bị lạnh sử dụng
+Thôn Loại môi Khối
+bà aa ih Ngày |chất lạnh lượng | Lượng | Thời
+NI ... |bắtđầu| đượcsử | Công môi nạp gian
+bi (Nhadn| Vịtrí | ; k k i
+STT hiéu va | lắp đặt |S dụng! dụng |suatlanh| chat gan nap
+ry POs đắp | (R22, |(BTU/giờ) lạnh khi| nhất | gan
+) dat) | R4J0a, nap day| (kg) | nhất
+™ R134a,..) (kg)
+]
+2
+3
+Lo Cu ki, wine Á
+
+5
+3. Số liệu hoạt động trong khai thác, sản xuất, chế biến khoáng sản
+STT Loại khoáng Sản lượng khai thác | Tên, vị trí khai thác, đặc điểm
+sản (tan hoặc m?) công nghệ khai thác
+1
+2
+3
+4. Số liệu hoạt động về sử dung điện, hơi
+4.1. SỐ liệu sử dụng điện
+Lượng điện tiêu thụ Nguồn sử dụng ] Lae
+STT (MWh) (Điện lưới/tự sản xuat/mua trực tiêp) Ghi chú
+1
+2
+3
+4.2. SỐ liệu về sử dụng hơi
+gry | ẤP suất hơi Nhiệt độ hơi Khốilượng Entanpi của hơi aan ie whe
+nước (P) nước (°C) | hơi (tan/gid) | nước (kJ/kg) lò hơi
+1
+2
+3
+¿ HN NH TH
+
+6
+Mục 2
+PHƯƠNG PHÁP KIỂM KẾ KNK CÁP CƠ SỞ
+1. Phát thải KNK trực tiếp từ hoạt động đốt nhiên liệu
+Phát thải KNK liên quan đến việc đốt các nhiên liệu với mục đích tạo ra
+năng lượng (điện, nhiệt hơi nóng...) được tính theo công thức sau:
+TPT, — 3D, x EF„.* GWP,)/1000
+i
+Trong do:
+- TPT; la tong phát thai CO; tương đương của KNK i trực tiếp từ hoạt
+động dot nhiên liệu F (tân COzqa);
+- ¡ là loại KNK được kiểm kê;
+- F là loại nhiên liệu sử dung cho hoạt động đốt tạo ra năng lượng;
+- ADr là lượng tiêu thụ nhiên liệu F (TJ);
+- EFzi là hệ số phát thải của KNK i đối với loại nhiên liệu F (kg/TJ);
+- GWP; là hệ số tiềm năng nóng lên toàn cầu của KNK i, áp dung theo
+hướng dân mới nhât của IPCC.
+2. Phát thải KNK rò rỉ từ thiết bị và quá trình sản xuất kinh doanh
+môi chất lạnh (khí nhà kính HFC và HCFC)
+Phương pháp kiểm kê phát thải KNK từ rò rỉ các môi chất lạnh HFC và
+HCFC có thê lựa chọn một trong hai phương pháp sau:
+2.1. Phương pháp tính toán dựa vào lượng môi chất lạnh mua bồ sung
+hàng năm (khuyên nghị áp dụng)
+Tổng lượng phát thải KNK là các môi chất lạnh rò rỉ tính toán dựa vào
+lượng môi chât lạnh mua bô sung hàng năm theo công thức sau:
+TPT xt = » * GWP,)/1000
+J
+Trong đó:
+- TPT nei là tổng lượng phát thải KNK từ rò ri các môi chất lạnh j (tấn CO2a);
+- j là môi chất lạnh ;;
+- AD, là lượng môi chất lạnh mua bổ sung hang năm (kg);
+- GWP, là hệ số tiềm năng nóng lên toàn cầu của môi chất lạnh j, áp dụng
+theo hướng dân mới nhât của IPCC.
+2.2. Phương pháp tính toán dựa vào các hệ số phát thải theo hướng dân
+của IPCC
+Tổng lượng phát thải từ rò rỉ các môi chất lạnh tính toán dựa vào các hệ
+số phát thải được phân tách cho từng giai đoạn gồm: Giai đoạn lắp đặt, vận hành
+và thải bỏ các thiét bị làm lạnh. Công thức tính như sau:
+gw >
+—
+NA
+oat bai í
+⁄ ẩ
+
+7
+E=EA + Eo + Ep
+Trong đó:
+- E; là tổng lượng môi chất lạnh j rò rỉ (kg);
+- Ea là lượng môi chất lạnh j rò rỉ trong giai đoạn lắp đặt các thiết bị làm
+lạnh (kg), Z4 được tính theo công thức:
+Ea = Ca * k/100
+Trong đó:
++ Cụ là lượng môi chất lạnh được nạp vào thiết bị mới (kg);
++ k là tí lệ phần trăm rò rỉ môi chất lạnh trên lượng nạp (%).
+- Eo là lượng môi chất lạnh 7 rò rỉ trong giai đoạn vận hành các thiết bị
+làm lạnh (kg), Eo được tinh theo công thức:
+Eo= Co *x⁄100
+Trong đó:
++ Co là lượng môi chất lạnh định mức của thiết bị (kg);
++ x là lượng môi chất lạnh rò rỉ hàng năm trên lượng định mức.
+- Ep là lượng môi chất lạnh j rò ri trong giai đoạn thải bỏ các thiết bị làm
+lạnh (kg), Ep được tinh theo công thức:
+Ep = Gp**(1-;)
+Trong do:
++ Cp là lượng môi chất lạnh định mức của thiết bị loại bỏ (kg);
++ y là tỉ lệ phần trăm lượng môi chất lạnh còn lại trong thiết bị (%);
++ z là tỉ lệ phần trăm lượng môi chất lạnh được thu hồi (%).
+Tổng lượng phát thải KNK là các môi chất lạnh rò rỉ dựa vào các hệ số
+phát thải được tính theo công thức sau:
+TPT,.= 2 E, *GWP,/1000
+J
+Trong đó:
+- TPT mci là tong lượng phát thải KNK từ rò rỉ các môi chất lạnh j (tấn CO;tđ);
+- GWP; là hệ số tiềm năng nóng lên toàn cầu của môi chất lạnh 7, áp dụng
+theo hướng dân mới nhât của IPCC.
+3. Phát thải KNK gián tiếp do sử dụng điện năng mua từ bên ngoài
+Phát thải KNK gián tiếp do sử dụng điện năng mua từ bên ngoài được tính
+theo công thức sau:
+TPTp=Abu * EFn
+Trong do:
+- TPT» là tổng phát thải CO; gián tiếp từ hoạt động sử dung điện năng
+mua từ nguôn n (tân COzq);
+tt SN
+_—
+
+8
+- nla nguồn mua điện của Cơ sở, các nguồn gồm: điện lưới, điện tự sản
+xuất và điện mua trực tiếp;
+- AD, là tổng lượng điện năng tiêu thụ mua từ nguồn n (MWh);
+- EF, là hệ số phát thải CO, từ nguồn n (tấn CO;a/MWh) do đơn vi bán
+điện cung cấp kèm theo tài liệu minh chứng. Trường hợp điện mua từ điện lưới,
+EF, là hệ sô phát thải của lưới điện quéc gia do Bộ Tài nguyên và Môi trường
+công bố cho năm tính toán.
+4. Phát thải KNK gián tiếp do sử dụng hơi mua từ bên ngoài
+Phát thải gián tiếp do sử dụng hơi được mua từ bên ngoài để phục vụ cho
+các hoạt động của Cơ sở được tính theo công thức sau:
+1PTup=ADup * EFup
+Trong đó:
+- TPT yp là tổng phát thải CO; gián tiếp từ hoạt động mua hơi từ bên ngoài
+ở áp suất p (tân COzu);
+-4Du,là tông lượng hơi mua từ bên ngoài ở áp suất p (tan);
+- EF yy là hệ số phát thải CO2 của hơi nước ở áp suất p (tấn CO„uz/tấn hơi).
+Hệ số EF y, » được lấy trực tiếp từ đơn vị cung cấp hơi được tính theo công thức sau:
+Enthal
+EF up = —— * EF nnién liệu /10°
+lò
+Trong đó:
++ Enthalpyr là entanpi của hơi ở áp suất p (kJ/kg);
++ nig là hiệu suất của nôi hơi (%);
++ EFxuin nạu là hệ số phát thải KNK mặc định của một loại nhiên
+liệu (kg/TJ).
+5. Phát thải KNK phat tan trong quá trình khai thác
+5.1. Phát thải CH; phát tán từ hoạt động khai thác than hầm lò
+Ecuant = (PQn * EF cuan * CFcu4)⁄1000
+Trong do:
+> Ecuan là tổng phat thai CH, phán tán trong quá trình khai thác than ham
+lò (tân);
+- PQu là lượng than được khai thác hầm lò (tan);
+- EF cua là hệ số phát thải CH, cho một tan than khai thác hầm lò (mŠ/tấn);
+- CFcu, là hệ số chuyển đổi thể tích sang khối lượng của CHụ (Gg CHy/m?).
+5.2. Phát thải CO do đốt CH; thu gom từ hoạt động khai thác than
+Eco2(CH4) = (ABcua * CF cna *CEcuH4 * MFco2)⁄1000
+Trong đó:
+- Ecoz(cna) là tổng phát thải CO. do đốt CHụ (tan);
+la
+4
+N £
+VỊ
+
+9
+- ABcus là lượng khí CHụ đưa vào đốt (m°);
+- CFcu4 là hệ số chuyển déi thể tích sang khối lượng của CHy (Gg CH¿/m”);
+- CEcuq là hiệu suất quá trình đốt CH, (%);
+- MF co; là hệ số khối lượng Stoichio của CO; từ CHy và bằng 44/16,
+5.3. Phát thai CH, không cháy hết từ quá trình đốt CH,
+Ecuake = (4Bcu4 * CFcH4 * (1 - CEcu4)⁄1000
+Trong đó:
+- Ecuste là tổng phát thải CH, do không cháy hết (tan);
+- ABcus là lượng khí CH, đưa vào đốt (m®);
+- CF cus là hệ số chuyên đồi thể tích sang khối lượng của CHy (Gg CHy/m?);
+- CEcug là hiệu suất quá trình đốt CH, (%).
+5.4. Phát thai CH, từ hoạt động khai thác than lộ thiên
+Ecuan= (PQu * EFCHau * CFcnH4)⁄1000
+Trong đó:
+- Pcna,i là tổng phát thải CH, phán tán trong quá trình khai thác than lộ
+thiên (tan);
+- PQ. là lượng than được khai thác lộ thiên (tấn);
+- EFcu4u là hệ số phát thải CH, cho một tan than khai thác lộ thiên (m*/tan);
+- CF cua là hệ số chuyển đổi thể tích sang khối lượng của CHy (Gg CH//m3).
+5.5. Phát thai CO; từ hoạt động khai thác than lộ thiên
+Eco2, = (PQu * EFco2 * CFco2)⁄1000
+Trong đó:
+- Eco2, là tổng phát thải CO, phán tán trong quá trình khai thác than lộ
+thiên (tân);
+- PQ; là lượng than được khai thác lộ thiên (tan);
+- EF con là hệ số phát thải CO; cho một tan than khai thác lộ thiên (m*/tan);
+- CFco› là hệ số chuyển đổi thể tích sang khối lượng của CO; (Gg CO;/m”).
+6. Phát thải KNK từ hoạt động quản lý và xử lý chất thải tại Cơ sở
+Thực hiện theo mục 2, Chương 2 Thông tư số 17/2022/TT-BTNMT ngày
+15 tháng 11 năm 2022 của Bộ Tài nguyên và Môi trường quy định kỹ thuật đo
+đạc, báo cáo, thẩm định giảm nhẹ phát thải KNK và kiểm kê phát thải KNK lĩnh
+vực quản lý chất thải.
+MY Oe
+
+10
+Phụ lục II
+HƯỚNG DẪN ĐO ĐẠC, BÁO CÁO, THAM ĐỊNH GIẢM NHẸ PHÁT
+THAI KHÍ NHÀ KÍNH NGÀNH CÔNG THƯƠNG
+(Ban hành kèm theo Thông tư số: 38 /2023/IT-BCT ngay,. thang 12 năm 2023
+của Bộ trưởng Bộ Công Thương) of
+Muc 1
+XÁC ĐỊNH DUONG PHAT THAI CƠ SO CHO CÁC LĨNH VỰC
+VÀ TIỂU LĨNH VỰC
+1. Nguyên tắc chung
+- Đường phát thải cơ sở của lĩnh vực được tính bằng tổng các đường phát
+thải cơ sở của các tiêu lĩnh vực thuộc lĩnh vực đó.
+- Xác định đường phát thải cơ sở cho các tiểu lĩnh vực được thực hiện
+theo quy trình tại mục 2 của Phụ lục này.
+- Năm cơ sở được tham chiếu theo Báo cáo Đóng góp do quốc gia tự
+quyết định của Việt Nam.
+2. Quy trình xác định đường phát thải cơ sở của lĩnh vực/tiều lĩnh vực
+- Bước 1: Xác định lĩnh vuc/tiéu lĩnh vực và năm cơ sở.
+- Bước 2: Chọn mô hình, phương pháp tính toán xây dựng đường phát
+thải cơ sở.
+- Bước 3: Chọn khung thời gian cho dự báo phát thải.
+- Bước 4: Xác định các yếu tố về kinh tế, xã hội và công nghệ ảnh hưởng
+đến thay đổi của xu hướng phát thải trong tương lai.
+- Bước 5: Xác định các biện pháp giảm phát thải tại năm cơ sở trong tính
+toán đường phát thải cơ sở của tiêu lĩnh vực.
+- Bước 6: Ước tính đường phát thải cơ sở theo mô hình, phương pháp tính
+toán đã lựa chọn từ các thông tin đầu vào của kịch bản phát triển thông thường
+và các yếu tố ảnh hưởng xác định trong Bước 4.
+- Bước 7: Đánh giá không chắc chắn và phân tích độ nhạy.
+- Bước 8: Xây dựng các kịch bản phát thải dựa trên các giả định khác
+nhau về các yếu tố kinh tế, xã hội và công nghệ như GDP, giá năng lượng, dân
+số, thay đồi công nghệ...
+- Bước 9: Tính toán ee độ phát thải năm cơ sở và xu hướng thay đổi
+của các năm kê tiêp trong kỳ dự báo.
+œ X
+
+1
+Mục2
+PHƯƠNG ÁN GIÁM SÁT THỰC HIỆN KE HOẠCH
+GIẢM PHÁT THẢI KNK CỦA CƠ SỞ
+1. Thông tin chung
+„ 4.1. Thông tin về lịch sử thay đổi cập nhật Phương án giám sát thực hiện
+Ké hoạch giảm phát thải KNK của cơ sở (Phương án giám sát)
+Tình trạng
+he duyệt Mô tả ngắn gọn về nội
+phe auy¢
+TT Ngay cap nhat
+dung hay đổi
+1.2. Thông tin chung của Cơ sở
+- Tên đơn vị chủ quản:
+- Tên Cơ sở:
+- Địa chỉ Cơ sở:
+1.3. Thông tin người lập Phương án giám sát
+- Họ và tên:
+- Chức vụ: (
+- Số điện thoại:
+- Địa chỉ email: 7
+2. Nội dung cụ thê Ñ
+2.1. Mô tả vi trí, phạm vi hoạt động của Cơ sở
+- Thông tin về đặc điểm, vị trí địa lý.
+- Thiết lập và mô tả sơ dòng nguyên, nhiên vật liệu liên quan đến phát thải
+KNK của Cơ sở
+- Tóm tắt phạm vi, vị trí các nguồn phát thải KNK chính tại Cơ sở và các
+bộ phận kỹ thuật, quản lý các hoạt động có liên quan.
+- Xác định các nguồn phát thải KNK khó kiểm soát trong phạm vi của Cơ sở.
+- Phương pháp thu thập số liệu hoạt động và thống kê kết quả số liệu hoạt
+động cân thu thập.
+2.2. Các dữ liệu cần thu thập
+a. Danh sách các hoạt động có phát thải KNK:
+w w
+
+12
+AK yea
+Ky higu hoạt | Tên hoạt hệ Đơnvifính Loại KNK phát thải
+động phát thải * | động** động ° (CO2, CHa, N20,...)
+Al
+A2
+Ghi chi:
+* Ky hiệu hoạt động phát thai do đơn vi tự xác định, thông thường đặt từ
+ám
+** Miêu tả tên của hoạt động như đốt nhiên liệu, rò rỉ môi chất lạnh, tiêu
+thụ năng lượng như điện, hơi nóng, lạnh,...
+b. Các nguồn phát thải KNK của Cơ sở:
+Ký hiệu Nguồn phát thải Thuộc hoạt động
+nguồn phát thải* (tên và mô tả) (A1,2,...)
+S1
+S2
+Ghi chú:
+* Ký hiệu nguồn phát thải KNK do đơn vị tự xác định, thông thường đặt
+tk
+c. Thông tin về vị trí điểm phát thải KNK của Cơ sở:
+Ký hiệu điểm | Mô tả vịtrí | Thuộchoạt | Thuộc nguồn | Loại KNK phát thải
+phát thải* phat thai | động (Al,...) | thải (S1,2,..) | (CO2, CHa, M2O,...)
+EP1
+EP2
+Ghi chú:
+* Ký hiệu điểm phát thải KNK do đơn vị tự xác định, thông thường đặt từ
+EPL2,3 vx
+d. Thông tin về nhiên liệu, nguyên liệu và sản phẩm cần được giám sát ở
+Cơ sở:
+Se x
+.— 2
+
+13
+Ước tinh phát | Thuộc Thuộc Thuộc
+Tên nguyên | Ký hiệu loại | thải khí nhà hoạt nguồn | điểm phát
+nhiên vật nhiên liệu kính động thải thải
+liệu Tu NHA (tan CO» (Vi du: (Vi du: (Vi du:
+/năm) Al,2..) S2...) EP2...)
+Fl
+F2
+Ghi chú:
+* Ký hiệu nhiên liệu do đơn vị tự xác định, thông thường đặt từ F1,2,3...
+2.3. Mô tả phương pháp do đạc, giám sát mức phát thải KNK của Cơ sở
+- Mô tả ngắn ngọn về phương pháp, công thức tính toán phát thải KNK,
+bậc kiểm kê đã áp dụng trong báo cáo kiểm kê KNK.
+- Trong trường hợp có nhiều thông tin cần mô tả, Cơ sở có thé kèm theo
+tài liệu hay bảng biêu dạng đính kèm.
+2.4. Thông tin về danh mục các trang thiết bị, dụng cụ đo lường sử dụng
+đo đạc, phần tích.
+: Bộ : Phạm vi „
+Loại Hi Vị Loại Thuộc | phận lui nà đe sử dụng .
+thiết bị ela tri | nguyên | nguén | (bao 8 dién hinh chin
+ey bi do a a es do phải fr, Đen thấp | cao thấp | cao chán
+lường |, ˆ đặt | (F/,2...) | thải khai | vị đo A P Ẩ P 2
+lường thác...) | lường nhat |nhât | nhat |nhât | chăn
+- Khi các hệ số tính toán được xác định bằng phương pháp phân tích
+phòng thí nghiệm, đơn vị thực hiện báo cáo KNK phải chuẩn bị kế hoạch lấy
+mâu cho từng nhiên liệu hoặc vật liệu. Kế hoạch lay mẫu gồm các thông tin vê
+phương pháp luận lấy mẫu và chuẩn bị mẫu và thông tin về địa điểm, tân suất,
+số lượng và phương pháp luận để lưu trữ và vận chuyền mẫu.
+- Đơn vị thực hiện báo cáo KNK phải đảm tính đại diện của mẫu. Kế
+hoạch lấy mẫu phải được thống nhất với đơn vị thực hiện phân tích mẫu.
+- Kế hoạch lấy mẫu phải được cập nhật nhằm đảm bảo phản ánh tính phức
+tạp của nhiên liệu hoặc vật liệu.
+3. Thiết lập hồ sơ kiếm soát nội bộ và triển khai thực hiện
+3.1. Hồ sơ phân công trách nhiệm
+- Quy trình, thủ tục quản lý công tác giám sát và báo cáo tại Cơ sở.
+- Quyết định phân công người chịu trách nhiệm giám sát và báo cáo phát
+thải KNK.
+Hy
+“A
+tis \
+Ad Litre SES
+
+14
+- Quy trình, thủ tục đánh giá thường xuyên Phương án giám sát nhằm cải
+thiện chât lượng giám sát.
+3.2. Hồ sơ quản lý cơ sở dữ liệu
+- Mô tả quy trình, thủ tục quản lý công tác lưu giữ hồ sơ và tài liệu.
+- Sơ đồ mô tả luồng dữ liệu của các hoạt động phát thải KNK trực tiếp và
+gián tiêp.
+- Số liệu về quản lý, sử dụng các loại số liệu, dữ liệu của quá trình đo đạc,
+tính toán kêt quả giảm phát thải KNK.
+- Quy trình, thủ tục đánh giá rủi ro trong luồng dữ liệu.
+- Quy trình, thủ tục và hồ sơ đảm bảo chất lượng của các thiết bị đo lường
+liên quan.
+- Quy trình, thủ tục đảm bảo chất lượng hệ thống công nghệ thông tin
+phục vụ quản lý dữ liệu và trang thiêt bị.
+3.3. Hồ sơ đảm bảo chất lượng của số liệu
+- Quy trình, thủ tục đánh giá nội bộ thường xuyên về hiện trạng số liệu.
+- Phương án khăc phục đôi với các sự cô, rủi ro khi thực hiện Phương án
+giám sát và phương án xử lý sự cô vê mat hoặc sai dữ liệu.
+a
+ạ
+
+15
+Mục3
+QUY TRÌNH KỸ THUẬT THAM ĐỊNH GIẢM NHẸ
+PHÁT THẢI KNK CÁP CƠ SỞ
+1. Giai đoạn chuẩn bị
+Trước khi tiến hành các hoạt động thẩm định, đơn vị thẩm định cần tiến
+hành các hoạt động sau:
+- Phân tích rủi ro khi thực hiện thâm định giảm nhẹ phát thải KNK của Cơ sở;
+- Xác định nhu cầu về số lượng, chất lượng đội ngũ thẩm định viên và
+nhu cầu mời thêm chuyên gia tham gia hoạt động thẩm định;
+- Xác định thời gian hoàn thành hoạt động thẩm định dựa trên quy mô, độ
+phức tạp và khối lượng công việc cần thẩm định.
+_Trong quá trình thẩm định, đơn vị thẩm định hoặc thầm định viên có thé
+yêu cầu gia hạn thời gian thực hiện trong trường hợp sau:
+- Số liệu hoạt động lớn hơn so với dự kiến ban đầu;
+- Phát hiện các sai sót về số liệu như thiếu dữ liệu hoặc lỗi truy xuất dữ
+liệu và cần phải thực hiện khảo sát bé sung.
+Đơn vị thẩm định phải lưu giữ đầy đủ hồ sơ, biên bản, tài liệu về các nội
+dung và nguyên nhân của việc phát sinh thêm thời gian thâm định.
+2. Danh mục hồ sơ, tài liệu phục vụ hoạt động thắm định
+- Kế hoạch giảm nhẹ phát thải KNK và Phương án giám sát và các biên
+bản sửa đổi bồ, sung trong kỳ báo cáo (nếu có):
+- Báo cáo kiểm kê KNK của kỳ báo cáo gần nhất và kết quả thẩm định
+Báo cáo kiểm kê KNK này (nếu có);
+- Báo cáo giảm nhẹ phat tl thải KNK va Báo cáo thẩm định giảm nhẹ phát
+thải KNK của kỳ báo cáo gân nhất;
+- Các tài liệu khác.
+3. Quy trình kỹ thuật thẳm định giảm nhẹ phát KNK của Cơ sở
+3.1. Phân tích chiến lược
+- Phân tích bản chất, quy mô và mức độ phức tạp của hoạt động thầm định.
+- Rà soát các tài liệu có liên quan tại mục 2 và đánh giá khả năng thực hiện:
++ Các hoạt động thẩm định;
++ Quy mô, mức độ phức tạp của các nguồn phát thải, trang thiết bị, dây
+chuyền công nghệ liên quan đến quá trình phát thải khí nhà kính và các dữ liệu,
+giả định, hệ sô áp dụng tính toán.
+- Kiểm tra Kế hoạch giảm nhẹ phát thải KNK và Phương án giám sát của
+Cơ sở.
+
+16
+3.2 Phân tích rủi ro
+- Thẩm định viên phải tiến hành phân tích, đánh giá rủi ro và đề xuất biện
+pháp kiểm soát và giảm thiéu rủi ro. Việc phân tích rủi ro cần đánh giá thông
+qua kết quả báo cáo phân tích chiến lược tại mục 3.1.
+3.3 Xây dựng Kế hoạch thẩm định
+Đơn vị thẩm định phải xây dựng kế hoạch thẩm định với các nội dung
+chính sau:
+- Pham vi, thời gian và phương thức thực hiện kế hoạch thầm định;
+- Phạm vi và phương pháp thử nghiệm đối với các hoạt động, quy trình
+kiểm soát phát thải KNK của cơ sở;
+- Phạm vi, phương pháp lấy mẫu, lựa chọn mẫu và phân tích, đánh giá;
+- Phương án, giải pháp giảm thiểu rủi ro trong quá trình thẩm định.
+3.4 Hoạt động thẩm định
+a. Tham định sự tuân thủ Kế hoạch giảm nhẹ phát thải KNK và Phương
+án giám sát, bao gồm:
+- Quy trình phân tích, xác thực số liệu và phương pháp giám sát các nguồn
+phát thải KNK;
+- Kiểm tra số liệu và hệ thống quản lý dữ liệu;
+- Kiểm tra các hoạt động kiểm soát rủi ro đối với luồng dòng dữ liệu nêu
+trong Báo cáo thầm định ky báo cáo trước;
+- Kiểm tra các quy trình trong Phương án giám sát;
+Trường hợp phát hiện các sai sót ở các nội dung nêu trên làm ảnh hưởng đến
+kết quả thẩm định, thẩm định viên có thé đề xuất điều chỉnh quy trình kiểm soát các
+nguồn phát thải KNK của Cơ sở hoặc đề nghị lấy mẫu kiểm nghiệm bồ sung.
+b. Phân tích, đánh giá số liệu gồm:
+- Đánh giá nhanh các số liệu dị biệt, sai số hệ thống, số liệu bị thiếu;
+- Đánh giá khả năng giảm nhẹ các rủi ro đã được nêu trong báo cáo trước đó;
+- Đánh giá độ tin cậy của dữ liệu;
+Trường hợp phát hiện các sai sót trong quá trình phân tích đánh giá số liệu
+ở các nội dung trên, thẩm định viên yêu cầu Cơ sở làm rõ và cung cấp các bằng
+chứng có liên quan.
+c. Tham định dữ liệu gồm:
+- Độ tin cậy và độ chính xác của số liệu đầu vào;
+- Kiểm tra tính đầy đủ số liệu và các nguồn phát thải;
+- Kiểm tra tính nhất quán của số liệu.
+d. Tham định việc tuân thủ Phương án giám sát thực hiện gồm:
+..
+w \ is dey đ
+an i
+Sace evi
+ị
++t
+Ht
+
+17
+- Kiểm tra việc áp dụng và thực hiện biện pháp giám sát nguồn thải, kế
+hoạch lây mâu, phân tích và kiêm chứng (nêu có);
+- Kiểm tra việc tuân thủ tiêu chuẩn phòng thử nghiệm, phân tích mẫu nêu
+trong Phương án giám sát và phương pháp đo kiêm của Cơ sở đã thực hiện;
+- Thẩm định các điều chỉnh, bố sung trong quá trình thực hiện Phương án
+giám sát và các ly do điêu chỉnh;
+Đối với trường hợp thực hiện không đúng với nội dung của Phương án
+giám sát, cần thẩm định các nội dung sau:
++ Lý do kỹ thuật làm sai lệch so với phương án giám sát và đánh giá sự
+phù hợp;
++ Sự phù hợp của Phương án giám sát đã điều chỉnh đang được áp dung;
++ Các biện pháp khắc phục sự cố trong quá trình thực hiện Phương án
+giám sát và kết quả thực hiện các biện pháp này.
+đ. Thẩm định phương pháp xử lý số liệu bị thiếu
+- Trường hợp số liệu trong quá trình tính toán phát thải bị thiếu và đã
+được xử lý, can thẩm định các nội dung sau:
++ Sự phù hợp với điều kiện và thời gian cụ thể của số liệu bị thiếu;
++ Phương án xử lý phù hợp đảm bảo độ tin cậy của kết quả tính toán.
+- Đối với trường hợp áp dụng các phương pháp chưa được quy định, thẩm
+định viên yêu cầu Cơ sở đưa ra các bằng chứng về hồ sơ, quy trình kỹ thuật đã
+sửa đổi trong Phương án giám sát. Trường hợp Cơ cở không tuân thủ, nội dung
+này phải được nêu trong báo cáo thẩm định.
+e. Lấy mẫu
+- Việc lay mẫu phân tích kiểm chứng số liệu chỉ thực hiện khi Báo cáo
+phân tích rủi ro yêu câu.
+- Trong trường hợp phát hiện sự không phù hợp và sai sót trong thủ tục
+lấy mẫu, thẩm định viên cần chỉ ra sự không phù hợp và khuyến nghị về việc lấy
+mẫu bồ sung hoặc điều chỉnh số liệu báo cáo (nếu cần thiết).
+g. Kiểm tra thực dia tại Cơ sở
+- Hoạt động kiểm tra thực địa nhằm đánh giá tình trạng hoạt động của hệ
+thống thiết bị đo lường, hệ thống giám sát và đánh giá nhanh ranh giới hoạt động
+của Cơ sở.
+- Kiểm tra thực địa thêm các địa điểm khác trong phạm vi của Cơ sở chỉ
+thực hiện khi Báo cáo phân tích rủi ro yêu cầu.
+- Hoạt động kiểm tra thực địa không tiền hành trong trường hợp hoạt động
+kiểm tra số liệu và hiện trạng trang thiết bị có thể thực hiện từ xa.
+- Hoạt động kiểm tra thực địa bắt buộc đối với một trong các trường hợp:
+Z
+⁄
+aN
+L
+AR
+` “4ó
+\
+`
+đi
+
+18
++ Tham định lần đầu đối với Cơ sở;
++ 04 năm liên tục không tiến hành kiểm tra thực địa.
+h. Xử lý các sai sót trong quá trình thẩm định
+- Mọi sai sót phát hiện trong quá trình thẩm định phải được thông báo và
+yêu cầu Cơ sở khắc phục.
+- Thẩm định viên phải ghi chép, lưu giữ các bằng chứng về kết quả khắc
+phục, sửa chữa hoặc không thực hiện các khuyến nghị của thầm định viên.
+Trường hợp không khắc phục sửa chữa sai sót hoặc không tuân thủ
+khuyến nghị trong quá trình thẩm định, cần yêu cầu Cơ sở giải thích lý do và
+đánh giá tác động của việc không tuân thủ đến kết quả.
+i. Đánh giá mức trọng yếu
+- Các sai sót dẫn đến thay đổi từ 5% tổng phát thải trở lên được xem là
+mức trọng yếu.
+- Thẩm định viên có thể đánh giá sai sót là trọng yếu trong trường hợp
+từng sai sót riêng lẻ hoặc kết hợp các sai sót có tổng mức sai sót dưới mức trọng
+yếu khi xem xét các bằng chứng liên quan đến quy mô và điều kiện cụ thể của
+sai sót đó.
+k. Ra soát kết quả thẩm định
+Thẩm định viên phải thực hiện:
+- Kiểm tra dữ liệu cuối cùng trong báo cáo phát thải định kỳ của Cơ sở,
+bao gồm cả dữ liệu đã được sửa đồi;
+- Rà soát các giải trình của Cơ sở về sự khác biệt giữa dữ liệu cuối cùng
+và dữ liệu đã cung cap trước đó;
+- Rà soát kết quả đánh giá đối với sự tuân thủ Phương án giám sát;
+- Đảm bảo đã thu thập đủ bằng chứng dé có thé đưa ra kết quả thầm định
+và các phát hiện trong quá trình thẩm định không dẫn đến sai sót trọng yếu;
+- Đảm bảo quá trình thẩm định được ghi chép đầy đủ trong tài liệu thẩm
+định nội bộ và có thể đưa ra đánh giá cuối cùng trong báo cáo thẩm định.
+l. Tài liệu thẩm định nội bộ
+- Tham định viên phải lập hồ sơ tài liệu thẩm định nội bộ gồm:
++ Kế hoạch và Báo cáo phân tích chiến lược, phân tích rủi ro và Báo cáo
+thẩm định;
++ Kết quả các hoạt động thẩm định đã thực hiện;
++ Tập hợp tài liệu, thông tin, bằng chứng đối với các ý kiến thẩm định;
++ Kết quả rà soát, đánh giá độc lập.
+- Hồ so tài liệu thẩm định nội bộ phải lưu giữ và báo cáo các cơ quan
+quản lý nhà nước khi được yêu cầu.
+eM
+há x
+Z“
+`
+
+19
+m. Rà soát độc lập
+- Tham định viên phải gửi tài liệu thẩm định nội bộ và Báo cáo thầm định
+cho người rà soát độc lập trước khi phát hành Báo cáo thâm định cho Cơ sở.
+- Người rà soát độc lập tiền hành rà soát, đánh giá các nội dung sau:
++ Sự tuân thủ của thẩm định viên theo quy trình kỹ thuật tại Phụ lục III3
+của Thông tư này;
++ Sự day đủ, tin cậy của tài liệu, bằng chứng đi kèm với Báo cáo thẩm định.
+- Người rà soát độc lập phải đảm bảo không tham gia bất kỳ hoạt động
+nào trong quá trình thâm định.
+Trường hợp phát hiện sai sót và được sửa chữa cập nhật Báo cáo thẩm
+định, người rà soát độc lập phải đánh giá kêt quả sửa chữa và các băng chứng
+liên quan đên những thay đôi này.
+n. Báo cáo thẩm định
+- Các nội dung sau cần được thể hiện trong Báo cáo thẩm định:
++ Xác nhận đạt hay không đạt yêu cầu đối với Báo cáo giảm nhẹ phát thải
+KNK của Cơ sở;
+„ + Báo cáo giảm nhẹ phát thải KNK của Cơ sở có chứa các sai sót trọng
+yêu chưa được khăc phục trước khi phát hành Báo cáo thâm định;
++ Khó khăn trong việc thu thập thông tin tài liệu của Cơ sở làm ảnh
+hưởng đên kêt luận của thâm định viên đôi với các sai sót trọng yêu.
+- Đối với các nội dung sai sót, thắm định viên phải thể hiện đầy đủ chỉ tiết
+trong Báo cáo thâm định, trong đó phải chỉ ra:
++ Quy mô và bản chất của các sai sót, không phù hợp hoặc không tuân thủ;
++ Nguyên nhân dẫn đến các sai sót trọng yếu;
++ Các nội dung vi phạm của Cơ sở đối với các quy định của Thông tư này.
+- Báo cáo giảm nhẹ phát thải KNK của Cơ sở được đánh giá đạt yêu cầu
+khi Báo cáo thâm định không chỉ ra các sai sót trọng yêu./.
+b
+Di 4%
+

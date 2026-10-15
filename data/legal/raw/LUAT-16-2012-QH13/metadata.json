@@ -1,0 +1,24 @@
+{
+  "document_number": "16/2012/QH13",
+  "title": "Luật Quảng cáo",
+  "authority": "Quốc hội (National Assembly)",
+  "issued_date": "2012-06-21",
+  "effective_from": "2013-01-01",
+  "status": "effective",
+  "id": "LUAT-16-2012-QH13",
+  "checked_at": "2026-10-13T12:20:22.462871+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\LUAT-16-2012-QH13\\original.html",
+      "sha256": "78ac094432a40777032f28aa9c68a79b55a857ce192329dc2c8d1584acfb1a8e",
+      "bytes": 162304,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2012/08/16_qcao.doc",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2012/08/16_qcao.doc",
+      "http_status": 200,
+      "content_type": "application/msword",
+      "retrieved_at": "2026-10-13T12:20:22.545991+00:00",
+      "text_chars": 40270
+    }
+  ],
+  "text_acquisition": "ok"
+}

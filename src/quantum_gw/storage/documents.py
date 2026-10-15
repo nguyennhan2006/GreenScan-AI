@@ -113,6 +113,26 @@ class DocumentStore:
             )
         return None
 
+    def find(self, sha256: str, name: str | None = None) -> StoredDocument | None:
+        """A stored file by content hash, preferring the record with the same display name."""
+        if not self.index_path.is_file():
+            return None
+        fallback = None
+        for line in self.index_path.read_text(encoding="utf-8").split("\n"):
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            if row["sha256"] != sha256 or not Path(row["path"]).is_file():
+                continue
+            record = StoredDocument(
+                doc_id=row["doc_id"], sha256=row["sha256"], name=row["name"],
+                path=Path(row["path"]), content_type=row["content_type"], bytes=row["bytes"],
+            )
+            if name is None or row["name"] == name:
+                return record
+            fallback = fallback or record
+        return fallback
+
     def is_servable(self, record: StoredDocument) -> bool:
         return record.path.suffix.lower() in SERVABLE
 

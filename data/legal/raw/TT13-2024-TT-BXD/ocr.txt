@@ -1,0 +1,2146 @@
+Bộ Xây dựng
+Ps) 20-12-2024
+A 17:11:24 +07:00
+BO XAY DUNG CONG HOA XÃ HỘI CHU NGHĨA VIỆT NAM
+Độc lập - Tự do - Hanh phúc
+Số: 13/2024/TT-BXD Hà Nội, ngày 20 tháng 12 năm 2024
+THÔNG TƯ
+Quy trình, quy định kỹ thuật kiểm kê khí nhà kính và đo đạc, báo cáo,
+tham định giảm nhẹ phát thải khí nhà kính ngành Xây dựng
+Căn cứ Căn cứ Luật Bảo vệ môi trường ngày 17 tháng 11 năm 2020;
+Luật Xây dựng ngày 18 tháng 6 năm 2014;
+Căn cứ Luật sửa đổi, bồ sung một số điều của Luật Xây dựng ngày 17 tháng
+6 năm 2020;
+Căn cứ Nghị định số 06/2022/NĐ-CP ngày 07 tháng 01 năm 2022 của Chính
+phủ quy định giảm nhẹ phát thải khí nhà kính và báo vệ tầng ô-dôn;
+Can cứ Nghị định số 52/2022/NĐ-CP ngày 08 tháng 8 năm 2022 của Chính
+phu quy định chức năng, nhiệm vụ, quyền hạn và cơ cầu tô chức của Bộ Xây dựng;
+Căn cứ Quyết định số 13⁄2024/QĐ-TTg ngày 13 tháng 8 năm 2024 của Thu
+tướng Chính phủ ban hành danh mục lĩnh vực, cơ sở phát thai khí nhà kính phai
+thực hiện kiểm kê khí nhà kính (cập nhật);
+Theo đề nghị của Vụ trưởng Vụ Khoa học công nghệ và môi trường:
+Bộ trưởng Bộ Xây dựng ban hành Thông tư quy trình, quy định kỹ thuật kiêm
+kê phát thải khí nhà kính và đo đạc, báo cáo, thâm định giảm nhẹ phát thái khí
+nhà kính ngành Xây dựng.
+Chương I
+QUY ĐỊNH CHUNG
+Điều 1. Phạm vi điều chỉnh
+Thông tư này hướng dẫn quy trình, quy định kỹ thuật kiềm kê khí nhà kính
+và đo đạc, báo cáo, thâm định giảm nhẹ phát thải khí nhà kính cấp lĩnh vực và cơ
+sở thuộc phạm vi quan lý ngành Xây dựng.
+Điều 2. Đồi tượng áp dụng
+1. Thông tư này áp dụng đồi với các đối tượng sau đây:
+a) Các cơ sở thuộc Danh mục các cơ sở phát thải khí nhà kính phải thực hiện
+kiểm kê khí nhà kính thuộc ngành Xây dựng theo Quyết định số 13/2024/QĐ-TTg
+
+2
+ngày 13 tháng 8 năm 2024 của Thủ tướng Chính phủ ban hành danh mục lĩnh vực,
+cơ sở phát thải khí nhà kính phải thực hiện kiểm kê khí nhà kính (cập nhật);
+b) Các cơ quan, tổ chức, cá nhân liên quan đến hoạt động kiểm kê khí nhà
+kính, đo đạc, báo cáo, thầm định giảm nhẹ phát thải khí nhà kính cấp lĩnh vực và
+cấp cơ sở thuộc ngành Xây dựng.
+2. Khuyến khích các cơ sở sản xuất vật liệu xây dựng và tòa nhà không
+thuộc điểm a khoản 1 Điều này cung cấp thông tin phục vụ kiểm kê khí nhà kính,
+đo đạc, báo cáo, thẩm định giảm nhẹ phát thải khí nhà kính cấp lĩnh vực thuộc
+phạm vi quản lý ngành Xây dựng và áp dụng quy định tại Thông tư này.
+Điều 3. Giải thích từ ngữ
+Trong Thông tư này, các từ ngữ dưới đây được hiéu như sau:
+1. Toà nha là các tòa nhà thương mai, dịch vụ được nêu tại Quyết định số
+13/2024/QD-TTg.
+2. Phát thai khí nhà kính là hoạt động giải phóng khí nha kính vào trong
+khí quyền.
+3, Nguồn phát thải khí nhà kính là nơi xảy ra các quá trình vật lý, hóa học
+gây phát thải khí nhà kính hoặc các hoạt động sử dụng điện hoặc nhiệt trong sản
+xuất, vận hành có nguôn gôc liên quan đên nhiên liệu hoá thạch.
+4, Số liệu hoạt động là số liệu định lượng của các loại nhiên liệu, vật chất
+sử dụng tại nguôn phát thải khí nhà kính.
+5. Năm cơ sở là thời điểm quy định đề thu thập số liệu hoạt động, tính toán
+mức phát thải khí nhà kính của quốc gia, lĩnh vực hoặc cơ sở.
+6. VILAS là hệ thống công nhận phòng thử nghiệm, hiệu chuan của Việt
+Nam, phù hợp tiêu chuân ISO/IEC 17025:2005.
+Điều 4. Yêu cầu kiểm kê khí nhà kính và đo đạc, báo cáo, thẩm định
+giảm nhẹ phát thái khí nhà kính
+1. Yêu cầu về kiểm kê khí nhà kính và đo đạc, báo cáo, thẳm định giảm
+nhẹ phát thải khí nhà kính được quy định tại Thông tư này phải đảm bảo các yêu
+cầu được quy định tại khoản 1 Điều 10 và khoản 1 Điều 1] Nghị định số
+06/2022/NĐ-CP ngày 07 tháng 01 năm 2022 của Chính phủ quy định giảm nhẹ
+phát thải khí nhà kính và bảo vệ tang ô-dôn. Cụ thể như sau:
+a) Day du: thực hiện kiểm kê khí nhà kính và đo đạc, báo cáo, thầm định
+giảm nhẹ phát thải khí nhà kính đói với tất cả các nguồn phat thai khí nhà kính.
+Các số liệu thu thập liên tục, không gián đoạn và có giải trình khi có bồ sung, loại
+trừ so với quy định;
+
+3
+b) Nhất quán: thực hiện kiểm kê khí nhà kính và đo đạc, báo cáo, thâm định
+giảm nhẹ phát thải khí nhà kính đảm bảo thống nhất về số liệu, chuỗi số liệu và
+phương pháp tính toán. Khi có sự thay đồi cần có báo cáo so sánh, đồi chứng;
+c) Minh bạch: thực hiện kiểm kê khí nhà kính và đo đạc, báo cáo, thầm định
+giảm nhẹ phát thải khí nhà kính bao gồm các các tài liệu, dữ liệu giả định, số liệu
+hoạt động, các hệ số áp dụng, phương pháp tính toán được giải thích rõ ràng, trích
+dẫn nguồn và lưu giữ đề đảm bảo độ tin cậy và tính chính xác cao;
+d) Chính xác: tính toán kiểm kê khí nhà kính và đo đạc, báo cáo, thầm định
+giảm nhẹ phát thải khí nhà kính đảm bảo độ tin cậy theo phương pháp luận lựa
+chọn và giảm tối đa các sai lệch.
+2. Yêu cầu về thầm định kết quả kiểm kê khí nhà kính và giảm nhẹ phát
+thải khí nhà kính được quy định tại Điêu 9 Thông tư 01/2022/TT-BTNMT ngày
+07 tháng 01 năm 2022 của Bộ trưởng Bộ Tài nguyên và Môi trường quy định chi
+tiết thi hành Luật Bảo vệ môi trường vé ứng phó với biên đôi khí hậu.
+Điều 5. Quy trình kiểm kê khí nhà kính
+Quy trình kiểm kê khí nhà kính được thực hiện theo trình tự các bước sau:
+1. Xác định phạm vi kiểm kê khí nhà kính.
+2. Xác định phương pháp thu thập số liệu hoạt động phục vụ kiểm kê khí
+nhà kính.
+3. Thu thập số liệu hoạt động phục vụ kiểm kê khí nhà kính.
+4. Lựa chọn hệ sé trong tinh toan phat thai khi nha kinh.
+5. Tính toán phát thai khí nhà kính.
+6. Kiểm soát chất lượng và đảm bảo chất lượng kiểm kê khí nhà kính.
+7. Đánh giá dé không chắc chắn kết quả kiềm kê khí nhà kính.
+8. Tính toán lại kết quả kiểm kê khí nhà kính.
+9, Xây dựng báo cáo kiềm kê khí nhà kính.
+10. Thắm định va nộp kết quả kiểm kê khí nhà kính.
+Điều 6. Quy trình đo đạc, báo cáo, thắm định giảm nhẹ phát thải khí
+nhà kính
+Quy trình đo đạc, báo cáo, thẩm định giảm nhẹ phát thải khí nhà kính được
+thực hiện theo trình tự các bước sau:
+1. Xây dựng kế hoạch giảm nhẹ phát thải khí nhà kính.
+2. Do đạc kết quả thực hiện các biện pháp giảm nhẹ phát thải khí nhà kính.
+
+4
+3. Báo cáo giảm nhẹ phát thải khí nhà kính.
+4. Tham định và nộp kết quả giảm nhẹ phát thải khí nhà kính.
+Chương II
+QUY ĐỊNH KỸ THUẬT KIEM KE KHÍ NHÀ KÍNH CAP LĨNH VỰC
+Điều 7. Xác định phạm vi kiểm kê khí nhà kính cấp lĩnh vực
+1. Kiểm kê khí nhà kính cấp lĩnh vực cho các hoạt động sau:
+a) Quá trình công nghiệp trong sản xuất vật liệu xây dựng (xi măng, vôi, kính
+xây dựng và vật liệu xây dựng khác);
+b) Tiêu thụ năng lượng trong xây dựng (sản xuất vật liệu xây dựng và toà nhà).
+2. Nguồn phát thải khí nhà kính từ quá trình công nghiệp trong sản xuất vật
+liệu xây dựng bao gÔm phát thải từ quá trình nung nguyên liệu có chứa góc
+cacbonat (-COs).
+3. Nguồn phát thải từ tiêu thụ năng lượng trong xây dựng bao gồm phát thải
+từ sử dụng nhiên liệu cho quá trình đốt nhiên liệu và sử dụng điện.
+4. Thời gian thu thập số liệu hoạt động: từ ngày 01/01 đến ngày 31/12 của
+kỳ kiêm kê.
+5. Loại khí nhà kính được kiểm kê: CO2, CHu, N20.
+Điều 8. Xác định phương pháp thu thập số liệu hoạt động phục vụ kiểm
+kê khí nhà kính cấp lĩnh vực
+Phương pháp thu thập số liệu hoạt động, tính toán theo một trong 03
+cách sau:
+1. Từ trên xuống: Số liệu hoạt động của nguồn phát thải được tổng hợp từ
+số liệu thống kê và khảo sát của ngành. Tính toán phát thải khí nhà kính theo quy
+định tại Điều 11 của Thông tư này, lựa chọn hệ sé phat thai theo quy dinh tai Điều
+10 của Thông tư này.
+2. Từ dưới lên: Số liệu hoạt động của nguồn phát thải được tổng hợp từ số
+liệu khảo sát, báo cáo hoạt động của tất cả các cơ sở thuộc phạm vi ngành. Tinh
+toán phát thải khí nhà kính theo quy định tại Điều 21 của Thông tư này, lựa chọn
+hệ số phát thải theo quy định tại Điều 20 của Thông tư này.
+3. Kết hợp: Số liệu hoạt động của nguồn phát thải được tổng hợp từ số liệu
+thống kê, khảo sát ngành và cơ sở. Tính toán theo quy định phù hợp với số liệu
+tổng hợp được.
+
+5
+Điều 9. Thu thập số liệu hoạt động phục vụ kiểm kê khí nhà kính cấp
+lĩnh vực
+Số liệu hoạt động phục vụ kiểm kê khí nhà kính cấp lĩnh vực được thu thập
+như sau:
+1. Thu thập số liệu theo biểu mẫu số XD01 và XD02 Phụ lục III ban hành
+kèm theo Thông tư này.
+2. Thu thập và tông hợp sô liệu theo biêu mâu từ các nguôn sô liệu sau:
+a) Số liệu từ cơ quan quản lý nhà nước về thống kê, Bộ Xây dựng, cơ quan
+chuyên môn về xây dựng thuộc Ủy ban nhân dân tỉnh, thành phố trực thuộc trung
+ương, tổ chức xã hội - nghề nghiệp hoạt động trong lĩnh vực xây dựng và các bộ
+ngành, cơ quan chuyên ngành liên quan khác...;
+b) Số liệu nghiên cứu, báo cáo, quy định của Bộ Xây dựng, cơ quan chuyên
+môn về xây dựng thuộc Ủy ban nhân dân tỉnh, thành phố trực thuộc trung ương,
+tổ chức xã hội - nghề nghiệp hoạt động trong lĩnh vực xây dựng và các bộ ngành,
+cơ quan chuyên ngành liên quan khác được công bố trên các phương tiện thông
+tin đại chúng hoặc các kết quả đề tài, nhiệm vụ, dự án đã được nghiệm thu;
+c) Số liệu nghiên cứu, khảo sát, phân tích, tổng hợp từ cơ sở sản xuất vật
+liệu xây dựng, tòa nhà thuộc danh mục kiếm kê khí nhà kính tại Quyết định số
+13/2024/QĐ-TTg;
+d) Số liệu nghiên cứu, khảo sát, phân tích, tong hợp từ cơ sở sản xuất vật
+liệu xây dựng, tòa nhà thuộc danh mục sử dụng năng lượng trọng điểm của Thủ
+tướng Chính phủ;
+e) Số liệu phân tích của phòng thí nghiệm đạt chuẩn VILAS hoặc
+tương đương.
+3. Hồ sơ minh chứng nguồn góc số liệu sử dụng cho tính toán kết qua
+kiêm kê khí nhà kính cấp lĩnh vực phải được lưu giữ dé phục vụ hoạt động
+thâm định.
+Điều 10. Lựa chọn hệ số trong tính toán phát thải khí nhà kính cấp
+lĩnh vực
+1. Sử dụng các hệ số nhiệt trị nhiên liệu quy định tại Phụ lục V ban hành
+kèm theo Thông tư này.
+2. Sử dụng hệ số phát thải cấp lĩnh vực được quy định tại Phụ lục VI ban
+hành kèm theo Thông tư này và các hệ số phát thải thay thé, cập nhật do cơ quan
+nhà nước có thâm quyền và Ban Liên Chính phủ về Biến đổi khí hậu ban hành.
+Hệ số phát thải lưới điện quốc gia áp dụng theo hệ số công bồ của cơ quan nhà
+
+6
+nước có thẩm quyền. Khi chưa có hệ số phat thải cập nhật, phải áp dụng hệ số
+của năm gần nhất.
+3. Hệ số làm nóng lên toàn cầu được quy định tại Phụ lục VII ban hành kèm
+theo Thông tư này.
+Điều 11. Tính toán phát thải khí nhà kính cấp lĩnh vực
+1. Lượng phát thải khí nhà kính cấp lĩnh vực bằng tổng phát thải từ quá
+trình công nghiệp trong sản xuất vật liệu xây dựng (xi măng, kính, vôi, vật liệu
+xây dựng khác) và tiêu thụ năng lượng trong xây dựng (sản xuât vật liệu xây dựng
+và toà nhà), được tính toán theo công thức tính như sau:
+Exp = EcN + EwL
+Trong do:
+Exp : Phát thải khí nhà kính cấp lĩnh vực, đơn vi tan khí CO;
+tương đương (viêt tat CO,tđ)
+Een : Phat thải khí nhà kính từ qua trình công nghiệp trong
+sản xuất vật liệu xây dung, tan CO;td
+Eni : Phát thai khí nhà kính từ tiêu thụ năng lượng trong xây
+dựng, tan CO;tđ
+2. Hoạt động kiểm kê khí nhà kính được quy định tại khoản 1 Điều 7 và
+mục 1.1 Phụ lục I ban hành kèm theo Thông tư này.
+3. Nguồn phát thải được quy định tại khoản 2 và khoản 3 Điều 7 của
+Thông tư này.
+4. Công thức tính cho từng nguồn phát thải được quy định tại mục 1.2 dến
+mục 1.8 Phụ lục I ban hành kèm theo Thông tư này.
+Điều 12. Kiểm soát chất lượng, đảm bảo chất lượng kiếm kê khí nhà
+kính cấp lĩnh vực
+1. Bộ Xây dựng thực hiện kiểm soát chất lượng kết quả kiểm kê khí nhà
+kính cấp lĩnh vực theo các nội dung sau:
+a) Tính đầy đủ của nội dung báo cáo kiểm kê khí nhà kính theo quy định
+tại Điều 15 của Thông tư này;
+b) Đáp ứng yêu cầu tại khoản 1 Điều 4 của Thông tư này.
+2. Việc rà soát, đảm bảo chất lượng các nội dung được quy định tại khoản
+| Điều này được thực hiện bởi các đơn vi, cá nhân không tham gia vào quá trình
+kiểm kê khí nhà kính cấp lĩnh vực.
+
+7
+3. Các phát hiện, khuyến nghị trong quá trình kiểm soát chất lượng, đảm
+bảo chất lượng cần được lập thành báo cáo, làm cơ sở điều chỉnh kết quả kiềm kê
+và tham khảo cho quá trình xác minh, thầm định.
+Điều 13. Đánh giá độ không chắc chắn kết quả kiểm kê khí nhà kính cấp
+lĩnh vực
+1. Độ không chắc chắn về kết quả kiểm kê khí nhà kính cấp lĩnh được thực
+hiện cho tất cả các nguồn phát thải khí nhà kính được kiểm kê dé đưa ra các hoạt
+động ưu tiên giảm độ không chắc chắn trong các kỳ kiềm kê tiếp theo.
+2. Phương pháp xác định độ không chắc chắn về kết quả kiểm kê được lựa
+chọn và thực hiện theo quy định tại Chương 3 Phần | Hướng dẫn của Ban Liên
+Chính phủ về Biến đổi khí hậu năm 2006 (IPCC 2006) va IPCC 2019 về kiểm kê
+khí nhà kính quốc gia.
+Điều 14. Tính toán lại kết quả kiểm kê khí nhà kính cấp lĩnh vực
+1. Tính toán lại kết quả kiểm kê phát thải khí nhà kính cấp lĩnh vực được
+thực hiện khi có yêu cầu nâng cao độ chính xác, minh bạch trong các trường
+hợp sau:
+a) Có sự thay đổi về phương pháp tính toán phát thải, cải thiện độ chính
+xác của dữ liệu dẫn đến sự thay đỏi đáng kể trong kết quả kiểm kê khí nhà kính
+gần nhất;
+b) Có sự thay đổi về phạm vi kiểm kê;
+c) Có sự thay đồi về nguồn và hệ số phat thải khí nhà kính.
+2. Có bồ sung nội dung kết quả tính toán lại của kỳ kiểm kê trước vào Báo
+cáo kiểm kê khí nhà kính được tính toán của kỳ báo cáo.
+Điều 15. Xây dựng báo cáo kiểm kê khí nhà kính cấp lĩnh vực
+1. Báo cáo kết quả kiểm kê khí nhà kính cấp lĩnh vực theo mẫu số 05 Phụ
+lục II Nghị định số 06/2022/NĐ-CP.
+2. Thời gian thực hiện báo cáo kiểm kê khí nhà kính cấp lĩnh vực theo quy
+định tại điểm a khoản 3 Điều 11 Nghị định số 06/2022/NĐ-CP.
+Điều 16. Tham định và nộp kết quả kiếm kê khí nhà kính cấp lĩnh vực
+1. Bộ Xây dựng chu trì tổ chức thầm định kết quả kiểm kê khí nhà kính cấp
+lĩnh vực theo quy định tại Điều 10 Thông tư số 01/2022/TT-BTNMT.
+2. Bộ Xây dựng gửi báo cáo kết quả kiểm kê khí nhà kính cấp lĩnh vực
+đã được thâm định về Bộ Tài nguyên và Môi trường theo quy định tại điểm a
+khoản 3 Điều 11 Nghị định số 06/2022/NĐ-CP.
+
+8
+Chương III
+QUY ĐỊNH KỸ THUAT KIEM KE KHÍ NHÀ KÍNH CAP CƠ SỞ
+Điều 17. Xác định phạm vi kiểm kê khí nhà kính cấp cơ sở
+1. Kiểm kê khí nhà kính cấp cơ sở được thực hiện với các nguồn phát thải
+sau đây:
+a) Cơ sở sản xuất vật liệu xây dựng: Phát thải từ sử dụng nhiên liệu cho
+quá trình đốt, từ sử dụng điện mua vào va từ nung nguyên liệu có chứa gốc
+cacbonat (-CQ);
+b) Toà nhà: Phát thải từ sử dụng nhiên liệu cho quá trình đốt, từ sử dụng
+điện mua vào và từ sử dụng thiết bị làm mát (điều hoà, tủ lạnh, tủ đông, chiller,
+bơm nhiệt...).
+2. Ranh giới và phạm vi hoạt động của cơ sở: Tọa độ địa lý hành chính của
+cơ SỞ.
+3. Thời gian thu thập số liệu hoạt động: từ ngày 01/01 đến ngày 31/12 của
+kỳ kiêm kê.
+4. Loại khí nhà kính được kiểm kê: CO2, CHy, N20.
+Điều 18. Xác định phương pháp thu thập số liệu hoạt động phục vụ
+kiểm kê khí nhà kính cấp cơ sở
+Cơ sở thực hiện thu thập số liệu hoạt động theo phương pháp sau:
+1. Do đạc, phân tích, tính toán thực tế tại doanh nghiệp.
+2. Đo đạc, phân tích, tính toán của nhà cung cấp nguyên vật liệu.
+Điều 19. Thu thập số liệu hoạt động phục vụ kiểm kê khí nhà kính cấp
+cơ sở
+1. Thu thập số liệu theo biểu mẫu số CSO1 và biểu mẫu số CS02 Phụ lục IV
+ban hành kèm theo Thông tư này.
+2. Thu thập và tổng hợp số liệu theo biểu mẫu từ các nguồn số liệu sau:
+a) Báo cáo thực hiện tiêu hao vật tư sản phẩm cho quá trình sản xuất đơn vị;
+b) Hoá đơn mua hàng, hợp đồng, cam kết của đơn vị cung cấp nguyên nhiên
+vật liệu;
+c) Phân tích của phòng thí nghiệm đạt chuần VILAS hoặc tương đương:
+d) Đồng hồ đo còn hiệu lực hiệu chỉnh và kiểm định.
+
+9
+2. Cơ sở cung cấp hồ sơ, tài liệu minh chứng số liệu hoạt động đề phục vụ
+hoạt động thầm định khi có yêu cầu và chịu trách nhiệm về tính chính xác của số
+liệu báo cáo.
+Điều 20. Lựa chọn hệ số trong tính toán phát thải khí nhà kính cấp
+cơ sở
+1. Sử dụng giá trị nhiệt trị nhiên liệu được xác định thực tế tại cơ so.
+Trong trường hợp không có sẵn số liệu thực tế, sử dụng hệ số được quy định tại
+mục 5.2 Phụ lục V ban hành kèm theo Thông tư này.
+2. Sử dụng hệ số phát thải được quy định tại Phụ lục VI ban hành kèm theo
+Thông tư này. Cơ sở được phép sử dụng hệ số phát thải thay thế phù hợp với điều
+kiện thực tế và cần phải có tài liệu minh chứng. Hệ số phát thải lưới điện quốc gia
+áp dụng theo hệ số công bố của cơ quan nhà nước có thầm quyền. Khi chưa có hệ
+số phát thải cập nhật, phải áp dụng hệ số của năm gan nhất.
+3. Hệ số làm nóng lên toàn cầu được quy định tại Phụ lục VII ban hành
+kèm theo Thông tư này. Cơ sở cân lựa chọn, áp dụng hệ sô tương đương với các
+hệ số làm nóng lên toàn cầu được sử dụng trong các báo cáo, thông báo quốc gia
+mới nhất.
+Điều 21. Tính toán phát thải khí nhà kính cấp cơ sở
+1. Lượng phat thải khí nhà kính của cơ sở sản xuất vật liệu xây dựng, tòa
+nhà được tính bằng công thức chung sau:
+Ecs = > En
+Trong do:
+Ecs : Phát thải khí nhà kính của cơ sở, tan CO;tđ
+En : Phat thải khí nhà kính từ các nguồn phát thải, tấn COstđ
+2. Nguồn phát thải khí nhà kính cấp cơ sở được quy định tại khoản 1
+Điêu 17 của Thông tư này và mục 1.1 Phụ lục I ban hành kèm theo Thông tư này.
+3. Công thức tính phát thải khí nhà kính đối với từng nguồn phát thải được
+quy định tại Phụ lục I ban hành kèm theo Thông tu này.
+Điều 22. Kiểm soát chất lượng kiểm kê phát thải khí nhà kính cấp cơ sở
+1. Quy trình kiểm soát chất lượng báo cáo kiểm kê khí nhà kính cấp cơ sở
+do cơ sở thực hiện theo hướng dan tại tiều mục 6.1.2 Mục 6 Tiêu chuẩn quốc gia
+TCVN ISO 14064-1:2011 Phan 1: Quy định kỹ thuật và hướng dẫn đề định lượng
+và báo cáo các phát thải và loại bỏ khí nhà kính ở cấp độ cơ sở.
+
+10
+2. Các phát hiện hạn chế về số liệu hoạt động, hệ số phát thai, kết qua tính
+toán phát thải trong quá trình kiểm soát chất lượng cần được tổng hợp trong báo
+cáo kết quả kiểm kê khí nhà kính cấp cơ sở, làm căn cứ đề điều chỉnh kết quả
+kiểm kê và tham khảo cho quá trình xác minh, thầm định.
+Điều 23. Đánh giá độ không chắc chắn kết quả kiểm kê khí nhà kính
+cấp cơ sở
+1. Đánh giá độ không chắc chắn kết quả kiểm kê khí nhà kính cấp cơ sở
+phải được thực hiện cho các nguồn phát thải khí nhà kính của cơ sở đề đưa ra các
+hoạt động ưu tiên giảm độ không chắc chắn trong các kỳ kiểm kê tiếp theo.
+2. Phương pháp xác định độ không chắc chắn về kết quả kiểm kê được lựa
+chọn và thực hiện theo quy định tại Chương 3 Phan | Hướng dẫn của Ban Liên
+Chính phủ về Biến đổi khí hậu năm 2006 (IPCC 2006) và IPCC 2019 về kiểm kê
+khí nhà kính quốc gia.
+Điều 24. Tính toán lại kết quả kiếm kê khí nhà kính cấp cơ sở
+1. Việc tính toán lại kết quả kiểm kê phát thải khí nhà kính cấp cơ sở nhằm
+nâng cao độ chính xác, minh bạch và được thực hiện trong các trường hợp sau:
+a) Có sự thay đổi về phạm vi, ranh giới hoạt động dẫn tới thay đổi về các
+nguồn phát thải và số liệu hoạt động của cơ sở;
+b) Có sự thay đổi về nguồn phát thải khí nhà kính do sự thay đồi quyền sở
+hữu, vận hành của cơ sở;
+c) Có sự thay đổi trong phương pháp tính toán phát thải và áp dụng hệ sỐ
+phát thải;
+d) Có sự thay đồi, cập nhật số liệu hoạt động nhằm cải thiện độ chính xác
+của dữ liệu dẫn đến sự thay đồi trên 10% so với kết quả kiềm kê khí nhà kính đã
+được cơ sở báo cáo.
+2. Cơ sở có trách nhiệm bồ sung nội dung tính toán lại kết quả kiềm kê khí
+nhà kính của kỳ kiểm kê trước vào trong Báo cáo kiểm kê khí nhà kính cấp cơ sở
+của kỳ báo cáo.
+Điều 25. Xây dựng báo cáo kết quả kiểm kê khí nhà kính cấp cơ sở
+1. Báo cáo kiểm kê khí nhà kính cấp cơ sở được thực hiện định kỳ theo quy
+định tại điểm b khoản 4 Điều 11 Nghị định số 06/2022/NĐ-CP.
+2. Báo cáo kết quả kiểm kê khí nhà kính cấp cơ sở được thực hiện theo mẫu
+số 06 Phụ lục II Nghị định 06/2022/NĐ-CP.
+3. Phát thải khí nhà kính từ đốt sinh khói phải được kiểm kê và khai báo
+riêng. Tổng phát thải khí nhà kính cấp cơ sở không bao gồm phát thải khí nhà kính
+từ đốt sinh khói.
+
+11
+Điều 26. Tham định va nộp kết quả kiểm kê khí nhà kính cấp cơ sở
+1. Quy trình thầm định kết quả kiểm kê khí nhà kính cấp cơ sở thực hiện
+theo quy định tại khoản 6 Điều 11 Nghị định số 06/2022/NĐ-CP và Điều 12
+Thông tư số 01/2022/TT-BTNMT.
+2. Cơ sở nộp báo cáo kết quả kiểm kê khí nhà kính theo quy định tại điểm
+b khoản 4 Điều 11 Nghị định số 06/2022/NĐ-CP.
+3. Cơ sở hoàn thiện báo cáo kết quả kiểm kê khí nhà kính theo thông báo
+kết quả thẩm định và nộp báo cáo kết quả kiểm kê khí nhà kính theo quy định
+tại điểm c khoản 4 Điều 11 Nghị định số 06/2022/NĐ-CP và khoản 4 Điều 12
+Thông tư số 01/2022/TT-BTNMT.
+Chương IV
+QUY ĐỊNH KỸ THUẬT DO DAC, BAO CÁO, THẤM ĐỊNH GIẢM NHE
+PHAT THAI KHÍ NHÀ KÍNH CAP LĨNH VỰC
+Điều 27. Xây dựng kế hoạch giảm nhẹ phát thải khí nhà kính cấp
+lĩnh vực
+Việc đo đạc, báo cáo và thâm định giảm nhẹ phát thải khí nhà kính căn cứ
+theo Kế hoạch giảm nhẹ phát thải khí nhà kính cấp lĩnh vực. Cụ thể:
+1. Kế hoạch giảm nhẹ phát thải khí nhà kính cấp lĩnh vực thực hiện theo
+mẫu số 01 Phụ lục IV Nghị định 06/2022/NĐ-CP.
+2. Kế hoạch giảm nhẹ phát thải khí nhà kính cấp lĩnh vực căn cứ vào khả
+năng thực hiện các biện pháp giảm nhẹ sau:
+a) Các biện pháp được quy định tại mục 2.1 và mục 2.2 Phụ lục II ban hành
+kèm theo Thông tư này;
+b) Các biện pháp về chính sách, thiết kế, thi công, quản lý, vận hành, tài
+chính khác.
+Điều 28. Đo đạc kết qua thực hiện các biện pháp giảm nhẹ phát thai
+khí nhà kính cấp lĩnh vực
+1. Do đạc kết quả thực hiện các biện pháp giảm nhẹ phát thải khí nhà kính
+cap lĩnh vực theo công thức sau:
+ERy = 2 ER x
+k
+
+Trong đó:
+ERy : Mức giảm phát thải khí nhà kính, tấn CO;tđ
+ERy x : Mức giảm phat thải khí nhà kính của biện pháp giảm nhẹ k,
+tan CO;tđ
+2. Thu thập số liệu xác định mức giảm nhẹ của từng biện pháp được thực
+hiện tương ứng theo biểu mẫu từ XD03 đến XD11 Phụ lục III ban hành kèm Thông
+tư này.
+3. Đo đạc, xác định kết quả thực hiện từng biện pháp giảm nhẹ phát thải khí
+nhà kính theo hướng dẫn tại Phụ lục II ban hành kèm theo Thông tư này.
+Điều 29. Báo cáo giảm nhẹ phát thải khí nhà kính cấp lĩnh vực
+|. Báo cáo giảm nhẹ phat thải khí nhà kính cấp lĩnh vực thực hiện theo quy
+định tại mẫu số 01 Phụ lục III Nghị định 06/2022/NĐ-CP.
+2. Thực hiện báo cáo giảm nhẹ phát thải khí nhà kính cấp lĩnh vực theo quy
+định tại điểm b khoản 3 Điều 10 Nghị định số 06/2022/NĐ-CP.
+Điều 30. Thẩm định giảm nhẹ phát thải khí nhà kính cấp lĩnh vực
+1. Bộ Xây dựng chủ trì tổ chức thầm định giảm nhẹ phát thải khí nhà kính
+cấp lĩnh vực theo quy định tại Điều 11 Thông tư số 01/2022/TT-BTNMT.
+2. Bộ Xây dựng gửi báo cáo giảm nhẹ phát thải khí nhà kính cấp lĩnh vực
+theo quy định tại điểm b khoản 3 Điều 10 của Nghị định số 06/2022/NĐ-CP.
+Chương V
+KỸ THUẬT ĐO ĐẠC, BÁO CÁO, THÁM ĐỊNH GIẢM NHẸ
+PHÁT THAI KHÍ NHÀ KÍNH CAP CƠ SỞ
+Điều 31. Xây dựng kế hoạch giảm nhẹ phát thải khí nhà kính cấp cơ sở
+Việc đo đạc, báo cáo và thầm định giảm nhẹ phát thải khí nhà kính căn cứ
+theo Kế hoạch giảm nhẹ phát thải khí nhà kính cấp cơ sở. Cụ thể:
+1. Kế hoạch giảm nhẹ phát thải khí nhà kính cấp cơ sở được xây dựng theo
+mẫu số 02 Phụ lục IV Nghị định số 06/2022/NĐ-CP.
+2. Cơ sở xác định kế hoạch giảm nhẹ phát thải khí nhà kính theo khả năng
+thực hiện các biện pháp giảm nhẹ được quy định tại mục 2.1 và mục 2.2 Phụ lục
+II ban hành kèm theo Thông tư này.
+
+13
+Điều 32. Do đạc kết quả thực hiện các biện pháp giảm nhẹ phat thai
+khí nhà kính cấp cơ sở
+1. Do đạc kết quả thực hiện từng biện pháp giảm nhẹ phát thải khí nhà kính
+cấp cơ sở theo hướng dẫn tại Phụ lục II ban hành kèm theo Thông tư này.
+2. Thu thập số liệu xác định mức giảm nhẹ của từng biện pháp được thực
+hiện tương ứng theo biểu mẫu CS03 đến CS11 Phụ lục IV ban hành kèm theo
+Thông tư này.
+Điều 33. Báo cáo giảm nhẹ phát thải khí nhà kính cấp cơ sở
+1. Báo cáo giảm nhẹ phat thải khí nhà kính cấp cơ sở được thực hiện định
+kỳ theo quy định tại điểm a khoản 3 Điều 10 Nghị định số 06/2022/NĐ-CP.
+2. Cơ sở sản xuất vật liệu xây dựng thực hiện báo cáo giảm nhẹ phát thải
+khí nhà kính theo mẫu số 02 Phụ lục III Nghị định số 06/2022/NĐ-CP.
+Điều 34. Thắm định giảm nhẹ phát thải khí nhà kính cấp cơ sở
+1. Cơ sở gửi báo cáo giảm nhẹ phát thải khí nhà kính cho đơn vị thực hiện
+thẩm định giảm nhẹ phát thải khí nhà kính được quy định tại điểm a khoản 3
+Điều 10, Điều 14 Nghị định số 06/2022/NĐ-CP và khoản 4 Điều 13 Thông tư số
+01/2022/TT-BTNMT.
+2. Tham định giảm nhẹ phát thải khí nhà kính cấp co sở thực hiện theo quy
+trình được quy định tại Điều 13 Thông tư số 01/2022/TT-BTNMT.
+3. Cơ sở hoàn thiện báo cáo giảm nhẹ phát thải khí nhà kính cấp cơ sở theo
+thông báo kết quả thầm định và nộp báo cáo giảm nhẹ phát thải khí nhà kính theo
+quy định tại khoản 4 Điều 13 Thông tư số 01/2022/TT-BTNMT.
+Chương VI
+DIEU KHOẢN THI HANH
+Diéu 35. Hiéu lwe thi hanh
+Thông tư này có hiệu lực thi hành kề từ ngày 05 tháng 02 năm 2025.
+Điều 36. Tổ chức thực hiện
+1. Ủy ban nhân dân tỉnh, thành phố trực thuộc trung ương có trách nhiệm
+cung cấp thông tin phục vụ xây dựng kế hoạch giảm nhẹ phát thải khí nhà kính
+cap lĩnh vực và tổ chức thầm định kết quả kiểm kê khí nhà kính cấp cơ sở thuộc
+phạm vi quan lý ngành Xây dựng tại địa phương.
+2. Cơ quan được giao quản lý xây dựng thuộc Ủy ban nhân dân tỉnh,
+thành phô trực thuộc trung ương có trách nhiệm đôn đốc, kiểm tra thực hiện
+
+14
+các quy định tại Thông tư này đối với các cơ sở thuộc ngành Xây dựng theo
+Quyết định của Thủ tướng Chính phủ ban hành danh mục lĩnh vực, cơ sở phát
+thải khí nhà kính phải thực hiện kiểm kê khí nhà kính.
+3. Các cơ sở thuộc danh mục các cơ sở phát thải khí nhà kính phải thực hiện
+kiểm kê khí nhà kính thuộc ngành Xây dựng theo Quyết định số 13/2024/QĐ-TTg
+chịu trách nhiệm lập báo cáo kiểm kê khí nhà kính cấp cơ sở; lập và thực hiện kế
+hoạch giảm nhẹ phát thải khí nhà kính; báo cáo kết quả giảm nhẹ phát thải khí nhà
+kính và phối hợp thực hiện kiềm kê khí nhà kính cấp lĩnh vực thuộc phạm vi quản
+lý ngành Xây dựng.
+4. Trường hợp các văn bản quy phạm pháp luật viện dẫn tại Thông tư này
+được sửa đồi, bồ sung hoặc thay thế thì thực hiện theo văn bản mới ban hành.
+5. Trong quá trình thực hiện, nếu có khó khăn, vướng mắc, đề nghị các cơ
+quan, tổ chức, cá nhân liên quan phản ánh về Bộ Xây dựng dé kịp thời xem xét,
+giải quyết./.
+¬.
+Nơi nhận: KT. BỘ TRUONG
+- Van phòng Trung ương và các Ban của Đảng:
+- Văn phòng Quốc hội, Văn phòng Chủ tịch nước;
+- Văn phòng Chính phủ;
+- Các Bộ, cơ quan ngang Bộ, cơ quan thuộc Chính phủ;
+- Ủy ban Trung ương Mặt trận Tổ quôc Việt Nam;
+- HĐND, UBND các tỉnh, thành phố trực thuộc TW;
+- Sở Xây dựng các tỉnh, thành phố trực thuộc TW;
+- Cục Kiểm tra văn ban QPPL - Bộ Tư pháp;
+- Các đơn vị thuộc Bộ Xây dựng;
+- Liên đoàn Thương mại và Công nghiệp Việt Nam; -_ L ˆ
+- Công báo, Công TTĐT của Chính phủ; Bùi Xuân Dũng
+- Công TTĐT của Bộ Xây dung;
+- Lưu: VT, KHCN.
+
+Phụ lục I
+XÁC ĐỊNH PHÁT THAI KHÍ NHÀ KÍNH
+(Kèm theo Thông tư số. 13/2024/TT-BXD ngày 20/12 /2024
+của Bộ trưởng Bộ Xây dựng)
+1.1. Phạm vi áp dụng công thức tính phát thải khí nhà kính
+Áp dụng công thức tính phát thải khí nhà kính đối với các hoạt động sau đây:
+STT | Nguồn phát thải khí nhà kính Sản xuất vật liệu xây dựng Tòa
+Sản | Sản | Sản | Sảnxuấtvật | nhà
+xuâtxi | xuât | xuât liệu xây
+măng | vôi kính | dựng khác
+I Cấp lĩnh vực
+l Tiêu thu năng lượng trong xây X X Xx X Xx
+dựng - Sử dung nhiên liệu cho
+quá trình đôt
+2 Tiêu thụ năng lượng trong xây X Xx x x X
+dựng - Sử dụng điện có nguôn
+gdc hoá thạch
+3 Quá trình công nghiệp trong sản x K x X
+xuat vật liệu xây dựng —Nung
+nguyên liệu chứa gôc cacbonat
+Il Cap cơ sở
+] Tiêu thụ năng lượng trong xây Xx x Xx Xx Xx
+dựng - Sử dụng nhiên liệu cho
+quá trình dot
+bo
+Tiêu thu năng lượng trong xây x Xx X Xx L
+dựng - Sử dụng điện có nguôn
+gộc hoá thạch
+3 Quá trình công nghiệp trong sản x x x Xx
+xuat vật liệu xây dựng - Nung
+nguyên liệu chứa gôc cacbonat
+4 Sử dụng thiết bị làm mát x
+1.2. Công thức tinh phát thai khí nhà kính từ sử dụng nhiên liệu cho qua
+trình đốt
+Ex. = ) ở Q¡x NCV, x EF) x GWP, x1076
+j i
+
+Trong đó:
+ENL : Phát thải từ dot nhiên liệu, tân CO2
+I : Loại khí nha kính được kiểm kê (khí CO2, CH4, N20)
+J : Loại nhiên liệu sử dụng
+Q; : Khối lượng nhiên liệu j tiêu thụ, tấn hoặc nghìn lít
+NCV; : Giá trị nhiệt trị ròng của nhiên liệu j, TJ/nghin tan hoặc
+TJ/triệu lít
+EFi : Hệ số phát thải khí nhà kính i của nhiên liệu j, kg/TJ
+GWP; : Hệ số làm nóng lên toàn cầu của khí nha kính i
+Thu thập số liệu và lựa chọn hệ số:
+1. Thu thập số liệu khối lượng nhiên liệu Q; cấp lĩnh vực theo hướng dan
+và biểu mẫu XDO1 Phụ lục III ban hành kèm theo Thông tư này.
+2. Thu thập số liệu khói lượng nhiên liệu Q; cấp cơ sở theo hướng dẫn và
+biểu mẫu số CS01 (cơ sở sản xuất vật liệu xây dựng) và biểu mẫu CS02 (tòa nhà)
+Phụ lục IV ban hành kèm theo Thông tư này.
+3. Tra cứu và lựa chọn nhiệt trị nhiên liệu NCV; theo quy định tại khoản |
+Điêu 10 (đôi với cấp lĩnh vực), khoản 1 Điều 20 (đối với cấp cơ sở) và mục 5.2
+Phụ lục V ban hành kèm theo Thông tư này.
+4. Tra cứu và lựa chọn hệ số phát thải EFj; theo quy định tại khoản 2 Điều
+10 (đối với cấp lĩnh vực), khoản 2 Điều 20 (đối với cấp cơ sở) và Phụ lục VI ban
+hành kèm theo Thông tư này.
+5. Tra cứu và lựa chọn hệ số làm nóng lên toàn cầu GWP; theo quy định
+tại khoản 3 Điều 10, khoản 3 Điều 20 và Phu lục VII ban hành kèm theo Thông
+tư này.
+1.3. Công thức tinh phát thai khí nhà kính từ sử dụng điện mua vào có
+nguồn gốc hoá thạch
+EpL = (Quv — Qnp) X EFp, x 107°
+Trong đó:
+EnL : Phát thai từ sử dụng điện lưới, tan CO;
+Quv : Lượng điện lưới, điện mua vào có nguồn gốc hoá thạch, kWh
+QnR : Lượng điện bán ra, kWh
+EEpL : Hệ số phát lưới điện quốc gia, tan CO›/MWh
+
+3
+Thu thập số liệu và lựa chọn hệ số:
+1. Thu thập số liệu lượng điện mua vào, bán ra Quy, QnR cấp ngành theo
+hướng dẫn và biểu mẫu XD01 Phụ luc III ban hành kèm theo Thông tư này.
+2. Thu thập số liệu lượng điện mua vào, bán ra Quy, Qnn cấp cơ sở theo
+hướng dẫn và biểu mẫu CS01 (cơ sở sản xuất vật liệu xây dựng) và biểu mẫu
+C802 (tòa nhà) Phụ lục IV ban hành kèm theo Thông tư này.
+3. Tra cứu và áp dụng hệ số phát thải KNK EFp, theo quy định tại khoản 4
+Điều 10 của Thông tư này (đối với cấp lĩnh vực), khoản 4 Điều 20 của Thông tư
+này (đối với cấp cơ sở) và mục 6.3 Phụ lục VI ban hành kèm theo Thông tư này.
+1.4. Công thức tính phát thải khí nhà kính từ quá trình nung clanhke
+1.4.1. Cấp lĩnh vực:
+ENG.cLK = [(Qxmsx X Cork) — QcLKNK + QcLkxk] X 0,525 - Ep
+Trong đó:
+ENG.CLK : Phát thải từ nung nguyên liệu sản xuất clanhke, tân CO>
+Qxm.sx : Sản lượng xi măng được san xuất, tấn
+CcLk : Tỷ lệ clanhke trong xi măng, %
+QCLK.NK : Lượng clanhke nhập khâu, tan
+QcLK.xx : Lượng clanhke xuất khẩu, tấn
+0,525 : Hệ số phát thải của phối liệu sản xuất clanhke, tấn
+CO,/tan clanhke
+Er : Phát thai cacbon dioxit được thu hồi và lưu trữ, tấn CO>
+Thu thập số liệu:
+Thu thập số liệu sản lượng xi măng được sản xuất Qxu.sx, tỷ lệ clanhke
+trong xi măng Cc, lượng clanhke nhập khẩu và xuất khẩu QcLxNk, QcLk.xx từ
+số liệu thống kê, khảo sát theo hướng dẫn và biểu mẫu tai mục 3.1 Phụ lục III ban
+hành kèm theo Thông tư này.
+1.4.2. Cấp cơ sở:
+ENG.CLK = Epy + Esg
+Cpv.cao x 0,785 + Cpv.mgo Xx 1,092)
+Epy = Qpvx 100
+UsEc ox 0,785 + Csem oX 1,092)
+Ese = Qspx : :
+100
+
+Trong đó:
+ENG CLK
+Epv
+Ese
+Qpv
+QsE
+Cpv.cao
+Cpv. Meo
+CsE.Cao
+CsE.MgO
+0,785
+1,092
+: Phát thai từ nung nguyên liệu sản xuất clanhke, tan CO?
+: Phat thải từ đá vôi sử dụng sản xuất clanhke, tan CO,
+: Phát thải từ đá sét sử dụng sản xuất clanhke, tan CO;
+: Lượng đá vôi sử dụng sản xuất clanhke, tan
+: Lượng đá sét sử dụng sản xuất clanhke, tan
+: Hàm lượng CaO bình quân gia quyền của đá vôi, %
+: Hàm lượng MgO bình quân gia quyền của đá vôi, %
+: Hàm lượng CaO bình quân gia quyền của đá sét, %
+: Hàm lượng MgO bình quân gia quyền của đá sét, %
+: Hệ số phát thải của CaO, tấn CO2/tan CaCO;
+: Hệ số phát thải của MgO, tấn CO;/tấn MgCO3
+Thu thập số liệu:
+1. Thu thập, xác định số liệu lượng đá vôi và đá sét sử dụng Qpy, Qsr hàm
+lượng CaO, MgO trong đá vôi và sét theo Cpvcao, CDV.Mgo, Cse.cao, CsE.Mgo ttt
+báo cáo thực hiện tiêu hao vật tư sản phẩm cho quá trình sản xuất trong kỳ của
+đơn vị theo biểu mẫu số CS.01.01 mục 4.1 Phụ lục IV ban hành kèm theo Thông
+tư này.
+2. Hàm lượng CaO, MgO bình quân gia quyên của đá vôi và đá sét Cpvcao,
+CpVMgO, Cse.cao, CsE.Mao Của kỳ báo cáo được xác định theo công thức sau:
+C= dC; x Qi
+>Qi
+Trong đó:
+C : Hàm lượng bình quân gia quyền CaO, MgO trong đá vôi, đá sét, %
+I : Thời điểm phân tích hàm lượng Cao, MgO
+G : Hàm lượng CaO, MgO trong đá vôi, đá sét tại thời điểm i, %
+Qi : Lượng nguyên liệu đá vôi, đá sét tại thời điểm i, tan
+3. Trong trường hợp hàm lượng CaO, MgO của da vôi va đá sét được xác
+định liên tục, Cj là giá trị trung bình của tháng i và Qi là lượng nguyên liệu sử
+dụng trong tháng 1 của ky báo cáo.
+
+5
+1.5. Công thức tính phát thải khí nhà kính từ quá trình nung đá vôi
+Trong đó:
+ENG.vo
+Qvo.ca
+0,75
+Qvo.KH
+0,77
+Ghi chu
+ENG.vo = Qvo.ca X 0,75 + Qvokn X 0,77
+: Phát thải từ quá trình nung đá vôi, tan CO)
+: Sản lượng vôi có hàm lượng canxi cao, tan
+: Hệ số phát thai của quá trình nung vôi có độ canxi cao, tắn
+COz;/tân vôi
+: Sản lượng vôi khác, bao gồm vôi đôlômit, tấn
+: Hệ số phát thải của quá trình nung vôi khác, bao gồm vôi
+đôlômit, tân COz/tân vôi
+: Vôi có hàm lượng canxi cao là vôi có tỷ lệ phần trăm CaO từ
+93-98% và tỷ lệ MgO từ 0,3-2,5%;
+Vôi đôlômit là vôi có tỷ lệ phần trăm CaO từ 55-57% và tý lệ
+MgO từ 38-41%.
+Thu thập số liệu:
+1. Thu thập số liệu sản lượng vôi có hàm lượng canxi cao Qvo.cA và sản
+lượng vôi xây dựng khác Qvo.kun cap lĩnh vực theo hướng dẫn và biểu mẫu tại mục
+3.1 Phụ lục III ban hành kèm theo Thông tư này.
+2. Thu thập số liệu sản lượng vôi có hàm lượng canxi cao Qvo.cA va sản
+lượng vôi xây dựng khác Qvo.xn cấp cơ sở theo hướng dẫn và biểu mẫu tại mục
+4.1 Phụ lục IV ban hành kèm theo Thông tư này.
+1.6. Công thức tính phát thải khí nhà kính từ quá trình nung thuỷ tỉnh
+Trong đó:
+ENG.KI
+Qxi
+5
+0,21
+CRxi
+ENG.KI = Qxr X 5 X 0,21 x (1 — CRxi)
+: Phát thải từ quá trình nung thuỷ tinh, tan CO›
+: Sản lượng kính phăng, 1000 m QTC
+: Hệ số quy đồi đơn vị kính phẳng, kg/m? QTC
+: Hệ số phát thải của quá trình sản xuất kính, tấn CO,/tan kính
+: Tỷ lệ thủy tinh tái chế dùng dé sản xuất kính
+Thu thập số liệu:
+1. Thu thập số liệu sản lượng kính Qx: và tỷ lệ thuỷ tinh tái chế dùng dé sản
+xuất kính CRx; cấp lĩnh vực theo hướng dẫn và biểu mẫu tại mục 3.1 Phụ lục III
+ban hành kèm theo Thông tư này.
+
+6
+2. Thu thập số liệu sản lượng kính Qx; va tỷ lệ thuỷ tinh tái chế dùng dé sản
+xuất kính CRxi cấp cơ sở theo hướng dẫn và biểu mẫu tại mục 4.1 Phụ lục IV ban
+hành kèm theo Thông tư này.
+1.7. Công thức tính phát thái khí nhà kính từ quá trình nung nguyên
+liệu khác có chứa góc cacbonat
+ENG KH = QkH X k x 0,4397
+Trong đó:
+ENG KH : Phat thải từ quá trình nung nguyên liệu có chứa gốc cacbonat,
+tân CO;
+Qkn : Khối lượng nguyên liệu có chứa gốc cacbonat, tan
+k : Ty lệ CaCO; trong nguyên liệu có chứa gốc cacbonat, %
+0,4397 : Hệ số phát thải quá trình nung nguyên liệu có chứa gốc
+cacbonat, tan C O;/tấn CaCO;
+Thu thap số liệu:
+1. Chi thu thập số liệu với các loại vật liệu xây dựng khác sử dụng nguyên
+liệu có chứa gộc cacbonat.
+2. Thu thập số liệu khói lượng nguyên liệu được nung dé sản xuất vật liệu
+xây dựng Qxn cấp lĩnh vực theo hướng dẫn và biểu mẫu tại mục 3.1 Phụ lục I]
+ban hành kèm theo Thông tư này.
+3. Thu thập sỐ liệu lượng nguyên liệu được nung dé sản xuất vật liệu xây
+dựng Qxu cap cơ sở theo hướng dẫn và biểu mẫu tại mục 4.1 Phụ lục IV ban hành
+kèm theo Thông tư này.
+4. Xác định tỷ lệ CaCO; trong nguyên liệu có chứa gốc cacbonat bằng cách
+xác định hàm lượng CaO theo Tiêu chuân Việt Nam TCVN 13775:2023 và nhân
+với hệ sô 1,7857 hoặc sử dụng hệ sô mặc định k = 6%.
+1.8. Công thức tinh phát thai khí nhà kính sử dụng thiết bị làm mát
+Ein = 2 Qgpi XGWP x 107?
+i
+Trong do:
+Em : Phát thai khí nha kính từ sử dụng thiết bị lam mát, tan COs
+Qnpj : Lượng môi chất lạnh loại ¡ được nạp bồ sung cho thiết bị làm
+mát (điêu hoà, bơm nhiệt, chillers, tủ lạnh, tủ đông, kho
+lạnh...), kg
+GWP; : Hệ sô làm nóng lên toàn cau của môi chat lạnh 1
+
+7
+Thu thập sô liệu và lựa chọn hệ sô:
+1. Khảo sát, thu thập số liệu lượng môi chất lạnh i được nạp thêm cho thiết
+bị, hệ thống làm mát cấp ngành theo hướng dẫn và biểu mẫu tại mục 3.1 Phụ lục
+III ban hành kèm theo Thông tư này.
+2. Khảo sát, thu thập số liệu lượng môi chất lạnh i được nạp thêm cho thiết
+bị, hệ thống làm mát cấp cơ sở theo hướng dẫn và biểu mẫu tại mục 4.1 Phụ lục
+IV ban hành kèm theo Thông tư này.
+3. Tra cứu và áp dụng hệ số phát thải GWP; theo quy định khoản 3 Điều 10
+của Thông tư này (cấp lĩnh vực), khoản 3 Điều 20 của Thông tư này (cấp cơ sở)
+và Phụ lục VII ban hành kèm theo Thông tư này.
+
+Phụ lục Il
+XÁC ĐỊNH KET QUÁ GIẢM NHE PHÁT THAI KHÍ NHÀ KÍNH
+(Kèm theo Thông tư số 13/2024/TT-BXD ngày 20/12/2024
+cua Bộ trưởng Bộ Xây dựng)
+2.1. Danh mục biện pháp giảm nhẹ phát thải khí nhà kính
+Công thức tính kết quả giảm nhẹ phát thải khí nhà kính được xác định cho
+các biện pháp giảm nhẹ sau đây:
+1. Tăng hiệu suất sử dụng năng lượng trong sản xuất vật liệu xây dựng:
+Cải tiền, thay thế thiết bị, công nghệ sử dụng năng lượng (biến tần, đèn, bơm,
+quạt, máy nén, lò nung, máy nghiền phối liệu, máy cán, hệ thống calciner, vòi
+đốt, hệ thống thu hồi nhiệt...) nhằm tăng hiệu quả sử dụng năng lượng.
+2. Tăng hiệu suất sử dụng năng lượng đối với công trình xây dựng: Cải
+tạo công trình, cải tiên, thay thê thiét bị sử dụng năng lượng (biên tan, đèn, bơm,
+quạt, máy nén, nôi hơi...) nhăm tăng hiệu quả sử dụng năng lượng.
+3. Cải tạo công trình, cải tiền, thay thế thiết bị, hệ thống làm mát: Cải tạo
+công trình, cải tiền, thay thế thiết bị, hệ thông điều hoà, tủ lạnh, tủ mát, tủ đông...
+có hiệu suất sử dụng năng lượng cao hơn hoặc/và có sử dụng các môi chất làm
+mát có hệ số tiềm năng ấm lên toàn cầu thấp hơn.
+4. Lắp đặt và sử dụng năng lượng mặt trời: Lắp đặt hệ thống năng lượng
+mặt trời phục vụ sản xuât, hoạt động của công trình.
+5. Thu hồi nhiệt thừa: Lắp đặt hệ thống thu hồi nhiệt thừa (có hoặc không
+phát điện) phục vụ sản xuất.
+6. Tối ưu hóa phối liệu sản xuất clanhke: Giảm nguyên liệu có gốc
+cacbonat trong sản xuât clanhke, dùng nguyên liệu thay thê từ phê thải các ngành
+công nghiệp (xi, tro bay...).
+7. Giảm tỷ lệ clanhke trong sản xuất xi măng: Tăng tỷ lệ sử dụng nguyên
+liệu thay thê, phụ gia, phê thải từ các ngành công nghiệp.
+8. Giảm, thay thé, loại bỏ nhiên liệu có nguồn góc hoá thạch: Tang tỷ lệ
+chât thải (rác thải sinh hoạt, chât thải công nghiệp, dâu thải...), sinh khôi có
+nguồn goc từ rừng trông đê thay thê nhiên liệu than, dâu, khí, không bao gôm
+lặp đặt điện mặt trời.
+9, Thu hồi và lưu trữ khí cacbon dioxit (CO): Lắp đặt thiết bị, hệ thống
+thu hôi khí cacbon dioxit từ quá trình sản xuat dé lưu trữ hoặc tái sử dụng cho
+quá trình khác thay vì phát thải ra môi trường.
+10. Giải pháp khác: Các giải pháp giảm nhẹ chưa được quy định ở trên.
+
+2.2. Phạm vi áp dụng công thức tính kết quả giám nhẹ phát thải khí
+nhà kính
+Áp dụng công thức tính kết quả giảm nhẹ phát thải khí nhà kính trong các
+trường hợp sau:
+STT Biện pháp giảm nhẹ Sản xuất vật liệu xây dựng Tòa
+San Sản | Sản | San xuat nha
+xuat xi | xuat | xuat | vật liệu xây
+măng | kính | vôi | dựng khác
+| Tăng hiệu suất sử dụng năng lượng x ˆ . .
+trong san xuat vat liệu xây dựng -
+2 Tang hiệu suất sử dung năng lượng X X
+đôi với tòa nhà
+3 Cải tạo công trình, cải tiền, thay thế X Xx
+thiét bi, hé thong lam mat
+4 Lap dat, str dung năng lượng mặt trời X x
+5 | Thu hoi nhiệt thừa
+6 Tối ưu hoá phối liệu sản xuất
+clanhke
+7 Giảm tỷ lệ clanhke trong xi măng
+8 Giảm, thay thế, loại bỏ nhiên liệu có
+nguồn goc hoá thạch = s ki m
+9 Thu hồi va lưu trữ khí cacbon dioxit
+I0 | Các biện pháp giảm nhẹ khác X Xx x x Xx
+ERy x
+Ecsk
+Ey
+Qy
+Qs
+2.3. Công thức tính kết quả giảm nhẹ phat thai khí nhà kính đối với
+biện pháp giảm nhẹ
+Ecsk
+ERy, =
+v = Os k
+Trong do:
+Ey.k
+ee, Qyk
+: Kết quả giảm nhẹ phát thải khí nhà kính năm y, tấn COsu
+: Phát thải khí nhà kính năm cơ sở trước khi thực hiện biện pháp giảm
+nhẹ, tấn COst
+: Phát thải khí nhà kính năm báo cáo y sau khi thực hiện biện pháp
+giảm nhẹ, tan COx¢
+: San lượng của quá trình sản xuất, dịch vụ tại năm báo cáo liên quan
+đến biện pháp giảm nhẹ, tắn sản phẩm, m? diện tích sử dụng, lượt người
+sử dụng
+: Sản lượng của quá trình sản xuất, dịch vụ tại năm cơ sở liên quan
+đến biện pháp giảm nhẹ, tấn sản phẩm, m? diện tích sử dụng, lượt
+người sử dụng
+
+Thu thập số liệu và tính toán:
+1. Năm cơ sở của cấp lĩnh vực thuộc phạm vi quan lý ngành Xây dựng
+được xác định theo năm cơ sở được áp dụng trong Đóng góp do quốc gia tự
+quyết định (NDC). Năm cơ sở của Đóng góp do quốc gia tự quyết định năm 2020
+và Đóng góp do quốc gia tự quyết định năm 2022 là năm 2014.
+2. Năm cơ sở của cấp cơ sở là giá trị trung bình của 03 năm trước khi thực
+hiện giải pháp giảm nhẹ ké từ năm 2014.
+3. Thu thập số liệu và tính toán kết quả quả giảm nhẹ được xác định cho
+từng biện pháp giảm nhẹ, được quy định từ mục 2.4 đến mục 2.13 Phụ lục II ban
+hành kèm theo Thông tư này.
+4. Nguồn số liệu được quy định tại khoản 2 Điều 9 của Thông tư này đối
+với cấp lĩnh vực và khoản 2 Điều 19 của Thông tư này đối với cấp cơ sở.
+2.4. Xác định kết quả giảm nhẹ phát thải khí nhà kính đối với biện
+pháp tăng hiệu suất sử dụng năng lượng trong sản xuất vật liệu xây dựng
+1. Thu thập số liệu cho cấp lĩnh vực theo mẫu số XD03 Phụ lục III ban
+hành kèm theo Thông tư này và cho cấp cơ sở theo mẫu số CS03 Phụ lục IV ban
+hành kèm theo Thông tư này. Nguồn số liệu và hệ số tính toán được quy định tại
+Điều 9 và Điều 19 của Thông tư này.
+2. Tính phát thải khí nhà kính cơ sở (E,s) và phát thải khí nhà kính năm y
+(Ey) cho các nguồn phát thải và sản lượng sau:
+a) Nguồn phát thải từ sử dụng nhiên liệu cho quá trình đốt trước và sau
+khi thực hiện biện pháp giảm nhẹ (nếu có sự thay đổi) theo quy định tại mục 1.1
+Phụ lục I ban hành kèm theo Thông tư này;
+b) Nguồn phát thải từ sử dụng điện lưới trước và sau khi thực hiện biện
+pháp giảm nhẹ (nếu có sự thay đổi): theo quy định tại mục 1.2 Phụ lục I ban hành
+kèm theo Thông tư này;
+c) Sản lượng vật liệu xây dựng năm cơ sở Q,, và năm y Qy có liên quan
+trực tiếp đến thiết bị, công nghệ được cải tạo, thay thé.
+2.5. Xác định kết quả giảm nhẹ phát thai khí nhà kính đối với biện
+pháp tăng hiệu suất sir dụng năng lượng đối với tòa nhà
+1. Thu thập số liệu cho cấp lĩnh vực theo biểu mẫu XID04 Phụ lục III ban
+hành kèm theo Thông tư này và cho cấp cơ sở theo biểu mẫu CS04 Phụ lục IV
+ban hành kèm theo Thông tư này. Nguồn số liệu và hệ số tính toán được quy định
+tại Điều 9 và Điều 19 của Thông tư này.
+
+4
+2. Tính phát thải khí nhà kính cơ sở (Es) và phát thải khí nhà kính năm y
+(Ey) cho các nguồn phát thải và sản lượng sau:
+a) Nguồn phát thải từ sử dụng nhiên liệu cho quá trình đốt: theo quy định
+tại mục 1.1 Phụ lục I ban hành kèm theo Thông tư này;
+b) Nguồn phát thải từ sử dụng điện lưới: theo quy định tại mục 1.2 Phụ
+lục I ban hành kèm theo Thông tư này;
+c) Khéi lượng dịch vụ năm cơ sở Q,s và năm y Qy có liên quan trực tiếp
+đên thiét bị, công nghệ được cai tạo, thay thê.
+2.6. Xác định kết quả giảm nhẹ phát thải khí nhà kính đối với biện
+pháp cai tạo, công trình, cai tiền, thay thế thiết bị, hệ thống làm mát
+1. Thu thập số liệu cho cấp lĩnh vực theo biểu mẫu XD05 Phụ lục III ban
+hành kèm theo Thông tư này và cho cấp cơ sở theo biểu mẫu số CS05 Phụ lục
+IV ban hành kèm theo Thông tư này. Nguồn số liệu và hệ số tính toán được quy
+định tại Điều 9 và Điều 19 của Thông tư này.
+2. Tính phát thải khí nhà kính cơ sở (Eqs) và phát thải khí nhà kính năm y
+(Ey) cho các nguồn phát thải và sản lượng sau:
+a) Nguồn phát thải từ sử dụng điện lưới trước và sau khi thực hiện biện
+pháp giảm nhẹ (nếu có sự thay đổi): theo quy định tại mục 1.2 Phụ lục I ban hành
+kèm theo Thông tư này;
+b) Nguồn phát thải từ sử dụng thiết bị làm mát trước và sau khi thực hiện
+biện pháp giảm nhẹ (nếu có sự thay đồi): theo quy định tại mục 1.8 Phu lục I ban
+hành kèm theo Thông tư này;
+c) Khối lượng dịch vụ năm cơ sở Q‹, và năm y Qy có liên quan trực tiếp
+đến thiết bi, công nghệ được thay thé.
+2.7. Xác định kết quả giảm nhẹ phát thải khí nhà kính đối với biện
+pháp lắp đặt sử dụng năng lượng mặt trời
+1. Thu thập số liệu cho cấp lĩnh vực theo biểu mẫu XD06 Phụ luc III ban
+hành kèm theo Thông tư này và cho cấp cơ sở theo biểu mẫu CS06 Phụ lục IV
+ban hành kèm theo Thông tư này. Nguồn số liệu và hệ số tính toán được quy định
+tại Điều 9 và Điều 19 của Thông tư này.
+2. Tinh phat thải khí nhà kính cơ sở (Eas) và phát thải khí nhà kính năm y
+(Ey) cho các nguồn phát thải và sản lượng sau:
+a) Nguồn phát thải từ sử dụng điện lưới trước và sau khi thực hiện biện pháp
+giảm nhẹ theo quy định tại mục 1.2 Phụ lục I ban hành kèm theo Thông tư này.
+b) Sản lượng sản phẩm, dịch vu năm cơ sở Qs bằng năm y Qy.
+
+5
+2.8. Xác định kết quả giảm nhẹ phát thải khí nhà kính đối với biện
+pháp thu hồi nhiệt thừa
+1. Thu thập số liệu cho cấp lĩnh vực theo biểu mẫu XD07 Phụ lục III ban
+hành kèm theo Thông tư này và cho cấp cơ sở theo biểu mẫu số CS07 Phụ lục
+IV ban hành kèm theo Thông tu này. Nguồn số liệu và hệ số tính toán được quy
+định tại Điều 9 và Điều 19 của Thông tư này.
+2. Tính phát thải khí nhà kính cơ sở (E.s) và phát thải khí nhà kính năm y
+(Ey) cho các nguồn phát thải và sản lượng sau:
+a) Nguồn phát thải từ sử dụng nhiên liệu cho hệ thống thu hồi nhiệt thừa
+trước và sau khi áp dụng biện pháp giảm nhẹ: theo quy định tại mục 1.1 Phụ lục I
+ban hành kèm theo Thông tư này;
+b) Nguồn phát thải từ sử dụng điện lưới trước và sau khi áp dụng biện
+pháp giảm nhẹ (nếu có sự thay đổi): theo quy định tại mục 1.2 Phụ lục I ban hành
+kèm theo Thông tư này.
+c) Sản lượng nguyên liệu nung năm cơ sở Q, và năm y Qy không đôi và
+bằng Q,.
+2.9. Xác định kết quả giảm nhẹ phát thải khí nhà kính đối với biện
+pháp tối ưu hoá phối liệu sản xuất clanhke
+1. Thu thập số liệu cho cấp lĩnh vực theo biéu mẫu XDO8 Phụ lục III ban
+hành kèm theo Thông tư này và cho cấp cơ sở theo biểu mẫu CS08 Phụ lục IV
+ban hành kèm theo Thông tư này. Nguồn số liệu và hệ số tính toán được quy định
+tại Điều 9 và Điều 19 của Thông tư này.
+2. Tính phát thải khí nhà kính cơ sở (E,s) và phát thải khí nhà kính năm y
+(Ey) cho các nguồn phát thải và sản lượng sau:
+a) Nguồn phát thai từ sử dụng nhiên liệu cho quá trình đốt trước và sau
+khi áp dụng giải pháp giảm nhẹ (nếu có sự thay đổi): theo quy định tại mục 1.1
+Phụ lục I ban hành kèm theo Thông tư này;
+b) Nguồn phát thải từ sử dụng điện lưới trước và sau khi áp dụng biện
+pháp giảm nhẹ (nếu có sự thay đổi): theo quy định tại mục 1.2 Phụ lục I ban hành
+kèm theo Thông tư này;
+c) Nguồn phát thải từ quá trình nung clanhke trước và sau khi thực hiện
+giải pháp giảm nhẹ theo quy định tại mục 1.3 Phụ lục I ban hành kèm theo Thông
+tư này.
+d) Sản lượng clanhke năm cơ sở Q,, và băng sản lượng năm yQy.
+
+6
+2.10. Xác định kết quả giảm nhẹ phát thải khí nhà kính đối với biện
+pháp giám clanhke trong xi măng
+1. Thu thập số liệu cho cấp lĩnh vực theo biểu mẫu XID09 Phụ lục III ban
+hành kèm theo Thông tư này và cho cấp cơ sở theo biểu mẫu CS09 Phụ lục IV
+ban hành kèm theo Thông tư này. Nguồn số liệu và hệ số tính toán được quy định
+tại Điều 9 và Điều 19 của Thông tư này.
+2. Tinh phát thải khí nhà kính cơ sở (E.s) và phat thải khí nhà kính năm y
+(Ey) cho các nguồn phát thải và sản lượng sau:
+a) Nguồn phát thải từ sử dụng nhiên liệu cho quá trình sản xuất clanhke
+trước và sau khi thực hiện biện pháp giảm nhẹ (nếu có thay đổi): theo quy định
+tại mục 1.1 Phụ lục I ban hành kèm theo Thông tư này;
+b) Nguồn phát thải từ sử dụng điện lưới cho quá trình sản xuất xi măng
+trước và sau khi thực hiện biện pháp giảm nhẹ (nếu có thay đồi): theo quy định
+tại mục 1.2 Phụ lục I ban hành kèm theo Thông tư này;
+c) Nguồn phát thải từ quá trình sản xuất clanhke trước và sau khi thực hiên
+giải pháp giảm nhẹ: theo quy định tại mục 1.3 Phụ lục I ban hành kèm theo
+Thông tư này;
+d) Sản lượng xi mang năm cơ sở Q‹, và năm y Qy.
+2.11. Xác định kết quả giám nhẹ phat thải khí nhà kính đối với biện
+pháp giảm, thay thế, loại bỏ nhiên liệu có nguồn gốc hoá thạch
+1. Thu thập số liệu cho cấp lĩnh vực theo biểu mẫu XD10 Phụ lục III ban
+hành kèm theo Thông tư này và cho cấp cơ sở theo biểu mẫu CS10 Phụ lục IV
+ban hành kèm theo Thông tư này. Nguồn số liệu và hệ số tính toán được quy định
+tại Điều 9 và Điều 19 của Thông tư này.
+2. Tính phát thải khí nhà kính cơ sở (E.¿) và phát thải khí nhà kính năm y
+(Ey) cho các nguồn phát thải và sản lượng sau:
+a) Nguồn phát thải từ sử dụng nhiên liệu cho quá trình đốt trước và sau
+khi thực hiện biện pháp giảm nhẹ: theo quy định tại mục 1.1 Phụ lục I ban hành
+kèm theo Thông tư này;
+b) Nguồn phát thải từ sử dụng điện lưới trước và sau khi thực hiện biện
+pháp giảm nhẹ (nếu có sự thay đổi): theo quy định tại mục 1.2 Phụ lục I ban hành
+kèm theo Thông tư này;
+c) Sản lượng vật liệu xây dựng, khối lượng dịch vụ năm cơ sở Q,; và năm
+y Q có sử dụng nhiên liệu đốt.
+
+7
+2.12. Xác định kết quá giảm nhẹ phát thải khí nhà kính đối với biện
+pháp thu hồi và lưu trữ khí cacbon dioxit
+1. Thu thập số liệu cho cấp lĩnh vực theo biểu mẫu XD11 Phụ luc III ban
+hành kèm theo Thông tư này và cho cấp cơ sở theo biểu mẫu CS11 Phụ lục IV
+ban hành kèm theo Thông tu này. Nguồn số liệu và hệ số tính toán được quy định
+tại Điều 9 và Điều 19 của Thông tư này.
+2. Tính phát thải khí nhà kính cơ sở (E,;) va phát thải khí nhà kính năm y
+(Ey) cho các nguồn phát thải và sản lượng sau:
+a) Nguồn phát thai từ sử dụng nhiên liệu cho quá trình đốt trước và sau
+khi thực hiện biện pháp giảm nhẹ: theo quy định tại mục 1.1 Phụ lục I ban hành
+kèm theo Thông tư này;
+b) Nguồn phát thải từ sử dụng điện lưới trước và sau khi thực hiện biện
+pháp giảm nhẹ (nếu có sự thay đồi): theo quy định tại mục 1.2 Phụ lục I ban hành
+kèm theo Thông tư này;
+c) Nguồn phát thải từ quá trình nung clanhke theo quy định tại mục 1.3
+Phụ luc I ban hành kèm theo Thông tu này;
+d) Sản lượng clanhke năm cơ sở Q‹; và năm y Qy;
+e) Lượng cacbon dioxit thu hồi và lưu trữ.
+2.13. Xác định kết quả giảm nhẹ phát thai khí nhà kính đối với biện
+pháp giám nhẹ khác
+Thu thập và tính toán kết quả giảm nhẹ theo phương pháp luận được quốc
+tế công nhận trong các cơ chế trao đổi, giao dịch tín chỉ cac-bon.
+
+Phụ lục II
+BIEU MAU THU THẬP SO LIEU VA BAO CAO CAP LĨNH VỰC
+(Kèm theo Thông tư số 13/2024/TT-BXD ngày 20/12/2024
+BIEU MẪU
+của Bộ trưởng Bộ Xây dựng)
+NỘI DUNG
+XD01
+Bảng thu thập số liệu phục vụ kiểm kê khí nha kính cấp lĩnh vực
+- Sản xuất vật liệu xây dựng
+XD02
+Bảng thu thập số liệu phục vụ kiểm kê khí nhà kính cấp lĩnh vực
+- Tòa nhà
+XD03
+Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát thải khí nhà
+kính cap lĩnh vực - Giải pháp tăng hiệu suat sử dụng năng lượng
+trong sản xuất vật liệu xây dựng
+XD04
+Bang thu thap s6 liéu phục vu báo cáo giảm nhẹ phát thải khí nha
+kính cấp lĩnh vực - Giải pháp tăng hiệu suất sử dụng năng lượng
+đối với tòa nhà
+XD05
+Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát thải khí nhà
+kính cấp lĩnh vực - Giải pháp cai tạo công trình, cải tiền, thay thé
+thiết bị làm mát
+XD06
+Bang thu thập số liệu phục vụ báo cáo giảm nhẹ phát thải khí
+nhà kính cấp lĩnh vực - Giải pháp lắp đặt và sử dụng năng lượng
+mặt trời
+XD07
+Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát thải khí nhà
+kính cấp lĩnh vực - Giải pháp thu hồi nhiệt thừa
+XD08
+Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát thải khí nhà
+kính cấp lĩnh vực - Giải pháp tối ưu hoá phối liệu sản xuất clanhke
+xXD09
+Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát thải khí
+nhà kính cấp lĩnh vực - Giải pháp giảm tỷ lệ clanhke trong sản
+xuất xi măng
+XD10
+Bang thu thập số liệu phục vụ báo cáo giảm nhẹ phát thai khí nhà
+kính cấp lĩnh vực - Giải pháp giảm, thay thế, loại bỏ nhiên liệu
+có nguồn góc hoá thạch
+XDI]
+Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát thải khí nhà
+kính cấp lĩnh vực - Giải pháp thu hồi và lưu trữ khí cacbon dioxit
+
+3.1. Biểu mẫu XD01. Bảng thu thập số liệu phục vụ kiểm kê khí nhà kính cấp lĩnh vực - Sản xuất vật liệu xây dựng
+2
+NĂM..................-
+I. Sốliệu tính phát thải khí nhà kính từ sử dụng nhiên liệu cho quá trình đốt
+STT Thông số Lượng sử dung (Qi) Nhiệt trị (NCVi)  Nguô
+Đơn vị Xi | Voi | Kính | Vậtliệuxây | Đơnvị | Giatri | Số liệu
+măng dựng khác
+= L | Thi co csrsemmers nee tan TL...
+= a tấn TJ.....
+1 | XăngA95 A92 1000 lít
+a 2 | Xăng E5, Ron 92 1000 lít
+ob 3 | Xăng E10, Ron 92 1000 lit
+S: 4 | Dau Diesel (DO) 1000 lít hoặc tan
+5 | Dầu nhiên liệu (FO) 1000 lít hoặc tần
+6 | Khí tự nhiên (NG) Sm' hoặc tan TL.
+= 7 | Khí hóa lỏng (LPG) tấn hoặc 1000 lít 3 hel 22
+< 8 | Khí thiên nhiên hóa lỏng (LNG) tan hoặc 1000 lít TJ/....
+9 | Khí thiên nhiên nén (CNG) Sm? hoặc tan TJ.....
+=:s | 1 |Sinhkhói...... tắn TU:
+AZ |... | Sinh khái...... tấn TL.
+2 1 | Dầu thải tan ra
+“= 2. | Nhựa thải tấn TJ,....
+‘2 3 | Lép xe tan _
+5 4 | Vải vụn, rác thải kh tan TJ....
+- Nhiên liệu............ TJ/....
+
+H. Số liệu tính phát thải khí nhà kính từ sử nung nguyên liệu có chứa gốc cacbonat
+STT Thông số Đơn vị Xi | Vôi Kính Sứvệ | Gach | Vậtliệu xây | Nguồn
+măng sinh nung dựngkhác | số liệu
+1 | Sản lượng xi măng (Qxw.sx) tần
+2 2 | Lượng clanhke nhập khẩu (QcLK.NK) tan
+=| 3 | Lượng chanhke xuat khâu (Qcix.xx) tan
+> 4 | Tỷ lệ clanhke trong xi măng %
+5 | Lượng cac bon dioxit thu hồi (Er) tan CO;
+] | Sản lượng vôi có hàm lượng canxi cao tan
+3 (Qvo.ca)
+> 2 | Sản lượng vôi khác, bao gồm vôi đôlô mit | tan
+(Qvoxn)
+< 1 | Sản lượng kính phẳng xây dựng (Qxi) 1000 m* QTC
+S 2 | Tỷ lệ thuỷ tinh tái chế dùng đề sản xuất %
+kính (CRx1)
+= a | Sản lượng sứ vệ sinh (Qxn) tần
+Le b | San lượng frit (Qxn) tan
+[3 Tỷ lệ CaCOs trong nguyên liệu sản xuất frit | %
+= có chứa gôc cacbonat (k)
+oe a | Sản lượng gạch nung (Qxu) tan
+kì 5 b | Ty lệ CaCO; trong nguyên liệu sản xuất %
+gach nung có chứa goc cacbonat (k)
+Bg a | Sản lượng vật liệu xây dựng khác (Qxn) tan
+a ¬ b | Tỷ lệ CaCO; trong nguyên liệu sản xuất vat | %
+ấ liệu xây dựng khác có chứa gốc cacbonat
+=5 (k)
+
+II. Sốliệu tính phát thải khí nhà kính từ sử dụng điện
+STT Thông số Đơn vị Giá trị Nguồn
+Xi voi | Kính | Sứvệ | Gạch | Vậtliệuxây | số liệu
+măng sinh nung dựng khác
+1] | Điện mua vào (Quy) kWh
+2 | Điện mặt trời tự sản xuất* kWh
+5 3 | Điện từ thu hồi nhiệt thừa* kWh
+a 4 | Điện bán ra (Qnn) kWh
+5 | Điện nung nguyên liệu có chứa gốc | kWh
+cacbonat*
+Ghi chú:
+(*) Số liệu phục vụ thâm định
+Điền giá trị được xác định theo đơn vị quy định:
+1. Nguồn số liệu được quy định tại khoản 2 Điều 9 của Thông tư này.
+2. Số liệu chưa được xác định, ghi rõ N/A.
+3. Điện mua vào là điện lưới, điện có nguồn góc từ nhiên liệu hoá thạch.
+4. Số liệu sử dụng nhiên liệu cho quá trình đốt:
+a) Lượng sử dụng là lượng được xác định theo nguồn số liệu theo đơn vị được quy định;
+b) Nhiệt trị là giá trị nhiệt trị thắp, được xác định từ kết quả phân tích, theo số liệu công bố của đơn vị cung cấp hoặc tra theo
+bảng tại Phụ lục V ban hành kèm theo Thông tư này;
+c) Don vị quy đổi 1 Kcal = 0,004184 MJ.
+
+5
+3.2. Biểu mẫu XD02. Bảng thu thập số liệu phục vụ kiểm kê khí nhà kính cấp lĩnh vực - Tòa nhà
+NĂM...............
+I. Số liệu tính phát thai khí nha kính từ sử dung nhiên liệu cho quá trình đốt
+STT Thông số Lượng sử dung (Qi) Nhiệt trị (NCVi) Nguồn số liệu
+Đơn vị Giá trị Đơn vị Giá trị
+= L 1 Pl <s.xssssesersearrs tan TT...
+- a tan Th.
+1 | XăngA95 A92 1000 lít
+8 2 | Xang ES, Ron 92 1000 lit
+oh 3 | Xăng E10, Ron 92 1000 lít
+me 4 | Dau Diesel (DO) 1000 lít hoặc tắn
+5 | Dầu nhiên liệu (FO) 1000 lít hoặc tan
+6 | Khí tu nhién (NG) Sm hoặc tan TỰ ws
+= 7 | Khí hóa long (LPG) tan hoặc 1000 lit Ti.
+M 8 | Khí thiên nhiên hóa lỏng (LNG) tắn hoặc1000 lít TJ/...
+9 | Khí thiên nhiên nén (CNG) Sm? hoặc tan Tổ...
+25 1 | Sinh khdi.... tan TT...
+5 > Sinh khối... tan TJ/...
+2 1 | Nhiên liệu..... TẾ...
+7 Nhiên liệu..... TJ/...
+
+H. Số liệu tính phát thải khí nhà kính từ sử dụng điện
+STT Thông số Đơn vị Giá trị Nguôn số liệu
+1 | Điện mua vào (Quv) kWh
+5 2 | Điện mặt trời tự sản xuat* kWh
+8 3 | Điện bán ra (Qnn) kWh
+Ghi chú:
+(*) Số liệu phục vụ thầm định
+Điền giá trị được xác định theo đơn vị quy định:
+1. Nguồn số liệu được quy định tại khoản 2 Điều 9 của Thông tư này.
+2. Số liệu chưa được xác định, ghi rõ N/A.
+3. Điện mua vào là điện lưới. điện có nguôn gốc từ nguyên liệu hoá thạch.
+4. Số liệu về nhiên liệu sử dụng cho quá trình đốt:
+a) Lượng sử dụng là lượng được xác định theo nguồn số liệu theo đơn vị được quy định;
+b) Nhiệt trị là giá trị nhiệt trị thấp, được xác định từ kết quả phân tích, theo số liệu công bố của đơn vi cung cấp hoặc tra theo
+bảng tại Phụ lục V ban hành kèm theo Thông tư này;
+c) Don vị quy đổi 1 Kcal = 0,004184 MI.
+
+7
+3.3. Biểu mẫu XD03. Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát
+thải khí nhà kính cấp lĩnh vực - Giải pháp tăng hiệu suất sử dụng năng lượng
+trong sản xuất vật liệu xây dựng
+A. Cải tiền, thay thế thiết bị, công nghệ số 1
+Mô tả
+Phạm vi áp dụng
+Năm cơ sở
+STT Hang muc Don vi Nam Nam y Nguồn số
+cơ sở liệu
+Ï | Sử dụng nhiên liệu (Qi)
+| Nhiên liệu......
+Nhiên liệu......
+II | Nhiệt trị nhiên liệu (NCVj )
+1 |Nhiên liệu......
+Nhiên liệu......
+III | Hệ số phát thải của nhiên liệu (EF:,)
+I |Nhiên liệu...... kg CO2/TJ
+kg CH¿/TJ
+kg N20/TJ
+Nhiên liệu...... kg CO2/TJ
+kg CH4/TJ
+kg N2O/TJ
+IV | Sứ dụng điện
+1 | Điện sử dụng (Quv) kWh
+2 | Hé sé phat thai luéi điện | Tấn
+(EF pi) CO2/MWh
+V | Sản lượng (Qes, Qy)
+|
+B. Cải tiền, thay thế thiết bị, công nghệ số 2
+(tiép tục bố sung, nêu có)
+
+8
+3.4. Biểu mẫu XD04. Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát
+thải khí nhà kính cấp lĩnh vực - Giải pháp tăng hiệu suất sử dụng năng lượng
+đối với tòa nhà
+A. Cai tiền, thay thế thiết bị, công nghệ số 1
+Mô tả
+Phạm vi áp dụng
+Năm cơ sở
+STT Hạng mục Đơn vị Năm | Nămy Nguôn số
+cơ sở liệu
+I | Sứ dụng nhiên liệu (Qi)
+l Nhiên liệu......
+Nhiên liệu......
+II | Nhiệt trị nhiên liệu (NCVj )
+1 | Nhién liệu......
+Nhiên liệu......
+III | Hệ số phat thải của nhiên liệu (EF:;)
+l | Nhiên liéu...... kg CO2/TJ
+kg CH4/TJ
+kg N›O/TJ
+Nhiên liệu...... kg CO2/TJ
+kg CH4/TJ
+kg N20/TJ
+IV | Sứ dụng điện
+l Diện sử dụng (Qmv) kWh
+2 | Hệsố phát thải lưới điện | Tấn
+(EF pt) CO2/MWh
+V | San lượng (Qes, Qy)
+B. Cai tién, thay thé thiét bi, công nghệ số 2
+(tiếp tục bô sung, nêu có)
+
+9
+3.5. Biểu mẫu XD05. Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát
+thải khí nhà kínhcấp lĩnh vực - Giải pháp cải tạo công trình, cải tiến, thay
+thế thiết bị làm mát
+A. Cai tạo công trình, cai tiền, thay thế thiết bi, công nghệ làm mát số 1
+Mô tả
+Phạm vi áp dụng
+Năm cơ sở
+x A 1
+STT Hạng mục Đơn vị Năm Năm y Nghồn „
+: : cơ sở liệu
+A | Sử dụng điện
+l | Điện sử dụng (Qwv) kWh
+> |Hệ số phat thải lưới điện Tan
+(EEpr) CO2/MWh
+B | Môi chất bồ sung (Qpp,)
+I | Môi chất....... Kg
+Môi chất....... Kg
+C | Hệ số làm nóng lên toàn cầu của môi chất lạnh GWP;
+1 | Môi chất.......
+Môi chất.......
+D | Sản lượng, dịch vụ Qcs, Qy
+l
+B. Cải tạo công trình, cải tiền, thay thế thiết bị, công nghệ làm mát số 2
+(tiếp tục bồ sung, nêu có)
+
+10
+3.6. Biểu mẫu XD06. Bang thu thập số liệu phục vụ báo cáo giảm nhẹ phát
+thải khí nhà kính cấp lĩnh vực - Giai pháp lắp đặt và sử dụng năng lượng
+mặt trời
+A. Lắp đặt và sử dụng năng lượng mặt trời trong sản xuất vật liệu xây dựng
+Mô tả
+Phạm vi áp dụng
+Năm cơ sở
+STT Hạng mục Đơn vị Năm |Nămy | Nguồn số liệu
+cơ sở
+l Sản lượng điện mặt trời. | kWh
+tN
+Điện sử dụng cho hé| kWh
+thông năng lượng mặt
+trời
+3 | Hệ số phat thải lưới Tan
+điện (EEpr) CO2/MWh
+B. Lap dat va sir dụng nang lượng mặt trời trong tòa nhà
+(tiếp tục bo sung, nêu co)
+
+3.7. Biểu mẫu XD07. Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát
+1]
+thải khí nhà kính cấp lĩnh vực - Giải pháp thu hồi nhiệt thừa
+NĂM......
+Mô tả
+Phạm vi áp dụng
+Năm cơ sở
+STT Hạng mục Đơn vị = il há Nguồn số liệu
+A | Sứ dụng nhiên liệu (Qi)
+|
+Nhién liéu......
+Nhiên liệu......
+B | Nhiệt trị nhiên liệu (NCVj)
+]
+Nhiên liệu......
+Nhiên liệu......
+C | Hệ số phát thai của nhiên liệu (EF:;)
+1 | Nhién liệu...... kg CO;/TJ
+kg CH¿/TJ
+kg N20/TJ
+Nhiên liệu...... kg CO;/TJ
+kg CH4/TJ
+kg N:O/TJ
+D | Sứ dụng điện
+ii — vao kWh
+2 | Điện ban ra (Qnp) kWh
+3 | He số phat thải lưới. | Tan
+điện (EFpr) CO2/MWh
+E | San lượng (Qes, Qy)
+|
+
+12
+3.8. Biểu mẫu XD08. Bang thu thập số liệu phục vụ báo cáo giảm nhẹ phát
+thải khí nhà kính cấp lĩnh vực - Giải pháp tối ưu hoá phối liệu sản xuất
+clanhke
+° z Ae yen 2 & Á
+A. Tối ưu hoá phối liệu sản xuất clanhke số 1
+Mô tả
+Phạm vi áp dụng
+Năm cơ sở
+x A Á
+STT Hạng mục Đơn vị Năm Năm y Nguồn as
+cơ sở liệu
+A | Sử dụng nhiên liệu cho sản xuất clanhke (Qj)
+Nhiên liệu
+Nhiên liệu
+trị nhiên liệu (NCV])
+Nhiên liệu
+Nhiên liệu
+......
+C | Hệ số phát thải của nhiên liệu (EF¡j)
+1 | Nhiên liệu...... kg CO2/TJ
+kg CH4/TJ
+kgN›O/TJ
+Nhiên liệu...... kg CO2/TJ
+kg CH4/TJ
+kg N2O/TJ
+D | Sử dụng điện cho sản xuất clanhke (Qpr)
+l | Điện sử dụng (Qmv) kWh
+> |Hệ số phát thải lưới điện Tấn
+(EFnL) CO2/MWh
+E | San lượng (Qxw sx, Cer, QcL Nk,QcL-xk)
+l San lượng xi măng sản xuất. | tấn
+2 | Sản lượng clanhke sản xuất Tấn
+3 | Ty léclanhke trong xi măng | %
+4 | Lượng clanhke nhập khẩu tắn
+5 | Lượng clanhke xuất khẩu tắn
+B. Tối ưu hoá phối liệu san xuất clanhke số 2
+(tiép tục bd sung, nêu có)
+
+13
+3.9. Biểu mẫu XD09. Bang thu thập số liệu phục vụ báo cáo giảm nhẹ phát
+thải khí nhà kính cấp lĩnh vực - Giải pháp giảm tỷ lệ clanhke trong sản xuất
+xi măng
+NĂM......
+Mô tả
+Phạm vi áp dụng
+Năm cơ sở
+~ a
+STT Hạng mục Đơn vị — Năm y dun
+A | Sử dụng nhiên liệu (Qj)
+1 Nhiên liệu......
+ve {Nhiên ệu......
+B | Nhiệt trị nhiên liệu (NCVj)
+l Nhiên liệu......
+„+ | Nhiên liệu......
+C | Hệ số phát thải của nhiên liệu (EF:;)
+l Nhiên liệu...... kg CO;/TJ
+kg CH4/TJ
+kg N:O/TJ
+Nhiên liệu...... kg CO;/TJ
+kg CH¿/TJ
+kg N2O/TJ
+D | Sử dụng điện cho sản xuất clanhke
+l Dién str dung (Qmv) kWh
+2 | Hệ số phát thải lưới điện cg .._
+E | Sử dụng điện cho phối trộn xi măng
+l Điện sử dụng (Qwv) kWh
+2 | Hệ số phát thải lưới điện = MWh
+F | San lượng (QxM sx, Cet, QcL nx, QcL-xk)
+l Sản lượng xi măng sản xuất | tấn
+2 Lượng clanhke sản xuất Tấn
+3 Ty lệclanhkc trong xi măng | %
+4 | Lượng clanhke nhập khẩu tấn
+5 Lượng clanhke xuất khẩu tan
+
+14
+3.10. Biểu mẫu XD10. Bảng thu thập số liệu phục vụ báo cáo giám nhẹ phát
+thải khí nhà kính cấp lĩnh vực - Giải pháp giảm, thay thế, loại bỏ nhiên liệu
+có nguồn gốc hoá thạch
+A. Giảm, thay thế, loại bó nhiên liệu có nguồn gốc hoá thạch trong sản xuất vật
+liệu xây dựng
+Mô tả
+Phạm vi áp dụng
+Năm cơ sở
+x a A
+STT Hạng mục Đơn vị Nam Năm y Người „
+: cơ sở liệu
+A | Sử dụng nhiên liệu (Qj)
+l Nhiên liệu......
+. | Nhiên liệu......
+B | Nhiệt trị nhiên liệu (NCVj)
+1 |Nhiênliệu......
+Nhiên liệu......
+C | Hệ số phát thải của nhiên liệu (EF:;)
+Nhiên liệu...... kg CO;/TJ
+kg CH4/TJ
+kg N2O/TJ
+Nhiên liệu...... kg CO;/TJ
+kg CH4/TJ
+kg N2O/TJ
+D | Sử dụng diện (Qp_)
+l | Điện sử dụng (Qwv) kWh
+; | He số phat thai loi điện | Tấn
+(EFpL) CO2/MWh
+E | San lượng
+l
+B. Giảm, thay thế, loại bó nhiên liệu có nguồn gốc hoá thạch trong tòa nhà
+(tương tự như trên)
+
+15
+3.11. Biểu mẫu XD11. Bang thu thập số liệu phục vu báo cáo giảm nhẹ
+phát thải khí nhà kính cấp lĩnh vực - Giải pháp thu hồi và lưu trữ khí
+cacbon dioxit
+NAM......
+Mô ta
+Pham vi ap dung
+Nam co so
+¿ Năm " Nguồn số
+STT Hạng mục Đơn vị „ | Namy -
+: : : cơ sở liệu
+A | Sử dụng nhiên liệu (Qj)
+1 | Nhiên liệu......
+„ | Nhiên liệu......
+B | Nhiệt trị nhiên liệu (NCVj)
+1 |Nhiên liệu......
+Nhiên liệu......
+C | Hệ số phát thải của nhiên liệu (EF;;)
+1
+Nhiên liệu...... kg CO2/TJ
+kg CH4/TJ
+kg N20/TJ
+Nhiên liệu...... kg CO2/TJ
+kg CH4/TJ
+kg N2O/TJ
+D | Sử dụng điện lưới (QpL)
+1 | Điện sử dụng (Quv) kWh
+> |Hệ s6 phat thai ludi điện | Tấn
+(EFpL) CO2/MWh
+E | San lượng
+1 | Lượng clanhke Tan
+
+Phụ lục IV
+BIẾU MAU THU THẬP SỐ LIEU VÀ BAO CÁO CAP CƠ SO
+(Kèm theo Thông tư số 13/2024/TT-BXD ngày 20/12/2024
+của Bộ trưởng Bộ Xây dung)
+BIEU MAU NOI DUNG
+CS0I Bảng thu thập số liệu phục vụ kiểm kê khí nhà kính cấp cơ sở - Cơ
+sở sản xuât vật liệu xây dựng
+CS02 Bảng thu thập số liệu phục vụ kiểm kê khí nhà kính cấp cơ sở - Tòa nhà
+CS03 Bang thu thập số liệu phục vụ báo cáo giảm nhẹ phát thải khí nhà
+kính cap cơ sở - Giải pháp tăng hiệu suat sử dung năng lượng trong
+sản xuât vật liệu xây dựng
+CS04 Bang thu thap số liệu phục vụ báo cáo giảm nhẹ phát thải khí nhà
+kính cấp cơ sở - Giải pháp tăng hiệu suất sử dụng năng lượng đối
+với tòa nhà
+CS05 Bang thu thập số liệu phục vụ báo cáo giảm nhẹ phát thải khí nhà
+kính cap cơ sở - Giải pháp cai tạo công trình, cải tiên, thay thê thiệt
+bị làm mát
+CS06 Bang thu thap số liệu phục vụ báo cáo giảm nhẹ phát thải khí nhà
+kính câp cơ sở - Giải pháp lặp đặt và sử dụng năng lượng mặt trời
+CS07 Bang thu thập số liệu phục vụ báo cáo giảm nhẹ phát thải khí nhà
+kính cấp cơ sở - Giải pháp thu hồi nhiệt thừa
+CS08 Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát thải khí nhà
+kính cấp cơ sở - Giải pháp tối ưu hoa phói liệu sản xuất clanhke
+CS09 Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát thải khí nhà
+kính câp cơ sở - Giải pháp giảm tỷ lệ clanhke trong sản xuât xi măng
+CS10 Bang thu thập số liệu phục vụ báo cáo giảm nhẹ phát thải khí nhà
+kính cap cơ sở - Giải pháp giảm, thay thê, loại bo nhiên liệu có
+nguôn goc hoá thạch
+CS11 Bang thu thap số liệu phục vụ báo cáo giảm nhẹ phát thải khí nhà
+kính cấp cơ sở - Giải pháp thu hồi và lưu trữ khí cacbon dioxit
+
+4.1. Biểu mẫu CS01. Bảng thu thập số liệu phục vụ kiểm kê khí nhà kính cấp cơ sở - Cơ sở sản xuất vật liệu xây dựng
+TÊN DOANH NGHIỆP:
+LOẠI VẬT LIỆU XÂY DỰNG:
+NĂM KIÊM KE:
+I. Sốliệu tính phát thai khí nhà kính từ sứ dụng nhiên liệu cho quá trình đốt
+STT Thông số Lượng sứ dụng (Qi) Nhiệt trị (NCVi) Nguồn số
+Đơn vị Gia tri | Don vi | Giá trị ligu
+= 1 |Than.............. tan TJ/...
+= .... Than .................. tấn TU...
+1 | XăngA95 A92 1000 lít
+= 2 | Xăng E5, Ron 92 1000 lít
+2b 3 Xang E10, Ron 92 1000 lit
+> 4 | Dâu Diesel (DO) 1000 lít hoặc tân
+5 | Dầu nhiên liệu (FO) 1000 lít hoặc tần
+6 | Khí tự nhiên (NG) Sm? hoặc tan a.
+= 7 | Khí hóa lỏng (LPG) tấn hoặc 1000 lít TJ....
+mA 8 | Khi thiên nhiên hóa long (LNG) tấn hoac1000 lít TL
+9 | Khi thiên nhiên nén (CNG) Sm} hoặc tan TJ....
+&-g 1 | Sinh khối....... tan TJ/....
+AX | ... | Sinh khéi........ tấn Ti.
+8 1 | Dau thải tan TJ....
+ve 2 | Nhựa thải tan a
+= 3 | Lốp xe tan : =
+& 4 | Vải vụn, rác thải khác tan TJ....
+Z Nhiên liệu............ TY)...
+
+H. Sử dụng nguyên liệu có chứa gốc cacbonat
+STT Thông số Đơn vị Giá trị Nguồn số liệu
+1 | Lượng đá vôi sử dụng (Qpv) tan
+2 | Lượng đá sét sử dung (Qsz) tan
+3 | Hàm lượng CaO bình quân gia quyền trong đá vôi (Cpvcao) %
+4 | Hàm lượng MgO bình quân gia quyền trong đá vôi (CpvMo) %
+š 5 | Hàm lượng CaO bình quân gia quyền trong đá sét (CsE cao) %
+E 6 | Hàm lượng MgO bình quân gia quyên trong đá sét (CsE Mẹo) %
+x 7 | San lượng clanhke tắn
+8 | Lượng clanhke mua vào tan
+9 | Luong clanhke ban ra tan
+10 | San lượng xi măng tan
+11 | Lượng cac bon dioxit được thu hồi (Er) tan CO?
+3 1 | San lượng vôi có hàm lượng canxi cao (Qvo.ca) tắn
+> 2 | Sản lượng vôi khác, bao gồm vôi đô 16 mit (Qvo.kn) tan
+< 1] | Sản lượng kính phang xây dựng (Qx:) 1000 m? QTC
+wZ 2 | Tỷ lệ thuỷ tinh tái chế dùng dé sản xuất kính (CRx1) %
+-ˆ a | Sản lượng sứ vệ sinh (Qxn) tần
+SE | b | Sản lượng frit (Qxn) tắn
+= c | Tỷ lệ CaCO; trong nguyên liệu sản xuất frit có chứa góc cacbonat (k) | %
+5 ep a one vượng gạch nung (Q«n) =_ ; _- tan
+& z b | Ty lệ CaCO; trong nguyên liệu sản xuât gach nung có chứa goc %
+cacbonat (k)
+Bo a | San lượng vật liệu xây dựng khác (Qxn) tan
+= 5 b | Tỷ lệ CaCOs trong nguyên liệu san xuất vật liệu xây dựng khác có %
+> chứa gôc cacbonat (k)
+
+If]. Số liệu tính phát thải khí nhà kính từ sử dụng điện (Quy, Qnp)
+STT Thông số Đơn vị Giá trị Nguồn số liệu
+1 | Điện mua vào (Qwv) kWh
+2 | Điện mặt trời tự sản xuat* kWh
+&- 3 | Điện từ thu hồi nhiệt thừa* kWh
+s 4 | Điện bán ra (Qpr) kWh
+5 | Điện nung nguyên liệu* kWh
+Ghi chú:
+(*) Số liệu phục vụ thầm định
+Điền giá trị được xác định theo đơn viquy định:
+1. Nguồn số liệu theo quy định tại Điều 19 của Thông tư này.
+2. Số liệu chưa được xác định, ghi rõ N/A.
+3. Điện mua vào là điện lưới, điện có nguồn góc từ nhiên liệu hoá thạch.
+4. Số liệu sử dụng nhiên liệu cho quá trình đốt:
+a) Lượng sử dụng là lượng được xác định theo nguồn số liệu theo đơn vị được quy định;
+b) Nhiệt trị là giá trị nhiệt trị thấp, được xác định từ kết quả phân tích, theo số liệu công bố của đơn vị cung cấp hoặc tra theo
+bảng tại Phụ lục V ban hành theo Thông tư này;
+c) Don vị quy đôi 1 Kcal = 0,004184 MI.
+
+4.2. Biểu mẫu CS02. Bảng thu thập số liệu phục vụ kiểm kê khí nhà kính cấp cơ sở - Tòa nhà
+TÊN DOANH NGHIỆP:
+LOẠI TÒA NHÀ:
+NĂM KIÊM KÊ:
+I. Sốliệu tinh phát thải khí nhà kính từ sử dụng nhiên liệu cho quá trình đốt
+STT Thông số Lượng sử dung (Qi) Nhiệt trị (NCVi) Nguồn số liệu
+Don vi Gia tri Don vi Gia trị
+S ee — tan 1...
+>> HH LG rn tan dba
+1 | XăngA95 A92 1000 lít
++& 2 | XăngE5, Ron 92 1000 lít
+ob 3 | Xăng E10, Ron 92 1000 lit
+> 4 | Dầu Diesel (DO) 1000 lít hoặc tần
+5 | Dầu nhiên liệu (FO) 1000 lít hoặc tần
+6 | Khí tự nhiên (NG) Sm? hoặc tan TỪ...
+- 7 | Khí hóa lỏng (LPG) tấn hoặc 1000 lít TẾ
+8 | Khí thiên nhiên hóa lỏng (LNG) tan hoặc 1000 lít TJ/...
+9 | Khí thiên nhiên nén (CNG) Sm} hoặc tan TL.
+&:s | 1 | Sinhkhdi.... tan TH.
+“|. | sinh khối... tắn TY)...
+2 1 | Nhiên liệu..... TJ/...
+rv, Nhiên liệu..... TW)...
+
+II... Số liệu tính phát thai khí nhà kính từ sử dụng thiết bị làm mát
+STT Nhóm thiết bị và môi chất lạnh Đơn vị Lượng nạp thêm (Qpp,j) Nguồn số liệu
+oS 3 ] Kg
+> Kg
+II. Sử dụng điện
+STT | Thông số Đơn vị Giá trị Nguồn số liệu
+. 1 | Điện mua vào (Qwv) kWh
+=] 2 | Điện mặt trời tự sản xuất* kWh
+3 | Điện bán ra (OQpn) kWh
+Ghi chu:
+(*) Số liệu phục vu thầm định
+Điền giá trị được xác định theo đơn vị quy định:
+1. Nguồn số liệu được quy định tại khoản 2 Điều 19 của Thông tư này.
+2. Số liệu chưa được xác định, ghi rõ N/A.
+3. Điện mua vào là điện lưới, điện có nguồn gốc từ nguyên liệu hoá thạch.
+4. Số liệu về nhiên liệu sử dụng cho quá trình đốt:
+a) Lượng sử dụng là lượng được xác định theo nguồn số liệu theo đơn vị được quy định;
+b) Nhiệt trị là giá trị nhiệt trị thấp, được xác định từ kết quả phân tích, theo số liệu công bố của đơn vị cung cấp hoặc tra theo
+bảng tại Phụ lục V ban hành theo Thông tư này:
+c) Đơn vị quy đổi 1 Kcal = 0,004184 MJ.
+
+7
+4.3. Biểu mẫu CS03. Bang thu thập số liệu phục vụ báo cáo giảm nhẹ phát
+thải khí nhà kính cấp cơ sở - Giải pháp tăng hiệu suất sử dụng năng lượng
+trong sản xuất vật liệu xây dựng
+NĂM:
+TÊN DOANH NGHIỆP:
+A. Cải tiền, thay thế thiết bị, công nghệ số 1
+Mô tả
+Năm hoàn thành
+Giá trị tại cột năm cơ sở là Giá trị của năm
+Gia trị trung bình các nam......
+STT Hạng mục Đơn vị Năm | Nămy | Nguồn số
+cơ sở liệu
+I | Sử dụng nhiên liệu (Qi)
+1 |Nhiên liệu......
+Nhiên liệu......
+II | Nhiệt trị nhiên liệu (NCVj )
+l | Nhiên liệu......
+Nhiên liệu......
+III | Hệ số phát thải của nhiên liệu (EF:i)
+1 | Nhiên liệu...... kg CO;/TJ
+kg CH¿/TJ
+kg N2O/TJ
+Nhiên liệu...... kg CO2/TJ
+kg CH4/TJ
+kg N2O/TJ
+IV | Sử dụng điện
+l | Điện sử dụng (Qmy) kWh
+2 | Hệ số phát thải lưới điện | Tan
+(EFnL) CO2/MWh
+V | San luong (Qes, Qy)
+l
+B. Cải tiền, thay thế thiết bị, công nghệ số 2
+(tiếp tục bo sung, nêu có)
+
+8
+4.4. Biểu mẫu CS04. Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát
+thải khí nhà kính cấp cơ sở - Giải pháp tăng hiệu suất sử dụng năng lượng
+đối với tòa nhà
+NĂM:
+TÊN DOANH NGHIỆP:
+A. Cải tiền, thay thế thiết bị, công nghệ số 1
+Mô tả
+Năm hoàn thành
+Giá trị tại cột năm cơ sở là Giá trị của năm......
+Gia trị trung bình các năm......
+STT Hạng mục Đơn vị Năm | Năm | Nguồn số
+cơ sở y liệu
+I | Sử dụng nhiên liệu (Qi)
+1 | Nhién liéu......
+.. | Nhién liệu......
+II | Nhiệt trị nhiên liệu (NCVj )
+] Nhiên liệu......
+Nhiên liệu......
+III | Hệ số phát thải của nhiên liệu (EF:,)
+|
+Nhiên liệu...... kg CO2/TJ
+kg CH4/TJ
+kg N›O/TJ
+Nhiên liệu...... kg CO2/TJ
+kg CH4/TJ
+kg N2O/TJ
+IV | Sw dung dién
+| Điện sử dụng (Qwv) kWh
+2 | Hệ số phát thải lưới điện | Tan
+(EFpL) CO2/MWh
+V | San lượng (Qs, Qy)
+J
+B. Cải tiền, thay thế thiết bị, công nghệ số 2
+(tiếp tục bồ sung, nêu có)
+
+9
+4.5. Biểu mẫu CS05. Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát
+thải khí nhà kính cấp cơ sở - Giải pháp cai tạo tòa nhà, cải tiền, thay thé thiết
+bị làm mát
+NĂM:
+TEN DOANH NGHIỆP:
+A. Cái tạo công trình, cải tiền, thay thế thiết bị, công nghệ làm mát số 1
+Mô tả
+Năm hoàn thành
+Giá trị tại cột năm cơ sở là Gia trị của nam......
+Giá trị trung bình các năm......
+x Ầ K
+STT Hạng mục Đơn vị Năm Năm y Nguên =
+cơ sở liệu
+A | Sử dụng điện
+l | Điện sử dụng (Quv) kWh
+4 (Hệsốphátthảilướiđiện | Tấn
+“ |(EEp) CO›/MWh
+B | Môi chất bé sung (Qnp,j)
+I | Môi chất....... kg
+Môi chất....... kg
+A y x 4 aA ` Xr td As v4
+C | Hệ sô làm nóng lên toàn cau của môi chat lạnh GWP;
+1 | Môi chất.......
+Môi chất.......
+D | San lượng, dịch vụ Qes, Qy
+|
+B. Cải tạo công trình, cải tiền, thay thế thiết bị, công nghệ làm mát số 2
+(tiép tục bồ sung, nếu co)
+
+10
+4.6. Biểu mẫu CS06. Bảng thu thập số liệu phục vu báo cáo giảm nhẹ phát thai
+khí nhà kính cấp cơ sở - Giải pháp lắp đặt và sử dung năng lượng mặt trời
+NĂM:
+TÊN DOANH NGHIỆP:
+Mô tả
+Năm hoàn thành
+Giá trị tại cột năm cơ sở là Giá trị của năm......
+Gia trị trung bình các nam......
+STT Hạng mục Donvi | Năm | Năm | Nguôn số
+cơ sở y liệu
+l | Sản lượng điện mặt trời kWh
+2 | Điện sử dụng cho hệ thống kWh
+năng lượng mặt trời
+3 | Hệ số phát thải lưới điện Tan
+(EF pi) CO;/MWh
+
+1]
+4.7. Biểu mẫu CS07. Bang thu thập số liệu phục vu báo cáo giảm nhẹ phát
+thải khí nhà kính cấp cơ sở - Giải pháp thu hồi nhiệt thừa
+NĂM:
+TÊN DOANH NGHIỆP:
+Mô tả
+Năm hoàn thành
+Giá trị tại cột năm cơ sở là | Giá trị của năm
+Giá trị trung bình các năm......
+Năm cơ
+STT Hạng mục Đơn vị sử
+Năm y | Nguồn số liệu
+A | Sử dụng nhiên liệu (Qi)
+1 |Nhiên liệu......
+vee | Nhiên liệu......
+B | Nhiệt trị nhiên liệu (NCVj)
+1 | Nhién liệu......
+Nhiên liệu......
+C | Hệ số phát thải của nhiên liệu (EF:;)
+l |Nhiên liệu...... kg CO;/TJ
+kg CH4/TJ
+kg N20/TJ
+Nhiên liệu...... kg CO;/TJ
+kg CH4/TJ
+kg N2O/TJ
+D | Sử dụng điện
+1 |Điệnmua vao (Qmv) |kWh
+2 | Điện bán ra (Qnp) kWh
+3 | Hệ so phat thai luéi | Tan
+điện (EFpL) CO›/MWh
+E | San lượng (Qs, Qy)
+|
+
+12
+4.8. Biểu mẫu CS08. Bang thu thập số liệu phục vu báo cáo giảm nhẹ phát
+thải khí nhà kính cấp cơ sở - Giải pháp tối ưu hoá phối liệu sản xuất clanhke
+NĂM:
+TÊN DOANH NGHIỆP:
+A. Tối ưu hoá phối liệu sản xuất clanhke số 1
+Mô tả
+Năm hoàn thành
+Gia trị của năm......
+Giá trị tại cột năm cơ sở là ah a : —
+Lưu có Giá trị trung bình các năm......
+Ầ A
+Nguôn sô
+STT Hang muc Đơn vị | Namcoso | Namy liệu
+A | Sử dụng nhiên liệu cho sản xuất clanhke (Qj)
+| | Nhién liệu......
+Nhiên liệu......
+B | Nhiệt trị nhiên liệu (NCVj)
+| Nhién liéu......
+ww | Nhiên HỆU.....-
+C | Hệ số phát thai của nhiên liệu (EF;;)
+1 | Nhién liệu...... kg CO;/TJ
+kg CH4/TJ
+kg N20/TJ
+Nhién liéu...... kg CO2/TJ
+kg CH4/TJ
+kg N20/TJ
+D | Sứ dung điện cho san xuất clanhke (Opr.)
+l | Điện sử dụng (Quv) kWh
+2 | Hệ số phát thải lưới điện (EF) a —
+E | San luong
+1 | Luong đá vôi sử dung (Qpv) tan
+2 | Lượng đá sét sử dung (Qsr) tan
+Ham lượng CaO bình quân gia | %
+quyên trong đá vôi (Cpv.cao)
+4 Hàm lượng MgO bình quân gia | %
+quyên trong đá vôi (CpvMzo)
+5 Ham lượng CaO bình quân gia | %
+quyên trong đá sét (CsE.cao)
+6 Hàm lượng MgO bình quân gia | %
+quyên trong đá sét (CsE M¿o)
+B. Tối ưu hoá phối liệu sản xuất clanhke số 2
+(tiép tục bô sung, nêu có)
+
+13
+4.9. Biểu mẫu CS09. Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát
+thải khí nhà kính cấp cơ sở - Giải pháp giảm tỷ lệ clanhke trong sản xuất
+xi măng
+NĂM:
+TÊN DOANH NGHIỆP:
+Mô tả
+Năm hoàn thành
+Giá trị của năm......
+Gia trị tại cột năm cơ sở là
+Giá trị trung bình các nam......
+x ~ À
+STT Hạng mục Đơn vị HA c arm
+A | Sứ dung nhiên liệu (Qj)
+| Nhiên liệu......
+„+: | Nhiên liệu......
+B | Nhiệt trị nhiên liệu (NCVj)
+l | Nhién liệu......
+... | Nhiên liệu......
+C | Hệ số phát thai của nhiên liệu (EF;;)
+1 | Nhién liệu...... kg CO2/TJ
+kg CH4/TJ
+kg N20/TJ
+Nhiên liệu...... kg CO2/TJ
+kg CH¿/TJ
+kg N2O/TJ
+D | Sử dụng điện cho sản xuất clanhke
+| Điện sử dụng (Qwv) kWh
+2 | Hệ số phát thải lưới điện ca Ah
+E | Sử dụng điện cho phối trộn xi măng
+1 | Điện sử dụng (Qmv) kWh
+2 | Hệ số phát thải lưới điện hy ._¬
+
+14
+x x DS
+STT Hang muc Don vi — “ im
+San lượng
+l Lượng đá vôi sử dụng (Qnv) tan
+2 | Lượng da sét sử dung (Qs) tan
+3 Ham lượng CaO bình quân gia | %
+quyên trong đá vôi (Cpv.cao)
+4 Hàm lượng MgO bình quân gia | %
+quyên trong đá vôi (Cpv.Mgo)
+5 Ham lượng CaO bình quân gia | %
+quyên trong đá sét (CsE.cao)
+6 Hàm lượng MgO bình quân gia | %
+quyên trong đá sét (Csr. mgo)
+7 | San lượng clanhke tan
+8 | Lượng clanhke mua vào tan
+9 | Lượng clanhke bán ra tan
+10 | San lượng xi măng tan
+
+15
+4.10. Biểu mẫu CS10. Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát
+thải khí nhà kính cấp cơ sở - Giải pháp giảm, thay thế, loại bỏ nhiên liệu có
+nguồn gốc hoá thạch
+NĂM:
+TÊN DOANH NGHIỆP:
+Mô tả
+Năm hoàn thành
+Gia trị của nam......
+Giá trị tại cột năm cơ sở là | .., ' : —_
+Gia tri trung binh cac nam......
+~ A M
+Năm Nguôn sô
+STT Hạng mục Đơn vị „ Năm y -
+: : cơ sở liệu
+A | Sứ dụng nhiên liệu (Q))
+1 |Nhiênliệu......
+„| Nhiên liệu......
+B | Nhiệt trị nhiên liệu (NCVj)
+1 |Nhiên liệu......
+... | Nhiên liệu......
+C | Hệ số phát thải của nhiên liệu (EF:;)
+Nhiên liệu...... kg CO2/TJ
+kg CHạ4/TJ
+kg N›O/TJ
+Nhiên liệu...... kg CO2/TJ
+kg CHa/TJ
+kg N2O/TJ
+D | Sứ dụng điện (Qpr)
+1 | Điện sử dụng (Qwv) kWh
+> |Hệ s6 phat thai lwéi dién | Tấn
+(EF pi) CO2/MWh
+E | San lượng
+l
+
+16
+4.11. Biểu mẫu CS11. Bảng thu thập số liệu phục vụ báo cáo giảm nhẹ phát
+thải khí nhà kính cấp cơ sở - Giải pháp thu hồi và lưu trữ khí cacbon dioxit
+NĂM:
+TÊN DOANH NGHIỆP:
+Mô tả
+Năm hoàn thành
+Giá trị của năm......
+Giá trị trung bình các năm......
+Năm Nguồn số
+„ Nămy kg
+cơ sở liệu
+Giá trị tại cột năm cơ sở là
+STT Hạng mục Đơn vị
+A | Sử dụng nhiên liệu (Qj)
+1 | Nhién liệu......
+.. | Nhién liệu......
+B Nhiệt trị nhiên liệu (NCV})
+1 | Nhién liệu......
+sos {Nhiên liệu......
+C | Hệ số phát thải của nhiên liệu (EF;,)
+J
+Nhiên liệu...... kg CO2/TJ
+kg CH4/TJ
+kg N›O/TJ
+Nhiên liệu...... kg CO2/TJ
+kg CH4/TJ
+kg N›O/TJ
+D | Sử dụng điện lưới (QpL)
+I Điện sử dụng (Qwv) kWh
+5 | Hés6 phat thai ludi điện | Tan
+“| (EFpt) CO2/MWh
+E | San lượng
+1 | Lugng clanhke Tan
+2 Lượng khí cacbon dioxit Tấn CO;
+được thu hôi và lưu trữ
+
+Phụ lục V
+BẰNG TRA CỨU NHIỆT TRỊ NHIÊN LIỆU
+ÁP DỤNG CHO NGÀNH XÂY DỰNG
+(Kèm theo Thông tư số 13/2024/TT-BXD ngày 20/12/2024
+của Bộ trưởng Bộ Xây dựng)
+5.1. Phạm vi áp dụng
+Nhiệt trị nhiên liệu cấp lĩnh vực là giá trị được quy định tại mục 5.2 Phụ
+lục này.
+Nhiệt trị nhiên liệu cấp cơ sở là giá trị được phân tích bởi Phòng Thí nghiệm
+đạt chuan VILAS trong năm thực hiện báo cáo. Trong trường hợp không có kêt
+quả phân tích yêu cầu, áp dụng giá trị được quy định tại mục 5.2 Phụ lục này.
+5.2. Nhiệt trị
+Ký hiệu: NCV; - Giá trị nhiệt trị ròng của nhiên liệu j
+STT | Loại nhiên liệu Nhiệt trị Đơn vị
+Than 1 Than antraxit 26,7 TJ/1000 tan
+2 Than bitum 25,8 TJ/1000 tan
+3 Than 4 bitum 18,9 TJ/1000 tan
+Xing. | 6 Xăng A95, A92 443 TJ/1000 tan
+dau 32,8 TJ/triệu lít
+7 Xăng E5, Ron 92 43.4 TJ/1000 tan
+32,1 TJ/triệu lít
+8 Xăng E10, Ron 92 42.5 TJ/1000 tan
+31,3 TJ/triệu lít
+9 Dầu Diesel (DO) 43,0 TJ/1000 tan
+36,3 TJ/triệu lít
+10 | Dầu nhiên liệu (FO) 40,4 TJ/1000 tan
+38,9 TJ/triệu lít
+Khí II Khí tự nhiên (NG) 48,0 TJ/1000 tan
+34.2 TJ/triệu Sm?
+12 | Khí hóa lỏng (LPG) 47,3 TJ/1000 tan
+24,7 TJ/triéu lit
+13 | Khí thiên nhiên hóa long (LNG) 442 TJ/1000 tan
+26,2 TJ/triệu lít
+l4 | Khí thiên nhiên nén (CNG) 53.0 TJ/1000 tan
+37,9 TJ/triệu Sm?
+
+STT | Loại nhiên liệu Nhiệt trị Đơn vị
+Sinh |15  |Gỗ, củi, gỗ thải 15,6 TJ/1000 tan
+khối |l6 | Sinh khối khác 11,6 TJ1000tấn  -
+Khác |17 | Dầu thải 40,2 TJ/1000 tan
+* Các loại khác như nhựa thải, lốp xe, vải vụn lấy theo giá trị thực té
+
+Phụ lục VI
+DANH MỤC HỆ SÓ PHÁT THẢI ÁP DỤNG CHO NGÀNH XÂY DỰNG
+(Kèm theo Thông tư số 13/2024/TT-BXD ngày 20/12/2024
+của Bộ trưởng Bộ Xây dựng)
+6.1. Phạm vi áp dụng
+Hệ số phát thải dưới đây được áp dụng trong trường hợp các kết quả nghiên
+cứu, phân tích thực tế chưa được thầm định và công nhận theo quy định tại điểm
+c khoản 2 Điều 10 Thông tư 01/2022/BTNMT.
+Tỷ lệ rò rỉ môi chất lạnh gồm rò rỉ từ quá trình vận hành và nạp thêm môi
+chất lạnh, được áp dụng khi không có sô liệu về lượng môi chât nạp thêm trong
+giai đoạn báo cáo.
+6.2. Hệ số phát thải hoạt động đốt nhiên liệu
+Ký hiệu: EFii - Hệ số phát thải khí nhà kính i của nhiên liệu j
+STT Nhiên liệu Hệ số phát thải
+EFco2 EFCH4 EFA2o
+kg CO2/TJ | kgCH4/TJ | kgN2O/TJ
+| Than
+| Than Antraxit 98.300 10 LS
+2 | Than bitum 94.600 10 1,5
+3 | Than á bitum 96.100 10 1,5
+4 Than khác 96.100 10 13
+II | Xăng dầu
+6 | XăngA95, A92 69.300 33 3.2
+7 | XăngE5, Ron 92 65.604 31 3.0
+8 | Xăng E10, Ron 92 61.933 29 2.9
+9 | Dau Diesel (DO) 74.100 3 0.6
+10 | Dầu nhiên liệu (FO) 77.400 3 0.6
+II | Khí
+II | Khí tự nhiên (NG) 56.100 | 0.1
+I2 | Khí hóa lỏng (LPG) 63.100 | 0,1
+13 | Khí thiên nhiên hóa long (LNG) 64.200 3 0.6
+l4 | Khí thiên nhiên nén (CNG) 56.100 | 0,1
+IV | Sinh khối
+15 | Gỗ, củi, gỗ thai 112.000 30 4
+ló | Sinh khéi khac (v6 hat diéu, v6 hat 100.000 30 4
+ca phé...)
+
+STT Nhiên liệu Hệ số phát thải
+EFco2 EF cua EFn20
+kg CO./TJ | kgCH4/TJ | kg N2O/TJ
+V | Nhiên liệu khác
+17 | Dầu thải 73.300 30 4
+18 | Nhựa thai 75.000 . ‘
+19 | Lép xe 85.000 : .
+20 | Vải vụn, rác thải khác 80,000 - Ề
+6.3. Hệ số phát thải lưới điện quốc gia
+Năm Giá trị Đơn vị
+2014 0,6612 tấn CO2/MWh
+2015 0,8154 tấn CO2/MWh
+2016 0,9185 tấn CO2/MWh
+2017 0,8649 tan CO2/MWh
+2018 0,9130 tan CO2/MWh
+2019 0,8458 tan CO›/MWh
+2020 0,8041 tan CO2/MWh
+2021 0,7221 tan CO2/MWh
+2022 0,6766 tấn CO2/MWh
+Từ năm 2023 Theo thông báo của Bộ Tài nguyên và Môi trường hoặc giá
+trị của năm gân nhât
+6.4. Tỷ lệ rò rỉ môi chất của thiết bị làm mát
+Ký hiệu: Rj — Tỷ lệ rò rỉ của môi chất của thiết bị j
+Tỷ lệ rò rỉ môi chất lạnh hang
+STT Nhóm thiết bị lạnh : ˆ x
+LG năm so với lượng nạp ban đâu
+| Diéu hoa dan dung, chillers 3,0%
+2 | Điều hoà thương mại, bơm nhiệt 6,0%
+3 Tủ lạnh dân dụng 0,3%
+4 Tủ lạnh, tủ đông thương mại 1,5%
+5 | Thiết bị, hệ thống làm lạnh trung tâm, 17,0%
+siêu thị
+
+DANH MỤC HỆ SO LAM NÓNG LÊN TOÀN CAU
+ÁP DỤNG CHO NGÀNH XÂY DỰNG
+(Kèm theo Thông tư số 13/2024/TT-BXD ngày 20/12/2024
+của Bộ trương Bộ Xây dựng)
+Phụ lục VII
+Hệ số làm nóng lên toàn cầu (GWP): do Ban Liên Chính phủ về Biến đồi
+khí hậu công bó. Ký hiệu: GWP;
+1. Hệ sô làm nóng lên toàn câu đôi với báo cáo cap lĩnh vực là hệ số được
+sử dụng trong các báo cáo của quốc gia năm gân nhat.
+2. Hệ sô làm nóng lên toàn câu đôi với báo cáo cap cơ sở là hệ sô cập nhật
+được Ban Liên Chính phủ về biến đổi khí hậu công bố.
+3. Ap dụng hệ sô làm nóng lên toàn câu dưới đây và cập nhật khi có sự
+thay đồi:
+STT Khí nhà kính và môi chất GWP
+| Nhóm khí nhà kính cơ | Tên viết tắt | Công thức hóa học AR4 AR5 AR6
+bản
+] Cacbon dioxit CO. R-744 | CO | ] |
+2 Mê tan CHy, R-50 | CHỊ 25 28 27.9
+3 Ni tơ oxit NO R-LÌNO 298 265 273
+744a
+II Nhóm HCFCs Tên viết tắt | Công thức hóa học AR4 |AR5 AR6
+| HCFC-22 R22 CHCIE› 1.810 |1.760 | 1.960
+2 HCFC-123 R-123 C2HCbEs 7 79 90
+3 HCFC-123A R-123A CHCIFCCIF2 NA 370 395
+II Nhóm HFCs Tên viết tắt | Công thức hóa học AR4 ARS AR6
+| HFC-23 R-23 CHP; 14.800 | 12.400 | 14.600
+2 HFC-32 R-32 CH›E 675 677 771
+3 HFC-4] R-4I CH3F NA 116 135
+4 HFC-125 R-125 CHF2CF3 3.500 | 3.170 | 3.740
+5 HFC-134 R-134 CHF2CHF> NA 1.120 | 1.260
+6 HFC-134a R-134a CH2FCF3 1.430 |1.300 | 1,530
+7 HFC-143 R-143 CH›FCHE; NA 328 364
+8 HFC-143a R-143a CH3CF3 4.470 | 4.800 | 5.810
+9 HFC-152 R-152 CH›FCH2F NA l6 21.5
+10 | HFC-152a R-152a CH3CHF2 124 138 164
+11 | HFC-161 R-161 CH3CH2F NA 4 4,84
+12. | HFC-227ca R-227ca CF3CF2CHF2 NA NA 2.980
+
+2
+STT Khí nhà kính và môi chất GWP
+13 | HFC-227ea R-227ea C;HE; 3.220 | 3.350 |3.600
+14 | HFC-236eb R-236cb CH2FCF2CF3 NA 1.210 | 1.350
+15 | HFC-236ea R-236ea CHF2CHFCF3 NA 1.330 | 1.500
+lồ | HFC-236fa R-236fa CF3CH2CF3 9.810 | 8.060 | 8.690
+17 | HFC-245ca R-245ca CH2FCF2CHF? NA 716 787
+18 | HFC-245cb R-245cb CF3CF2CH3 NA NA 4.550
+19 | HFC-245ea R-245ea CHF2CHFCHF> NA NA 255
+20 | HFC-245eb R-245eb CH2FCHFCF3 NA NA 325
+21 | HFC-245fa R-245fa CHF2CH2CF3 1.030 | 858 962
+22 | HFC-263fb R-263fb CH3CH2CF3 NA NA 74.8
+23 | HFC-272ca R-272ca CH3CF2CH3 NA NA 599
+24. | HFC-329p R-329p CHF2CF2CF2CF3 NA NA 2.890
+25 | HFC-365mfc R-365mfe | CH3CF2CH2CF3 794 804 914
+26 | HFC-43-10mee R-43-10mee | CF3CHFCHFCF2CF3 1.640 | 1.650 | 1.600
+IV | Nhóm hỗn hợp môi chat | Thanh phan AR4 | ARS | ARG
+lanh
+| R-401A R-22/R-152/R-124 1.182 | 1.130 | 1.263
+53/13/34
+2 R-404A R-125/R-143a/R-134a 3.922 | 3.943 | 4.728
+44/52/4
+3 R-406A R-22/R-600a/R-142b 1.943 | 1.780 | 2.021
+55/14/41
+4 R-407A R-32/R-125/R-134a 2.107 | 1.923 | 2.262
+20/40/40
+5 R-407B R-32/R-125/R-134a 2.804 | 2.547 | 3.001
+10/70/20
+6 R-407C R-32/R-125/R-134a 1.774 | 1.624 | 1.908
+23/25/52
+7 R-407D R-32/R-125/R-134a 1.6627. |1.487 | 1.748
+15/15/70
+8 R-407E R-32/R-125/R-134a 1.552 |1.425 | 1.672
+25/15/60
+9 R-407F R-32/R-125/R-134a 1.749 | 1.612 | 1.889
+40/30/30
+10 | R-407H R-32/R-125/R-134a 1495 |1.378 | 1.615
+32.5/15/52.5
+11 | R-408A R-125/R-143a/R-22 3.152 | 3.257 | 3.856
+7/46/47
+12 | R-409A R-22/R-124/R-142b 1.585 | 1.485 |1.670
+
+3
+STT Khí nhà kính và môi chất GWP
+60/25/15
+13. | R-409B R-22/R-124/R-142b 1.560 | 1.474 | 1.653
+65/25/10
+14 | R-410A R-32/R-125 2.088 | 1.924 | 2.256
+50/50
+15 | R-410B R-32/R-125 2.229 | 2.048 | 2.404
+45/55
+16 | R-417A R125/R-134a/R-600 2.346 | 2.127 | 2.508
+46.6/50.0/3.4
+17 | R-420A R-134a/R-142b 1.536 | 1.382 | 1.622
+88/12
+18 | R-421A R-125/R-134a 2.631 | 2.385 | 2.812
+58/42
+19 | R-421B R-125/R-134a 3.190 | 2.890 | 3.409
+85/15
+20 | R-422A R-125/R-134a/R-600a 3.143 | 2.847 | 3.359
+85.1/11.5/3.4
+21 | R-422B R-125/R-134a/R-600a 2.526 | 2.290 | 2.700
+55/42/3
+22 | R-422C R-125/R-134a/R-600a 3.085 | 2.794 | 3.296
+82/15/3
+23 |R-507A R-125/R-143a 3.985 | 3.985 | 4.775
+50/50
+V Nhóm HFOs Tên viết tắt Công thức hóa học AR4 | ARS AR6
+| HFO-1123 R-1123 CHF=CF2 NA |NA 0,005
+2 HFO-1132a R-1132a CH2=CF2 NA |<l 0,052
+3 HFO-1141 R-1141 CHz=CHF NA |< 0,024
+4 HFO-1225ye(Z) R-1225ye(Z) | (Z)-CF3CF=CHF NA |<! 0,344
+5 HFO-1225ye(E) R-1225ye(E) | (E)-CF;CF=CHF NA |< 0,118
+6 HFO-1234ze(Z) R-1234ze(Z) | (Z)-CF;CH=CHF NA |< 0.315
+7 HFO-1234ze(E) R-1234ze(E) | (E)-CFiCH=CHF NA |< 137
+8 HFO-1234yf R-1234yf CF.CF=Ch› NA |<! 0,501
+9 HFO-1336mzz(E) R-1336mzz(E) | (E)-CF;CH=CHCF3 NA |NA 17,9
+10 | HFO-1336mzz(Z) R-1336mzz(Z) | (Z)-CF;CH=CHCF3 NA |2 2,08
+II | HFO-1243zf R-1243zf CF.CH=CH› NA |< 0,261
+12. | HFO-1345zfe R-1345zfe CF3CF,CH=CH?2 NA |< 0,182
+13 | HFO-1438ezy (E) R-1438ezy(E) | (E)-(CF3)2CFCH=CHF |NA_ |NA 8,220
+14 | HFO-1447fz R-1447fz CF3(CF2)2CH=CH2 NA |NA 0,235
+
+4
+STT Khí nhà kính và môi chất GWP
+15 3,3,4,4,5,5,6,6,6- NA n-C4F9CH=CH2 NA <] 0.204
+Nonafluorohex-1-ene
+16 3,3,4,4,5,5,6,6,7,7,8,8,8- | NA n-C6F13CH=CH2 NA <1 0.162
+Tridecafluorooct-1-ene
+17 3,3,4,4,5,5,6,6,7,7,.8,8,9,9 | NA n-C8F17CH=CH2 NA <1] 0,141
+,10,10,10-
+Heptadecafluorodec- | -ene
+18 3,3,3-trifluoro-2- NA (CF3)2C=CH2 NA NA 0,377
+(trifluoromethy)prop-1-
+ene
+19 1.1,2222.5< NA cyc NA NA 120
+hexafluorocyclopentane (-CF2CF2CF2CH2CH2-)
+20 1,1,2,2,3,3,4- NA CyC NA NA 231
+heptafluorocyclopentane (-CF2CF2CF2CHFCH2-)
+21 1,3,3,4.4,5,5- NA cyc NA NA 45,1
+heptafluorocyclopentene (-CF2CF2CF2CF=CH-)
+22 (4s,5s)-1,1,2,2,3,3,4,5- NA trans-cyc NA NA 258
+octafluorocyclopentane (-CF2CF2CF2CHFCHF-)
+23 1.3.3.4.4- NA cyc NA NA 92.4
+pentafluorocyclobutene (-CH=CFCF2CF2-)
+24 3.3,4.4- NA cyc NA NA 25.6
+tetrafluorocyclobutene (-CH=CHCF2CF2-)
+VI | Nhóm môi chất khác Tên viết tắt Công thức hóa học AR4 |AR5 | AR6
+1 HC-600a R-600a C4Hio 4 NA 0.006
+2 Propane R-290 C.Hg 5,3 NA 0,02
+3 Amoniac R-717 NH3 0 0 0

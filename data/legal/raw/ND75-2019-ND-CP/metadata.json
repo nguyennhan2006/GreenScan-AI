@@ -1,0 +1,25 @@
+{
+  "document_number": "75/2019/NĐ-CP",
+  "title": "Nghị định quy định về xử phạt vi phạm hành chính trong lĩnh vực cạnh tranh",
+  "authority": "Chính phủ (Government)",
+  "issued_date": "2019-09-26",
+  "effective_from": "2019-12-01",
+  "status": "effective",
+  "id": "ND75-2019-ND-CP",
+  "checked_at": "2026-10-13T12:20:24.393587+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\ND75-2019-ND-CP\\original.pdf",
+      "sha256": "1c4e1f2643dd53664e556ce4c7d2145a6f0bbc33210d474d8cfeabe6acf7abf5",
+      "bytes": 479286,
+      "source_url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2019/9/29759/28200-1-2019817-81875-2019-nd-cp.pdf",
+      "final_url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2019/9/29759/28200-1-2019817-81875-2019-nd-cp.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf; charset=utf-8",
+      "retrieved_at": "2026-10-13T12:20:24.514923+00:00",
+      "pages": 23,
+      "text_chars": 41757
+    }
+  ],
+  "text_acquisition": "ok"
+}

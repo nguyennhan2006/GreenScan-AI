@@ -1,0 +1,120 @@
+{
+ "systems": {
+  "qwen3:8b (CPU, không suy nghĩ)": {
+   "N01": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng cung cấp số liệu phát thải khí nhà kính toàn Tập đoàn năm 2025 là 23.474.480 tCO2e, gần bằng với tuyên bố 23,47 triệu tCO2e (sai số trong phạm vi làm tròn).",
+    "seconds": 284.8
+   },
+   "N02": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng cung cấp số liệu phát thải khí nhà kính phạm vi 1 toàn Tập đoàn năm 2025 là 23.369.500 tCO2e, khớp với tuyên bố trong báo cáo.",
+    "seconds": 267.6
+   },
+   "N03": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng cung cấp số liệu phát thải của mảng thép là 23.369.500 tCO2e, chiếm 99,55% tổng phát thải, phù hợp với tuyên bố trong báo cáo.",
+    "seconds": 273.0
+   },
+   "N04": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng nêu rõ tỷ trọng của mảng nông nghiệp trong tổng phát thải khí nhà kính của Tập đoàn năm 2025 là 0,39%, khớp với tuyên bố trong báo cáo.",
+    "seconds": 266.7
+   },
+   "N05": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng nêu rõ phát thải của mảng nông nghiệp năm 2025 là 933.876 tCO2e, khớp với tuyên bố trong báo cáo.",
+    "seconds": 259.3
+   },
+   "N06": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin cụ thể về phát thải khí nhà kính phạm vi 3 toàn Tập đoàn năm 2025, mà chỉ đề cập đến phát thải phạm vi 1 và phạm vi 2, cùng với tổng phát thải toàn Tập đoàn.",
+    "seconds": 282.4
+   },
+   "N08": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin cụ thể về lượng phát thải khí nhà kính phạm vi 2 của toàn Tập đoàn năm 2025, mà chỉ nêu tổng phát thải và tỷ trọng của các nhóm ngành.",
+    "seconds": 268.1
+   },
+   "N09": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin cụ thể về chỉ số phát thải khí nhà kính, mức độ hoàn thành kế hoạch, hoặc giá trị thực tế, do đó không thể xác nhận hay bác bỏ tuyên bố.",
+    "seconds": 123.3
+   },
+   "N10": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng xác nhận rằng Khu liên hợp Gang thép Hòa Phát Dung Quất tự chủ 90% nhu cầu điện, khớp với tuyên bố trong báo cáo.",
+    "seconds": 113.7
+   },
+   "N11": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng nêu rõ 'Tái sử dụng 98% nước tại Khu liên hợp Gang thép Hòa Phát Dung Quất', trong khi tuyên bố là 'Khu liên hợp Gang thép Hòa Phát Dung Quất tái sử dụng 90% nước'. Mặc dù tỷ lệ khác nhau, nhưng cả hai đều đề cập đến cùng chỉ số (tái sử dụng nước), cùng kỳ (năm 2025), cùng phạm vi (K",
+    "seconds": 150.4
+   },
+   "N12": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng nêu rõ 'Tái chế, tái sử dụng chất thải rắn nhóm thép và nông nghiệp đạt trên 99%', khớp với tuyên bố trong báo cáo.",
+    "seconds": 118.3
+   },
+   "N13": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng đề cập đến tỷ lệ phụ nữ ở các cấp quản lý là 35,85% vào năm 2025, trong khi tuyên bố đưa ra là 22%, do đó không khớp về giá trị và không thể xác nhận hay bác bỏ do thiếu thông tin chi tiết về phạm vi, ranh giới hoặc chỉ số.",
+    "seconds": 128.4
+   },
+   "N14": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng xác nhận cùng chỉ số (lượng điện phát), cùng kỳ (năm 2024), cùng phạm vi (hai khu liên hợp Hải Dương và Dung Quất), cùng ranh giới tổ chức (Hòa Phát), cùng loại giá trị (thực hiện) và giá trị khớp với tuyên bố trong sai số làm tròn.",
+    "seconds": 346.9
+   },
+   "N15": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng xác nhận rằng năm 2024, nhà máy điện nhiệt dư tại Dung Quất phát 3,18 tỷ kWh điện, khớp với tuyên bố trong báo cáo.",
+    "seconds": 328.8
+   },
+   "N16": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin về lượng điện phát của các nhà máy điện nhiệt dư thuộc hai khu liên hợp trong năm 2024, mà chỉ đề cập đến tổng lượng điện phát của cả hai khu liên hợp, không phân biệt rõ các nhà máy điện nhiệt dư.",
+    "seconds": 342.9
+   },
+   "N17": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Tuyên bố nói rằng Hòa Phát 'tự chủ 100% lượng điện cho sản xuất thép', nhưng bằng chứng chỉ cho thấy họ 'tự chủ trên 90%' lượng điện, do đó mâu thuẫn với tuyên bố.",
+    "seconds": 334.6
+   },
+   "N18": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng xác nhận rằng công nghệ BPRT giúp tiết kiệm đến 50% lượng điện tiêu thụ so với phương pháp truyền thống, giống với tuyên bố trong báo cáo.",
+    "seconds": 323.1
+   },
+   "N19": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin về lượng phát thải CO2 trước và sau khi áp dụng giải pháp thu hồi nhiệt dư, do đó không thể xác nhận hoặc bác bỏ tuyên bố về việc giảm 50% phát thải CO2.",
+    "seconds": 346.1
+   },
+   "N20": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng xác nhận rằng ngày 05/02/2025, nhà máy nhiệt điện tại Dung Quất đạt sản lượng điện lũy kế 10 tỷ kWh, khớp với tuyên bố trong báo cáo.",
+    "seconds": 331.4
+   }
+  }
+ }
+}

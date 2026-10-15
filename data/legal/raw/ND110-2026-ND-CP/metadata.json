@@ -1,0 +1,26 @@
+{
+  "document_number": "110/2026/NĐ-CP",
+  "title": "Quy định chi tiết thi hành một số điều của Luật Bảo vệ môi trường về trách nhiệm tái chế sản phẩm, bao bì và trách nhiệm xử lý chất thải của nhà sản xuất, nhập khẩu",
+  "authority": "Chính phủ",
+  "issued_date": "2026-04-01",
+  "effective_from": "2026-05-25",
+  "status": "effective",
+  "id": "ND110-2026-ND-CP",
+  "checked_at": "2026-10-13T12:20:27.735581+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\ND110-2026-ND-CP\\original.pdf",
+      "sha256": "cc426197aa066631dab9b90cba664d0449602a7936a7c2590d6e6903e1738990",
+      "bytes": 1198904,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/4/110-ndcp.signed.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/4/110-ndcp.signed.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:27.904330+00:00",
+      "pages": 28,
+      "text_chars": 148
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 28 pages, 148 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

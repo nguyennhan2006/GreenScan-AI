@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { jobStatus, startAnalysisFiles, startAnalysisText } from '../api.js'
+import { intakeFetch, intakePreview, intakeSampleFile, intakeSamples, jobStatus, startAnalysisFiles, startAnalysisText } from '../api.js'
 import { Chip } from '../components/badges.jsx'
+import { Icon } from '../components/icons.jsx'
 
 /**
  * Step 1 of the workflow: choose the documents, then watch the analysis run.
@@ -105,6 +106,23 @@ function SourceSelect({ value, onChange }) {
   )
 }
 
+function PreviewLine({ p }) {
+  if (!p) return <span className="text-[11px] text-slate-400">Đang đọc thử…</span>
+  if (p.error) return <span className="text-[11px] text-red-700">{p.error}</span>
+  const g = p.guess || {}
+  const minutes = Math.max(1, Math.round((p.estimated_seconds || 0) / 60))
+  return (
+    <span className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[11px] text-slate-500">
+      {p.pages != null && <span title="Số trang có lớp chữ / tổng số trang">{p.text_pages}/{p.pages} trang có chữ</span>}
+      <span title="Ước lượng số câu sẽ được đọc">~{p.sentences} câu</span>
+      <span title="Ước lượng theo HPG: 264 trang ≈ 2 phút trên laptop">≈ {p.estimated_seconds < 60 ? `${p.estimated_seconds} giây` : `${minutes} phút`}</span>
+      {g.report_type_label && <span className="text-emerald-800" title="Đoán từ tên tệp và các trang đầu">{g.report_type_label}{g.year ? ` ${g.year}` : ''}</span>}
+      {g.company && <span className="text-emerald-800" title="Tên doanh nghiệp đọc được ở các trang đầu">{g.company}</span>}
+      {(p.warnings || []).map((w, i) => <span key={i} className={/không có OCR|Không đọc/.test(w) ? 'font-semibold text-red-700' : 'text-amber-700'}>⚠ {w}</span>)}
+    </span>
+  )
+}
+
 function Progress({ job, startedAt, onRetry }) {
   const [now, setNow] = useState(Date.now())
   useEffect(() => {
@@ -168,20 +186,83 @@ export default function NewAnalysisPage({ onDone, runtime }) {
   const [job, setJob] = useState(null)
   const [startedAt, setStartedAt] = useState(0)
   const [error, setError] = useState(null)
+  const [url, setUrl] = useState('')
+  const [fetching, setFetching] = useState(false)
+  const [samples, setSamples] = useState([])
   const timer = useRef(null)
+
+  useEffect(() => { intakeSamples().then((r) => setSamples(r.samples || [])).catch(() => {}) }, [])
 
   useEffect(() => () => clearInterval(timer.current), [])
 
-  const addFiles = (list) => {
+  const addFiles = (list, preset = null) => {
+    const files = Array.from(list || [])
+    if (!files.length) return
     setEntries((prev) => [
       ...prev,
-      ...Array.from(list || []).map((file, i) => {
+      ...files.map((file, i) => {
         const isFirst = prev.length + i === 0
-        return { file, role: guessRole(file.name, isFirst), source_type: guessSourceType(file.name, isFirst) }
+        const p = preset?.[i]
+        return { file, role: p?.role || guessRole(file.name, isFirst), source_type: p?.source_type || guessSourceType(file.name, isFirst), preset: !!p, preview: null }
       }),
     ])
+    // Read each file the way the parser will, then fill in what the reviewer would otherwise type.
+    intakePreview(files).then((r) => {
+      setEntries((prev) => prev.map((e) => {
+        const k = files.indexOf(e.file)
+        if (k < 0) return e
+        const p = r.files[k]
+        const g = p?.guess || {}
+        if (e.preset || e.touched || !g.suggested_role) return { ...e, preview: p }
+        // Keep the first file as the report to check unless the preview is sure it is evidence.
+        const keepClaim = e.role === 'claim_source' && g.suggested_role !== 'claim_source' && !g.report_type
+        return { ...e, preview: p, role: keepClaim ? e.role : g.suggested_role, source_type: g.suggested_source_type }
+      }))
+      const first = r.files.find((p) => p?.guess?.company)
+      if (first) setCompany((c) => c || first.guess.company)
+      const main = r.files.find((p) => p?.guess?.report_type)
+      if (main) setLabel((l) => l || [main.guess.ticker || main.guess.company, main.guess.report_type_label, main.guess.year].filter(Boolean).join(' – '))
+    }).catch(() => {
+      setEntries((prev) => prev.map((e) => (files.includes(e.file) && !e.preview ? { ...e, preview: { error: 'Không đọc thử được; vẫn chạy được.' } } : e)))
+    })
   }
-  const update = (i, patch) => setEntries((prev) => prev.map((e, j) => (j === i ? { ...e, ...patch } : e)))
+
+  const loadSample = async (sample) => {
+    setFetching(true); setError(null)
+    try {
+      const files = await Promise.all(sample.files.map((f, i) => intakeSampleFile(sample.id, i, f.name)))
+      setMode('files')
+      addFiles(files, sample.files)
+      setCompany((c) => c || sample.company)
+      setLabel((l) => l || sample.label)
+    } catch (exc) {
+      setError(exc.message || 'Không mở được bộ mẫu.')
+    } finally {
+      setFetching(false)
+    }
+  }
+
+  const fromUrl = async () => {
+    const value = url.trim()
+    if (!value) return
+    const ticker = value.match(/^([A-Za-z]{3})\s+(20\d\d)$/)
+    if (ticker) {
+      const sample = samples.find((x) => x.id === ticker[1].toLowerCase())
+      if (sample) { await loadSample(sample); setUrl(''); return }
+      setError(`Chưa có danh mục báo cáo theo mã CK cho ${ticker[1].toUpperCase()} ${ticker[2]}. Dán đường dẫn tới tệp PDF/DOCX của báo cáo.`)
+      return
+    }
+    setFetching(true); setError(null)
+    try {
+      const file = await intakeFetch(value)
+      addFiles([file]); setUrl('')
+    } catch (exc) {
+      setError(exc.message || 'Không tải được tệp từ đường dẫn.')
+    } finally {
+      setFetching(false)
+    }
+  }
+  const update = (i, patch) => setEntries((prev) => prev.map((e, j) => (j === i ? { ...e, ...patch, touched: true } : e)))
   const remove = (i) => setEntries((prev) => prev.filter((_, j) => j !== i))
 
   const documents = useMemo(() => {
@@ -196,6 +277,7 @@ export default function NewAnalysisPage({ onDone, runtime }) {
   const hasEvidence = documents.some((d) => d.role !== 'claim_source')
   const hasIndependent = documents.some((d) => INDEPENDENT.has(d.source_type))
   const canStart = hasClaimSource && !job
+  const blind = entries.filter((e) => e.preview && !e.preview.ocr_available && (e.preview.scanned_pages || []).length > 0)
 
   const poll = (jobId) => {
     clearInterval(timer.current)
@@ -240,7 +322,7 @@ export default function NewAnalysisPage({ onDone, runtime }) {
   }
 
   return (
-    <div className="mx-auto max-w-4xl space-y-4">
+    <div className="mx-auto max-w-6xl space-y-4">
       <section className="rounded-xl border border-slate-200 bg-white p-5">
         <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800">Bước 1 · Chọn tài liệu</p>
         <div className="mt-3 grid gap-3 sm:grid-cols-2">
@@ -257,7 +339,7 @@ export default function NewAnalysisPage({ onDone, runtime }) {
         </div>
 
         <div className="mt-4 flex gap-2">
-          {[['files', 'Tải tệp PDF/TXT'], ['text', 'Dán văn bản']].map(([k, l]) => (
+          {[['files', 'Tệp, URL hoặc mẫu'], ['text', 'Dán văn bản']].map(([k, l]) => (
             <button key={k} type="button" onClick={() => setMode(k)} className={`rounded-lg px-4 py-2 text-sm font-semibold ${mode === k ? 'bg-[#0F3D2E] text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>{l}</button>
           ))}
         </div>
@@ -267,13 +349,28 @@ export default function NewAnalysisPage({ onDone, runtime }) {
             <label
               onDragOver={(e) => e.preventDefault()}
               onDrop={(e) => { e.preventDefault(); addFiles(e.dataTransfer.files) }}
-              className="mt-3 flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 p-7 text-center transition hover:border-emerald-400 hover:bg-emerald-50"
+              className="mt-3 flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-emerald-300/70 bg-emerald-50/30 p-8 text-center transition hover:border-emerald-500 hover:bg-emerald-50"
             >
-              <span className="text-2xl text-emerald-700">⤒</span>
-              <span className="mt-1 text-sm font-semibold text-slate-800">Kéo thả tệp vào đây hoặc bấm để chọn</span>
-              <span className="mt-1 text-[11px] text-slate-500">PDF (kể cả bản scan), TXT, MD, JSON · tệp đầu tiên mặc định là báo cáo cần kiểm</span>
-              <input type="file" multiple className="hidden" accept=".pdf,.txt,.md,.json,.csv" onChange={(e) => addFiles(e.target.files)} />
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-emerald-700 shadow-sm ring-1 ring-emerald-100"><Icon name="upload" className="h-6 w-6" /></span>
+              <span className="mt-3 text-[15px] font-semibold text-slate-800">Kéo thả tệp vào đây hoặc bấm để chọn</span>
+              <span className="mt-1 text-xs text-slate-500">PDF (kể cả bản scan), DOCX, HTML, TXT · hệ thống đọc thử từng tệp và đoán công ty, năm, loại báo cáo</span>
+              <input type="file" multiple className="hidden" accept=".pdf,.docx,.html,.htm,.txt,.md,.json,.csv" onChange={(e) => addFiles(e.target.files)} />
             </label>
+            <div className="mt-2 flex flex-wrap items-center gap-2">
+              <input value={url} onChange={(e) => setUrl(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && fromUrl()}
+                placeholder="Dán đường dẫn báo cáo (https://…pdf) hoặc “HPG 2025”"
+                className="min-w-0 flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100" />
+              <button type="button" onClick={fromUrl} disabled={!url.trim() || fetching} title="Máy chủ tải tệp về rồi thêm vào danh sách như tệp tải lên"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:border-emerald-500 hover:bg-emerald-50 disabled:opacity-40">
+                {fetching ? 'Đang tải…' : <><Icon name="download" className="h-4 w-4" />Lấy từ URL</>}
+              </button>
+              {samples.map((s) => (
+                <button key={s.id} type="button" onClick={() => loadSample(s)} disabled={fetching} title={`Nạp bộ mẫu để demo: ${s.files.map((f) => f.name).join(' + ')}`}
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-100 px-3.5 py-2 text-[13px] font-semibold text-emerald-900 transition hover:bg-emerald-200 hover:shadow disabled:opacity-40">
+                  <Icon name="star" className="h-4 w-4" />Mẫu {s.id.toUpperCase()}
+                </button>
+              ))}
+            </div>
             {entries.length > 0 && (
               <ul className="mt-3 divide-y divide-slate-100 rounded-lg border border-slate-200">
                 {entries.map((e, i) => (
@@ -283,6 +380,7 @@ export default function NewAnalysisPage({ onDone, runtime }) {
                     <Segmented value={e.role} onChange={(v) => update(i, { role: v })} options={ROLES.slice(0, 2)} />
                     <SourceSelect value={e.source_type} onChange={(v) => update(i, { source_type: v })} />
                     <button type="button" onClick={() => remove(i)} className="px-1 text-sm text-slate-400 hover:text-red-700" aria-label={`Bỏ ${e.file.name}`}>×</button>
+                    <div className="basis-full"><PreviewLine p={e.preview} /></div>
                   </li>
                 ))}
               </ul>
@@ -305,6 +403,11 @@ export default function NewAnalysisPage({ onDone, runtime }) {
         )}
 
         <div className="mt-4 space-y-2 text-xs">
+          {blind.length > 0 && (
+            <p className="rounded-lg border border-red-300 bg-red-50 px-3 py-2 text-red-800">
+              <b>Sẽ mất chữ:</b> {blind.map((e) => `${e.file.name} (${e.preview.scanned_pages.length} trang quét)`).join(', ')}. Máy này không có OCR nên các trang đó không cho ra câu nào. Cài tesseract, hoặc dùng bản PDF có lớp chữ / DOCX.
+            </p>
+          )}
           {documents.length > 0 && !hasClaimSource && (
             <p className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-red-800">Chưa có tài liệu nào là <b>Cần kiểm</b> — sẽ không có tuyên bố nào để kiểm.</p>
           )}
@@ -331,14 +434,17 @@ export default function NewAnalysisPage({ onDone, runtime }) {
               <Chip key={i} tone={d.role === 'claim_source' ? 'emerald' : INDEPENDENT.has(d.source_type) ? 'sky' : 'slate'}>{d.name}</Chip>
             ))}
           </div>
-          <button type="button" disabled={!canStart} onClick={start} className="shrink-0 rounded-lg bg-[#0F3D2E] px-5 py-2 text-sm font-semibold text-white disabled:opacity-40">▶ Bắt đầu phân tích</button>
+          <button type="button" disabled={!canStart} onClick={start} className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#0F3D2E] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#14533e] disabled:opacity-40"><Icon name="play" className="h-4 w-4" />Bắt đầu phân tích</button>
         </div>
       </section>
 
       <section className="grid gap-3 text-xs text-slate-600 sm:grid-cols-3">
-        <div className="rounded-xl border border-slate-200 bg-white p-3"><b className="text-slate-900">1 · Chọn tài liệu</b><p className="mt-1">Báo cáo cần kiểm và tài liệu để đối chiếu.</p></div>
-        <div className="rounded-xl border border-slate-200 bg-white p-3"><b className="text-slate-900">2 · Soát theo hàng đợi</b><p className="mt-1">Mở các mục theo thứ tự ưu tiên; xác nhận hoặc sửa kết quả của AI.</p></div>
-        <div className="rounded-xl border border-slate-200 bg-white p-3"><b className="text-slate-900">3 · Giấy làm việc</b><p className="mt-1">In hoặc lưu PDF, kèm quyết định của người soát xét.</p></div>
+        {[['Chọn tài liệu', 'Báo cáo cần kiểm và tài liệu để đối chiếu.'], ['Soát theo hàng đợi', 'Mở các mục theo thứ tự ưu tiên; xác nhận hoặc sửa kết quả của AI.'], ['Giấy làm việc', 'In hoặc lưu PDF, kèm quyết định của người soát xét.']].map(([t, d], i) => (
+          <div key={t} className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-4">
+            <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${i === 0 ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600'}`}>{i + 1}</span>
+            <span><b className="text-sm text-slate-900">{t}</b><p className="mt-0.5 leading-relaxed">{d}</p></span>
+          </div>
+        ))}
       </section>
     </div>
   )

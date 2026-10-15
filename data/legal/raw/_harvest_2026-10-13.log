@@ -1,0 +1,77 @@
+
+=== LUAT-19-2023-QH15 — 19/2023/QH15
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+    -> ok (54p, 108,876 chars)
+
+=== ND55-2024-ND-CP — 55/2024/NÐ-CP
+    -> scanned_no_text (38p, 148 chars)
+
+=== LUAT-16-2012-QH13 — 16/2012/QH13
+    -> ok (html, 40,270 chars)
+
+=== LUAT-75-2025-QH15 — 75/2025/QH15
+    -> scanned_no_text (13p, 148 chars)
+
+=== ND342-2025-ND-CP — 342/2025/NÐ-CP
+    discovered original: https://congbaocdn.chinhphu.vn/180507251028987904/2026/1/22/342cpsigned-1769065009231106
+    -> ok (28p, 53,442 chars)
+
+=== ND87-2026-ND-CP — 87/2026/NÐ-CP
+    -> scanned_no_text (99p, 148 chars)
+
+=== LUAT-23-2018-QH14 — 23/2018/QH14
+    -> ok (58p, 111,110 chars)
+
+=== ND75-2019-ND-CP — 75/2019/NÐ-CP
+    -> ok (23p, 41,757 chars)
+
+=== ND98-2020-ND-CP — 98/2020/NÐ-CP
+    -> scanned_no_text (114p, 146 chars)
+
+=== ND24-2025-ND-CP — 24/2025/NÐ-CP
+    -> ok (37p, 81,724 chars)
+
+=== LUAT-78-2025-QH15 — 78/2025/QH15
+    -> ok (42p, 106,244 chars)
+
+=== LUAT-70-2025-QH15 — 70/2025/QH15
+    -> scanned_no_text (18p, 148 chars)
+
+=== LUAT-122-2025-QH15 — 122/2025/QH15
+    -> scanned_no_text (28p, 0 chars)
+
+=== ND37-2026-ND-CP — 37/2026/NÐ-CP
+    -> scanned_no_text (92p, 148 chars)
+
+=== ND110-2026-ND-CP — 110/2026/NÐ-CP
+    -> scanned_no_text (28p, 148 chars)
+
+=== TT24-2026-TT-BNNMT — 24/2026/TT-BNNMT
+    -> scanned_no_text (38p, 0 chars)
+
+=== QD46-2026-QD-TTg — 46/2026/QÐ-TTg
+    -> scanned_no_text (73p, 194 chars)
+
+=== TT38-2023-TT-BCT — 38/2023/TT-BCT
+    -> scanned_no_text (40p, 109 chars)
+
+=== TT13-2024-TT-BXD — 13/2024/TT-BXD
+    -> scanned_no_text (67p, 38 chars)
+
+=== TT63-2024-TT-BGTVT — 63/2024/TT-BGTVT
+    -> ok (12p, 23,513 chars)
+
+=== TT11-2026-TT-BNNMT — 11/2026/TT-BNNMT
+    -> ok (36p, 68,275 chars)
+
+=== ND180-2026-ND-CP — 180/2026/NÐ-CP
+    -> scanned_no_text (79p, 148 chars)
+
+=== TT45-2024-TT-BTNMT — 45/2024/TT-BTNMT
+    -> ok (3p, 7,300 chars)
+
+=== TT09-2026-TT-BNNMT — 09/2026/TT-BNNMT
+    -> ok (30p, 81,494 chars)
+
+Acquisition status: {'ok': 11, 'scanned_no_text': 13}
+11/24 document(s) have usable full text.

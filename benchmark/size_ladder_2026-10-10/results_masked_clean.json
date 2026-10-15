@@ -1,0 +1,3445 @@
+{
+ "cases": [
+  {
+   "id": "F01",
+   "family": "khớp sau làm tròn",
+   "claim": "Năm 2025, tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty là khoảng 23,5 triệu tCO2e.",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "F02",
+   "family": "khớp sau làm tròn",
+   "claim": "Phát thải khí nhà kính phạm vi 2 của Công ty năm 2025 là 933.876 tCO2e.",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "F03",
+   "family": "lệch một con số",
+   "claim": "Năm 2025, tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty là 21,4 triệu tCO2e.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F04",
+   "family": "lệch một con số",
+   "claim": "Phát thải khí nhà kính phạm vi 2 của Công ty năm 2025 là 833.876 tCO2e.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F05",
+   "family": "lệch một con số",
+   "claim": "Năm 2024, nhà máy điện nhiệt dư đáp ứng 90% nhu cầu điện của khu liên hợp.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F06",
+   "family": "tính lại % thay đổi",
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm 20% so với năm 2020.",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "F07",
+   "family": "tính lại % thay đổi",
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm 20% so với năm 2020.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F08",
+   "family": "tính lại % thay đổi",
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm 20% so với năm 2020.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F09",
+   "family": "khác cơ sở đo",
+   "claim": "Hoạt động sản xuất gang thép chiếm hơn 99% tổng phát thải khí nhà kính của Tập đoàn.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F10",
+   "family": "khác cơ sở đo",
+   "claim": "Cường độ phát thải khí nhà kính năm 2025 của Công ty là 1,9 tCO2e/tấn thép.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F11",
+   "family": "khác cơ sở đo",
+   "claim": "Tổng phát thải khí nhà kính của Công ty năm 2025 giảm 5% so với năm 2024.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F12",
+   "family": "khác phạm vi phát thải",
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm 30% so với năm 2020.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F13",
+   "family": "khác phạm vi phát thải",
+   "claim": "Phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là 23,5 triệu tCO2e.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F14",
+   "family": "khác kỳ",
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty là 22,5 triệu tCO2e.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F15",
+   "family": "khác kỳ",
+   "claim": "Năm 2025, lượng nước sử dụng của Công ty giảm 12% so với năm 2024.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F16",
+   "family": "mục tiêu hay thực hiện",
+   "claim": "Công ty đã giảm 30% phát thải khí nhà kính phạm vi 1 và 2 so với năm 2020.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F17",
+   "family": "mục tiêu hay thực hiện",
+   "claim": "Công ty đặt mục tiêu giảm 30% phát thải khí nhà kính phạm vi 1 và 2 vào năm 2030 so với năm 2020.",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "F18",
+   "family": "mục tiêu hay thực hiện",
+   "claim": "Năm 2025, tỷ lệ phế liệu tái chế đưa vào sản xuất của Công ty đạt 30%.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F19",
+   "family": "khác ranh giới tổ chức",
+   "claim": "Phát thải khí nhà kính phạm vi 1 và 2 hợp nhất của Tập đoàn năm 2025 là 23,5 triệu tCO2e.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F20",
+   "family": "khác ranh giới tổ chức",
+   "claim": "Phát thải khí nhà kính phạm vi 1 và 2 của công ty mẹ năm 2025 là 1,2 triệu tCO2e.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F21",
+   "family": "khác đơn vị / hệ số",
+   "claim": "Năm 2025, Công ty tiêu thụ 5,6 triệu MWh điện.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F22",
+   "family": "khác đơn vị / hệ số",
+   "claim": "Năm 2025, Công ty sử dụng 15 triệu m3 nước.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F23",
+   "family": "khác đơn vị / hệ số",
+   "claim": "Năm 2025, Công ty sử dụng 15 triệu m3 nước.",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "F24",
+   "family": "dung sai theo độ chính xác",
+   "claim": "Tỷ lệ năng lượng tái tạo trong tổng năng lượng tiêu thụ của Công ty năm 2025 đạt 12%.",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "F25",
+   "family": "dung sai theo độ chính xác",
+   "claim": "Tỷ lệ năng lượng tái tạo trong tổng năng lượng tiêu thụ của Công ty năm 2025 đạt 12,0%.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F26",
+   "family": "cộng lại bảng",
+   "claim": "Tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là 23.474.480 tCO2e.",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "F27",
+   "family": "cộng lại bảng",
+   "claim": "Tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là 24.474.480 tCO2e.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F28",
+   "family": "bẫy từ phủ định",
+   "claim": "Năm 2024, Tập đoàn giảm phát thải khí nhà kính tại các nhà máy thép.",
+   "ok": [
+    "N",
+    "S"
+   ]
+  },
+  {
+   "id": "F29",
+   "family": "bẫy từ phủ định",
+   "claim": "Năm 2024, Tập đoàn giảm phát thải khí nhà kính tại các nhà máy thép.",
+   "ok": [
+    "N",
+    "S"
+   ]
+  },
+  {
+   "id": "F30",
+   "family": "không có bằng chứng liên quan",
+   "claim": "Năm 2025, 100% nước thải của Công ty được xử lý đạt quy chuẩn trước khi xả ra môi trường.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F31",
+   "family": "không có bằng chứng liên quan",
+   "claim": "Công ty đã đạt trung hòa carbon trong năm 2025.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F32",
+   "family": "cùng số, khác chỉ số",
+   "claim": "Năm 2025, Công ty tự chủ 90% nhu cầu điện cho sản xuất thép.",
+   "ok": [
+    "N"
+   ]
+  }
+ ],
+ "systems": {
+  "gemma-4-26B-A4B-it (che số + tên)": {
+   "F01": {
+    "label": "S",
+    "notes": [
+     "S1=2.35e+07 vs E3=2.34745e+07 (±50005)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E3"
+     }
+    ],
+    "reason": "Số E3 trong bằng chứng đo đúng tổng phát thải phạm vi 1 và 2 của năm 2025 tương ứng với tuyên bố S1.",
+    "seconds": 1.5,
+    "sent_claim": "Năm 2025, tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty là khoảng <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2",
+     "1",
+     "2",
+     "5.2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2",
+     "1",
+     "2",
+     "3",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 101,
+     "prompt_tokens": 697,
+     "prompt_tokens_details": {
+      "cached_tokens": 448
+     },
+     "total_tokens": 798
+    }
+   },
+   "F02": {
+    "label": "S",
+    "notes": [
+     "S1=933876 vs E2=933876 (±1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E2"
+     }
+    ],
+    "reason": "Số E2 trong bằng chứng đo đúng đại lượng phát thải phạm vi 2 của năm 2025 với đơn vị tCO2e.",
+    "seconds": 1.4,
+    "sent_claim": "Phát thải khí nhà kính phạm vi 2 của Công ty năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "2",
+     "1",
+     "2",
+     "5.2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2",
+     "1",
+     "2",
+     "3",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 99,
+     "prompt_tokens": 691,
+     "prompt_tokens_details": {
+      "cached_tokens": 416
+     },
+     "total_tokens": 790
+    }
+   },
+   "F03": {
+    "label": "C",
+    "notes": [
+     "S1=2.14e+07 vs E3=2.34745e+07 (±50005)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E3"
+     }
+    ],
+    "reason": "Số E3 trong bằng chứng đo đúng tổng phát thải phạm vi 1 và 2 của năm 2025 tương ứng với tuyên bố S1.",
+    "seconds": 1.4,
+    "sent_claim": "Năm 2025, tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2",
+     "1",
+     "2",
+     "5.2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2",
+     "1",
+     "2",
+     "3",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 101,
+     "prompt_tokens": 696,
+     "prompt_tokens_details": {
+      "cached_tokens": 608
+     },
+     "total_tokens": 797
+    }
+   },
+   "F04": {
+    "label": "C",
+    "notes": [
+     "S1=833876 vs E2=933876 (±1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E2"
+     }
+    ],
+    "reason": "Số E2 trong bằng chứng đo đúng đại lượng phát thải phạm vi 2 năm 2025 của công ty.",
+    "seconds": 1.4,
+    "sent_claim": "Phát thải khí nhà kính phạm vi 2 của Công ty năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "2",
+     "1",
+     "2",
+     "5.2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2",
+     "1",
+     "2",
+     "3",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 94,
+     "prompt_tokens": 691,
+     "prompt_tokens_details": {
+      "cached_tokens": 608
+     },
+     "total_tokens": 785
+    }
+   },
+   "F05": {
+    "label": "C",
+    "notes": [
+     "S1=90 vs E1=80 (±1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "Số E1 trong bằng chứng đo cùng chỉ số (tỷ lệ % đáp ứng nhu cầu điện), cùng năm (2024), cùng phạm vi và ranh giới với S1.",
+    "seconds": 1.5,
+    "sent_claim": "Năm 2024, nhà máy điện nhiệt dư đáp ứng <S1>% nhu cầu điện của khu liên hợp.",
+    "digits_left_in_prompt": [
+     "2024,",
+     "1",
+     "2024,",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 106,
+     "prompt_tokens": 650,
+     "prompt_tokens_details": {
+      "cached_tokens": 448
+     },
+     "total_tokens": 756
+    }
+   },
+   "F06": {
+    "label": "S",
+    "notes": [
+     "S1: thay đổi -20.00% vs -20% (±0.55)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "change",
+      "from": "E1",
+      "to": "E2"
+     }
+    ],
+    "reason": "Bằng chứng cung cấp giá trị phát thải phạm vi 1 của năm 2020 và 2025 để tính toán mức độ thay đổi phần trăm như tuyên bố.",
+    "seconds": 1.5,
+    "sent_claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm <S1>% so với năm 2020.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "1",
+     "2020.",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 116,
+     "prompt_tokens": 676,
+     "prompt_tokens_details": {
+      "cached_tokens": 608
+     },
+     "total_tokens": 792
+    }
+   },
+   "F07": {
+    "label": "C",
+    "notes": [
+     "S1: thay đổi -15.00% vs -20% (±0.55)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "change",
+      "from": "E1",
+      "to": "E2"
+     }
+    ],
+    "reason": "None",
+    "seconds": 1.1,
+    "sent_claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm <S1>% so với năm 2020.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "1",
+     "2020.",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 75,
+     "prompt_tokens": 676,
+     "prompt_tokens_details": {
+      "cached_tokens": 608
+     },
+     "total_tokens": 751
+    }
+   },
+   "F08": {
+    "label": "C",
+    "notes": [
+     "S1: thay đổi +5.00% vs -20% (±0.55)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "change",
+      "from": "E1",
+      "to": "E2"
+     }
+    ],
+    "reason": "Bằng chứng cung cấp giá trị phát thải phạm vi 1 tuyệt đối cho cả năm 2020 và 2025 để tính toán mức độ thay đổi phần trăm.",
+    "seconds": 1.4,
+    "sent_claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm <S1>% so với năm 2020.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "1",
+     "2020.",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 116,
+     "prompt_tokens": 676,
+     "prompt_tokens_details": {
+      "cached_tokens": 608
+     },
+     "total_tokens": 792
+    }
+   },
+   "F09": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "Bằng chứng chỉ cung cấp thông tin về sự thay đổi sản lượng thép thô, không cung cấp dữ liệu về tỷ trọng phát thải khí nhà kính của hoạt động sản xuất gang thép.",
+    "seconds": 1.3,
+    "sent_claim": "Hoạt động sản xuất gang thép chiếm hơn <S1>% tổng phát thải khí nhà kính của Tập đoàn.",
+    "digits_left_in_prompt": [
+     "1",
+     "2025,",
+     "1",
+     "2024."
+    ],
+    "usage": {
+     "completion_tokens": 111,
+     "prompt_tokens": 650,
+     "prompt_tokens_details": {
+      "cached_tokens": 576
+     },
+     "total_tokens": 761
+    }
+   },
+   "F10": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Bằng chứng chỉ cung cấp số liệu phát thải tuyệt đối (tCO2e), trong khi tuyên bố yêu cầu chỉ số cường độ phát thải (tCO2e/tấn thép).",
+    "seconds": 1.3,
+    "sent_claim": "Cường độ phát thải khí nhà kính năm 2025 của Công ty là <S1> tCO2e/tấn thép.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "5.2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2",
+     "1",
+     "2",
+     "3",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 103,
+     "prompt_tokens": 694,
+     "prompt_tokens_details": {
+      "cached_tokens": 416
+     },
+     "total_tokens": 797
+    }
+   },
+   "F11": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Tuyên bố nói về tổng phát thải (giá trị tuyệt đối) nhưng bằng chứng chỉ cung cấp thông tin về cường độ phát thải (giá trị cường độ).",
+    "seconds": 1.2,
+    "sent_claim": "Tổng phát thải khí nhà kính của Công ty năm 2025 giảm <S1>% so với năm 2024.",
+    "digits_left_in_prompt": [
+     "1",
+     "2024.",
+     "2",
+     "1",
+     "2024."
+    ],
+    "usage": {
+     "completion_tokens": 98,
+     "prompt_tokens": 668,
+     "prompt_tokens_details": {
+      "cached_tokens": 576
+     },
+     "total_tokens": 766
+    }
+   },
+   "F12": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Bằng chứng cung cấp mức giảm tổng hợp của phạm vi 1, 2 và 3, trong khi tuyên bố chỉ đề cập riêng biệt đến phạm vi 1.",
+    "seconds": 1.3,
+    "sent_claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm <S1>% so với năm 2020.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "1",
+     "2020.",
+     "2025,",
+     "1,",
+     "2",
+     "3",
+     "1",
+     "2020."
+    ],
+    "usage": {
+     "completion_tokens": 99,
+     "prompt_tokens": 670,
+     "prompt_tokens_details": {
+      "cached_tokens": 448
+     },
+     "total_tokens": 769
+    }
+   },
+   "F13": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Bằng chứng chỉ cung cấp số liệu phát thải phạm vi 1, thiếu số liệu phát thải phạm vi 2 để tính tổng phạm vi 1 và 2 như tuyên bố.",
+    "seconds": 1.0,
+    "sent_claim": "Phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 101,
+     "prompt_tokens": 657,
+     "prompt_tokens_details": {
+      "cached_tokens": 448
+     },
+     "total_tokens": 758
+    }
+   },
+   "F14": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Số liệu trong bằng chứng thuộc năm 2024, trong khi tuyên bố đề cập đến năm 2025.",
+    "seconds": 1.1,
+    "sent_claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "1",
+     "2",
+     "2024,",
+     "1",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 90,
+     "prompt_tokens": 656,
+     "prompt_tokens_details": {
+      "cached_tokens": 448
+     },
+     "total_tokens": 746
+    }
+   },
+   "F15": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Bằng chứng cung cấp dữ liệu về sự thay đổi của năm 2023 so với 2022, không thể dùng để xác nhận hay phủ nhận mục tiêu/kết quả của năm 2025 so với 2024.",
+    "seconds": 1.3,
+    "sent_claim": "Năm 2025, lượng nước sử dụng của Công ty giảm <S1>% so với năm 2024.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2024.",
+     "2023,",
+     "1",
+     "2022."
+    ],
+    "usage": {
+     "completion_tokens": 119,
+     "prompt_tokens": 654,
+     "prompt_tokens_details": {
+      "cached_tokens": 448
+     },
+     "total_tokens": 773
+    }
+   },
+   "F16": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "S1 là giá trị thực hiện (đã giảm), trong khi E1 là giá trị mục tiêu (dự kiến giảm) nên không thể dùng để xác nhận tuyên bố.",
+    "seconds": 1.1,
+    "sent_claim": "Công ty đã giảm <S1>% phát thải khí nhà kính phạm vi 1 và 2 so với năm 2020.",
+    "digits_left_in_prompt": [
+     "1",
+     "1",
+     "2",
+     "2020.",
+     "1",
+     "1",
+     "2",
+     "2020."
+    ],
+    "usage": {
+     "completion_tokens": 100,
+     "prompt_tokens": 663,
+     "prompt_tokens_details": {
+      "cached_tokens": 576
+     },
+     "total_tokens": 763
+    }
+   },
+   "F17": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Bằng chứng xác nhận cùng một mục tiêu giảm tỷ lệ phần trăm phát thải phạm vi 1 và 2 vào năm 2030 so với năm 2020.",
+    "seconds": 1.2,
+    "sent_claim": "Công ty đặt mục tiêu giảm <S1>% phát thải khí nhà kính phạm vi 1 và 2 vào năm 2030 so với năm 2020.",
+    "digits_left_in_prompt": [
+     "1",
+     "1",
+     "2",
+     "2020.",
+     "1",
+     "1",
+     "2",
+     "2020."
+    ],
+    "usage": {
+     "completion_tokens": 98,
+     "prompt_tokens": 672,
+     "prompt_tokens_details": {
+      "cached_tokens": 576
+     },
+     "total_tokens": 770
+    }
+   },
+   "F18": {
+    "label": "C",
+    "notes": [
+     "S1=30 vs E1=18 (±1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "Số E1 trong bằng chứng đo cùng chỉ số tỷ lệ phế liệu tái chế, cùng năm 2025 và cùng loại giá trị thực hiện với S1.",
+    "seconds": 1.2,
+    "sent_claim": "Năm 2025, tỷ lệ phế liệu tái chế đưa vào sản xuất của Công ty đạt <S1>%.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2025,",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 104,
+     "prompt_tokens": 661,
+     "prompt_tokens_details": {
+      "cached_tokens": 576
+     },
+     "total_tokens": 765
+    }
+   },
+   "F19": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "Số liệu E1 chỉ thuộc phạm vi một cơ sở ([CƠ_SỞ_A]), không đủ để đại diện cho tổng phát thải hợp nhất của toàn Tập đoàn như tuyên bố S1.",
+    "seconds": 0.9,
+    "sent_claim": "Phát thải khí nhà kính phạm vi 1 và 2 hợp nhất của Tập đoàn năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 113,
+     "prompt_tokens": 672,
+     "prompt_tokens_details": {
+      "cached_tokens": 448
+     },
+     "total_tokens": 785
+    }
+   },
+   "F20": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "S1 thuộc phạm vi công ty mẹ trong khi E1 thuộc phạm vi hợp nhất toàn Tập đoàn, dẫn đến sự khác biệt về ranh giới báo cáo.",
+    "seconds": 1.1,
+    "sent_claim": "Phát thải khí nhà kính phạm vi 1 và 2 của công ty mẹ năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 105,
+     "prompt_tokens": 663,
+     "prompt_tokens_details": {
+      "cached_tokens": 576
+     },
+     "total_tokens": 768
+    }
+   },
+   "F21": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Bằng chứng cung cấp số liệu về lượng tiêu thụ than, không phải lượng tiêu thụ điện năng (MWh) như tuyên bố.",
+    "seconds": 1.3,
+    "sent_claim": "Năm 2025, Công ty tiêu thụ <S1> MWh điện.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2025,",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 91,
+     "prompt_tokens": 635,
+     "prompt_tokens_details": {
+      "cached_tokens": 448
+     },
+     "total_tokens": 726
+    }
+   },
+   "F22": {
+    "label": "C",
+    "notes": [
+     "S1=1.5e+07 vs E1=15000 (±150150)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "Số liệu E1 trong bằng chứng đo cùng đại lượng (m3 nước), cùng kỳ (2025) và cùng phạm vi với tuyên bố S1.",
+    "seconds": 1.2,
+    "sent_claim": "Năm 2025, Công ty sử dụng <S1> m3 nước.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "3",
+     "1",
+     "3."
+    ],
+    "usage": {
+     "completion_tokens": 102,
+     "prompt_tokens": 639,
+     "prompt_tokens_details": {
+      "cached_tokens": 544
+     },
+     "total_tokens": 741
+    }
+   },
+   "F23": {
+    "label": "S",
+    "notes": [
+     "S1=1.5e+07 vs E1=1.5e+07 (±300000)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "Số E1 trong bằng chứng đo cùng đại lượng (m3 nước), cùng kỳ (2025) và cùng phạm vi với S1 trong tuyên bố.",
+    "seconds": 1.3,
+    "sent_claim": "Năm 2025, Công ty sử dụng <S1> m3 nước.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "3",
+     "1",
+     "3."
+    ],
+    "usage": {
+     "completion_tokens": 100,
+     "prompt_tokens": 639,
+     "prompt_tokens_details": {
+      "cached_tokens": 448
+     },
+     "total_tokens": 739
+    }
+   },
+   "F24": {
+    "label": "S",
+    "notes": [
+     "S1=12 vs E1=12.4 (±0.55)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "Số E1 trong bằng chứng đo cùng chỉ số tỷ lệ năng lượng tái tạo, cùng năm 2025 và cùng phạm vi với tuyên bố S1.",
+    "seconds": 1.1,
+    "sent_claim": "Tỷ lệ năng lượng tái tạo trong tổng năng lượng tiêu thụ của Công ty năm 2025 đạt <S1>%.",
+    "digits_left_in_prompt": [
+     "1",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 102,
+     "prompt_tokens": 654,
+     "prompt_tokens_details": {
+      "cached_tokens": 576
+     },
+     "total_tokens": 756
+    }
+   },
+   "F25": {
+    "label": "C",
+    "notes": [
+     "S1=12 vs E1=12.4 (±0.1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "Số E1 trong bằng chứng đo cùng chỉ số tỷ lệ năng lượng tái tạo, cùng năm 2025 và cùng phạm vi với tuyên bố S1.",
+    "seconds": 0.9,
+    "sent_claim": "Tỷ lệ năng lượng tái tạo trong tổng năng lượng tiêu thụ của Công ty năm 2025 đạt <S1>%.",
+    "digits_left_in_prompt": [
+     "1",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 102,
+     "prompt_tokens": 654,
+     "prompt_tokens_details": {
+      "cached_tokens": 576
+     },
+     "total_tokens": 756
+    }
+   },
+   "F26": {
+    "label": "S",
+    "notes": [
+     "S1=2.34745e+07 vs Σ=2.34745e+07 (±6)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "sum",
+      "evidence": [
+       "E1",
+       "E2"
+      ]
+     }
+    ],
+    "reason": "S1 là tổng phát thải phạm vi 1 và 2, tương ứng với tổng của E1 (phạm vi 1) và E2 (phạm vi 2) trong cùng năm 2025.",
+    "seconds": 0.9,
+    "sent_claim": "Tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 127,
+     "prompt_tokens": 673,
+     "prompt_tokens_details": {
+      "cached_tokens": 608
+     },
+     "total_tokens": 800
+    }
+   },
+   "F27": {
+    "label": "C",
+    "notes": [
+     "S1=2.44745e+07 vs Σ=2.34745e+07 (±6)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "sum",
+      "evidence": [
+       "E1",
+       "E2"
+      ]
+     }
+    ],
+    "reason": "S1 là tổng phát thải phạm vi 1 và 2, tương ứng với tổng của E1 (phạm vi 1) và E2 (phạm vi 2) trong cùng năm 2025.",
+    "seconds": 1.2,
+    "sent_claim": "Tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 127,
+     "prompt_tokens": 673,
+     "prompt_tokens_details": {
+      "cached_tokens": 608
+     },
+     "total_tokens": 800
+    }
+   },
+   "F28": {
+    "label": "S",
+    "notes": [
+     "định tính"
+    ],
+    "mappings": [],
+    "reason": "Bằng chứng xác nhận việc áp dụng công nghệ mới tại nhà máy thép giúp giảm phát thải khí nhà kính trong năm 2024, phù hợp với nội dung tuyên bố.",
+    "seconds": 1.1,
+    "sent_claim": "Năm 2024, Tập đoàn giảm phát thải khí nhà kính tại các nhà máy thép.",
+    "digits_left_in_prompt": [
+     "2024,",
+     "2024,"
+    ],
+    "usage": {
+     "completion_tokens": 71,
+     "prompt_tokens": 645,
+     "prompt_tokens_details": {
+      "cached_tokens": 448
+     },
+     "total_tokens": 716
+    }
+   },
+   "F29": {
+    "label": "S",
+    "notes": [
+     "định tính"
+    ],
+    "mappings": [],
+    "reason": "Tuyên bố về việc giảm phát thải khí nhà kính tại các nhà máy thép vào năm 2024 được xác nhận bởi nội dung bằng chứng cho rằng phát thải khí nhà kính đã giảm so với năm trước.",
+    "seconds": 1.2,
+    "sent_claim": "Năm 2024, Tập đoàn giảm phát thải khí nhà kính tại các nhà máy thép.",
+    "digits_left_in_prompt": [
+     "2024,"
+    ],
+    "usage": {
+     "completion_tokens": 78,
+     "prompt_tokens": 649,
+     "prompt_tokens_details": {
+      "cached_tokens": 480
+     },
+     "total_tokens": 727
+    }
+   },
+   "F30": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Bằng chứng chỉ cung cấp thông tin về đào tạo an toàn lao động, không có thông tin về tỷ lệ xử lý nước thải.",
+    "seconds": 1.2,
+    "sent_claim": "Năm 2025, <S1>% nước thải của Công ty được xử lý đạt quy chuẩn trước khi xả ra môi trường.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2025,",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 91,
+     "prompt_tokens": 661,
+     "prompt_tokens_details": {
+      "cached_tokens": 448
+     },
+     "total_tokens": 752
+    }
+   },
+   "F31": {
+    "label": "N",
+    "notes": [
+     "định tính"
+    ],
+    "mappings": [],
+    "reason": "Bằng chứng về số lượng cây xanh trồng được không đủ để xác nhận trạng thái trung hòa carbon của công ty.",
+    "seconds": 1.0,
+    "sent_claim": "Công ty đã đạt trung hòa carbon trong năm 2025.",
+    "digits_left_in_prompt": [
+     "2025.",
+     "2025,",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 53,
+     "prompt_tokens": 635,
+     "prompt_tokens_details": {
+      "cached_tokens": 416
+     },
+     "total_tokens": 688
+    }
+   },
+   "F32": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "S1 là tỷ lệ tự chủ điện, trong khi E1 là tỷ lệ hoàn thành kế hoạch kiểm kê khí nhà kính, hai đại lượng này khác nhau hoàn toàn.",
+    "seconds": 0.9,
+    "sent_claim": "Năm 2025, Công ty tự chủ <S1>% nhu cầu điện cho sản xuất thép.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2025,",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 101,
+     "prompt_tokens": 644,
+     "prompt_tokens_details": {
+      "cached_tokens": 576
+     },
+     "total_tokens": 745
+    }
+   }
+  },
+  "gemma-4-31B-it (che số + tên)": {
+   "F01": {
+    "label": "S",
+    "notes": [
+     "S1=2.35e+07 vs E3=2.34745e+07 (±50005)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E3"
+     }
+    ],
+    "reason": "Số S1 là tổng phát thải phạm vi 1 và 2 năm 2025, tương ứng trực tiếp với số E3 trong bằng chứng.",
+    "seconds": 1.6,
+    "sent_claim": "Năm 2025, tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty là khoảng <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2",
+     "1",
+     "2",
+     "5.2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2",
+     "1",
+     "2",
+     "3",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 99,
+     "prompt_tokens": 697,
+     "total_tokens": 796
+    }
+   },
+   "F02": {
+    "label": "S",
+    "notes": [
+     "S1=933876 vs E2=933876 (±1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E2"
+     }
+    ],
+    "reason": "Số S1 trong tuyên bố về phát thải phạm vi 2 năm 2025 khớp trực tiếp với số E2 trong bảng bằng chứng.",
+    "seconds": 1.9,
+    "sent_claim": "Phát thải khí nhà kính phạm vi 2 của Công ty năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "2",
+     "1",
+     "2",
+     "5.2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2",
+     "1",
+     "2",
+     "3",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 97,
+     "prompt_tokens": 691,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 416
+     },
+     "total_tokens": 788
+    }
+   },
+   "F03": {
+    "label": "C",
+    "notes": [
+     "S1=2.14e+07 vs E3=2.34745e+07 (±50005)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E3"
+     }
+    ],
+    "reason": "Số S1 là tổng phát thải phạm vi 1 và 2 năm 2025, tương ứng trực tiếp với số E3 trong bằng chứng.",
+    "seconds": 3.0,
+    "sent_claim": "Năm 2025, tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2",
+     "1",
+     "2",
+     "5.2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2",
+     "1",
+     "2",
+     "3",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 99,
+     "prompt_tokens": 696,
+     "total_tokens": 795
+    }
+   },
+   "F04": {
+    "label": "C",
+    "notes": [
+     "S1=833876 vs E2=933876 (±1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E2"
+     }
+    ],
+    "reason": "Số S1 trong tuyên bố về phát thải phạm vi 2 năm 2025 khớp trực tiếp với số E2 trong bảng bằng chứng.",
+    "seconds": 3.0,
+    "sent_claim": "Phát thải khí nhà kính phạm vi 2 của Công ty năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "2",
+     "1",
+     "2",
+     "5.2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2",
+     "1",
+     "2",
+     "3",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 97,
+     "prompt_tokens": 691,
+     "total_tokens": 788
+    }
+   },
+   "F05": {
+    "label": "C",
+    "notes": [
+     "S1=90 vs E1=80 (±1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "Số E1 trong bằng chứng đo cùng chỉ số (tỷ lệ đáp ứng nhu cầu điện), cùng năm (2024) và cùng ranh giới (nhà máy điện nhiệt dư/khu liên hợp) với S1.",
+    "seconds": 2.0,
+    "sent_claim": "Năm 2024, nhà máy điện nhiệt dư đáp ứng <S1>% nhu cầu điện của khu liên hợp.",
+    "digits_left_in_prompt": [
+     "2024,",
+     "1",
+     "2024,",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 116,
+     "prompt_tokens": 650,
+     "total_tokens": 766
+    }
+   },
+   "F06": {
+    "label": "S",
+    "notes": [
+     "S1: thay đổi -20.00% vs -20% (±0.55)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "change",
+      "from": "E1",
+      "to": "E2"
+     }
+    ],
+    "reason": "S1 là tỷ lệ phần trăm thay đổi của phát thải phạm vi 1 từ năm 2020 (E1) đến năm 2025 (E2).",
+    "seconds": 1.7,
+    "sent_claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm <S1>% so với năm 2020.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "1",
+     "2020.",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 113,
+     "prompt_tokens": 676,
+     "total_tokens": 789
+    }
+   },
+   "F07": {
+    "label": "C",
+    "notes": [
+     "S1: thay đổi -15.00% vs -20% (±0.55)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "change",
+      "from": "E1",
+      "to": "E2"
+     }
+    ],
+    "reason": "S1 là tỷ lệ phần trăm thay đổi của phát thải phạm vi 1 từ năm 2020 (E1) đến năm 2025 (E2).",
+    "seconds": 1.5,
+    "sent_claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm <S1>% so với năm 2020.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "1",
+     "2020.",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 113,
+     "prompt_tokens": 676,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 416
+     },
+     "total_tokens": 789
+    }
+   },
+   "F08": {
+    "label": "C",
+    "notes": [
+     "S1: thay đổi +5.00% vs -20% (±0.55)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "change",
+      "from": "E1",
+      "to": "E2"
+     }
+    ],
+    "reason": "S1 là tỷ lệ phần trăm thay đổi của phát thải phạm vi 1 từ năm 2020 (E1) đến năm 2025 (E2).",
+    "seconds": 1.6,
+    "sent_claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm <S1>% so với năm 2020.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "1",
+     "2020.",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 113,
+     "prompt_tokens": 676,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 608
+     },
+     "total_tokens": 789
+    }
+   },
+   "F09": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Bằng chứng cung cấp tỷ lệ tăng trưởng sản lượng thép, không cung cấp tỷ trọng phát thải khí nhà kính của hoạt động sản xuất gang thép trên tổng phát thải của Tập đoàn.",
+    "seconds": 1.3,
+    "sent_claim": "Hoạt động sản xuất gang thép chiếm hơn <S1>% tổng phát thải khí nhà kính của Tập đoàn.",
+    "digits_left_in_prompt": [
+     "1",
+     "2025,",
+     "1",
+     "2024."
+    ],
+    "usage": {
+     "completion_tokens": 101,
+     "prompt_tokens": 650,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 416
+     },
+     "total_tokens": 751
+    }
+   },
+   "F10": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Tuyên bố yêu cầu giá trị cường độ phát thải (tCO2e/tấn thép) nhưng bằng chứng chỉ cung cấp giá trị phát thải tuyệt đối (tCO2e).",
+    "seconds": 1.8,
+    "sent_claim": "Cường độ phát thải khí nhà kính năm 2025 của Công ty là <S1> tCO2e/tấn thép.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "5.2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2",
+     "1",
+     "2",
+     "3",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 96,
+     "prompt_tokens": 694,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 416
+     },
+     "total_tokens": 790
+    }
+   },
+   "F11": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Tuyên bố đề cập đến tổng phát thải (giá trị tuyệt đối) nhưng bằng chứng chỉ cung cấp thông tin về cường độ phát thải.",
+    "seconds": 1.6,
+    "sent_claim": "Tổng phát thải khí nhà kính của Công ty năm 2025 giảm <S1>% so với năm 2024.",
+    "digits_left_in_prompt": [
+     "1",
+     "2024.",
+     "2",
+     "1",
+     "2024."
+    ],
+    "usage": {
+     "completion_tokens": 93,
+     "prompt_tokens": 668,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 416
+     },
+     "total_tokens": 761
+    }
+   },
+   "F12": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Tuyên bố đề cập đến phát thải phạm vi 1, trong khi bằng chứng đề cập đến tổng phát thải phạm vi 1, 2 và 3.",
+    "seconds": 1.6,
+    "sent_claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm <S1>% so với năm 2020.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "1",
+     "2020.",
+     "2025,",
+     "1,",
+     "2",
+     "3",
+     "1",
+     "2020."
+    ],
+    "usage": {
+     "completion_tokens": 97,
+     "prompt_tokens": 670,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 480
+     },
+     "total_tokens": 767
+    }
+   },
+   "F13": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Tuyên bố yêu cầu tổng phát thải phạm vi 1 và 2, nhưng bằng chứng chỉ cung cấp dữ liệu cho phạm vi 1.",
+    "seconds": 1.6,
+    "sent_claim": "Phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 93,
+     "prompt_tokens": 657,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 416
+     },
+     "total_tokens": 750
+    }
+   },
+   "F14": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Số S1 đo lường cho năm 2025, trong khi số E1 trong bằng chứng đo lường cho năm 2024.",
+    "seconds": 1.7,
+    "sent_claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "1",
+     "2",
+     "2024,",
+     "1",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 90,
+     "prompt_tokens": 656,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 448
+     },
+     "total_tokens": 746
+    }
+   },
+   "F15": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Bằng chứng cung cấp dữ liệu cho giai đoạn 2022-2023, trong khi tuyên bố đề cập đến giai đoạn 2024-2025.",
+    "seconds": 1.8,
+    "sent_claim": "Năm 2025, lượng nước sử dụng của Công ty giảm <S1>% so với năm 2024.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2024.",
+     "2023,",
+     "1",
+     "2022."
+    ],
+    "usage": {
+     "completion_tokens": 98,
+     "prompt_tokens": 654,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 416
+     },
+     "total_tokens": 752
+    }
+   },
+   "F16": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "S1 là giá trị thực hiện giảm phát thải, trong khi E1 là giá trị mục tiêu đến năm 2030.",
+    "seconds": 1.0,
+    "sent_claim": "Công ty đã giảm <S1>% phát thải khí nhà kính phạm vi 1 và 2 so với năm 2020.",
+    "digits_left_in_prompt": [
+     "1",
+     "1",
+     "2",
+     "2020.",
+     "1",
+     "1",
+     "2",
+     "2020."
+    ],
+    "usage": {
+     "completion_tokens": 91,
+     "prompt_tokens": 663,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 416
+     },
+     "total_tokens": 754
+    }
+   },
+   "F17": {
+    "label": "S",
+    "notes": [
+     "S1=30 vs E1=30 (±1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "Số E1 trong bằng chứng đo cùng chỉ số (phần trăm giảm phát thải), cùng phạm vi (Scope 1 và 2), cùng năm mục tiêu (2030) và năm cơ sở (2020) với S1.",
+    "seconds": 1.6,
+    "sent_claim": "Công ty đặt mục tiêu giảm <S1>% phát thải khí nhà kính phạm vi 1 và 2 vào năm 2030 so với năm 2020.",
+    "digits_left_in_prompt": [
+     "1",
+     "1",
+     "2",
+     "2020.",
+     "1",
+     "1",
+     "2",
+     "2020."
+    ],
+    "usage": {
+     "completion_tokens": 119,
+     "prompt_tokens": 672,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 416
+     },
+     "total_tokens": 791
+    }
+   },
+   "F18": {
+    "label": "C",
+    "notes": [
+     "S1=30 vs E1=18 (±1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "S1 đo tỷ lệ phế liệu tái chế thực hiện năm 2025, khớp hoàn toàn với E1.",
+    "seconds": 1.4,
+    "sent_claim": "Năm 2025, tỷ lệ phế liệu tái chế đưa vào sản xuất của Công ty đạt <S1>%.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2025,",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 92,
+     "prompt_tokens": 661,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 448
+     },
+     "total_tokens": 753
+    }
+   },
+   "F19": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "S1 đo lường cho toàn Tập đoàn trong khi E1 chỉ đo lường cho một cơ sở đơn lẻ [CƠ_SỞ_A], khác biệt về ranh giới báo cáo.",
+    "seconds": 1.7,
+    "sent_claim": "Phát thải khí nhà kính phạm vi 1 và 2 hợp nhất của Tập đoàn năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 98,
+     "prompt_tokens": 672,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 448
+     },
+     "total_tokens": 770
+    }
+   },
+   "F20": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Số S1 đo cho 'công ty mẹ' trong khi số E1 đo cho 'hợp nhất toàn Tập đoàn', khác nhau về ranh giới báo cáo.",
+    "seconds": 2.2,
+    "sent_claim": "Phát thải khí nhà kính phạm vi 1 và 2 của công ty mẹ năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 92,
+     "prompt_tokens": 663,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 448
+     },
+     "total_tokens": 755
+    }
+   },
+   "F21": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Số S1 đo lường điện năng tiêu thụ (MWh) trong khi số E1 đo lường lượng than tiêu thụ (tấn), đây là hai chỉ số khác nhau.",
+    "seconds": 2.0,
+    "sent_claim": "Năm 2025, Công ty tiêu thụ <S1> MWh điện.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2025,",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 95,
+     "prompt_tokens": 635,
+     "total_tokens": 730
+    }
+   },
+   "F22": {
+    "label": "C",
+    "notes": [
+     "S1=1.5e+07 vs E1=15000 (±150150)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "Số E1 trong bằng chứng đo cùng chỉ số (lượng nước sử dụng), cùng năm (2025) và cùng ranh giới (Công ty) với S1.",
+    "seconds": 2.0,
+    "sent_claim": "Năm 2025, Công ty sử dụng <S1> m3 nước.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "3",
+     "1",
+     "3."
+    ],
+    "usage": {
+     "completion_tokens": 104,
+     "prompt_tokens": 639,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 448
+     },
+     "total_tokens": 743
+    }
+   },
+   "F23": {
+    "label": "S",
+    "notes": [
+     "S1=1.5e+07 vs E1=1.5e+07 (±300000)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "Số E1 trong bằng chứng đo cùng chỉ số (lượng nước sử dụng), cùng năm (2025) và cùng ranh giới (Công ty) với S1.",
+    "seconds": 1.2,
+    "sent_claim": "Năm 2025, Công ty sử dụng <S1> m3 nước.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "3",
+     "1",
+     "3."
+    ],
+    "usage": {
+     "completion_tokens": 104,
+     "prompt_tokens": 639,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 448
+     },
+     "total_tokens": 743
+    }
+   },
+   "F24": {
+    "label": "S",
+    "notes": [
+     "S1=12 vs E1=12.4 (±0.55)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "Số E1 trong bằng chứng đo cùng chỉ số (tỷ lệ năng lượng tái tạo), cùng năm (2025) và cùng ranh giới (Công ty) với S1.",
+    "seconds": 1.8,
+    "sent_claim": "Tỷ lệ năng lượng tái tạo trong tổng năng lượng tiêu thụ của Công ty năm 2025 đạt <S1>%.",
+    "digits_left_in_prompt": [
+     "1",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 106,
+     "prompt_tokens": 654,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 416
+     },
+     "total_tokens": 760
+    }
+   },
+   "F25": {
+    "label": "C",
+    "notes": [
+     "S1=12 vs E1=12.4 (±0.1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "Số E1 trong bằng chứng đo cùng chỉ số (tỷ lệ năng lượng tái tạo), cùng năm (2025) và cùng ranh giới (Công ty) với S1.",
+    "seconds": 1.7,
+    "sent_claim": "Tỷ lệ năng lượng tái tạo trong tổng năng lượng tiêu thụ của Công ty năm 2025 đạt <S1>%.",
+    "digits_left_in_prompt": [
+     "1",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 106,
+     "prompt_tokens": 654,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 416
+     },
+     "total_tokens": 760
+    }
+   },
+   "F26": {
+    "label": "S",
+    "notes": [
+     "S1=2.34745e+07 vs Σ=2.34745e+07 (±6)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "sum",
+      "evidence": [
+       "E1",
+       "E2"
+      ]
+     }
+    ],
+    "reason": "S1 là tổng phát thải phạm vi 1 và 2 năm 2025, tương ứng với tổng của E1 (phạm vi 1) và E2 (phạm vi 2) trong cùng năm và cùng ranh giới.",
+    "seconds": 1.4,
+    "sent_claim": "Tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 131,
+     "prompt_tokens": 673,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 448
+     },
+     "total_tokens": 804
+    }
+   },
+   "F27": {
+    "label": "C",
+    "notes": [
+     "S1=2.44745e+07 vs Σ=2.34745e+07 (±6)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "sum",
+      "evidence": [
+       "E1",
+       "E2"
+      ]
+     }
+    ],
+    "reason": "S1 là tổng phát thải phạm vi 1 và 2, tương ứng với tổng của E1 (phạm vi 1) và E2 (phạm vi 2) trong cùng năm 2025 của Công ty.",
+    "seconds": 2.0,
+    "sent_claim": "Tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 128,
+     "prompt_tokens": 673,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 416
+     },
+     "total_tokens": 801
+    }
+   },
+   "F28": {
+    "label": "S",
+    "notes": [
+     "định tính"
+    ],
+    "mappings": [],
+    "reason": "Bằng chứng xác nhận việc áp dụng công nghệ mới giúp giảm phát thải khí nhà kính tại nhà máy thép trong năm 2024.",
+    "seconds": 1.2,
+    "sent_claim": "Năm 2024, Tập đoàn giảm phát thải khí nhà kính tại các nhà máy thép.",
+    "digits_left_in_prompt": [
+     "2024,",
+     "2024,"
+    ],
+    "usage": {
+     "completion_tokens": 63,
+     "prompt_tokens": 645,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 416
+     },
+     "total_tokens": 708
+    }
+   },
+   "F29": {
+    "label": "S",
+    "notes": [
+     "định tính"
+    ],
+    "mappings": [],
+    "reason": "Bằng chứng xác nhận phát thải khí nhà kính giảm so với năm trước trong năm 2024 tại các nhà máy thép.",
+    "seconds": 1.3,
+    "sent_claim": "Năm 2024, Tập đoàn giảm phát thải khí nhà kính tại các nhà máy thép.",
+    "digits_left_in_prompt": [
+     "2024,"
+    ],
+    "usage": {
+     "completion_tokens": 61,
+     "prompt_tokens": 649,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 416
+     },
+     "total_tokens": 710
+    }
+   },
+   "F30": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Bằng chứng cung cấp thông tin về đào tạo an toàn lao động, không chứa dữ liệu về tỷ lệ xử lý nước thải.",
+    "seconds": 1.1,
+    "sent_claim": "Năm 2025, <S1>% nước thải của Công ty được xử lý đạt quy chuẩn trước khi xả ra môi trường.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2025,",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 84,
+     "prompt_tokens": 661,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 448
+     },
+     "total_tokens": 745
+    }
+   },
+   "F31": {
+    "label": "N",
+    "notes": [
+     "định tính"
+    ],
+    "mappings": [],
+    "reason": "Bằng chứng chỉ cung cấp số lượng cây trồng, không cung cấp dữ liệu về tổng phát thải và lượng hấp thụ để xác nhận trạng thái trung hòa carbon.",
+    "seconds": 1.4,
+    "sent_claim": "Công ty đã đạt trung hòa carbon trong năm 2025.",
+    "digits_left_in_prompt": [
+     "2025.",
+     "2025,",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 70,
+     "prompt_tokens": 635,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 416
+     },
+     "total_tokens": 705
+    }
+   },
+   "F32": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "S1 đo lường tỷ lệ tự chủ nhu cầu điện, trong khi E1 đo lường tiến độ hoàn thành kế hoạch kiểm kê khí nhà kính.",
+    "seconds": 1.2,
+    "sent_claim": "Năm 2025, Công ty tự chủ <S1>% nhu cầu điện cho sản xuất thép.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2025,",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 89,
+     "prompt_tokens": 644,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 448
+     },
+     "total_tokens": 733
+    }
+   }
+  },
+  "GLM-5.2 (che số + tên)": {
+   "F01": {
+    "label": "S",
+    "notes": [
+     "S1=2.35e+07 vs E3=2.34745e+07 (±50005)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E3"
+     }
+    ],
+    "reason": "S1 là tổng phát thải khí nhà kính phạm vi 1 và 2 năm 2025 của công ty, đo cùng đại lượng với E3.",
+    "seconds": 4.9,
+    "sent_claim": "Năm 2025, tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty là khoảng <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2",
+     "1",
+     "2",
+     "5.2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2",
+     "1",
+     "2",
+     "3",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 505,
+     "prompt_tokens": 713,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 704
+     },
+     "total_tokens": 1218
+    }
+   },
+   "F02": {
+    "label": "S",
+    "notes": [
+     "S1=933876 vs E2=933876 (±1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E2"
+     }
+    ],
+    "reason": "S1 là phát thải khí nhà kính phạm vi 2 năm 2025, E2 đo cùng đại lượng này.",
+    "seconds": 2.9,
+    "sent_claim": "Phát thải khí nhà kính phạm vi 2 của Công ty năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "2",
+     "1",
+     "2",
+     "5.2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2",
+     "1",
+     "2",
+     "3",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 251,
+     "prompt_tokens": 707,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 704
+     },
+     "total_tokens": 958
+    }
+   },
+   "F03": {
+    "label": "C",
+    "notes": [
+     "S1=2.14e+07 vs E3=2.34745e+07 (±50005)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E3"
+     }
+    ],
+    "reason": "S1 là tổng phát thải phạm vi 1 và 2 năm 2025 của công ty, E3 cũng là tổng phát thải phạm vi 1 và 2 năm 2025.",
+    "seconds": 6.4,
+    "sent_claim": "Năm 2025, tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2",
+     "1",
+     "2",
+     "5.2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2",
+     "1",
+     "2",
+     "3",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 712,
+     "prompt_tokens": 712,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 704
+     },
+     "total_tokens": 1424
+    }
+   },
+   "F04": {
+    "label": "C",
+    "notes": [
+     "S1=833876 vs E2=933876 (±1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E2"
+     }
+    ],
+    "reason": "S1 là phát thải khí nhà kính phạm vi 2 năm 2025, khớp trực tiếp với E2 trong bằng chứng.",
+    "seconds": 3.1,
+    "sent_claim": "Phát thải khí nhà kính phạm vi 2 của Công ty năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "2",
+     "1",
+     "2",
+     "5.2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2",
+     "1",
+     "2",
+     "3",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 288,
+     "prompt_tokens": 707,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 704
+     },
+     "total_tokens": 995
+    }
+   },
+   "F05": {
+    "label": "C",
+    "notes": [
+     "S1=90 vs E1=80 (±1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "S1 và E1 đều là tỷ lệ phần trăm nhu cầu điện của khu liên hợp được đáp ứng bởi nhà máy điện nhiệt dư trong năm 2024.",
+    "seconds": 3.5,
+    "sent_claim": "Năm 2024, nhà máy điện nhiệt dư đáp ứng <S1>% nhu cầu điện của khu liên hợp.",
+    "digits_left_in_prompt": [
+     "2024,",
+     "1",
+     "2024,",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 337,
+     "prompt_tokens": 664,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1001
+    }
+   },
+   "F06": {
+    "label": "S",
+    "notes": [
+     "S1: thay đổi -20.00% vs -20% (±0.55)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "change",
+      "from": "E1",
+      "to": "E2"
+     }
+    ],
+    "reason": "S1 là phần trăm thay đổi của phát thải phạm vi 1 từ năm 2020 (E1) đến năm 2025 (E2).",
+    "seconds": 5.2,
+    "sent_claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm <S1>% so với năm 2020.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "1",
+     "2020.",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 553,
+     "prompt_tokens": 686,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1239
+    }
+   },
+   "F07": {
+    "label": "C",
+    "notes": [
+     "S1: thay đổi -15.00% vs -20% (±0.55)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "change",
+      "from": "E1",
+      "to": "E2"
+     }
+    ],
+    "reason": "S1 là phần trăm thay đổi phát thải phạm vi 1 từ năm 2020 (E1) đến năm 2025 (E2).",
+    "seconds": 3.1,
+    "sent_claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm <S1>% so với năm 2020.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "1",
+     "2020.",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 334,
+     "prompt_tokens": 686,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1020
+    }
+   },
+   "F08": {
+    "label": "C",
+    "notes": [
+     "S1: thay đổi +5.00% vs -20% (±0.55)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "change",
+      "from": "E1",
+      "to": "E2"
+     }
+    ],
+    "reason": "S1 là phần trăm giảm phát thải phạm vi 1 từ năm 2020 (E1) đến năm 2025 (E2) của cùng công ty.",
+    "seconds": 4.2,
+    "sent_claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm <S1>% so với năm 2020.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "1",
+     "2020.",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 480,
+     "prompt_tokens": 686,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1166
+    }
+   },
+   "F09": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "S1 là tỷ trọng phát thải khí nhà kính của mảng gang thép, còn E1 là mức thay đổi sản lượng thép thô, khác hoàn toàn về đại lượng.",
+    "seconds": 3.2,
+    "sent_claim": "Hoạt động sản xuất gang thép chiếm hơn <S1>% tổng phát thải khí nhà kính của Tập đoàn.",
+    "digits_left_in_prompt": [
+     "1",
+     "2025,",
+     "1",
+     "2024."
+    ],
+    "usage": {
+     "completion_tokens": 350,
+     "prompt_tokens": 668,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1018
+    }
+   },
+   "F10": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Bằng chứng chỉ cung cấp phát thải tuyệt đối, không có dữ liệu sản lượng thép để tính cường độ phát thải.",
+    "seconds": 4.2,
+    "sent_claim": "Cường độ phát thải khí nhà kính năm 2025 của Công ty là <S1> tCO2e/tấn thép.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "5.2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2",
+     "1",
+     "2",
+     "3",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 476,
+     "prompt_tokens": 709,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 704
+     },
+     "total_tokens": 1185
+    }
+   },
+   "F11": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "S1 là tỷ lệ giảm phát thải tuyệt đối, trong khi E1 là tỷ lệ giảm cường độ phát thải, khác loại giá trị.",
+    "seconds": 2.8,
+    "sent_claim": "Tổng phát thải khí nhà kính của Công ty năm 2025 giảm <S1>% so với năm 2024.",
+    "digits_left_in_prompt": [
+     "1",
+     "2024.",
+     "2",
+     "1",
+     "2024."
+    ],
+    "usage": {
+     "completion_tokens": 285,
+     "prompt_tokens": 676,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 961
+    }
+   },
+   "F12": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Phạm vi phát thải trong bằng chứng (1, 2, 3) khác với trong tuyên bố (chỉ phạm vi 1).",
+    "seconds": 4.0,
+    "sent_claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm <S1>% so với năm 2020.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "1",
+     "2020.",
+     "2025,",
+     "1,",
+     "2",
+     "3",
+     "1",
+     "2020."
+    ],
+    "usage": {
+     "completion_tokens": 446,
+     "prompt_tokens": 680,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1126
+    }
+   },
+   "F13": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Bằng chứng chỉ cung cấp phát thải phạm vi 1, thiếu phát thải phạm vi 2 để khớp với tổng phạm vi 1 và 2 trong tuyên bố.",
+    "seconds": 4.7,
+    "sent_claim": "Phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 562,
+     "prompt_tokens": 671,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1233
+    }
+   },
+   "F14": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "S1 là phát thải năm 2025 còn E1 là phát thải năm 2024, khác kỳ.",
+    "seconds": 3.3,
+    "sent_claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "1",
+     "2",
+     "2024,",
+     "1",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 379,
+     "prompt_tokens": 670,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1049
+    }
+   },
+   "F15": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Bằng chứng cung cấp số liệu cho năm 2023 so với 2022, trong khi tuyên bố yêu cầu số liệu cho năm 2025 so với 2024.",
+    "seconds": 2.9,
+    "sent_claim": "Năm 2025, lượng nước sử dụng của Công ty giảm <S1>% so với năm 2024.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2024.",
+     "2023,",
+     "1",
+     "2022."
+    ],
+    "usage": {
+     "completion_tokens": 313,
+     "prompt_tokens": 662,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 975
+    }
+   },
+   "F16": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "S1 là giá trị thực hiện trong khi E1 là giá trị mục tiêu, nên không đo cùng đại lượng.",
+    "seconds": 3.3,
+    "sent_claim": "Công ty đã giảm <S1>% phát thải khí nhà kính phạm vi 1 và 2 so với năm 2020.",
+    "digits_left_in_prompt": [
+     "1",
+     "1",
+     "2",
+     "2020.",
+     "1",
+     "1",
+     "2",
+     "2020."
+    ],
+    "usage": {
+     "completion_tokens": 381,
+     "prompt_tokens": 674,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1055
+    }
+   },
+   "F17": {
+    "label": "S",
+    "notes": [
+     "S1=30 vs E1=30 (±1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "S1 và E1 đều là mục tiêu giảm phát thải khí nhà kính phạm vi 1 và 2 vào năm 2030 so với năm 2020.",
+    "seconds": 4.2,
+    "sent_claim": "Công ty đặt mục tiêu giảm <S1>% phát thải khí nhà kính phạm vi 1 và 2 vào năm 2030 so với năm 2020.",
+    "digits_left_in_prompt": [
+     "1",
+     "1",
+     "2",
+     "2020.",
+     "1",
+     "1",
+     "2",
+     "2020."
+    ],
+    "usage": {
+     "completion_tokens": 534,
+     "prompt_tokens": 681,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1215
+    }
+   },
+   "F18": {
+    "label": "C",
+    "notes": [
+     "S1=30 vs E1=18 (±1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "S1 và E1 cùng đo tỷ lệ phế liệu tái chế đưa vào sản xuất thực hiện năm 2025 của Công ty.",
+    "seconds": 4.2,
+    "sent_claim": "Năm 2025, tỷ lệ phế liệu tái chế đưa vào sản xuất của Công ty đạt <S1>%.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2025,",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 482,
+     "prompt_tokens": 675,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1157
+    }
+   },
+   "F19": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Bằng chứng cung cấp số liệu phát thải của Khu liên hợp [CƠ_SỞ_A] chứ không phải của toàn bộ Tập đoàn như trong tuyên bố.",
+    "seconds": 4.3,
+    "sent_claim": "Phát thải khí nhà kính phạm vi 1 và 2 hợp nhất của Tập đoàn năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 514,
+     "prompt_tokens": 687,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1201
+    }
+   },
+   "F20": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Tuyên bố đề cập đến phát thải của công ty mẹ trong khi bằng chứng đề cập đến phát thải hợp nhất toàn Tập đoàn, khác ranh giới.",
+    "seconds": 4.0,
+    "sent_claim": "Phát thải khí nhà kính phạm vi 1 và 2 của công ty mẹ năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 490,
+     "prompt_tokens": 678,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1168
+    }
+   },
+   "F21": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "S1 đo lường lượng điện tiêu thụ (MWh) trong khi E1 đo lường lượng than tiêu thụ (tấn), khác chỉ số.",
+    "seconds": 2.2,
+    "sent_claim": "Năm 2025, Công ty tiêu thụ <S1> MWh điện.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2025,",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 242,
+     "prompt_tokens": 649,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 891
+    }
+   },
+   "F22": {
+    "label": "C",
+    "notes": [
+     "S1=1.5e+07 vs E1=15000 (±150150)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "S1 và E1 đều đo lường lượng nước sử dụng của Công ty năm 2025.",
+    "seconds": 1.9,
+    "sent_claim": "Năm 2025, Công ty sử dụng <S1> m3 nước.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "3",
+     "1",
+     "3."
+    ],
+    "usage": {
+     "completion_tokens": 211,
+     "prompt_tokens": 650,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 861
+    }
+   },
+   "F23": {
+    "label": "S",
+    "notes": [
+     "S1=1.5e+07 vs E1=1.5e+07 (±300000)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "S1 và E1 cùng đo lường lượng nước sử dụng của Công ty năm 2025.",
+    "seconds": 2.5,
+    "sent_claim": "Năm 2025, Công ty sử dụng <S1> m3 nước.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "3",
+     "1",
+     "3."
+    ],
+    "usage": {
+     "completion_tokens": 229,
+     "prompt_tokens": 650,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 879
+    }
+   },
+   "F24": {
+    "label": "S",
+    "notes": [
+     "S1=12 vs E1=12.4 (±0.55)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "S1 và E1 cùng đo tỷ lệ năng lượng tái tạo trong tổng năng lượng tiêu thụ của Công ty năm 2025.",
+    "seconds": 2.6,
+    "sent_claim": "Tỷ lệ năng lượng tái tạo trong tổng năng lượng tiêu thụ của Công ty năm 2025 đạt <S1>%.",
+    "digits_left_in_prompt": [
+     "1",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 248,
+     "prompt_tokens": 668,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 916
+    }
+   },
+   "F25": {
+    "label": "C",
+    "notes": [
+     "S1=12 vs E1=12.4 (±0.1)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "direct",
+      "evidence": "E1"
+     }
+    ],
+    "reason": "S1 và E1 đều đo tỷ lệ năng lượng tái tạo trong tổng năng lượng tiêu thụ của Công ty năm 2025.",
+    "seconds": 2.7,
+    "sent_claim": "Tỷ lệ năng lượng tái tạo trong tổng năng lượng tiêu thụ của Công ty năm 2025 đạt <S1>%.",
+    "digits_left_in_prompt": [
+     "1",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 267,
+     "prompt_tokens": 668,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 935
+    }
+   },
+   "F26": {
+    "label": "S",
+    "notes": [
+     "S1=2.34745e+07 vs Σ=2.34745e+07 (±6)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "sum",
+      "evidence": [
+       "E1",
+       "E2"
+      ]
+     }
+    ],
+    "reason": "S1 là tổng phát thải Phạm vi 1 và 2 năm 2025 của Công ty, bằng tổng của E1 và E2.",
+    "seconds": 3.1,
+    "sent_claim": "Tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 320,
+     "prompt_tokens": 688,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1008
+    }
+   },
+   "F27": {
+    "label": "C",
+    "notes": [
+     "S1=2.44745e+07 vs Σ=2.34745e+07 (±6)"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "sum",
+      "evidence": [
+       "E1",
+       "E2"
+      ]
+     }
+    ],
+    "reason": "S1 là tổng phát thải Phạm vi 1 và 2 năm 2025 của Công ty, bằng tổng của E1 và E2.",
+    "seconds": 3.0,
+    "sent_claim": "Tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là <S1> tCO2e.",
+    "digits_left_in_prompt": [
+     "1",
+     "2",
+     "1",
+     "2",
+     "1",
+     "1",
+     "2",
+     "2",
+     "2",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 320,
+     "prompt_tokens": 688,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1008
+    }
+   },
+   "F28": {
+    "label": "S",
+    "notes": [
+     "định tính"
+    ],
+    "mappings": [],
+    "reason": "Bằng chứng xác nhận việc giảm phát thải khí nhà kính tại nhà máy thép vào năm 2024.",
+    "seconds": 4.6,
+    "sent_claim": "Năm 2024, Tập đoàn giảm phát thải khí nhà kính tại các nhà máy thép.",
+    "digits_left_in_prompt": [
+     "2024,",
+     "2024,"
+    ],
+    "usage": {
+     "completion_tokens": 562,
+     "prompt_tokens": 662,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1224
+    }
+   },
+   "F29": {
+    "label": "S",
+    "notes": [
+     "định tính"
+    ],
+    "mappings": [],
+    "reason": "Bằng chứng xác nhận phát thải khí nhà kính tại các nhà máy thép năm 2024 đã giảm so với năm trước.",
+    "seconds": 2.6,
+    "sent_claim": "Năm 2024, Tập đoàn giảm phát thải khí nhà kính tại các nhà máy thép.",
+    "digits_left_in_prompt": [
+     "2024,"
+    ],
+    "usage": {
+     "completion_tokens": 261,
+     "prompt_tokens": 666,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 927
+    }
+   },
+   "F30": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "Bằng chứng không đề cập đến tỷ lệ nước thải được xử lý đạt quy chuẩn mà chỉ nói về đào tạo an toàn lao động.",
+    "seconds": 2.7,
+    "sent_claim": "Năm 2025, <S1>% nước thải của Công ty được xử lý đạt quy chuẩn trước khi xả ra môi trường.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2025,",
+     "1",
+     "2"
+    ],
+    "usage": {
+     "completion_tokens": 277,
+     "prompt_tokens": 675,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 952
+    }
+   },
+   "F31": {
+    "label": "N",
+    "notes": [
+     "định tính"
+    ],
+    "mappings": [],
+    "reason": "Bằng chứng chỉ cho thấy công ty trồng cây xanh, không đủ thông tin để xác nhận hoặc phủ nhận việc đạt trung hòa carbon.",
+    "seconds": 3.5,
+    "sent_claim": "Công ty đã đạt trung hòa carbon trong năm 2025.",
+    "digits_left_in_prompt": [
+     "2025.",
+     "2025,",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 429,
+     "prompt_tokens": 646,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1075
+    }
+   },
+   "F32": {
+    "label": "N",
+    "notes": [
+     "S1: không ứng số nào"
+    ],
+    "mappings": [
+     {
+      "slot": "S1",
+      "type": "none"
+     }
+    ],
+    "reason": "S1 đo tỷ lệ tự chủ điện cho sản xuất thép, trong khi E1 đo tỷ lệ hoàn thành kế hoạch kiểm kê khí nhà kính, khác hoàn toàn về chỉ số.",
+    "seconds": 3.3,
+    "sent_claim": "Năm 2025, Công ty tự chủ <S1>% nhu cầu điện cho sản xuất thép.",
+    "digits_left_in_prompt": [
+     "2025,",
+     "1",
+     "2025,",
+     "1"
+    ],
+    "usage": {
+     "completion_tokens": 451,
+     "prompt_tokens": 657,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 640
+     },
+     "total_tokens": 1108
+    }
+   }
+  }
+ }
+}

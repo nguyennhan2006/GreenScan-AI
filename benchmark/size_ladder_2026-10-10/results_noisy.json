@@ -1,0 +1,1399 @@
+{
+ "cases": [
+  {
+   "id": "N01",
+   "family": "bảng dàn phẳng",
+   "claim": "Năm 2025, tổng phát thải khí nhà kính phạm vi 1 và 2 toàn Tập đoàn là 23,47 triệu tCO2e.",
+   "evidence": "39\nBÁO CÁO PHÁT TRIỂN BỀN VỮNG \n2025\n THÍCH ỨNG VỚI BIẾN ĐỔI KHÍ HẬU\nTRONG LĨNH VỰC NÔNG NGHIỆP\nTrong các nhóm ngành kinh doanh của Tập đoàn Hòa Phát, biến đổi khí hậu tác \nđộng rõ nét nhất đến lĩnh vực nông nghiệp — đặc biệt là hoạt động chăn nuôi. \nNhiệt độ tăng cao và các đợt thời tiết cực đoan khiến gia súc, gia cầm chịu stress \nnhiệt, dẫn tới giảm tốc độ tăng trưởng, giảm khả năng sinh sản và năng suất. Thêm \nvào đó, các hiện tượng như thiên tai, bão lũ và dịch bệnh tăng tần suất càng làm \ntăng rủi ro cho chuỗi sản xuất chăn nuôi. Theo báo cáo của World Bank Group \n– Asian Development Bank. nông-nghiệp Việt Nam có thể chịu tổn thất khoảng \n5.6-6.2% GDP vào năm 2030, và 7.6-10.6% GDP vào năm 2050 nếu không có các \nbiện pháp ứng phó hiệu quả. \nĐể chủ động ứng phó với biến đổi khí hậu, các công ty thuộc nhóm Nông nghiệp \ncủa Hòa Phát đã triển khai hàng loạt giải pháp công nghệ tiên tiến nhằm thích \nứng với điều kiện khí hậu thay đổi. Hệ thống chuồng kín điều khiển tự động được \náp dụng rộng rãi tại các trang trại do công ty sở hữu và quản lý, cho phép kiểm \nsoát chính xác nhiệt độ, độ ẩm và tốc độ gió, đảm bảo môi trường sống ổn định, \nhạn chế tác động của biến động thời tiết lên sức khỏe và tâm lý vật nuôi. Phòng \nấp trứng làm mát chuyên dụng được vận hành, giúp duy trì nhiệt độ và độ ẩm \ntối ưu cho sự phát triển của phôi, tăng tỷ lệ nở và chất lượng con giống. Thiết \nlập khẩu phần dinh dưỡng tối ưu cho từng giống vật nuôi, từng giai đoạn tăng \ntrưởng, từng mùa vụ để đảm bảo nâng cao sức khỏe vật nuôi, giảm tác động của \nbiến đổi khí hậu gây stress tới con vật, tăng tỷ lệ tiêu hóa, giảm tồn dư đạm thải \nqua phân. Đầu tư, vận hành thực chất, hiệu quả hệ thống xử lý chất thải (rắn, lỏng) \ntrong chăn nuôi, thu hồi khí gas để vận hành máy phát điện và đun nấu... Những \ngiải pháp này không chỉ giúp giảm thiểu tác động tiêu cực của biến đổi khí hậu \nmà còn nâng cao phúc lợi động vật, cải thiện hiệu quả chăn nuôi và đảm bảo an \ntoàn sinh học lâu dài, thể hiện cam kết của Hòa Phát trong phát triển nông nghiệp \nbền vững và thích ứng khí hậu. \nKIỂM KÊ PHÁT THẢI KHÍ NHÀ KÍNH NĂM 2024 \n1. Tổng phát thải Khí nhà kính toàn Tập đoàn kiểm kê theo ISO 14064 cho năm 2025:\n2. Phát thải theo tổng công ty năm 2025\nPhạm vi 1\nPhạm vi 2\nCộng\nThép\nNông nghiệp\nBất động sản\nĐiện máy gia dụng\nTòa nhà văn phòng\nCộng\n22.540.603\n933.876\n23.474.480\n23.369.500 \n90.846 \n2.836 \n9.666 \n1.631 \n23.474.480 \n99,55% \n0,39% \n0,01% \n0,04% \n0,01% \n100% \nPHẠM VI\nNHÓM NGÀNH\nPHÁT THẢI TOÀN TẬP ĐOÀN\nNĂM 2025 (tCO2e)\nPHÁT THẢI TOÀN TẬP ĐOÀN\nNĂM 2025 (tCO2e)\nTỶ TRỌNG\n KIỂM KÊ PHÁT THẢI KHÍ NHÀ KÍNH NĂM 2025 \nHÀNH ĐỘNG GIẢM THIỂU VÀ THÍCH ỨNG VỚI BIẾN ĐỔI KHÍ HẬU\n5.1\nHành động giảm thiểu và\nthích ứng với biến đổi khí hậu\nQuản lý môi trường\nPHẦN 5\nXANH HÓA\nSẢN XUẤT\n",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "N02",
+   "family": "bảng dàn phẳng",
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 toàn Tập đoàn là 23.369.500 tCO2e.",
+   "evidence": "39\nBÁO CÁO PHÁT TRIỂN BỀN VỮNG \n2025\n THÍCH ỨNG VỚI BIẾN ĐỔI KHÍ HẬU\nTRONG LĨNH VỰC NÔNG NGHIỆP\nTrong các nhóm ngành kinh doanh của Tập đoàn Hòa Phát, biến đổi khí hậu tác \nđộng rõ nét nhất đến lĩnh vực nông nghiệp — đặc biệt là hoạt động chăn nuôi. \nNhiệt độ tăng cao và các đợt thời tiết cực đoan khiến gia súc, gia cầm chịu stress \nnhiệt, dẫn tới giảm tốc độ tăng trưởng, giảm khả năng sinh sản và năng suất. Thêm \nvào đó, các hiện tượng như thiên tai, bão lũ và dịch bệnh tăng tần suất càng làm \ntăng rủi ro cho chuỗi sản xuất chăn nuôi. Theo báo cáo của World Bank Group \n– Asian Development Bank. nông-nghiệp Việt Nam có thể chịu tổn thất khoảng \n5.6-6.2% GDP vào năm 2030, và 7.6-10.6% GDP vào năm 2050 nếu không có các \nbiện pháp ứng phó hiệu quả. \nĐể chủ động ứng phó với biến đổi khí hậu, các công ty thuộc nhóm Nông nghiệp \ncủa Hòa Phát đã triển khai hàng loạt giải pháp công nghệ tiên tiến nhằm thích \nứng với điều kiện khí hậu thay đổi. Hệ thống chuồng kín điều khiển tự động được \náp dụng rộng rãi tại các trang trại do công ty sở hữu và quản lý, cho phép kiểm \nsoát chính xác nhiệt độ, độ ẩm và tốc độ gió, đảm bảo môi trường sống ổn định, \nhạn chế tác động của biến động thời tiết lên sức khỏe và tâm lý vật nuôi. Phòng \nấp trứng làm mát chuyên dụng được vận hành, giúp duy trì nhiệt độ và độ ẩm \ntối ưu cho sự phát triển của phôi, tăng tỷ lệ nở và chất lượng con giống. Thiết \nlập khẩu phần dinh dưỡng tối ưu cho từng giống vật nuôi, từng giai đoạn tăng \ntrưởng, từng mùa vụ để đảm bảo nâng cao sức khỏe vật nuôi, giảm tác động của \nbiến đổi khí hậu gây stress tới con vật, tăng tỷ lệ tiêu hóa, giảm tồn dư đạm thải \nqua phân. Đầu tư, vận hành thực chất, hiệu quả hệ thống xử lý chất thải (rắn, lỏng) \ntrong chăn nuôi, thu hồi khí gas để vận hành máy phát điện và đun nấu... Những \ngiải pháp này không chỉ giúp giảm thiểu tác động tiêu cực của biến đổi khí hậu \nmà còn nâng cao phúc lợi động vật, cải thiện hiệu quả chăn nuôi và đảm bảo an \ntoàn sinh học lâu dài, thể hiện cam kết của Hòa Phát trong phát triển nông nghiệp \nbền vững và thích ứng khí hậu. \nKIỂM KÊ PHÁT THẢI KHÍ NHÀ KÍNH NĂM 2024 \n1. Tổng phát thải Khí nhà kính toàn Tập đoàn kiểm kê theo ISO 14064 cho năm 2025:\n2. Phát thải theo tổng công ty năm 2025\nPhạm vi 1\nPhạm vi 2\nCộng\nThép\nNông nghiệp\nBất động sản\nĐiện máy gia dụng\nTòa nhà văn phòng\nCộng\n22.540.603\n933.876\n23.474.480\n23.369.500 \n90.846 \n2.836 \n9.666 \n1.631 \n23.474.480 \n99,55% \n0,39% \n0,01% \n0,04% \n0,01% \n100% \nPHẠM VI\nNHÓM NGÀNH\nPHÁT THẢI TOÀN TẬP ĐOÀN\nNĂM 2025 (tCO2e)\nPHÁT THẢI TOÀN TẬP ĐOÀN\nNĂM 2025 (tCO2e)\nTỶ TRỌNG\n KIỂM KÊ PHÁT THẢI KHÍ NHÀ KÍNH NĂM 2025 \nHÀNH ĐỘNG GIẢM THIỂU VÀ THÍCH ỨNG VỚI BIẾN ĐỔI KHÍ HẬU\n5.1\nHành động giảm thiểu và\nthích ứng với biến đổi khí hậu\nQuản lý môi trường\nPHẦN 5\nXANH HÓA\nSẢN XUẤT\n",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "N03",
+   "family": "bảng dàn phẳng",
+   "claim": "Năm 2025, mảng thép phát thải 23.369.500 tCO2e, chiếm 99,55% tổng phát thải khí nhà kính của Tập đoàn.",
+   "evidence": "39\nBÁO CÁO PHÁT TRIỂN BỀN VỮNG \n2025\n THÍCH ỨNG VỚI BIẾN ĐỔI KHÍ HẬU\nTRONG LĨNH VỰC NÔNG NGHIỆP\nTrong các nhóm ngành kinh doanh của Tập đoàn Hòa Phát, biến đổi khí hậu tác \nđộng rõ nét nhất đến lĩnh vực nông nghiệp — đặc biệt là hoạt động chăn nuôi. \nNhiệt độ tăng cao và các đợt thời tiết cực đoan khiến gia súc, gia cầm chịu stress \nnhiệt, dẫn tới giảm tốc độ tăng trưởng, giảm khả năng sinh sản và năng suất. Thêm \nvào đó, các hiện tượng như thiên tai, bão lũ và dịch bệnh tăng tần suất càng làm \ntăng rủi ro cho chuỗi sản xuất chăn nuôi. Theo báo cáo của World Bank Group \n– Asian Development Bank. nông-nghiệp Việt Nam có thể chịu tổn thất khoảng \n5.6-6.2% GDP vào năm 2030, và 7.6-10.6% GDP vào năm 2050 nếu không có các \nbiện pháp ứng phó hiệu quả. \nĐể chủ động ứng phó với biến đổi khí hậu, các công ty thuộc nhóm Nông nghiệp \ncủa Hòa Phát đã triển khai hàng loạt giải pháp công nghệ tiên tiến nhằm thích \nứng với điều kiện khí hậu thay đổi. Hệ thống chuồng kín điều khiển tự động được \náp dụng rộng rãi tại các trang trại do công ty sở hữu và quản lý, cho phép kiểm \nsoát chính xác nhiệt độ, độ ẩm và tốc độ gió, đảm bảo môi trường sống ổn định, \nhạn chế tác động của biến động thời tiết lên sức khỏe và tâm lý vật nuôi. Phòng \nấp trứng làm mát chuyên dụng được vận hành, giúp duy trì nhiệt độ và độ ẩm \ntối ưu cho sự phát triển của phôi, tăng tỷ lệ nở và chất lượng con giống. Thiết \nlập khẩu phần dinh dưỡng tối ưu cho từng giống vật nuôi, từng giai đoạn tăng \ntrưởng, từng mùa vụ để đảm bảo nâng cao sức khỏe vật nuôi, giảm tác động của \nbiến đổi khí hậu gây stress tới con vật, tăng tỷ lệ tiêu hóa, giảm tồn dư đạm thải \nqua phân. Đầu tư, vận hành thực chất, hiệu quả hệ thống xử lý chất thải (rắn, lỏng) \ntrong chăn nuôi, thu hồi khí gas để vận hành máy phát điện và đun nấu... Những \ngiải pháp này không chỉ giúp giảm thiểu tác động tiêu cực của biến đổi khí hậu \nmà còn nâng cao phúc lợi động vật, cải thiện hiệu quả chăn nuôi và đảm bảo an \ntoàn sinh học lâu dài, thể hiện cam kết của Hòa Phát trong phát triển nông nghiệp \nbền vững và thích ứng khí hậu. \nKIỂM KÊ PHÁT THẢI KHÍ NHÀ KÍNH NĂM 2024 \n1. Tổng phát thải Khí nhà kính toàn Tập đoàn kiểm kê theo ISO 14064 cho năm 2025:\n2. Phát thải theo tổng công ty năm 2025\nPhạm vi 1\nPhạm vi 2\nCộng\nThép\nNông nghiệp\nBất động sản\nĐiện máy gia dụng\nTòa nhà văn phòng\nCộng\n22.540.603\n933.876\n23.474.480\n23.369.500 \n90.846 \n2.836 \n9.666 \n1.631 \n23.474.480 \n99,55% \n0,39% \n0,01% \n0,04% \n0,01% \n100% \nPHẠM VI\nNHÓM NGÀNH\nPHÁT THẢI TOÀN TẬP ĐOÀN\nNĂM 2025 (tCO2e)\nPHÁT THẢI TOÀN TẬP ĐOÀN\nNĂM 2025 (tCO2e)\nTỶ TRỌNG\n KIỂM KÊ PHÁT THẢI KHÍ NHÀ KÍNH NĂM 2025 \nHÀNH ĐỘNG GIẢM THIỂU VÀ THÍCH ỨNG VỚI BIẾN ĐỔI KHÍ HẬU\n5.1\nHành động giảm thiểu và\nthích ứng với biến đổi khí hậu\nQuản lý môi trường\nPHẦN 5\nXANH HÓA\nSẢN XUẤT\n",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "N04",
+   "family": "bảng dàn phẳng",
+   "claim": "Năm 2025, mảng nông nghiệp chiếm 0,39% tổng phát thải khí nhà kính của Tập đoàn.",
+   "evidence": "39\nBÁO CÁO PHÁT TRIỂN BỀN VỮNG \n2025\n THÍCH ỨNG VỚI BIẾN ĐỔI KHÍ HẬU\nTRONG LĨNH VỰC NÔNG NGHIỆP\nTrong các nhóm ngành kinh doanh của Tập đoàn Hòa Phát, biến đổi khí hậu tác \nđộng rõ nét nhất đến lĩnh vực nông nghiệp — đặc biệt là hoạt động chăn nuôi. \nNhiệt độ tăng cao và các đợt thời tiết cực đoan khiến gia súc, gia cầm chịu stress \nnhiệt, dẫn tới giảm tốc độ tăng trưởng, giảm khả năng sinh sản và năng suất. Thêm \nvào đó, các hiện tượng như thiên tai, bão lũ và dịch bệnh tăng tần suất càng làm \ntăng rủi ro cho chuỗi sản xuất chăn nuôi. Theo báo cáo của World Bank Group \n– Asian Development Bank. nông-nghiệp Việt Nam có thể chịu tổn thất khoảng \n5.6-6.2% GDP vào năm 2030, và 7.6-10.6% GDP vào năm 2050 nếu không có các \nbiện pháp ứng phó hiệu quả. \nĐể chủ động ứng phó với biến đổi khí hậu, các công ty thuộc nhóm Nông nghiệp \ncủa Hòa Phát đã triển khai hàng loạt giải pháp công nghệ tiên tiến nhằm thích \nứng với điều kiện khí hậu thay đổi. Hệ thống chuồng kín điều khiển tự động được \náp dụng rộng rãi tại các trang trại do công ty sở hữu và quản lý, cho phép kiểm \nsoát chính xác nhiệt độ, độ ẩm và tốc độ gió, đảm bảo môi trường sống ổn định, \nhạn chế tác động của biến động thời tiết lên sức khỏe và tâm lý vật nuôi. Phòng \nấp trứng làm mát chuyên dụng được vận hành, giúp duy trì nhiệt độ và độ ẩm \ntối ưu cho sự phát triển của phôi, tăng tỷ lệ nở và chất lượng con giống. Thiết \nlập khẩu phần dinh dưỡng tối ưu cho từng giống vật nuôi, từng giai đoạn tăng \ntrưởng, từng mùa vụ để đảm bảo nâng cao sức khỏe vật nuôi, giảm tác động của \nbiến đổi khí hậu gây stress tới con vật, tăng tỷ lệ tiêu hóa, giảm tồn dư đạm thải \nqua phân. Đầu tư, vận hành thực chất, hiệu quả hệ thống xử lý chất thải (rắn, lỏng) \ntrong chăn nuôi, thu hồi khí gas để vận hành máy phát điện và đun nấu... Những \ngiải pháp này không chỉ giúp giảm thiểu tác động tiêu cực của biến đổi khí hậu \nmà còn nâng cao phúc lợi động vật, cải thiện hiệu quả chăn nuôi và đảm bảo an \ntoàn sinh học lâu dài, thể hiện cam kết của Hòa Phát trong phát triển nông nghiệp \nbền vững và thích ứng khí hậu. \nKIỂM KÊ PHÁT THẢI KHÍ NHÀ KÍNH NĂM 2024 \n1. Tổng phát thải Khí nhà kính toàn Tập đoàn kiểm kê theo ISO 14064 cho năm 2025:\n2. Phát thải theo tổng công ty năm 2025\nPhạm vi 1\nPhạm vi 2\nCộng\nThép\nNông nghiệp\nBất động sản\nĐiện máy gia dụng\nTòa nhà văn phòng\nCộng\n22.540.603\n933.876\n23.474.480\n23.369.500 \n90.846 \n2.836 \n9.666 \n1.631 \n23.474.480 \n99,55% \n0,39% \n0,01% \n0,04% \n0,01% \n100% \nPHẠM VI\nNHÓM NGÀNH\nPHÁT THẢI TOÀN TẬP ĐOÀN\nNĂM 2025 (tCO2e)\nPHÁT THẢI TOÀN TẬP ĐOÀN\nNĂM 2025 (tCO2e)\nTỶ TRỌNG\n KIỂM KÊ PHÁT THẢI KHÍ NHÀ KÍNH NĂM 2025 \nHÀNH ĐỘNG GIẢM THIỂU VÀ THÍCH ỨNG VỚI BIẾN ĐỔI KHÍ HẬU\n5.1\nHành động giảm thiểu và\nthích ứng với biến đổi khí hậu\nQuản lý môi trường\nPHẦN 5\nXANH HÓA\nSẢN XUẤT\n",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "N05",
+   "family": "bảng dàn phẳng",
+   "claim": "Năm 2025, mảng nông nghiệp phát thải 933.876 tCO2e.",
+   "evidence": "39\nBÁO CÁO PHÁT TRIỂN BỀN VỮNG \n2025\n THÍCH ỨNG VỚI BIẾN ĐỔI KHÍ HẬU\nTRONG LĨNH VỰC NÔNG NGHIỆP\nTrong các nhóm ngành kinh doanh của Tập đoàn Hòa Phát, biến đổi khí hậu tác \nđộng rõ nét nhất đến lĩnh vực nông nghiệp — đặc biệt là hoạt động chăn nuôi. \nNhiệt độ tăng cao và các đợt thời tiết cực đoan khiến gia súc, gia cầm chịu stress \nnhiệt, dẫn tới giảm tốc độ tăng trưởng, giảm khả năng sinh sản và năng suất. Thêm \nvào đó, các hiện tượng như thiên tai, bão lũ và dịch bệnh tăng tần suất càng làm \ntăng rủi ro cho chuỗi sản xuất chăn nuôi. Theo báo cáo của World Bank Group \n– Asian Development Bank. nông-nghiệp Việt Nam có thể chịu tổn thất khoảng \n5.6-6.2% GDP vào năm 2030, và 7.6-10.6% GDP vào năm 2050 nếu không có các \nbiện pháp ứng phó hiệu quả. \nĐể chủ động ứng phó với biến đổi khí hậu, các công ty thuộc nhóm Nông nghiệp \ncủa Hòa Phát đã triển khai hàng loạt giải pháp công nghệ tiên tiến nhằm thích \nứng với điều kiện khí hậu thay đổi. Hệ thống chuồng kín điều khiển tự động được \náp dụng rộng rãi tại các trang trại do công ty sở hữu và quản lý, cho phép kiểm \nsoát chính xác nhiệt độ, độ ẩm và tốc độ gió, đảm bảo môi trường sống ổn định, \nhạn chế tác động của biến động thời tiết lên sức khỏe và tâm lý vật nuôi. Phòng \nấp trứng làm mát chuyên dụng được vận hành, giúp duy trì nhiệt độ và độ ẩm \ntối ưu cho sự phát triển của phôi, tăng tỷ lệ nở và chất lượng con giống. Thiết \nlập khẩu phần dinh dưỡng tối ưu cho từng giống vật nuôi, từng giai đoạn tăng \ntrưởng, từng mùa vụ để đảm bảo nâng cao sức khỏe vật nuôi, giảm tác động của \nbiến đổi khí hậu gây stress tới con vật, tăng tỷ lệ tiêu hóa, giảm tồn dư đạm thải \nqua phân. Đầu tư, vận hành thực chất, hiệu quả hệ thống xử lý chất thải (rắn, lỏng) \ntrong chăn nuôi, thu hồi khí gas để vận hành máy phát điện và đun nấu... Những \ngiải pháp này không chỉ giúp giảm thiểu tác động tiêu cực của biến đổi khí hậu \nmà còn nâng cao phúc lợi động vật, cải thiện hiệu quả chăn nuôi và đảm bảo an \ntoàn sinh học lâu dài, thể hiện cam kết của Hòa Phát trong phát triển nông nghiệp \nbền vững và thích ứng khí hậu. \nKIỂM KÊ PHÁT THẢI KHÍ NHÀ KÍNH NĂM 2024 \n1. Tổng phát thải Khí nhà kính toàn Tập đoàn kiểm kê theo ISO 14064 cho năm 2025:\n2. Phát thải theo tổng công ty năm 2025\nPhạm vi 1\nPhạm vi 2\nCộng\nThép\nNông nghiệp\nBất động sản\nĐiện máy gia dụng\nTòa nhà văn phòng\nCộng\n22.540.603\n933.876\n23.474.480\n23.369.500 \n90.846 \n2.836 \n9.666 \n1.631 \n23.474.480 \n99,55% \n0,39% \n0,01% \n0,04% \n0,01% \n100% \nPHẠM VI\nNHÓM NGÀNH\nPHÁT THẢI TOÀN TẬP ĐOÀN\nNĂM 2025 (tCO2e)\nPHÁT THẢI TOÀN TẬP ĐOÀN\nNĂM 2025 (tCO2e)\nTỶ TRỌNG\n KIỂM KÊ PHÁT THẢI KHÍ NHÀ KÍNH NĂM 2025 \nHÀNH ĐỘNG GIẢM THIỂU VÀ THÍCH ỨNG VỚI BIẾN ĐỔI KHÍ HẬU\n5.1\nHành động giảm thiểu và\nthích ứng với biến đổi khí hậu\nQuản lý môi trường\nPHẦN 5\nXANH HÓA\nSẢN XUẤT\n",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "N06",
+   "family": "bảng dàn phẳng",
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 3 toàn Tập đoàn là 23,47 triệu tCO2e.",
+   "evidence": "39\nBÁO CÁO PHÁT TRIỂN BỀN VỮNG \n2025\n THÍCH ỨNG VỚI BIẾN ĐỔI KHÍ HẬU\nTRONG LĨNH VỰC NÔNG NGHIỆP\nTrong các nhóm ngành kinh doanh của Tập đoàn Hòa Phát, biến đổi khí hậu tác \nđộng rõ nét nhất đến lĩnh vực nông nghiệp — đặc biệt là hoạt động chăn nuôi. \nNhiệt độ tăng cao và các đợt thời tiết cực đoan khiến gia súc, gia cầm chịu stress \nnhiệt, dẫn tới giảm tốc độ tăng trưởng, giảm khả năng sinh sản và năng suất. Thêm \nvào đó, các hiện tượng như thiên tai, bão lũ và dịch bệnh tăng tần suất càng làm \ntăng rủi ro cho chuỗi sản xuất chăn nuôi. Theo báo cáo của World Bank Group \n– Asian Development Bank. nông-nghiệp Việt Nam có thể chịu tổn thất khoảng \n5.6-6.2% GDP vào năm 2030, và 7.6-10.6% GDP vào năm 2050 nếu không có các \nbiện pháp ứng phó hiệu quả. \nĐể chủ động ứng phó với biến đổi khí hậu, các công ty thuộc nhóm Nông nghiệp \ncủa Hòa Phát đã triển khai hàng loạt giải pháp công nghệ tiên tiến nhằm thích \nứng với điều kiện khí hậu thay đổi. Hệ thống chuồng kín điều khiển tự động được \náp dụng rộng rãi tại các trang trại do công ty sở hữu và quản lý, cho phép kiểm \nsoát chính xác nhiệt độ, độ ẩm và tốc độ gió, đảm bảo môi trường sống ổn định, \nhạn chế tác động của biến động thời tiết lên sức khỏe và tâm lý vật nuôi. Phòng \nấp trứng làm mát chuyên dụng được vận hành, giúp duy trì nhiệt độ và độ ẩm \ntối ưu cho sự phát triển của phôi, tăng tỷ lệ nở và chất lượng con giống. Thiết \nlập khẩu phần dinh dưỡng tối ưu cho từng giống vật nuôi, từng giai đoạn tăng \ntrưởng, từng mùa vụ để đảm bảo nâng cao sức khỏe vật nuôi, giảm tác động của \nbiến đổi khí hậu gây stress tới con vật, tăng tỷ lệ tiêu hóa, giảm tồn dư đạm thải \nqua phân. Đầu tư, vận hành thực chất, hiệu quả hệ thống xử lý chất thải (rắn, lỏng) \ntrong chăn nuôi, thu hồi khí gas để vận hành máy phát điện và đun nấu... Những \ngiải pháp này không chỉ giúp giảm thiểu tác động tiêu cực của biến đổi khí hậu \nmà còn nâng cao phúc lợi động vật, cải thiện hiệu quả chăn nuôi và đảm bảo an \ntoàn sinh học lâu dài, thể hiện cam kết của Hòa Phát trong phát triển nông nghiệp \nbền vững và thích ứng khí hậu. \nKIỂM KÊ PHÁT THẢI KHÍ NHÀ KÍNH NĂM 2024 \n1. Tổng phát thải Khí nhà kính toàn Tập đoàn kiểm kê theo ISO 14064 cho năm 2025:\n2. Phát thải theo tổng công ty năm 2025\nPhạm vi 1\nPhạm vi 2\nCộng\nThép\nNông nghiệp\nBất động sản\nĐiện máy gia dụng\nTòa nhà văn phòng\nCộng\n22.540.603\n933.876\n23.474.480\n23.369.500 \n90.846 \n2.836 \n9.666 \n1.631 \n23.474.480 \n99,55% \n0,39% \n0,01% \n0,04% \n0,01% \n100% \nPHẠM VI\nNHÓM NGÀNH\nPHÁT THẢI TOÀN TẬP ĐOÀN\nNĂM 2025 (tCO2e)\nPHÁT THẢI TOÀN TẬP ĐOÀN\nNĂM 2025 (tCO2e)\nTỶ TRỌNG\n KIỂM KÊ PHÁT THẢI KHÍ NHÀ KÍNH NĂM 2025 \nHÀNH ĐỘNG GIẢM THIỂU VÀ THÍCH ỨNG VỚI BIẾN ĐỔI KHÍ HẬU\n5.1\nHành động giảm thiểu và\nthích ứng với biến đổi khí hậu\nQuản lý môi trường\nPHẦN 5\nXANH HÓA\nSẢN XUẤT\n",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "N08",
+   "family": "bảng dàn phẳng",
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 2 toàn Tập đoàn là 0,93 triệu tCO2e.",
+   "evidence": "39\nBÁO CÁO PHÁT TRIỂN BỀN VỮNG \n2025\n THÍCH ỨNG VỚI BIẾN ĐỔI KHÍ HẬU\nTRONG LĨNH VỰC NÔNG NGHIỆP\nTrong các nhóm ngành kinh doanh của Tập đoàn Hòa Phát, biến đổi khí hậu tác \nđộng rõ nét nhất đến lĩnh vực nông nghiệp — đặc biệt là hoạt động chăn nuôi. \nNhiệt độ tăng cao và các đợt thời tiết cực đoan khiến gia súc, gia cầm chịu stress \nnhiệt, dẫn tới giảm tốc độ tăng trưởng, giảm khả năng sinh sản và năng suất. Thêm \nvào đó, các hiện tượng như thiên tai, bão lũ và dịch bệnh tăng tần suất càng làm \ntăng rủi ro cho chuỗi sản xuất chăn nuôi. Theo báo cáo của World Bank Group \n– Asian Development Bank. nông-nghiệp Việt Nam có thể chịu tổn thất khoảng \n5.6-6.2% GDP vào năm 2030, và 7.6-10.6% GDP vào năm 2050 nếu không có các \nbiện pháp ứng phó hiệu quả. \nĐể chủ động ứng phó với biến đổi khí hậu, các công ty thuộc nhóm Nông nghiệp \ncủa Hòa Phát đã triển khai hàng loạt giải pháp công nghệ tiên tiến nhằm thích \nứng với điều kiện khí hậu thay đổi. Hệ thống chuồng kín điều khiển tự động được \náp dụng rộng rãi tại các trang trại do công ty sở hữu và quản lý, cho phép kiểm \nsoát chính xác nhiệt độ, độ ẩm và tốc độ gió, đảm bảo môi trường sống ổn định, \nhạn chế tác động của biến động thời tiết lên sức khỏe và tâm lý vật nuôi. Phòng \nấp trứng làm mát chuyên dụng được vận hành, giúp duy trì nhiệt độ và độ ẩm \ntối ưu cho sự phát triển của phôi, tăng tỷ lệ nở và chất lượng con giống. Thiết \nlập khẩu phần dinh dưỡng tối ưu cho từng giống vật nuôi, từng giai đoạn tăng \ntrưởng, từng mùa vụ để đảm bảo nâng cao sức khỏe vật nuôi, giảm tác động của \nbiến đổi khí hậu gây stress tới con vật, tăng tỷ lệ tiêu hóa, giảm tồn dư đạm thải \nqua phân. Đầu tư, vận hành thực chất, hiệu quả hệ thống xử lý chất thải (rắn, lỏng) \ntrong chăn nuôi, thu hồi khí gas để vận hành máy phát điện và đun nấu... Những \ngiải pháp này không chỉ giúp giảm thiểu tác động tiêu cực của biến đổi khí hậu \nmà còn nâng cao phúc lợi động vật, cải thiện hiệu quả chăn nuôi và đảm bảo an \ntoàn sinh học lâu dài, thể hiện cam kết của Hòa Phát trong phát triển nông nghiệp \nbền vững và thích ứng khí hậu. \nKIỂM KÊ PHÁT THẢI KHÍ NHÀ KÍNH NĂM 2024 \n1. Tổng phát thải Khí nhà kính toàn Tập đoàn kiểm kê theo ISO 14064 cho năm 2025:\n2. Phát thải theo tổng công ty năm 2025\nPhạm vi 1\nPhạm vi 2\nCộng\nThép\nNông nghiệp\nBất động sản\nĐiện máy gia dụng\nTòa nhà văn phòng\nCộng\n22.540.603\n933.876\n23.474.480\n23.369.500 \n90.846 \n2.836 \n9.666 \n1.631 \n23.474.480 \n99,55% \n0,39% \n0,01% \n0,04% \n0,01% \n100% \nPHẠM VI\nNHÓM NGÀNH\nPHÁT THẢI TOÀN TẬP ĐOÀN\nNĂM 2025 (tCO2e)\nPHÁT THẢI TOÀN TẬP ĐOÀN\nNĂM 2025 (tCO2e)\nTỶ TRỌNG\n KIỂM KÊ PHÁT THẢI KHÍ NHÀ KÍNH NĂM 2025 \nHÀNH ĐỘNG GIẢM THIỂU VÀ THÍCH ỨNG VỚI BIẾN ĐỔI KHÍ HẬU\n5.1\nHành động giảm thiểu và\nthích ứng với biến đổi khí hậu\nQuản lý môi trường\nPHẦN 5\nXANH HÓA\nSẢN XUẤT\n",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "N09",
+   "family": "chữ dính cột",
+   "claim": "Năm 2025, Tập đoàn hoàn thành 90% kế hoạch kiểm kê khí nhà kính.",
+   "evidence": "9\nBÁO CÁO PHÁT TRIỂN BỀN VỮNG \n2025\nĐóng góp gần 13.000 tỷ đồng vào \nngân sách Nhà nước  \nĐóng góp hơn 120 tỷ đồng cho các \nchương trình phúc lợi xã hội.\nMÔI TRƯỜNG\nXÃ HỘI\nQUẢN TRỊ\nHoàn thành kiểm kê khí nhà kính theo tiêu \nchuẩn ISO 14064-1:2018 cho toàn Tập \nđoàn và được BSI thẩm định số liệu.  \nTái chế, tái sử dụng chất thải rắn\nnhóm thép và nông nghiệp đạt trên 99% \nSố giờ đào tạo trung bình cho mỗi nhân \nviên là 38,52 giờ mỗi năm \n22% thành viên\nHội đồng Quản trị là thành viên độc lập.  \nĐiểm nổi bật về\nphát triển bền vững năm 2025\nGiải thưởng\nvà vinh danh năm 2025\nThành viên của\ncác Hiệp hội ngành nghề\nHoạt động kinh doanh\ntại Tập đoàn\nPHẦN 3\nTỔNG QUAN\nVỀ TẬP ĐOÀN \nHÒA PHÁT\nĐIỂM NỔI BẬT VỀ PHÁT TRIỂN BỀN VỮNG 2025\n3.1\nTự chủ 90% nhu cầu điện\ntại Khu liên hợp Gang thép Hòa Phát \nDung Quất\nTái sử dụng 98% nước\ntại Khu liên hợp Gang thép Hòa Phát \nDung Quất\nTỷ lệ phụ nữ ở các cấp quản lý trong toàn \nTập đoàn đạt 35,85% vào năm 2025\n",
+   "ok": [
+    "C",
+    "N"
+   ]
+  },
+  {
+   "id": "N10",
+   "family": "chữ dính cột",
+   "claim": "Khu liên hợp Gang thép Hòa Phát Dung Quất tự chủ 90% nhu cầu điện.",
+   "evidence": "9\nBÁO CÁO PHÁT TRIỂN BỀN VỮNG \n2025\nĐóng góp gần 13.000 tỷ đồng vào \nngân sách Nhà nước  \nĐóng góp hơn 120 tỷ đồng cho các \nchương trình phúc lợi xã hội.\nMÔI TRƯỜNG\nXÃ HỘI\nQUẢN TRỊ\nHoàn thành kiểm kê khí nhà kính theo tiêu \nchuẩn ISO 14064-1:2018 cho toàn Tập \nđoàn và được BSI thẩm định số liệu.  \nTái chế, tái sử dụng chất thải rắn\nnhóm thép và nông nghiệp đạt trên 99% \nSố giờ đào tạo trung bình cho mỗi nhân \nviên là 38,52 giờ mỗi năm \n22% thành viên\nHội đồng Quản trị là thành viên độc lập.  \nĐiểm nổi bật về\nphát triển bền vững năm 2025\nGiải thưởng\nvà vinh danh năm 2025\nThành viên của\ncác Hiệp hội ngành nghề\nHoạt động kinh doanh\ntại Tập đoàn\nPHẦN 3\nTỔNG QUAN\nVỀ TẬP ĐOÀN \nHÒA PHÁT\nĐIỂM NỔI BẬT VỀ PHÁT TRIỂN BỀN VỮNG 2025\n3.1\nTự chủ 90% nhu cầu điện\ntại Khu liên hợp Gang thép Hòa Phát \nDung Quất\nTái sử dụng 98% nước\ntại Khu liên hợp Gang thép Hòa Phát \nDung Quất\nTỷ lệ phụ nữ ở các cấp quản lý trong toàn \nTập đoàn đạt 35,85% vào năm 2025\n",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "N11",
+   "family": "chữ dính cột",
+   "claim": "Khu liên hợp Gang thép Hòa Phát Dung Quất tái sử dụng 90% nước.",
+   "evidence": "9\nBÁO CÁO PHÁT TRIỂN BỀN VỮNG \n2025\nĐóng góp gần 13.000 tỷ đồng vào \nngân sách Nhà nước  \nĐóng góp hơn 120 tỷ đồng cho các \nchương trình phúc lợi xã hội.\nMÔI TRƯỜNG\nXÃ HỘI\nQUẢN TRỊ\nHoàn thành kiểm kê khí nhà kính theo tiêu \nchuẩn ISO 14064-1:2018 cho toàn Tập \nđoàn và được BSI thẩm định số liệu.  \nTái chế, tái sử dụng chất thải rắn\nnhóm thép và nông nghiệp đạt trên 99% \nSố giờ đào tạo trung bình cho mỗi nhân \nviên là 38,52 giờ mỗi năm \n22% thành viên\nHội đồng Quản trị là thành viên độc lập.  \nĐiểm nổi bật về\nphát triển bền vững năm 2025\nGiải thưởng\nvà vinh danh năm 2025\nThành viên của\ncác Hiệp hội ngành nghề\nHoạt động kinh doanh\ntại Tập đoàn\nPHẦN 3\nTỔNG QUAN\nVỀ TẬP ĐOÀN \nHÒA PHÁT\nĐIỂM NỔI BẬT VỀ PHÁT TRIỂN BỀN VỮNG 2025\n3.1\nTự chủ 90% nhu cầu điện\ntại Khu liên hợp Gang thép Hòa Phát \nDung Quất\nTái sử dụng 98% nước\ntại Khu liên hợp Gang thép Hòa Phát \nDung Quất\nTỷ lệ phụ nữ ở các cấp quản lý trong toàn \nTập đoàn đạt 35,85% vào năm 2025\n",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "N12",
+   "family": "chữ dính cột",
+   "claim": "Năm 2025, tỷ lệ tái chế, tái sử dụng chất thải rắn của nhóm thép và nông nghiệp đạt trên 99%.",
+   "evidence": "9\nBÁO CÁO PHÁT TRIỂN BỀN VỮNG \n2025\nĐóng góp gần 13.000 tỷ đồng vào \nngân sách Nhà nước  \nĐóng góp hơn 120 tỷ đồng cho các \nchương trình phúc lợi xã hội.\nMÔI TRƯỜNG\nXÃ HỘI\nQUẢN TRỊ\nHoàn thành kiểm kê khí nhà kính theo tiêu \nchuẩn ISO 14064-1:2018 cho toàn Tập \nđoàn và được BSI thẩm định số liệu.  \nTái chế, tái sử dụng chất thải rắn\nnhóm thép và nông nghiệp đạt trên 99% \nSố giờ đào tạo trung bình cho mỗi nhân \nviên là 38,52 giờ mỗi năm \n22% thành viên\nHội đồng Quản trị là thành viên độc lập.  \nĐiểm nổi bật về\nphát triển bền vững năm 2025\nGiải thưởng\nvà vinh danh năm 2025\nThành viên của\ncác Hiệp hội ngành nghề\nHoạt động kinh doanh\ntại Tập đoàn\nPHẦN 3\nTỔNG QUAN\nVỀ TẬP ĐOÀN \nHÒA PHÁT\nĐIỂM NỔI BẬT VỀ PHÁT TRIỂN BỀN VỮNG 2025\n3.1\nTự chủ 90% nhu cầu điện\ntại Khu liên hợp Gang thép Hòa Phát \nDung Quất\nTái sử dụng 98% nước\ntại Khu liên hợp Gang thép Hòa Phát \nDung Quất\nTỷ lệ phụ nữ ở các cấp quản lý trong toàn \nTập đoàn đạt 35,85% vào năm 2025\n",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "N13",
+   "family": "chữ dính cột",
+   "claim": "Năm 2025, tỷ lệ phụ nữ ở các cấp quản lý trong toàn Tập đoàn đạt 22%.",
+   "evidence": "9\nBÁO CÁO PHÁT TRIỂN BỀN VỮNG \n2025\nĐóng góp gần 13.000 tỷ đồng vào \nngân sách Nhà nước  \nĐóng góp hơn 120 tỷ đồng cho các \nchương trình phúc lợi xã hội.\nMÔI TRƯỜNG\nXÃ HỘI\nQUẢN TRỊ\nHoàn thành kiểm kê khí nhà kính theo tiêu \nchuẩn ISO 14064-1:2018 cho toàn Tập \nđoàn và được BSI thẩm định số liệu.  \nTái chế, tái sử dụng chất thải rắn\nnhóm thép và nông nghiệp đạt trên 99% \nSố giờ đào tạo trung bình cho mỗi nhân \nviên là 38,52 giờ mỗi năm \n22% thành viên\nHội đồng Quản trị là thành viên độc lập.  \nĐiểm nổi bật về\nphát triển bền vững năm 2025\nGiải thưởng\nvà vinh danh năm 2025\nThành viên của\ncác Hiệp hội ngành nghề\nHoạt động kinh doanh\ntại Tập đoàn\nPHẦN 3\nTỔNG QUAN\nVỀ TẬP ĐOÀN \nHÒA PHÁT\nĐIỂM NỔI BẬT VỀ PHÁT TRIỂN BỀN VỮNG 2025\n3.1\nTự chủ 90% nhu cầu điện\ntại Khu liên hợp Gang thép Hòa Phát \nDung Quất\nTái sử dụng 98% nước\ntại Khu liên hợp Gang thép Hòa Phát \nDung Quất\nTỷ lệ phụ nữ ở các cấp quản lý trong toàn \nTập đoàn đạt 35,85% vào năm 2025\n",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "N14",
+   "family": "nhiều số, nhiều ranh giới",
+   "claim": "Năm 2024, các nhà máy điện nhiệt dư tại hai khu liên hợp Hải Dương và Dung Quất phát 3,18 tỷ kWh điện, tăng 29% so với năm trước.",
+   "evidence": "86\n  TỰ CHỦ 90% ĐIỆN SẢN XUẤT THÉP \nNăm 2024, các nhà máy điện nhiệt dư thuộc hai Khu liên hợp sản xuất gang \nthép Hòa Phát tại Hải Dương và Dung Quất có tổng lượng điện phát đạt 3,18 \ntỷ kWh, tăng 29% so với cùng kỳ, giúp Hòa Phát tự chủ trên 90% lượng điện \ncho sản xuất. Riêng tại Dung Quất, ngày 05/02/2025, Nhà máy Nhiệt điện – \nCông ty Thép Hòa Phát Dung Quất chính thức cán mốc sản lượng điện lũy kế \ntừ khi hoạt động đến nay là 10 tỷ kWh, góp phần tối ưu hóa chi phí sản xuất.\n   TỰ CHỦ HƠN 90% ĐIỆN CHO SẢN XUẤT, GIẢM PHÁT \n  THẢI KHÍ NHÀ KÍNH, MANG LẠI LỢI ÍCH KINH TẾ LỚN\nTrong năm qua, sản lượng điện tự phát của Hòa Phát Dung Quất đạt 2,39 tỷ kWh, \ntự chủ hơn 90% nhu cầu sản xuất gang thép toàn Khu liên hợp. Sản lượng phát điện \ntự dùng cung cấp cho Khu liên hợp Thép Hòa Phát Hải Dương đạt 788 triệu kWh. \nTổng lượng điện phát tự chủ được của Hòa Phát tại hai Khu liên hợp Hải Dương và \nDung Quất tương đương một nhà máy nhiệt điện tầm trung, quy đổi theo giá điện \nhiện hành, sản lượng phát điện năm 2024 có giá trị khoảng 5.400 tỷ đồng. \nViệc thu hồi và sử dụng nhiệt dư, khí dư để phát điện là giải pháp tiết kiệm năng \nlượng hiệu quả, tăng tính cạnh tranh cho giá thành sản phẩm, giảm thiểu ô nhiễm \nmôi trường, đồng thời giảm tải áp lực điều độ hệ thống điện lưới quốc gia.\nCác Khu liên hợp gang thép của Hòa Phát được đầu tư dây chuyền thiết bị hiện đại \ncủa các nước G7 giúp tối ưu hóa sản xuất, tận dụng mọi nguồn nhiệt, khí dư thừa \ntrong quá trình luyện gang thép để nâng cao hiệu suất phát điện, tiết kiệm chi phí \nsản xuất, phát triển bền vững.\nHiện nay, Hòa Phát đang áp dụng 5 giải pháp sản xuất thép tiết kiệm năng lượng.\nGiải pháp thứ nhất là thu hồi nhiệt dư, khí nóng lò cốc, lò cao, lò thổi sản xuất \nđiện. Nhiệt dư phát sinh từ quá trình sản xuất than cốc, khí dư từ quá trình luyện \ngang, luyện thép được thu hồi, tận dụng phục vụ cho phát điện để cung cấp cho \nsản xuất. \nHai là sử dụng công nghệ dập cốc khô thân thiện với môi trường để sản xuất điện. \nBa là công nghệ tuabin thu hồi năng lượng Quạt gió lò cao (BPRT), vận hành các \nquạt gió công suất lớn, giúp tiết kiệm đến 50% lượng điện tiêu thụ so với phương \npháp truyền thống.\nBốn là sử dụng nhiệt dư để sản xuất điện trong quá trình thiêu kết quặng.\nNăm là công nghệ Đúc – Cán liên tục, tận dụng nhiệt từ phôi nóng, phôi nóng sau \nđúc có nhiệt độ 750-900 độ C sẽ được chuyển ngay sang dây chuyền cán để sản \nxuất thép thành phẩm. Giải pháp này đã tiết giảm tối đa sử dụng năng lượng, làm \ngiảm chi phí sản xuất, đồng thời giảm phát thải CO2/tấn sản phẩm.\n    NHÀ MÁY NHIỆT ĐIỆN, THÉP HÒA PHÁT DUNG QUẤT\n   CHÍNH THỨC CÁN MỐC 10 TỶ KWH\nAnh Bùi Văn Hữu, Giám đốc Nhà máy Nhiệt điện, Công ty Thép Hòa Phát Dung \nQuất cho biết: “Hạng mục phát điện nhiệt dư không chỉ giúp tiết kiệm năng lượng \nmà còn góp phần quan trọng trong chiến lược giảm phát thải khí nhà kính, hướng \nđến mục tiêu trung hòa carbon. Đây là giải pháp bền vững, tận dụng nguồn nhiệt \ndư trong quá trình sản xuất gang thép để tạo ra điện mà không cần sử dụng nhiên \nliệu hóa thạch”.\nTừ tháng 7/2019, một năm sau khi lắp đặt tổ máy phát đầu tiên, sản lượng phát \nđiện của Nhà máy đã đáp ứng nhu cầu sản xuất gang thép tổng khu liên hợp Hòa \nPhát Dung Quất. Từ đó đến nay, sản lượng phát điện của Nhà máy tăng trưởng \nhàng năm, đạt mốc 5 tỷ kWh vào ngày 19/9/2022 và cán mốc 10 tỷ kWh ngày \n05/02/2025.\nVới sự mở rộng của dự án Hòa Phát Dung Quất 2, công ty tiếp tục đầu tư mạnh \nmẽ vào dây chuyền phát điện nhiệt dư thứ hai. Theo đó, Nhà máy Nhiệt điện số 2 \nsở hữu công suất 240MW, gồm 04 tổ máy phát 60MW, nâng tổng công suất phát \nđiện của toàn khu liên hợp lên 600MW.\nBÁO CÁO THƯỜNG NIÊN - 2024\nPHẦN 6\nPHÁT TRIỂN\nBỀN VỮNG\nHòa Phát hoàn thành kiểm kê khí \nnhà kính toàn tập đoàn\nSáng kiến cải tiến kỹ thuật góp \nphần tiết kiệm hàng trăm tỷ đồng\nTự chủ 90% điện sản xuất thép\nPhát triển sản phẩm mới\nChuyển đổi số tại tập đoàn \nHòa Phát năm 2024\nTrách nhiệm xã hội - cộng đồng\n",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "N15",
+   "family": "nhiều số, nhiều ranh giới",
+   "claim": "Năm 2024, nhà máy điện nhiệt dư tại Dung Quất phát 3,18 tỷ kWh điện.",
+   "evidence": "86\n  TỰ CHỦ 90% ĐIỆN SẢN XUẤT THÉP \nNăm 2024, các nhà máy điện nhiệt dư thuộc hai Khu liên hợp sản xuất gang \nthép Hòa Phát tại Hải Dương và Dung Quất có tổng lượng điện phát đạt 3,18 \ntỷ kWh, tăng 29% so với cùng kỳ, giúp Hòa Phát tự chủ trên 90% lượng điện \ncho sản xuất. Riêng tại Dung Quất, ngày 05/02/2025, Nhà máy Nhiệt điện – \nCông ty Thép Hòa Phát Dung Quất chính thức cán mốc sản lượng điện lũy kế \ntừ khi hoạt động đến nay là 10 tỷ kWh, góp phần tối ưu hóa chi phí sản xuất.\n   TỰ CHỦ HƠN 90% ĐIỆN CHO SẢN XUẤT, GIẢM PHÁT \n  THẢI KHÍ NHÀ KÍNH, MANG LẠI LỢI ÍCH KINH TẾ LỚN\nTrong năm qua, sản lượng điện tự phát của Hòa Phát Dung Quất đạt 2,39 tỷ kWh, \ntự chủ hơn 90% nhu cầu sản xuất gang thép toàn Khu liên hợp. Sản lượng phát điện \ntự dùng cung cấp cho Khu liên hợp Thép Hòa Phát Hải Dương đạt 788 triệu kWh. \nTổng lượng điện phát tự chủ được của Hòa Phát tại hai Khu liên hợp Hải Dương và \nDung Quất tương đương một nhà máy nhiệt điện tầm trung, quy đổi theo giá điện \nhiện hành, sản lượng phát điện năm 2024 có giá trị khoảng 5.400 tỷ đồng. \nViệc thu hồi và sử dụng nhiệt dư, khí dư để phát điện là giải pháp tiết kiệm năng \nlượng hiệu quả, tăng tính cạnh tranh cho giá thành sản phẩm, giảm thiểu ô nhiễm \nmôi trường, đồng thời giảm tải áp lực điều độ hệ thống điện lưới quốc gia.\nCác Khu liên hợp gang thép của Hòa Phát được đầu tư dây chuyền thiết bị hiện đại \ncủa các nước G7 giúp tối ưu hóa sản xuất, tận dụng mọi nguồn nhiệt, khí dư thừa \ntrong quá trình luyện gang thép để nâng cao hiệu suất phát điện, tiết kiệm chi phí \nsản xuất, phát triển bền vững.\nHiện nay, Hòa Phát đang áp dụng 5 giải pháp sản xuất thép tiết kiệm năng lượng.\nGiải pháp thứ nhất là thu hồi nhiệt dư, khí nóng lò cốc, lò cao, lò thổi sản xuất \nđiện. Nhiệt dư phát sinh từ quá trình sản xuất than cốc, khí dư từ quá trình luyện \ngang, luyện thép được thu hồi, tận dụng phục vụ cho phát điện để cung cấp cho \nsản xuất. \nHai là sử dụng công nghệ dập cốc khô thân thiện với môi trường để sản xuất điện. \nBa là công nghệ tuabin thu hồi năng lượng Quạt gió lò cao (BPRT), vận hành các \nquạt gió công suất lớn, giúp tiết kiệm đến 50% lượng điện tiêu thụ so với phương \npháp truyền thống.\nBốn là sử dụng nhiệt dư để sản xuất điện trong quá trình thiêu kết quặng.\nNăm là công nghệ Đúc – Cán liên tục, tận dụng nhiệt từ phôi nóng, phôi nóng sau \nđúc có nhiệt độ 750-900 độ C sẽ được chuyển ngay sang dây chuyền cán để sản \nxuất thép thành phẩm. Giải pháp này đã tiết giảm tối đa sử dụng năng lượng, làm \ngiảm chi phí sản xuất, đồng thời giảm phát thải CO2/tấn sản phẩm.\n    NHÀ MÁY NHIỆT ĐIỆN, THÉP HÒA PHÁT DUNG QUẤT\n   CHÍNH THỨC CÁN MỐC 10 TỶ KWH\nAnh Bùi Văn Hữu, Giám đốc Nhà máy Nhiệt điện, Công ty Thép Hòa Phát Dung \nQuất cho biết: “Hạng mục phát điện nhiệt dư không chỉ giúp tiết kiệm năng lượng \nmà còn góp phần quan trọng trong chiến lược giảm phát thải khí nhà kính, hướng \nđến mục tiêu trung hòa carbon. Đây là giải pháp bền vững, tận dụng nguồn nhiệt \ndư trong quá trình sản xuất gang thép để tạo ra điện mà không cần sử dụng nhiên \nliệu hóa thạch”.\nTừ tháng 7/2019, một năm sau khi lắp đặt tổ máy phát đầu tiên, sản lượng phát \nđiện của Nhà máy đã đáp ứng nhu cầu sản xuất gang thép tổng khu liên hợp Hòa \nPhát Dung Quất. Từ đó đến nay, sản lượng phát điện của Nhà máy tăng trưởng \nhàng năm, đạt mốc 5 tỷ kWh vào ngày 19/9/2022 và cán mốc 10 tỷ kWh ngày \n05/02/2025.\nVới sự mở rộng của dự án Hòa Phát Dung Quất 2, công ty tiếp tục đầu tư mạnh \nmẽ vào dây chuyền phát điện nhiệt dư thứ hai. Theo đó, Nhà máy Nhiệt điện số 2 \nsở hữu công suất 240MW, gồm 04 tổ máy phát 60MW, nâng tổng công suất phát \nđiện của toàn khu liên hợp lên 600MW.\nBÁO CÁO THƯỜNG NIÊN - 2024\nPHẦN 6\nPHÁT TRIỂN\nBỀN VỮNG\nHòa Phát hoàn thành kiểm kê khí \nnhà kính toàn tập đoàn\nSáng kiến cải tiến kỹ thuật góp \nphần tiết kiệm hàng trăm tỷ đồng\nTự chủ 90% điện sản xuất thép\nPhát triển sản phẩm mới\nChuyển đổi số tại tập đoàn \nHòa Phát năm 2024\nTrách nhiệm xã hội - cộng đồng\n",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "N16",
+   "family": "nhiều số, nhiều ranh giới",
+   "claim": "Năm 2024, lượng điện phát của các nhà máy điện nhiệt dư thuộc hai khu liên hợp tăng 39% so với cùng kỳ.",
+   "evidence": "86\n  TỰ CHỦ 90% ĐIỆN SẢN XUẤT THÉP \nNăm 2024, các nhà máy điện nhiệt dư thuộc hai Khu liên hợp sản xuất gang \nthép Hòa Phát tại Hải Dương và Dung Quất có tổng lượng điện phát đạt 3,18 \ntỷ kWh, tăng 29% so với cùng kỳ, giúp Hòa Phát tự chủ trên 90% lượng điện \ncho sản xuất. Riêng tại Dung Quất, ngày 05/02/2025, Nhà máy Nhiệt điện – \nCông ty Thép Hòa Phát Dung Quất chính thức cán mốc sản lượng điện lũy kế \ntừ khi hoạt động đến nay là 10 tỷ kWh, góp phần tối ưu hóa chi phí sản xuất.\n   TỰ CHỦ HƠN 90% ĐIỆN CHO SẢN XUẤT, GIẢM PHÁT \n  THẢI KHÍ NHÀ KÍNH, MANG LẠI LỢI ÍCH KINH TẾ LỚN\nTrong năm qua, sản lượng điện tự phát của Hòa Phát Dung Quất đạt 2,39 tỷ kWh, \ntự chủ hơn 90% nhu cầu sản xuất gang thép toàn Khu liên hợp. Sản lượng phát điện \ntự dùng cung cấp cho Khu liên hợp Thép Hòa Phát Hải Dương đạt 788 triệu kWh. \nTổng lượng điện phát tự chủ được của Hòa Phát tại hai Khu liên hợp Hải Dương và \nDung Quất tương đương một nhà máy nhiệt điện tầm trung, quy đổi theo giá điện \nhiện hành, sản lượng phát điện năm 2024 có giá trị khoảng 5.400 tỷ đồng. \nViệc thu hồi và sử dụng nhiệt dư, khí dư để phát điện là giải pháp tiết kiệm năng \nlượng hiệu quả, tăng tính cạnh tranh cho giá thành sản phẩm, giảm thiểu ô nhiễm \nmôi trường, đồng thời giảm tải áp lực điều độ hệ thống điện lưới quốc gia.\nCác Khu liên hợp gang thép của Hòa Phát được đầu tư dây chuyền thiết bị hiện đại \ncủa các nước G7 giúp tối ưu hóa sản xuất, tận dụng mọi nguồn nhiệt, khí dư thừa \ntrong quá trình luyện gang thép để nâng cao hiệu suất phát điện, tiết kiệm chi phí \nsản xuất, phát triển bền vững.\nHiện nay, Hòa Phát đang áp dụng 5 giải pháp sản xuất thép tiết kiệm năng lượng.\nGiải pháp thứ nhất là thu hồi nhiệt dư, khí nóng lò cốc, lò cao, lò thổi sản xuất \nđiện. Nhiệt dư phát sinh từ quá trình sản xuất than cốc, khí dư từ quá trình luyện \ngang, luyện thép được thu hồi, tận dụng phục vụ cho phát điện để cung cấp cho \nsản xuất. \nHai là sử dụng công nghệ dập cốc khô thân thiện với môi trường để sản xuất điện. \nBa là công nghệ tuabin thu hồi năng lượng Quạt gió lò cao (BPRT), vận hành các \nquạt gió công suất lớn, giúp tiết kiệm đến 50% lượng điện tiêu thụ so với phương \npháp truyền thống.\nBốn là sử dụng nhiệt dư để sản xuất điện trong quá trình thiêu kết quặng.\nNăm là công nghệ Đúc – Cán liên tục, tận dụng nhiệt từ phôi nóng, phôi nóng sau \nđúc có nhiệt độ 750-900 độ C sẽ được chuyển ngay sang dây chuyền cán để sản \nxuất thép thành phẩm. Giải pháp này đã tiết giảm tối đa sử dụng năng lượng, làm \ngiảm chi phí sản xuất, đồng thời giảm phát thải CO2/tấn sản phẩm.\n    NHÀ MÁY NHIỆT ĐIỆN, THÉP HÒA PHÁT DUNG QUẤT\n   CHÍNH THỨC CÁN MỐC 10 TỶ KWH\nAnh Bùi Văn Hữu, Giám đốc Nhà máy Nhiệt điện, Công ty Thép Hòa Phát Dung \nQuất cho biết: “Hạng mục phát điện nhiệt dư không chỉ giúp tiết kiệm năng lượng \nmà còn góp phần quan trọng trong chiến lược giảm phát thải khí nhà kính, hướng \nđến mục tiêu trung hòa carbon. Đây là giải pháp bền vững, tận dụng nguồn nhiệt \ndư trong quá trình sản xuất gang thép để tạo ra điện mà không cần sử dụng nhiên \nliệu hóa thạch”.\nTừ tháng 7/2019, một năm sau khi lắp đặt tổ máy phát đầu tiên, sản lượng phát \nđiện của Nhà máy đã đáp ứng nhu cầu sản xuất gang thép tổng khu liên hợp Hòa \nPhát Dung Quất. Từ đó đến nay, sản lượng phát điện của Nhà máy tăng trưởng \nhàng năm, đạt mốc 5 tỷ kWh vào ngày 19/9/2022 và cán mốc 10 tỷ kWh ngày \n05/02/2025.\nVới sự mở rộng của dự án Hòa Phát Dung Quất 2, công ty tiếp tục đầu tư mạnh \nmẽ vào dây chuyền phát điện nhiệt dư thứ hai. Theo đó, Nhà máy Nhiệt điện số 2 \nsở hữu công suất 240MW, gồm 04 tổ máy phát 60MW, nâng tổng công suất phát \nđiện của toàn khu liên hợp lên 600MW.\nBÁO CÁO THƯỜNG NIÊN - 2024\nPHẦN 6\nPHÁT TRIỂN\nBỀN VỮNG\nHòa Phát hoàn thành kiểm kê khí \nnhà kính toàn tập đoàn\nSáng kiến cải tiến kỹ thuật góp \nphần tiết kiệm hàng trăm tỷ đồng\nTự chủ 90% điện sản xuất thép\nPhát triển sản phẩm mới\nChuyển đổi số tại tập đoàn \nHòa Phát năm 2024\nTrách nhiệm xã hội - cộng đồng\n",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "N17",
+   "family": "nhiều số, nhiều ranh giới",
+   "claim": "Năm 2024, Hòa Phát tự chủ 100% lượng điện cho sản xuất thép.",
+   "evidence": "86\n  TỰ CHỦ 90% ĐIỆN SẢN XUẤT THÉP \nNăm 2024, các nhà máy điện nhiệt dư thuộc hai Khu liên hợp sản xuất gang \nthép Hòa Phát tại Hải Dương và Dung Quất có tổng lượng điện phát đạt 3,18 \ntỷ kWh, tăng 29% so với cùng kỳ, giúp Hòa Phát tự chủ trên 90% lượng điện \ncho sản xuất. Riêng tại Dung Quất, ngày 05/02/2025, Nhà máy Nhiệt điện – \nCông ty Thép Hòa Phát Dung Quất chính thức cán mốc sản lượng điện lũy kế \ntừ khi hoạt động đến nay là 10 tỷ kWh, góp phần tối ưu hóa chi phí sản xuất.\n   TỰ CHỦ HƠN 90% ĐIỆN CHO SẢN XUẤT, GIẢM PHÁT \n  THẢI KHÍ NHÀ KÍNH, MANG LẠI LỢI ÍCH KINH TẾ LỚN\nTrong năm qua, sản lượng điện tự phát của Hòa Phát Dung Quất đạt 2,39 tỷ kWh, \ntự chủ hơn 90% nhu cầu sản xuất gang thép toàn Khu liên hợp. Sản lượng phát điện \ntự dùng cung cấp cho Khu liên hợp Thép Hòa Phát Hải Dương đạt 788 triệu kWh. \nTổng lượng điện phát tự chủ được của Hòa Phát tại hai Khu liên hợp Hải Dương và \nDung Quất tương đương một nhà máy nhiệt điện tầm trung, quy đổi theo giá điện \nhiện hành, sản lượng phát điện năm 2024 có giá trị khoảng 5.400 tỷ đồng. \nViệc thu hồi và sử dụng nhiệt dư, khí dư để phát điện là giải pháp tiết kiệm năng \nlượng hiệu quả, tăng tính cạnh tranh cho giá thành sản phẩm, giảm thiểu ô nhiễm \nmôi trường, đồng thời giảm tải áp lực điều độ hệ thống điện lưới quốc gia.\nCác Khu liên hợp gang thép của Hòa Phát được đầu tư dây chuyền thiết bị hiện đại \ncủa các nước G7 giúp tối ưu hóa sản xuất, tận dụng mọi nguồn nhiệt, khí dư thừa \ntrong quá trình luyện gang thép để nâng cao hiệu suất phát điện, tiết kiệm chi phí \nsản xuất, phát triển bền vững.\nHiện nay, Hòa Phát đang áp dụng 5 giải pháp sản xuất thép tiết kiệm năng lượng.\nGiải pháp thứ nhất là thu hồi nhiệt dư, khí nóng lò cốc, lò cao, lò thổi sản xuất \nđiện. Nhiệt dư phát sinh từ quá trình sản xuất than cốc, khí dư từ quá trình luyện \ngang, luyện thép được thu hồi, tận dụng phục vụ cho phát điện để cung cấp cho \nsản xuất. \nHai là sử dụng công nghệ dập cốc khô thân thiện với môi trường để sản xuất điện. \nBa là công nghệ tuabin thu hồi năng lượng Quạt gió lò cao (BPRT), vận hành các \nquạt gió công suất lớn, giúp tiết kiệm đến 50% lượng điện tiêu thụ so với phương \npháp truyền thống.\nBốn là sử dụng nhiệt dư để sản xuất điện trong quá trình thiêu kết quặng.\nNăm là công nghệ Đúc – Cán liên tục, tận dụng nhiệt từ phôi nóng, phôi nóng sau \nđúc có nhiệt độ 750-900 độ C sẽ được chuyển ngay sang dây chuyền cán để sản \nxuất thép thành phẩm. Giải pháp này đã tiết giảm tối đa sử dụng năng lượng, làm \ngiảm chi phí sản xuất, đồng thời giảm phát thải CO2/tấn sản phẩm.\n    NHÀ MÁY NHIỆT ĐIỆN, THÉP HÒA PHÁT DUNG QUẤT\n   CHÍNH THỨC CÁN MỐC 10 TỶ KWH\nAnh Bùi Văn Hữu, Giám đốc Nhà máy Nhiệt điện, Công ty Thép Hòa Phát Dung \nQuất cho biết: “Hạng mục phát điện nhiệt dư không chỉ giúp tiết kiệm năng lượng \nmà còn góp phần quan trọng trong chiến lược giảm phát thải khí nhà kính, hướng \nđến mục tiêu trung hòa carbon. Đây là giải pháp bền vững, tận dụng nguồn nhiệt \ndư trong quá trình sản xuất gang thép để tạo ra điện mà không cần sử dụng nhiên \nliệu hóa thạch”.\nTừ tháng 7/2019, một năm sau khi lắp đặt tổ máy phát đầu tiên, sản lượng phát \nđiện của Nhà máy đã đáp ứng nhu cầu sản xuất gang thép tổng khu liên hợp Hòa \nPhát Dung Quất. Từ đó đến nay, sản lượng phát điện của Nhà máy tăng trưởng \nhàng năm, đạt mốc 5 tỷ kWh vào ngày 19/9/2022 và cán mốc 10 tỷ kWh ngày \n05/02/2025.\nVới sự mở rộng của dự án Hòa Phát Dung Quất 2, công ty tiếp tục đầu tư mạnh \nmẽ vào dây chuyền phát điện nhiệt dư thứ hai. Theo đó, Nhà máy Nhiệt điện số 2 \nsở hữu công suất 240MW, gồm 04 tổ máy phát 60MW, nâng tổng công suất phát \nđiện của toàn khu liên hợp lên 600MW.\nBÁO CÁO THƯỜNG NIÊN - 2024\nPHẦN 6\nPHÁT TRIỂN\nBỀN VỮNG\nHòa Phát hoàn thành kiểm kê khí \nnhà kính toàn tập đoàn\nSáng kiến cải tiến kỹ thuật góp \nphần tiết kiệm hàng trăm tỷ đồng\nTự chủ 90% điện sản xuất thép\nPhát triển sản phẩm mới\nChuyển đổi số tại tập đoàn \nHòa Phát năm 2024\nTrách nhiệm xã hội - cộng đồng\n",
+   "ok": [
+    "C",
+    "N"
+   ]
+  },
+  {
+   "id": "N18",
+   "family": "nhiều số, nhiều ranh giới",
+   "claim": "Công nghệ tuabin thu hồi năng lượng quạt gió lò cao (BPRT) giúp tiết kiệm đến 50% lượng điện tiêu thụ so với phương pháp truyền thống.",
+   "evidence": "86\n  TỰ CHỦ 90% ĐIỆN SẢN XUẤT THÉP \nNăm 2024, các nhà máy điện nhiệt dư thuộc hai Khu liên hợp sản xuất gang \nthép Hòa Phát tại Hải Dương và Dung Quất có tổng lượng điện phát đạt 3,18 \ntỷ kWh, tăng 29% so với cùng kỳ, giúp Hòa Phát tự chủ trên 90% lượng điện \ncho sản xuất. Riêng tại Dung Quất, ngày 05/02/2025, Nhà máy Nhiệt điện – \nCông ty Thép Hòa Phát Dung Quất chính thức cán mốc sản lượng điện lũy kế \ntừ khi hoạt động đến nay là 10 tỷ kWh, góp phần tối ưu hóa chi phí sản xuất.\n   TỰ CHỦ HƠN 90% ĐIỆN CHO SẢN XUẤT, GIẢM PHÁT \n  THẢI KHÍ NHÀ KÍNH, MANG LẠI LỢI ÍCH KINH TẾ LỚN\nTrong năm qua, sản lượng điện tự phát của Hòa Phát Dung Quất đạt 2,39 tỷ kWh, \ntự chủ hơn 90% nhu cầu sản xuất gang thép toàn Khu liên hợp. Sản lượng phát điện \ntự dùng cung cấp cho Khu liên hợp Thép Hòa Phát Hải Dương đạt 788 triệu kWh. \nTổng lượng điện phát tự chủ được của Hòa Phát tại hai Khu liên hợp Hải Dương và \nDung Quất tương đương một nhà máy nhiệt điện tầm trung, quy đổi theo giá điện \nhiện hành, sản lượng phát điện năm 2024 có giá trị khoảng 5.400 tỷ đồng. \nViệc thu hồi và sử dụng nhiệt dư, khí dư để phát điện là giải pháp tiết kiệm năng \nlượng hiệu quả, tăng tính cạnh tranh cho giá thành sản phẩm, giảm thiểu ô nhiễm \nmôi trường, đồng thời giảm tải áp lực điều độ hệ thống điện lưới quốc gia.\nCác Khu liên hợp gang thép của Hòa Phát được đầu tư dây chuyền thiết bị hiện đại \ncủa các nước G7 giúp tối ưu hóa sản xuất, tận dụng mọi nguồn nhiệt, khí dư thừa \ntrong quá trình luyện gang thép để nâng cao hiệu suất phát điện, tiết kiệm chi phí \nsản xuất, phát triển bền vững.\nHiện nay, Hòa Phát đang áp dụng 5 giải pháp sản xuất thép tiết kiệm năng lượng.\nGiải pháp thứ nhất là thu hồi nhiệt dư, khí nóng lò cốc, lò cao, lò thổi sản xuất \nđiện. Nhiệt dư phát sinh từ quá trình sản xuất than cốc, khí dư từ quá trình luyện \ngang, luyện thép được thu hồi, tận dụng phục vụ cho phát điện để cung cấp cho \nsản xuất. \nHai là sử dụng công nghệ dập cốc khô thân thiện với môi trường để sản xuất điện. \nBa là công nghệ tuabin thu hồi năng lượng Quạt gió lò cao (BPRT), vận hành các \nquạt gió công suất lớn, giúp tiết kiệm đến 50% lượng điện tiêu thụ so với phương \npháp truyền thống.\nBốn là sử dụng nhiệt dư để sản xuất điện trong quá trình thiêu kết quặng.\nNăm là công nghệ Đúc – Cán liên tục, tận dụng nhiệt từ phôi nóng, phôi nóng sau \nđúc có nhiệt độ 750-900 độ C sẽ được chuyển ngay sang dây chuyền cán để sản \nxuất thép thành phẩm. Giải pháp này đã tiết giảm tối đa sử dụng năng lượng, làm \ngiảm chi phí sản xuất, đồng thời giảm phát thải CO2/tấn sản phẩm.\n    NHÀ MÁY NHIỆT ĐIỆN, THÉP HÒA PHÁT DUNG QUẤT\n   CHÍNH THỨC CÁN MỐC 10 TỶ KWH\nAnh Bùi Văn Hữu, Giám đốc Nhà máy Nhiệt điện, Công ty Thép Hòa Phát Dung \nQuất cho biết: “Hạng mục phát điện nhiệt dư không chỉ giúp tiết kiệm năng lượng \nmà còn góp phần quan trọng trong chiến lược giảm phát thải khí nhà kính, hướng \nđến mục tiêu trung hòa carbon. Đây là giải pháp bền vững, tận dụng nguồn nhiệt \ndư trong quá trình sản xuất gang thép để tạo ra điện mà không cần sử dụng nhiên \nliệu hóa thạch”.\nTừ tháng 7/2019, một năm sau khi lắp đặt tổ máy phát đầu tiên, sản lượng phát \nđiện của Nhà máy đã đáp ứng nhu cầu sản xuất gang thép tổng khu liên hợp Hòa \nPhát Dung Quất. Từ đó đến nay, sản lượng phát điện của Nhà máy tăng trưởng \nhàng năm, đạt mốc 5 tỷ kWh vào ngày 19/9/2022 và cán mốc 10 tỷ kWh ngày \n05/02/2025.\nVới sự mở rộng của dự án Hòa Phát Dung Quất 2, công ty tiếp tục đầu tư mạnh \nmẽ vào dây chuyền phát điện nhiệt dư thứ hai. Theo đó, Nhà máy Nhiệt điện số 2 \nsở hữu công suất 240MW, gồm 04 tổ máy phát 60MW, nâng tổng công suất phát \nđiện của toàn khu liên hợp lên 600MW.\nBÁO CÁO THƯỜNG NIÊN - 2024\nPHẦN 6\nPHÁT TRIỂN\nBỀN VỮNG\nHòa Phát hoàn thành kiểm kê khí \nnhà kính toàn tập đoàn\nSáng kiến cải tiến kỹ thuật góp \nphần tiết kiệm hàng trăm tỷ đồng\nTự chủ 90% điện sản xuất thép\nPhát triển sản phẩm mới\nChuyển đổi số tại tập đoàn \nHòa Phát năm 2024\nTrách nhiệm xã hội - cộng đồng\n",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "N19",
+   "family": "nhiều số, nhiều ranh giới",
+   "claim": "Năm 2024, giải pháp thu hồi nhiệt dư giúp Hòa Phát giảm 50% phát thải CO2.",
+   "evidence": "86\n  TỰ CHỦ 90% ĐIỆN SẢN XUẤT THÉP \nNăm 2024, các nhà máy điện nhiệt dư thuộc hai Khu liên hợp sản xuất gang \nthép Hòa Phát tại Hải Dương và Dung Quất có tổng lượng điện phát đạt 3,18 \ntỷ kWh, tăng 29% so với cùng kỳ, giúp Hòa Phát tự chủ trên 90% lượng điện \ncho sản xuất. Riêng tại Dung Quất, ngày 05/02/2025, Nhà máy Nhiệt điện – \nCông ty Thép Hòa Phát Dung Quất chính thức cán mốc sản lượng điện lũy kế \ntừ khi hoạt động đến nay là 10 tỷ kWh, góp phần tối ưu hóa chi phí sản xuất.\n   TỰ CHỦ HƠN 90% ĐIỆN CHO SẢN XUẤT, GIẢM PHÁT \n  THẢI KHÍ NHÀ KÍNH, MANG LẠI LỢI ÍCH KINH TẾ LỚN\nTrong năm qua, sản lượng điện tự phát của Hòa Phát Dung Quất đạt 2,39 tỷ kWh, \ntự chủ hơn 90% nhu cầu sản xuất gang thép toàn Khu liên hợp. Sản lượng phát điện \ntự dùng cung cấp cho Khu liên hợp Thép Hòa Phát Hải Dương đạt 788 triệu kWh. \nTổng lượng điện phát tự chủ được của Hòa Phát tại hai Khu liên hợp Hải Dương và \nDung Quất tương đương một nhà máy nhiệt điện tầm trung, quy đổi theo giá điện \nhiện hành, sản lượng phát điện năm 2024 có giá trị khoảng 5.400 tỷ đồng. \nViệc thu hồi và sử dụng nhiệt dư, khí dư để phát điện là giải pháp tiết kiệm năng \nlượng hiệu quả, tăng tính cạnh tranh cho giá thành sản phẩm, giảm thiểu ô nhiễm \nmôi trường, đồng thời giảm tải áp lực điều độ hệ thống điện lưới quốc gia.\nCác Khu liên hợp gang thép của Hòa Phát được đầu tư dây chuyền thiết bị hiện đại \ncủa các nước G7 giúp tối ưu hóa sản xuất, tận dụng mọi nguồn nhiệt, khí dư thừa \ntrong quá trình luyện gang thép để nâng cao hiệu suất phát điện, tiết kiệm chi phí \nsản xuất, phát triển bền vững.\nHiện nay, Hòa Phát đang áp dụng 5 giải pháp sản xuất thép tiết kiệm năng lượng.\nGiải pháp thứ nhất là thu hồi nhiệt dư, khí nóng lò cốc, lò cao, lò thổi sản xuất \nđiện. Nhiệt dư phát sinh từ quá trình sản xuất than cốc, khí dư từ quá trình luyện \ngang, luyện thép được thu hồi, tận dụng phục vụ cho phát điện để cung cấp cho \nsản xuất. \nHai là sử dụng công nghệ dập cốc khô thân thiện với môi trường để sản xuất điện. \nBa là công nghệ tuabin thu hồi năng lượng Quạt gió lò cao (BPRT), vận hành các \nquạt gió công suất lớn, giúp tiết kiệm đến 50% lượng điện tiêu thụ so với phương \npháp truyền thống.\nBốn là sử dụng nhiệt dư để sản xuất điện trong quá trình thiêu kết quặng.\nNăm là công nghệ Đúc – Cán liên tục, tận dụng nhiệt từ phôi nóng, phôi nóng sau \nđúc có nhiệt độ 750-900 độ C sẽ được chuyển ngay sang dây chuyền cán để sản \nxuất thép thành phẩm. Giải pháp này đã tiết giảm tối đa sử dụng năng lượng, làm \ngiảm chi phí sản xuất, đồng thời giảm phát thải CO2/tấn sản phẩm.\n    NHÀ MÁY NHIỆT ĐIỆN, THÉP HÒA PHÁT DUNG QUẤT\n   CHÍNH THỨC CÁN MỐC 10 TỶ KWH\nAnh Bùi Văn Hữu, Giám đốc Nhà máy Nhiệt điện, Công ty Thép Hòa Phát Dung \nQuất cho biết: “Hạng mục phát điện nhiệt dư không chỉ giúp tiết kiệm năng lượng \nmà còn góp phần quan trọng trong chiến lược giảm phát thải khí nhà kính, hướng \nđến mục tiêu trung hòa carbon. Đây là giải pháp bền vững, tận dụng nguồn nhiệt \ndư trong quá trình sản xuất gang thép để tạo ra điện mà không cần sử dụng nhiên \nliệu hóa thạch”.\nTừ tháng 7/2019, một năm sau khi lắp đặt tổ máy phát đầu tiên, sản lượng phát \nđiện của Nhà máy đã đáp ứng nhu cầu sản xuất gang thép tổng khu liên hợp Hòa \nPhát Dung Quất. Từ đó đến nay, sản lượng phát điện của Nhà máy tăng trưởng \nhàng năm, đạt mốc 5 tỷ kWh vào ngày 19/9/2022 và cán mốc 10 tỷ kWh ngày \n05/02/2025.\nVới sự mở rộng của dự án Hòa Phát Dung Quất 2, công ty tiếp tục đầu tư mạnh \nmẽ vào dây chuyền phát điện nhiệt dư thứ hai. Theo đó, Nhà máy Nhiệt điện số 2 \nsở hữu công suất 240MW, gồm 04 tổ máy phát 60MW, nâng tổng công suất phát \nđiện của toàn khu liên hợp lên 600MW.\nBÁO CÁO THƯỜNG NIÊN - 2024\nPHẦN 6\nPHÁT TRIỂN\nBỀN VỮNG\nHòa Phát hoàn thành kiểm kê khí \nnhà kính toàn tập đoàn\nSáng kiến cải tiến kỹ thuật góp \nphần tiết kiệm hàng trăm tỷ đồng\nTự chủ 90% điện sản xuất thép\nPhát triển sản phẩm mới\nChuyển đổi số tại tập đoàn \nHòa Phát năm 2024\nTrách nhiệm xã hội - cộng đồng\n",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "N20",
+   "family": "nhiều số, nhiều ranh giới",
+   "claim": "Ngày 05/02/2025, nhà máy nhiệt điện tại Dung Quất đạt sản lượng điện lũy kế 10 tỷ kWh.",
+   "evidence": "86\n  TỰ CHỦ 90% ĐIỆN SẢN XUẤT THÉP \nNăm 2024, các nhà máy điện nhiệt dư thuộc hai Khu liên hợp sản xuất gang \nthép Hòa Phát tại Hải Dương và Dung Quất có tổng lượng điện phát đạt 3,18 \ntỷ kWh, tăng 29% so với cùng kỳ, giúp Hòa Phát tự chủ trên 90% lượng điện \ncho sản xuất. Riêng tại Dung Quất, ngày 05/02/2025, Nhà máy Nhiệt điện – \nCông ty Thép Hòa Phát Dung Quất chính thức cán mốc sản lượng điện lũy kế \ntừ khi hoạt động đến nay là 10 tỷ kWh, góp phần tối ưu hóa chi phí sản xuất.\n   TỰ CHỦ HƠN 90% ĐIỆN CHO SẢN XUẤT, GIẢM PHÁT \n  THẢI KHÍ NHÀ KÍNH, MANG LẠI LỢI ÍCH KINH TẾ LỚN\nTrong năm qua, sản lượng điện tự phát của Hòa Phát Dung Quất đạt 2,39 tỷ kWh, \ntự chủ hơn 90% nhu cầu sản xuất gang thép toàn Khu liên hợp. Sản lượng phát điện \ntự dùng cung cấp cho Khu liên hợp Thép Hòa Phát Hải Dương đạt 788 triệu kWh. \nTổng lượng điện phát tự chủ được của Hòa Phát tại hai Khu liên hợp Hải Dương và \nDung Quất tương đương một nhà máy nhiệt điện tầm trung, quy đổi theo giá điện \nhiện hành, sản lượng phát điện năm 2024 có giá trị khoảng 5.400 tỷ đồng. \nViệc thu hồi và sử dụng nhiệt dư, khí dư để phát điện là giải pháp tiết kiệm năng \nlượng hiệu quả, tăng tính cạnh tranh cho giá thành sản phẩm, giảm thiểu ô nhiễm \nmôi trường, đồng thời giảm tải áp lực điều độ hệ thống điện lưới quốc gia.\nCác Khu liên hợp gang thép của Hòa Phát được đầu tư dây chuyền thiết bị hiện đại \ncủa các nước G7 giúp tối ưu hóa sản xuất, tận dụng mọi nguồn nhiệt, khí dư thừa \ntrong quá trình luyện gang thép để nâng cao hiệu suất phát điện, tiết kiệm chi phí \nsản xuất, phát triển bền vững.\nHiện nay, Hòa Phát đang áp dụng 5 giải pháp sản xuất thép tiết kiệm năng lượng.\nGiải pháp thứ nhất là thu hồi nhiệt dư, khí nóng lò cốc, lò cao, lò thổi sản xuất \nđiện. Nhiệt dư phát sinh từ quá trình sản xuất than cốc, khí dư từ quá trình luyện \ngang, luyện thép được thu hồi, tận dụng phục vụ cho phát điện để cung cấp cho \nsản xuất. \nHai là sử dụng công nghệ dập cốc khô thân thiện với môi trường để sản xuất điện. \nBa là công nghệ tuabin thu hồi năng lượng Quạt gió lò cao (BPRT), vận hành các \nquạt gió công suất lớn, giúp tiết kiệm đến 50% lượng điện tiêu thụ so với phương \npháp truyền thống.\nBốn là sử dụng nhiệt dư để sản xuất điện trong quá trình thiêu kết quặng.\nNăm là công nghệ Đúc – Cán liên tục, tận dụng nhiệt từ phôi nóng, phôi nóng sau \nđúc có nhiệt độ 750-900 độ C sẽ được chuyển ngay sang dây chuyền cán để sản \nxuất thép thành phẩm. Giải pháp này đã tiết giảm tối đa sử dụng năng lượng, làm \ngiảm chi phí sản xuất, đồng thời giảm phát thải CO2/tấn sản phẩm.\n    NHÀ MÁY NHIỆT ĐIỆN, THÉP HÒA PHÁT DUNG QUẤT\n   CHÍNH THỨC CÁN MỐC 10 TỶ KWH\nAnh Bùi Văn Hữu, Giám đốc Nhà máy Nhiệt điện, Công ty Thép Hòa Phát Dung \nQuất cho biết: “Hạng mục phát điện nhiệt dư không chỉ giúp tiết kiệm năng lượng \nmà còn góp phần quan trọng trong chiến lược giảm phát thải khí nhà kính, hướng \nđến mục tiêu trung hòa carbon. Đây là giải pháp bền vững, tận dụng nguồn nhiệt \ndư trong quá trình sản xuất gang thép để tạo ra điện mà không cần sử dụng nhiên \nliệu hóa thạch”.\nTừ tháng 7/2019, một năm sau khi lắp đặt tổ máy phát đầu tiên, sản lượng phát \nđiện của Nhà máy đã đáp ứng nhu cầu sản xuất gang thép tổng khu liên hợp Hòa \nPhát Dung Quất. Từ đó đến nay, sản lượng phát điện của Nhà máy tăng trưởng \nhàng năm, đạt mốc 5 tỷ kWh vào ngày 19/9/2022 và cán mốc 10 tỷ kWh ngày \n05/02/2025.\nVới sự mở rộng của dự án Hòa Phát Dung Quất 2, công ty tiếp tục đầu tư mạnh \nmẽ vào dây chuyền phát điện nhiệt dư thứ hai. Theo đó, Nhà máy Nhiệt điện số 2 \nsở hữu công suất 240MW, gồm 04 tổ máy phát 60MW, nâng tổng công suất phát \nđiện của toàn khu liên hợp lên 600MW.\nBÁO CÁO THƯỜNG NIÊN - 2024\nPHẦN 6\nPHÁT TRIỂN\nBỀN VỮNG\nHòa Phát hoàn thành kiểm kê khí \nnhà kính toàn tập đoàn\nSáng kiến cải tiến kỹ thuật góp \nphần tiết kiệm hàng trăm tỷ đồng\nTự chủ 90% điện sản xuất thép\nPhát triển sản phẩm mới\nChuyển đổi số tại tập đoàn \nHòa Phát năm 2024\nTrách nhiệm xã hội - cộng đồng\n",
+   "ok": [
+    "S"
+   ]
+  }
+ ],
+ "systems": {
+  "GreenScan (luật, ngoại tuyến)": {
+   "N01": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
+   },
+   "N02": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
+   },
+   "N03": {
+    "label": "S",
+    "raw": [
+     "SUPPORTED"
+    ],
+    "reason": "SUPPORTED: Một nguồn ngoài tài liệu tuyên bố xác nhận: Số liệu khớp: 99.55 ≈ 99.55 (dung sai ±0.005% theo độ chính xác công bố)."
+   },
+   "N04": {
+    "label": "S",
+    "raw": [
+     "SUPPORTED"
+    ],
+    "reason": "SUPPORTED: Một nguồn ngoài tài liệu tuyên bố xác nhận: Số liệu khớp: 0.39 ≈ 0.39 (dung sai ±1.3% theo độ chính xác công bố)."
+   },
+   "N05": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   },
+   "N06": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
+   },
+   "N08": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
+   },
+   "N09": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
+   },
+   "N10": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   },
+   "N11": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   },
+   "N12": {
+    "label": "S",
+    "raw": [
+     "SUPPORTED"
+    ],
+    "reason": "SUPPORTED: Một nguồn ngoài tài liệu tuyên bố xác nhận: Số liệu khớp: 99.0 ≈ 99.0 (dung sai ±0.51% theo độ chính xác công bố)."
+   },
+   "N13": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   },
+   "N14": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   },
+   "N15": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   },
+   "N16": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   },
+   "N17": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   },
+   "N18": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   },
+   "N19": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố thiếu: năm gốc để so sánh, phạm vi / ranh giới."
+   },
+   "N20": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   }
+  },
+  "gemma-4-26B-A4B-it": {
+   "N01": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cung cấp tổng phát thải phạm vi 1 và 2 toàn Tập đoàn năm 2025 là 23.474.480 tCO2e, khớp với con số 23,47 triệu tCO2e trong tuyên bố khi làm tròn.",
+    "seconds": 2.4,
+    "usage": {
+     "completion_tokens": 83,
+     "prompt_tokens": 1445,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "total_tokens": 1528
+    }
+   },
+   "N02": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Giá trị phát thải phạm vi 1 toàn Tập đoàn năm 2025 trong bằng chứng là 23.474.480 tCO2e, khác với con số 23.369.500 tCO2e trong tuyên bố.",
+    "seconds": 2.4,
+    "usage": {
+     "completion_tokens": 82,
+     "prompt_tokens": 1445,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "total_tokens": 1527
+    }
+   },
+   "N03": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cung cấp bảng số liệu kiểm kê năm 2025 cho thấy mảng Thép phát thải 23.369.500 tCO2e, chiếm tỷ trọng 99,55% tổng phát thải toàn Tập đoàn, khớp hoàn toàn với tuyên bố.",
+    "seconds": 2.4,
+    "usage": {
+     "completion_tokens": 84,
+     "prompt_tokens": 1455,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 1539
+    }
+   },
+   "N04": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cung cấp bảng kiểm kê phát thải năm 2025 cho thấy tỷ trọng phát thải của mảng Nông nghiệp là 0,39% trên tổng phát thải toàn Tập đoàn.",
+    "seconds": 2.4,
+    "usage": {
+     "completion_tokens": 63,
+     "prompt_tokens": 1437,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "total_tokens": 1500
+    }
+   },
+   "N05": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cung cấp bảng kiểm kê phát thải năm 2025 cho thấy phát thải của mảng Nông nghiệp là 933.876 tCO2e, khớp hoàn toàn với tuyên bố.",
+    "seconds": 2.4,
+    "usage": {
+     "completion_tokens": 67,
+     "prompt_tokens": 1435,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "total_tokens": 1502
+    }
+   },
+   "N06": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ cung cấp số liệu về phát thải Phạm vi 1 và Phạm vi 2, không cung cấp số liệu về phát thải Phạm vi 3 để đối chiếu với tuyên bố.",
+    "seconds": 2.4,
+    "usage": {
+     "completion_tokens": 64,
+     "prompt_tokens": 1441,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "total_tokens": 1505
+    }
+   },
+   "N08": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cung cấp bảng kiểm kê phát thải năm 2025, trong đó tổng phát thải Phạm vi 2 của toàn Tập đoàn là 933.876 tCO2e, tương đương xấp xỉ 0,93 triệu tCO2e.",
+    "seconds": 1.6,
+    "usage": {
+     "completion_tokens": 81,
+     "prompt_tokens": 1440,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 1521
+    }
+   },
+   "N09": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ xác nhận việc đã hoàn thành kiểm kê khí nhà kính theo tiêu chuẩn ISO 14064-1:2018 chứ không cung cấp con số tỷ lệ phần trăm hoàn thành kế hoạch là 90% như tuyên bố.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 79,
+     "prompt_tokens": 770,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 849
+    }
+   },
+   "N10": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng xác nhận trực tiếp thông tin tự chủ 90% nhu cầu điện tại Khu liên hợp Gang thép Hòa Phát Dung Quất.",
+    "seconds": 1.4,
+    "usage": {
+     "completion_tokens": 52,
+     "prompt_tokens": 767,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "total_tokens": 819
+    }
+   },
+   "N11": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy tỷ lệ tái sử dụng nước tại Khu liên hợp Gang thép Hòa Phát Dung Quất là 98%, mâu thuẫn với con số 90% trong tuyên bố.",
+    "seconds": 1.4,
+    "usage": {
+     "completion_tokens": 64,
+     "prompt_tokens": 766,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 830
+    }
+   },
+   "N12": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng xác nhận trực tiếp tỷ lệ tái chế, tái sử dụng chất thải rắn nhóm thép và nông nghiệp đạt trên 99% trong năm 2025.",
+    "seconds": 1.4,
+    "usage": {
+     "completion_tokens": 59,
+     "prompt_tokens": 777,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 836
+    }
+   },
+   "N13": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy tỷ lệ phụ nữ ở các cấp quản lý trong toàn Tập đoàn năm 2025 là 35,85%, khác với con số 22% trong tuyên bố.",
+    "seconds": 1.4,
+    "usage": {
+     "completion_tokens": 66,
+     "prompt_tokens": 772,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 838
+    }
+   },
+   "N14": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng xác nhận năm 2024, lượng điện phát từ các nhà máy nhiệt dư tại Hải Dương và Dung Quất đạt 3,18 tỷ kWh, tăng 29% so với cùng kỳ.",
+    "seconds": 1.6,
+    "usage": {
+     "completion_tokens": 67,
+     "prompt_tokens": 1699,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 1766
+    }
+   },
+   "N15": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy tổng lượng điện phát của cả hai nhà máy tại Hải Dương và Dung Quất là 3,18 tỷ kWh, trong khi riêng tại Dung Quất chỉ đạt 2,39 tỷ kWh.",
+    "seconds": 1.6,
+    "usage": {
+     "completion_tokens": 69,
+     "prompt_tokens": 1681,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 1750
+    }
+   },
+   "N16": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho biết tổng lượng điện phát của các nhà máy điện nhiệt dư tại hai khu liên hợp năm 2024 tăng 29% so với cùng kỳ, trái ngược với con số 39% trong tuyên bố.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 72,
+     "prompt_tokens": 1687,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 1759
+    }
+   },
+   "N17": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy năm 2024 Hòa Phát tự chủ trên 90% lượng điện cho sản xuất, trái ngược với tuyên bố tự chủ 100%.",
+    "seconds": 1.6,
+    "usage": {
+     "completion_tokens": 61,
+     "prompt_tokens": 1678,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 1739
+    }
+   },
+   "N18": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng xác nhận trực tiếp rằng công nghệ tuabin thu hồi năng lượng Quạt gió lò cao (BPRT) giúp tiết kiệm đến 50% lượng điện tiêu thụ so với phương pháp truyền thống.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 67,
+     "prompt_tokens": 1692,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 1759
+    }
+   },
+   "N19": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ đề cập việc thu hồi nhiệt dư giúp giảm phát thải khí nhà kính và tiết kiệm năng lượng, nhưng không cung cấp con số cụ thể là giảm 50% phát thải CO2 như tuyên bố.",
+    "seconds": 1.4,
+    "usage": {
+     "completion_tokens": 70,
+     "prompt_tokens": 1681,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 1751
+    }
+   },
+   "N20": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng xác nhận trực tiếp rằng vào ngày 05/02/2025, Nhà máy Nhiệt điện – Công ty Thép Hòa Phát Dung Quất đã chính thức cán mốc sản lượng điện lũy kế là 10 tỷ kWh.",
+    "seconds": 1.0,
+    "usage": {
+     "completion_tokens": 76,
+     "prompt_tokens": 1689,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 1765
+    }
+   }
+  },
+  "gemma-4-31B-it": {
+   "N01": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Tổng phát thải phạm vi 1 và 2 năm 2025 của toàn Tập đoàn là 23.474.480 tCO2e, khớp với con số 23,47 triệu tCO2e trong tuyên bố khi làm tròn.",
+    "seconds": 2.1,
+    "usage": {
+     "completion_tokens": 79,
+     "prompt_tokens": 1445,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 1524
+    }
+   },
+   "N02": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cung cấp bảng kiểm kê phát thải năm 2025 với giá trị Phạm vi 1 toàn Tập đoàn là 23.369.500 tCO2e, khớp hoàn toàn với tuyên bố.",
+    "seconds": 1.8,
+    "usage": {
+     "completion_tokens": 70,
+     "prompt_tokens": 1445,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 1515
+    }
+   },
+   "N03": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cung cấp bảng số liệu năm 2025 cho thấy mảng Thép phát thải 23.369.500 tCO2e và chiếm tỷ trọng 99,55%, khớp hoàn toàn với tuyên bố.",
+    "seconds": 2.0,
+    "usage": {
+     "completion_tokens": 75,
+     "prompt_tokens": 1455,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 1530
+    }
+   },
+   "N04": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cung cấp bảng kiểm kê phát thải năm 2025 cho thấy tỷ trọng phát thải của mảng Nông nghiệp là 0,39%, khớp hoàn toàn với tuyên bố.",
+    "seconds": 1.6,
+    "usage": {
+     "completion_tokens": 62,
+     "prompt_tokens": 1437,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 1499
+    }
+   },
+   "N05": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng trong bảng 'Phát thải theo tổng công ty năm 2025' ghi nhận mảng Nông nghiệp phát thải 933.876 tCO2e, khớp hoàn toàn với tuyên bố.",
+    "seconds": 2.0,
+    "usage": {
+     "completion_tokens": 69,
+     "prompt_tokens": 1435,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 1504
+    }
+   },
+   "N06": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ cung cấp dữ liệu phát thải Phạm vi 1 và Phạm vi 2 cho năm 2025, không có thông tin về phát thải Phạm vi 3.",
+    "seconds": 2.0,
+    "usage": {
+     "completion_tokens": 63,
+     "prompt_tokens": 1441,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 1504
+    }
+   },
+   "N08": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị phát thải Phạm vi 2 toàn Tập đoàn năm 2025 trong bảng là 933.876 tCO2e, tương đương với 0,93 triệu tCO2e khi làm tròn.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 70,
+     "prompt_tokens": 1440,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 1510
+    }
+   },
+   "N09": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng ghi nhận đã 'Hoàn thành kiểm kê khí nhà kính' (tương đương 100%), trong khi tuyên bố chỉ ghi hoàn thành 90%.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 60,
+     "prompt_tokens": 770,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 830
+    }
+   },
+   "N10": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng tại mục 3.1 xác nhận rõ ràng việc tự chủ 90% nhu cầu điện tại Khu liên hợp Gang thép Hòa Phát Dung Quất.",
+    "seconds": 1.7,
+    "usage": {
+     "completion_tokens": 57,
+     "prompt_tokens": 767,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 824
+    }
+   },
+   "N11": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng ghi nhận tỷ lệ tái sử dụng nước tại Khu liên hợp Gang thép Hòa Phát Dung Quất là 98%, khác với con số 90% trong tuyên bố.",
+    "seconds": 1.8,
+    "usage": {
+     "completion_tokens": 61,
+     "prompt_tokens": 766,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 827
+    }
+   },
+   "N12": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng trong mục 'Điểm nổi bật về phát triển bền vững năm 2025' xác nhận tỷ lệ tái chế, tái sử dụng chất thải rắn nhóm thép và nông nghiệp đạt trên 99%.",
+    "seconds": 1.7,
+    "usage": {
+     "completion_tokens": 67,
+     "prompt_tokens": 777,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 844
+    }
+   },
+   "N13": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng ghi nhận tỷ lệ phụ nữ ở các cấp quản lý năm 2025 là 35,85%, khác với con số 22% trong tuyên bố.",
+    "seconds": 1.7,
+    "usage": {
+     "completion_tokens": 62,
+     "prompt_tokens": 772,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 834
+    }
+   },
+   "N14": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng xác nhận năm 2024, các nhà máy điện nhiệt dư tại hai Khu liên hợp Hải Dương và Dung Quất có tổng lượng điện phát đạt 3,18 tỷ kWh, tăng 29% so với cùng kỳ.",
+    "seconds": 1.4,
+    "usage": {
+     "completion_tokens": 73,
+     "prompt_tokens": 1699,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 1772
+    }
+   },
+   "N15": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng nêu rõ tổng lượng điện phát của cả hai khu liên hợp Hải Dương và Dung Quất năm 2024 là 3,18 tỷ kWh, trong khi riêng tại Dung Quất chỉ đạt 2,39 tỷ kWh.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 75,
+     "prompt_tokens": 1681,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 1756
+    }
+   },
+   "N16": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng ghi nhận tổng lượng điện phát của các nhà máy điện nhiệt dư thuộc hai Khu liên hợp năm 2024 tăng 29% so với cùng kỳ, trong khi tuyên bố ghi tăng 39%.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 70,
+     "prompt_tokens": 1687,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 1757
+    }
+   },
+   "N17": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng nêu rõ năm 2024 Hòa Phát tự chủ 'trên 90%' hoặc '90%' lượng điện cho sản xuất thép, không phải 100% như tuyên bố.",
+    "seconds": 2.1,
+    "usage": {
+     "completion_tokens": 67,
+     "prompt_tokens": 1678,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 1745
+    }
+   },
+   "N18": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng nêu rõ giải pháp thứ ba là công nghệ tuabin thu hồi năng lượng Quạt gió lò cao (BPRT) giúp tiết kiệm đến 50% lượng điện tiêu thụ so với phương pháp truyền thống, khớp hoàn toàn với tuyên bố.",
+    "seconds": 2.0,
+    "usage": {
+     "completion_tokens": 76,
+     "prompt_tokens": 1692,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 1768
+    }
+   },
+   "N19": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ đề cập giải pháp thu hồi nhiệt dư giúp giảm phát thải khí nhà kính nói chung, không cung cấp con số cụ thể là giảm 50% phát thải CO2 cho năm 2024.",
+    "seconds": 2.0,
+    "usage": {
+     "completion_tokens": 71,
+     "prompt_tokens": 1681,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 1752
+    }
+   },
+   "N20": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng xác nhận rõ ràng Nhà máy Nhiệt điện - Công ty Thép Hòa Phát Dung Quất cán mốc sản lượng điện lũy kế 10 tỷ kWh vào ngày 05/02/2025.",
+    "seconds": 1.4,
+    "usage": {
+     "completion_tokens": 70,
+     "prompt_tokens": 1689,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 1759
+    }
+   }
+  },
+  "Llama-3.3-70B-Instruct": {
+   "N01": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị tổng phát thải khí nhà kính toàn Tập đoàn năm 2025 trong đoạn bằng chứng là 23.474.480 tCO2e, tương đương với giá trị 23,47 triệu tCO2e trong tuyên bố khi làm tròn.",
+    "seconds": 3.4,
+    "usage": {
+     "completion_tokens": 67,
+     "prompt_tokens": 1375,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 32
+     },
+     "total_tokens": 1442
+    }
+   },
+   "N02": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị phát thải khí nhà kính phạm vi 1 toàn Tập đoàn năm 2025 trong bằng chứng là 23.474.480 tCO2e, gần giống với giá trị trong tuyên bố là 23.369.500 tCO2e, nằm trong sai số làm tròn.",
+    "seconds": 3.6,
+    "usage": {
+     "completion_tokens": 75,
+     "prompt_tokens": 1372,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 32
+     },
+     "total_tokens": 1447
+    }
+   },
+   "N03": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị phát thải của mảng thép và tỷ trọng trong tổng phát thải khí nhà kính của Tập đoàn trong năm 2025 khớp với tuyên bố trong sai số làm tròn.",
+    "seconds": 3.1,
+    "usage": {
+     "completion_tokens": 52,
+     "prompt_tokens": 1380,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 1432
+    }
+   },
+   "N04": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng cho thấy phát thải khí nhà kính của mảng nông nghiệp trong Tập đoàn chiếm 0,39% tổng phát thải khí nhà kính năm 2025, khớp với tuyên bố.",
+    "seconds": 3.2,
+    "usage": {
+     "completion_tokens": 57,
+     "prompt_tokens": 1368,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 1425
+    }
+   },
+   "N05": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị phát thải của mảng nông nghiệp trong năm 2025 là 933.876 tCO2e, khớp với tuyên bố trong sai số làm tròn của con số được công bố.",
+    "seconds": 3.2,
+    "usage": {
+     "completion_tokens": 56,
+     "prompt_tokens": 1363,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 1419
+    }
+   },
+   "N06": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị phát thải khí nhà kính toàn Tập đoàn năm 2025 trong đoạn bằng chứng là 23.474.480 tCO2e, tương đương với giá trị 23,47 triệu tCO2e trong tuyên bố khi làm tròn.",
+    "seconds": 3.5,
+    "usage": {
+     "completion_tokens": 66,
+     "prompt_tokens": 1371,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 1437
+    }
+   },
+   "N08": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị phát thải khí nhà kính phạm vi 2 toàn Tập đoàn năm 2025 là 933.876 tCO2e, tương đương với 0,93 triệu tCO2e khi làm tròn.",
+    "seconds": 2.6,
+    "usage": {
+     "completion_tokens": 59,
+     "prompt_tokens": 1371,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 1430
+    }
+   },
+   "N09": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin cụ thể về việc hoàn thành 90% kế hoạch kiểm kê khí nhà kính của Tập đoàn trong năm 2025.",
+    "seconds": 2.4,
+    "usage": {
+     "completion_tokens": 51,
+     "prompt_tokens": 757,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 808
+    }
+   },
+   "N10": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng nói về cùng chỉ số, cùng kỳ, cùng phạm vi và ranh giới tổ chức, cùng loại giá trị và giá trị khớp với tuyên bố.",
+    "seconds": 2.3,
+    "usage": {
+     "completion_tokens": 51,
+     "prompt_tokens": 757,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 808
+    }
+   },
+   "N11": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Đoạn bằng chứng cho biết Khu liên hợp Gang thép Hòa Phát Dung Quất tái sử dụng 98% nước, khác với tuyên bố là 90%.",
+    "seconds": 2.2,
+    "usage": {
+     "completion_tokens": 52,
+     "prompt_tokens": 756,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 808
+    }
+   },
+   "N12": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng nói về cùng chỉ số, cùng kỳ, cùng phạm vi phát thải và ranh giới tổ chức, cùng loại giá trị và giá trị khớp với tuyên bố trong sai số làm tròn của con số được công bố.",
+    "seconds": 2.4,
+    "usage": {
+     "completion_tokens": 64,
+     "prompt_tokens": 765,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 829
+    }
+   },
+   "N13": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Giá trị tỷ lệ phụ nữ ở các cấp quản lý trong toàn Tập đoàn năm 2025 là 35,85%, khác với giá trị 22% trong tuyên bố",
+    "seconds": 2.1,
+    "usage": {
+     "completion_tokens": 53,
+     "prompt_tokens": 759,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 812
+    }
+   },
+   "N14": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng nói về cùng chỉ số, cùng kỳ, cùng phạm vi phát thải và ranh giới tổ chức, cùng loại giá trị và giá trị khớp với tuyên bố trong sai số làm tròn của con số được công bố.",
+    "seconds": 3.5,
+    "usage": {
+     "completion_tokens": 64,
+     "prompt_tokens": 1655,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 1719
+    }
+   },
+   "N15": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin cụ thể về lượng điện phát của nhà máy điện nhiệt dư tại Dung Quất riêng biệt, mà chỉ cung cấp thông tin về tổng lượng điện phát của các nhà máy điện nhiệt dư thuộc Khu liên hợp sản xuất gang thép Hòa Phát tại Hải Dương và Dung Quất.",
+    "seconds": 3.9,
+    "usage": {
+     "completion_tokens": 83,
+     "prompt_tokens": 1638,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 1721
+    }
+   },
+   "N16": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Tuyên bố nói lượng điện phát tăng 39% nhưng bằng chứng cho thấy tăng 29%",
+    "seconds": 2.3,
+    "usage": {
+     "completion_tokens": 37,
+     "prompt_tokens": 1643,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 1680
+    }
+   },
+   "N17": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Tuyên bố nói về tự chủ 100% lượng điện cho sản xuất thép, nhưng bằng chứng cho thấy tự chủ trên 90% lượng điện cho sản xuất",
+    "seconds": 2.6,
+    "usage": {
+     "completion_tokens": 50,
+     "prompt_tokens": 1633,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 1683
+    }
+   },
+   "N18": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng nói về cùng chỉ số (tiết kiệm điện), cùng loại giá trị (tiết kiệm), và giá trị khớp với tuyên bố (50% lượng điện tiêu thụ so với phương pháp truyền thống) khi đề cập đến công nghệ tuabin thu hồi năng lượng Quạt gió lò cao (BPRT).",
+    "seconds": 3.7,
+    "usage": {
+     "completion_tokens": 83,
+     "prompt_tokens": 1650,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 1733
+    }
+   },
+   "N19": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin cụ thể về việc giảm 50% phát thải CO2 trong năm 2024.",
+    "seconds": 2.7,
+    "usage": {
+     "completion_tokens": 44,
+     "prompt_tokens": 1637,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 1681
+    }
+   },
+   "N20": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng nói về cùng chỉ số (sản lượng điện lũy kế), cùng kỳ (ngày 05/02/2025), cùng phạm vi phát thải và ranh giới tổ chức (Nhà máy Nhiệt điện tại Dung Quất), cùng loại giá trị (thực hiện) và giá trị khớp với tuyên bố trong sai số làm tròn của con số được công bố (10 tỷ kWh).",
+    "seconds": 3.5,
+    "usage": {
+     "completion_tokens": 106,
+     "prompt_tokens": 1645,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 1751
+    }
+   }
+  },
+  "GLM-5.2": {
+   "N01": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cho thấy tổng phát thải khí nhà kính toàn Tập đoàn năm 2025 (cộng phạm vi 1 và 2) là 23.474.480 tCO2e, khớp với 23,47 triệu tCO2e trong tuyên bố.",
+    "seconds": 3.7,
+    "usage": {
+     "completion_tokens": 311,
+     "prompt_tokens": 1424,
+     "total_tokens": 1735
+    }
+   },
+   "N02": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng thể hiện bảng kiểm kê phát thải khí nhà kính toàn Tập đoàn năm 2025, trong đó phát thải Phạm vi 1 là 23.369.500 tCO2e, khớp hoàn toàn với tuyên bố.",
+    "seconds": 4.2,
+    "usage": {
+     "completion_tokens": 372,
+     "prompt_tokens": 1422,
+     "total_tokens": 1794
+    }
+   },
+   "N03": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cho thấy mảng thép phát thải 23.369.500 tCO2e năm 2025, chiếm 99,55% tổng phát thải khí nhà kính toàn Tập đoàn, khớp hoàn toàn với tuyên bố.",
+    "seconds": 3.2,
+    "usage": {
+     "completion_tokens": 242,
+     "prompt_tokens": 1434,
+     "total_tokens": 1676
+    }
+   },
+   "N04": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cho thấy tỷ trọng phát thải khí nhà kính năm 2025 của mảng Nông nghiệp là 0,39%, khớp hoàn toàn với tuyên bố về cùng chỉ số, kỳ, phạm vi và loại giá trị.",
+    "seconds": 2.8,
+    "usage": {
+     "completion_tokens": 182,
+     "prompt_tokens": 1419,
+     "total_tokens": 1601
+    }
+   },
+   "N05": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng trong bảng phát thải năm 2025 cho thấy mảng Nông nghiệp phát thải đúng 933.876 tCO2e, khớp hoàn toàn với tuyên bố.",
+    "seconds": 2.7,
+    "usage": {
+     "completion_tokens": 163,
+     "prompt_tokens": 1413,
+     "total_tokens": 1576
+    }
+   },
+   "N06": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ cung cấp số liệu phát thải Phạm vi 1, Phạm vi 2 và tổng cộng, không có thông tin về phát thải Phạm vi 3 như trong tuyên bố.",
+    "seconds": 5.7,
+    "usage": {
+     "completion_tokens": 560,
+     "prompt_tokens": 1420,
+     "total_tokens": 1980
+    }
+   },
+   "N08": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cho thấy phát thải khí nhà kính phạm vi 2 toàn Tập đoàn năm 2025 là 933.876 tCO2e, khớp với 0,93 triệu tCO2e trong tuyên bố.",
+    "seconds": 4.9,
+    "usage": {
+     "completion_tokens": 586,
+     "prompt_tokens": 1420,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 2006
+    }
+   },
+   "N09": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ đề cập đến việc hoàn thành kiểm kê khí nhà kính cho toàn Tập đoàn, không đề cập đến tỷ lệ 90% kế hoạch kiểm kê khí nhà kính như tuyên bố.",
+    "seconds": 3.8,
+    "usage": {
+     "completion_tokens": 418,
+     "prompt_tokens": 772,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 1190
+    }
+   },
+   "N10": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng nêu rõ 'Tự chủ 90% nhu cầu điện tại Khu liên hợp Gang thép Hòa Phát Dung Quất', hoàn toàn khớp với tuyên bố.",
+    "seconds": 1.6,
+    "usage": {
+     "completion_tokens": 141,
+     "prompt_tokens": 774,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 915
+    }
+   },
+   "N11": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho biết tỷ lệ tái sử dụng nước tại Khu liên hợp Gang thép Hòa Phát Dung Quất là 98%, khác với 90% trong tuyên bố.",
+    "seconds": 2.1,
+    "usage": {
+     "completion_tokens": 137,
+     "prompt_tokens": 774,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 911
+    }
+   },
+   "N12": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng trong báo cáo phát triển bền vững 2025 nêu rõ tỷ lệ tái chế, tái sử dụng chất thải rắn nhóm thép và nông nghiệp đạt trên 99%, khớp hoàn toàn với tuyên bố về cùng chỉ số, kỳ, phạm vi và giá trị.",
+    "seconds": 3.0,
+    "usage": {
+     "completion_tokens": 302,
+     "prompt_tokens": 783,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 1085
+    }
+   },
+   "N13": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho biết tỷ lệ phụ nữ ở các cấp quản lý trong toàn Tập đoàn năm 2025 là 35,85%, khác với 22% trong tuyên bố.",
+    "seconds": 2.0,
+    "usage": {
+     "completion_tokens": 193,
+     "prompt_tokens": 774,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 967
+    }
+   },
+   "N14": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng xác nhận chính xác các nhà máy điện nhiệt dư tại hai khu liên hợp Hải Dương và Dung Quất phát 3,18 tỷ kWh điện năm 2024, tăng 29% so với cùng kỳ.",
+    "seconds": 3.1,
+    "usage": {
+     "completion_tokens": 282,
+     "prompt_tokens": 1737,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 2019
+    }
+   },
+   "N15": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho biết tổng lượng điện phát của cả hai khu liên hợp Hải Dương và Dung Quất là 3,18 tỷ kWh, trong khi riêng Dung Quất chỉ đạt 2,39 tỷ kWh.",
+    "seconds": 2.9,
+    "usage": {
+     "completion_tokens": 270,
+     "prompt_tokens": 1720,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 1990
+    }
+   },
+   "N16": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho biết lượng điện phát năm 2024 của các nhà máy điện nhiệt dư thuộc hai khu liên hợp tăng 29% so với cùng kỳ, trong khi tuyên bố cho rằng tăng 39%.",
+    "seconds": 2.8,
+    "usage": {
+     "completion_tokens": 222,
+     "prompt_tokens": 1725,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 1947
+    }
+   },
+   "N17": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy Hòa Phát tự chủ trên 90% lượng điện cho sản xuất thép năm 2024, không phải 100% như tuyên bố.",
+    "seconds": 3.3,
+    "usage": {
+     "completion_tokens": 317,
+     "prompt_tokens": 1717,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 2034
+    }
+   },
+   "N18": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng đề cập đến cùng công nghệ BPRT và xác nhận giúp tiết kiệm đến 50% lượng điện tiêu thụ so với phương pháp truyền thống, khớp hoàn toàn với tuyên bố.",
+    "seconds": 2.1,
+    "usage": {
+     "completion_tokens": 185,
+     "prompt_tokens": 1734,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 1919
+    }
+   },
+   "N19": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng đề cập đến giải pháp thu hồi nhiệt dư giúp giảm phát thải khí nhà kính và tiết kiệm 50% lượng điện tiêu thụ (đối với công nghệ BPRT), nhưng không có thông tin xác nhận giải pháp thu hồi nhiệt dư giúp giảm 50% phát thải CO2 trong năm 2024.",
+    "seconds": 6.3,
+    "usage": {
+     "completion_tokens": 315,
+     "prompt_tokens": 1722,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 2037
+    }
+   },
+   "N20": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng xác nhận ngày 05/02/2025, Nhà máy Nhiệt điện Hòa Phát Dung Quất cán mốc sản lượng điện lũy kế 10 tỷ kWh, khớp hoàn toàn với tuyên bố.",
+    "seconds": 5.9,
+    "usage": {
+     "completion_tokens": 268,
+     "prompt_tokens": 1726,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 1994
+    }
+   }
+  }
+ }
+}

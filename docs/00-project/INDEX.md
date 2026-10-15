@@ -6,6 +6,7 @@ Một trang để biết **đọc gì, chạy gì, sửa ở đâu**. Mọi đư
 
 | # | Tài liệu | Trả lời câu hỏi |
 | --- | --- | --- |
+| 0 | [00-project/AUDIT_HE_THONG_2026-10.md](AUDIT_HE_THONG_2026-10.md) | **Phản biện 10 khâu 14/10**: hội đồng hỏi gì, bằng chứng, cách hỏng, P0/P1, minh chứng; GreenScan Studio |
 | 0 | [00-project/AUDIT_2026-10-06.md](AUDIT_2026-10-06.md) | **Rà soát toàn diện 06/10**: đã đạt gì, đang sai gì, trạng thái D1–D15, việc tới 10/10 và 25/10 |
 | 0b | [08-knowledge/README.md](../08-knowledge/README.md) | **Kho tri thức**: tẩy xanh là gì (21 mẫu hình), pháp lý Việt Nam đã đối chiếu bản ký, thực trạng và nghiên cứu Việt Nam, án lệ, AI/NLP và cách đo trên gold nhỏ |
 | 1 | [00-project/PROBLEM_DEFINITION.md](PROBLEM_DEFINITION.md) · [PROJECT_BRIEF.md](PROJECT_BRIEF.md) | Bài toán là gì, cho ai |

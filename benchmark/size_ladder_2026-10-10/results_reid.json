@@ -1,0 +1,145 @@
+{
+ "model": "gemma-4-31B-it",
+ "identified": 8,
+ "n": 23,
+ "rows": [
+  {
+   "kind": "claim",
+   "sent": "Hỗ trợ sản xuất thép bền vững, giảm phát thải và thúc đẩy sử dụng nguyên liệu tuần hoàn.",
+   "answer": "```json\n{\"doanh_nghiep\": \"không đoán được\", \"tu_tin\": 0}\n```",
+   "identified": false
+  },
+  {
+   "kind": "claim",
+   "sent": "<S1> <S2> Điểm nổi bật về phát triển bền vững năm 2025 qua cách chúng tôi lựa chọn nguồn cung, tổ chức sản xuất, hợp tác cùng đối tác, chăm lo cho người <S3>.",
+   "answer": "```json\n{\"doanh_nghiep\": \"không đoán được\", \"tu_tin\": 0}\n```",
+   "identified": false
+  },
+  {
+   "kind": "claim",
+   "sent": "Phát thải carbon phát sinh nhiều nhất ở giai đoạn đầu tiên khi khử quặng sắt để tạo ra thép nguyên chất và giảm đi đáng kể ở giai đoạn tái chế phế liệu thành thép để tạo vòng đời tiếp theo.",
+   "answer": "```json\n{\"doanh_nghiep\": \"Hòa Phát\", \"tu_tin\": 90}\n```",
+   "identified": true
+  },
+  {
+   "kind": "claim",
+   "sent": "Tập đoàn cam kết xây dựng một khung quản trị bền vững vững chắc nhằm đảm bảo tăng trưởng dài hạn, minh bạch và trách nhiệm đối với các bên liên quan.",
+   "answer": "```json\n{\"doanh_nghiep\": \"không đoán được\", \"tu_tin\": 0}\n```",
+   "identified": false
+  },
+  {
+   "kind": "claim",
+   "sent": "Từ khi thành lập đến nay, Tập đoàn đã liên tục mở rộng hệ sinh thái thép từ thượng nguồn đến hạ nguồn, nâng cao năng lực sản xuất, không ngừng tập trung nghiên cứu nâng cao chất lượng sản phẩm, cho ra các mác sản phẩm mới ngày càng chuyên sâu, phức tạp, đáp ứng rộng hơn các loại nhu cầu về thép cho hạ tầng đất nước.",
+   "answer": "```json\n{\"doanh_nghiep\": \"Hòa Phát\", \"tu_tin\": 90}\n```",
+   "identified": true
+  },
+  {
+   "kind": "claim",
+   "sent": "Tăng trưởng bền vững và hiệu quả lợi nhuận Quản trị doanh nghiệp minh bạch Quản trị rủi ro hiệu quả Công bố thông tin chính xác, kịp thời Là một công ty đại chúng, đảm bảo hiệu quả kinh doanh và quyền lợi hợp pháp của cổ đông/nhà đầu tư là mục tiêu được ưu tiên hàng đầu của Tập đoàn.",
+   "answer": "```json\n{\"doanh_nghiep\": \"không đoán được\", \"tu_tin\": 0}\n```",
+   "identified": false
+  },
+  {
+   "kind": "claim",
+   "sent": "Vòng đời của thép đi qua hai giai đoạn: gang lỏng, sau đó tiếp tục được tinh luyện trong lò thổi oxy nhằm loại bỏ tạp chất và điều chỉnh hàm lượng carbon để trở thành thép thành phẩm.",
+   "answer": "```json\n{\"doanh_nghiep\": \"không đoán được\", \"tu_tin\": 0}\n```",
+   "identified": false
+  },
+  {
+   "kind": "claim",
+   "sent": "Nâng cao trải nghiệm khách hàng Giảm tiêu hao tài nguyên và phát thải gián tiếp Tăng khả năng thích ứng với biến động thị trường Chiến lược này đồng thời đóng góp trực tiếp vào <S1> trụ cột ESG:",
+   "answer": "```json\n{\"doanh_nghiep\": \"không đoán được\", \"tu_tin\": 0}\n```",
+   "identified": false
+  },
+  {
+   "kind": "claim",
+   "sent": "Theo đó, các chất thải rắn chứa sắt sẽ được thu gom và xử lý, trở thành nguyên vật liệu đưa ngược lại quy trình sản xuất thép.",
+   "answer": "```json\n{\"doanh_nghiep\": \"không đoán được\", \"tu_tin\": 0}\n```",
+   "identified": false
+  },
+  {
+   "kind": "claim",
+   "sent": "Là một trong những tập đoàn công nghiệp hàng đầu Việt Nam, [DOANH_NGHIỆP] coi quản trị tốt và đạo đức kinh doanh không chỉ là nền tảng của sự phát triển bền vững, mà còn là yếu tố cốt lõi để củng cố niềm tin của cổ đông, khách hàng, đối tác và xã hội.",
+   "answer": "```json\n{\"doanh_nghiep\": \"không đoán được\", \"tu_tin\": 0}\n```",
+   "identified": false
+  },
+  {
+   "kind": "claim",
+   "sent": "Áp dụng giải pháp sử dụng nước hiệu quả, xây dựng các hệ thống tuần hoàn khép kín, tái chế nước và xử lý triệt để để tuân thủ quy chuẩn xả thải.",
+   "answer": "```json\n{\"doanh_nghiep\": \"không đoán được\", \"tu_tin\": 0}\n```",
+   "identified": false
+  },
+  {
+   "kind": "claim",
+   "sent": "Nhóm nông nghiệp, bất động sản và điện máy gia dụng có mức phát thải thấp hơn đáng kể.",
+   "answer": "```json\n{\"doanh_nghiep\": \"không đoán được\", \"tu_tin\": 0}\n```",
+   "identified": false
+  },
+  {
+   "kind": "claim",
+   "sent": "Trong tầm nhìn dài hạn, khi nguồn cung thép phế liệu trở nên dồi dào và dễ tiếp cận hơn, [DOANH_NGHIỆP] định hướng đẩy mạnh hơn nữa tỷ trọng thép tái chế trong cơ cấu sản Hoạt động kinh doanh tại Tập đoàn xuất để tối ưu hóa vòng đời thứ cấp.",
+   "answer": "```json\n{\"doanh_nghiep\": \"Hòa Phát\", \"tu_tin\": 90}\n```",
+   "identified": true
+  },
+  {
+   "kind": "claim",
+   "sent": "Tập đoàn cũng đang triển khai ứng dụng các nguồn năng lượng tái tạo, điện mặt trời áp mái để triển khai tại các nhà máy.",
+   "answer": "```json\n{\"doanh_nghiep\": \"không đoán được\", \"tu_tin\": 0}\n```",
+   "identified": false
+  },
+  {
+   "kind": "claim",
+   "sent": "Việc sử dụng nhiều hơn thép phế giúp tăng sản lượng, giảm tỷ trọng nguyên liệu phát thải cao, giảm tiêu hao than cốc và các nhiên liệu trên một tấn thép, đồng thời tiết kiệm năng lượng trong toàn bộ chuỗi sản xuất.",
+   "answer": "```json\n{\"doanh_nghiep\": \"Hòa Phát\", \"tu_tin\": 85}\n```",
+   "identified": true
+  },
+  {
+   "kind": "claim",
+   "sent": "Dòng máy lọc nước HyperS được phát triển theo hướng tối ưu năng lượng và thân thiện môi trường, nổi bật với công nghệ làm lạnh Block sử dụng gas R600a không gây hại tầng ozone, hệ điện cực titanium phủ Platinum nâng cao độ bền và cụm lõi Ultra H8.0 tối ưu lưu lượng.",
+   "answer": "```json\n{\"doanh_nghiep\": \"Kangaroo\", \"tu_tin\": 95}\n```",
+   "identified": false
+  },
+  {
+   "kind": "claim",
+   "sent": "Những phản hồi nhận được là cơ sở quan trọng giúp [DOANH_NGHIỆP] điều chỉnh kế hoạch hoạt động, củng cố quan hệ hợp tác và xác định các mục tiêu phát triển bền vững phù hợp trong từng giai đoạn.",
+   "answer": "```json\n{\"doanh_nghiep\": \"không đoán được\", \"tu_tin\": 0}\n```",
+   "identified": false
+  },
+  {
+   "kind": "claim",
+   "sent": "LƯỢNG SẠCH Tập đoàn quản lý chặt chẽ việc tiêu hao than và sử dụng năng lượng trong toàn bộ dây chuyền sản xuất, đồng thời thực hiện nhiều biện pháp nâng cao hiệu suất năng lượng như thu hồi nhiệt dư để phát điện, tự chủ nguồn điện nội bộ, và nghiên cứu đầu tư điện mặt trời áp mái tại các cơ sở sản xuất.",
+   "answer": "```json\n{\"doanh_nghiep\": \"không đoán được\", \"tu_tin\": 0}\n```",
+   "identified": false
+  },
+  {
+   "kind": "claim",
+   "sent": "Chất thải rắn trong mô hình sản xuất thép tuần hoàn không còn được xem là gánh nặng chôn lấp, đổ bỏ mà trở thành tài nguyên được tận dụng tối đa và mang lại hiệu quả kinh tế.",
+   "answer": "```json\n{\"doanh_nghiep\": \"Hoa Phát\", \"tu_tin\": 70}\n```",
+   "identified": true
+  },
+  {
+   "kind": "claim",
+   "sent": "Tỷ lệ tái chế/tái sử dụng chất thải rắn của nhóm Nông nghiệp là gần <S1>%.",
+   "answer": "```json\n{\"doanh_nghiep\": \"không đoán được\", \"tu_tin\": 0}\n```",
+   "identified": false
+  },
+  {
+   "kind": "page 39",
+   "sent": "39\nBÁO CÁO PHÁT TRIỂN BỀN VỮNG \n2025\n THÍCH ỨNG VỚI BIẾN ĐỔI KHÍ HẬU\nTRONG LĨNH VỰC NÔNG NGHIỆP\nTrong các nhóm ngành kinh doanh của [DOANH_NGHIỆP], biến đổi khí hậu tác \nđộng rõ nét nhất đến lĩnh vực nông nghiệp — đặc biệt là hoạt động chăn nuôi. \nNhiệt độ tăng cao và các đợt thời tiết cực đoan khiến gia súc, gia cầm chịu stress \nnhiệt, dẫn tới giảm tốc độ tăng trưởng, giảm khả năng sinh sản và nă",
+   "answer": "```json\n{\"doanh_nghiep\": \"Tập đoàn Hòa Phát\", \"tu_tin\": 100}\n```",
+   "identified": true
+  },
+  {
+   "kind": "page 9",
+   "sent": "9\nBÁO CÁO PHÁT TRIỂN BỀN VỮNG \n2025\nĐóng góp gần <E1> đồng vào \nngân sách Nhà nước  \nĐóng góp hơn <E2> đồng cho các \nchương trình phúc lợi xã hội.\nMÔI TRƯỜNG\nXÃ HỘI\nQUẢN TRỊ\nHoàn thành kiểm kê khí nhà kính theo tiêu \nchuẩn ISO 14064-1:2018 cho toàn Tập \nđoàn và được BSI thẩm định số liệu.  \nTái chế, tái sử dụng chất thải rắn\nnhóm thép và nông nghiệp đạt trên <E3>% \nSố giờ đào tạo trung bình cho mỗ",
+   "answer": "```json\n{\"doanh_nghiep\": \"Hòa Phát\", \"tu_tin\": 100}\n```",
+   "identified": true
+  },
+  {
+   "kind": "page 86",
+   "sent": "86\n  TỰ CHỦ <E1>% ĐIỆN SẢN XUẤT THÉP \nNăm 2024, các nhà máy điện nhiệt dư thuộc hai Khu liên hợp sản xuất gang \nthép [DOANH_NGHIỆP] tại [CƠ_SỞ_B] và [CƠ_SỞ_A] có tổng lượng điện phát đạt <E2> kWh, tăng <E3>% so với cùng kỳ, giúp [DOANH_NGHIỆP] tự chủ trên <E4>% lượng điện \ncho sản xuất. Riêng tại [CƠ_SỞ_A], ngày 05/02/2025, Nhà máy Nhiệt điện – \nCông ty Thép [DOANH_NGHIỆP] [CƠ_SỞ_A] chính thức cán",
+   "answer": "```json\n{\n  \"doanh_nghiep\": \"Hòa Phát\",\n  \"tu_tin\": 100\n}\n```",
+   "identified": true
+  }
+ ]
+}

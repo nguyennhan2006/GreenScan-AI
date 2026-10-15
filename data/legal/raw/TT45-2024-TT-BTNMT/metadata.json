@@ -1,0 +1,25 @@
+{
+  "document_number": "45/2024/TT-BTNMT",
+  "title": "Ban hành quy chuẩn kỹ thuật quốc gia về khí thải công nghiệp (QCVN 19:2024/BTNMT)",
+  "authority": "Bộ Tài nguyên và Môi trường (nay Bộ Nông nghiệp và Môi trường)",
+  "issued_date": "2024-12-30",
+  "effective_from": "2025-07-01",
+  "status": "effective",
+  "id": "TT45-2024-TT-BTNMT",
+  "checked_at": "2026-10-13T12:20:35.192837+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\TT45-2024-TT-BTNMT\\original.pdf",
+      "sha256": "232edd722120d0c45d59e6f62f55a304ac5e4593edabd56463f635fca9448ca0",
+      "bytes": 1567122,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/45-btnmt.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/45-btnmt.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:35.406823+00:00",
+      "pages": 3,
+      "text_chars": 7300
+    }
+  ],
+  "text_acquisition": "ok"
+}

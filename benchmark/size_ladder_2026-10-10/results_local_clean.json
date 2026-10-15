@@ -1,0 +1,198 @@
+{
+ "systems": {
+  "qwen3:8b (CPU, không suy nghĩ)": {
+   "F01": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cung cấp tổng phát thải khí nhà kính phạm vi 1 và 2 năm 2025 là 23.474.480 tCO2e, gần bằng với tuyên bố 23,5 triệu tCO2e (sai số trong phạm vi làm tròn).",
+    "seconds": 92.5
+   },
+   "F02": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng cung cấp số liệu phát thải khí nhà kính phạm vi 2 năm 2025 là 933.876 tCO2e, khớp với tuyên bố trong báo cáo.",
+    "seconds": 87.8
+   },
+   "F03": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy tổng phát thải khí nhà kính phạm vi 1 và 2 năm 2025 là 23.474.480 tCO2e, trong khi tuyên bố đưa ra là 21,4 triệu tCO2e. Giá trị này khác nhau rõ rệt và không nằm trong phạm vi sai số làm tròn.",
+    "seconds": 116.3
+   },
+   "F04": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng cung cấp số liệu phát thải khí nhà kính phạm vi 2 năm 2025 là 933.876 tCO2e, khớp với tuyên bố của doanh nghiệp (833.876 tCO2e) trong phạm vi sai số làm tròn.",
+    "seconds": 231.2
+   },
+   "F05": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Đoạn bằng chứng cho thấy nhà máy điện nhiệt dư đáp ứng 80% nhu cầu điện của khu liên hợp vào năm 2024, trong khi tuyên bố cho rằng là 90%, do đó mâu thuẫn với giá trị được công bố.",
+    "seconds": 54.5
+   },
+   "F06": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng cung cấp cùng chỉ số (phát thải khí nhà kính phạm vi 1), cùng kỳ (năm 2020 và năm 2025), cùng phạm vi phát thải và ranh giới tổ chức, cùng loại giá trị (tuyệt đối) và giá trị giảm 20% (từ 1.000.000 tCO2e xuống 800.000 tCO2e) khớp với tuyên bố.",
+    "seconds": 86.6
+   },
+   "F07": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cung cấp cùng chỉ số (phát thải khí nhà kính phạm vi 1), cùng kỳ (năm 2020 và năm 2025), cùng phạm vi phát thải và ranh giới tổ chức, cùng loại giá trị (tuyệt đối), và giá trị giảm 20% (từ 1.000.000 tCO2e xuống 850.000 tCO2e) khớp với tuyên bố trong sai số làm tròn.",
+    "seconds": 61.0
+   },
+   "F08": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy phát thải khí nhà kính phạm vi 1 của Công ty năm 2025 là 1.050.000 tCO2e, tăng so với năm 2020 là 1.000.000 tCO2e, trái ngược với tuyên bố giảm 20%.",
+    "seconds": 55.5
+   },
+   "F09": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin về tổng phát thải khí nhà kính hay tỷ lệ đóng góp của hoạt động sản xuất gang thép, do đó không thể xác nhận hay bác bỏ tuyên bố.",
+    "seconds": 48.5
+   },
+   "F10": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng cung cấp dữ liệu về tổng phát thải khí nhà kính trong phạm vi 1 và 2, nhưng không cung cấp thông tin về khối lượng sản phẩm (tấn thép) để tính cường độ phát thải, do đó không thể xác nhận hoặc bác bỏ tuyên bố.",
+    "seconds": 69.8
+   },
+   "F11": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng đề cập đến chỉ số 'cường độ phát thải' trong khi tuyên bố nói về 'tổng phát thải', do đó không cùng chỉ số và không thể xác nhận hay bác bỏ tuyên bố.",
+    "seconds": 58.8
+   },
+   "F12": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng đề cập đến phạm vi 1, 2 và 3, trong khi tuyên bố chỉ đề cập đến phạm vi 1, do đó không đủ thông tin để xác nhận hoặc bác bỏ tuyên bố.",
+    "seconds": 54.8
+   },
+   "F13": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng chỉ cung cấp thông tin về phạm vi 1, trong khi tuyên bố đề cập đến cả phạm vi 1 và 2, do đó không đủ thông tin để xác nhận hay bác bỏ tuyên bố.",
+    "seconds": 63.0
+   },
+   "F14": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng cung cấp thông tin cho năm 2024, trong khi tuyên bố đề cập đến năm 2025, do đó không đủ thông tin để xác nhận hoặc bác bỏ tuyên bố.",
+    "seconds": 60.0
+   },
+   "F15": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng đề cập đến năm 2023 và so sánh với năm 2022, trong khi tuyên bố đề cập đến năm 2025 và so sánh với năm 2024. Không có thông tin về năm 2025 hoặc so sánh giữa năm 2024 và 2025.",
+    "seconds": 64.1
+   },
+   "F16": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng đề cập đến mục tiêu đến năm 2030, trong khi tuyên bố nói về kết quả thực tế đã đạt được. Do đó, không đủ thông tin để xác nhận hoặc bác bỏ tuyên bố.",
+    "seconds": 67.9
+   },
+   "F17": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng trùng khớp với tuyên bố về chỉ số (phát thải khí nhà kính), kỳ (năm 2030 so với năm 2020), phạm vi (phạm vi 1 và 2), ranh giới tổ chức, và loại giá trị (mục tiêu). Giá trị 30% cũng khớp với tuyên bố.",
+    "seconds": 68.1
+   },
+   "F18": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Đoạn bằng chứng cho thấy tỷ lệ phế liệu tái chế đạt 18% năm 2025, thấp hơn mục tiêu 30% được tuyên bố, do đó mâu thuẫn với tuyên bố.",
+    "seconds": 56.1
+   },
+   "F19": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng không cung cấp thông tin về phạm vi tổ chức của Tập đoàn, trong khi tuyên bố đề cập đến 'Tập đoàn', trong khi bằng chứng chỉ đề cập đến 'Khu liên hợp Dung Quất'.",
+    "seconds": 60.4
+   },
+   "F20": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng không cung cấp thông tin về phạm vi phát thải cụ thể của công ty mẹ mà là phạm vi hợp nhất toàn Tập đoàn, do đó không thể xác nhận hay bác bỏ tuyên bố.",
+    "seconds": 54.4
+   },
+   "F21": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Đoạn bằng chứng đề cập đến việc tiêu thụ 5,6 triệu tấn than trong năm 2025, trong khi tuyên bố nói về tiêu thụ 5,6 triệu MWh điện. Đây là hai chỉ số khác nhau (đơn vị năng lượng khác nhau), do đó bằng chứng mâu thuẫn với tuyên bố.",
+    "seconds": 68.2
+   },
+   "F22": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Đoạn bằng chứng cho thấy lượng nước sử dụng là 15.000 m3, trong khi tuyên bố nói là 15 triệu m3, có sự khác biệt về quy mô (15.000 vs 15.000.000) và đây là sự thay đổi ngược chiều.",
+    "seconds": 63.5
+   },
+   "F23": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cung cấp cùng chỉ số (lượng nước sử dụng), cùng kỳ (năm 2025), cùng phạm vi và ranh giới tổ chức, cùng loại giá trị (tuyệt đối), và giá trị khớp với tuyên bố trong sai số làm tròn của con số được công bố.",
+    "seconds": 44.1
+   },
+   "F24": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng cung cấp cùng chỉ số (tỷ lệ năng lượng tái tạo), cùng kỳ (năm 2025), cùng phạm vi phát thải và ranh giới tổ chức, cùng loại giá trị (tỷ lệ), và giá trị 12,4% khớp với tuyên bố 12% trong sai số làm tròn của con số được công bố.",
+    "seconds": 65.2
+   },
+   "F25": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy tỷ lệ năng lượng tái tạo là 12,4%, trong khi tuyên bố là 12,0%, khác nhau ngoài sai số làm tròn.",
+    "seconds": 40.7
+   },
+   "F26": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng cung cấp phát thải phạm vi 1 và 2 năm 2025 với tổng cộng 23.474.479 tCO2e, gần đúng với tuyên bố tổng phát thải 23.474.480 tCO2e trong sai số làm tròn.",
+    "seconds": 64.1
+   },
+   "F27": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng cung cấp phát thải phạm vi 1 và 2 năm 2025 với tổng phát thải là 23.474.479 tCO2e, gần bằng với tuyên bố 24.474.480 tCO2e trong sai số làm tròn.",
+    "seconds": 60.1
+   },
+   "F28": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin về mức độ phát thải cụ thể hoặc so sánh với năm trước, do đó không thể xác nhận hoặc bác bỏ tuyên bố về việc giảm phát thải khí nhà kính tại các nhà máy thép.",
+    "seconds": 44.5
+   },
+   "F29": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp số liệu cụ thể về mức độ giảm phát thải khí nhà kính, chỉ khẳng định có sự giảm so với năm trước, không đủ để xác nhận hoặc bác bỏ tuyên bố về việc 'giảm phát thải khí nhà kính tại các nhà máy thép'.",
+    "seconds": 41.2
+   },
+   "F30": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không liên quan đến việc xử lý nước thải hoặc đạt quy chuẩn môi trường, do đó không thể xác nhận hay bác bỏ tuyên bố.",
+    "seconds": 40.7
+   },
+   "F31": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin về lượng khí thải carbon hoặc các biện pháp giảm phát thải, do đó không thể xác nhận hoặc bác bỏ tuyên bố về trung hòa carbon.",
+    "seconds": 39.1
+   },
+   "F32": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng đề cập đến việc hoàn thành kế hoạch kiểm kê khí nhà kính, trong khi tuyên bố nói về việc tự chủ 90% nhu cầu điện cho sản xuất thép. Hai nội dung không liên quan trực tiếp đến nhau.",
+    "seconds": 42.7
+   }
+  }
+ }
+}

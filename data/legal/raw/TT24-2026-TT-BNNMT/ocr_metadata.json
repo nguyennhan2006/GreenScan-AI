@@ -1,0 +1,249 @@
+{
+  "ocr_used": true,
+  "engine": "tesseract v5.4.0.20240606",
+  "languages": "vie+eng",
+  "dpi": 300,
+  "tessdata_prefix": "C:\\Users\\ASUS\\tessdata",
+  "pages": 38,
+  "total_chars": 59887,
+  "mean_confidence": 86.84,
+  "low_confidence_pages": [
+    11,
+    13,
+    17,
+    19
+  ],
+  "per_page": [
+    {
+      "page": 1,
+      "words": 475,
+      "mean_confidence": 94.81,
+      "chars": 2175
+    },
+    {
+      "page": 2,
+      "words": 583,
+      "mean_confidence": 96.07,
+      "chars": 2557
+    },
+    {
+      "page": 3,
+      "words": 613,
+      "mean_confidence": 95.62,
+      "chars": 2628
+    },
+    {
+      "page": 4,
+      "words": 582,
+      "mean_confidence": 94.86,
+      "chars": 2498
+    },
+    {
+      "page": 5,
+      "words": 618,
+      "mean_confidence": 95.79,
+      "chars": 2739
+    },
+    {
+      "page": 6,
+      "words": 512,
+      "mean_confidence": 95.27,
+      "chars": 2276
+    },
+    {
+      "page": 7,
+      "words": 365,
+      "mean_confidence": 93.08,
+      "chars": 1638
+    },
+    {
+      "page": 8,
+      "words": 337,
+      "mean_confidence": 94.13,
+      "chars": 1548
+    },
+    {
+      "page": 9,
+      "words": 209,
+      "mean_confidence": 88.85,
+      "chars": 1274
+    },
+    {
+      "page": 10,
+      "words": 283,
+      "mean_confidence": 91.77,
+      "chars": 1302
+    },
+    {
+      "page": 11,
+      "words": 345,
+      "mean_confidence": 54.79,
+      "chars": 1479
+    },
+    {
+      "page": 12,
+      "words": 341,
+      "mean_confidence": 88.25,
+      "chars": 1593
+    },
+    {
+      "page": 13,
+      "words": 528,
+      "mean_confidence": 55.07,
+      "chars": 2268
+    },
+    {
+      "page": 14,
+      "words": 74,
+      "mean_confidence": 93.37,
+      "chars": 322
+    },
+    {
+      "page": 15,
+      "words": 156,
+      "mean_confidence": 85.36,
+      "chars": 976
+    },
+    {
+      "page": 16,
+      "words": 253,
+      "mean_confidence": 94.5,
+      "chars": 1085
+    },
+    {
+      "page": 17,
+      "words": 367,
+      "mean_confidence": 55.62,
+      "chars": 1508
+    },
+    {
+      "page": 18,
+      "words": 423,
+      "mean_confidence": 90.59,
+      "chars": 1874
+    },
+    {
+      "page": 19,
+      "words": 170,
+      "mean_confidence": 55.96,
+      "chars": 721
+    },
+    {
+      "page": 20,
+      "words": 184,
+      "mean_confidence": 81.58,
+      "chars": 1062
+    },
+    {
+      "page": 21,
+      "words": 293,
+      "mean_confidence": 90.13,
+      "chars": 1323
+    },
+    {
+      "page": 22,
+      "words": 314,
+      "mean_confidence": 90.92,
+      "chars": 1485
+    },
+    {
+      "page": 23,
+      "words": 68,
+      "mean_confidence": 94.81,
+      "chars": 318
+    },
+    {
+      "page": 24,
+      "words": 356,
+      "mean_confidence": 87.31,
+      "chars": 1708
+    },
+    {
+      "page": 25,
+      "words": 462,
+      "mean_confidence": 84.47,
+      "chars": 2169
+    },
+    {
+      "page": 26,
+      "words": 488,
+      "mean_confidence": 94.89,
+      "chars": 2143
+    },
+    {
+      "page": 27,
+      "words": 536,
+      "mean_confidence": 93.96,
+      "chars": 2352
+    },
+    {
+      "page": 28,
+      "words": 352,
+      "mean_confidence": 76.44,
+      "chars": 1679
+    },
+    {
+      "page": 29,
+      "words": 362,
+      "mean_confidence": 88.76,
+      "chars": 1490
+    },
+    {
+      "page": 30,
+      "words": 42,
+      "mean_confidence": 92.26,
+      "chars": 193
+    },
+    {
+      "page": 31,
+      "words": 380,
+      "mean_confidence": 81.0,
+      "chars": 1906
+    },
+    {
+      "page": 32,
+      "words": 414,
+      "mean_confidence": 91.16,
+      "chars": 1806
+    },
+    {
+      "page": 33,
+      "words": 385,
+      "mean_confidence": 86.96,
+      "chars": 2155
+    },
+    {
+      "page": 34,
+      "words": 444,
+      "mean_confidence": 88.85,
+      "chars": 1890
+    },
+    {
+      "page": 35,
+      "words": 258,
+      "mean_confidence": 95.67,
+      "chars": 1151
+    },
+    {
+      "page": 36,
+      "words": 395,
+      "mean_confidence": 88.97,
+      "chars": 1981
+    },
+    {
+      "page": 37,
+      "words": 117,
+      "mean_confidence": 91.01,
+      "chars": 541
+    },
+    {
+      "page": 38,
+      "words": 0,
+      "mean_confidence": 0.0,
+      "chars": 0
+    }
+  ],
+  "ocr_at": "2026-10-13T13:58:01.561634+00:00",
+  "source_pdf": "data\\legal\\raw\\TT24-2026-TT-BNNMT\\original.pdf",
+  "note": "OCR output, not a publisher text layer. Diacritics are the weak point for Vietnamese; verify low-confidence pages before citing."
+}

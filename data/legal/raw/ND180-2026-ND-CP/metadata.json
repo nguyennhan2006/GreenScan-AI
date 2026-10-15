@@ -1,0 +1,26 @@
+{
+  "document_number": "180/2026/NĐ-CP",
+  "title": "Quy định về dịch vụ hấp thụ và lưu giữ các-bon của rừng",
+  "authority": "Chính phủ",
+  "issued_date": "2026-05-21",
+  "effective_from": "2026-07-15",
+  "status": "effective",
+  "id": "ND180-2026-ND-CP",
+  "checked_at": "2026-10-13T12:20:34.878056+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\ND180-2026-ND-CP\\original.pdf",
+      "sha256": "ba3fc589e59feebc7b25dc3be5890b5f95ace602acb88cd6aa978d13ba26fe80",
+      "bytes": 2583837,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/5/180-ndcp.signed.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/5/180-ndcp.signed.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:35.170243+00:00",
+      "pages": 79,
+      "text_chars": 148
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 79 pages, 148 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

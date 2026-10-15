@@ -1,0 +1,26 @@
+{
+  "document_number": "75/2025/QH15",
+  "title": "Luật sửa đổi, bổ sung một số điều của Luật Quảng cáo",
+  "authority": "Quốc hội (National Assembly)",
+  "issued_date": "2025-06-16",
+  "effective_from": "2026-01-01",
+  "status": "effective",
+  "id": "LUAT-75-2025-QH15",
+  "checked_at": "2026-10-13T12:20:22.551081+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\LUAT-75-2025-QH15\\original.pdf",
+      "sha256": "ddfe34525adbebd4908e9a5eb96d113eedf27b29ba4e185ae310bb6ef440d5de",
+      "bytes": 659900,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/75qh.signed.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/75qh.signed.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:22.712479+00:00",
+      "pages": 13,
+      "text_chars": 148
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 13 pages, 148 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

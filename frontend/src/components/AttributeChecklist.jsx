@@ -11,10 +11,10 @@
  */
 
 const STATE = {
-  present: { dot: 'bg-emerald-500', ring: 'ring-emerald-500/30', text: 'text-slate-900', label: 'Có' },
-  partial: { dot: 'bg-amber-500', ring: 'ring-amber-500/30', text: 'text-slate-900', label: 'Một phần' },
-  missing: { dot: 'bg-red-500', ring: 'ring-red-500/30', text: 'text-red-900', label: 'Thiếu' },
-  unknown: { dot: 'bg-slate-300', ring: 'ring-slate-300/30', text: 'text-slate-500', label: 'Chưa đánh giá' },
+  present: { dot: 'bg-emerald-500', ring: 'ring-emerald-500/30', text: 'text-slate-900', label: 'Có', pill: 'bg-emerald-50 text-emerald-700 ring-emerald-200' },
+  partial: { dot: 'bg-amber-500', ring: 'ring-amber-500/30', text: 'text-slate-900', label: 'Một phần', pill: 'bg-amber-50 text-amber-800 ring-amber-200' },
+  missing: { dot: 'bg-red-500', ring: 'ring-red-500/30', text: 'text-red-900', label: 'Thiếu', pill: 'bg-red-50 text-red-700 ring-red-200' },
+  unknown: { dot: 'bg-slate-300', ring: 'ring-slate-300/30', text: 'text-slate-500', label: 'Chưa đánh giá', pill: 'bg-slate-100 text-slate-500 ring-slate-200' },
 }
 
 export function AttributeDots({ attributes, className = '' }) {
@@ -58,7 +58,7 @@ export default function AttributeChecklist({ attributes, penalties, variant = 'l
                 <div className="flex flex-wrap items-baseline gap-x-2">
                   <span className={`text-sm font-medium ${s.text}`}>{a.label}</span>
                   <span className="text-xs text-slate-400" title="Cơ sở dẫn liệu kiểm toán">{a.assertion}</span>
-                  <span className="ml-auto text-xs text-slate-500">{s.label}</span>
+                  <span className={`ml-auto rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ${s.pill}`}>{s.label}</span>
                 </div>
                 <p className="mt-0.5 text-xs text-slate-500">{a.hint}</p>
                 {showFix && a.state !== 'present' && (a.action || a.fix) && (

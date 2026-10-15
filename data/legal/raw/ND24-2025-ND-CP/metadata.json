@@ -1,0 +1,25 @@
+{
+  "document_number": "24/2025/NĐ-CP",
+  "title": "Nghị định sửa đổi, bổ sung một số điều của Nghị định số 98/2020/NĐ-CP ngày 26 tháng 8 năm 2020 của Chính phủ quy định xử phạt vi phạm hành chính trong hoạt động thương mại, sản xuất, buôn bán hàng giả, hàng cấm và bảo vệ quyền lợi người tiêu dùng đã được sửa đổi, bổ sung một số điều theo quy định tại Nghị định số 17/2022/NĐ-CP",
+  "authority": "Chính phủ (Government); proposed by Bộ Công Thương",
+  "issued_date": "2025-02-21",
+  "effective_from": "2025-02-21",
+  "status": "effective",
+  "id": "ND24-2025-ND-CP",
+  "checked_at": "2026-10-13T12:20:25.226203+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\ND24-2025-ND-CP\\original.pdf",
+      "sha256": "fba12e202d168f3fb7bbe95de5af3ae6baeda23116f2cc796cff044e8a89ea12",
+      "bytes": 2669009,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/02/24-2025-nd-cp.signed.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/02/24-2025-nd-cp.signed.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:25.528924+00:00",
+      "pages": 37,
+      "text_chars": 81724
+    }
+  ],
+  "text_acquisition": "ok"
+}

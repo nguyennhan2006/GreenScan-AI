@@ -14,6 +14,7 @@ from pydantic import BaseModel, Field
 from quantum_gw import __version__
 from quantum_gw.agents.orchestrator import OrchestratorAgent
 from quantum_gw.agents.suggester import SuggestionAgent
+from quantum_gw.api_studio import router as studio_router
 from quantum_gw.domain.enums import DocumentRole, SourceType
 from quantum_gw.domain.models import AnalysisResult, ClaimSuggestion, DocumentInput
 from quantum_gw.jobs import JobRunner
@@ -67,6 +68,8 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    # The page viewer reads how many highlight boxes were drawn (dev server runs cross-origin).
+    expose_headers=["X-Highlight-Rects"],
 )
 
 
@@ -538,6 +541,10 @@ def legal_corpus() -> dict:
         "check_mode": settings.legal.check_mode,
         "documents": documents,
     }
+
+
+# Intake preview, URL fetch, demo samples and GreenScan Studio (api_studio.py).
+app.include_router(studio_router)
 
 
 # ---------- the built web UI, on the same port ----------

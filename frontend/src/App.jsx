@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react'
 import {
   analyzeText, checkHealth, getRun, listReviews, runtimeInfo, setRunLabel, submitReview,
 } from './api.js'
@@ -15,6 +15,9 @@ import ExportPage from './pages/ExportPage.jsx'
 import HistoryPage from './pages/HistoryPage.jsx'
 import LegalLibraryPage from './pages/LegalLibraryPage.jsx'
 import SettingsPage from './pages/SettingsPage.jsx'
+
+// CodeMirror is only needed in Studio; keep it out of the first load.
+const StudioPage = lazy(() => import('./pages/StudioPage.jsx'))
 
 const REVIEWER_KEY = 'greenscan.reviewer'
 
@@ -174,6 +177,15 @@ export default function App() {
   if (!seg0) {
     navigate('/new', { replace: true })
     return null
+  }
+
+  // Studio is an IDE: it takes the whole window and loads its own document view.
+  if (seg0 === 'runs' && seg1 && seg2 === 'studio') {
+    return (
+      <Suspense fallback={<p className="p-6 text-sm text-slate-500">Đang mở Studio…</p>}>
+        <StudioPage runId={seg1} reviewer={reviewer} />
+      </Suspense>
+    )
   }
 
   const openInQueue = queue.queued.filter((i) => i.item_type !== 'claim' || reviewStates[i.item_id] !== 'FINALIZED').length

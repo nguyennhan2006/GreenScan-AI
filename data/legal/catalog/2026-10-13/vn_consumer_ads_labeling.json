@@ -1,0 +1,1976 @@
+{
+  "area": "vn_consumer_ads_labeling",
+  "as_of": "2026-10-13",
+  "items": [
+    {
+      "id": "VN-LUAT-19-2023-QH15",
+      "jurisdiction": "VN",
+      "document_number": "19/2023/QH15",
+      "title": "Luật Bảo vệ quyền lợi người tiêu dùng",
+      "title_vi": "Luật Bảo vệ quyền lợi người tiêu dùng 2023",
+      "doc_type": "luat",
+      "authority": "Quốc hội (National Assembly)",
+      "issued_date": "2023-06-20",
+      "effective_from": "2024-07-01",
+      "key_dates": [
+        {
+          "date": "2023-06-20",
+          "what": "Adopted; signed by NA Chairman Vương Đình Huệ"
+        },
+        {
+          "date": "2023-07-30",
+          "what": "Published in Công báo No. 865+866"
+        },
+        {
+          "date": "2024-07-01",
+          "what": "In force; Law 59/2010/QH12 ceases (Điều 79)"
+        },
+        {
+          "date": "2026-06-16",
+          "what": "MOIT workshop on a draft law that would amend this Law together with the Commercial, Foreign Trade and Competition laws (draft only)"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force as of 2026-10-13. Metadata re-checked on vanban.chinhphu.vn on 2026-10-13. MOIT is drafting an amending law (see VN-DUTHAO-LUAT-SUADOI-TM-QLNT-CT-BVQLNTD-2026); the proposals published so far concern personal data, standard-form contracts and local-government roles, not misleading information.",
+      "relations": {
+        "amends": [],
+        "amended_by": [],
+        "replaces": [
+          "Luật 59/2010/QH12"
+        ],
+        "replaced_by": [],
+        "implements": [],
+        "implemented_by": [
+          "VN-ND-55-2024-ND-CP",
+          "VN-ND-98-2020-ND-CP",
+          "VN-ND-24-2025-ND-CP"
+        ]
+      },
+      "sectors": [
+        "consumer_goods_retail",
+        "food_beverage",
+        "plastics_packaging",
+        "textiles_footwear",
+        "electronics",
+        "tourism",
+        "all_sectors"
+      ],
+      "process_types": [
+        "advertising_consumer_protection",
+        "product_standards_labeling",
+        "enforcement_sanctions"
+      ],
+      "new_2025_2026": false,
+      "key_provisions": [
+        {
+          "ref": "Điều 3 khoản 9",
+          "summary": "Defines người có ảnh hưởng (influencer): experts, reputable or socially followed persons."
+        },
+        {
+          "ref": "Điều 3 khoản 10",
+          "summary": "Defines tiêu dùng bền vững (sustainable consumption) as use of goods/services that meets needs while minimising negative environmental and socio-economic impacts."
+        },
+        {
+          "ref": "Điều 10 khoản 1 điểm a",
+          "summary": "Prohibits deceiving or misleading consumers through false, incomplete or inaccurate information about the product, the business's reputation or capacity, transaction terms, or images, papers and certification documents of competent state agencies."
+        },
+        {
+          "ref": "Điều 21 khoản 1–2",
+          "summary": "Businesses must give accurate, complete information on measurement, quantity, quality, uses, price and origin, and must label goods truthfully, clearly and accurately, reflecting the true nature of the goods."
+        },
+        {
+          "ref": "Điều 22 khoản 1",
+          "summary": "A third party that carries product information must ensure accuracy, ask the business for documents proving accuracy, and is jointly liable for inaccurate information unless it took all legally required verification steps."
+        },
+        {
+          "ref": "Điều 22 khoản 3",
+          "summary": "Influencers must meet the third-party duties and tell consumers in advance that they are sponsored."
+        },
+        {
+          "ref": "Điều 79",
+          "summary": "Effective 01/07/2024."
+        }
+      ],
+      "claim_hooks": [
+        "sản phẩm thân thiện với môi trường",
+        "sản phẩm xanh",
+        "bao bì phân hủy sinh học",
+        "100% nguyên liệu tái chế",
+        "đạt chứng nhận của cơ quan nhà nước",
+        "được Bộ Nông nghiệp và Môi trường chứng nhận",
+        "tiêu dùng bền vững",
+        "an toàn cho môi trường",
+        "không gây hại cho môi trường"
+      ],
+      "data_uses": [
+        "legal_corpus",
+        "obligation_matrix",
+        "label_convention"
+      ],
+      "public_data": [
+        {
+          "name": "Official text, Công báo 865+866 (text layer)",
+          "url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2023/7/luat19_2023.pdf",
+          "what": "Clause-level corpus for misleading-information and labelling-truthfulness rules",
+          "access": "free"
+        }
+      ],
+      "official_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2023/7/luat19_2023.pdf",
+      "secondary_urls": [
+        "https://vanban.chinhphu.vn/?pageid=27160&docid=208363"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "vanban.chinhphu.vn docid=208363: number, issued 20-06-2023, effective 01-07-2024, signer Vương Đình Huệ. Official PDF (Công báo 865+866, 30-7-2023), read 2026-10-13: Điều 3.9–3.10 p.3; Điều 10.1(a) p.9; Điều 21–22 pp.16–18; Điều 79 p.53.",
+      "relevance": "high",
+      "relevance_why": "The closest VN legal hook for consumer-facing green claims about products, packaging and certifications. Điều 10.1(a) explicitly covers misuse of certification documents, matching the 'false label' claim pattern.",
+      "caveats": "Does not define greenwashing or environmental claims. It governs business-to-consumer information; whether investor-facing annual or sustainability report text counts as information provided to consumers is a legal question for Thảo. Use as context for 'insufficient evidence', not to conclude a violation.",
+      "verify": {
+        "verdict": "confirmed",
+        "checked": [
+          "document_number",
+          "issued_date",
+          "effective_from",
+          "status",
+          "key_provisions[Điều 3 khoản 9, Điều 3 khoản 10, Điều 10 khoản 1 điểm a, Điều 21 khoản 1–2, Điều 22 khoản 1, Điều 22 khoản 3, Điều 79]",
+          "relations.replaces"
+        ],
+        "corrections": [],
+        "evidence_urls": [
+          "https://datafiles.chinhphu.vn/cpp/files/vbpq/2023/7/luat19_2023.pdf"
+        ],
+        "note": "Official Công báo 865+866 PDF (text layer) read by the verifier: header 'Luật số: 19/2023/QH15'; adoption line 'thông qua ngày 20 tháng 6 năm 2023', signer Vương Đình Huệ; Điều 79.1 effective 01/07/2024, 79.2 Law 59/2010 ceases. Every key-provision summary matches the text. Matches knowledge doc §3. Nothing found contradicts 'in_force'; the 2026 amending bill is still a draft."
+      }
+    },
+    {
+      "id": "VN-ND-55-2024-ND-CP",
+      "jurisdiction": "VN",
+      "document_number": "55/2024/NĐ-CP",
+      "title": "Nghị định quy định chi tiết một số điều của Luật Bảo vệ quyền lợi người tiêu dùng",
+      "title_vi": "Nghị định hướng dẫn Luật Bảo vệ quyền lợi người tiêu dùng",
+      "doc_type": "nghi_dinh",
+      "authority": "Chính phủ (Government)",
+      "issued_date": "2024-05-16",
+      "effective_from": "2024-07-01",
+      "key_dates": [
+        {
+          "date": "2024-05-16",
+          "what": "Signed by Deputy PM Lê Minh Khái"
+        },
+        {
+          "date": "2024-07-01",
+          "what": "In force, together with Law 19/2023"
+        },
+        {
+          "date": "2026-10-15",
+          "what": "Public comment closes on a MOIT draft decree amending consumer-protection decrees; the draft page does not say whether 55/2024 is among them"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force as of 2026-10-13 per vanban.chinhphu.vn metadata. Amendment work is under way (draft decree and draft circular, both 2026), but no amending decree has been issued as far as checked.",
+      "relations": {
+        "amends": [],
+        "amended_by": [],
+        "replaces": [],
+        "replaced_by": [],
+        "implements": [
+          "VN-LUAT-19-2023-QH15"
+        ],
+        "implemented_by": []
+      },
+      "sectors": [
+        "consumer_goods_retail",
+        "all_sectors"
+      ],
+      "process_types": [
+        "advertising_consumer_protection",
+        "governance_institutions"
+      ],
+      "new_2025_2026": false,
+      "key_provisions": [
+        {
+          "ref": "whole decree",
+          "summary": "Details several articles of Law 19/2023. Article-level obligations were not extracted this session because the official PDF is a 38-page scan."
+        }
+      ],
+      "claim_hooks": [],
+      "data_uses": [
+        "legal_corpus"
+      ],
+      "public_data": [],
+      "official_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2024/5/55-nd-cp.signed.pdf",
+      "secondary_urls": [
+        "https://vanban.chinhphu.vn/?pageid=27160&docid=210254"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "vanban.chinhphu.vn docid=210254: number, issued 16-05-2024, effective 01-07-2024, signer Lê Minh Khái. The signed PDF opened (VGP timestamp 21.05.2024) has no text layer; contents not read.",
+      "relevance": "medium",
+      "relevance_why": "Implements the consumer law; needed for completeness of the legal corpus but no environmental-claim-specific rule confirmed in it.",
+      "caveats": "Secondary sources say it replaced NĐ 99/2011/NĐ-CP; not verified here.",
+      "verify": {
+        "verdict": "confirmed",
+        "checked": [
+          "document_number",
+          "issued_date",
+          "effective_from",
+          "status"
+        ],
+        "corrections": [],
+        "evidence_urls": [
+          "https://vanban.chinhphu.vn/?pageid=27160&docid=210254"
+        ],
+        "note": "vanban.chinhphu.vn docid=210254 fetched: 55/2024/NĐ-CP, issued 16-05-2024, effective 01-07-2024, signer Lê Minh Khái. Article content and the 'replaces NĐ 99/2011' caveat were not checked (scanned PDF); key_provisions stays a placeholder."
+      }
+    },
+    {
+      "id": "VN-DUTHAO-ND-SUADOI-ND-BVQLNTD-2026",
+      "jurisdiction": "VN",
+      "document_number": "",
+      "title": "Dự thảo Nghị định của Chính phủ về việc sửa đổi, bổ sung các Nghị định trong lĩnh vực bảo vệ quyền lợi người tiêu dùng",
+      "title_vi": "Dự thảo nghị định sửa các nghị định về bảo vệ người tiêu dùng",
+      "doc_type": "du_thao",
+      "authority": "Ủy ban Cạnh tranh Quốc gia (drafting body); Bộ Công Thương (reviewing body)",
+      "issued_date": "",
+      "effective_from": "",
+      "key_dates": [
+        {
+          "date": "2026-08-24",
+          "what": "Công văn 6761/BCT-CT asks ministries, provincial People's Committees and others for comments"
+        },
+        {
+          "date": "2026-08-26",
+          "what": "Dossier version 1 posted on moit.gov.vn"
+        },
+        {
+          "date": "2026-09-14",
+          "what": "Revised dossier reported to Deputy Minister Nguyễn Sinh Nhật Tân"
+        },
+        {
+          "date": "2026-09-15",
+          "what": "Public comment opens (dossier version 2)"
+        },
+        {
+          "date": "2026-10-15",
+          "what": "Public comment closes"
+        }
+      ],
+      "status": "draft",
+      "status_note": "Open for public comment until 2026-10-15 (as of 2026-10-13). The MOIT page does not list which decrees are amended, and the attached RAR dossier was not opened.",
+      "relations": {
+        "amends": [],
+        "amended_by": [],
+        "replaces": [],
+        "replaced_by": [],
+        "implements": [
+          "VN-LUAT-19-2023-QH15"
+        ],
+        "implemented_by": []
+      },
+      "sectors": [
+        "consumer_goods_retail",
+        "all_sectors"
+      ],
+      "process_types": [
+        "advertising_consumer_protection",
+        "enforcement_sanctions",
+        "governance_institutions"
+      ],
+      "new_2025_2026": true,
+      "key_provisions": [
+        {
+          "ref": "draft (contents not published on the page)",
+          "summary": "Would amend several consumer-protection decrees; scope unknown until the dossier is read."
+        }
+      ],
+      "claim_hooks": [],
+      "data_uses": [
+        "legal_corpus"
+      ],
+      "public_data": [
+        {
+          "name": "Draft dossier (RAR) on moit.gov.vn",
+          "url": "https://moit.gov.vn/upload/2005517/20260915/2026_09_15_HS_Nghi_dinh_ve_NTD_dang_tai_cong_khai-20260915T115819Z-1-001_78d72.rar",
+          "what": "Which decrees and articles change (not opened)",
+          "access": "free"
+        }
+      ],
+      "official_url": "https://moit.gov.vn/du-thao-van-ban/ho-so-du-thao-nghi-dinh-cua-chinh-phu-ve-viec-sua-doi-bo-sung-cac-nghi-dinh-trong-linh-vuc-bao-ve-quyen-loi-nguoi-tieu-d2.html",
+      "secondary_urls": [
+        "https://moit.gov.vn/du-thao-van-ban/ho-so-du-thao-nghi-dinh-cua-chinh-phu-ve-viec-sua-doi-bo-sung-cac-nghi-dinh-trong-linh-vuc-bao-ve-quyen-loi-nguoi-tieu-d.html"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "moit.gov.vn draft page (version 2) shows the title, drafting body, comment period 15/09/2026–15/10/2026, Công văn 6761/BCT-CT of 24/8/2026 and the report of 14/9/2026.",
+      "relevance": "medium",
+      "relevance_why": "If it amends NĐ 98/2020 (as amended) or NĐ 55/2024, the consumer-information fines and duties cited in GreenScan outputs could change before the Final.",
+      "caveats": "Draft only; contents unknown. Re-check after 15/10/2026.",
+      "verify": {
+        "verdict": "confirmed",
+        "checked": [
+          "title",
+          "authority",
+          "status",
+          "key_dates[2026-08-24, 2026-09-14, 2026-09-15, 2026-10-15]"
+        ],
+        "corrections": [],
+        "evidence_urls": [
+          "https://moit.gov.vn/du-thao-van-ban/ho-so-du-thao-nghi-dinh-cua-chinh-phu-ve-viec-sua-doi-bo-sung-cac-nghi-dinh-trong-linh-vuc-bao-ve-quyen-loi-nguoi-tieu-d2.html"
+        ],
+        "note": "MOIT draft page (official ministry portal) fetched: title, drafting body Ủy ban Cạnh tranh Quốc gia, reviewing body Bộ Công Thương, comment window 15/09/2026–15/10/2026, Công văn 6761/BCT-CT of 24/8/2026, report to Deputy Minister Nguyễn Sinh Nhật Tân of 14/9/2026, RAR dossier only. The 2026-08-26 'version 1' date was not checked. Contents still unknown; re-check after 15/10/2026."
+      }
+    },
+    {
+      "id": "VN-LUAT-16-2012-QH13",
+      "jurisdiction": "VN",
+      "document_number": "16/2012/QH13",
+      "title": "Luật Quảng cáo",
+      "title_vi": "Luật Quảng cáo 2012 (văn bản gốc, đã được sửa đổi)",
+      "doc_type": "luat",
+      "authority": "Quốc hội (National Assembly)",
+      "issued_date": "2012-06-21",
+      "effective_from": "2013-01-01",
+      "key_dates": [
+        {
+          "date": "2013-01-01",
+          "what": "In force"
+        },
+        {
+          "date": "2026-01-01",
+          "what": "Major amendments by Law 75/2025/QH15 take effect"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force as amended by Laws 35/2018/QH14, 42/2024/QH15, 47/2024/QH15 and 75/2025/QH15 (list taken from the preamble of the signed Law 75/2025).",
+      "relations": {
+        "amends": [],
+        "amended_by": [
+          "Luật 35/2018/QH14",
+          "Luật 42/2024/QH15",
+          "Luật 47/2024/QH15",
+          "VN-LUAT-75-2025-QH15"
+        ],
+        "replaces": [],
+        "replaced_by": [],
+        "implements": [],
+        "implemented_by": [
+          "VN-ND-342-2025-ND-CP"
+        ]
+      },
+      "sectors": [
+        "all_sectors",
+        "consumer_goods_retail"
+      ],
+      "process_types": [
+        "advertising_consumer_protection"
+      ],
+      "new_2025_2026": false,
+      "key_provisions": [
+        {
+          "ref": "Điều 8 khoản 9",
+          "summary": "Prohibits advertising that is untrue or misleading about business capability, ability to supply products, or quantity, quality, price, uses of products."
+        },
+        {
+          "ref": "Điều 8 khoản 11",
+          "summary": "Prohibits using 'nhất', 'duy nhất', 'tốt nhất', 'số một' or similar without lawful substantiating documents."
+        }
+      ],
+      "claim_hooks": [
+        "xanh nhất",
+        "duy nhất đạt chứng nhận",
+        "số một về phát triển bền vững",
+        "dẫn đầu ngành về giảm phát thải",
+        "tốt nhất cho môi trường"
+      ],
+      "data_uses": [
+        "legal_corpus",
+        "obligation_matrix"
+      ],
+      "public_data": [],
+      "official_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2012/08/16_qcao.doc",
+      "secondary_urls": [
+        "https://vanban.chinhphu.vn/default.aspx?pageid=27160&docid=163008"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "vanban.chinhphu.vn docid=163008 re-checked 2026-10-13: 16/2012/QH13, issued 21-06-2012, effective 01-01-2013, signer Nguyễn Sinh Hùng. Điều 8.9 and 8.11 wording verified by the team on 2026-10-05 (sources/2026-10-05 A.3.2); Law 75/2025 pages read today amend Điều 8 khoản 3 and 10 only, leaving 9 and 11 as in the base text.",
+      "relevance": "high",
+      "relevance_why": "Superlative and leadership green claims ('xanh nhất', 'dẫn đầu') need lawful substantiating documents when used in advertising.",
+      "caveats": "Use the consolidated text (base + Law 75/2025) when parsing clauses. Law 75/2025 Điều 1 khoản 25 repeals khoản 13 Điều 8 (and khoản 2 Điều 2, Điều 5, khoản 5 Điều 16, khoản 7–8 Điều 22, khoản 2 Điều 29, điểm b khoản 3 Điều 31, điểm c khoản 1 Điều 33); khoản 9 and 11 of Điều 8 are unchanged. Fines for these breaches are in NĐ 87/2026 Điều 50.",
+      "verify": {
+        "verdict": "confirmed",
+        "checked": [
+          "document_number",
+          "issued_date",
+          "effective_from",
+          "status",
+          "key_provisions[Điều 8 khoản 9, Điều 8 khoản 11]",
+          "relations.amended_by"
+        ],
+        "corrections": [],
+        "evidence_urls": [
+          "https://vanban.chinhphu.vn/default.aspx?pageid=27160&docid=163008",
+          "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/75qh.signed.pdf"
+        ],
+        "note": "vanban.chinhphu.vn docid=163008 (full text + metadata) fetched: 16/2012/QH13, issued 21-06-2012, effective 01-01-2013, signer Nguyễn Sinh Hùng; Điều 8.9 and 8.11 wording matches. Law 75/2025 signed PDF read: preamble lists amendments 35/2018, 42/2024, 47/2024; Điều 1 khoản 4 amends only Điều 8 khoản 3 and 10; Điều 1 khoản 25 repeals Điều 8 khoản 13. The open caveat is resolved and the caveats text updated; this is not a correction."
+      }
+    },
+    {
+      "id": "VN-LUAT-75-2025-QH15",
+      "jurisdiction": "VN",
+      "document_number": "75/2025/QH15",
+      "title": "Luật sửa đổi, bổ sung một số điều của Luật Quảng cáo",
+      "title_vi": "Luật Quảng cáo sửa đổi 2025",
+      "doc_type": "luat",
+      "authority": "Quốc hội (National Assembly)",
+      "issued_date": "2025-06-16",
+      "effective_from": "2026-01-01",
+      "key_dates": [
+        {
+          "date": "2025-06-16",
+          "what": "Adopted at the 9th session of the 15th NA; signed by NA Chairman Trần Thanh Mẫn"
+        },
+        {
+          "date": "2025-07-16",
+          "what": "Posted by the Government e-portal (VGP digital signature timestamp)"
+        },
+        {
+          "date": "2025-08-26",
+          "what": "QĐ 1838/QĐ-TTg implementation plan [secondary]"
+        },
+        {
+          "date": "2025-12-26",
+          "what": "Implementing decree NĐ 342/2025/NĐ-CP signed"
+        },
+        {
+          "date": "2026-01-01",
+          "what": "In force (Điều 3.1)"
+        },
+        {
+          "date": "2026-05-15",
+          "what": "New advertising sanctions decree NĐ 87/2026/NĐ-CP in force (Điều 93.1 of the signed decree)"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force since 2026-01-01. Re-read from the signed text on 2026-10-13.",
+      "relations": {
+        "amends": [
+          "VN-LUAT-16-2012-QH13",
+          "Luật Thương mại 36/2005/QH11 (Điều 4.2; repeals Mục 2 Chương IV)"
+        ],
+        "amended_by": [],
+        "replaces": [],
+        "replaced_by": [],
+        "implements": [],
+        "implemented_by": [
+          "VN-ND-342-2025-ND-CP",
+          "VN-ND-87-2026-ND-CP"
+        ]
+      },
+      "sectors": [
+        "all_sectors",
+        "consumer_goods_retail",
+        "food_beverage",
+        "plastics_packaging",
+        "textiles_footwear",
+        "construction_real_estate"
+      ],
+      "process_types": [
+        "advertising_consumer_protection",
+        "enforcement_sanctions"
+      ],
+      "new_2025_2026": true,
+      "key_provisions": [
+        {
+          "ref": "Điều 1 khoản 1 (sửa Điều 2 khoản 1, 8)",
+          "summary": "Redefines advertising; defines người chuyển tải sản phẩm quảng cáo as a person who directly advertises, recommends or endorses products online or by wearing, attaching or displaying them for profit."
+        },
+        {
+          "ref": "Điều 1 khoản 4 (sửa Điều 8 khoản 10)",
+          "summary": "Prohibits comparing one's products with the same type of products of others without lawful substantiating documents."
+        },
+        {
+          "ref": "Điều 1 khoản 9 (thêm Điều 15a)",
+          "summary": "Ad conveyors must follow consumer-protection and product-information rules, hand over related documents on request, and are legally responsible if content breaches Điều 19. Influencers must also verify the advertiser's reliability, check product documents, not promote products they have not used or do not understand, and announce the advertising before and during it."
+        },
+        {
+          "ref": "Điều 1 khoản 12 (sửa Điều 19 khoản 1–2)",
+          "summary": "Advertising content must be truthful, accurate and clear and must not mislead about features, quality, uses or effects; required notes and warnings must be as legible and audible as the rest of the ad."
+        },
+        {
+          "ref": "Điều 1 khoản 12 (Điều 19 khoản 3 điểm b)",
+          "summary": "Advertising content excludes mandatory label content, content that must be publicly disclosed or provided to customers, and content belonging to information-provision duties under other laws."
+        },
+        {
+          "ref": "Điều 2",
+          "summary": "Commercial advertising is now governed by advertising law; repeals Section 2, Chapter IV of the Commercial Law."
+        },
+        {
+          "ref": "Điều 3",
+          "summary": "Effective 01/01/2026; pending billboard/banner notifications follow the old law."
+        }
+      ],
+      "claim_hooks": [
+        "thân thiện môi trường hơn sản phẩm cùng loại",
+        "phát thải thấp nhất ngành",
+        "xanh hơn đối thủ",
+        "giảm 30% phát thải so với sản phẩm thông thường",
+        "trung hòa các-bon",
+        "Net Zero",
+        "không phát thải",
+        "sản phẩm xanh"
+      ],
+      "data_uses": [
+        "legal_corpus",
+        "obligation_matrix",
+        "label_convention"
+      ],
+      "public_data": [
+        {
+          "name": "Signed law PDF",
+          "url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/75qh.signed.pdf",
+          "what": "Clause corpus for misleading/comparative advertising and influencer duties",
+          "access": "free"
+        }
+      ],
+      "official_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/75qh.signed.pdf",
+      "secondary_urls": [
+        "https://vanban.chinhphu.vn/?pageid=27160&docid=214561",
+        "https://tapchicongthuong.vn/trien-khai-thi-hanh-luat-sua-doi--bo-sung-mot-so-dieu-cua-luat-quang-cao-200088.htm"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "vanban.chinhphu.vn docid=214561: issued 16-06-2025, effective 01-01-2026, signer Trần Thanh Mẫn. Signed PDF (13 pp.) read 2026-10-13: Điều 2 defs p.1; Điều 8.10 p.3; Điều 15a pp.3–4; Điều 19 pp.4–5; Điều 2–3 and signature p.13. QĐ 1838/QĐ-TTg date from Tạp chí Công Thương (secondary).",
+      "relevance": "high",
+      "relevance_why": "Sets the in-force standard for green claims used in advertising: truthful, not misleading, comparative claims substantiated by lawful documents, influencer due diligence.",
+      "caveats": "Điều 19.3(b) suggests that mandatory disclosures (e.g. TT 96/2020 annual-report sections) are not 'advertising content', so the law reaches the same claims only when reused in marketing. This reading needs Thảo's confirmation before it is encoded.",
+      "verify": {
+        "verdict": "confirmed",
+        "checked": [
+          "document_number",
+          "issued_date",
+          "effective_from",
+          "status",
+          "key_provisions[all 7 refs]",
+          "relations.amends",
+          "key_dates[2025-06-16, 2025-07-16, 2025-12-26, 2026-01-01, 2026-05-15]"
+        ],
+        "corrections": [],
+        "evidence_urls": [
+          "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/75qh.signed.pdf",
+          "https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-342-2025-nd-cp-468584.htm",
+          "https://vanban.chinhphu.vn/?docid=217695&pageid=27160"
+        ],
+        "note": "Signed PDF (VGP stamp 16.07.2025) pp.1, 3, 4, 5, 12, 13 read as images: number; Điều 1 khoản 1 (Điều 2 khoản 1, 8); khoản 4 (Điều 8 khoản 10: comparative ads need lawful documents); khoản 9 (Điều 15a incl. 15a.3 influencers); khoản 12 (Điều 19.1–2 truthful, not misleading; 19.3(b) excludes mandatory label content, content that must be publicly disclosed and provided to customers/consumers, and other information-provision duties); Điều 2 (Commercial Law Điều 4.2, repeal of Mục 2 Chương IV); Điều 3.1 effective 01/01/2026; adoption 16/6/2025, signer Trần Thanh Mẫn. Matches knowledge doc §3. Only the [secondary] tag on the 2026-05-15 key date was dropped, now that NĐ 87/2026 was read. QĐ 1838/QĐ-TTg (2025-08-26) not checked."
+      }
+    },
+    {
+      "id": "VN-ND-342-2025-ND-CP",
+      "jurisdiction": "VN",
+      "document_number": "342/2025/NĐ-CP",
+      "title": "Nghị định quy định chi tiết một số điều của Luật Quảng cáo",
+      "title_vi": "Nghị định hướng dẫn Luật Quảng cáo (2025)",
+      "doc_type": "nghi_dinh",
+      "authority": "Chính phủ (Government); proposed by Bộ Văn hóa, Thể thao và Du lịch",
+      "issued_date": "2025-12-26",
+      "effective_from": "2026-02-15",
+      "key_dates": [
+        {
+          "date": "2025-12-26",
+          "what": "Signed by Deputy PM Mai Văn Chính"
+        },
+        {
+          "date": "2026-01-07",
+          "what": "Received/posted by the Government e-portal (VGP stamp)"
+        },
+        {
+          "date": "2026-02-15",
+          "what": "In force; NĐ 181/2013 and NĐ 70/2021 cease (Điều 32)"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force since 2026-02-15 (signed text read 2026-10-13).",
+      "relations": {
+        "amends": [
+          "NĐ 98/2021/NĐ-CP (Điều 62, medical device advertising)"
+        ],
+        "amended_by": [],
+        "replaces": [
+          "NĐ 181/2013/NĐ-CP",
+          "NĐ 70/2021/NĐ-CP"
+        ],
+        "replaced_by": [],
+        "implements": [
+          "VN-LUAT-16-2012-QH13",
+          "VN-LUAT-75-2025-QH15"
+        ],
+        "implemented_by": []
+      },
+      "sectors": [
+        "agriculture",
+        "fisheries",
+        "food_beverage",
+        "chemicals",
+        "consumer_goods_retail"
+      ],
+      "process_types": [
+        "advertising_consumer_protection",
+        "product_standards_labeling",
+        "data_ai_operations"
+      ],
+      "new_2025_2026": true,
+      "key_provisions": [
+        {
+          "ref": "Điều 3",
+          "summary": "Special products list: cosmetics; food; infant milk/nutrition; household and medical chemicals and insecticides; medical devices; medical services; pesticides, veterinary drugs, animal and aquaculture feed, aquaculture-environment treatment products, livestock-waste treatment products, breeds; fertilisers; plant varieties; medicines; alcoholic drinks under 15 degrees and beer."
+        },
+        {
+          "ref": "Điều 4–13",
+          "summary": "Mandatory content per special product (e.g. pesticides/veterinary drugs Điều 10: name, active ingredient, uses, hazard warnings; feed, aquaculture-environment and livestock-waste products Điều 11: name, features, responsible entity; fertilisers Điều 12: name, method of use, responsible entity; household chemicals Điều 7); cosmetics ads (Điều 4) must match the declared features and must not suggest a medicine; plant varieties, medicines and alcohol in Điều 13."
+        },
+        {
+          "ref": "Điều 17",
+          "summary": "Non-fixed online ads must close with one interaction; no fake or hard-to-distinguish close buttons; no wait to close static image ads and at most 5 seconds for animated/video ads."
+        },
+        {
+          "ref": "Điều 18",
+          "summary": "Advertisers, ad businesses, conveyors and publishers must block or remove illegal online ads within 24 hours of a written or electronic request from MOCST or the competent authority."
+        },
+        {
+          "ref": "Điều 19",
+          "summary": "Online ad service businesses (domestic and foreign) notify MOCST before operating; keep ad records (identity, product, ad sample, contracts and documents related to the advertised product) for 3 years from the last day the ad was shown; report annually to MOCST by 25 November; intermediary platforms must show who bought each ad and search engines must mark sponsored results."
+        },
+        {
+          "ref": "Điều 31–32",
+          "summary": "Licences under the old decrees stay valid; decree effective 15/02/2026; repeals NĐ 181/2013 and NĐ 70/2021."
+        }
+      ],
+      "claim_hooks": [
+        "phân bón hữu cơ thân thiện môi trường",
+        "thức ăn chăn nuôi giảm phát thải",
+        "chế phẩm sinh học xử lý môi trường",
+        "thuốc bảo vệ thực vật sinh học an toàn cho môi trường",
+        "bia sản xuất bằng năng lượng tái tạo"
+      ],
+      "data_uses": [
+        "legal_corpus",
+        "obligation_matrix",
+        "sector_expansion"
+      ],
+      "public_data": [],
+      "official_url": "https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-342-2025-nd-cp-468584.htm",
+      "secondary_urls": [
+        "https://congbaocdn.chinhphu.vn/180507251028987904/2026/1/22/342cpsigned-1769065009231106015785.pdf",
+        "https://hcc.nghean.gov.vn/laws/detail/Nghi-dinh-so-342-2025-ND-CP-cua-Chinh-phu-Quy-dinh-chi-tiet-mot-so-dieu-cua-Luat-Quang-cao-2083/",
+        "https://lsvn.vn/nhung-diem-moi-cua-nghi-dinh-342-2025-nd-cp-quy-dinh-chi-tiet-luat-quang-cao-a169273.html"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "Signed PDF 342-ndcp.signed.pdf (28 pp., VGP-signed 07.01.2026) served by the Nghệ An provincial portal; read 2026-10-13: date line 26/12/2025 p.1; Điều 3 p.2; Điều 4–11 pp.2–5; Điều 17–19 pp.9–11; Điều 31–32 p.16; signer Mai Văn Chính p.17. Not found at a datafiles.chinhphu.vn URL.",
+      "relevance": "medium",
+      "relevance_why": "Brings fertiliser, pesticide, feed and aquaculture/livestock-waste products (often marketed as 'green') under content rules; the 3-year record duty sits on online ad service businesses, so product documents behind an online ad should be retrievable from them.",
+      "caveats": "Does not set environmental-claim criteria. Official URL is a provincial government copy of the signed text.",
+      "verify": {
+        "verdict": "corrected",
+        "checked": [
+          "document_number",
+          "issued_date",
+          "effective_from",
+          "status",
+          "key_provisions[Điều 3, Điều 4–13, Điều 17, Điều 18, Điều 19, Điều 31–32]",
+          "relations"
+        ],
+        "corrections": [
+          {
+            "field": "key_provisions[1].ref",
+            "old": "Điều 4–11",
+            "new": "Điều 4–13"
+          },
+          {
+            "field": "key_provisions[Điều 19].summary",
+            "old": "keep ad records ... for 3 years",
+            "new": "keep ad records ... for 3 years from the last day the ad was shown (duty on online ad service businesses)"
+          }
+        ],
+        "evidence_urls": [
+          "https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-342-2025-nd-cp-468584.htm",
+          "https://congbaocdn.chinhphu.vn/180507251028987904/2026/1/22/342cpsigned-1769065009231106015785.pdf"
+        ],
+        "note": "Công báo page (số 26/2026) fetched: 342/2025/NĐ-CP, issued 26/12/2025, effective 15/02/2026, signer Mai Văn Chính. Công báo .docx text read: Điều 3 list of 11 groups matches; content rules run to Điều 13 (fertilisers Điều 12; plant varieties, medicines, alcohol Điều 13), not Điều 11; Điều 17 (one-tap close, max 5 s wait), Điều 18 (24-hour takedown), Điều 19 match; Điều 32.1 effective 15/02/2026, 32.2 NĐ 181/2013 and NĐ 70/2021 cease, 32.3 amends Điều 62 of NĐ 98/2021. official_url moved from the Nghệ An provincial copy to Công báo. The 2026-01-07 VGP-stamp date was not checked."
+      }
+    },
+    {
+      "id": "VN-ND-87-2026-ND-CP",
+      "jurisdiction": "VN",
+      "document_number": "87/2026/NĐ-CP",
+      "title": "Nghị định quy định xử phạt vi phạm hành chính trong lĩnh vực văn hóa và quảng cáo",
+      "title_vi": "Nghị định xử phạt hành chính về văn hóa và quảng cáo (2026)",
+      "doc_type": "nghi_dinh",
+      "authority": "Chính phủ (Government)",
+      "issued_date": "2026-03-27",
+      "effective_from": "2026-05-15",
+      "key_dates": [
+        {
+          "date": "2026-03-27",
+          "what": "Signed by Deputy PM Mai Văn Chính"
+        },
+        {
+          "date": "2026-04-10",
+          "what": "Posted by the Government e-portal (VGP stamp)"
+        },
+        {
+          "date": "2026-05-15",
+          "what": "In force (Điều 93.1); NĐ 38/2021, Điều 4 NĐ 129/2021 and NĐ 128/2022 cease (Điều 93.2)"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force since 2026-05-15 (Điều 93.1 of the signed text).",
+      "relations": {
+        "amends": [],
+        "amended_by": [],
+        "replaces": [
+          "NĐ 38/2021/NĐ-CP",
+          "Điều 4 NĐ 129/2021/NĐ-CP",
+          "NĐ 128/2022/NĐ-CP"
+        ],
+        "replaced_by": [],
+        "implements": [
+          "VN-LUAT-16-2012-QH13",
+          "VN-LUAT-75-2025-QH15"
+        ],
+        "implemented_by": []
+      },
+      "sectors": [
+        "all_sectors",
+        "consumer_goods_retail"
+      ],
+      "process_types": [
+        "enforcement_sanctions",
+        "advertising_consumer_protection"
+      ],
+      "new_2025_2026": true,
+      "key_provisions": [
+        {
+          "ref": "Điều 6 khoản 1–4",
+          "summary": "Maximum advertising fine 100 million VND (individuals) / 200 million VND (organisations). Amounts in Chương II–III are for individuals (except listed articles); organisations pay double; sanctioning-authority caps are for individuals, doubled for organisations."
+        },
+        {
+          "ref": "Điều 50 khoản 1",
+          "summary": "Posting ads on utility poles, traffic-signal poles or public trees: 5–10 million VND."
+        },
+        {
+          "ref": "Điều 50 khoản 2 điểm a",
+          "summary": "Using 'nhất', 'duy nhất', 'tốt nhất', 'số một' or similar without lawful substantiating documents: 10–20 million VND."
+        },
+        {
+          "ref": "Điều 50 khoản 4 điểm b",
+          "summary": "Comparing one's products with the same type of products of others without lawful substantiating documents: 40–60 million VND."
+        },
+        {
+          "ref": "Điều 50 khoản 5 điểm c",
+          "summary": "Untrue or misleading advertising about business capability, ability to supply, or quantity, quality, price, uses, design, packaging, brand, origin, type, service or warranty of registered/announced products: 80–100 million VND (organisations 160–200 million VND), except where a product-specific article applies."
+        },
+        {
+          "ref": "Điều 50 khoản 6–7",
+          "summary": "Additional penalties for some breaches; remedies: take ads down; compelled correction of information (buộc cải chính thông tin) and surrender of illegal profits for khoản 3 điểm b and khoản 5 điểm c."
+        },
+        {
+          "ref": "Điều 51",
+          "summary": "Influencers: 40–60 million VND for not verifying the advertiser, not checking product documents or incomplete announcement; 60–80 million VND for not announcing the advertising before and during it; 80–100 million VND for promoting products not used or understood; remedies include a public written apology."
+        },
+        {
+          "ref": "Điều 70 khoản 3",
+          "summary": "Cosmetics advertising inconsistent with the product dossier, missing mandatory content, or using medical facilities' or professionals' images: 15–20 million VND."
+        },
+        {
+          "ref": "Điều 83 khoản 1 điểm b",
+          "summary": "Commune People's Committee chairs may fine up to 50 million VND for advertising violations (individual level)."
+        },
+        {
+          "ref": "Điều 93",
+          "summary": "Effective 15/05/2026; repeals NĐ 38/2021, Điều 4 of NĐ 129/2021 and NĐ 128/2022."
+        }
+      ],
+      "claim_hooks": [
+        "xanh nhất",
+        "thân thiện môi trường",
+        "trung hòa các-bon",
+        "KOL/KOC giới thiệu sản phẩm xanh"
+      ],
+      "data_uses": [
+        "legal_corpus",
+        "obligation_matrix"
+      ],
+      "public_data": [],
+      "official_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/4/87-ndcp.signed.pdf",
+      "secondary_urls": [
+        "https://vanban.chinhphu.vn/?docid=217695&pageid=27160",
+        "https://baovanhoa.vn/van-hoa/bo-vhttdl-trien-khai-quy-dinh-xu-phat-vi-pham-hanh-chinh-trong-linh-vuc-van-hoa-va-quang-cao-224078.html",
+        "https://lsvn.vn/nguoi-noi-tieng-co-the-bi-phat-toi-100-trieu-dong-neu-quang-cao-san-pham-ma-chua-su-dung-a172276.html",
+        "https://luatvietnam.vn/linh-vuc-khac/danh-sach-nghi-dinh-xu-phat-vi-pham-hanh-chinh-ban-hanh-nam-2026-883-108608-article.html",
+        "https://ketoanthuanthien.vn/hoi-dap/quang-cao-sai-su-that-bi-phat-bao-nhieu-tien/"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "Signed PDF 87-ndcp.signed.pdf (99 pp., VGP stamp 10.04.2026) read by the verifier: Điều 6 p.5; Điều 50 pp.52–54; Điều 51 pp.54–55; Điều 70 pp.71–72; Điều 83 pp.81–82; Điều 93 p.98. vanban.chinhphu.vn docid=217695: issued 27-03-2026, effective 15-05-2026, signer Mai Văn Chính.",
+      "relevance": "medium",
+      "relevance_why": "Current sanctions for misleading advertising and influencer duties under the amended Advertising Law.",
+      "caveats": "Fines are for individuals; double them for organisations (Điều 6.3). Hanoi's People's Council reportedly doubled 53 of these fines locally (bvhttdl.gov.vn; not checked). Applies to advertising, not to mandatory disclosures (Law 75/2025 Điều 19.3(b)).",
+      "verify": {
+        "verdict": "corrected",
+        "checked": [
+          "document_number",
+          "title",
+          "issued_date",
+          "effective_from",
+          "status",
+          "key_provisions[all]",
+          "relations.replaces"
+        ],
+        "corrections": [
+          {
+            "field": "relations.replaces",
+            "old": "[]",
+            "new": "[NĐ 38/2021/NĐ-CP, Điều 4 NĐ 129/2021/NĐ-CP, NĐ 128/2022/NĐ-CP] (Điều 93.2)"
+          },
+          {
+            "field": "key_provisions[Điều 50 [secondary]].ref",
+            "old": "Điều 50 [secondary] (misleading ad 80–100M)",
+            "new": "Điều 50 khoản 5 điểm c; superlatives (khoản 2 điểm a, 10–20M) and comparatives (khoản 4 điểm b, 40–60M) split out"
+          },
+          {
+            "field": "key_provisions[Điều 51/70 [secondary]].ref",
+            "old": "Điều 51 [secondary]; Điều 70 [secondary]",
+            "new": "Điều 51 khoản 1–4; Điều 70 khoản 3"
+          },
+          {
+            "field": "key_provisions[Authority [official portal]].ref",
+            "old": "Authority [official portal]",
+            "new": "Điều 83 khoản 1 điểm b"
+          }
+        ],
+        "evidence_urls": [
+          "https://vanban.chinhphu.vn/?docid=217695&pageid=27160",
+          "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/4/87-ndcp.signed.pdf"
+        ],
+        "note": "Every secondary figure in the draft proved right against the signed text, so the label moves SECONDARY -> VERIFIED_PRIMARY on evidence. The draft's open caveat (does it repeal NĐ 38/2021?) is answered: yes. The knowledge doc still cites NĐ 38/2021, which ceased on 15/05/2026."
+      }
+    },
+    {
+      "id": "VN-LUAT-23-2018-QH14",
+      "jurisdiction": "VN",
+      "document_number": "23/2018/QH14",
+      "title": "Luật Cạnh tranh",
+      "title_vi": "Luật Cạnh tranh 2018",
+      "doc_type": "luat",
+      "authority": "Quốc hội (National Assembly)",
+      "issued_date": "2018-06-12",
+      "effective_from": "2019-07-01",
+      "key_dates": [
+        {
+          "date": "2018-06-12",
+          "what": "Adopted; signed by NA Chairwoman Nguyễn Thị Kim Ngân"
+        },
+        {
+          "date": "2018-07-12",
+          "what": "Published in Công báo 773+774"
+        },
+        {
+          "date": "2019-07-01",
+          "what": "In force"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force as of 2026-10-13. MOIT is drafting an amending law (2026, draft only).",
+      "relations": {
+        "amends": [],
+        "amended_by": [],
+        "replaces": [],
+        "replaced_by": [],
+        "implements": [],
+        "implemented_by": [
+          "VN-ND-75-2019-ND-CP"
+        ]
+      },
+      "sectors": [
+        "all_sectors"
+      ],
+      "process_types": [
+        "competition",
+        "advertising_consumer_protection"
+      ],
+      "new_2025_2026": false,
+      "key_provisions": [
+        {
+          "ref": "Điều 45 khoản 5",
+          "summary": "Unfair customer solicitation: (a) giving deceptive or misleading information about the enterprise or its goods, services, promotions or trading terms to attract another enterprise's customers; (b) comparing one's goods or services with another enterprise's same-type goods or services without proving the content."
+        }
+      ],
+      "claim_hooks": [
+        "xanh hơn đối thủ",
+        "phát thải thấp hơn sản phẩm của đối thủ",
+        "doanh nghiệp duy nhất trong ngành đạt chuẩn xanh"
+      ],
+      "data_uses": [
+        "legal_corpus"
+      ],
+      "public_data": [],
+      "official_url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2018/6/26888/23064-1-2018773-77423-2018-qh14.pdf",
+      "secondary_urls": [
+        "https://congbao.chinhphu.vn/noi-dung-van-ban-so-23-2018-qh14-26888",
+        "https://hethongphapluat.com/luat-canh-tranh-2018/dieu-45"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "Công báo page fetched: 23/2018/QH14, issued 12/06/2018, effective 01/07/2019, signer Nguyễn Thị Kim Ngân, Công báo 773+774. Công báo PDF (text layer) read: Điều 45 khoản 5 điểm a–b wording matches the summary (p.50).",
+      "relevance": "medium",
+      "relevance_why": "Comparative green claims aimed at a competitor's customers fall here; enforcement by the National Competition Commission.",
+      "caveats": "Applies between competing enterprises (attracting another enterprise's customers); a comparative green claim that names or implies a competitor is the typical hook.",
+      "verify": {
+        "verdict": "corrected",
+        "checked": [
+          "document_number",
+          "issued_date",
+          "effective_from",
+          "status",
+          "key_provisions[Điều 45 khoản 5]"
+        ],
+        "corrections": [
+          {
+            "field": "issued_date",
+            "old": "",
+            "new": "2018-06-12"
+          },
+          {
+            "field": "effective_from",
+            "old": "",
+            "new": "2019-07-01"
+          },
+          {
+            "field": "key_provisions[0].ref",
+            "old": "Điều 45 khoản 5 [secondary]",
+            "new": "Điều 45 khoản 5"
+          }
+        ],
+        "evidence_urls": [
+          "https://congbao.chinhphu.vn/noi-dung-van-ban-so-23-2018-qh14-26888",
+          "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2018/6/26888/23064-1-2018773-77423-2018-qh14.pdf"
+        ],
+        "note": "Label moved SECONDARY -> VERIFIED_PRIMARY on the Công báo text; clause numbering confirmed, so the old caveat about numbering is dropped."
+      }
+    },
+    {
+      "id": "VN-ND-75-2019-ND-CP",
+      "jurisdiction": "VN",
+      "document_number": "75/2019/NĐ-CP",
+      "title": "Nghị định quy định về xử phạt vi phạm hành chính trong lĩnh vực cạnh tranh",
+      "title_vi": "Nghị định xử phạt hành chính về cạnh tranh",
+      "doc_type": "nghi_dinh",
+      "authority": "Chính phủ (Government)",
+      "issued_date": "2019-09-26",
+      "effective_from": "2019-12-01",
+      "key_dates": [
+        {
+          "date": "2019-12-01",
+          "what": "In force (Điều 34.1)"
+        },
+        {
+          "date": "2026-05-20",
+          "what": "Amendments by NĐ 102/2026/NĐ-CP take effect"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force as amended by NĐ 102/2026/NĐ-CP.",
+      "relations": {
+        "amends": [],
+        "amended_by": [
+          "VN-ND-102-2026-ND-CP"
+        ],
+        "replaces": [],
+        "replaced_by": [],
+        "implements": [
+          "VN-LUAT-23-2018-QH14"
+        ],
+        "implemented_by": []
+      },
+      "sectors": [
+        "all_sectors"
+      ],
+      "process_types": [
+        "competition",
+        "enforcement_sanctions"
+      ],
+      "new_2025_2026": false,
+      "key_provisions": [
+        {
+          "ref": "Điều 20 khoản 1",
+          "summary": "100–200 million VND for unfair customer solicitation, including deceptive or misleading information about the enterprise, goods, services or promotions, and unproven comparisons with a competitor's goods."
+        },
+        {
+          "ref": "Điều 20 khoản 2–4",
+          "summary": "Fine doubled if committed in two or more provinces; additional penalties in the 2019 text: suspension of licence/practice certificate or of activity, confiscation of means, confiscation of profits; remedies: public correction (buộc cải chính công khai) and removal of violating elements from goods, packaging, business means and items. NĐ 102/2026 reportedly repealed điểm a khoản 3 (suspension); not verified."
+        },
+        {
+          "ref": "Điều 4 khoản 7",
+          "summary": "Chapter II maximum fines apply to organisations; individuals pay at most half."
+        }
+      ],
+      "claim_hooks": [
+        "xanh hơn đối thủ",
+        "sản phẩm ít phát thải nhất thị trường"
+      ],
+      "data_uses": [
+        "legal_corpus",
+        "obligation_matrix"
+      ],
+      "public_data": [],
+      "official_url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2019/9/29759/28200-1-2019817-81875-2019-nd-cp.pdf",
+      "secondary_urls": [
+        "https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-75-2019-nd-cp-29759.htm",
+        "https://vanban.chinhphu.vn/?pageid=27160&docid=217417",
+        "https://caselaw.vn/van-ban-phap-luat/330262-nghi-dinh-so-75-2019-nd-cp-ngay-26-09-2019-cua-chinh-phu-quy-dinh-ve-xu-phat-vi-pham-hanh-chinh-trong-linh-vuc-canh-tranh"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "Công báo page fetched: 75/2019/NĐ-CP, issued 26/09/2019, effective 01/12/2019, signer Nguyễn Xuân Phúc, Công báo 817+818. Công báo PDF (text layer) read: Điều 20 khoản 1–4 and Điều 4 khoản 7 match. vanban.chinhphu.vn docid=217417: NĐ 102/2026/NĐ-CP issued 31-03-2026, effective 20-05-2026, signer Bùi Thanh Sơn.",
+      "relevance": "medium",
+      "relevance_why": "The 'public correction' remedy is the closest VN analogue to foreign corrective-advertising orders for misleading comparative claims.",
+      "caveats": "NĐ 102/2026 repealed điểm a khoản 3 Điều 20 and changed Điều 4 khoản 3, 4, 8; use the consolidated VBHN 28/VBHN-BCT (2026) once accessible.",
+      "verify": {
+        "verdict": "confirmed",
+        "checked": [
+          "document_number",
+          "issued_date",
+          "effective_from",
+          "status",
+          "key_provisions[Điều 20 khoản 1, Điều 20 khoản 2–4, Điều 4 khoản 7]",
+          "key_dates[2019-12-01, 2026-05-20]"
+        ],
+        "corrections": [],
+        "evidence_urls": [
+          "https://congbao.chinhphu.vn/van-ban/nghi-dinh-so-75-2019-nd-cp-29759.htm",
+          "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2019/9/29759/28200-1-2019817-81875-2019-nd-cp.pdf",
+          "https://vanban.chinhphu.vn/?pageid=27160&docid=217417"
+        ],
+        "note": "All draft facts hold against the 2019 Công báo text; label moved SECONDARY -> VERIFIED_PRIMARY. The Điều 20 khoản 2–4 summary was completed (confiscation of profits was missing) and now flags the reported NĐ 102/2026 repeal of the suspension penalty, which was not read. NĐ 102/2026 itself was dropped as low relevance."
+      }
+    },
+    {
+      "id": "VN-ND-98-2020-ND-CP",
+      "jurisdiction": "VN",
+      "document_number": "98/2020/NĐ-CP",
+      "title": "Nghị định quy định xử phạt vi phạm hành chính trong hoạt động thương mại, sản xuất, buôn bán hàng giả, hàng cấm và bảo vệ quyền lợi người tiêu dùng",
+      "title_vi": "Nghị định xử phạt hành chính về thương mại và bảo vệ người tiêu dùng",
+      "doc_type": "nghi_dinh",
+      "authority": "Chính phủ (Government)",
+      "issued_date": "2020-08-26",
+      "effective_from": "2020-10-15",
+      "key_dates": [
+        {
+          "date": "2020-08-26",
+          "what": "Signed by PM Nguyễn Xuân Phúc"
+        },
+        {
+          "date": "2020-10-15",
+          "what": "In force"
+        },
+        {
+          "date": "2022-01-31",
+          "what": "Amended by NĐ 17/2022/NĐ-CP"
+        },
+        {
+          "date": "2025-02-21",
+          "what": "Amended by NĐ 24/2025/NĐ-CP (effective on signing)"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force as amended by NĐ 17/2022 and NĐ 24/2025. A MOIT draft decree amending consumer-protection decrees is open for comment to 2026-10-15; whether it touches this decree is unknown.",
+      "relations": {
+        "amends": [],
+        "amended_by": [
+          "NĐ 17/2022/NĐ-CP",
+          "VN-ND-24-2025-ND-CP"
+        ],
+        "replaces": [],
+        "replaced_by": [],
+        "implements": [
+          "VN-LUAT-19-2023-QH15"
+        ],
+        "implemented_by": []
+      },
+      "sectors": [
+        "consumer_goods_retail",
+        "food_beverage",
+        "all_sectors"
+      ],
+      "process_types": [
+        "enforcement_sanctions",
+        "advertising_consumer_protection",
+        "product_standards_labeling"
+      ],
+      "new_2025_2026": false,
+      "key_provisions": [
+        {
+          "ref": "Điều 4 khoản 4 điểm a (2020 text)",
+          "summary": "Maximum fine in commerce and consumer protection: 100 million VND (individuals) / 200 million VND (organisations)."
+        },
+        {
+          "ref": "Điều 4 khoản 4 điểm b (as rewritten by NĐ 24/2025 Điều 1 khoản 2)",
+          "summary": "Chương II amounts are for individuals, except Điều 33, 34, 35, khoản 4 Điều 46, khoản 2–3 Điều 53a, khoản 5, 7, 8, 9 Điều 56, Điều 67, 68, 70 and khoản 6–8 Điều 77; organisations pay double. Điều 47 is not an exception, so its amounts are individual-level."
+        },
+        {
+          "ref": "Điều 47 (as rewritten by NĐ 24/2025)",
+          "summary": "Fines for consumer-information violations; see VN-ND-24-2025-ND-CP for the in-force wording and amounts."
+        }
+      ],
+      "claim_hooks": [
+        "sản phẩm thân thiện môi trường",
+        "đạt chứng nhận xanh"
+      ],
+      "data_uses": [
+        "legal_corpus",
+        "obligation_matrix"
+      ],
+      "public_data": [],
+      "official_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2020/08/98.signed.pdf",
+      "secondary_urls": [
+        "https://vanban.chinhphu.vn/?pageid=27160&docid=200841"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "vanban.chinhphu.vn docid=200841 fetched: 98/2020/NĐ-CP, issued 26-08-2020, effective 15-10-2020, signer Nguyễn Xuân Phúc. Signed 2020 PDF p.7 read: Điều 4 khoản 4 điểm a–b. Signed NĐ 24/2025 p.2 read: Điều 1 khoản 2 rewrites Điều 4 khoản 4 điểm b.",
+      "relevance": "high",
+      "relevance_why": "The in-force sanctions decree for misleading consumer information; parse its consolidated text, not the 2020 original.",
+      "caveats": "Parse the consolidated text, not the 2020 original. Whether NĐ 17/2022 changed Điều 4 khoản 4 điểm a was not checked.",
+      "verify": {
+        "verdict": "corrected",
+        "checked": [
+          "document_number",
+          "issued_date",
+          "effective_from",
+          "status",
+          "key_provisions[Điều 4 khoản 4, Điều 47 pointer]",
+          "relations.amended_by"
+        ],
+        "corrections": [
+          {
+            "field": "effective_from",
+            "old": "",
+            "new": "2020-10-15"
+          },
+          {
+            "field": "caveats",
+            "old": "Individual vs organisation fine rule ... was not re-read",
+            "new": "Resolved: amounts are for individuals, organisations x2 (Điều 4.4(b) as rewritten by NĐ 24/2025); key provision added"
+          }
+        ],
+        "evidence_urls": [
+          "https://vanban.chinhphu.vn/?pageid=27160&docid=200841",
+          "https://datafiles.chinhphu.vn/cpp/files/vbpq/2020/08/98.signed.pdf",
+          "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/02/24-2025-nd-cp.signed.pdf"
+        ],
+        "note": "So the misleading-information fine in Điều 47.2(a) is 20–30 million VND for an individual trader and 40–60 million VND for an organisation. Knowledge doc §3 still marks the NĐ 98/2020 + 24/2025 fines UNVERIFIED; they are now verified."
+      }
+    },
+    {
+      "id": "VN-ND-24-2025-ND-CP",
+      "jurisdiction": "VN",
+      "document_number": "24/2025/NĐ-CP",
+      "title": "Nghị định sửa đổi, bổ sung một số điều của Nghị định số 98/2020/NĐ-CP ngày 26 tháng 8 năm 2020 của Chính phủ quy định xử phạt vi phạm hành chính trong hoạt động thương mại, sản xuất, buôn bán hàng giả, hàng cấm và bảo vệ quyền lợi người tiêu dùng đã được sửa đổi, bổ sung một số điều theo quy định tại Nghị định số 17/2022/NĐ-CP",
+      "title_vi": "Nghị định sửa NĐ 98/2020 về xử phạt thương mại và bảo vệ người tiêu dùng",
+      "doc_type": "nghi_dinh",
+      "authority": "Chính phủ (Government); proposed by Bộ Công Thương",
+      "issued_date": "2025-02-21",
+      "effective_from": "2025-02-21",
+      "key_dates": [
+        {
+          "date": "2025-02-21",
+          "what": "Signed by Deputy PM Bùi Thanh Sơn; in force on signing (Điều 4.1)"
+        },
+        {
+          "date": "2025-02-25",
+          "what": "Received by the Government e-portal (VGP stamp)"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force since 2025-02-21. CORRECTION: the team source doc (2026-10-05, A.3.1) cited an effective date of 10/04/2025 from some websites; the signed text says effective on signing.",
+      "relations": {
+        "amends": [
+          "VN-ND-98-2020-ND-CP"
+        ],
+        "amended_by": [],
+        "replaces": [],
+        "replaced_by": [],
+        "implements": [
+          "VN-LUAT-19-2023-QH15"
+        ],
+        "implemented_by": []
+      },
+      "sectors": [
+        "consumer_goods_retail",
+        "food_beverage",
+        "textiles_footwear",
+        "electronics",
+        "all_sectors"
+      ],
+      "process_types": [
+        "enforcement_sanctions",
+        "advertising_consumer_protection"
+      ],
+      "new_2025_2026": true,
+      "key_provisions": [
+        {
+          "ref": "Điều 1 khoản 2 (sửa NĐ 98/2020 Điều 4 khoản 4 điểm b)",
+          "summary": "Fine amounts in Chương II apply to individuals except listed articles (Điều 47 is not listed); organisations pay double."
+        },
+        {
+          "ref": "NĐ 98/2020 Điều 47 khoản 1 điểm a (new text)",
+          "summary": "10–20 million VND for traders giving consumers inaccurate or incomplete information required by Law 19/2023 Điều 21.1."
+        },
+        {
+          "ref": "NĐ 98/2020 Điều 47 khoản 2 điểm a (new text)",
+          "summary": "20–30 million VND (individual level; organisations 40–60 million) for traders deceiving or misleading consumers through false, incomplete or inaccurate information on the matters in Law 19/2023 Điều 10.1(a) (product, reputation, transaction, state certification documents), except cases under Điều 53a.1(e)."
+        },
+        {
+          "ref": "NĐ 98/2020 Điều 47 khoản 2 điểm đ; khoản 3–4 (new text)",
+          "summary": "20–30 million VND for not disclosing sponsorship of influencers; third parties (incl. influencers) giving inaccurate/incomplete product information or not disclosing sponsorship 20–30 million VND, doubled for media owners and media service providers."
+        },
+        {
+          "ref": "NĐ 98/2020 Điều 46a, 46b, 53a, 61a, 61b (added)",
+          "summary": "New violations incl. consumer protection in dealings with unregistered individual traders (1–3 million VND) and transactions in cyberspace (Điều 53a)."
+        },
+        {
+          "ref": "NĐ 98/2020 Điều 56 khoản 9 điểm e; khoản 11 điểm b (new text)",
+          "summary": "Multi-level marketing: deceptive or misleading information on product features or uses; remedy: compelled correction of false or misleading information."
+        },
+        {
+          "ref": "Điều 3–4",
+          "summary": "Điều 3: transitional rules; Điều 4.1: effective from the signing date (21/02/2025)."
+        }
+      ],
+      "claim_hooks": [
+        "sản phẩm thân thiện môi trường",
+        "đạt chứng nhận Nhãn sinh thái",
+        "được Bộ chứng nhận sản phẩm xanh",
+        "bao bì có thể phân hủy hoàn toàn",
+        "KOL giới thiệu sản phẩm xanh"
+      ],
+      "data_uses": [
+        "legal_corpus",
+        "obligation_matrix",
+        "label_convention"
+      ],
+      "public_data": [],
+      "official_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/02/24-2025-nd-cp.signed.pdf",
+      "secondary_urls": [
+        "https://vanban.chinhphu.vn/?pageid=27160&docid=212837",
+        "https://hcc.nghean.gov.vn/laws/detail/Nghi-dinh-so-24-2025-ND-CP-cua-Chinh-phu-Sua-doi-bo-sung-mot-so-dieu-cua-Nghi-dinh-so-98-2020-ND-CP-ngay-26-thang-8-nam-2020-cua-Chinh-phu-quy-dinh-xu-phat-vi-pham-hanh-chinh-trong-hoat-dong-thuong-mai-san-xuat-buon-ban-hang-gia-hang-cam-va-bao-1695/",
+        "https://baochinhphu.vn/tang-muc-phat-vi-pham-hanh-chinh-ve-bao-ve-quyen-loi-nguoi-tieu-dung-102250224185539081.htm"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "vanban.chinhphu.vn docid=212837 fetched: issued 21-02-2025, effective 21-02-2025, signer Bùi Thanh Sơn. Signed PDF (datafiles.chinhphu.vn, 37 pp.) read by the verifier: Điều 1 khoản 2 p.2; Điều 46b–47 pp.7–8; Điều 3–4 p.36 ('có hiệu lực thi hành kể từ ngày ký ban hành').",
+      "relevance": "high",
+      "relevance_why": "Gives the actual fine for misleading consumers, including misuse of certification documents — the legal consequence most relevant to consumer-facing green claims.",
+      "caveats": "Applies to consumer transactions; GreenScan should cite it as context only. Điều 56 (multi-level marketing) and Điều 53a/61a/61b contents were not re-read.",
+      "verify": {
+        "verdict": "confirmed",
+        "checked": [
+          "document_number",
+          "issued_date",
+          "effective_from",
+          "status",
+          "key_provisions[Điều 47 khoản 1 điểm a, khoản 2 điểm a, khoản 2 điểm đ, khoản 3–4; Điều 46b; existence of 46a/53a/61a/61b; Điều 3–4]"
+        ],
+        "corrections": [],
+        "evidence_urls": [
+          "https://vanban.chinhphu.vn/?pageid=27160&docid=212837",
+          "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/02/24-2025-nd-cp.signed.pdf"
+        ],
+        "note": "Draft facts confirmed, including its correction to the team doc (in force on signing 21/02/2025, not 10/04/2025). Enriched, not corrected: the individual/organisation rule (Điều 1 khoản 2) was added and the caveat resolved; official_url moved from the Nghệ An copy to datafiles.chinhphu.vn. Điều 56 khoản 9 điểm e / khoản 11 điểm b not checked."
+      }
+    },
+    {
+      "id": "VN-LUAT-78-2025-QH15",
+      "jurisdiction": "VN",
+      "document_number": "78/2025/QH15",
+      "title": "Luật sửa đổi, bổ sung một số điều của Luật Chất lượng sản phẩm, hàng hóa",
+      "title_vi": "Luật Chất lượng sản phẩm, hàng hóa sửa đổi 2025",
+      "doc_type": "luat",
+      "authority": "Quốc hội (National Assembly)",
+      "issued_date": "2025-06-18",
+      "effective_from": "2026-01-01",
+      "key_dates": [
+        {
+          "date": "2025-06-18",
+          "what": "Adopted"
+        },
+        {
+          "date": "2025-08-14",
+          "what": "QĐ 1742/QĐ-TTg implementation plan [secondary]"
+        },
+        {
+          "date": "",
+          "what": "September 2025 (day not legible): consolidated text VBHN 156/VBHN-VPQH certified by the NA Office (Lê Quang Tùng)"
+        },
+        {
+          "date": "2026-01-01",
+          "what": "In force"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force since 2026-01-01. Implemented by NĐ 37/2026/NĐ-CP (signed and in force 23/01/2026), which also replaced the labelling decrees NĐ 43/2017 and NĐ 111/2021.",
+      "relations": {
+        "amends": [
+          "Luật Chất lượng sản phẩm, hàng hóa 05/2007/QH12"
+        ],
+        "amended_by": [],
+        "replaces": [],
+        "replaced_by": [],
+        "implements": [],
+        "implemented_by": [
+          "VN-ND-37-2026-ND-CP"
+        ]
+      },
+      "sectors": [
+        "consumer_goods_retail",
+        "food_beverage",
+        "agriculture",
+        "fisheries",
+        "textiles_footwear",
+        "electronics",
+        "plastics_packaging",
+        "steel",
+        "cement",
+        "chemicals"
+      ],
+      "process_types": [
+        "product_standards_labeling",
+        "supply_chain_due_diligence",
+        "inspection",
+        "advertising_consumer_protection"
+      ],
+      "new_2025_2026": true,
+      "key_provisions": [
+        {
+          "ref": "Điều 3 khoản 8",
+          "summary": "Defines hộ chiếu số của sản phẩm (digital product passport): product and supply-chain information stored in a barcode or linked database, readable by suitable devices."
+        },
+        {
+          "ref": "Điều 5",
+          "summary": "Goods are classified by risk into low, medium and high risk."
+        },
+        {
+          "ref": "Điều 6d",
+          "summary": "Traceability and supply-chain transparency must be truthful, objective, authentic and verifiable; mandatory for high-risk goods on a roadmap set by each ministry; encouraged for others."
+        },
+        {
+          "ref": "Điều 6đ",
+          "summary": "Technology in quality management: barcodes, traceability, electronic labels, digital passports and AI/big data, in line with the digital and circular economy; data must be secure."
+        },
+        {
+          "ref": "Điều 8 khoản 9, 10, 14",
+          "summary": "Prohibits false information or advertising and deception about quality, origin and provenance (especially on digital platforms); concealing risk information affecting health, property or the environment; quality-related unfair competition causing confusion."
+        },
+        {
+          "ref": "Điều 10 khoản 3; Điều 28",
+          "summary": "Producers must give truthful quality information, declare applicable standards, and label goods physically, electronically or by digital passport with traceability information."
+        },
+        {
+          "ref": "Điều 34a, 34b",
+          "summary": "Goods in circulation must carry physical/electronic labels or a digital passport with barcode, traceability and quality information and be updated in the electronic data system; online sellers and platform operators have information and complaint-handling duties."
+        }
+      ],
+      "claim_hooks": [
+        "truy xuất nguồn gốc minh bạch",
+        "100% sản phẩm có mã QR truy xuất",
+        "hộ chiếu số sản phẩm",
+        "chuỗi cung ứng minh bạch",
+        "nguồn gốc rõ ràng",
+        "đạt tiêu chuẩn công bố áp dụng",
+        "chất lượng quốc tế"
+      ],
+      "data_uses": [
+        "legal_corpus",
+        "obligation_matrix",
+        "new_topic",
+        "sector_expansion"
+      ],
+      "public_data": [
+        {
+          "name": "Consolidated Law on Product and Goods Quality, VBHN 156/VBHN-VPQH (text layer)",
+          "url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/9/156-vbhn-vpqh.pdf",
+          "what": "Clause corpus with footnotes marking every 2025 change",
+          "access": "free"
+        }
+      ],
+      "official_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/9/156-vbhn-vpqh.pdf",
+      "secondary_urls": [
+        "https://tapchicongthuong.vn/trien-khai-thi-hanh-luat-sua-doi--bo-sung-mot-so-dieu-cua-luat-chat-luong-san-pham--hang-hoa-182949.htm",
+        "https://luatvietnam.vn/thuong-mai/luat-chat-luong-san-pham-hang-hoa-sua-doi-2025-so-78-2025-qh15-405699-d1.html"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "Official consolidated text VBHN 156/VBHN-VPQH on datafiles.chinhphu.vn (42 pp., text layer), read 2026-10-13: header p.1 states Law 78/2025/QH15 of 18/6/2025 effective 01/01/2026; Điều 3.8 p.3; Điều 5 p.3; Điều 6d–6đ pp.8–9; Điều 8 pp.9–10; Điều 34a–34b pp.30–31. The amending law itself was not opened.",
+      "relevance": "medium",
+      "relevance_why": "New, verifiable obligations behind traceability and supply-chain claims; Điều 8.9 bans false quality/origin information.",
+      "caveats": "Traceability is mandatory only for high-risk goods per ministry roadmaps; claims of 'full traceability' for other goods are voluntary and need evidence, not a legal duty.",
+      "verify": {
+        "verdict": "corrected",
+        "checked": [
+          "document_number",
+          "issued_date",
+          "effective_from",
+          "status",
+          "key_provisions[Điều 3 khoản 8, Điều 5, Điều 6d, Điều 8 khoản 9–10, Điều 34a; headings of 6đ, 34b]",
+          "relations.implemented_by"
+        ],
+        "corrections": [
+          {
+            "field": "relations.implemented_by",
+            "old": "[]",
+            "new": "[VN-ND-37-2026-ND-CP]"
+          }
+        ],
+        "evidence_urls": [
+          "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/9/156-vbhn-vpqh.pdf",
+          "https://vanban.chinhphu.vn/?pageid=27160&docid=216764",
+          "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/37-1.signed.pdf"
+        ],
+        "note": "VBHN 156/VBHN-VPQH (text layer) read from a copy of the official datafiles.chinhphu.vn PDF downloaded earlier on 2026-10-13: header states Law 78/2025/QH15 of 18/6/2025, effective 01/01/2026; Điều 3.8, 5, 6d, 8.9–8.10, 34a match. Điều 6đ, 8.14, 10.3, 28, 34b not re-read. vanban.chinhphu.vn docid=216764: NĐ 37/2026/NĐ-CP 'Quy định chi tiết ... Luật Chất lượng sản phẩm, hàng hóa', issued and effective 23-01-2026, signer Nguyễn Chí Dũng."
+      }
+    },
+    {
+      "id": "VN-LUAT-70-2025-QH15",
+      "jurisdiction": "VN",
+      "document_number": "70/2025/QH15",
+      "title": "Luật sửa đổi, bổ sung một số điều của Luật Tiêu chuẩn và quy chuẩn kỹ thuật",
+      "title_vi": "Luật Tiêu chuẩn và quy chuẩn kỹ thuật sửa đổi 2025",
+      "doc_type": "luat",
+      "authority": "Quốc hội (National Assembly)",
+      "issued_date": "2025-06-14",
+      "effective_from": "2026-01-01",
+      "key_dates": [
+        {
+          "date": "2025-06-14",
+          "what": "Adopted at the 9th session; signed by NA Chairman Trần Thanh Mẫn"
+        },
+        {
+          "date": "2025-07-16",
+          "what": "Posted by the Government e-portal (VGP stamp)"
+        },
+        {
+          "date": "2025-09-27",
+          "what": "QĐ 2138/QĐ-TTg implementation plan: implementing decrees to be issued before 2025-12-01 [secondary]"
+        },
+        {
+          "date": "2026-01-01",
+          "what": "In force (Điều 2)"
+        },
+        {
+          "date": "2026-04-30",
+          "what": "Deadline for the national standards strategy under QĐ 2138/QĐ-TTg [secondary]"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force since 2026-01-01. Whether the implementing decrees were issued on schedule was not checked.",
+      "relations": {
+        "amends": [
+          "Luật Tiêu chuẩn và quy chuẩn kỹ thuật 68/2006/QH11"
+        ],
+        "amended_by": [],
+        "replaces": [],
+        "replaced_by": [],
+        "implements": [],
+        "implemented_by": []
+      },
+      "sectors": [
+        "all_sectors",
+        "construction_real_estate",
+        "steel",
+        "cement",
+        "electronics",
+        "consumer_goods_retail"
+      ],
+      "process_types": [
+        "product_standards_labeling",
+        "verification_assurance",
+        "inspection"
+      ],
+      "new_2025_2026": true,
+      "key_provisions": [
+        {
+          "ref": "Điều 1 khoản 1 (sửa Điều 3)",
+          "summary": "Standards are voluntary; technical regulations are mandatory limits to protect safety, health, the environment and consumers. Conformity assessment includes testing, inspection, validation (xác nhận giá trị sử dụng), verification (kiểm tra xác nhận) and certification of conformity with standards or regulations."
+        },
+        {
+          "ref": "Điều 1 khoản 24",
+          "summary": "Repeals Articles 13, 15, 22, 23, 24, 30, 31, 38, 42, 43, 69 and Chapter VI of the 2006 Law."
+        },
+        {
+          "ref": "Điều 2–3",
+          "summary": "Effective 01/01/2026; standards and regulations already drafted continue under the old law."
+        }
+      ],
+      "claim_hooks": [
+        "đạt tiêu chuẩn TCVN",
+        "chứng nhận hợp chuẩn",
+        "công bố hợp quy",
+        "đạt QCVN về môi trường",
+        "chứng nhận ISO 14001",
+        "số liệu phát thải đã được kiểm tra xác nhận",
+        "được bên thứ ba thẩm định độc lập"
+      ],
+      "data_uses": [
+        "legal_corpus",
+        "label_convention"
+      ],
+      "public_data": [],
+      "official_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/70qh.signed.pdf",
+      "secondary_urls": [
+        "https://tapchicongthuong.vn/chinh-phu-ban-hanh-ke-hoach-trien-khai-thi-hanh-luat-sua-doi--bo-sung-luat-tieu-chuan-va-quy-chuan-ky-thuat-245299.htm"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "Signed PDF 70qh.signed.pdf (18 pp., VGP stamp 16.07.2025) read 2026-10-13: Luật số 70/2025/QH15 and Điều 3 definitions p.1; repeal list, Điều 2 (effective 01/01/2026), Điều 3, adoption 14/6/2025 and signer on the last page. QĐ 2138/QĐ-TTg facts from Tạp chí Công Thương (secondary).",
+      "relevance": "medium",
+      "relevance_why": "Gives the legal vocabulary for 'certified', 'verified', 'validated' and 'meets standard' claims, so a reviewer can tell a voluntary standard claim from a mandatory regulation and a certification from a self-declaration.",
+      "caveats": "Does not regulate environmental claims as such. TCVN ISO 14021 (self-declared environmental claims) was not verified.",
+      "verify": {
+        "verdict": "confirmed",
+        "checked": [
+          "document_number",
+          "issued_date",
+          "effective_from",
+          "status",
+          "key_provisions[Điều 1 khoản 24, Điều 2–3; Điều 1 khoản 1 heading only]"
+        ],
+        "corrections": [],
+        "evidence_urls": [
+          "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/7/70qh.signed.pdf"
+        ],
+        "note": "Signed PDF (VGP stamp 16.07.2025) read from a copy of the official URL downloaded earlier on 2026-10-13: 'Luật số: 70/2025/QH15'; last page: repeal list (Điều 13, 15, 22, 23, 24, 30, 31, 38, 42, 43, 69, Chương VI), Điều 2 effective 01/01/2026, Điều 3 transition, adoption 14/6/2025, signer Trần Thanh Mẫn. Definitions in the new Điều 3 not re-read; implementing decrees not checked."
+      }
+    },
+    {
+      "id": "VN-ND-08-2022-ND-CP-NHAN-SINH-THAI",
+      "jurisdiction": "VN",
+      "document_number": "08/2022/NĐ-CP (Điều 145–150), amended by 48/2026/NĐ-CP (Điều 29–30)",
+      "title": "Nghị định quy định chi tiết một số điều của Luật Bảo vệ môi trường — Mục Nhãn sinh thái Việt Nam",
+      "title_vi": "Quy định về chứng nhận Nhãn sinh thái Việt Nam",
+      "doc_type": "nghi_dinh",
+      "authority": "Chính phủ (Government); certification by Bộ Nông nghiệp và Môi trường (formerly Bộ Tài nguyên và Môi trường)",
+      "issued_date": "2022-01-10",
+      "effective_from": "2022-01-10",
+      "key_dates": [
+        {
+          "date": "2026-01-29",
+          "what": "NĐ 48/2026/NĐ-CP amends the certification procedure (in force on signing)"
+        },
+        {
+          "date": "2030-12-31",
+          "what": "After this date, production and import of single-use plastic products stop except those certified with the Vietnam Ecolabel (NĐ 08/2022, per team reading)"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force as amended by NĐ 48/2026 (registry dates already corrected by the team on 2026-10-06).",
+      "relations": {
+        "amends": [],
+        "amended_by": [
+          "ND05-2025-ND-CP",
+          "ND48-2026-ND-CP"
+        ],
+        "replaces": [],
+        "replaced_by": [],
+        "implements": [
+          "LUAT-BVMT-2020"
+        ],
+        "implemented_by": []
+      },
+      "sectors": [
+        "consumer_goods_retail",
+        "plastics_packaging",
+        "food_beverage",
+        "textiles_footwear",
+        "construction_real_estate",
+        "tourism"
+      ],
+      "process_types": [
+        "eco_label_certification",
+        "product_standards_labeling"
+      ],
+      "new_2025_2026": true,
+      "key_provisions": [
+        {
+          "ref": "Điều 145",
+          "summary": "The environment ministry sets criteria and certifies the Vietnam Ecolabel for environmentally friendly products and services; certification decisions are valid for 36 months."
+        },
+        {
+          "ref": "Điều 146–147 (147 khoản 1–2 as amended by NĐ 48/2026 Điều 29)",
+          "summary": "Application dossier (valid 6 months); completeness check within 4 days and assessment within 26 days of a complete dossier by an evaluation council, with site survey or expert testing if needed; written reasons if refused."
+        },
+        {
+          "ref": "Điều 148 (điểm b khoản 1 as amended by NĐ 48/2026 Điều 30)",
+          "summary": "Re-issue of the decision when holder details change without affecting the criteria (NĐ 48/2026 Điều 30 sets a 10-day re-issue period); revocation (2022 text) if the product no longer meets the criteria or the holder does not maintain the commitments in its dossier."
+        },
+        {
+          "ref": "Điều 150",
+          "summary": "The ministry publishes and updates the list of certified products and services on its website and may sign mutual-recognition agreements with international ecolabels."
+        }
+      ],
+      "claim_hooks": [
+        "Nhãn sinh thái Việt Nam",
+        "Nhãn xanh Việt Nam",
+        "sản phẩm thân thiện môi trường được chứng nhận",
+        "đạt chứng nhận nhãn sinh thái",
+        "túi ni lông thân thiện môi trường",
+        "bao bì sinh thái"
+      ],
+      "data_uses": [
+        "legal_corpus",
+        "evidence_registry",
+        "label_convention"
+      ],
+      "public_data": [
+        {
+          "name": "MAE list of Vietnam Ecolabel-certified products and services",
+          "url": "",
+          "what": "Whether a claimed ecolabel or 'certified environmentally friendly' product is on the official list and within its 36-month validity",
+          "access": "scrape"
+        }
+      ],
+      "official_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2022/01/08-nd.signed.pdf",
+      "secondary_urls": [
+        "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/48-cp.signed.pdf"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "Read from the team's OCR clause files of the signed PDFs (data/legal/clauses/ND08-2022-ND-CP.jsonl and ND48-2026-ND-CP.jsonl), 2026-10-13: 36-month validity, ministry publishes list, revocation grounds, amended 4/26-day timeline under Bộ Nông nghiệp và Môi trường.",
+      "relevance": "high",
+      "relevance_why": "The only official certification route found for 'environmentally friendly' product claims in VN; a listed, time-limited certificate is directly checkable evidence.",
+      "caveats": "Overlaps with the environment-law research area. The URL of MAE's certified-products list was not located. The Luật BVMT article requiring certification (team doc cites Điều 145 of Law 72/2020) is outside the repo's parsed range (Điều 1–89) and was not re-read.",
+      "verify": {
+        "verdict": "corrected",
+        "checked": [
+          "document_number",
+          "issued_date",
+          "effective_from",
+          "status",
+          "key_provisions[Điều 145, 146–147, 148, 150]",
+          "key_dates[2026-01-29, 2030-12-31]"
+        ],
+        "corrections": [
+          {
+            "field": "key_provisions[Điều 148]",
+            "old": "whole article 'as amended by NĐ 48/2026 Điều 30'",
+            "new": "NĐ 48/2026 Điều 30 amends only điểm b khoản 1 (re-issue within 10 days); revocation grounds are the 2022 text"
+          }
+        ],
+        "evidence_urls": [
+          "https://datafiles.chinhphu.vn/cpp/files/vbpq/2022/01/08-nd.signed.pdf",
+          "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/48-cp.signed.pdf"
+        ],
+        "note": "Not re-fetched: checked against the repo's OCR clause files of the signed PDFs (data/legal/clauses/ND08-2022-ND-CP.jsonl, ND48-2026-ND-CP.jsonl) and knowledge doc §1 (NĐ 08/2022 signed and effective 10/01/2022; NĐ 48/2026 signed and effective 29/01/2026). Confirmed: 36-month validity (Điều 145), 6-month dossier validity (146), 4/26-day timeline under Bộ Nông nghiệp và Môi trường (147 as amended), revocation grounds (148), the ministry publishes the certified list and signs mutual-recognition agreements (150), and single-use plastics stop after 31/12/2030 except Ecolabel-certified ones (article number not identified in the OCR file)."
+      }
+    },
+    {
+      "id": "VN-QD-2229-2026-QD-BCT",
+      "jurisdiction": "VN",
+      "document_number": "2229/QĐ-BCT",
+      "title": "Quyết định quy định cơ cấu tổ chức, chức năng, nhiệm vụ và quyền hạn của Ủy ban Cạnh tranh Quốc gia",
+      "title_vi": "Quyết định về chức năng, nhiệm vụ của Ủy ban Cạnh tranh Quốc gia",
+      "doc_type": "quyet_dinh",
+      "authority": "Bộ trưởng Bộ Công Thương (Minister of Industry and Trade)",
+      "issued_date": "2026-09-15",
+      "effective_from": "2026-09-15",
+      "key_dates": [
+        {
+          "date": "2026-09-15",
+          "what": "Signed and in force on signing; replaces QĐ 3756/QĐ-BCT of 26/12/2025"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force since 2026-09-15 per MOIT announcement of 17/09/2026.",
+      "relations": {
+        "amends": [],
+        "amended_by": [],
+        "replaces": [
+          "QĐ 3756/QĐ-BCT (26/12/2025)"
+        ],
+        "replaced_by": [],
+        "implements": [],
+        "implemented_by": []
+      },
+      "sectors": [
+        "all_sectors"
+      ],
+      "process_types": [
+        "governance_institutions",
+        "advertising_consumer_protection",
+        "competition",
+        "inspection"
+      ],
+      "new_2025_2026": true,
+      "key_provisions": [
+        {
+          "ref": "functions (per MOIT summary)",
+          "summary": "The National Competition Commission publishes lists of businesses that violated consumer rights, inspects and monitors recalls of defective goods, controls standard-form contracts and general trading terms, and coordinates with consumer organisations."
+        }
+      ],
+      "claim_hooks": [
+        "chưa từng bị xử phạt",
+        "được người tiêu dùng tin chọn",
+        "cam kết bảo vệ quyền lợi khách hàng"
+      ],
+      "data_uses": [
+        "evidence_registry",
+        "obligation_matrix"
+      ],
+      "public_data": [
+        {
+          "name": "National Competition Commission list of businesses that violated consumer rights",
+          "url": "",
+          "what": "External adverse findings to compare against 'no violations' or consumer-trust claims",
+          "access": "scrape"
+        }
+      ],
+      "official_url": "https://moit.gov.vn/tin-tuc/thong-bao/quy-dinh-co-cau-to-chuc-va-chuc-nang-nhiem-vu-cua-uy-ban-canh-tranh-quoc-gia.html",
+      "secondary_urls": [],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "moit.gov.vn announcement (17/09/2026) gives number, signing 15/9/2026, effect on signing, replacement of QĐ 3756/QĐ-BCT and the listed functions. Decision text itself not opened; exact title paraphrased from the announcement.",
+      "relevance": "medium",
+      "relevance_why": "Identifies the body handling consumer and competition matters and a public source of adverse findings.",
+      "caveats": "The list's web location was not found.",
+      "verify": {
+        "verdict": "confirmed",
+        "checked": [
+          "document_number",
+          "issued_date",
+          "effective_from",
+          "status",
+          "relations.replaces",
+          "key_provisions[functions]"
+        ],
+        "corrections": [],
+        "evidence_urls": [
+          "https://moit.gov.vn/tin-tuc/thong-bao/quy-dinh-co-cau-to-chuc-va-chuc-nang-nhiem-vu-cua-uy-ban-canh-tranh-quoc-gia.html"
+        ],
+        "note": "MOIT announcement of 17/09/2026 fetched: QĐ 2229/QĐ-BCT signed 15/9/2026 by the Minister, effective on signing, replaces QĐ 3756/QĐ-BCT of 26/12/2025; consumer functions include publishing the list of businesses violating consumer rights, monitoring recalls of defective goods and controlling standard-form contracts. Decision text not opened."
+      }
+    },
+    {
+      "id": "VN-LUAT-122-2025-QH15",
+      "jurisdiction": "VN",
+      "document_number": "122/2025/QH15",
+      "title": "Luật Thương mại điện tử",
+      "title_vi": "Luật Thương mại điện tử",
+      "doc_type": "luat",
+      "authority": "Quốc hội (National Assembly)",
+      "issued_date": "2025-12-10",
+      "effective_from": "2026-07-01",
+      "key_dates": [
+        {
+          "date": "2025-12-10",
+          "what": "Adopted; signed by NA Chairman Trần Thanh Mẫn"
+        },
+        {
+          "date": "2026-07-01",
+          "what": "In force"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force since 2026-07-01 per vanban.chinhphu.vn metadata. Provisions not read.",
+      "relations": {
+        "amends": [],
+        "amended_by": [],
+        "replaces": [],
+        "replaced_by": [],
+        "implements": [],
+        "implemented_by": []
+      },
+      "sectors": [
+        "consumer_goods_retail",
+        "electronics",
+        "food_beverage",
+        "textiles_footwear"
+      ],
+      "process_types": [
+        "advertising_consumer_protection",
+        "product_standards_labeling"
+      ],
+      "new_2025_2026": true,
+      "key_provisions": [],
+      "claim_hooks": [
+        "sản phẩm xanh trên sàn thương mại điện tử",
+        "gian hàng chính hãng thân thiện môi trường"
+      ],
+      "data_uses": [
+        "legal_corpus"
+      ],
+      "public_data": [],
+      "official_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat122.2025.qh15.pdf",
+      "secondary_urls": [
+        "https://vanban.chinhphu.vn/?pageid=27160&docid=216503&classid=1&orggroupid=1"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "vanban.chinhphu.vn docid=216503 fetched: 122/2025/QH15, issued 10-12-2025, effective 01-07-2026, signer Trần Thanh Mẫn, attachment luat122.2025.qh15.pdf (not opened). Related verified duties for online sales exist in Law 78/2025 Điều 34b and NĐ 98/2020 Điều 53a.",
+      "relevance": "medium",
+      "relevance_why": "Would govern seller and platform information duties for green product listings.",
+      "caveats": "Metadata verified only; key_provisions is empty. Read the text before adding provisions to the registry. Search snippets mention one provision starting 1/1/2026 and NĐ 248/2026 as an implementing decree; neither checked.",
+      "verify": {
+        "verdict": "corrected",
+        "checked": [
+          "document_number",
+          "issued_date",
+          "effective_from",
+          "status"
+        ],
+        "corrections": [
+          {
+            "field": "id",
+            "old": "VN-LUAT-TMDT-2025",
+            "new": "VN-LUAT-122-2025-QH15"
+          },
+          {
+            "field": "document_number",
+            "old": "",
+            "new": "122/2025/QH15"
+          },
+          {
+            "field": "issued_date",
+            "old": "",
+            "new": "2025-12-10"
+          },
+          {
+            "field": "effective_from",
+            "old": "",
+            "new": "2026-07-01"
+          },
+          {
+            "field": "status",
+            "old": "unknown",
+            "new": "in_force"
+          }
+        ],
+        "evidence_urls": [
+          "https://vanban.chinhphu.vn/?pageid=27160&docid=216503&classid=1&orggroupid=1"
+        ],
+        "note": "Label moved UNVERIFIED -> VERIFIED_PRIMARY for metadata only. The id was renamed to the catalog's number-based pattern; revert it if other files reference VN-LUAT-TMDT-2025."
+      }
+    },
+    {
+      "id": "VN-ND-37-2026-ND-CP",
+      "jurisdiction": "VN",
+      "document_number": "37/2026/NĐ-CP",
+      "title": "Nghị định quy định chi tiết một số điều và biện pháp để tổ chức, hướng dẫn thi hành Luật Chất lượng sản phẩm, hàng hóa",
+      "title_vi": "Nghị định hướng dẫn Luật Chất lượng sản phẩm, hàng hóa (gồm nhãn hàng hóa, nhãn điện tử, hộ chiếu số)",
+      "doc_type": "nghi_dinh",
+      "authority": "Chính phủ (Government); signed by Deputy PM Nguyễn Chí Dũng",
+      "issued_date": "2026-01-23",
+      "effective_from": "2026-01-23",
+      "key_dates": [
+        {
+          "date": "2026-01-23",
+          "what": "Signed and in force on signing (Điều 97.1); NĐ 43/2017 and NĐ 111/2021 on goods labelling cease (Điều 97.4 b–c)"
+        },
+        {
+          "date": "2026-07-01",
+          "what": "NĐ 132/2008, NĐ 74/2018, NĐ 13/2022, Điều 2 NĐ 67/2009 and Điều 4 NĐ 154/2018 cease (Điều 97.2)"
+        }
+      ],
+      "status": "in_force",
+      "status_note": "In force since 2026-01-23. Added by the verifier as the in-force successor of the rejected labelling items VN-ND-43-2017-ND-CP and VN-ND-111-2021-ND-CP.",
+      "relations": {
+        "amends": [],
+        "amended_by": [],
+        "replaces": [
+          "NĐ 43/2017/NĐ-CP",
+          "NĐ 111/2021/NĐ-CP",
+          "NĐ 132/2008/NĐ-CP (from 2026-07-01)",
+          "NĐ 74/2018/NĐ-CP (from 2026-07-01)",
+          "NĐ 13/2022/NĐ-CP (from 2026-07-01; Điều 1 khoản 3–7 from 2026-01-23)"
+        ],
+        "replaced_by": [],
+        "implements": [
+          "VN-LUAT-78-2025-QH15"
+        ],
+        "implemented_by": []
+      },
+      "sectors": [
+        "agriculture",
+        "chemicals",
+        "consumer_goods_retail",
+        "electronics",
+        "fisheries",
+        "food_beverage",
+        "plastics_packaging",
+        "textiles_footwear"
+      ],
+      "process_types": [
+        "product_standards_labeling",
+        "supply_chain_due_diligence"
+      ],
+      "new_2025_2026": true,
+      "key_provisions": [
+        {
+          "ref": "Điều 50 khoản 1",
+          "summary": "A label may also carry codes, barcodes, conformity marks, traceability data carriers and other content; such extra content must not be contrary to law and must be truthful, accurate and reflect the true nature of the goods, without obscuring or distorting the mandatory content."
+        },
+        {
+          "ref": "Điều 35–49 [headings from OCR only]",
+          "summary": "Labelling rules: scope (35), label position (36), size and font (37), colours (38), auxiliary labels (40), responsibility (41), mandatory content (42), responsible entity (44), origin (47). Contents not read."
+        },
+        {
+          "ref": "Điều 32; Điều 52–55 [headings from OCR only]",
+          "summary": "Digital product passport and electronic labels: principles, content, declaration on the e-label system, technical guidance. Contents not read."
+        },
+        {
+          "ref": "Điều 97",
+          "summary": "In force on signing; NĐ 43/2017 and NĐ 111/2021 cease on that date; other quality-law decrees cease from 01/07/2026."
+        }
+      ],
+      "claim_hooks": [
+        "100% cotton hữu cơ",
+        "bao bì thân thiện môi trường",
+        "giấy tái chế",
+        "gỗ có nguồn gốc hợp pháp",
+        "nguyên liệu tái chế",
+        "nhựa sinh học",
+        "sợi tái chế",
+        "thành phần tự nhiên",
+        "Được sản xuất tại Việt Nam"
+      ],
+      "data_uses": [
+        "legal_corpus",
+        "label_convention"
+      ],
+      "public_data": [],
+      "official_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/37-1.signed.pdf",
+      "secondary_urls": [
+        "https://vanban.chinhphu.vn/?pageid=27160&docid=216764",
+        "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/37-pl.pdf"
+      ],
+      "verification": "VERIFIED_PRIMARY",
+      "evidence_note": "vanban.chinhphu.vn docid=216764: 37/2026/NĐ-CP, issued 23-01-2026, effective 23-01-2026, signer Nguyễn Chí Dũng. Signed PDF (92 pp.) read by the verifier: Điều 50 p.43; Điều 97 pp.89–90. Other article numbers come from English-model OCR of headings.",
+      "relevance": "high",
+      "relevance_why": "The in-force goods-labelling rules. Điều 50.1 requires any extra label content, such as a green or recycled-content claim printed on packaging, to be truthful and accurate.",
+      "caveats": "Only Điều 50 and 97 were read; check other article numbers against the text. The annex file 37-pl.pdf (mandatory content by goods group) was not opened.",
+      "verify": {
+        "verdict": "confirmed",
+        "checked": [
+          "document_number",
+          "title",
+          "issued_date",
+          "effective_from",
+          "status",
+          "key_provisions[Điều 50 khoản 1, Điều 97]",
+          "relations.replaces"
+        ],
+        "corrections": [],
+        "evidence_urls": [
+          "https://vanban.chinhphu.vn/?pageid=27160&docid=216764",
+          "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/37-1.signed.pdf"
+        ],
+        "note": "ADDED BY THE VERIFIER; not in the draft. Included because this decree repeals the draft's two labelling items. Treat the heading-only provisions as unverified."
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "id": "VN-ND-43-2017-ND-CP",
+      "reason": "Wrong in substance: status 'in_force' is false. NĐ 37/2026/NĐ-CP (signed 23/01/2026, in force on signing) Điều 97 khoản 4 điểm b: NĐ 43/2017/NĐ-CP on goods labelling ceases to be effective from NĐ 37's effective date (23/01/2026). Labelling rules now sit in NĐ 37/2026 (added as VN-ND-37-2026-ND-CP). Signed PDF p.90.",
+      "evidence_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/37-1.signed.pdf"
+    },
+    {
+      "id": "VN-ND-111-2021-ND-CP",
+      "reason": "Wrong in substance: status 'in_force' is false. NĐ 37/2026/NĐ-CP Điều 97 khoản 4 điểm c: NĐ 111/2021/NĐ-CP (amending NĐ 43/2017) ceases to be effective from 23/01/2026. Its Phụ lục I (mandatory label content by goods group) is no longer the in-force list. Signed PDF p.90.",
+      "evidence_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/37-1.signed.pdf"
+    }
+  ]
+}

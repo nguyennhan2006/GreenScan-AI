@@ -1,0 +1,25 @@
+{
+  "document_number": "19/2023/QH15",
+  "title": "Luật Bảo vệ quyền lợi người tiêu dùng",
+  "authority": "Quốc hội (National Assembly)",
+  "issued_date": "2023-06-20",
+  "effective_from": "2024-07-01",
+  "status": "effective",
+  "id": "LUAT-19-2023-QH15",
+  "checked_at": "2026-10-13T12:20:20.733458+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\LUAT-19-2023-QH15\\original.pdf",
+      "sha256": "d9d8d76b585eaf81c5e59f51f2c309a7c1e3797ee2b165d4c2fd38d83ad50a19",
+      "bytes": 622946,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2023/7/luat19_2023.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2023/7/luat19_2023.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:21.232881+00:00",
+      "pages": 54,
+      "text_chars": 108876
+    }
+  ],
+  "text_acquisition": "ok"
+}

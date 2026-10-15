@@ -1,0 +1,26 @@
+{
+  "document_number": "46/2026/QĐ-TTg",
+  "title": "Hướng dẫn xác định dự án xanh, dự án đáp ứng tiêu chí tuần hoàn và áp dụng khung tiêu chuẩn môi trường, xã hội, quản trị",
+  "authority": "Thủ tướng Chính phủ (Phó Thủ tướng Hồ Quốc Dũng ký)",
+  "issued_date": "2026-09-17",
+  "effective_from": "2026-11-01",
+  "status": "not_yet_effective",
+  "id": "QD46-2026-QD-TTg",
+  "checked_at": "2026-10-13T12:20:28.212336+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\QD46-2026-QD-TTg\\original.pdf",
+      "sha256": "244aaa7f252b416683ff255915a3e27b8d946124025b5c5bb128961efca13365",
+      "bytes": 31982793,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/9/46_2026_qd-ttg_17092026-signed.signed.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/9/46_2026_qd-ttg_17092026-signed.signed.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:30.992660+00:00",
+      "pages": 73,
+      "text_chars": 194
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 73 pages, 194 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

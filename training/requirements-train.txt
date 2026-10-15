@@ -1,0 +1,16 @@
+# Training environment only — keep out of the product .venv (it would pull ~2 GB of torch).
+# CPU: pip install -r training/requirements-train.txt
+# Colab/Kaggle T4: torch is preinstalled; install the rest.
+torch>=2.4
+transformers>=4.46
+datasets>=3.0
+accelerate>=1.0
+scikit-learn>=1.4
+sentencepiece>=0.2
+protobuf>=4
+# T2-gen (QLoRA on Qwen3) only:
+# peft>=0.13
+# bitsandbytes>=0.44     # GPU only
+# trl>=0.12
+# export to ONNX int8 for CPU inference:
+# optimum[onnxruntime]>=1.23

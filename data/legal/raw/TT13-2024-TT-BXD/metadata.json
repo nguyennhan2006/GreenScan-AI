@@ -1,0 +1,26 @@
+{
+  "document_number": "13/2024/TT-BXD",
+  "title": "Quy trình, quy định kỹ thuật kiểm kê khí nhà kính và đo đạc, báo cáo, thẩm định giảm nhẹ phát thải khí nhà kính ngành Xây dựng",
+  "authority": "Bộ Xây dựng",
+  "issued_date": "2024-12-20",
+  "effective_from": "2025-02-05",
+  "status": "effective",
+  "id": "TT13-2024-TT-BXD",
+  "checked_at": "2026-10-13T12:20:32.310845+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\TT13-2024-TT-BXD\\original.pdf",
+      "sha256": "3a559c4faed1630853ddf22fd3c6e57b095ee9eea048c3f3be057db0ee792885",
+      "bytes": 22754879,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/13-bxd.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/01/13-bxd.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:34.233905+00:00",
+      "pages": 67,
+      "text_chars": 38
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 67 pages, 38 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

@@ -1,0 +1,26 @@
+{
+  "document_number": "24/2026/TT-BNNMT",
+  "title": "Quy định chi tiết, hướng dẫn thi hành một số điều của Nghị định số 110/2026/NĐ-CP ngày 01 tháng 4 năm 2026 của Chính phủ quy định chi tiết thi hành một số điều của Luật Bảo vệ môi trường về trách nhiệm tái chế sản phẩm, bao bì và trách nhiệm xử lý chất thải của nhà sản xuất, nhập khẩu",
+  "authority": "Bộ Nông nghiệp và Môi trường",
+  "issued_date": "2026-05-25",
+  "effective_from": "2026-05-25",
+  "status": "effective",
+  "id": "TT24-2026-TT-BNNMT",
+  "checked_at": "2026-10-13T12:20:27.914859+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\TT24-2026-TT-BNNMT\\original.pdf",
+      "sha256": "b367a60d91a7ca4145fb61b565f765536e20f5346feead5709853440a1488f66",
+      "bytes": 2317674,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/6/24-bnnmt.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/6/24-bnnmt.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:28.196979+00:00",
+      "pages": 38,
+      "text_chars": 0
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 38 pages, 0 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

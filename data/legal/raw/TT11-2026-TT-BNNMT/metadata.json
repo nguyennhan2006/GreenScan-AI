@@ -1,0 +1,25 @@
+{
+  "document_number": "11/2026/TT-BNNMT",
+  "title": "Quy định quản lý, vận hành Hệ thống đăng ký quốc gia về hạn ngạch phát thải khí nhà kính và tín chỉ các-bon",
+  "authority": "Bộ Nông nghiệp và Môi trường (Cục Biến đổi khí hậu vận hành)",
+  "issued_date": "2026-02-13",
+  "effective_from": "2026-03-30",
+  "status": "effective",
+  "id": "TT11-2026-TT-BNNMT",
+  "checked_at": "2026-10-13T12:20:34.442196+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\TT11-2026-TT-BNNMT\\original.pdf",
+      "sha256": "6ed80e9a4711d07a228711605a7c12ede879df1747044d65ae17aa4d64a75a3d",
+      "bytes": 2301036,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/02/11-bnnmt.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/02/11-bnnmt.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:34.763344+00:00",
+      "pages": 36,
+      "text_chars": 68275
+    }
+  ],
+  "text_acquisition": "ok"
+}

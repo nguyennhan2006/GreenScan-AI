@@ -1,0 +1,377 @@
+<title>Học trò T1 GreenScan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column of a lab notebook; each chart sits on its own surface, its table one click below. */
+:root {
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --ring: rgba(11,11,11,0.10);
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100;
+  --seq-0: #f0efec; --seq-1: #cde2fb; --seq-2: #86b6ef; --seq-3: #3987e5; --seq-4: #1c5cab; --seq-5: #0d366b;
+  --warn: #fab219; --warn-ink: #7a5200; --warn-bg: #fff6e0; --good: #006300; --bad: #b42828;
+  --f-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
+    --seq-0: #222220; --seq-1: #184f95; --seq-2: #1c5cab; --seq-3: #2a78d6; --seq-4: #5598e7; --seq-5: #b7d3f6;
+    --warn-ink: #fab219; --warn-bg: #2a2310; --good: #0ca30c; --bad: #e66767; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
+  --seq-0: #222220; --seq-1: #184f95; --seq-2: #1c5cab; --seq-3: #2a78d6; --seq-4: #5598e7; --seq-5: #b7d3f6;
+  --warn-ink: #fab219; --warn-bg: #2a2310; --good: #0ca30c; --bad: #e66767; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--page); color: var(--ink); font: 400 15px/1.6 var(--f-body); }
+main { max-width: 64rem; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: grid; gap: 40px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; line-height: 1.25; }
+h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 1.25rem; font-weight: 700; }
+h3 { font-size: 1rem; font-weight: 600; }
+p { margin: 0; max-width: 68ch; }
+.eyebrow { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.lede { color: var(--ink-2); }
+section { display: grid; gap: 14px; min-width: 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--ink-2); font-size: 0.85rem; }
+.meta span b { color: var(--ink); font-weight: 600; }
+.callout { display: grid; grid-template-columns: auto 1fr; gap: 12px; padding: 14px 16px; border-radius: 10px;
+  background: var(--warn-bg); border: 1px solid var(--warn); color: var(--ink); }
+.callout svg { color: var(--warn-ink); }
+.callout strong { color: var(--warn-ink); }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 12px; }
+.tile { background: var(--surface); border: 1px solid var(--ring); border-radius: 10px; padding: 14px 16px; display: grid; gap: 4px; }
+.tile .k { font-size: 0.8rem; color: var(--ink-2); }
+.tile .v { font-size: 1.7rem; font-weight: 700; }
+.tile .ci { font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.card { background: var(--surface); border: 1px solid var(--ring); border-radius: 10px; padding: 16px; display: grid; gap: 10px; min-width: 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.82rem; color: var(--ink-2); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+svg text { font-family: var(--f-body); }
+.viz { width: 100%; height: auto; display: block; overflow: visible; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 16px; }
+details { font-size: 0.88rem; }
+details summary { cursor: pointer; color: var(--ink-2); }
+details summary:focus-visible, a:focus-visible { outline: 2px solid var(--s1); outline-offset: 2px; border-radius: 4px; }
+/* grid items default to min-width:auto and would grow to a wide table; keep them inside the column */
+section > *, .two > *, details { min-width: 0; max-width: 100%; }
+.tbl { overflow-x: auto; max-width: 100%; }
+table { border-collapse: collapse; width: 100%; font-size: 0.86rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { color: var(--ink-2); font-weight: 600; }
+td.num, th.num { text-align: right; }
+code, .mono { font-family: var(--f-mono); font-size: 0.85em; }
+.chip { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 0.75rem; font-weight: 600; border: 1px solid var(--ring); }
+.up { color: var(--good); } .down { color: var(--bad); }
+ol, ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 8px; max-width: 72ch; }
+li p { margin-top: 2px; color: var(--ink-2); }
+.tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--page); padding: 6px 9px; border-radius: 6px;
+  font-size: 0.8rem; line-height: 1.4; max-width: 260px; z-index: 9; }
+footer { color: var(--muted); font-size: 0.82rem; display: grid; gap: 4px; }
+a { color: var(--s1); }
+@media (prefers-reduced-motion: no-preference) { .mark { transition: opacity .15s; } }
+</style>
+
+<main id="app">
+  <header style="display:grid;gap:10px">
+    <div class="eyebrow">GreenScan · T1 nhận diện tuyên bố · Kaggle GPU</div>
+    <h1 id="h1">Học trò T1</h1>
+    <div class="meta" id="meta"></div>
+  </header>
+
+  <div class="callout" role="note">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 1 21h22L12 2Zm0 6 7.5 13h-15L12 8Zm-1 3v5h2v-5h-2Zm0 6v2h2v-2h-2Z"/></svg>
+    <div><strong>Cảnh báo · đọc trước.</strong> Mốc so sánh là <b>nhãn của Claude</b> (2 lượt độc lập + đọc lại), chưa phải gold của người.
+      Mọi con số dưới đây đo <b>học trò bắt chước thầy tốt đến đâu</b>, không đo học trò đúng đến đâu. Chỉ được báo cáo "độ chính xác" cho BGK
+      khi đã có gold (κ ≥ 0,70 và ≥ 60 câu, theo ngưỡng đăng ký ngày 29/09).</div>
+  </div>
+
+  <section aria-labelledby="h-sum">
+    <h2 id="h-sum">Tóm tắt</h2>
+    <div class="tiles" id="tiles"></div>
+    <div id="verdict"></div>
+  </section>
+
+  <section aria-labelledby="h-cmp">
+    <div class="eyebrow">E3 · so sánh</div>
+    <h2 id="h-cmp">Bốn cách nhận diện tuyên bố</h2>
+    <p class="lede">Macro-F1 trên 4 lớp. Trái: kiểm định chéo 5 phần chia theo công ty trên <span class="n-train"></span> câu (khoảng 95% bootstrap theo công ty). Phải: <span class="n-hpg"></span> câu HPG, công ty không có trong dữ liệu huấn luyện (khoảng bootstrap theo câu, rất rộng vì n nhỏ).</p>
+    <div class="legend" id="lg-methods"></div>
+    <div class="two">
+      <div class="card"><h3>Kiểm định chéo theo công ty · n = <span class="n-train"></span></h3><svg class="viz" id="c-cv" role="img" aria-label="Macro-F1 kiểm định chéo theo phương pháp"></svg></div>
+      <div class="card"><h3>HPG, công ty chưa thấy · n = <span class="n-hpg"></span></h3><svg class="viz" id="c-hpg" role="img" aria-label="Macro-F1 trên HPG theo phương pháp"></svg></div>
+    </div>
+    <p class="lede" id="cmp-note"></p>
+    <details><summary>Bảng số liệu</summary><div class="tbl" id="t-cmp"></div></details>
+  </section>
+
+  <section aria-labelledby="h-cls">
+    <div class="eyebrow">Theo lớp</div>
+    <h2 id="h-cls">F1 từng lớp (kiểm định chéo)</h2>
+    <p class="lede" id="cls-lede"></p>
+    <div class="card"><svg class="viz" id="c-cls" role="img" aria-label="F1 từng lớp theo phương pháp"></svg></div>
+    <details><summary>Bảng số liệu</summary><div class="tbl" id="t-cls"></div></details>
+  </section>
+
+  <section aria-labelledby="h-cm">
+    <div class="eyebrow">Học trò tốt nhất</div>
+    <h2 id="h-cm">Ma trận nhầm lẫn</h2>
+    <div class="two">
+      <div class="card"><h3>Hàng: nhãn Claude · cột: học trò</h3><svg class="viz" id="c-cm" role="img" aria-label="Ma trận nhầm lẫn"></svg></div>
+      <div class="card" style="align-content:start"><h3>Những cặp nhầm nhiều nhất</h3><div class="tbl" id="t-pairs"></div><p class="lede" id="cm-note"></p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-lc">
+    <div class="eyebrow">E4 · đường học</div>
+    <h2 id="h-lc">Thêm dữ liệu có giúp không</h2>
+    <div class="two">
+      <div class="card"><h3>Macro-F1 theo tỷ lệ dữ liệu huấn luyện (cùng số bước học, seed 13)</h3><svg class="viz" id="c-lc" role="img" aria-label="Đường học"></svg></div>
+      <div class="card"><h3>Thay đầu vào (so với câu đã che số)</h3><svg class="viz" id="c-ab" role="img" aria-label="Thử thay đầu vào"></svg><div class="tbl" id="t-ab"></div></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-err">
+    <div class="eyebrow">E5 · phân tích lỗi</div>
+    <h2 id="h-err">Học trò sai ở đâu</h2>
+    <div class="tbl card" id="t-slices"></div>
+    <details open><summary>14 lỗi học trò tự tin nhất</summary><div class="tbl" id="t-err"></div></details>
+  </section>
+
+  <section aria-labelledby="h-crit" id="crit">
+    <div class="eyebrow">Phản biện</div>
+    <h2 id="h-crit">Con số này nói được gì, không nói được gì</h2>
+    <p class="lede">v3 khác v2 ở ba điểm:</p>
+<ul>
+  <li>train tăng từ 498 lên 1.217 câu: lượt 2 của Claude, lô b01–b11, thêm 2 công ty, quy ước Q10–Q17;</li>
+  <li>tập so sánh tăng lên 238 câu, gồm lô 1 và một phần các lô 2–12;</li>
+  <li>bỏ mDeBERTa.</li>
+</ul>
+<p class="lede">Mười điểm, từ chắc nhất đến dễ hiểu sai nhất. Số trong ngoặc vuông là khoảng 95% bootstrap.</p>
+<ol>
+  <li><b>Thêm dữ liệu có giúp. Đây là phép đo công bằng duy nhất giữa v2 và v3.</b>
+    <p>Đo trên <b>đúng 498 câu của lượt 1</b>, mỗi câu được đoán bởi mô hình chưa từng thấy công ty của nó: v2 đạt 0,665, v3 đạt 0,726. Hiệu số +0,061 [+0,021; +0,098], bootstrap theo công ty; cận dưới lớn hơn 0.
+      Trên 79 câu lô 1: 0,596 lên 0,649, hiệu số +0,053 [−0,055; +0,164]. Có xu hướng tăng nhưng chưa kết luận được, vì 79 câu là quá ít.</p></li>
+  <li><b>Không được so thẳng 0,726 của v3 với 0,665 của v2.</b>
+    <p>Hai con số tính trên hai tập câu khác nhau (1.217 và 498 câu). Tập so sánh cũng đổi từ 79 lên 238 câu.
+      Muốn nói "tốt hơn bao nhiêu" thì chỉ dùng phép so theo cặp ở điểm 1.</p></li>
+  <li><b>Học trò hơn luật và zero-shot, khoảng cách còn rộng hơn v2.</b>
+    <p>Hiệu số theo cặp: +0,37 [0,33; 0,41] so với luật, +0,45 [0,41; 0,50] so với zero-shot. Ở dạng nhị phân "có phải tuyên bố không": luật F1 0,61 [0,56; 0,66], học trò 0,82 [0,79; 0,85] (precision 0,76, recall 0,88).</p></li>
+  <li><b>Vẫn chỉ là độ khớp với thầy.</b>
+    <p>Mốc so sánh vẫn là nhãn Claude. Trên lượt 2, lượt soát mù đồng ý với người phân xử ở 12/14 câu khó và 6/6 câu soát ngẫu nhiên, nhưng mẫu soát quá nhỏ (chỉ lô b01) để ước lượng tỷ lệ sai của thầy.
+      Gemma và Claude đồng ý 89/100 câu. Độ chính xác thật vẫn chờ gold của người.</p></li>
+  <li><b>Trên công ty chưa thấy (HPG), khoảng cách với kiểm định chéo đã thu hẹp, nhưng chưa chắc chắn.</b>
+    <p>HPG n = 172: 0,69 [0,56; 0,79]. Audit n = 66: 0,69 [0,55; 0,80]. Ở v2, HPG chỉ có 39 câu và không có câu QUANT nào.
+      Khoảng tin cậy vẫn rộng khoảng 0,23, nên chưa đủ để nói học trò chuyển sang công ty mới tốt ngang kiểm định chéo.</p></li>
+  <li><b>Lớp hiếm khá lên rõ, VAGUE vẫn yếu nhất.</b>
+    <p>F1 QUANT tăng từ 0,64 lên 0,74 (97 câu); VAGUE từ 0,47 lên 0,57 (102 câu); QUAL từ 0,67 lên 0,71.
+      Lỗi chủ yếu là đoán dư tuyên bố: NOT bị đoán thành QUAL 63 câu, thành VAGUE 34 câu, thành QUANT 26 câu. Nghĩa là recall cao, precision thấp hơn; với hàng đợi người duyệt, đánh đổi này chấp nhận được.</p></li>
+  <li><b>Đường học vẫn đi lên.</b>
+    <p>Giữ cùng số bước học: 25% / 50% / 75% / 100% dữ liệu được 0,62 / 0,67 / 0,70 / 0,72. Đường thoải dần, nhưng chưa phẳng. Gán tiếp b12–b44 nhiều khả năng còn giúp, mức tăng nhỏ hơn.</p></li>
+  <li><b>Hai thí nghiệm ablation lần này đều không kết luận được.</b>
+    <p>Bỏ che số: Δ +0,014 [−0,02; +0,04]. Ghép câu trước: Δ −0,012 [−0,06; +0,02]. Ở v2, ghép câu trước làm kết quả kém đi có ý nghĩa thống kê (−0,07); với nhiều dữ liệu hơn, tác hại không còn rõ.
+      Đây là ví dụ cho thấy kết luận rút từ 498 câu có thể không đứng vững.</p></li>
+  <li><b>e5-large không chạy được trên GPU T4, đây là giới hạn hạ tầng.</b>
+    <p>Hai lần tràn bộ nhớ (14,5 GB), kể cả với batch 8. Vì vậy chưa trả lời được câu hỏi "mô hình lớn hơn có tốt hơn không".
+      Hướng xử lý: chạy riêng một kernel, bật gradient checkpointing hoặc dùng Adam 8-bit.</p></li>
+  <li><b>Lát cắt cần theo dõi.</b>
+    <p>Tiếng Anh 0,68 so với tiếng Việt 0,75. Câu cần ngữ cảnh 0,67 so với 0,72. Hai nhóm yếu nhất là rule_nofig (0,53) và other_fig (0,32, hầu hết là câu NOT, chỉ vài tuyên bố).
+      Mẫu vẫn phân tầng, dữ liệu train vẫn chỉ từ 15 công ty, nên precision ngoài đời sẽ thấp hơn số ở đây.</p></li>
+</ol>
+  </section>
+
+  <section aria-labelledby="h-prin">
+    <div class="eyebrow">Nguyên lý</div>
+    <h2 id="h-prin">Nguyên lý nền tảng để kết luận chặt</h2>
+    <ol>
+  <li><b>Tách ba câu hỏi:</b> nhãn có đáng tin không (người với người, κ); thầy có đúng không (Claude với gold); học trò có đúng không (học trò với gold). Báo cáo này chỉ trả lời câu thứ tư: học trò khớp với thầy đến đâu.</li>
+  <li><b>Đơn vị độc lập là công ty.</b> Chia fold và bootstrap theo công ty. Bootstrap theo câu cho khoảng tin cậy hẹp một cách giả tạo, vì các câu cùng một báo cáo giống nhau.</li>
+  <li><b>Đăng ký trước</b> chỉ số chính, ngưỡng và cách chọn mô hình (<code>configs/measurement_decisions.yaml</code>). Muốn đổi thì ra phiên bản mới, ghi lý do vào DECISIONS_LOG.</li>
+  <li><b>Tập test chỉ chạm một lần.</b> Chọn mô hình bằng kiểm định chéo và dev (audit). HPG gold chỉ dùng cho con số cuối cùng.</li>
+  <li><b>Chỉ nói "hơn" khi cận dưới của hiệu số theo cặp lớn hơn 0.</b> Có nhiều phép so sánh chính thì chỉnh theo Holm.</li>
+  <li><b>Mốc so sánh phải mạnh và công bằng:</b> mức đoán toàn lớp đông nhất (0,20), luật so ở dạng nhị phân, zero-shot, và LLM (thầy).</li>
+  <li><b>Nhiều seed, báo cả độ lệch.</b> Nếu độ lệch giữa các seed lớn hơn khoảng cách giữa hai phương pháp, không kết luận phương pháp nào hơn.</li>
+  <li><b>Tỷ lệ cơ sở:</b> mẫu phân tầng làm lớp tuyên bố đông hơn thực tế. Chỉ số ngoài đời phải tính lại bằng trọng số ngược.</li>
+  <li><b>Báo cả kết quả âm:</b> mDeBERTa sụp; đường học v1 sai cách đo; ghép ngữ cảnh làm kém đi.</li>
+  <li><b>Không vòng tròn:</b> nhãn AI không bao giờ làm gold hay test. Dữ liệu nước ngoài không thay test tiếng Việt.</li>
+  <li><b>Truy vết đủ cho mỗi con số:</b> phiên bản dataset, kernel, seed, codebook (sha), prompt, commit.</li>
+</ol>
+  </section>
+
+  <section aria-labelledby="h-next">
+    <div class="eyebrow">Đề xuất</div>
+    <h2 id="h-next">Cải thiện, xếp theo tác động</h2>
+    <ol>
+  <li><b>Gold của người cho lô 1.</b> Vẫn là việc có tác động lớn nhất. Không có gold thì không có con số nào được gọi là độ chính xác. Có gold rồi, đo được ngay ba thứ: thầy sai bao nhiêu, học trò sai bao nhiêu, và nhãn Claude lượt 1 với lượt 2 khác nhau ra sao.</li>
+  <li><b>Gán tiếp b12–b44</b> (khoảng 66 agent, khoảng 2.100 câu train nữa), nếu nhóm chấp nhận chi phí token.
+    <p>Theo đường học, mức tăng sẽ nhỏ hơn lần trước. Rẻ hơn: chỉ gán các lô giàu câu QUANT và VAGUE, hoặc dùng học chủ động: đưa người các câu học trò không chắc.</p></li>
+  <li><b>Hiệu chỉnh xác suất và từ chối (B6).</b> Lỗi chủ yếu là đoán dư tuyên bố. Một ngưỡng xác suất hợp lý sẽ đẩy câu không chắc sang người duyệt, đổi lại precision cao hơn.</li>
+  <li><b>e5-large trong kernel riêng</b>, có gradient checkpointing. Tốn GPU Kaggle, không tốn token Claude.</li>
+  <li><b>Chốt quy ước Q18–Q24</b> mà người phân xử lượt 2 đề xuất (xem kế hoạch dữ liệu v4). Câu trỏ ngược rồi chỉ đánh giá là nguồn nhầm lẫn VAGUE↔QUAL lớn nhất.</li>
+  <li><b>Đo trên phân phối tự nhiên</b> bằng trọng số ngược. Đây là con số người dùng thật sẽ gặp.</li>
+</ol>
+  </section>
+
+  <footer id="foot"></footer>
+</main>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const DATA = {"reference": "Claude labels (2 blind passes + adjudication) — agreement, not accuracy", "best": "e5-base", "n_train": 1217, "n_companies": 15, "methods": {"rules (4 lớp đoán)": {"n": 1217, "accuracy": 0.5456039441248973, "macro_f1": 0.35503600729365875, "kappa": 0.2476737166875336, "claim": {"precision": 0.5384615384615384, "recall": 0.703125, "f1": 0.6098741529525654}, "per_class": {"NOT_CLAIM": {"precision": 0.7895569620253164, "recall": 0.6488946684005201, "f1": 0.7123483226266952, "support": 769}, "QUALITATIVE_CLAIM": {"precision": 0.3333333333333333, "recall": 0.3855421686746988, "f1": 0.35754189944134074, "support": 249}, "QUANTIFIED_CLAIM": {"precision": 0.23232323232323232, "recall": 0.711340206185567, "f1": 0.350253807106599, "support": 97}, "VAGUE": {"precision": 0.0, "recall": 0.0, "f1": 0.0, "support": 102}}, "confusion": [[499, 138, 132, 0], [77, 96, 76, 0], [28, 0, 69, 0], [28, 54, 20, 0]], "macro_f1_ci": [0.3273884121040742, 0.3849572853208071], "claim_f1_ci": [0.5576077396657871, 0.6586538461538461], "compare": {"all": {"n": 238, "accuracy": 0.6260504201680672, "macro_f1": 0.41251066050584895, "kappa": 0.2908841351143249, "claim": {"precision": 0.5568181818181818, "recall": 0.5632183908045977, "f1": 0.5599999999999999}, "per_class": {"NOT_CLAIM": {"precision": 0.7466666666666667, "recall": 0.7417218543046358, "f1": 0.7441860465116278, "support": 151}, "QUALITATIVE_CLAIM": {"precision": 0.4492753623188406, "recall": 0.543859649122807, "f1": 0.49206349206349204, "support": 57}, "QUANTIFIED_CLAIM": {"precision": 0.3157894736842105, "recall": 0.6, "f1": 0.41379310344827586, "support": 10}, "VAGUE": {"precision": 0.0, "recall": 0.0, "f1": 0.0, "support": 20}}, "confusion": [[112, 28, 11, 0], [25, 31, 1, 0], [4, 0, 6, 0], [9, 10, 1, 0]], "macro_f1_ci": [0.33813603322949115, 0.47976076478728913]}, "audit": {"n": 66, "accuracy": 0.5151515151515151, "macro_f1": 0.38383759819553553, "kappa": 0.2148698884758364, "claim": {"precision": 0.5294117647058824, "recall": 0.6206896551724138, "f1": 0.5714285714285715}, "per_class": {"NOT_CLAIM": {"precision": 0.65625, "recall": 0.5675675675675675, "f1": 0.6086956521739131, "support": 37}, "QUALITATIVE_CLAIM": {"precision": 0.38461538461538464, "recall": 0.5882352941176471, "f1": 0.46511627906976744, "support": 17}, "QUANTIFIED_CLAIM": {"precision": 0.375, "recall": 0.6, "f1": 0.4615384615384615, "support": 5}, "VAGUE": {"precision": 0.0, "recall": 0.0, "f1": 0.0, "support": 7}}, "confusion": [[21, 12, 4, 0], [7, 10, 0, 0], [2, 0, 3, 0], [2, 4, 1, 0]], "macro_f1_ci": [0.2564229249011858, 0.482267115600449]}, "hpg": {"n": 172, "accuracy": 0.6686046511627907, "macro_f1": 0.416376713751558, "kappa": 0.31712753360729956, "claim": {"precision": 0.5740740740740741, "recall": 0.5344827586206896, "f1": 0.5535714285714285}, "per_class": {"NOT_CLAIM": {"precision": 0.7711864406779662, "recall": 0.7982456140350878, "f1": 0.7844827586206897, "support": 114}, "QUALITATIVE_CLAIM": {"precision": 0.4883720930232558, "recall": 0.525, "f1": 0.5060240963855422, "support": 40}, "QUANTIFIED_CLAIM": {"precision": 0.2727272727272727, "recall": 0.6, "f1": 0.37499999999999994, "support": 5}, "VAGUE": {"precision": 0.0, "recall": 0.0, "f1": 0.0, "support": 13}}, "confusion": [[91, 16, 7, 0], [18, 21, 1, 0], [2, 0, 3, 0], [7, 6, 0, 0]], "macro_f1_ci": [0.3197331564204629, 0.5027780817254501]}}}, "zero-shot": {"n": 1217, "accuracy": 0.447822514379622, "macro_f1": 0.2713017233402803, "kappa": 0.10918240637866806, "claim": {"precision": 0.43828264758497315, "recall": 0.546875, "f1": 0.48659384309831183}, "per_class": {"NOT_CLAIM": {"precision": 0.6914893617021277, "recall": 0.5916775032509753, "f1": 0.6377014716187808, "support": 769}, "QUALITATIVE_CLAIM": {"precision": 0.42857142857142855, "recall": 0.012048192771084338, "f1": 0.023437500000000003, "support": 249}, "QUANTIFIED_CLAIM": {"precision": 0.08333333333333333, "recall": 0.17525773195876287, "f1": 0.11295681063122924, "support": 97}, "VAGUE": {"precision": 0.20114942528735633, "recall": 0.6862745098039216, "f1": 0.3111111111111111, "support": 102}}, "confusion": [[455, 4, 155, 155], [118, 3, 26, 102], [59, 0, 17, 21], [26, 0, 6, 70]], "macro_f1_ci": [0.241669227160894, 0.29556669005412445], "claim_f1_ci": [0.43478260869565216, 0.5231431646932185], "compare": {"all": {"n": 238, "accuracy": 0.36554621848739494, "macro_f1": 0.22692070952940518, "kappa": 0.05639867667909467, "claim": {"precision": 0.38461538461538464, "recall": 0.5747126436781609, "f1": 0.46082949308755766}, "per_class": {"NOT_CLAIM": {"precision": 0.6574074074074074, "recall": 0.47019867549668876, "f1": 0.5482625482625483, "support": 151}, "QUALITATIVE_CLAIM": {"precision": 0.0, "recall": 0.0, "f1": 0.0, "support": 57}, "QUANTIFIED_CLAIM": {"precision": 0.08571428571428572, "recall": 0.3, "f1": 0.13333333333333333, "support": 10}, "VAGUE": {"precision": 0.1368421052631579, "recall": 0.65, "f1": 0.22608695652173913, "support": 20}}, "confusion": [[71, 0, 22, 58], [25, 0, 9, 23], [6, 0, 3, 1], [6, 0, 1, 13]], "macro_f1_ci": [0.17941810344827586, 0.275875466465656]}, "audit": {"n": 66, "accuracy": 0.36363636363636365, "macro_f1": 0.21192781690140847, "kappa": 0.040166204986149597, "claim": {"precision": 0.4375, "recall": 0.4827586206896552, "f1": 0.4590163934426229}, "per_class": {"NOT_CLAIM": {"precision": 0.5588235294117647, "recall": 0.5135135135135135, "f1": 0.5352112676056339, "support": 37}, "QUALITATIVE_CLAIM": {"precision": 0.0, "recall": 0.0, "f1": 0.0, "support": 17}, "QUANTIFIED_CLAIM": {"precision": 0.0, "recall": 0.0, "f1": 0.0, "support": 5}, "VAGUE": {"precision": 0.2, "recall": 0.7142857142857143, "f1": 0.3125, "support": 7}}, "confusion": [[19, 0, 6, 12], [8, 0, 1, 8], [5, 0, 0, 0], [2, 0, 0, 5]], "macro_f1_ci": [0.14393939393939392, 0.2796703296703297]}, "hpg": {"n": 172, "accuracy": 0.36627906976744184, "macro_f1": 0.23194518887930832, "kappa": 0.06717086277241516, "claim": {"precision": 0.3673469387755102, "recall": 0.6206896551724138, "f1": 0.4615384615384615}, "per_class": {"NOT_CLAIM": {"precision": 0.7027027027027027, "recall": 0.45614035087719296, "f1": 0.553191489361702, "support": 114}, "QUALITATIVE_CLAIM": {"precision": 0.0, "recall": 0.0, "f1": 0.0, "support": 40}, "QUANTIFIED_CLAIM": {"precision": 0.10714285714285714, "recall": 0.6, "f1": 0.18181818181818182, "support": 5}, "VAGUE": {"precision": 0.11428571428571428, "recall": 0.6153846153846154, "f1": 0.19277108433734938, "support": 13}}, "confusion": [[52, 0, 16, 46], [17, 0, 8, 15], [1, 0, 3, 1], [4, 0, 1, 8]], "macro_f1_ci": [0.17361223176623192, 0.29289215686274506]}}}, "e5-base": {"n": 1217, "accuracy": 0.8027937551355793, "macro_f1": 0.7257603559604582, "kappa": 0.6565627347991265, "claim": {"precision": 0.7625482625482626, "recall": 0.8816964285714286, "f1": 0.8178053830227743}, "per_class": {"NOT_CLAIM": {"precision": 0.9241773962804005, "recall": 0.8400520156046815, "f1": 0.8801089918256131, "support": 769}, "QUALITATIVE_CLAIM": {"precision": 0.6726618705035972, "recall": 0.751004016064257, "f1": 0.7096774193548386, "support": 249}, "QUANTIFIED_CLAIM": {"precision": 0.6694214876033058, "recall": 0.8350515463917526, "f1": 0.743119266055046, "support": 97}, "VAGUE": {"precision": 0.5294117647058824, "recall": 0.6176470588235294, "f1": 0.5701357466063349, "support": 102}}, "confusion": [[646, 63, 26, 34], [27, 187, 13, 22], [8, 8, 81, 0], [18, 20, 1, 63]], "macro_f1_ci": [0.6903952848942542, 0.7641733796614492], "claim_f1_ci": [0.7891737891737892, 0.8517412935323383], "compare": {"all": {"n": 238, "accuracy": 0.7857142857142857, "macro_f1": 0.6986061138682107, "kappa": 0.6159832953682611, "claim": {"precision": 0.7425742574257426, "recall": 0.8620689655172413, "f1": 0.7978723404255319}, "per_class": {"NOT_CLAIM": {"precision": 0.9124087591240876, "recall": 0.8278145695364238, "f1": 0.8680555555555555, "support": 151}, "QUALITATIVE_CLAIM": {"precision": 0.6417910447761194, "recall": 0.7543859649122807, "f1": 0.6935483870967741, "support": 57}, "QUANTIFIED_CLAIM": {"precision": 0.6, "recall": 0.9, "f1": 0.7200000000000001, "support": 10}, "VAGUE": {"precision": 0.5263157894736842, "recall": 0.5, "f1": 0.5128205128205129, "support": 20}}, "confusion": [[125, 17, 5, 4], [8, 43, 1, 5], [1, 0, 9, 0], [3, 7, 0, 10]], "macro_f1_ci": [0.6028122200051439, 0.7737173386010594]}, "audit": {"n": 66, "accuracy": 0.7575757575757576, "macro_f1": 0.6880460005460005, "kappa": 0.6024096385542168, "claim": {"precision": 0.8064516129032258, "recall": 0.8620689655172413, "f1": 0.8333333333333334}, "per_class": {"NOT_CLAIM": {"precision": 0.8857142857142857, "recall": 0.8378378378378378, "f1": 0.8611111111111112, "support": 37}, "QUALITATIVE_CLAIM": {"precision": 0.6, "recall": 0.7058823529411765, "f1": 0.6486486486486486, "support": 17}, "QUANTIFIED_CLAIM": {"precision": 0.8333333333333334, "recall": 1.0, "f1": 0.9090909090909091, "support": 5}, "VAGUE": {"precision": 0.4, "recall": 0.2857142857142857, "f1": 0.3333333333333333, "support": 7}}, "confusion": [[31, 4, 1, 1], [3, 12, 0, 2], [0, 0, 5, 0], [1, 4, 0, 2]], "macro_f1_ci": [0.5494588744588744, 0.8031045751633987]}, "hpg": {"n": 172, "accuracy": 0.7965116279069767, "macro_f1": 0.6867588031381135, "kappa": 0.6201653101142026, "claim": {"precision": 0.7142857142857143, "recall": 0.8620689655172413, "f1": 0.7812500000000001}, "per_class": {"NOT_CLAIM": {"precision": 0.9215686274509803, "recall": 0.8245614035087719, "f1": 0.8703703703703703, "support": 114}, "QUALITATIVE_CLAIM": {"precision": 0.6595744680851063, "recall": 0.775, "f1": 0.7126436781609196, "support": 40}, "QUANTIFIED_CLAIM": {"precision": 0.4444444444444444, "recall": 0.8, "f1": 0.5714285714285714, "support": 5}, "VAGUE": {"precision": 0.5714285714285714, "recall": 0.6153846153846154, "f1": 0.5925925925925927, "support": 13}}, "confusion": [[94, 13, 4, 3], [5, 31, 1, 3], [1, 0, 4, 0], [2, 3, 0, 8]], "macro_f1_ci": [0.5587065389443807, 0.7877374264312467]}}}}, "ablations": {"raw": {"macro_f1": 0.7333127605808732, "ci": [0.7060837587522459, 0.7529582847439535], "delta_vs_masked": 0.013825771421787869, "delta_ci": [-0.02037287649337227, 0.036495201363522245]}, "pair": {"macro_f1": 0.7076703934334367, "ci": [0.6732246245971157, 0.7388980482361484], "delta_vs_masked": -0.011816595725648638, "delta_ci": [-0.06167889931860426, 0.022921860814572925]}}, "learning_curve": {"1.0": 0.7194869891590854, "0.25": 0.6237781859270992, "0.5": 0.6674246759548225, "0.75": 0.7002494357033822}, "timings": {"cpu_ms_per_sentence_batch1_4threads": 118.7, "parameters_millions": 278.0}, "env": {"torch": "2.11.0+cu128", "gpu": "Tesla T4"}, "seed_spread": {"e5-base": {"cv": {"13": 0.7194869891590854, "29": 0.7165006239513353, "47": 0.7056283541710501}, "compare": {"13": 0.70819942559898, "29": 0.658570529879026, "47": 0.6956653225806452}}}, "paired": {"rules (4 lớp đoán)": {"delta": 0.37072434866679943, "ci": [0.33260421569638565, 0.4076068001892994]}, "zero-shot": {"delta": 0.4544586326201779, "ci": [0.41245033728305897, 0.49981856632470323]}}, "rules_binary": {"precision": 0.5384615384615384, "recall": 0.703125, "f1": 0.6098741529525654}, "majority": {"macro_f1": 0.19360523665659615, "claim_f1": 0.0, "note": "đoán mọi câu là NOT_CLAIM: mức sàn của macro-F1"}, "ablation_reference": {"config": "e5-base·masked·s13", "macro_f1": 0.7194869891590854, "ci": [0.6878723684685513, 0.7560451607893514]}, "retries": {"e5-base": 0}, "version": 3, "slices": {"Ngôn ngữ": {"en": {"n": 372, "macro_f1": 0.6789749102249103, "accuracy": 0.7473118279569892}, "vi": {"n": 845, "macro_f1": 0.748508621515433, "accuracy": 0.8272189349112427}}, "Cần ngữ cảnh": {"có": {"n": 143, "macro_f1": 0.6738648947951273, "accuracy": 0.7062937062937062}, "không": {"n": 1074, "macro_f1": 0.719348845107166, "accuracy": 0.8156424581005587}}, "Nhóm lấy mẫu": {"env_fig": {"n": 242, "macro_f1": 0.6611111111111111, "accuracy": 0.8842975206611571}, "env_nofig": {"n": 217, "macro_f1": 0.7619239322137874, "accuracy": 0.8294930875576036}, "other": {"n": 77, "macro_f1": 1.0, "accuracy": 1.0}, "other_fig": {"n": 96, "macro_f1": 0.3244206773618538, "accuracy": 0.9479166666666666}, "rule_fig": {"n": 297, "macro_f1": 0.6503172332488324, "accuracy": 0.6902356902356902}, "rule_nofig": {"n": 288, "macro_f1": 0.5318383838383838, "accuracy": 0.7291666666666666}}}, "errors": [{"id": "ad2f96d17a5190dc", "company": "TRA", "text": "Năm 2020 đánh dấu 20 năm chuyển từ Doanh nghiệp nhà nước sang Doanh nghiệp cổ phần, Traphaco đã khẳng định chiến lược PTBV là sợi chỉ đỏ xuyên suốt quá trình phát triển của công ty, là yếu tố quyết định đưa Traphaco từ doanh nghiệp nhỏ thành doanh nghiệp đứng ", "claude": "VAGUE", "student": "NOT", "p": 1.0, "claude_note": ""}, {"id": "1c613d25606c687b", "company": "CTD", "text": "Tầm quan trọng đối với các bên liên quan TIÊU CHUẨN VÀ PHẠM VI Coteccons đã thực hiện Báo cáo Phát triển bền vững mỗi năm một lần, công bố cùng Báo cáo Thường niên.", "claude": "NOT", "student": "QUAL", "p": 0.99, "claude_note": ""}, {"id": "43744ad772051eb4", "company": "CTD", "text": "Nhằm mang đến cho các bên liên quan thông tin minh bạch, ghi nhận và xác thực kết quả đã thực hiện được, xây dựng cơ sở tham khảo cho lộ trình hành động tiếp theo, Coteccons thực hiện Báo cáo Phát triển bền vững theo quy trình như sau.", "claude": "NOT", "student": "QUAL", "p": 0.99, "claude_note": ""}, {"id": "21a8f8232fd05aef", "company": "CTD", "text": "Dựa trên yêu cầu thực tiễn, HĐQT đặt yêu cầu tiếp tục nâng cao kiến thức về ESG ở tất cả cấp độ, mạnh dạn tiếp thu và cập nhật nhiều kiến thức mới, thúc đẩy hiệu quả thực tế từ việc ứng dụng các tiêu chuẩn/hướng dẫn như “Bộ nguyên tắc QTCT theo thông lệ tốt nh", "claude": "VAGUE", "student": "QUAL", "p": 0.99, "claude_note": ""}, {"id": "8204380c233d3866", "company": "VNM", "text": "cạnh tăng trưởng về cả doanh thu lẫn lợi nhuận, Vinamilk còn đảm bảo nguồn cổ tức ổn định và phân bổ nguồn lực cần thiết để thực hiện các cam kết về phát triển bền vững.", "claude": "VAGUE", "student": "NOT", "p": 0.99, "claude_note": ""}, {"id": "f350cc80b41e0a16", "company": "PAN", "text": "Tra My – Chief Executive Officer of PAN Group – was nominated and elected as Vice Chairwoman of the VBCSD Executive Board for the 5th term (2025–2028), commitment to fostering a responsible adopts the CSI100 index developed by VBCSD as a benchmark for building", "claude": "QUAL", "student": "NOT", "p": 0.99, "claude_note": ""}, {"id": "019f20610c46d52e", "company": "SAB", "text": "Strictly manage and save materials • Improve and apply advanced production • Use green and environmentally friendly • Invest in waste and wastewater • Raise environmental protection awareness among all employees.", "claude": "NOT", "student": "VAGUE", "p": 0.99, "claude_note": ""}, {"id": "0bc1c37220c6034f", "company": "PAN", "text": "Annual water savings of approximately 166m3 At the Dien Phu plant – 584 Nha Trang, we have improved our wastewater treatment process.", "claude": "QUAL", "student": "QUANT", "p": 0.99, "claude_note": ""}, {"id": "af7a8b8ca7f93b26", "company": "CTD", "text": "52,02% tổng diện tích của dự án đã được phủ xanh bằng các loài cây bản địa chịu hạn, góp phần giảm thiểu tác động đến tài nguyên nước và hỗ trợ bảo vệ môi trường tự nhiên.", "claude": "NOT", "student": "QUANT", "p": 0.99, "claude_note": "C6: phủ xanh 52,02% là của dự án khách hàng LEGO (câu sau)"}, {"id": "cddf00d4706280d4", "company": "SAB", "text": "Our goal is to achieve net-zero Greenhouse gases (GHG) emissions We are focused on reducing energy use, improving energy efficiency throughout our operations, increasing our reliance on renewable energy, and adopting high-efficiency technologies.", "claude": "QUAL", "student": "VAGUE", "p": 0.99, "claude_note": ""}, {"id": "86f8a0cf9693d3df", "company": "SAB", "text": "Reuse wastewater and warm water The 2020 water consumption experienced a minimal increase of 1% compared to the The water consumed in production • Apply advanced hygiene regimes for • Use heat pumps to limit the discharge of water in pasteurizers.", "claude": "NOT", "student": "QUANT", "p": 0.99, "claude_note": ""}, {"id": "fea7972151691210", "company": "PNJ", "text": "ი Nâng tầm các sáng kiến E&S thành chương trình dài hạn, mang tính bền vững.", "claude": "VAGUE", "student": "NOT", "p": 0.99, "claude_note": "Định hướng chung nâng tầm sáng kiến E&S thành chương trình dài hạn, không nêu việc cụ thể"}, {"id": "6842d89055763197", "company": "CTD", "text": "Dự án thể thao này còn mang sứ mệnh lớn là lan tỏa rộng rãi ra cộng đồng tinh thần sống hướng về môi trường, thông điệp về phát triển bền vững và gây quỹ cho các chương trình trồng rừng hưởng ứng dự án Việt Nam Xanh.", "claude": "QUAL", "student": "VAGUE", "p": 0.99, "claude_note": ""}, {"id": "31ed36f21801c29f", "company": "POW", "text": "chủ động tìm kiếm các cơ hội hợp tác đầu tư hoặc M&A đối với các dự án tiềm năng trong và ngoài nước phù hợp xu thế chuyển dịch năng lượng.", "claude": "VAGUE", "student": "NOT", "p": 0.99, "claude_note": ""}], "error_pairs": {"NOT→QUAL": 63, "NOT→VAGUE": 34, "QUAL→NOT": 27, "NOT→QUANT": 26, "QUAL→VAGUE": 22, "VAGUE→QUAL": 20, "VAGUE→NOT": 18, "QUAL→QUANT": 13}, "class_counts": {"NOT": 769, "QUAL": 249, "QUANT": 97, "VAGUE": 102}, "gemma_vs_claude": {"n": 100, "agree": 89, "kappa": 0.6287546405669929}};
+const NAME = {"rules (4 lớp đoán)": "Luật hiện tại", "zero-shot": "Zero-shot NLI", "e5-base": "e5-base (học trò)", "mdeberta-xnli": "mDeBERTa-xnli (học trò)", "e5-large": "e5-large (học trò)"};
+const COLOR = {"mdeberta-xnli": "var(--s1)", "e5-large": "var(--s1)", "e5-base": "var(--s2)", "zero-shot": "var(--s3)", "rules (4 lớp đoán)": "var(--s4)"};
+const ORDER = ["rules (4 lớp đoán)", "zero-shot", "e5-base", "e5-large", "mdeberta-xnli"];
+const CLS = ["NOT_CLAIM", "QUALITATIVE_CLAIM", "QUANTIFIED_CLAIM", "VAGUE"];
+const SHORT = {NOT_CLAIM: "NOT", QUALITATIVE_CLAIM: "QUAL", QUANTIFIED_CLAIM: "QUANT", VAGUE: "VAGUE"};
+const f = (x, d = 2) => x == null ? "—" : x.toFixed(d).replace(".", ",");
+const ci = c => c ? `[${f(c[0])}; ${f(c[1])}]` : "";
+const NS = "http://www.w3.org/2000/svg";
+const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const tip = document.getElementById("tip");
+function hover(node, html) {
+  node.classList.add("mark"); node.setAttribute("tabindex", "0");
+  const show = ev => { tip.innerHTML = html; tip.hidden = false; const r = node.getBoundingClientRect();
+    const x = ev && ev.clientX ? ev.clientX : r.left + r.width / 2, y = ev && ev.clientY ? ev.clientY : r.top;
+    tip.style.left = Math.min(x + 12, innerWidth - 270) + "px"; tip.style.top = (y + 14) + "px"; };
+  node.addEventListener("mousemove", show); node.addEventListener("focus", show);
+  node.addEventListener("mouseleave", () => tip.hidden = true); node.addEventListener("blur", () => tip.hidden = true);
+}
+function table(id, head, rows, numCols = []) {
+  const h = head.map((x, i) => `<th class="${numCols.includes(i) ? "num" : ""}">${x}</th>`).join("");
+  const b = rows.map(r => "<tr>" + r.map((x, i) => `<td class="${numCols.includes(i) ? "num" : ""}">${x}</td>`).join("") + "</tr>").join("");
+  document.getElementById(id).innerHTML = `<table><thead><tr>${h}</tr></thead><tbody>${b}</tbody></table>`;
+}
+function axisX(svg, x0, x1, y, w, ticks) {
+  for (const t of ticks) { const x = x0 + (x1 - x0) * t;
+    el("line", {x1: x, x2: x, y1: 8, y2: y, stroke: "var(--grid)", "stroke-width": 1}, svg);
+    el("text", {x, y: y + 16, "text-anchor": "middle", "font-size": 11, fill: "var(--muted)"}, svg).textContent = f(t, 1); }
+}
+function dotInterval(id, rows, floor) {   // rows: {key, v, ci}; floor: macro-F1 of always answering NOT_CLAIM
+  const svg = document.getElementById(id), W = 460, rowH = 40, L = 150, R = 420, H = rows.length * rowH + 30;
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  axisX(svg, L, R, H - 26, W, [0, .2, .4, .6, .8, 1]);
+  if (floor != null) { const fx = L + (R - L) * floor;
+    el("line", {x1: fx, x2: fx, y1: 6, y2: H - 26, stroke: "var(--muted)", "stroke-width": 1.5}, svg);
+    el("text", {x: fx + 4, y: H - 30, "font-size": 10, fill: "var(--muted)"}, svg).textContent = "đoán toàn NOT"; }
+  rows.forEach((r, i) => { const y = 22 + i * rowH, x = v => L + (R - L) * v;
+    el("text", {x: L - 10, y: y + 4, "text-anchor": "end", "font-size": 12, fill: "var(--ink-2)"}, svg).textContent = NAME[r.key];
+    if (r.v == null) return;
+    if (r.ci) el("line", {x1: x(r.ci[0]), x2: x(r.ci[1]), y1: y, y2: y, stroke: COLOR[r.key], "stroke-width": 2, "stroke-linecap": "round"}, svg);
+    const g = el("g", {}, svg);
+    el("circle", {cx: x(r.v), cy: y, r: 6, fill: COLOR[r.key], stroke: "var(--surface)", "stroke-width": 2}, g);
+    el("rect", {x: x(r.v) - 14, y: y - 14, width: 28, height: 28, fill: "transparent"}, g);
+    el("text", {x: Math.min(x(r.v) + 10, R + 8), y: y - 9, "font-size": 11, fill: "var(--ink)", "font-weight": 600}, svg).textContent = f(r.v);
+    hover(g, `<b>${NAME[r.key]}</b><br>macro-F1 ${f(r.v)} ${r.ci ? "<br>95% " + ci(r.ci) : ""}`);
+  });
+}
+function groupedBars(id, cats, keys, val) {
+  const svg = document.getElementById(id), W = 900, L = 70, R = 860, gh = 18 * keys.length + 22, H = cats.length * gh + 30;
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  axisX(svg, L, R, H - 26, W, [0, .2, .4, .6, .8, 1]);
+  cats.forEach((c, i) => { const y0 = 10 + i * gh;
+    el("text", {x: L - 10, y: y0 + gh / 2 - 4, "text-anchor": "end", "font-size": 12, fill: "var(--ink-2)", "font-weight": 600}, svg).textContent = SHORT[c];
+    keys.forEach((k, j) => { const v = val(k, c), y = y0 + j * 18, w = Math.max(0, (R - L) * (v || 0));
+      const g = el("g", {}, svg);
+      el("rect", {x: L, y, width: Math.max(w, 1), height: 14, rx: 4, fill: COLOR[k]}, g);
+      el("rect", {x: L, y: y - 2, width: R - L, height: 18, fill: "transparent"}, g);
+      el("text", {x: L + w + 6, y: y + 11, "font-size": 10.5, fill: "var(--ink-2)"}, svg).textContent = f(v);
+      hover(g, `<b>${NAME[k]}</b> · ${c}<br>F1 ${f(v)}`); }); });
+}
+function heatmap(id, m) {
+  const svg = document.getElementById(id), n = 4, cell = 64, L = 70, T = 30, W = L + n * cell + 10, H = T + n * cell + 10;
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  const max = Math.max(...m.flat()), ramp = ["--seq-0", "--seq-1", "--seq-2", "--seq-3", "--seq-4", "--seq-5"];
+  CLS.forEach((c, j) => el("text", {x: L + j * cell + cell / 2, y: T - 10, "text-anchor": "middle", "font-size": 11, fill: "var(--ink-2)"}, svg).textContent = SHORT[c]);
+  m.forEach((row, i) => { el("text", {x: L - 8, y: T + i * cell + cell / 2 + 4, "text-anchor": "end", "font-size": 11, fill: "var(--ink-2)"}, svg).textContent = SHORT[CLS[i]];
+    const tot = row.reduce((a, b) => a + b, 0);
+    row.forEach((v, j) => { const k = v === 0 ? 0 : Math.min(5, 1 + Math.floor(4.999 * v / max)), g = el("g", {}, svg);
+      el("rect", {x: L + j * cell + 1, y: T + i * cell + 1, width: cell - 2, height: cell - 2, rx: 4, fill: `var(${ramp[k]})`}, g);
+      el("text", {x: L + j * cell + cell / 2, y: T + i * cell + cell / 2 + 5, "text-anchor": "middle", "font-size": 13, "font-weight": 600,
+        fill: k >= 3 ? "var(--surface)" : "var(--ink)"}, g).textContent = v;
+      hover(g, `Claude: <b>${CLS[i]}</b><br>Học trò: <b>${CLS[j]}</b><br>${v} câu (${tot ? Math.round(100 * v / tot) : 0}% của hàng)`); }); });
+}
+function line(id, pts, key) {
+  const svg = document.getElementById(id), W = 460, H = 240, L = 44, R = 440, T = 14, Bm = 200;
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  const lo = Math.max(0, Math.min(...pts.map(p => p[1])) - 0.1), hi = Math.min(1, Math.max(...pts.map(p => p[1])) + 0.05);
+  const x = v => L + (R - L) * v, y = v => Bm - (Bm - T) * (v - lo) / (hi - lo);
+  for (let t = Math.ceil(lo * 10) / 10; t <= hi + 1e-9; t += 0.1) { el("line", {x1: L, x2: R, y1: y(t), y2: y(t), stroke: "var(--grid)"}, svg);
+    el("text", {x: L - 6, y: y(t) + 4, "text-anchor": "end", "font-size": 11, fill: "var(--muted)"}, svg).textContent = f(t, 1); }
+  pts.forEach(p => el("text", {x: x(p[0]), y: Bm + 18, "text-anchor": "middle", "font-size": 11, fill: "var(--muted)"}, svg).textContent = Math.round(p[0] * 100) + "%");
+  el("polyline", {points: pts.map(p => `${x(p[0])},${y(p[1])}`).join(" "), fill: "none", stroke: COLOR[key], "stroke-width": 2}, svg);
+  pts.forEach((p, i) => { const g = el("g", {}, svg);
+    el("circle", {cx: x(p[0]), cy: y(p[1]), r: i === pts.length - 1 ? 6 : 4.5, fill: COLOR[key], stroke: "var(--surface)", "stroke-width": 2}, g);
+    el("rect", {x: x(p[0]) - 14, y: y(p[1]) - 14, width: 28, height: 28, fill: "transparent"}, g);
+    hover(g, `${Math.round(p[0] * 100)}% dữ liệu train (~${Math.round(p[0] * DATA.n_train * 0.8)} câu/fold)<br>macro-F1 ${f(p[1])}`); });
+  const last = pts[pts.length - 1];
+  el("text", {x: x(last[0]) - 8, y: y(last[1]) - 12, "text-anchor": "end", "font-size": 11, "font-weight": 600, fill: "var(--ink)"}, svg).textContent = f(last[1]);
+  el("text", {x: (L + R) / 2, y: H - 4, "text-anchor": "middle", "font-size": 11, fill: "var(--ink-2)"}, svg).textContent = "tỷ lệ dữ liệu huấn luyện trong mỗi fold";
+}
+
+function render() {
+  if (!DATA) { document.getElementById("app").insertAdjacentHTML("beforeend", "<p>Chưa có dữ liệu kết quả.</p>"); return; }
+  const D = DATA, best = D.best, M = D.methods, keys = ORDER.filter(k => M[k]);
+  document.getElementById("h1").textContent = `Học trò T1, lượt huấn luyện ${D.version || 1}`;
+  document.getElementById("meta").innerHTML = [
+    `<span>Học trò tốt nhất <b>${NAME[best]}</b></span>`, `<span><b>${D.n_train}</b> câu train · <b>${D.n_companies}</b> công ty</span>`,
+    `<span>GPU <b>${D.env.gpu || "—"}</b></span>`, `<span>${D.timings.parameters_millions ? `<b>${f(D.timings.parameters_millions, 0)}</b> triệu tham số` : ""}</span>`].join("");
+  document.getElementById("lg-methods").innerHTML = keys.map(k => `<span><i style="background:${COLOR[k]}"></i>${NAME[k]}</span>`).join("");
+  const pr = D.paired, b = M[best];
+  const cmpN = s => (M[best].compare[s] || {}).n || 0, nA = cmpN("audit"), nH = cmpN("hpg");
+  document.querySelectorAll(".n-train").forEach(e => e.textContent = D.n_train);
+  document.querySelectorAll(".n-hpg").forEach(e => e.textContent = nH);
+  const tiles = [
+    ["Macro-F1 học trò tốt nhất (CV)", f(b.macro_f1), "95% " + ci(b.macro_f1_ci)],
+    ["Hơn luật hiện tại", (pr["rules (4 lớp đoán)"].delta >= 0 ? "+" : "") + f(pr["rules (4 lớp đoán)"].delta), "95% " + ci(pr["rules (4 lớp đoán)"].ci)],
+    ["Hơn zero-shot (chưa huấn luyện)", pr["zero-shot"] ? (pr["zero-shot"].delta >= 0 ? "+" : "") + f(pr["zero-shot"].delta) : "—", pr["zero-shot"] ? "95% " + ci(pr["zero-shot"].ci) : ""],
+    ["CPU, 1 câu, 4 luồng", D.timings.cpu_ms_per_sentence_batch1_4threads ? f(D.timings.cpu_ms_per_sentence_batch1_4threads, 0) + " ms" : "—", "máy Kaggle, chưa đo trên laptop"]];
+  document.getElementById("tiles").innerHTML = tiles.map(t => `<div class="tile"><div class="k">${t[0]}</div><div class="v">${t[1]}</div><div class="ci">${t[2]}</div></div>`).join("");
+  const floor = D.majority ? D.majority.macro_f1 : null;
+  dotInterval("c-cv", keys.map(k => ({key: k, v: M[k].macro_f1, ci: M[k].macro_f1_ci})), floor);
+  dotInterval("c-hpg", keys.map(k => ({key: k, v: M[k].compare.hpg ? M[k].compare.hpg.macro_f1 : null, ci: M[k].compare.hpg ? M[k].compare.hpg.macro_f1_ci : null})));
+  const spread = k => { const s = (D.seed_spread || {})[k]; if (!s) return "—"; const v = Object.values(s.cv);
+    return `${f(Math.min(...v))}–${f(Math.max(...v))}`; };
+  table("t-cmp", ["Cách", "Macro-F1 CV", "95% (theo công ty)", "Từng seed (CV)", "κ CV", "Tuyên bố/không F1", `Audit n=${nA}`, `HPG n=${nH}`, "95% HPG"],
+    keys.map(k => [NAME[k], f(M[k].macro_f1), ci(M[k].macro_f1_ci), spread(k), f(M[k].kappa), f(M[k].claim.f1),
+      M[k].compare.audit ? f(M[k].compare.audit.macro_f1) : "—", M[k].compare.hpg ? f(M[k].compare.hpg.macro_f1) : "—", M[k].compare.hpg ? ci(M[k].compare.hpg.macro_f1_ci) : ""]), [1, 4, 5, 6, 7]);
+  if (D.retries) document.getElementById("cmp-note").textContent =
+    `Học trò: xác suất trung bình của ${Object.keys(Object.values(D.seed_spread || {})[0]?.cv || {}).length || 3} seed. Chốt chặn chống sụp phải huấn luyện lại: ${Object.entries(D.retries).map(([k, v]) => NAME[k] + " " + v + " lần").join(", ")}. Vạch xám là mức "đoán toàn NOT" (${f(floor)}).`;
+  groupedBars("c-cls", CLS, keys, (k, c) => M[k].per_class[c].f1);
+  document.getElementById("cls-lede").textContent = `Số câu theo nhãn Claude: ${Object.entries(D.class_counts).map(([k, v]) => k + " " + v).join(" · ")}. Lớp hiếm (QUANT, VAGUE) có F1 dao động mạnh vì mỗi fold chỉ có vài câu.`;
+  table("t-cls", ["Cách", ...CLS.map(c => SHORT[c] + " P"), ...CLS.map(c => SHORT[c] + " R"), ...CLS.map(c => SHORT[c] + " F1")],
+    keys.map(k => [NAME[k], ...CLS.map(c => f(M[k].per_class[c].precision)), ...CLS.map(c => f(M[k].per_class[c].recall)), ...CLS.map(c => f(M[k].per_class[c].f1))]), [...Array(12).keys()].map(i => i + 1));
+  heatmap("c-cm", b.confusion);
+  table("t-pairs", ["Claude → học trò", "Số câu"], Object.entries(D.error_pairs).map(([k, v]) => [k, v]), [1]);
+  const lc = Object.entries(D.learning_curve).map(([k, v]) => [parseFloat(k), v]).sort((a, c) => a[0] - c[0]);
+  line("c-lc", lc, best);
+  const ab = D.ablations, abk = Object.keys(ab);
+  const ar = D.ablation_reference || {macro_f1: b.macro_f1, ci: b.macro_f1_ci};
+  const abRows = [["Câu đã che số (seed 13)", ar.macro_f1, ar.ci, null, null], ...abk.map(k => [k === "raw" ? "Câu gốc, không che số" : "Thêm câu trước (cặp câu)", ab[k].macro_f1, ab[k].ci, ab[k].delta_vs_masked, ab[k].delta_ci])];
+  const svg = document.getElementById("c-ab"), W = 460, L = 190, R = 430, H = abRows.length * 40 + 30; svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  axisX(svg, L, R, H - 26, W, [0, .2, .4, .6, .8, 1]);
+  abRows.forEach((r, i) => { const y = 22 + i * 40, x = v => L + (R - L) * v;
+    el("text", {x: L - 10, y: y + 4, "text-anchor": "end", "font-size": 12, fill: "var(--ink-2)"}, svg).textContent = r[0];
+    if (r[2]) el("line", {x1: x(r[2][0]), x2: x(r[2][1]), y1: y, y2: y, stroke: COLOR[best], "stroke-width": 2, "stroke-linecap": "round"}, svg);
+    const g = el("g", {}, svg); el("circle", {cx: x(r[1]), cy: y, r: 6, fill: COLOR[best], stroke: "var(--surface)", "stroke-width": 2}, g);
+    el("rect", {x: x(r[1]) - 14, y: y - 14, width: 28, height: 28, fill: "transparent"}, g);
+    el("text", {x: x(r[1]) + 10, y: y - 9, "font-size": 11, "font-weight": 600, fill: "var(--ink)"}, svg).textContent = f(r[1]);
+    hover(g, `${r[0]}<br>macro-F1 ${f(r[1])} ${ci(r[2])}`); });
+  table("t-ab", ["Thay đổi", "Δ macro-F1", "95% (theo công ty)"], abk.map(k => [k === "raw" ? "Không che số" : "Thêm câu trước",
+    `<span class="${ab[k].delta_vs_masked >= 0 ? "up" : "down"}">${ab[k].delta_vs_masked >= 0 ? "+" : ""}${f(ab[k].delta_vs_masked)}</span>`, ci(ab[k].delta_ci)]), [1]);
+  const sl = D.slices; let rows = [];
+  for (const [g, parts] of Object.entries(sl)) for (const [k, v] of Object.entries(parts)) rows.push([g, k, v.n, f(v.accuracy), f(v.macro_f1)]);
+  table("t-slices", ["Lát cắt", "Nhóm", "n", "Đồng ý", "Macro-F1"], rows, [2, 3, 4]);
+  table("t-err", ["Công ty", "Câu", "Claude", "Học trò", "p", "Lý do của Claude"],
+    D.errors.map(e => [e.company, e.text.replace(/</g, "&lt;"), `<span class="chip">${e.claude}</span>`, `<span class="chip">${e.student}</span>`, f(e.p), e.claude_note.replace(/</g, "&lt;")]), [4]);
+  document.getElementById("foot").innerHTML = `<div>Dữ liệu: <code>training/data/kaggle/data</code> (dataset riêng tư <code>lekiman1902/greenscan-t1-data</code>) · kernel <code>lekiman1902/greenscan-t1-train</code> · phân tích <code>training/kaggle/analyze.py</code>.</div>
+    <div>Khoảng tin cậy: bootstrap 2.000 lần; trên CV lấy mẫu lại theo công ty (13 cụm), trên HPG lấy mẫu lại theo câu. Torch ${D.env.torch || "—"}.</div>`;
+}
+render();
+</script>

@@ -1,0 +1,25 @@
+{
+  "document_number": "78/2025/QH15",
+  "title": "Luật sửa đổi, bổ sung một số điều của Luật Chất lượng sản phẩm, hàng hóa",
+  "authority": "Quốc hội (National Assembly)",
+  "issued_date": "2025-06-18",
+  "effective_from": "2026-01-01",
+  "status": "effective",
+  "id": "LUAT-78-2025-QH15",
+  "checked_at": "2026-10-13T12:20:25.681772+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\LUAT-78-2025-QH15\\original.pdf",
+      "sha256": "b85815d420700b556a58f9da112d602f276f06ba4c09b4e08497514faac6a086",
+      "bytes": 922219,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/9/156-vbhn-vpqh.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2025/9/156-vbhn-vpqh.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:25.854171+00:00",
+      "pages": 42,
+      "text_chars": 106244
+    }
+  ],
+  "text_acquisition": "ok"
+}

@@ -1,0 +1,2384 @@
+{
+ "cases": [
+  {
+   "id": "F01",
+   "family": "khớp sau làm tròn",
+   "claim": "Năm 2025, tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty là khoảng 23,5 triệu tCO2e.",
+   "evidence": "Bảng 5.2 — Phát thải khí nhà kính năm 2025: Phạm vi 1: 22.540.603 tCO2e; Phạm vi 2: 933.876 tCO2e; Tổng phạm vi 1 và 2: 23.474.480 tCO2e.",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "F02",
+   "family": "khớp sau làm tròn",
+   "claim": "Phát thải khí nhà kính phạm vi 2 của Công ty năm 2025 là 933.876 tCO2e.",
+   "evidence": "Bảng 5.2 — Phát thải khí nhà kính năm 2025: Phạm vi 1: 22.540.603 tCO2e; Phạm vi 2: 933.876 tCO2e; Tổng phạm vi 1 và 2: 23.474.480 tCO2e.",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "F03",
+   "family": "lệch một con số",
+   "claim": "Năm 2025, tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty là 21,4 triệu tCO2e.",
+   "evidence": "Bảng 5.2 — Phát thải khí nhà kính năm 2025: Phạm vi 1: 22.540.603 tCO2e; Phạm vi 2: 933.876 tCO2e; Tổng phạm vi 1 và 2: 23.474.480 tCO2e.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F04",
+   "family": "lệch một con số",
+   "claim": "Phát thải khí nhà kính phạm vi 2 của Công ty năm 2025 là 833.876 tCO2e.",
+   "evidence": "Bảng 5.2 — Phát thải khí nhà kính năm 2025: Phạm vi 1: 22.540.603 tCO2e; Phạm vi 2: 933.876 tCO2e; Tổng phạm vi 1 và 2: 23.474.480 tCO2e.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F05",
+   "family": "lệch một con số",
+   "claim": "Năm 2024, nhà máy điện nhiệt dư đáp ứng 90% nhu cầu điện của khu liên hợp.",
+   "evidence": "Năm 2024, nhà máy điện nhiệt dư đáp ứng 80% nhu cầu điện của khu liên hợp.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F06",
+   "family": "tính lại % thay đổi",
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm 20% so với năm 2020.",
+   "evidence": "Phát thải khí nhà kính phạm vi 1 của Công ty: năm 2020 là 1.000.000 tCO2e; năm 2025 là 800.000 tCO2e.",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "F07",
+   "family": "tính lại % thay đổi",
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm 20% so với năm 2020.",
+   "evidence": "Phát thải khí nhà kính phạm vi 1 của Công ty: năm 2020 là 1.000.000 tCO2e; năm 2025 là 850.000 tCO2e.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F08",
+   "family": "tính lại % thay đổi",
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm 20% so với năm 2020.",
+   "evidence": "Phát thải khí nhà kính phạm vi 1 của Công ty: năm 2020 là 1.000.000 tCO2e; năm 2025 là 1.050.000 tCO2e.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F09",
+   "family": "khác cơ sở đo",
+   "claim": "Hoạt động sản xuất gang thép chiếm hơn 99% tổng phát thải khí nhà kính của Tập đoàn.",
+   "evidence": "Năm 2025, sản lượng thép thô của Tập đoàn tăng 24% so với năm 2024.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F10",
+   "family": "khác cơ sở đo",
+   "claim": "Cường độ phát thải khí nhà kính năm 2025 của Công ty là 1,9 tCO2e/tấn thép.",
+   "evidence": "Bảng 5.2 — Phát thải khí nhà kính năm 2025: Phạm vi 1: 22.540.603 tCO2e; Phạm vi 2: 933.876 tCO2e; Tổng phạm vi 1 và 2: 23.474.480 tCO2e.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F11",
+   "family": "khác cơ sở đo",
+   "claim": "Tổng phát thải khí nhà kính của Công ty năm 2025 giảm 5% so với năm 2024.",
+   "evidence": "Cường độ phát thải khí nhà kính (tCO2e/tấn thép) của Công ty năm 2025 giảm 5% so với năm 2024.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F12",
+   "family": "khác phạm vi phát thải",
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty giảm 30% so với năm 2020.",
+   "evidence": "Năm 2025, phát thải khí nhà kính phạm vi 1, 2 và 3 của Công ty giảm 8% so với năm 2020.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F13",
+   "family": "khác phạm vi phát thải",
+   "claim": "Phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là 23,5 triệu tCO2e.",
+   "evidence": "Phát thải khí nhà kính phạm vi 1 của Công ty năm 2025 là 22.540.603 tCO2e.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F14",
+   "family": "khác kỳ",
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 của Công ty là 22,5 triệu tCO2e.",
+   "evidence": "Năm 2024, phát thải khí nhà kính phạm vi 1 của Công ty là 22,5 triệu tCO2e.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F15",
+   "family": "khác kỳ",
+   "claim": "Năm 2025, lượng nước sử dụng của Công ty giảm 12% so với năm 2024.",
+   "evidence": "Năm 2023, lượng nước sử dụng của Công ty giảm 12% so với năm 2022.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F16",
+   "family": "mục tiêu hay thực hiện",
+   "claim": "Công ty đã giảm 30% phát thải khí nhà kính phạm vi 1 và 2 so với năm 2020.",
+   "evidence": "Mục tiêu đến năm 2030: giảm 30% phát thải khí nhà kính phạm vi 1 và 2 so với năm 2020.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F17",
+   "family": "mục tiêu hay thực hiện",
+   "claim": "Công ty đặt mục tiêu giảm 30% phát thải khí nhà kính phạm vi 1 và 2 vào năm 2030 so với năm 2020.",
+   "evidence": "Mục tiêu đến năm 2030: giảm 30% phát thải khí nhà kính phạm vi 1 và 2 so với năm 2020.",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "F18",
+   "family": "mục tiêu hay thực hiện",
+   "claim": "Năm 2025, tỷ lệ phế liệu tái chế đưa vào sản xuất của Công ty đạt 30%.",
+   "evidence": "Năm 2025, tỷ lệ phế liệu tái chế đưa vào sản xuất của Công ty đạt 18%, thấp hơn mục tiêu 30%.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F19",
+   "family": "khác ranh giới tổ chức",
+   "claim": "Phát thải khí nhà kính phạm vi 1 và 2 hợp nhất của Tập đoàn năm 2025 là 23,5 triệu tCO2e.",
+   "evidence": "Phát thải khí nhà kính phạm vi 1 và 2 của Khu liên hợp Dung Quất năm 2025 là 12.300.000 tCO2e.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F20",
+   "family": "khác ranh giới tổ chức",
+   "claim": "Phát thải khí nhà kính phạm vi 1 và 2 của công ty mẹ năm 2025 là 1,2 triệu tCO2e.",
+   "evidence": "Phát thải khí nhà kính phạm vi 1 và 2 hợp nhất toàn Tập đoàn năm 2025 là 23,47 triệu tCO2e.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F21",
+   "family": "khác đơn vị / hệ số",
+   "claim": "Năm 2025, Công ty tiêu thụ 5,6 triệu MWh điện.",
+   "evidence": "Năm 2025, Công ty tiêu thụ 5,6 triệu tấn than.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F22",
+   "family": "khác đơn vị / hệ số",
+   "claim": "Năm 2025, Công ty sử dụng 15 triệu m3 nước.",
+   "evidence": "Lượng nước sử dụng của Công ty năm 2025: 15.000 m3.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F23",
+   "family": "khác đơn vị / hệ số",
+   "claim": "Năm 2025, Công ty sử dụng 15 triệu m3 nước.",
+   "evidence": "Lượng nước sử dụng của Công ty năm 2025: 15.000.000 m3.",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "F24",
+   "family": "dung sai theo độ chính xác",
+   "claim": "Tỷ lệ năng lượng tái tạo trong tổng năng lượng tiêu thụ của Công ty năm 2025 đạt 12%.",
+   "evidence": "Tỷ lệ năng lượng tái tạo trong tổng năng lượng tiêu thụ của Công ty năm 2025: 12,4%.",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "F25",
+   "family": "dung sai theo độ chính xác",
+   "claim": "Tỷ lệ năng lượng tái tạo trong tổng năng lượng tiêu thụ của Công ty năm 2025 đạt 12,0%.",
+   "evidence": "Tỷ lệ năng lượng tái tạo trong tổng năng lượng tiêu thụ của Công ty năm 2025: 12,4%.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F26",
+   "family": "cộng lại bảng",
+   "claim": "Tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là 23.474.480 tCO2e.",
+   "evidence": "Phát thải khí nhà kính năm 2025 của Công ty — Phạm vi 1: 22.540.603 tCO2e; Phạm vi 2: 933.876 tCO2e.",
+   "ok": [
+    "S"
+   ]
+  },
+  {
+   "id": "F27",
+   "family": "cộng lại bảng",
+   "claim": "Tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là 24.474.480 tCO2e.",
+   "evidence": "Phát thải khí nhà kính năm 2025 của Công ty — Phạm vi 1: 22.540.603 tCO2e; Phạm vi 2: 933.876 tCO2e.",
+   "ok": [
+    "C"
+   ]
+  },
+  {
+   "id": "F28",
+   "family": "bẫy từ phủ định",
+   "claim": "Năm 2024, Tập đoàn giảm phát thải khí nhà kính tại các nhà máy thép.",
+   "evidence": "Năm 2024, nhà máy thép áp dụng công nghệ thiêu kết mới giúp giảm phát thải khí nhà kính.",
+   "ok": [
+    "N",
+    "S"
+   ]
+  },
+  {
+   "id": "F29",
+   "family": "bẫy từ phủ định",
+   "claim": "Năm 2024, Tập đoàn giảm phát thải khí nhà kính tại các nhà máy thép.",
+   "evidence": "Năm 2024 không có sự cố môi trường nào tại các nhà máy thép; phát thải khí nhà kính giảm so với năm trước.",
+   "ok": [
+    "N",
+    "S"
+   ]
+  },
+  {
+   "id": "F30",
+   "family": "không có bằng chứng liên quan",
+   "claim": "Năm 2025, 100% nước thải của Công ty được xử lý đạt quy chuẩn trước khi xả ra môi trường.",
+   "evidence": "Năm 2025, Công ty tổ chức 12 khoá đào tạo an toàn lao động cho 3.000 lượt người lao động.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F31",
+   "family": "không có bằng chứng liên quan",
+   "claim": "Công ty đã đạt trung hòa carbon trong năm 2025.",
+   "evidence": "Năm 2025, Công ty trồng 50.000 cây xanh tại các khu công nghiệp.",
+   "ok": [
+    "N"
+   ]
+  },
+  {
+   "id": "F32",
+   "family": "cùng số, khác chỉ số",
+   "claim": "Năm 2025, Công ty tự chủ 90% nhu cầu điện cho sản xuất thép.",
+   "evidence": "Năm 2025, Công ty hoàn thành 90% kế hoạch kiểm kê khí nhà kính.",
+   "ok": [
+    "N"
+   ]
+  }
+ ],
+ "systems": {
+  "GreenScan (luật, ngoại tuyến)": {
+   "F01": {
+    "label": "S",
+    "raw": [
+     "SUPPORTED"
+    ],
+    "reason": "SUPPORTED: Một nguồn ngoài tài liệu tuyên bố xác nhận: Số liệu khớp: 23500000.0 ≈ 23474480.0 (dung sai ±0.21% theo độ chính xác công bố)."
+   },
+   "F02": {
+    "label": "S",
+    "raw": [
+     "SUPPORTED"
+    ],
+    "reason": "SUPPORTED: Một nguồn ngoài tài liệu tuyên bố xác nhận: Số liệu khớp: 933876.0 ≈ 933876.0 (dung sai ±5.4e-05% theo độ chính xác công bố)."
+   },
+   "F03": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
+   },
+   "F04": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
+   },
+   "F05": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   },
+   "F06": {
+    "label": "S",
+    "raw": [
+     "SUPPORTED"
+    ],
+    "reason": "SUPPORTED: Một nguồn ngoài tài liệu tuyên bố xác nhận: Tính lại từ số liệu: (8e+05 − 1e+06) / 1e+06 = -20% tco2e, khớp mức -20% của tuyên bố (dung sai ±0.5 điểm phần trăm)."
+   },
+   "F07": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
+   },
+   "F08": {
+    "label": "C",
+    "raw": [
+     "CONTRADICTED"
+    ],
+    "reason": "CONTRADICTED: Bằng chứng đã truy xuất bác bỏ tuyên bố. Tính lại từ số liệu: (1.05e+06 − 1e+06) / 1e+06 = +5% tco2e, trong khi tuyên bố nêu -20% — lệch +25 điểm phần trăm."
+   },
+   "F09": {
+    "label": "N",
+    "raw": [
+     "INSUFFICIENT_EVIDENCE"
+    ],
+    "reason": "INSUFFICIENT_EVIDENCE: Tài liệu liên quan đã được truy xuất nhưng không xác nhận tuyên bố. Kho tài liệu chưa đủ để suy ra không có bằng chứng — thiếu: Tài liệu đối chiếu khác (BCTN/BCTC/kiểm kê)."
+   },
+   "F10": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Bằng chứng liên quan nhưng chưa đủ để xác minh. Tuyên bố thiếu: phạm vi / ranh giới."
+   },
+   "F11": {
+    "label": "S",
+    "raw": [
+     "SUPPORTED"
+    ],
+    "reason": "SUPPORTED: Một nguồn ngoài tài liệu tuyên bố xác nhận: Số liệu khớp: 5.0 ≈ 5.0 (dung sai ±10% theo độ chính xác công bố)."
+   },
+   "F12": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
+   },
+   "F13": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
+   },
+   "F14": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
+   },
+   "F15": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   },
+   "F16": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố thiếu: năm gốc để so sánh."
+   },
+   "F17": {
+    "label": "S",
+    "raw": [
+     "SUPPORTED"
+    ],
+    "reason": "SUPPORTED: Một nguồn ngoài tài liệu tuyên bố xác nhận: Số liệu khớp: 30.0 ≈ 30.0 (dung sai ±10% theo độ chính xác công bố)."
+   },
+   "F18": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố thiếu: phạm vi / ranh giới."
+   },
+   "F19": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
+   },
+   "F20": {
+    "label": "C",
+    "raw": [
+     "CONTRADICTED"
+    ],
+    "reason": "CONTRADICTED: Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu lệch: tuyên bố 1200000.0, tài liệu 23470000.0 (cùng số tuyệt đối, Scope 1+2)."
+   },
+   "F21": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   },
+   "F22": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   },
+   "F23": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   },
+   "F24": {
+    "label": "S",
+    "raw": [
+     "SUPPORTED"
+    ],
+    "reason": "SUPPORTED: Một nguồn ngoài tài liệu tuyên bố xác nhận: Số liệu khớp: 12.0 ≈ 12.4 (dung sai ±4.2% theo độ chính xác công bố)."
+   },
+   "F25": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố thiếu: phạm vi / ranh giới."
+   },
+   "F26": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
+   },
+   "F27": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố có đủ năm thuộc tính; chưa tìm được nguồn đối chiếu độc lập."
+   },
+   "F28": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Bằng chứng liên quan nhưng chưa đủ để xác minh. Tuyên bố thiếu: số liệu, năm gốc để so sánh."
+   },
+   "F29": {
+    "label": "N",
+    "raw": [
+     "PARTIALLY_SUPPORTED"
+    ],
+    "reason": "PARTIALLY_SUPPORTED: Có bằng chứng cùng chủ đề nhưng chưa xác minh được đầy đủ. Tuyên bố thiếu: số liệu, năm gốc để so sánh."
+   },
+   "F30": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   },
+   "F31": {
+    "label": "N",
+    "raw": [
+     "INSUFFICIENT_EVIDENCE"
+    ],
+    "reason": "INSUFFICIENT_EVIDENCE: Bằng chứng hiện có quá yếu để ủng hộ hay bác bỏ tuyên bố. Kho tài liệu thiếu: Tài liệu đối chiếu khác (BCTN/BCTC/kiểm kê)."
+   },
+   "F32": {
+    "label": "N",
+    "raw": [],
+    "reason": "không trích được tuyên bố"
+   }
+  },
+  "gemma-4-26B-A4B-it": {
+   "F01": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Tổng phát thải phạm vi 1 và 2 theo bằng chứng là 23.474.480 tCO2e, khớp với con số xấp xỉ 23,5 triệu tCO2e trong tuyên bố.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 72,
+     "prompt_tokens": 451,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "total_tokens": 523
+    }
+   },
+   "F02": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị phát thải phạm vi 2 năm 2025 trong bằng chứng khớp hoàn toàn với giá trị được nêu trong tuyên bố.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 49,
+     "prompt_tokens": 447,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "total_tokens": 496
+    }
+   },
+   "F03": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Tổng phát thải phạm vi 1 và 2 theo bằng chứng là 23.474.480 tCO2e, khác biệt đáng kể so với con số 21,4 triệu tCO2e trong tuyên bố.",
+    "seconds": 1.6,
+    "usage": {
+     "completion_tokens": 74,
+     "prompt_tokens": 450,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 524
+    }
+   },
+   "F04": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Giá trị phát thải phạm vi 2 trong bằng chứng là 933.876 tCO2e, khác với con số 833.876 tCO2e được nêu trong tuyên bố.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 69,
+     "prompt_tokens": 447,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "total_tokens": 516
+    }
+   },
+   "F05": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng đưa ra con số 80%, khác biệt hoàn toàn với con số 90% trong tuyên bố dù cùng chỉ số, kỳ và phạm vi.",
+    "seconds": 1.6,
+    "usage": {
+     "completion_tokens": 57,
+     "prompt_tokens": 384,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 441
+    }
+   },
+   "F06": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị phát thải giảm từ 1.000.000 tCO2e năm 2020 xuống 800.000 tCO2e năm 2025 tương ứng với mức giảm chính xác 20%.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 77,
+     "prompt_tokens": 420,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 497
+    }
+   },
+   "F07": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Mức giảm từ 1.000.000 tCO2e xuống 850.000 tCO2e chỉ là 15%, mâu thuẫn với tuyên bố giảm 20%.",
+    "seconds": 1.1,
+    "usage": {
+     "completion_tokens": 72,
+     "prompt_tokens": 420,
+     "prompt_tokens_details": {
+      "cached_tokens": 256
+     },
+     "total_tokens": 492
+    }
+   },
+   "F08": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Dựa trên số liệu, phát thải phạm vi 1 năm 2025 tăng 5% so với năm 2020 thay vì giảm 20% như tuyên bố.",
+    "seconds": 1.1,
+    "usage": {
+     "completion_tokens": 63,
+     "prompt_tokens": 422,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 485
+    }
+   },
+   "F09": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ cung cấp thông tin về sự thay đổi sản lượng thép, không cung cấp dữ liệu về lượng phát thải khí nhà kính để xác định tỷ trọng của hoạt động sản xuất gang thép.",
+    "seconds": 1.2,
+    "usage": {
+     "completion_tokens": 65,
+     "prompt_tokens": 384,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 449
+    }
+   },
+   "F10": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ cung cấp tổng lượng phát thải tuyệt đối nhưng thiếu dữ liệu về sản lượng thép để tính toán chỉ số cường độ (tCO2e/tấn thép).",
+    "seconds": 1.3,
+    "usage": {
+     "completion_tokens": 61,
+     "prompt_tokens": 446,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 507
+    }
+   },
+   "F11": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Tuyên bố đề cập đến tổng phát thải (giá trị tuyệt đối) trong khi bằng chứng chỉ cung cấp thông tin về cường độ phát thải (giá trị cường độ).",
+    "seconds": 1.2,
+    "usage": {
+     "completion_tokens": 61,
+     "prompt_tokens": 400,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 461
+    }
+   },
+   "F12": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng cung cấp tổng mức giảm của cả ba phạm vi (1, 2 và 3) là 8%, không đủ thông tin để xác định mức giảm riêng biệt của chỉ số phạm vi 1 như tuyên bố.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 72,
+     "prompt_tokens": 403,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 475
+    }
+   },
+   "F13": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ cung cấp số liệu phát thải phạm vi 1, trong khi tuyên bố yêu cầu tổng hợp cả phạm vi 1 và phạm vi 2.",
+    "seconds": 1.0,
+    "usage": {
+     "completion_tokens": 58,
+     "prompt_tokens": 400,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 458
+    }
+   },
+   "F14": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng cung cấp dữ liệu cho năm 2024, trong khi tuyên bố đề cập đến năm 2025.",
+    "seconds": 1.1,
+    "usage": {
+     "completion_tokens": 53,
+     "prompt_tokens": 394,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 447
+    }
+   },
+   "F15": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng cung cấp dữ liệu cho giai đoạn 2022-2023, trong khi tuyên bố đề cập đến giai đoạn 2024-2025.",
+    "seconds": 1.1,
+    "usage": {
+     "completion_tokens": 65,
+     "prompt_tokens": 388,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 453
+    }
+   },
+   "F16": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Tuyên bố nói về kết quả thực hiện đã đạt được, trong khi bằng chứng chỉ đưa ra thông tin về mục tiêu trong tương lai.",
+    "seconds": 1.0,
+    "usage": {
+     "completion_tokens": 53,
+     "prompt_tokens": 397,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 450
+    }
+   },
+   "F17": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Nội dung bằng chứng khớp hoàn toàn với tuyên bố về mục tiêu, chỉ số, phạm vi và mốc thời gian so sánh.",
+    "seconds": 1.2,
+    "usage": {
+     "completion_tokens": 48,
+     "prompt_tokens": 406,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 454
+    }
+   },
+   "F18": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy tỷ lệ thực tế đạt 18%, trái ngược với con số 30% được nêu trong tuyên bố.",
+    "seconds": 1.1,
+    "usage": {
+     "completion_tokens": 51,
+     "prompt_tokens": 392,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 443
+    }
+   },
+   "F19": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ cung cấp số liệu của Khu liên hợp Dung Quất, không đủ để xác định tổng phát thải của toàn Tập đoàn.",
+    "seconds": 1.1,
+    "usage": {
+     "completion_tokens": 53,
+     "prompt_tokens": 409,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 462
+    }
+   },
+   "F20": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng cung cấp số liệu hợp nhất toàn Tập đoàn, trong khi tuyên bố chỉ đề cập đến phạm vi của công ty mẹ, nên không thể xác định được giá trị riêng biệt của công ty mẹ.",
+    "seconds": 1.2,
+    "usage": {
+     "completion_tokens": 67,
+     "prompt_tokens": 401,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 468
+    }
+   },
+   "F21": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy đơn vị tiêu thụ là tấn than thay vì MWh điện dù cùng kỳ và cùng phạm vi.",
+    "seconds": 1.1,
+    "usage": {
+     "completion_tokens": 47,
+     "prompt_tokens": 371,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 418
+    }
+   },
+   "F22": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Giá trị lượng nước sử dụng trong bằng chứng (15.000 m3) khác biệt hoàn toàn về độ lớn so với tuyên bố (15 triệu m3).",
+    "seconds": 1.1,
+    "usage": {
+     "completion_tokens": 59,
+     "prompt_tokens": 376,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 435
+    }
+   },
+   "F23": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị lượng nước sử dụng năm 2025 trong bằng chứng khớp hoàn toàn với tuyên bố (15 triệu m3 tương đương 15.000.000 m3).",
+    "seconds": 1.1,
+    "usage": {
+     "completion_tokens": 63,
+     "prompt_tokens": 380,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 443
+    }
+   },
+   "F24": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị 12,4% trong bằng chứng nằm trong sai số làm tròn của con số 12% được nêu trong tuyên bố cho cùng chỉ số, kỳ và phạm vi.",
+    "seconds": 1.1,
+    "usage": {
+     "completion_tokens": 59,
+     "prompt_tokens": 388,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 447
+    }
+   },
+   "F25": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị 12,4% trong bằng chứng nằm trong sai số làm tròn hợp lý so với con số 12,0% được tuyên bố cho cùng chỉ số, cùng kỳ và cùng phạm vi.",
+    "seconds": 1.1,
+    "usage": {
+     "completion_tokens": 64,
+     "prompt_tokens": 390,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 454
+    }
+   },
+   "F26": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Tổng phát thải phạm vi 1 và 2 được tính bằng cách cộng 22.540.603 và 933.876 bằng đúng 23.474.480 tCO2e.",
+    "seconds": 1.2,
+    "usage": {
+     "completion_tokens": 73,
+     "prompt_tokens": 425,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 498
+    }
+   },
+   "F27": {
+    "label": "?",
+    "raw": "```json\n{\"label\": \"SUPPORTED\", \"ly_do\": \"Tổng phát thải phạm vi 1 và 2 được tính bằng 22.540.603 + 933.876 = 23.474.479 tCO2e, tuy nhiên có sự sai lệch lớn so với con số 24.474.480 tCO2e trong tuyên b",
+    "reason": "",
+    "seconds": 2.4,
+    "usage": {
+     "completion_tokens": 356,
+     "prompt_tokens": 425,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 781
+    }
+   },
+   "F28": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ nêu việc áp dụng công nghệ mới giúp giảm phát thải chứ không cung cấp số liệu cụ thể để xác nhận mức độ giảm phát thải thực tế của Tập đoàn trong năm 2024.",
+    "seconds": 1.2,
+    "usage": {
+     "completion_tokens": 68,
+     "prompt_tokens": 379,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 447
+    }
+   },
+   "F29": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng xác nhận phát thải khí nhà kính tại các nhà máy thép giảm so với năm trước trong năm 2024, khớp với nội dung tuyên bố.",
+    "seconds": 1.2,
+    "usage": {
+     "completion_tokens": 55,
+     "prompt_tokens": 383,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 438
+    }
+   },
+   "F30": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng nói về đào tạo an toàn lao động, không liên quan đến chỉ số xử lý nước thải.",
+    "seconds": 1.1,
+    "usage": {
+     "completion_tokens": 47,
+     "prompt_tokens": 397,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 444
+    }
+   },
+   "F31": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Việc trồng cây xanh không đủ để khẳng định trạng thái trung hòa carbon của toàn bộ công ty vì thiếu dữ liệu về tổng lượng phát thải và các biện pháp bù đắp khác.",
+    "seconds": 0.9,
+    "usage": {
+     "completion_tokens": 62,
+     "prompt_tokens": 372,
+     "prompt_tokens_details": {
+      "cached_tokens": 160
+     },
+     "total_tokens": 434
+    }
+   },
+   "F32": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng nói về tiến độ kiểm kê khí nhà kính, không liên quan đến chỉ số tự chủ điện cho sản xuất thép.",
+    "seconds": 0.8,
+    "usage": {
+     "completion_tokens": 51,
+     "prompt_tokens": 378,
+     "prompt_tokens_details": {
+      "cached_tokens": 192
+     },
+     "total_tokens": 429
+    }
+   }
+  },
+  "gemma-4-31B-it": {
+   "F01": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Tổng phát thải phạm vi 1 và 2 năm 2025 là 23.474.480 tCO2e, khớp với con số xấp xỉ 23,5 triệu tCO2e trong tuyên bố sau khi làm tròn.",
+    "seconds": 1.7,
+    "usage": {
+     "completion_tokens": 79,
+     "prompt_tokens": 451,
+     "total_tokens": 530
+    }
+   },
+   "F02": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cung cấp chính xác giá trị phát thải phạm vi 2 năm 2025 là 933.876 tCO2e, khớp hoàn toàn với tuyên bố.",
+    "seconds": 1.9,
+    "usage": {
+     "completion_tokens": 62,
+     "prompt_tokens": 447,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 509
+    }
+   },
+   "F03": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Tổng phát thải phạm vi 1 và 2 năm 2025 trong bằng chứng là 23,47 triệu tCO2e, khác với con số 21,4 triệu tCO2e trong tuyên bố.",
+    "seconds": 1.9,
+    "usage": {
+     "completion_tokens": 72,
+     "prompt_tokens": 450,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 522
+    }
+   },
+   "F04": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Giá trị phát thải phạm vi 2 trong bằng chứng là 933.876 tCO2e, khác với giá trị 833.876 tCO2e trong tuyên bố.",
+    "seconds": 1.9,
+    "usage": {
+     "completion_tokens": 67,
+     "prompt_tokens": 447,
+     "total_tokens": 514
+    }
+   },
+   "F05": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cung cấp cùng chỉ số, cùng kỳ và phạm vi nhưng giá trị (80%) khác với tuyên bố (90%).",
+    "seconds": 1.8,
+    "usage": {
+     "completion_tokens": 51,
+     "prompt_tokens": 384,
+     "total_tokens": 435
+    }
+   },
+   "F06": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị phát thải phạm vi 1 năm 2025 (800.000) giảm đúng 20% so với năm 2020 (1.000.000).",
+    "seconds": 1.7,
+    "usage": {
+     "completion_tokens": 68,
+     "prompt_tokens": 420,
+     "total_tokens": 488
+    }
+   },
+   "F07": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Mức giảm thực tế từ năm 2020 đến 2025 là 15% (từ 1.000.000 xuống 850.000 tCO2e), không phải 20% như tuyên bố.",
+    "seconds": 1.7,
+    "usage": {
+     "completion_tokens": 82,
+     "prompt_tokens": 420,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 502
+    }
+   },
+   "F08": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Giá trị phát thải năm 2025 tăng lên 1.050.000 tCO2e so với 1.000.000 tCO2e năm 2020, trái ngược với tuyên bố giảm 20%.",
+    "seconds": 1.9,
+    "usage": {
+     "completion_tokens": 82,
+     "prompt_tokens": 422,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 504
+    }
+   },
+   "F09": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng cung cấp thông tin về sản lượng thép thô, không cung cấp dữ liệu về phát thải khí nhà kính để đối chiếu với tuyên bố.",
+    "seconds": 1.6,
+    "usage": {
+     "completion_tokens": 56,
+     "prompt_tokens": 384,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 440
+    }
+   },
+   "F10": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ cung cấp tổng phát thải tuyệt đối, thiếu dữ liệu về sản lượng thép để tính toán cường độ phát thải.",
+    "seconds": 1.7,
+    "usage": {
+     "completion_tokens": 51,
+     "prompt_tokens": 446,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 497
+    }
+   },
+   "F11": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Tuyên bố đề cập đến tổng phát thải (giá trị tuyệt đối) nhưng bằng chứng lại đề cập đến cường độ phát thải.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 52,
+     "prompt_tokens": 400,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 452
+    }
+   },
+   "F12": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng cung cấp mức giảm chung cho cả ba phạm vi (1, 2 và 3), không cung cấp dữ liệu riêng biệt cho phạm vi 1 để đối chiếu với tuyên bố.",
+    "seconds": 1.4,
+    "usage": {
+     "completion_tokens": 65,
+     "prompt_tokens": 403,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 468
+    }
+   },
+   "F13": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ cung cấp phát thải phạm vi 1, thiếu dữ liệu về phạm vi 2 để xác minh tổng phát thải của tuyên bố.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 55,
+     "prompt_tokens": 400,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 455
+    }
+   },
+   "F14": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng cung cấp dữ liệu cho năm 2024, trong khi tuyên bố đề cập đến năm 2025.",
+    "seconds": 1.2,
+    "usage": {
+     "completion_tokens": 53,
+     "prompt_tokens": 394,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 447
+    }
+   },
+   "F15": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng cung cấp dữ liệu cho giai đoạn 2022-2023, không khớp với kỳ báo cáo 2024-2025 trong tuyên bố.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 65,
+     "prompt_tokens": 388,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 453
+    }
+   },
+   "F16": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Tuyên bố nói về kết quả đã thực hiện, trong khi bằng chứng chỉ cung cấp mục tiêu cho năm 2030.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 52,
+     "prompt_tokens": 397,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 449
+    }
+   },
+   "F17": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng khớp hoàn toàn với tuyên bố về chỉ số, phạm vi, năm cơ sở, năm mục tiêu và tỷ lệ giảm.",
+    "seconds": 1.2,
+    "usage": {
+     "completion_tokens": 48,
+     "prompt_tokens": 406,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 454
+    }
+   },
+   "F18": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy tỷ lệ thực tế đạt 18%, khác với con số 30% trong tuyên bố.",
+    "seconds": 1.2,
+    "usage": {
+     "completion_tokens": 48,
+     "prompt_tokens": 392,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 440
+    }
+   },
+   "F19": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ cung cấp dữ liệu cho Khu liên hợp Dung Quất, không đủ để xác nhận tổng phát thải hợp nhất của toàn Tập đoàn.",
+    "seconds": 1.0,
+    "usage": {
+     "completion_tokens": 55,
+     "prompt_tokens": 409,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 464
+    }
+   },
+   "F20": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng cung cấp số liệu hợp nhất toàn Tập đoàn, không cung cấp số liệu riêng cho công ty mẹ để đối chiếu.",
+    "seconds": 1.3,
+    "usage": {
+     "completion_tokens": 51,
+     "prompt_tokens": 401,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 452
+    }
+   },
+   "F21": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng đề cập đến tiêu thụ than, trong khi tuyên bố đề cập đến tiêu thụ điện, đây là hai chỉ số khác nhau.",
+    "seconds": 1.2,
+    "usage": {
+     "completion_tokens": 53,
+     "prompt_tokens": 371,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 424
+    }
+   },
+   "F22": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Giá trị trong bằng chứng (15.000 m3) khác biệt đáng kể so với giá trị trong tuyên bố (15 triệu m3).",
+    "seconds": 1.4,
+    "usage": {
+     "completion_tokens": 55,
+     "prompt_tokens": 376,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 431
+    }
+   },
+   "F23": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị 15 triệu m3 trong tuyên bố khớp hoàn toàn với 15.000.000 m3 trong bằng chứng cho cùng chỉ số, cùng năm và cùng đối tượng.",
+    "seconds": 1.5,
+    "usage": {
+     "completion_tokens": 63,
+     "prompt_tokens": 380,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 224
+     },
+     "total_tokens": 443
+    }
+   },
+   "F24": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị 12,4% trong bằng chứng khớp với tuyên bố 12% khi xét theo sai số làm tròn.",
+    "seconds": 1.1,
+    "usage": {
+     "completion_tokens": 47,
+     "prompt_tokens": 388,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 435
+    }
+   },
+   "F25": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Giá trị trong bằng chứng (12,4%) khác với giá trị trong tuyên bố (12,0%) và vượt quá sai số làm tròn thông thường.",
+    "seconds": 0.9,
+    "usage": {
+     "completion_tokens": 56,
+     "prompt_tokens": 390,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 446
+    }
+   },
+   "F26": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Tổng phát thải Phạm vi 1 và 2 năm 2025 là 22.540.603 + 933.876 = 23.474.479 tCO2e, khớp với tuyên bố trong sai số làm tròn.",
+    "seconds": 1.7,
+    "usage": {
+     "completion_tokens": 84,
+     "prompt_tokens": 425,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 509
+    }
+   },
+   "F27": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Tổng phát thải Phạm vi 1 và 2 tính từ bằng chứng là 23.474.479 tCO2e, khác với con số 24.474.480 tCO2e trong tuyên bố.",
+    "seconds": 1.7,
+    "usage": {
+     "completion_tokens": 76,
+     "prompt_tokens": 425,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 501
+    }
+   },
+   "F28": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng xác nhận việc áp dụng công nghệ mới giúp giảm phát thải khí nhà kính tại nhà máy thép trong năm 2024, khớp với nội dung tuyên bố.",
+    "seconds": 1.4,
+    "usage": {
+     "completion_tokens": 57,
+     "prompt_tokens": 379,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 436
+    }
+   },
+   "F29": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng xác nhận phát thải khí nhà kính giảm so với năm trước trong năm 2024 tại các nhà máy thép, khớp với nội dung tuyên bố.",
+    "seconds": 1.4,
+    "usage": {
+     "completion_tokens": 55,
+     "prompt_tokens": 383,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 438
+    }
+   },
+   "F30": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng nói về đào tạo an toàn lao động, không liên quan đến chỉ số xử lý nước thải.",
+    "seconds": 1.3,
+    "usage": {
+     "completion_tokens": 47,
+     "prompt_tokens": 397,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 444
+    }
+   },
+   "F31": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Việc trồng cây xanh là một hoạt động giảm thiểu nhưng không cung cấp dữ liệu về tổng phát thải và lượng hấp thụ để xác nhận trạng thái trung hòa carbon.",
+    "seconds": 1.4,
+    "usage": {
+     "completion_tokens": 58,
+     "prompt_tokens": 372,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 160
+     },
+     "total_tokens": 430
+    }
+   },
+   "F32": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng nói về kế hoạch kiểm kê khí nhà kính, không liên quan đến nhu cầu điện cho sản xuất thép.",
+    "seconds": 1.0,
+    "usage": {
+     "completion_tokens": 49,
+     "prompt_tokens": 378,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 192
+     },
+     "total_tokens": 427
+    }
+   }
+  },
+  "Llama-3.3-70B-Instruct": {
+   "F01": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị tổng phát thải khí nhà kính phạm vi 1 và 2 trong đoạn bằng chứng khớp với giá trị trong tuyên bố khi làm tròn.",
+    "seconds": 2.5,
+    "usage": {
+     "completion_tokens": 46,
+     "prompt_tokens": 449,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 495
+    }
+   },
+   "F02": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị phát thải khí nhà kính phạm vi 2 của Công ty năm 2025 trong bằng chứng khớp với giá trị trong tuyên bố.",
+    "seconds": 2.8,
+    "usage": {
+     "completion_tokens": 45,
+     "prompt_tokens": 442,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 32
+     },
+     "total_tokens": 487
+    }
+   },
+   "F03": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Giá trị tổng phát thải khí nhà kính phạm vi 1 và 2 trong bằng chứng là 23.474.480 tCO2e, khác với giá trị 21,4 triệu tCO2e trong tuyên bố.",
+    "seconds": 3.5,
+    "usage": {
+     "completion_tokens": 65,
+     "prompt_tokens": 448,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 288
+     },
+     "total_tokens": 513
+    }
+   },
+   "F04": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Giá trị phát thải khí nhà kính phạm vi 2 năm 2025 trong bằng chứng là 933.876 tCO2e, khác với giá trị 833.876 tCO2e trong tuyên bố.",
+    "seconds": 3.4,
+    "usage": {
+     "completion_tokens": 62,
+     "prompt_tokens": 442,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 504
+    }
+   },
+   "F05": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Giá trị trong bằng chứng (80%) khác với giá trị trong tuyên bố (90%)",
+    "seconds": 2.6,
+    "usage": {
+     "completion_tokens": 36,
+     "prompt_tokens": 395,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 431
+    }
+   },
+   "F06": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị phát thải khí nhà kính phạm vi 1 năm 2025 là 800.000 tCO2e, giảm 20% so với năm 2020 (1.000.000 tCO2e), khớp với tuyên bố.",
+    "seconds": 3.0,
+    "usage": {
+     "completion_tokens": 67,
+     "prompt_tokens": 420,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 32
+     },
+     "total_tokens": 487
+    }
+   },
+   "F07": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị phát thải khí nhà kính phạm vi 1 năm 2025 là 850.000 tCO2e, giảm 15% so với năm 2020 (1.000.000 tCO2e), tuy nhiên do sai số làm tròn, giá trị này tương đương với giảm 20% như tuyên bố.",
+    "seconds": 3.4,
+    "usage": {
+     "completion_tokens": 83,
+     "prompt_tokens": 420,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 336
+     },
+     "total_tokens": 503
+    }
+   },
+   "F08": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Giá trị phát thải khí nhà kính phạm vi 1 năm 2025 là 1.050.000 tCO2e, tăng chứ không giảm so với năm 2020",
+    "seconds": 2.6,
+    "usage": {
+     "completion_tokens": 55,
+     "prompt_tokens": 422,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 336
+     },
+     "total_tokens": 477
+    }
+   },
+   "F09": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin về tổng phát thải khí nhà kính của Tập đoàn hay tỷ trọng của hoạt động sản xuất gang thép trong tổng phát thải này.",
+    "seconds": 2.2,
+    "usage": {
+     "completion_tokens": 52,
+     "prompt_tokens": 395,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 447
+    }
+   },
+   "F10": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Không có thông tin về sản lượng thép để tính cường độ phát thải khí nhà kính",
+    "seconds": 1.9,
+    "usage": {
+     "completion_tokens": 33,
+     "prompt_tokens": 444,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 477
+    }
+   },
+   "F11": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng cung cấp thông tin về cường độ phát thải khí nhà kính trên mỗi tấn thép, trong khi tuyên bố nói về tổng phát thải khí nhà kính.",
+    "seconds": 2.2,
+    "usage": {
+     "completion_tokens": 51,
+     "prompt_tokens": 408,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 459
+    }
+   },
+   "F12": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng nói về phạm vi 1, 2 và 3, trong khi tuyên bố chỉ nói về phạm vi 1.",
+    "seconds": 2.0,
+    "usage": {
+     "completion_tokens": 46,
+     "prompt_tokens": 411,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 288
+     },
+     "total_tokens": 457
+    }
+   },
+   "F13": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin về phát thải khí nhà kính phạm vi 2 của Công ty năm 2025.",
+    "seconds": 2.4,
+    "usage": {
+     "completion_tokens": 44,
+     "prompt_tokens": 407,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 451
+    }
+   },
+   "F14": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng nói về năm 2024, khác với năm 2025 trong tuyên bố",
+    "seconds": 3.1,
+    "usage": {
+     "completion_tokens": 37,
+     "prompt_tokens": 405,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 442
+    }
+   },
+   "F15": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin về lượng nước sử dụng của Công ty trong năm 2024 và 2025.",
+    "seconds": 3.3,
+    "usage": {
+     "completion_tokens": 44,
+     "prompt_tokens": 395,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 439
+    }
+   },
+   "F16": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng chỉ cung cấp thông tin về mục tiêu giảm phát thải khí nhà kính, không cung cấp thông tin về việc công ty đã đạt được mục tiêu đó hay chưa.",
+    "seconds": 3.5,
+    "usage": {
+     "completion_tokens": 54,
+     "prompt_tokens": 407,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 461
+    }
+   },
+   "F17": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng trùng khớp với tuyên bố về mục tiêu giảm 30% phát thải khí nhà kính phạm vi 1 và 2 vào năm 2030 so với năm 2020.",
+    "seconds": 3.4,
+    "usage": {
+     "completion_tokens": 54,
+     "prompt_tokens": 414,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 468
+    }
+   },
+   "F18": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Giá trị thực tế 18% khác với giá trị tuyên bố 30%",
+    "seconds": 2.4,
+    "usage": {
+     "completion_tokens": 34,
+     "prompt_tokens": 402,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 436
+    }
+   },
+   "F19": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng không cung cấp thông tin về phát thải khí nhà kính của toàn bộ Tập đoàn, chỉ cung cấp thông tin về Khu liên hợp Dung Quất.",
+    "seconds": 2.6,
+    "usage": {
+     "completion_tokens": 50,
+     "prompt_tokens": 417,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 467
+    }
+   },
+   "F20": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng nói về phát thải khí nhà kính của toàn Tập đoàn, trong khi tuyên bố nói về công ty mẹ.",
+    "seconds": 2.7,
+    "usage": {
+     "completion_tokens": 43,
+     "prompt_tokens": 412,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 455
+    }
+   },
+   "F21": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng nói về tiêu thụ than, khác chỉ số so với tuyên bố về tiêu thụ điện.",
+    "seconds": 2.7,
+    "usage": {
+     "completion_tokens": 39,
+     "prompt_tokens": 384,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 423
+    }
+   },
+   "F22": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Giá trị nước sử dụng trong bằng chứng là 15.000 m3, khác với giá trị 15 triệu m3 trong tuyên bố",
+    "seconds": 2.9,
+    "usage": {
+     "completion_tokens": 46,
+     "prompt_tokens": 385,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 431
+    }
+   },
+   "F23": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị lượng nước sử dụng của Công ty năm 2025 trong bằng chứng khớp với giá trị trong tuyên bố.",
+    "seconds": 2.8,
+    "usage": {
+     "completion_tokens": 40,
+     "prompt_tokens": 387,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 304
+     },
+     "total_tokens": 427
+    }
+   },
+   "F24": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị trong bằng chứng khớp với tuyên bố trong sai số làm tròn",
+    "seconds": 2.5,
+    "usage": {
+     "completion_tokens": 30,
+     "prompt_tokens": 399,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 429
+    }
+   },
+   "F25": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Giá trị trong bằng chứng (12,4%) khớp với giá trị trong tuyên bố (12,0%) trong sai số làm tròn.",
+    "seconds": 1.9,
+    "usage": {
+     "completion_tokens": 44,
+     "prompt_tokens": 401,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 445
+    }
+   },
+   "F26": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Tổng phát thải khí nhà kính phạm vi 1 và 2 của Công ty năm 2025 là 23.474.479 tCO2e (22.540.603 + 933.876), khớp với giá trị trong tuyên bố khi làm tròn.",
+    "seconds": 3.0,
+    "usage": {
+     "completion_tokens": 70,
+     "prompt_tokens": 424,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 494
+    }
+   },
+   "F27": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Tổng phát thải khí nhà kính phạm vi 1 và 2 là 23.474.479 tCO2e, khác với tuyên bố 24.474.480 tCO2e.",
+    "seconds": 2.9,
+    "usage": {
+     "completion_tokens": 58,
+     "prompt_tokens": 424,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 288
+     },
+     "total_tokens": 482
+    }
+   },
+   "F28": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin cụ thể về mức độ giảm phát thải khí nhà kính tại các nhà máy thép của Tập đoàn năm 2024.",
+    "seconds": 3.5,
+    "usage": {
+     "completion_tokens": 50,
+     "prompt_tokens": 392,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 442
+    }
+   },
+   "F29": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Đoạn bằng chứng cho biết phát thải khí nhà kính giảm so với năm trước, trùng với tuyên bố của Tập đoàn về việc giảm phát thải khí nhà kính tại các nhà máy thép năm 2024.",
+    "seconds": 3.6,
+    "usage": {
+     "completion_tokens": 57,
+     "prompt_tokens": 396,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 304
+     },
+     "total_tokens": 453
+    }
+   },
+   "F30": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin về việc xử lý nước thải của Công ty.",
+    "seconds": 2.8,
+    "usage": {
+     "completion_tokens": 36,
+     "prompt_tokens": 405,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 441
+    }
+   },
+   "F31": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin về việc Công ty đạt trung hòa carbon trong năm 2025, chỉ đề cập đến việc trồng cây xanh.",
+    "seconds": 3.0,
+    "usage": {
+     "completion_tokens": 49,
+     "prompt_tokens": 382,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 431
+    }
+   },
+   "F32": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Đoạn bằng chứng không cung cấp thông tin về việc Công ty tự chủ 90% nhu cầu điện cho sản xuất thép.",
+    "seconds": 2.1,
+    "usage": {
+     "completion_tokens": 43,
+     "prompt_tokens": 389,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 272
+     },
+     "total_tokens": 432
+    }
+   }
+  },
+  "GLM-5.2": {
+   "F01": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cho biết tổng phát thải khí nhà kính phạm vi 1 và 2 năm 2025 là 23.474.480 tCO2e, khớp với tuyên bố khoảng 23,5 triệu tCO2e khi làm tròn.",
+    "seconds": 41.0,
+    "usage": {
+     "completion_tokens": 357,
+     "prompt_tokens": 449,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 64
+     },
+     "total_tokens": 806
+    }
+   },
+   "F02": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cho biết phát thải khí nhà kính phạm vi 2 năm 2025 là 933.876 tCO2e, khớp hoàn toàn với tuyên bố.",
+    "seconds": 41.1,
+    "usage": {
+     "completion_tokens": 238,
+     "prompt_tokens": 444,
+     "total_tokens": 682
+    }
+   },
+   "F03": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy tổng phát thải phạm vi 1 và 2 năm 2025 là 23.474.480 tCO2e (khoảng 23,5 triệu tCO2e), khác xa với 21,4 triệu tCO2e trong tuyên bố và nằm ngoài sai số làm tròn.",
+    "seconds": 42.0,
+    "usage": {
+     "completion_tokens": 585,
+     "prompt_tokens": 448,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 64
+     },
+     "total_tokens": 1033
+    }
+   },
+   "F04": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy phát thải khí nhà kính phạm vi 2 năm 2025 là 933.876 tCO2e, khác với giá trị 833.876 tCO2e trong tuyên bố.",
+    "seconds": 41.0,
+    "usage": {
+     "completion_tokens": 267,
+     "prompt_tokens": 444,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 64
+     },
+     "total_tokens": 711
+    }
+   },
+   "F05": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho cùng chỉ số, kỳ, phạm vi và loại giá trị nhưng tỷ lệ đáp ứng nhu cầu điện là 80%, khác với 90% trong tuyên bố và vượt sai số làm tròn.",
+    "seconds": 41.3,
+    "usage": {
+     "completion_tokens": 250,
+     "prompt_tokens": 388,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 64
+     },
+     "total_tokens": 638
+    }
+   },
+   "F06": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cho thấy phát thải phạm vi 1 năm 2025 là 800.000 tCO2e so với 1.000.000 tCO2e năm 2020, giảm đúng 20%.",
+    "seconds": 41.9,
+    "usage": {
+     "completion_tokens": 352,
+     "prompt_tokens": 413,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 64
+     },
+     "total_tokens": 765
+    }
+   },
+   "F07": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy phát thải năm 2025 là 850.000 tCO2e so với 1.000.000 tCO2e năm 2020, tương đương giảm 15%, không phải giảm 20% như tuyên bố.",
+    "seconds": 17.6,
+    "usage": {
+     "completion_tokens": 444,
+     "prompt_tokens": 413,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 320
+     },
+     "total_tokens": 857
+    }
+   },
+   "F08": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy phát thải năm 2025 (1.050.000 tCO2e) tăng 5% so với năm 2020 (1.000.000 tCO2e), trong khi tuyên bố lại cho rằng giảm 20%.",
+    "seconds": 17.9,
+    "usage": {
+     "completion_tokens": 385,
+     "prompt_tokens": 416,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 320
+     },
+     "total_tokens": 801
+    }
+   },
+   "F09": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ cung cấp thông tin về sự tăng trưởng sản lượng thép thô, không liên quan đến tỷ trọng phát thải khí nhà kính của hoạt động sản xuất gang thép.",
+    "seconds": 17.2,
+    "usage": {
+     "completion_tokens": 281,
+     "prompt_tokens": 392,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 673
+    }
+   },
+   "F10": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ cung cấp giá trị phát thải tuyệt đối, không có dữ liệu sản lượng thép để tính toán cường độ phát thải.",
+    "seconds": 16.7,
+    "usage": {
+     "completion_tokens": 375,
+     "prompt_tokens": 444,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 819
+    }
+   },
+   "F11": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng nói về cường độ phát thải trong khi tuyên bố nói về tổng phát thải tuyệt đối.",
+    "seconds": 17.3,
+    "usage": {
+     "completion_tokens": 254,
+     "prompt_tokens": 400,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 654
+    }
+   },
+   "F12": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng đề cập đến tổng phát thải phạm vi 1, 2 và 3, không cung cấp thông tin riêng cho phạm vi 1 như trong tuyên bố.",
+    "seconds": 16.3,
+    "usage": {
+     "completion_tokens": 298,
+     "prompt_tokens": 404,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 702
+    }
+   },
+   "F13": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ cung cấp phát thải phạm vi 1, thiếu dữ liệu phạm vi 2 nên không thể xác nhận tổng phát thải phạm vi 1 và 2.",
+    "seconds": 6.1,
+    "usage": {
+     "completion_tokens": 149,
+     "prompt_tokens": 402,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 551
+    }
+   },
+   "F14": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng nói về năm 2024 trong khi tuyên bố nói về năm 2025 (khác kỳ).",
+    "seconds": 6.4,
+    "usage": {
+     "completion_tokens": 178,
+     "prompt_tokens": 398,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 576
+    }
+   },
+   "F15": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng nói về kỳ 2023 so với 2022, trong khi tuyên bố nói về kỳ 2025 so với 2024.",
+    "seconds": 6.3,
+    "usage": {
+     "completion_tokens": 201,
+     "prompt_tokens": 386,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 587
+    }
+   },
+   "F16": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng trình bày một mục tiêu giảm phát thải trong tương lai (đến năm 2030) trong khi tuyên bố khẳng định việc giảm phát thải đã được thực hiện.",
+    "seconds": 6.5,
+    "usage": {
+     "completion_tokens": 262,
+     "prompt_tokens": 398,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 660
+    }
+   },
+   "F17": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng xác nhận công ty đặt mục tiêu giảm 30% phát thải khí nhà kính phạm vi 1 và 2 vào năm 2030 so với năm 2020, khớp hoàn toàn với tuyên bố.",
+    "seconds": 7.5,
+    "usage": {
+     "completion_tokens": 398,
+     "prompt_tokens": 405,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 803
+    }
+   },
+   "F18": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy tỷ lệ thực tế đạt 18% trong khi 30% chỉ là mục tiêu, do đó giá trị thực tế không khớp với tuyên bố đạt 30%.",
+    "seconds": 5.7,
+    "usage": {
+     "completion_tokens": 309,
+     "prompt_tokens": 395,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 704
+    }
+   },
+   "F19": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ cung cấp phát thải của Khu liên hợp Dung Quất, không phải của toàn bộ Tập đoàn như trong tuyên bố.",
+    "seconds": 2.4,
+    "usage": {
+     "completion_tokens": 257,
+     "prompt_tokens": 412,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 669
+    }
+   },
+   "F20": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng nói về ranh giới hợp nhất toàn Tập đoàn trong khi tuyên bố nói về công ty mẹ, khác ranh giới tổ chức.",
+    "seconds": 3.6,
+    "usage": {
+     "completion_tokens": 376,
+     "prompt_tokens": 406,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 782
+    }
+   },
+   "F21": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng nói về tiêu thụ than trong khi tuyên bố nói về tiêu thụ điện, đây là hai chỉ số khác nhau.",
+    "seconds": 2.0,
+    "usage": {
+     "completion_tokens": 199,
+     "prompt_tokens": 377,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 576
+    }
+   },
+   "F22": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho thấy lượng nước sử dụng năm 2025 là 15.000 m3, trong khi tuyên bố nói là 15 triệu m3, khác nhau ngoài sai số làm tròn.",
+    "seconds": 3.3,
+    "usage": {
+     "completion_tokens": 351,
+     "prompt_tokens": 375,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 726
+    }
+   },
+   "F23": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cho biết lượng nước sử dụng của Công ty năm 2025 là 15.000.000 m3, khớp hoàn toàn với tuyên bố sử dụng 15 triệu m3 nước.",
+    "seconds": 2.5,
+    "usage": {
+     "completion_tokens": 221,
+     "prompt_tokens": 377,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 598
+    }
+   },
+   "F24": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng cho cùng chỉ số, cùng kỳ, cùng phạm vi và giá trị 12,4% làm tròn thành 12% khớp với tuyên bố.",
+    "seconds": 2.7,
+    "usage": {
+     "completion_tokens": 250,
+     "prompt_tokens": 392,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 642
+    }
+   },
+   "F25": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Bằng chứng cho cùng chỉ số, kỳ, phạm vi và loại giá trị nhưng giá trị 12,4% khác với 12,0% ngoài sai số làm tròn.",
+    "seconds": 5.3,
+    "usage": {
+     "completion_tokens": 456,
+     "prompt_tokens": 394,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 850
+    }
+   },
+   "F26": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Tổng phát thải Phạm vi 1 (22.540.603 tCO2e) và Phạm vi 2 (933.876 tCO2e) bằng 23.474.479 tCO2e, khớp với tuyên bố 23.474.480 tCO2e trong sai số làm tròn.",
+    "seconds": 5.3,
+    "usage": {
+     "completion_tokens": 485,
+     "prompt_tokens": 423,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 908
+    }
+   },
+   "F27": {
+    "label": "C",
+    "raw": "CONTRADICTED",
+    "reason": "Tổng phát thải Phạm vi 1 và 2 năm 2025 theo bằng chứng là 23.474.479 tCO2e, khác với 24.474.480 tCO2e trong tuyên bố ngoài sai số làm tròn.",
+    "seconds": 5.0,
+    "usage": {
+     "completion_tokens": 592,
+     "prompt_tokens": 423,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 1015
+    }
+   },
+   "F28": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng xác nhận cùng kỳ 2024, cùng phạm vi nhà máy thép và cùng chỉ số phát thải khí nhà kính, cho thấy việc áp dụng công nghệ mới đã giúp giảm phát thải, khớp với tuyên bố về việc giảm phát thải.",
+    "seconds": 6.0,
+    "usage": {
+     "completion_tokens": 689,
+     "prompt_tokens": 388,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 1077
+    }
+   },
+   "F29": {
+    "label": "S",
+    "raw": "SUPPORTED",
+    "reason": "Bằng chứng xác nhận năm 2024 phát thải khí nhà kính tại các nhà máy thép đã giảm so với năm trước, khớp với tuyên bố.",
+    "seconds": 2.6,
+    "usage": {
+     "completion_tokens": 281,
+     "prompt_tokens": 392,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 673
+    }
+   },
+   "F30": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng nói về đào tạo an toàn lao động, không liên quan đến việc xử lý nước thải.",
+    "seconds": 1.9,
+    "usage": {
+     "completion_tokens": 193,
+     "prompt_tokens": 398,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 591
+    }
+   },
+   "F31": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng chỉ cho biết công ty trồng 50.000 cây xanh trong năm 2025, không đủ thông tin về tổng phát thải và lượng hấp thụ để xác nhận việc đạt trung hòa carbon.",
+    "seconds": 3.2,
+    "usage": {
+     "completion_tokens": 304,
+     "prompt_tokens": 372,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 676
+    }
+   },
+   "F32": {
+    "label": "N",
+    "raw": "NOT_ENOUGH_INFO",
+    "reason": "Bằng chứng nói về 'kế hoạch kiểm kê khí nhà kính' trong khi tuyên bố nói về 'tự chủ nhu cầu điện cho sản xuất thép', đây là hai chỉ số hoàn toàn khác nhau.",
+    "seconds": 2.4,
+    "usage": {
+     "completion_tokens": 227,
+     "prompt_tokens": 381,
+     "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 256
+     },
+     "total_tokens": 608
+    }
+   }
+  }
+ }
+}

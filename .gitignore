@@ -55,6 +55,14 @@ outside_resource/*.zip
 # changes with every rehearsal.
 docs/07-presentation/*.zip
 docs/07-presentation/*.png
+# Per-round working images and demo recordings (the AI-use log next to them IS committed).
+docs/07-presentation/*/img/
+docs/07-presentation/*/video/
+
+# Training data and checkpoints are rebuilt by training/*.py (teacher labels cost
+# money: copy training/data/teacher_*.jsonl somewhere safe instead of committing).
+training/data/
+training/runs/
 
 # Frontend SSR/preview build output
 frontend/.ssr-out/

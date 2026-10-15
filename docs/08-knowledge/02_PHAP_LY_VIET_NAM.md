@@ -1,5 +1,8 @@
 # 02 · Pháp lý Việt Nam cho tuyên bố môi trường
 
+> **Cập nhật 13/10/2026:** 8 điểm trong tài liệu này đã cũ hoặc thiếu: NĐ 110/2026 (EPR), NĐ 37/2026 thay NĐ 43/2017 và NĐ 111/2021, NĐ 87/2026 thay NĐ 38/2021, QĐ 46/2026, NĐ 142/2026 và các điểm khác. Xem `docs/04-data-ai/KE_HOACH_DU_LIEU_PHAP_LY_v4_2026-10-13.md` mục 2. Chờ Thảo xác nhận rồi mới sửa nội dung bên dưới.
+
+
 **Cập nhật:** 06/10/2026 · Nguồn chi tiết và trích dẫn nguyên văn: [sources/…phap-ly-thi-truong-an-le-VN.md](sources/2026-10-05_phap-ly-thi-truong-an-le-VN.md) Phần A; luật dữ liệu: [sources/…mo-hinh-chi-phi-phan-cung.md](sources/2026-10-05_mo-hinh-chi-phi-phan-cung.md) §6.
 **Lưu ý:** đây là tổng hợp để định hướng kỹ thuật, không phải tư vấn pháp lý. Mọi quy tắc đưa vào `configs/legal/` phải qua Thảo (trường `reviewed_by`).
 

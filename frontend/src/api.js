@@ -136,3 +136,65 @@ export async function runtimeInfo() {
 export function workpaperUrl(runId, print = false) {
   return `${base()}/v1/runs/${encodeURIComponent(runId)}/workpaper${print ? '?print=true' : ''}`
 }
+
+// ---------- intake: preview, URL, demo samples ----------
+
+/** What each file will give the pipeline: pages with text, scanned pages, OCR, sentences, time, a first guess. */
+export async function intakePreview(files) {
+  const form = new FormData()
+  for (const file of files) form.append('files', file)
+  return handle(await fetch(`${BASE}/v1/intake/preview`, { method: 'POST', body: form }))
+}
+
+async function asFile(response, fallbackName) {
+  if (!response.ok) await handle(response)
+  const name = decodeURIComponent(response.headers.get('X-File-Name') || '') || fallbackName
+  return new File([await response.blob()], name)
+}
+
+/** The server downloads the report (the browser cannot); it comes back as an ordinary File. */
+export async function intakeFetch(url) {
+  return asFile(await fetch(`${BASE}/v1/intake/fetch?url=${encodeURIComponent(url)}`), 'tai-lieu')
+}
+
+export async function intakeSamples() {
+  return handle(await fetch(`${BASE}/v1/intake/samples`))
+}
+
+export async function intakeSampleFile(sampleId, index, name) {
+  return asFile(await fetch(`${BASE}/v1/intake/samples/${sampleId}/${index}`), name)
+}
+
+// ---------- GreenScan Studio ----------
+
+export async function studioRun(runId) {
+  return handle(await fetch(`${BASE}/v1/studio/${runId}`))
+}
+
+export async function studioDoc(runId, docId) {
+  return handle(await fetch(`${BASE}/v1/studio/${runId}/doc/${docId}`))
+}
+
+export async function studioSave(runId, docId, body) {
+  return handle(
+    await fetch(`${BASE}/v1/studio/${runId}/doc/${docId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    }),
+  )
+}
+
+export async function studioRestore(runId, docId, version) {
+  return handle(
+    await fetch(`${BASE}/v1/studio/${runId}/doc/${docId}/restore`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ version }),
+    }),
+  )
+}
+
+export function studioExportUrl(runId, docId, format, user) {
+  return `${BASE}/v1/studio/${runId}/doc/${docId}/export?format=${format}&user=${encodeURIComponent(user || '')}`
+}

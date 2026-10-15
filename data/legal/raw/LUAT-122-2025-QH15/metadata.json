@@ -1,0 +1,26 @@
+{
+  "document_number": "122/2025/QH15",
+  "title": "Luật Thương mại điện tử",
+  "authority": "Quốc hội (National Assembly)",
+  "issued_date": "2025-12-10",
+  "effective_from": "2026-07-01",
+  "status": "effective",
+  "id": "LUAT-122-2025-QH15",
+  "checked_at": "2026-10-13T12:20:26.233054+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\LUAT-122-2025-QH15\\original.pdf",
+      "sha256": "10eb9faf1384bebaff64c30beccdc4dbd2713dc251f5d1c2714c6514c9b58e44",
+      "bytes": 11962999,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat122.2025.qh15.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/01/luat122.2025.qh15.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:27.299407+00:00",
+      "pages": 28,
+      "text_chars": 0
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 28 pages, 0 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

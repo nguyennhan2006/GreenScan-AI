@@ -1,0 +1,1129 @@
+{
+ "reference": "Claude labels (2 blind passes + adjudication) — agreement, not accuracy",
+ "best": "e5-base",
+ "n_train": 1217,
+ "n_companies": 15,
+ "methods": {
+  "rules (4 lớp đoán)": {
+   "n": 1217,
+   "accuracy": 0.5456039441248973,
+   "macro_f1": 0.35503600729365875,
+   "kappa": 0.2476737166875336,
+   "claim": {
+    "precision": 0.5384615384615384,
+    "recall": 0.703125,
+    "f1": 0.6098741529525654
+   },
+   "per_class": {
+    "NOT_CLAIM": {
+     "precision": 0.7895569620253164,
+     "recall": 0.6488946684005201,
+     "f1": 0.7123483226266952,
+     "support": 769
+    },
+    "QUALITATIVE_CLAIM": {
+     "precision": 0.3333333333333333,
+     "recall": 0.3855421686746988,
+     "f1": 0.35754189944134074,
+     "support": 249
+    },
+    "QUANTIFIED_CLAIM": {
+     "precision": 0.23232323232323232,
+     "recall": 0.711340206185567,
+     "f1": 0.350253807106599,
+     "support": 97
+    },
+    "VAGUE": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 102
+    }
+   },
+   "confusion": [
+    [
+     499,
+     138,
+     132,
+     0
+    ],
+    [
+     77,
+     96,
+     76,
+     0
+    ],
+    [
+     28,
+     0,
+     69,
+     0
+    ],
+    [
+     28,
+     54,
+     20,
+     0
+    ]
+   ],
+   "macro_f1_ci": [
+    0.3273884121040742,
+    0.3849572853208071
+   ],
+   "claim_f1_ci": [
+    0.5576077396657871,
+    0.6586538461538461
+   ],
+   "compare": {
+    "all": {
+     "n": 238,
+     "accuracy": 0.6260504201680672,
+     "macro_f1": 0.41251066050584895,
+     "kappa": 0.2908841351143249,
+     "claim": {
+      "precision": 0.5568181818181818,
+      "recall": 0.5632183908045977,
+      "f1": 0.5599999999999999
+     },
+     "per_class": {
+      "NOT_CLAIM": {
+       "precision": 0.7466666666666667,
+       "recall": 0.7417218543046358,
+       "f1": 0.7441860465116278,
+       "support": 151
+      },
+      "QUALITATIVE_CLAIM": {
+       "precision": 0.4492753623188406,
+       "recall": 0.543859649122807,
+       "f1": 0.49206349206349204,
+       "support": 57
+      },
+      "QUANTIFIED_CLAIM": {
+       "precision": 0.3157894736842105,
+       "recall": 0.6,
+       "f1": 0.41379310344827586,
+       "support": 10
+      },
+      "VAGUE": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1": 0.0,
+       "support": 20
+      }
+     },
+     "confusion": [
+      [
+       112,
+       28,
+       11,
+       0
+      ],
+      [
+       25,
+       31,
+       1,
+       0
+      ],
+      [
+       4,
+       0,
+       6,
+       0
+      ],
+      [
+       9,
+       10,
+       1,
+       0
+      ]
+     ],
+     "macro_f1_ci": [
+      0.33813603322949115,
+      0.47976076478728913
+     ]
+    },
+    "audit": {
+     "n": 66,
+     "accuracy": 0.5151515151515151,
+     "macro_f1": 0.38383759819553553,
+     "kappa": 0.2148698884758364,
+     "claim": {
+      "precision": 0.5294117647058824,
+      "recall": 0.6206896551724138,
+      "f1": 0.5714285714285715
+     },
+     "per_class": {
+      "NOT_CLAIM": {
+       "precision": 0.65625,
+       "recall": 0.5675675675675675,
+       "f1": 0.6086956521739131,
+       "support": 37
+      },
+      "QUALITATIVE_CLAIM": {
+       "precision": 0.38461538461538464,
+       "recall": 0.5882352941176471,
+       "f1": 0.46511627906976744,
+       "support": 17
+      },
+      "QUANTIFIED_CLAIM": {
+       "precision": 0.375,
+       "recall": 0.6,
+       "f1": 0.4615384615384615,
+       "support": 5
+      },
+      "VAGUE": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1": 0.0,
+       "support": 7
+      }
+     },
+     "confusion": [
+      [
+       21,
+       12,
+       4,
+       0
+      ],
+      [
+       7,
+       10,
+       0,
+       0
+      ],
+      [
+       2,
+       0,
+       3,
+       0
+      ],
+      [
+       2,
+       4,
+       1,
+       0
+      ]
+     ],
+     "macro_f1_ci": [
+      0.2564229249011858,
+      0.482267115600449
+     ]
+    },
+    "hpg": {
+     "n": 172,
+     "accuracy": 0.6686046511627907,
+     "macro_f1": 0.416376713751558,
+     "kappa": 0.31712753360729956,
+     "claim": {
+      "precision": 0.5740740740740741,
+      "recall": 0.5344827586206896,
+      "f1": 0.5535714285714285
+     },
+     "per_class": {
+      "NOT_CLAIM": {
+       "precision": 0.7711864406779662,
+       "recall": 0.7982456140350878,
+       "f1": 0.7844827586206897,
+       "support": 114
+      },
+      "QUALITATIVE_CLAIM": {
+       "precision": 0.4883720930232558,
+       "recall": 0.525,
+       "f1": 0.5060240963855422,
+       "support": 40
+      },
+      "QUANTIFIED_CLAIM": {
+       "precision": 0.2727272727272727,
+       "recall": 0.6,
+       "f1": 0.37499999999999994,
+       "support": 5
+      },
+      "VAGUE": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1": 0.0,
+       "support": 13
+      }
+     },
+     "confusion": [
+      [
+       91,
+       16,
+       7,
+       0
+      ],
+      [
+       18,
+       21,
+       1,
+       0
+      ],
+      [
+       2,
+       0,
+       3,
+       0
+      ],
+      [
+       7,
+       6,
+       0,
+       0
+      ]
+     ],
+     "macro_f1_ci": [
+      0.3197331564204629,
+      0.5027780817254501
+     ]
+    }
+   }
+  },
+  "zero-shot": {
+   "n": 1217,
+   "accuracy": 0.447822514379622,
+   "macro_f1": 0.2713017233402803,
+   "kappa": 0.10918240637866806,
+   "claim": {
+    "precision": 0.43828264758497315,
+    "recall": 0.546875,
+    "f1": 0.48659384309831183
+   },
+   "per_class": {
+    "NOT_CLAIM": {
+     "precision": 0.6914893617021277,
+     "recall": 0.5916775032509753,
+     "f1": 0.6377014716187808,
+     "support": 769
+    },
+    "QUALITATIVE_CLAIM": {
+     "precision": 0.42857142857142855,
+     "recall": 0.012048192771084338,
+     "f1": 0.023437500000000003,
+     "support": 249
+    },
+    "QUANTIFIED_CLAIM": {
+     "precision": 0.08333333333333333,
+     "recall": 0.17525773195876287,
+     "f1": 0.11295681063122924,
+     "support": 97
+    },
+    "VAGUE": {
+     "precision": 0.20114942528735633,
+     "recall": 0.6862745098039216,
+     "f1": 0.3111111111111111,
+     "support": 102
+    }
+   },
+   "confusion": [
+    [
+     455,
+     4,
+     155,
+     155
+    ],
+    [
+     118,
+     3,
+     26,
+     102
+    ],
+    [
+     59,
+     0,
+     17,
+     21
+    ],
+    [
+     26,
+     0,
+     6,
+     70
+    ]
+   ],
+   "macro_f1_ci": [
+    0.241669227160894,
+    0.29556669005412445
+   ],
+   "claim_f1_ci": [
+    0.43478260869565216,
+    0.5231431646932185
+   ],
+   "compare": {
+    "all": {
+     "n": 238,
+     "accuracy": 0.36554621848739494,
+     "macro_f1": 0.22692070952940518,
+     "kappa": 0.05639867667909467,
+     "claim": {
+      "precision": 0.38461538461538464,
+      "recall": 0.5747126436781609,
+      "f1": 0.46082949308755766
+     },
+     "per_class": {
+      "NOT_CLAIM": {
+       "precision": 0.6574074074074074,
+       "recall": 0.47019867549668876,
+       "f1": 0.5482625482625483,
+       "support": 151
+      },
+      "QUALITATIVE_CLAIM": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1": 0.0,
+       "support": 57
+      },
+      "QUANTIFIED_CLAIM": {
+       "precision": 0.08571428571428572,
+       "recall": 0.3,
+       "f1": 0.13333333333333333,
+       "support": 10
+      },
+      "VAGUE": {
+       "precision": 0.1368421052631579,
+       "recall": 0.65,
+       "f1": 0.22608695652173913,
+       "support": 20
+      }
+     },
+     "confusion": [
+      [
+       71,
+       0,
+       22,
+       58
+      ],
+      [
+       25,
+       0,
+       9,
+       23
+      ],
+      [
+       6,
+       0,
+       3,
+       1
+      ],
+      [
+       6,
+       0,
+       1,
+       13
+      ]
+     ],
+     "macro_f1_ci": [
+      0.17941810344827586,
+      0.275875466465656
+     ]
+    },
+    "audit": {
+     "n": 66,
+     "accuracy": 0.36363636363636365,
+     "macro_f1": 0.21192781690140847,
+     "kappa": 0.040166204986149597,
+     "claim": {
+      "precision": 0.4375,
+      "recall": 0.4827586206896552,
+      "f1": 0.4590163934426229
+     },
+     "per_class": {
+      "NOT_CLAIM": {
+       "precision": 0.5588235294117647,
+       "recall": 0.5135135135135135,
+       "f1": 0.5352112676056339,
+       "support": 37
+      },
+      "QUALITATIVE_CLAIM": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1": 0.0,
+       "support": 17
+      },
+      "QUANTIFIED_CLAIM": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1": 0.0,
+       "support": 5
+      },
+      "VAGUE": {
+       "precision": 0.2,
+       "recall": 0.7142857142857143,
+       "f1": 0.3125,
+       "support": 7
+      }
+     },
+     "confusion": [
+      [
+       19,
+       0,
+       6,
+       12
+      ],
+      [
+       8,
+       0,
+       1,
+       8
+      ],
+      [
+       5,
+       0,
+       0,
+       0
+      ],
+      [
+       2,
+       0,
+       0,
+       5
+      ]
+     ],
+     "macro_f1_ci": [
+      0.14393939393939392,
+      0.2796703296703297
+     ]
+    },
+    "hpg": {
+     "n": 172,
+     "accuracy": 0.36627906976744184,
+     "macro_f1": 0.23194518887930832,
+     "kappa": 0.06717086277241516,
+     "claim": {
+      "precision": 0.3673469387755102,
+      "recall": 0.6206896551724138,
+      "f1": 0.4615384615384615
+     },
+     "per_class": {
+      "NOT_CLAIM": {
+       "precision": 0.7027027027027027,
+       "recall": 0.45614035087719296,
+       "f1": 0.553191489361702,
+       "support": 114
+      },
+      "QUALITATIVE_CLAIM": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1": 0.0,
+       "support": 40
+      },
+      "QUANTIFIED_CLAIM": {
+       "precision": 0.10714285714285714,
+       "recall": 0.6,
+       "f1": 0.18181818181818182,
+       "support": 5
+      },
+      "VAGUE": {
+       "precision": 0.11428571428571428,
+       "recall": 0.6153846153846154,
+       "f1": 0.19277108433734938,
+       "support": 13
+      }
+     },
+     "confusion": [
+      [
+       52,
+       0,
+       16,
+       46
+      ],
+      [
+       17,
+       0,
+       8,
+       15
+      ],
+      [
+       1,
+       0,
+       3,
+       1
+      ],
+      [
+       4,
+       0,
+       1,
+       8
+      ]
+     ],
+     "macro_f1_ci": [
+      0.17361223176623192,
+      0.29289215686274506
+     ]
+    }
+   }
+  },
+  "e5-base": {
+   "n": 1217,
+   "accuracy": 0.8027937551355793,
+   "macro_f1": 0.7257603559604582,
+   "kappa": 0.6565627347991265,
+   "claim": {
+    "precision": 0.7625482625482626,
+    "recall": 0.8816964285714286,
+    "f1": 0.8178053830227743
+   },
+   "per_class": {
+    "NOT_CLAIM": {
+     "precision": 0.9241773962804005,
+     "recall": 0.8400520156046815,
+     "f1": 0.8801089918256131,
+     "support": 769
+    },
+    "QUALITATIVE_CLAIM": {
+     "precision": 0.6726618705035972,
+     "recall": 0.751004016064257,
+     "f1": 0.7096774193548386,
+     "support": 249
+    },
+    "QUANTIFIED_CLAIM": {
+     "precision": 0.6694214876033058,
+     "recall": 0.8350515463917526,
+     "f1": 0.743119266055046,
+     "support": 97
+    },
+    "VAGUE": {
+     "precision": 0.5294117647058824,
+     "recall": 0.6176470588235294,
+     "f1": 0.5701357466063349,
+     "support": 102
+    }
+   },
+   "confusion": [
+    [
+     646,
+     63,
+     26,
+     34
+    ],
+    [
+     27,
+     187,
+     13,
+     22
+    ],
+    [
+     8,
+     8,
+     81,
+     0
+    ],
+    [
+     18,
+     20,
+     1,
+     63
+    ]
+   ],
+   "macro_f1_ci": [
+    0.6903952848942542,
+    0.7641733796614492
+   ],
+   "claim_f1_ci": [
+    0.7891737891737892,
+    0.8517412935323383
+   ],
+   "compare": {
+    "all": {
+     "n": 238,
+     "accuracy": 0.7857142857142857,
+     "macro_f1": 0.6986061138682107,
+     "kappa": 0.6159832953682611,
+     "claim": {
+      "precision": 0.7425742574257426,
+      "recall": 0.8620689655172413,
+      "f1": 0.7978723404255319
+     },
+     "per_class": {
+      "NOT_CLAIM": {
+       "precision": 0.9124087591240876,
+       "recall": 0.8278145695364238,
+       "f1": 0.8680555555555555,
+       "support": 151
+      },
+      "QUALITATIVE_CLAIM": {
+       "precision": 0.6417910447761194,
+       "recall": 0.7543859649122807,
+       "f1": 0.6935483870967741,
+       "support": 57
+      },
+      "QUANTIFIED_CLAIM": {
+       "precision": 0.6,
+       "recall": 0.9,
+       "f1": 0.7200000000000001,
+       "support": 10
+      },
+      "VAGUE": {
+       "precision": 0.5263157894736842,
+       "recall": 0.5,
+       "f1": 0.5128205128205129,
+       "support": 20
+      }
+     },
+     "confusion": [
+      [
+       125,
+       17,
+       5,
+       4
+      ],
+      [
+       8,
+       43,
+       1,
+       5
+      ],
+      [
+       1,
+       0,
+       9,
+       0
+      ],
+      [
+       3,
+       7,
+       0,
+       10
+      ]
+     ],
+     "macro_f1_ci": [
+      0.6028122200051439,
+      0.7737173386010594
+     ]
+    },
+    "audit": {
+     "n": 66,
+     "accuracy": 0.7575757575757576,
+     "macro_f1": 0.6880460005460005,
+     "kappa": 0.6024096385542168,
+     "claim": {
+      "precision": 0.8064516129032258,
+      "recall": 0.8620689655172413,
+      "f1": 0.8333333333333334
+     },
+     "per_class": {
+      "NOT_CLAIM": {
+       "precision": 0.8857142857142857,
+       "recall": 0.8378378378378378,
+       "f1": 0.8611111111111112,
+       "support": 37
+      },
+      "QUALITATIVE_CLAIM": {
+       "precision": 0.6,
+       "recall": 0.7058823529411765,
+       "f1": 0.6486486486486486,
+       "support": 17
+      },
+      "QUANTIFIED_CLAIM": {
+       "precision": 0.8333333333333334,
+       "recall": 1.0,
+       "f1": 0.9090909090909091,
+       "support": 5
+      },
+      "VAGUE": {
+       "precision": 0.4,
+       "recall": 0.2857142857142857,
+       "f1": 0.3333333333333333,
+       "support": 7
+      }
+     },
+     "confusion": [
+      [
+       31,
+       4,
+       1,
+       1
+      ],
+      [
+       3,
+       12,
+       0,
+       2
+      ],
+      [
+       0,
+       0,
+       5,
+       0
+      ],
+      [
+       1,
+       4,
+       0,
+       2
+      ]
+     ],
+     "macro_f1_ci": [
+      0.5494588744588744,
+      0.8031045751633987
+     ]
+    },
+    "hpg": {
+     "n": 172,
+     "accuracy": 0.7965116279069767,
+     "macro_f1": 0.6867588031381135,
+     "kappa": 0.6201653101142026,
+     "claim": {
+      "precision": 0.7142857142857143,
+      "recall": 0.8620689655172413,
+      "f1": 0.7812500000000001
+     },
+     "per_class": {
+      "NOT_CLAIM": {
+       "precision": 0.9215686274509803,
+       "recall": 0.8245614035087719,
+       "f1": 0.8703703703703703,
+       "support": 114
+      },
+      "QUALITATIVE_CLAIM": {
+       "precision": 0.6595744680851063,
+       "recall": 0.775,
+       "f1": 0.7126436781609196,
+       "support": 40
+      },
+      "QUANTIFIED_CLAIM": {
+       "precision": 0.4444444444444444,
+       "recall": 0.8,
+       "f1": 0.5714285714285714,
+       "support": 5
+      },
+      "VAGUE": {
+       "precision": 0.5714285714285714,
+       "recall": 0.6153846153846154,
+       "f1": 0.5925925925925927,
+       "support": 13
+      }
+     },
+     "confusion": [
+      [
+       94,
+       13,
+       4,
+       3
+      ],
+      [
+       5,
+       31,
+       1,
+       3
+      ],
+      [
+       1,
+       0,
+       4,
+       0
+      ],
+      [
+       2,
+       3,
+       0,
+       8
+      ]
+     ],
+     "macro_f1_ci": [
+      0.5587065389443807,
+      0.7877374264312467
+     ]
+    }
+   }
+  }
+ },
+ "ablations": {
+  "raw": {
+   "macro_f1": 0.7333127605808732,
+   "ci": [
+    0.7060837587522459,
+    0.7529582847439535
+   ],
+   "delta_vs_masked": 0.013825771421787869,
+   "delta_ci": [
+    -0.02037287649337227,
+    0.036495201363522245
+   ]
+  },
+  "pair": {
+   "macro_f1": 0.7076703934334367,
+   "ci": [
+    0.6732246245971157,
+    0.7388980482361484
+   ],
+   "delta_vs_masked": -0.011816595725648638,
+   "delta_ci": [
+    -0.06167889931860426,
+    0.022921860814572925
+   ]
+  }
+ },
+ "learning_curve": {
+  "1.0": 0.7194869891590854,
+  "0.25": 0.6237781859270992,
+  "0.5": 0.6674246759548225,
+  "0.75": 0.7002494357033822
+ },
+ "timings": {
+  "cpu_ms_per_sentence_batch1_4threads": 118.7,
+  "parameters_millions": 278.0
+ },
+ "env": {
+  "torch": "2.11.0+cu128",
+  "gpu": "Tesla T4"
+ },
+ "seed_spread": {
+  "e5-base": {
+   "cv": {
+    "13": 0.7194869891590854,
+    "29": 0.7165006239513353,
+    "47": 0.7056283541710501
+   },
+   "compare": {
+    "13": 0.70819942559898,
+    "29": 0.658570529879026,
+    "47": 0.6956653225806452
+   }
+  }
+ },
+ "paired": {
+  "rules (4 lớp đoán)": {
+   "delta": 0.37072434866679943,
+   "ci": [
+    0.33260421569638565,
+    0.4076068001892994
+   ]
+  },
+  "zero-shot": {
+   "delta": 0.4544586326201779,
+   "ci": [
+    0.41245033728305897,
+    0.49981856632470323
+   ]
+  }
+ },
+ "rules_binary": {
+  "precision": 0.5384615384615384,
+  "recall": 0.703125,
+  "f1": 0.6098741529525654
+ },
+ "majority": {
+  "macro_f1": 0.19360523665659615,
+  "claim_f1": 0.0,
+  "note": "đoán mọi câu là NOT_CLAIM: mức sàn của macro-F1"
+ },
+ "ablation_reference": {
+  "config": "e5-base·masked·s13",
+  "macro_f1": 0.7194869891590854,
+  "ci": [
+   0.6878723684685513,
+   0.7560451607893514
+  ]
+ },
+ "retries": {
+  "e5-base": 0
+ },
+ "version": 3,
+ "slices": {
+  "Ngôn ngữ": {
+   "en": {
+    "n": 372,
+    "macro_f1": 0.6789749102249103,
+    "accuracy": 0.7473118279569892
+   },
+   "vi": {
+    "n": 845,
+    "macro_f1": 0.748508621515433,
+    "accuracy": 0.8272189349112427
+   }
+  },
+  "Cần ngữ cảnh": {
+   "có": {
+    "n": 143,
+    "macro_f1": 0.6738648947951273,
+    "accuracy": 0.7062937062937062
+   },
+   "không": {
+    "n": 1074,
+    "macro_f1": 0.719348845107166,
+    "accuracy": 0.8156424581005587
+   }
+  },
+  "Nhóm lấy mẫu": {
+   "env_fig": {
+    "n": 242,
+    "macro_f1": 0.6611111111111111,
+    "accuracy": 0.8842975206611571
+   },
+   "env_nofig": {
+    "n": 217,
+    "macro_f1": 0.7619239322137874,
+    "accuracy": 0.8294930875576036
+   },
+   "other": {
+    "n": 77,
+    "macro_f1": 1.0,
+    "accuracy": 1.0
+   },
+   "other_fig": {
+    "n": 96,
+    "macro_f1": 0.3244206773618538,
+    "accuracy": 0.9479166666666666
+   },
+   "rule_fig": {
+    "n": 297,
+    "macro_f1": 0.6503172332488324,
+    "accuracy": 0.6902356902356902
+   },
+   "rule_nofig": {
+    "n": 288,
+    "macro_f1": 0.5318383838383838,
+    "accuracy": 0.7291666666666666
+   }
+  }
+ },
+ "errors": [
+  {
+   "id": "ad2f96d17a5190dc",
+   "company": "TRA",
+   "text": "Năm 2020 đánh dấu 20 năm chuyển từ Doanh nghiệp nhà nước sang Doanh nghiệp cổ phần, Traphaco đã khẳng định chiến lược PTBV là sợi chỉ đỏ xuyên suốt quá trình phát triển của công ty, là yếu tố quyết định đưa Traphaco từ doanh nghiệp nhỏ thành doanh nghiệp đứng ",
+   "claude": "VAGUE",
+   "student": "NOT",
+   "p": 1.0,
+   "claude_note": ""
+  },
+  {
+   "id": "1c613d25606c687b",
+   "company": "CTD",
+   "text": "Tầm quan trọng đối với các bên liên quan TIÊU CHUẨN VÀ PHẠM VI Coteccons đã thực hiện Báo cáo Phát triển bền vững mỗi năm một lần, công bố cùng Báo cáo Thường niên.",
+   "claude": "NOT",
+   "student": "QUAL",
+   "p": 0.99,
+   "claude_note": ""
+  },
+  {
+   "id": "43744ad772051eb4",
+   "company": "CTD",
+   "text": "Nhằm mang đến cho các bên liên quan thông tin minh bạch, ghi nhận và xác thực kết quả đã thực hiện được, xây dựng cơ sở tham khảo cho lộ trình hành động tiếp theo, Coteccons thực hiện Báo cáo Phát triển bền vững theo quy trình như sau.",
+   "claude": "NOT",
+   "student": "QUAL",
+   "p": 0.99,
+   "claude_note": ""
+  },
+  {
+   "id": "21a8f8232fd05aef",
+   "company": "CTD",
+   "text": "Dựa trên yêu cầu thực tiễn, HĐQT đặt yêu cầu tiếp tục nâng cao kiến thức về ESG ở tất cả cấp độ, mạnh dạn tiếp thu và cập nhật nhiều kiến thức mới, thúc đẩy hiệu quả thực tế từ việc ứng dụng các tiêu chuẩn/hướng dẫn như “Bộ nguyên tắc QTCT theo thông lệ tốt nh",
+   "claude": "VAGUE",
+   "student": "QUAL",
+   "p": 0.99,
+   "claude_note": ""
+  },
+  {
+   "id": "8204380c233d3866",
+   "company": "VNM",
+   "text": "cạnh tăng trưởng về cả doanh thu lẫn lợi nhuận, Vinamilk còn đảm bảo nguồn cổ tức ổn định và phân bổ nguồn lực cần thiết để thực hiện các cam kết về phát triển bền vững.",
+   "claude": "VAGUE",
+   "student": "NOT",
+   "p": 0.99,
+   "claude_note": ""
+  },
+  {
+   "id": "f350cc80b41e0a16",
+   "company": "PAN",
+   "text": "Tra My – Chief Executive Officer of PAN Group – was nominated and elected as Vice Chairwoman of the VBCSD Executive Board for the 5th term (2025–2028), commitment to fostering a responsible adopts the CSI100 index developed by VBCSD as a benchmark for building",
+   "claude": "QUAL",
+   "student": "NOT",
+   "p": 0.99,
+   "claude_note": ""
+  },
+  {
+   "id": "019f20610c46d52e",
+   "company": "SAB",
+   "text": "Strictly manage and save materials • Improve and apply advanced production • Use green and environmentally friendly • Invest in waste and wastewater • Raise environmental protection awareness among all employees.",
+   "claude": "NOT",
+   "student": "VAGUE",
+   "p": 0.99,
+   "claude_note": ""
+  },
+  {
+   "id": "0bc1c37220c6034f",
+   "company": "PAN",
+   "text": "Annual water savings of approximately 166m3 At the Dien Phu plant – 584 Nha Trang, we have improved our wastewater treatment process.",
+   "claude": "QUAL",
+   "student": "QUANT",
+   "p": 0.99,
+   "claude_note": ""
+  },
+  {
+   "id": "af7a8b8ca7f93b26",
+   "company": "CTD",
+   "text": "52,02% tổng diện tích của dự án đã được phủ xanh bằng các loài cây bản địa chịu hạn, góp phần giảm thiểu tác động đến tài nguyên nước và hỗ trợ bảo vệ môi trường tự nhiên.",
+   "claude": "NOT",
+   "student": "QUANT",
+   "p": 0.99,
+   "claude_note": "C6: phủ xanh 52,02% là của dự án khách hàng LEGO (câu sau)"
+  },
+  {
+   "id": "cddf00d4706280d4",
+   "company": "SAB",
+   "text": "Our goal is to achieve net-zero Greenhouse gases (GHG) emissions We are focused on reducing energy use, improving energy efficiency throughout our operations, increasing our reliance on renewable energy, and adopting high-efficiency technologies.",
+   "claude": "QUAL",
+   "student": "VAGUE",
+   "p": 0.99,
+   "claude_note": ""
+  },
+  {
+   "id": "86f8a0cf9693d3df",
+   "company": "SAB",
+   "text": "Reuse wastewater and warm water The 2020 water consumption experienced a minimal increase of 1% compared to the The water consumed in production • Apply advanced hygiene regimes for • Use heat pumps to limit the discharge of water in pasteurizers.",
+   "claude": "NOT",
+   "student": "QUANT",
+   "p": 0.99,
+   "claude_note": ""
+  },
+  {
+   "id": "fea7972151691210",
+   "company": "PNJ",
+   "text": "ი Nâng tầm các sáng kiến E&S thành chương trình dài hạn, mang tính bền vững.",
+   "claude": "VAGUE",
+   "student": "NOT",
+   "p": 0.99,
+   "claude_note": "Định hướng chung nâng tầm sáng kiến E&S thành chương trình dài hạn, không nêu việc cụ thể"
+  },
+  {
+   "id": "6842d89055763197",
+   "company": "CTD",
+   "text": "Dự án thể thao này còn mang sứ mệnh lớn là lan tỏa rộng rãi ra cộng đồng tinh thần sống hướng về môi trường, thông điệp về phát triển bền vững và gây quỹ cho các chương trình trồng rừng hưởng ứng dự án Việt Nam Xanh.",
+   "claude": "QUAL",
+   "student": "VAGUE",
+   "p": 0.99,
+   "claude_note": ""
+  },
+  {
+   "id": "31ed36f21801c29f",
+   "company": "POW",
+   "text": "chủ động tìm kiếm các cơ hội hợp tác đầu tư hoặc M&A đối với các dự án tiềm năng trong và ngoài nước phù hợp xu thế chuyển dịch năng lượng.",
+   "claude": "VAGUE",
+   "student": "NOT",
+   "p": 0.99,
+   "claude_note": ""
+  }
+ ],
+ "error_pairs": {
+  "NOT→QUAL": 63,
+  "NOT→VAGUE": 34,
+  "QUAL→NOT": 27,
+  "NOT→QUANT": 26,
+  "QUAL→VAGUE": 22,
+  "VAGUE→QUAL": 20,
+  "VAGUE→NOT": 18,
+  "QUAL→QUANT": 13
+ },
+ "class_counts": {
+  "NOT": 769,
+  "QUAL": 249,
+  "QUANT": 97,
+  "VAGUE": 102
+ },
+ "gemma_vs_claude": {
+  "n": 100,
+  "agree": 89,
+  "kappa": 0.6287546405669929
+ }
+}

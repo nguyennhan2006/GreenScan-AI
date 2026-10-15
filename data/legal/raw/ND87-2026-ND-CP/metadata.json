@@ -1,0 +1,26 @@
+{
+  "document_number": "87/2026/NĐ-CP",
+  "title": "Nghị định quy định xử phạt vi phạm hành chính trong lĩnh vực văn hóa và quảng cáo",
+  "authority": "Chính phủ (Government)",
+  "issued_date": "2026-03-27",
+  "effective_from": "2026-05-15",
+  "status": "effective",
+  "id": "ND87-2026-ND-CP",
+  "checked_at": "2026-10-13T12:20:23.346636+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\ND87-2026-ND-CP\\original.pdf",
+      "sha256": "97de84a729954e5ba96e4afe7fe352d8aafe8013cca1b4f439b9369363fa55e6",
+      "bytes": 3885523,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/4/87-ndcp.signed.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/4/87-ndcp.signed.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:24.041821+00:00",
+      "pages": 99,
+      "text_chars": 148
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 99 pages, 148 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

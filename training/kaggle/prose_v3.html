@@ -1,0 +1,63 @@
+<!-- Reading of Kaggle run v3 (13/10/2026). analyze.py --run training/runs/kaggle_t1_v3 --prose training/kaggle/prose_v3.html -->
+<!--CRITIQUE-->
+<p class="lede">v3 khác v2 ở ba điểm:</p>
+<ul>
+  <li>train tăng từ 498 lên 1.217 câu: lượt 2 của Claude, lô b01–b11, thêm 2 công ty, quy ước Q10–Q17;</li>
+  <li>tập so sánh tăng lên 238 câu, gồm lô 1 và một phần các lô 2–12;</li>
+  <li>bỏ mDeBERTa.</li>
+</ul>
+<p class="lede">Mười điểm, từ chắc nhất đến dễ hiểu sai nhất. Số trong ngoặc vuông là khoảng 95% bootstrap.</p>
+<ol>
+  <li><b>Thêm dữ liệu có giúp. Đây là phép đo công bằng duy nhất giữa v2 và v3.</b>
+    <p>Đo trên <b>đúng 498 câu của lượt 1</b>, mỗi câu được đoán bởi mô hình chưa từng thấy công ty của nó: v2 đạt 0,665, v3 đạt 0,726. Hiệu số +0,061 [+0,021; +0,098], bootstrap theo công ty; cận dưới lớn hơn 0.
+      Trên 79 câu lô 1: 0,596 lên 0,649, hiệu số +0,053 [−0,055; +0,164]. Có xu hướng tăng nhưng chưa kết luận được, vì 79 câu là quá ít.</p></li>
+  <li><b>Không được so thẳng 0,726 của v3 với 0,665 của v2.</b>
+    <p>Hai con số tính trên hai tập câu khác nhau (1.217 và 498 câu). Tập so sánh cũng đổi từ 79 lên 238 câu.
+      Muốn nói "tốt hơn bao nhiêu" thì chỉ dùng phép so theo cặp ở điểm 1.</p></li>
+  <li><b>Học trò hơn luật và zero-shot, khoảng cách còn rộng hơn v2.</b>
+    <p>Hiệu số theo cặp: +0,37 [0,33; 0,41] so với luật, +0,45 [0,41; 0,50] so với zero-shot. Ở dạng nhị phân "có phải tuyên bố không": luật F1 0,61 [0,56; 0,66], học trò 0,82 [0,79; 0,85] (precision 0,76, recall 0,88).</p></li>
+  <li><b>Vẫn chỉ là độ khớp với thầy.</b>
+    <p>Mốc so sánh vẫn là nhãn Claude. Trên lượt 2, lượt soát mù đồng ý với người phân xử ở 12/14 câu khó và 6/6 câu soát ngẫu nhiên, nhưng mẫu soát quá nhỏ (chỉ lô b01) để ước lượng tỷ lệ sai của thầy.
+      Gemma và Claude đồng ý 89/100 câu. Độ chính xác thật vẫn chờ gold của người.</p></li>
+  <li><b>Trên công ty chưa thấy (HPG), khoảng cách với kiểm định chéo đã thu hẹp, nhưng chưa chắc chắn.</b>
+    <p>HPG n = 172: 0,69 [0,56; 0,79]. Audit n = 66: 0,69 [0,55; 0,80]. Ở v2, HPG chỉ có 39 câu và không có câu QUANT nào.
+      Khoảng tin cậy vẫn rộng khoảng 0,23, nên chưa đủ để nói học trò chuyển sang công ty mới tốt ngang kiểm định chéo.</p></li>
+  <li><b>Lớp hiếm khá lên rõ, VAGUE vẫn yếu nhất.</b>
+    <p>F1 QUANT tăng từ 0,64 lên 0,74 (97 câu); VAGUE từ 0,47 lên 0,57 (102 câu); QUAL từ 0,67 lên 0,71.
+      Lỗi chủ yếu là đoán dư tuyên bố: NOT bị đoán thành QUAL 63 câu, thành VAGUE 34 câu, thành QUANT 26 câu. Nghĩa là recall cao, precision thấp hơn; với hàng đợi người duyệt, đánh đổi này chấp nhận được.</p></li>
+  <li><b>Đường học vẫn đi lên.</b>
+    <p>Giữ cùng số bước học: 25% / 50% / 75% / 100% dữ liệu được 0,62 / 0,67 / 0,70 / 0,72. Đường thoải dần, nhưng chưa phẳng. Gán tiếp b12–b44 nhiều khả năng còn giúp, mức tăng nhỏ hơn.</p></li>
+  <li><b>Hai thí nghiệm ablation lần này đều không kết luận được.</b>
+    <p>Bỏ che số: Δ +0,014 [−0,02; +0,04]. Ghép câu trước: Δ −0,012 [−0,06; +0,02]. Ở v2, ghép câu trước làm kết quả kém đi có ý nghĩa thống kê (−0,07); với nhiều dữ liệu hơn, tác hại không còn rõ.
+      Đây là ví dụ cho thấy kết luận rút từ 498 câu có thể không đứng vững.</p></li>
+  <li><b>e5-large không chạy được trên GPU T4, đây là giới hạn hạ tầng.</b>
+    <p>Hai lần tràn bộ nhớ (14,5 GB), kể cả với batch 8. Vì vậy chưa trả lời được câu hỏi "mô hình lớn hơn có tốt hơn không".
+      Hướng xử lý: chạy riêng một kernel, bật gradient checkpointing hoặc dùng Adam 8-bit.</p></li>
+  <li><b>Lát cắt cần theo dõi.</b>
+    <p>Tiếng Anh 0,68 so với tiếng Việt 0,75. Câu cần ngữ cảnh 0,67 so với 0,72. Hai nhóm yếu nhất là rule_nofig (0,53) và other_fig (0,32, hầu hết là câu NOT, chỉ vài tuyên bố).
+      Mẫu vẫn phân tầng, dữ liệu train vẫn chỉ từ 15 công ty, nên precision ngoài đời sẽ thấp hơn số ở đây.</p></li>
+</ol>
+<!--PRINCIPLES-->
+<ol>
+  <li><b>Tách ba câu hỏi:</b> nhãn có đáng tin không (người với người, κ); thầy có đúng không (Claude với gold); học trò có đúng không (học trò với gold). Báo cáo này chỉ trả lời câu thứ tư: học trò khớp với thầy đến đâu.</li>
+  <li><b>Đơn vị độc lập là công ty.</b> Chia fold và bootstrap theo công ty. Bootstrap theo câu cho khoảng tin cậy hẹp một cách giả tạo, vì các câu cùng một báo cáo giống nhau.</li>
+  <li><b>Đăng ký trước</b> chỉ số chính, ngưỡng và cách chọn mô hình (<code>configs/measurement_decisions.yaml</code>). Muốn đổi thì ra phiên bản mới, ghi lý do vào DECISIONS_LOG.</li>
+  <li><b>Tập test chỉ chạm một lần.</b> Chọn mô hình bằng kiểm định chéo và dev (audit). HPG gold chỉ dùng cho con số cuối cùng.</li>
+  <li><b>Chỉ nói "hơn" khi cận dưới của hiệu số theo cặp lớn hơn 0.</b> Có nhiều phép so sánh chính thì chỉnh theo Holm.</li>
+  <li><b>Mốc so sánh phải mạnh và công bằng:</b> mức đoán toàn lớp đông nhất (0,20), luật so ở dạng nhị phân, zero-shot, và LLM (thầy).</li>
+  <li><b>Nhiều seed, báo cả độ lệch.</b> Nếu độ lệch giữa các seed lớn hơn khoảng cách giữa hai phương pháp, không kết luận phương pháp nào hơn.</li>
+  <li><b>Tỷ lệ cơ sở:</b> mẫu phân tầng làm lớp tuyên bố đông hơn thực tế. Chỉ số ngoài đời phải tính lại bằng trọng số ngược.</li>
+  <li><b>Báo cả kết quả âm:</b> mDeBERTa sụp; đường học v1 sai cách đo; ghép ngữ cảnh làm kém đi.</li>
+  <li><b>Không vòng tròn:</b> nhãn AI không bao giờ làm gold hay test. Dữ liệu nước ngoài không thay test tiếng Việt.</li>
+  <li><b>Truy vết đủ cho mỗi con số:</b> phiên bản dataset, kernel, seed, codebook (sha), prompt, commit.</li>
+</ol>
+<!--NEXT-->
+<ol>
+  <li><b>Gold của người cho lô 1.</b> Vẫn là việc có tác động lớn nhất. Không có gold thì không có con số nào được gọi là độ chính xác. Có gold rồi, đo được ngay ba thứ: thầy sai bao nhiêu, học trò sai bao nhiêu, và nhãn Claude lượt 1 với lượt 2 khác nhau ra sao.</li>
+  <li><b>Gán tiếp b12–b44</b> (khoảng 66 agent, khoảng 2.100 câu train nữa), nếu nhóm chấp nhận chi phí token.
+    <p>Theo đường học, mức tăng sẽ nhỏ hơn lần trước. Rẻ hơn: chỉ gán các lô giàu câu QUANT và VAGUE, hoặc dùng học chủ động: đưa người các câu học trò không chắc.</p></li>
+  <li><b>Hiệu chỉnh xác suất và từ chối (B6).</b> Lỗi chủ yếu là đoán dư tuyên bố. Một ngưỡng xác suất hợp lý sẽ đẩy câu không chắc sang người duyệt, đổi lại precision cao hơn.</li>
+  <li><b>e5-large trong kernel riêng</b>, có gradient checkpointing. Tốn GPU Kaggle, không tốn token Claude.</li>
+  <li><b>Chốt quy ước Q18–Q24</b> mà người phân xử lượt 2 đề xuất (xem kế hoạch dữ liệu v4). Câu trỏ ngược rồi chỉ đánh giá là nguồn nhầm lẫn VAGUE↔QUAL lớn nhất.</li>
+  <li><b>Đo trên phân phối tự nhiên</b> bằng trọng số ngược. Đây là con số người dùng thật sẽ gặp.</li>
+</ol>

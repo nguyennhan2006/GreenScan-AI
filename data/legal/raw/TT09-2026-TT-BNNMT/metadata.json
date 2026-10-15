@@ -1,0 +1,25 @@
+{
+  "document_number": "09/2026/TT-BNNMT",
+  "title": "Sửa đổi, bổ sung một số điều của Thông tư số 02/2022/TT-BTNMT quy định chi tiết thi hành một số điều của Luật Bảo vệ môi trường (đã sửa bởi Thông tư 07/2025/TT-BTNMT và 07/2025/TT-BNNMT)",
+  "authority": "Bộ Nông nghiệp và Môi trường",
+  "issued_date": "2026-01-29",
+  "effective_from": "2026-01-29",
+  "status": "effective",
+  "id": "TT09-2026-TT-BNNMT",
+  "checked_at": "2026-10-13T12:20:35.435858+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\TT09-2026-TT-BNNMT\\original.pdf",
+      "sha256": "f3077e31f1907ecab02e8736bc5ae97b47f3295b5eb2b1934196e6105aad6b51",
+      "bytes": 1847105,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/02/09-bnnmt.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2026/02/09-bnnmt.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:35.650866+00:00",
+      "pages": 30,
+      "text_chars": 81494
+    }
+  ],
+  "text_acquisition": "ok"
+}

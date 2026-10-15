@@ -1,0 +1,25 @@
+{
+  "document_number": "23/2018/QH14",
+  "title": "Luật Cạnh tranh",
+  "authority": "Quốc hội (National Assembly)",
+  "issued_date": "2018-06-12",
+  "effective_from": "2019-07-01",
+  "status": "effective",
+  "id": "LUAT-23-2018-QH14",
+  "checked_at": "2026-10-13T12:20:24.079380+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\LUAT-23-2018-QH14\\original.pdf",
+      "sha256": "bb204264a03b3b05ee59d8d7e3ee698e4cd42ea4f4f4a0fa40bd63a87b5f2466",
+      "bytes": 718143,
+      "source_url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2018/6/26888/23064-1-2018773-77423-2018-qh14.pdf",
+      "final_url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2018/6/26888/23064-1-2018773-77423-2018-qh14.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf; charset=utf-8",
+      "retrieved_at": "2026-10-13T12:20:24.264463+00:00",
+      "pages": 58,
+      "text_chars": 111110
+    }
+  ],
+  "text_acquisition": "ok"
+}

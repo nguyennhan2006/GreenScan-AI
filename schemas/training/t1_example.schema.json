@@ -1,0 +1,353 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "t1_example.schema.json",
+  "title": "T1Example",
+  "description": "One sentence for the T1 claim detector: model input, target, label provenance and split. Generated from training/t1_data.py FIELDS — edit there, not here.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "[1. Định danh] Khóa câu (sha1 16 ký tự). Dùng để loại câu dev/test khỏi train và nối nhãn các nguồn."
+    },
+    "company_id": {
+      "type": "string",
+      "description": "[1. Định danh] Mã công ty. Chia tập theo công ty: công ty ở test không được có câu nào ở train."
+    },
+    "doc": {
+      "type": "string",
+      "description": "[1. Định danh] Tài liệu gốc (tên file PDF hoặc doc_id của kho)."
+    },
+    "page": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "[1. Định danh] Trang trong tài liệu gốc, để mở lại và kiểm."
+    },
+    "reporting_year": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "[1. Định danh] Năm báo cáo. Dùng để phân tích lệch theo thời gian."
+    },
+    "source_kind": {
+      "type": "string",
+      "description": "[1. Định danh] Cách lấy chữ: kho crawl đã làm sạch, hay parser PDF của sản phẩm. Hai nguồn khác nhau là một phần của độ lệch miền.",
+      "enum": [
+        "crawl_clean",
+        "pdf_parser"
+      ]
+    },
+    "text": {
+      "type": "string",
+      "description": "[2. Đầu vào mô hình] Câu gốc, 25–500 ký tự, cắt đúng như bộ tách câu của sản phẩm.",
+      "minLength": 25,
+      "maxLength": 500
+    },
+    "text_masked": {
+      "type": "string",
+      "description": "[2. Đầu vào mô hình] Câu mà mô hình đọc: số đã thay bằng <E1>…, năm giữ nguyên. Thầy cũng gán trên dạng này."
+    },
+    "mask_version": {
+      "type": "string",
+      "description": "[2. Đầu vào mô hình] Cách che số đã dùng. Train và test phải cùng một cách che."
+    },
+    "prev_text": {
+      "type": "string",
+      "description": "[2. Đầu vào mô hình] Câu liền trước (rỗng nếu không có). Dùng khi huấn luyện dạng cặp câu cho câu thiếu chủ ngữ."
+    },
+    "next_text": {
+      "type": "string",
+      "description": "[2. Đầu vào mô hình] Câu liền sau (rỗng nếu không có)."
+    },
+    "lang": {
+      "type": "string",
+      "description": "[2. Đầu vào mô hình] Ngôn ngữ câu. Báo cáo kết quả tách theo ngôn ngữ.",
+      "enum": [
+        "vi",
+        "en"
+      ]
+    },
+    "rule_label": {
+      "type": "integer",
+      "description": "[3. Đặc trưng phụ] 1 nếu bộ trích bằng luật giữ câu này. Là mốc so sánh (baseline), không phải nhãn.",
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "lexicon_hit": {
+      "type": "integer",
+      "description": "[3. Đặc trưng phụ] 1 nếu câu có thuật ngữ môi trường trong taxonomy. Dùng để phân tầng khi lấy mẫu.",
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "has_figure": {
+      "type": "integer",
+      "description": "[3. Đặc trưng phụ] 1 nếu câu có số (không tính năm).",
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "stratum": {
+      "type": "string",
+      "description": "[3. Đặc trưng phụ] Nhóm lấy mẫu của câu. Cần để tính lại tỷ lệ đúng khi mẫu không đều."
+    },
+    "label": {
+      "type": "string",
+      "description": "[4. Nhãn] Đích của T1: QUANTIFIED_CLAIM · QUALITATIVE_CLAIM · VAGUE · NOT_CLAIM. UNSURE không bao giờ vào dữ liệu.",
+      "enum": [
+        "QUANTIFIED_CLAIM",
+        "QUALITATIVE_CLAIM",
+        "VAGUE",
+        "NOT_CLAIM"
+      ]
+    },
+    "is_claim": {
+      "type": "boolean",
+      "description": "[4. Nhãn] label ≠ NOT_CLAIM. Đích phụ: tuyên bố hay không."
+    },
+    "topic": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "[4. Nhãn] Chủ đề (8 loại claim_type của sản phẩm). Bắt buộc với câu gold là tuyên bố; đo độ đúng loại tuyên bố của sản phẩm.",
+      "enum": [
+        "emissions_reduction",
+        "renewable_energy",
+        "resource_efficiency",
+        "waste_and_circularity",
+        "green_finance",
+        "biodiversity",
+        "esg_process_integration",
+        "generic_sustainability",
+        null
+      ]
+    },
+    "why_not": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "[4. Nhãn] Vì sao không phải tuyên bố. Dùng để phân tích lỗi và sửa bộ lọc.",
+      "enum": [
+        "table_heading",
+        "broken",
+        "other_org",
+        "general_knowledge",
+        "non_env",
+        "other",
+        null
+      ]
+    },
+    "label_source": {
+      "type": "string",
+      "description": "[5. Nguồn và chất lượng nhãn] teacher, hoặc gold_consensus (qua họp), gold_agree (mọi người cùng nhãn), gold_single (một người).",
+      "enum": [
+        "teacher",
+        "gold_consensus",
+        "gold_agree",
+        "gold_single"
+      ]
+    },
+    "labelers": {
+      "type": "array",
+      "description": "[5. Nguồn và chất lượng nhãn] Người gán. Gold phải có ít nhất một người.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "codebook_version": {
+      "type": "string",
+      "description": "[5. Nguồn và chất lượng nhãn] Phiên bản bộ quy tắc lúc gán (codebook v1.x)."
+    },
+    "confidence_min": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "[5. Nguồn và chất lượng nhãn] Độ chắc thấp nhất trong các người gán (1–3). Có thể dùng làm trọng số.",
+      "enum": [
+        1,
+        2,
+        3,
+        null
+      ]
+    },
+    "needs_context": {
+      "type": "boolean",
+      "description": "[5. Nguồn và chất lượng nhãn] Có người phải đọc câu trước/sau mới quyết được. Đo riêng nhóm này."
+    },
+    "ai_assisted": {
+      "type": "boolean",
+      "description": "[5. Nguồn và chất lượng nhãn] Luôn false: câu có AI hỗ trợ không được vào gold.",
+      "enum": [
+        false
+      ]
+    },
+    "flags": {
+      "type": "array",
+      "description": "[5. Nguồn và chất lượng nhãn] OVERCLAIM / INCONSISTENCY / FUTURE: tín hiệu tẩy xanh, dữ liệu cho bước sau.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "teacher_model": {
+      "type": "string",
+      "description": "[5. Nguồn và chất lượng nhãn] Mô hình thầy (vd gemma-4-31B-it)."
+    },
+    "prompt_version": {
+      "type": "string",
+      "description": "[5. Nguồn và chất lượng nhãn] Phiên bản prompt thầy (teacher-claim-v1, v2…). Phải khớp codebook đang dùng cho gold."
+    },
+    "teacher_runs": {
+      "type": "integer",
+      "description": "[5. Nguồn và chất lượng nhãn] Số lần thầy gán câu này (cần ≥ 3, hoặc 2 lượt kèm `teacher_review`)."
+    },
+    "teacher_agreement": {
+      "type": "number",
+      "description": "[5. Nguồn và chất lượng nhãn] Tỷ lệ lần gán trùng nhãn cuối (0–1). Không có `teacher_review` thì chỉ huấn luyện câu ≥ 0,67.",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "teacher_review": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "[5. Nguồn và chất lượng nhãn] Claude: hai lượt độc lập trùng nhau (agree), hoặc khác nhau / đáng ngờ nên được đọc lại và quyết (adjudicated).",
+      "enum": [
+        "agree",
+        "adjudicated",
+        null
+      ]
+    },
+    "split": {
+      "type": "string",
+      "description": "[6. Chia tập] train = nhãn thầy · dev = gold kiểm định · test = gold HPG. Không còn review/unassigned.",
+      "enum": [
+        "train",
+        "dev",
+        "test"
+      ]
+    },
+    "set": {
+      "type": "string",
+      "description": "[6. Chia tập] Bộ dữ liệu gốc của câu.",
+      "enum": [
+        "corpus",
+        "audit",
+        "hpg"
+      ]
+    },
+    "contract_version": {
+      "type": "string",
+      "description": "[6. Chia tập] Phiên bản khung này.",
+      "enum": [
+        "t1-example-v1"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "company_id",
+    "doc",
+    "source_kind",
+    "text",
+    "text_masked",
+    "mask_version",
+    "prev_text",
+    "next_text",
+    "lang",
+    "rule_label",
+    "lexicon_hit",
+    "has_figure",
+    "stratum",
+    "label",
+    "is_claim",
+    "label_source",
+    "split",
+    "set",
+    "contract_version"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "label_source": {
+            "const": "teacher"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "teacher_model",
+          "prompt_version",
+          "teacher_runs",
+          "teacher_agreement"
+        ]
+      },
+      "else": {
+        "required": [
+          "labelers",
+          "codebook_version",
+          "confidence_min",
+          "needs_context",
+          "ai_assisted"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "label_source": {
+            "enum": [
+              "gold_consensus",
+              "gold_agree",
+              "gold_single"
+            ]
+          },
+          "is_claim": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "topic": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "label_source": {
+            "enum": [
+              "gold_consensus",
+              "gold_agree",
+              "gold_single"
+            ]
+          },
+          "label": {
+            "const": "NOT_CLAIM"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "why_not": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
+}

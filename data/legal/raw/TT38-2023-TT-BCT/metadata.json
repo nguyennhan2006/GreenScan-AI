@@ -1,0 +1,26 @@
+{
+  "document_number": "38/2023/TT-BCT",
+  "title": "Quy định kỹ thuật đo đạc, báo cáo, thẩm định giảm nhẹ phát thải khí nhà kính và kiểm kê khí nhà kính ngành Công Thương",
+  "authority": "Bộ Công Thương",
+  "issued_date": "2023-12-27",
+  "effective_from": "2024-02-11",
+  "status": "effective",
+  "id": "TT38-2023-TT-BCT",
+  "checked_at": "2026-10-13T12:20:31.056078+00:00",
+  "artifacts": [
+    {
+      "path": "data\\legal\\raw\\TT38-2023-TT-BCT\\original.pdf",
+      "sha256": "2be48662ef106d68fccc14b7d2c0273e6271af8760d6ee06d4b77d8c6a7be4ce",
+      "bytes": 13201432,
+      "source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2024/01/38-bct.pdf",
+      "final_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2024/01/38-bct.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "retrieved_at": "2026-10-13T12:20:32.277744+00:00",
+      "pages": 40,
+      "text_chars": 109
+    }
+  ],
+  "text_acquisition": "scanned_no_text",
+  "note": "Signed original is a scan: 40 pages, 109 characters of text. Needs OCR with the `vie` traineddata before any clause can be cited."
+}

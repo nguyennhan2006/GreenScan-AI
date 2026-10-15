@@ -1,0 +1,67 @@
+<!-- Reading of Kaggle run v2 (13/10/2026). Inlined by: analyze.py --run training/runs/kaggle_t1_v2 --prose training/kaggle/prose_v2.html -->
+<!--CRITIQUE-->
+<p class="lede">Mười điểm, từ chắc nhất đến dễ hiểu sai nhất. Số trong ngoặc vuông là khoảng 95% bootstrap theo công ty.</p>
+<ol>
+  <li><b>Học trò hơn luật và zero-shot: đây là kết luận vững nhất.</b>
+    <p>So theo cặp trên cùng câu: e5 hơn luật hiện tại +0,29 [0,25; 0,34] và hơn zero-shot +0,37 [0,31; 0,43]. Cận dưới đều cách xa 0.
+      So công bằng hơn cho luật (chỉ hỏi "có phải tuyên bố không", vì luật không có lớp VAGUE): luật F1 0,61 [0,54; 0,68], học trò 0,77 [0,72; 0,82].
+      Vẫn phải nhớ: thước đo là nhãn Claude. Luật có thể bị trừ điểm ở những chỗ Claude theo quy ước Q10–Q17 mà luật không được viết theo.</p></li>
+  <li><b>Đây là độ khớp với thầy, chưa phải độ chính xác.</b>
+    <p>Macro-F1 0,665 [0,62; 0,71] cho biết e5 bắt chước nhãn Claude tốt đến đâu. Bản thân Claude cũng chưa chắc đúng: so với thầy thứ hai (gemma), hai bên chỉ đồng ý 89/100 câu (κ 0,63).
+      Độ chính xác thật chỉ được nói ra sau khi có gold của người (κ ≥ 0,70 và ≥ 60 câu, ngưỡng đăng ký ngày 29/09). Con số đó có thể thấp hơn.</p></li>
+  <li><b>Trên công ty chưa thấy, con số giảm và khoảng tin cậy rất rộng.</b>
+    <p>HPG lô 1 (n = 39): 0,51 [0,33; 0,64]. Audit lô 1 (n = 40): 0,64 [0,51; 0,77]. Trong 39 câu HPG không có câu nào Claude gán QUANT, nên macro-F1 ở đây chỉ tính trên 3 lớp.
+      Khoảng tin cậy rộng hơn 0,3, nên lô này <b>không</b> dùng để chọn mô hình. Nó chỉ cho biết mức giảm khi sang công ty mới là có thật, cần đo lại khi đủ gold.</p></li>
+  <li><b>Chỉ đổi seed, kết quả đã lệch nhau nhiều như khi đổi phương pháp.</b>
+    <p>Kiểm định chéo theo từng seed: 0,64 đến 0,67. Trên tập so sánh: 0,50 đến 0,62. Chạy một seed duy nhất không đủ để nói A hơn B.
+      Vì vậy từ v2, số báo cáo là trung bình xác suất của 3 seed, và độ lệch giữa các seed được ghi kèm.</p></li>
+  <li><b>mDeBERTa-xnli sụp ở mọi seed và mọi lần chạy lại.</b>
+    <p>Chốt chặn đã huấn luyện lại 18 lần (lr 5e-5, 20 epoch). Lần nào mô hình cũng đoán toàn NOT_CLAIM, được 0,20, đúng bằng mức "đoán toàn lớp đông nhất".
+      Kết luận được: cách tinh chỉnh này không dùng được với khoảng 400 câu mỗi fold. Không được kết luận "mDeBERTa kém hơn e5".
+      Nghi vấn chính: đầu phân loại mới thay đầu NLI có sẵn; thiếu warmup; 66% câu là NOT_CLAIM.</p></li>
+  <li><b>Thêm dữ liệu vẫn còn giúp, nhưng mức tăng nhỏ dần.</b>
+    <p>Giữ cùng số bước học, dùng 25% / 50% / 75% / 100% dữ liệu được 0,45 / 0,60 / 0,64 / 0,66. Đường cong đi lên nhưng thoải dần. Mỗi điểm chỉ có 1 seed, nên sai số khoảng ±0,02–0,03.
+      Đường học của v1 (0,20 / 0,31 / 0,58) là sai cách đo: phần dữ liệu nhỏ được học ít bước hơn. Lỗi này đã sửa ở v2.</p></li>
+  <li><b>Ngữ cảnh: ghép thẳng câu trước vào làm kết quả kém đi, nhưng câu cần ngữ cảnh vẫn là câu khó.</b>
+    <p>Ghép câu trước thành cặp câu: Δ −0,07 [−0,14; −0,01], kém đi rõ. Bỏ che số: Δ −0,03 [−0,07; +0,02], chưa kết luận được.
+      Nhóm câu Claude đánh dấu "cần ngữ cảnh" chỉ được 0,59, so với 0,65 ở nhóm còn lại. Vấn đề nằm ở cách đưa ngữ cảnh vào, chưa phải ngữ cảnh vô ích.</p></li>
+  <li><b>Lớp hiếm vẫn yếu, và lỗi tập trung ở một ranh giới.</b>
+    <p>F1 lớp VAGUE 0,47 (39 câu), lớp QUANT 0,64 (38 câu). Cặp nhầm nhiều nhất là NOT↔QUAL (40 câu); tiếp theo học trò đọc sót câu VAGUE thành NOT (13 câu). Câu tiếng Anh (0,62) kém hơn câu tiếng Việt (0,68).</p></li>
+  <li><b>Mẫu không giống phân phối thật.</b>
+    <p>498 câu được lấy phân tầng, cố ý dồn vào câu luật bắt được và câu có số; dữ liệu chỉ từ 13 công ty; 34% là tuyên bố.
+      Trong một báo cáo thật, tỷ lệ tuyên bố thấp hơn nhiều, nên precision ngoài đời sẽ thấp hơn số ở đây. Cần đo trên phân phối tự nhiên bằng trọng số ngược của xác suất lấy mẫu.</p></li>
+  <li><b>Kết quả tái lập được.</b>
+    <p>Cấu hình e5 giữ nguyên từ v1 sang v2, và kết quả trên tập so sánh ra đúng cùng số (0,596). Kết quả này cũng đáp lại thắc mắc "đổi máy có ra số khác không".
+      Kiểm định chéo tăng từ 0,657 lên 0,665 chỉ vì v2 lấy trung bình 3 seed, không vì mô hình tốt hơn.</p></li>
+</ol>
+<!--PRINCIPLES-->
+<ol>
+  <li><b>Tách ba câu hỏi:</b> nhãn có đáng tin không (người với người, κ); thầy có đúng không (Claude với gold); học trò có đúng không (học trò với gold). Báo cáo này chỉ trả lời câu thứ tư: học trò khớp với thầy đến đâu.</li>
+  <li><b>Đơn vị độc lập là công ty.</b> Chia fold và bootstrap theo công ty. Bootstrap theo câu cho khoảng tin cậy hẹp một cách giả tạo, vì các câu cùng một báo cáo giống nhau.</li>
+  <li><b>Đăng ký trước</b> chỉ số chính, ngưỡng và cách chọn mô hình (<code>configs/measurement_decisions.yaml</code>). Muốn đổi thì ra phiên bản mới, ghi lý do vào DECISIONS_LOG.</li>
+  <li><b>Tập test chỉ chạm một lần.</b> Chọn mô hình bằng kiểm định chéo và dev (audit). HPG gold chỉ dùng cho con số cuối cùng.</li>
+  <li><b>Chỉ nói "hơn" khi cận dưới của hiệu số theo cặp lớn hơn 0.</b> Có nhiều phép so sánh chính thì chỉnh theo Holm.</li>
+  <li><b>Mốc so sánh phải mạnh và công bằng:</b> mức đoán toàn lớp đông nhất (0,20), luật so ở dạng nhị phân, zero-shot, và LLM (thầy).</li>
+  <li><b>Nhiều seed, báo cả độ lệch.</b> Nếu độ lệch giữa các seed lớn hơn khoảng cách giữa hai phương pháp, không kết luận phương pháp nào hơn.</li>
+  <li><b>Tỷ lệ cơ sở:</b> mẫu phân tầng làm lớp tuyên bố đông hơn thực tế. Chỉ số ngoài đời phải tính lại bằng trọng số ngược.</li>
+  <li><b>Báo cả kết quả âm:</b> mDeBERTa sụp; đường học v1 sai cách đo; ghép ngữ cảnh làm kém đi.</li>
+  <li><b>Không vòng tròn:</b> nhãn AI không bao giờ làm gold hay test. Dữ liệu nước ngoài không thay test tiếng Việt.</li>
+  <li><b>Truy vết đủ cho mỗi con số:</b> phiên bản dataset, kernel, seed, codebook (sha), prompt, commit.</li>
+</ol>
+<!--NEXT-->
+<ol>
+  <li><b>Gold lô 1 của 3 người: tác động lớn nhất.</b>
+    <p>Không có gold thì không có con số nào được gọi là độ chính xác. Khi có gold sẽ đo ngay: κ giữa người; Claude so với gold (A2), để biết thầy sai bao nhiêu; học trò so với gold.</p></li>
+  <li><b>Gán nhãn lượt 2 (đang chạy) rồi huấn luyện v3.</b>
+    <p>Thêm 2.825 câu train từ 19 công ty, ưu tiên nhóm câu có QUANT và VAGUE, và 675 câu so sánh cho lô 2–12. Quy trình mỗi lô: 2 lượt gán mù, đọc lại các câu bất đồng, một lượt soát mù thứ tư; câu bị soát mù phản bác thì không đưa vào train.
+      Theo đường học, mức tăng hợp lý là vài điểm phần trăm, không chắc chắn. v3 giữ nguyên giao thức để so được với v2.</p></li>
+  <li><b>Sửa hoặc thay mDeBERTa.</b>
+    <p>Hướng 1: lr 1e-5–2e-5, warmup 10%, trọng số lớp. Hướng 2: tinh chỉnh kiểu NLI, giữ đầu entailment có sẵn ("Câu này là tuyên bố môi trường có số liệu của doanh nghiệp").
+      Hướng 3: thử multilingual-e5-large, đổi lại độ trễ CPU (hiện 111 ms/câu với 278 triệu tham số).</p></li>
+  <li><b>Hiệu chỉnh xác suất và cho phép từ chối (B6).</b>
+    <p>Câu học trò không chắc thì chuyển cho người. Báo đường "tỷ lệ tự xử lý" so với độ chính xác. Với BGK, cách làm này an toàn hơn một con số F1 duy nhất.</p></li>
+  <li><b>Đưa ngữ cảnh vào đúng cách.</b>
+    <p>Chỉ thêm câu trước khi câu đang xét thiếu chủ ngữ ("Đây là", "Biện pháp này"), hoặc đưa vào như một đặc trưng riêng thay vì ghép thô. Đo lại trên nhóm "cần ngữ cảnh".</p></li>
+  <li><b>Đo trên phân phối tự nhiên</b> bằng trọng số ngược, kèm precision ở các ngưỡng khác nhau. Đây là con số mà người dùng thật sẽ gặp.</li>
+  <li><b>Mở rộng công ty và ngành</b> theo kế hoạch dữ liệu v4 (pháp lý mới theo ngành, đang soạn). Mục tiêu: lát cắt theo ngành trong báo cáo có đủ câu để có nghĩa.</li>
+</ol>
