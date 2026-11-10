@@ -1,0 +1,11 @@
+# Quy ước nhận diện tuyên bố (T1) theo bộ quy tắc gán nhãn v1.1 (13/10/2026).
+# Mô hình chỉ đọc thuộc tính của câu; tệp này quyết định thuộc tính thành nhãn
+# (src/quantum_gw/domain/claim_attributes.py). Đổi quy ước là đổi tệp này và tăng
+# policy_id, không phải huấn luyện lại. Khoá lạ làm cả tệp bị từ chối.
+policy_id: codebook_v1_1
+year_only_target: QUALITATIVE_CLAIM   # Q6: mục tiêu chỉ có năm ("trung hòa carbon vào 2050")
+count_is_quantity: true               # Q10: số đếm kết quả môi trường ("26 nhà máy đạt ISO 14001")
+esg_process_is_claim: true            # Q12 và phần làm rõ: quy trình ESG của chính DN (nhóm người chưa chốt)
+award_is_claim: true                  # Q11: giải thưởng, xếp hạng bền vững của DN
+compliance_is_claim: true             # Q17: khẳng định tuân thủ quy định môi trường
+client_project_is_claim: false        # Q15: đặc điểm xanh của dự án khách hàng, DN chỉ là nhà thầu

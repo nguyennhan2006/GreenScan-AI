@@ -21,6 +21,7 @@ from datetime import UTC, datetime
 from html import escape
 
 from quantum_gw.domain.models import AnalysisResult
+from quantum_gw.legal.org_pack import NOTICE_VI, OUTCOME_VI, PACK_STATUS_VI, flagged, rule_counts
 
 STATUS_VI = {
     "SUPPORTED": "Được ủng hộ",
@@ -31,14 +32,34 @@ STATUS_VI = {
 }
 RELATION_VI = {"SUPPORTS": "ủng hộ", "CONTRADICTS": "mâu thuẫn", "PARTIAL": "một phần", "CONTEXT": "bối cảnh"}
 DECISION_VI = {
-    "CONFIRM": "Xác nhận kết quả AI",
-    "OVERRIDE": "Sửa kết quả AI",
+    "CONFIRM": "Xác nhận gợi ý của máy",
+    "OVERRIDE": "Sửa gợi ý của máy",
     "ABSTAIN": "Chưa đủ căn cứ để quyết",
     "REQUEST_EVIDENCE": "Yêu cầu thêm tài liệu",
     "REOPEN": "Mở lại",
 }
+# Why a reviewer overrode the machine (storage/reviews.py OVERRIDE_REASONS).
+OVERRIDE_REASON_VI = {
+    "MODEL_MISREAD": "máy đọc sai",
+    "EVIDENCE_MISSED": "máy bỏ sót bằng chứng",
+    "RULE_NOT_APPLICABLE": "quy tắc không áp dụng cho trường hợp này",
+    "RULE_WRONG": "quy tắc cần sửa",
+}
+
+
+def _decision_text(record: dict) -> str:
+    """A decision in the reviewer's words: what, the replacing verdict, and why."""
+    text = DECISION_VI.get(record.get("decision", ""), record.get("decision", ""))
+    verdict = record.get("reviewer_status")
+    if verdict:
+        text += f" → {STATUS_VI.get(verdict, verdict)}"
+    reason = record.get("override_reason")
+    if reason:
+        text += f" (lý do: {OVERRIDE_REASON_VI.get(reason, reason)}"
+        text += f", quy tắc {record['rule_ref']})" if record.get("rule_ref") else ")"
+    return text
 ROLE_VI = {"claim_source": "Nguồn tuyên bố", "evidence": "Chứng cứ", "reference": "Tham chiếu"}
-CHECK_VI = {"cross_foot": "Cộng lại bảng (cross-foot)", "cross_document": "Đối chiếu giữa tài liệu"}
+CHECK_VI = {"cross_foot": "Cộng lại bảng", "cross_document": "Đối chiếu giữa tài liệu"}
 # The quality gates in the reviewer's language; G7's detail is generated per run
 # and kept as the pipeline wrote it.
 GATE_VI = {
@@ -49,7 +70,7 @@ GATE_VI = {
     "G4": ("Trích dẫn", "mọi bằng chứng quyết định phải có vị trí trong tài liệu."),
     "G5": ("Soát rủi ro", "có trường hợp rủi ro cao, xung đột pháp lý hoặc kết luận do mô hình đề xuất — "
                           "chỉ phát hành sau khi người soát xét phê duyệt."),
-    "G6": ("Tái lập", "manifest phải ghi cấu hình, mã băm đầu vào và kế hoạch chạy."),
+    "G6": ("Tái lập", "phiếu tái lập phải ghi cấu hình, mã băm đầu vào và kế hoạch chạy."),
     "G7": ("Đối chiếu pháp lý", None),
 }
 
@@ -117,7 +138,7 @@ def render_workpaper(
         "<div class='toolbar'><button onclick='window.print()'>In / Lưu PDF</button> "
         "<span class='muted'>Chọn “Lưu dưới dạng PDF” trong hộp thoại in.</span></div>",
         "<h1>GIẤY LÀM VIỆC — Sàng lọc tuyên bố môi trường</h1>",
-        f"<p class='muted'>GreenScan AI · phiên <code>{_e(result.run_id)}</code> · lập lúc {_e(created)}</p>",
+        f"<p class='muted'>GreenScan · phiên <code>{_e(result.run_id)}</code> · lập lúc {_e(created)}</p>",
         "<table class='meta'>",
         f"<tr><td>Đơn vị được xem xét</td><td><b>{_e(entity)}</b></td></tr>",
         f"<tr><td>Tên phiên</td><td>{_e(label or '—')}</td></tr>",
@@ -158,7 +179,7 @@ def render_workpaper(
     out.append(f"<li>Thực hiện {len(result.figure_checks)} thủ tục trên số liệu công bố (cộng lại bảng, đối chiếu giữa tài liệu).</li>")
     out.append("<li>Đối chiếu văn bản pháp lý theo ngày hiệu lực; xếp thứ tự soát theo chính sách ưu tiên.</li></ul>")
     out.append("<table class='meta'>"
-               f"<tr><td>Phiên bản pipeline · cấu hình</td><td><code>{_e(manifest.pipeline_version)}</code> · "
+               f"<tr><td>Phiên bản quy trình · cấu hình</td><td><code>{_e(manifest.pipeline_version)}</code> · "
                f"<code>{_e(manifest.config_hash[:12])}</code></td></tr>"
                f"<tr><td>Bộ quy tắc pháp lý</td><td><code>{_e(manifest.rule_pack_version)}</code></td></tr>"
                f"<tr><td>Chính sách ưu tiên</td><td><code>{_e(queue[0].get('policy_version') if queue else '—')}</code></td></tr>"
@@ -181,6 +202,10 @@ def render_workpaper(
             out.append(f"<tr><td>{_e(CHECK_VI.get(check.kind, check.kind))}</td><td>{_e(outcome)}</td>"
                        f"<td><code>{_e(check.calculation)}</code></td><td>{_e(check.note)}</td></tr>")
         out.append("</table>")
+
+    # the organisation's own rules: only when a pack was configured for the run
+    if result.org_findings is not None:
+        out.append(_org_section(result, claims))
 
     # 5. not examined
     out.append("<h2>5. Những gì KHÔNG được kiểm và vì sao</h2><ul>")
@@ -206,10 +231,7 @@ def render_workpaper(
         for record in sorted(decisions, key=lambda r: r.get("decided_at", "")):
             claim = claims.get(record.get("claim_id", ""))
             what = (claim.text[:90] + "…") if claim and len(claim.text) > 90 else (claim.text if claim else record.get("claim_id", ""))
-            verdict = record.get("reviewer_status")
-            decision = DECISION_VI.get(record.get("decision", ""), record.get("decision", ""))
-            if verdict:
-                decision += f" → {STATUS_VI.get(verdict, verdict)}"
+            decision = _decision_text(record)
             out.append(f"<tr><td class='num'>{_e(str(record.get('decided_at', ''))[:16].replace('T', ' '))}</td>"
                        f"<td>{_e(record.get('reviewer'))}</td><td>{_e(what)}</td><td>{_e(decision)}</td>"
                        f"<td>{_e(record.get('comment'))}</td></tr>")
@@ -226,6 +248,45 @@ def render_workpaper(
         out.append("<script>window.addEventListener('load', () => setTimeout(() => window.print(), 300))</script>")
     out.append("</body></html>")
     return "".join(out)
+
+
+ORG_ROWS = 150  # the full list is in result.json (`org_findings`)
+
+
+def _org_section(result: AnalysisResult, claims: dict) -> str:
+    """VIOLATION / NEEDS_REVIEW findings of the organisation's rules, beside the verdict, never part of it."""
+    parts =["<h2>Quy tắc nội bộ (tính năng thử nghiệm)</h2>", f"<p class='warn'><b>{_e(NOTICE_VI)}</b> "
+             "Mỗi dòng dưới đây là một điểm người soát cần xem theo chính sách nội bộ.</p>",
+             "<table><tr><th>Tổ chức</th><th>Phiên bản</th><th>Trạng thái</th><th>Quy tắc</th><th>SHA-256 (rút gọn)</th></tr>"]
+    for pack in result.manifest.org_packs or []:
+        errors = "".join(f"<br><span class='muted'>{_e(err)}</span>" for err in pack.get("errors") or [])
+        parts.append(f"<tr><td>{_e(pack.get('org_name') or pack.get('org_id') or pack.get('path'))}</td>"
+                     f"<td>{_e(pack.get('pack_version') or '—')}</td>"
+                     f"<td>{_e(PACK_STATUS_VI.get(pack.get('status'), pack.get('status')))}{errors}</td>"
+                     f"<td class='num'>{_e(pack.get('n_rules'))}</td><td><code>{_e((pack.get('sha256') or '')[:16])}</code></td></tr>")
+    parts.append("</table>")
+    counts = [row for row in rule_counts(result.org_findings) if row["counts"]["VIOLATION"] or row["counts"]["NEEDS_REVIEW"]]
+    items = flagged(result.org_findings)
+    if not items:
+        parts.append("<p class='muted'>Không có phát hiện nào cần xem theo quy tắc nội bộ.</p>")
+        return "".join(parts)
+    parts.append("<table><tr><th>Quy tắc</th><th>Không đạt</th><th>Cần người xem</th></tr>")
+    for row in counts:
+        parts.append(f"<tr><td><code>{_e(row['rule_id'])}</code> {_e(row['title'])}</td>"
+                     f"<td class='num'>{row['counts']['VIOLATION']}</td><td class='num'>{row['counts']['NEEDS_REVIEW']}</td></tr>")
+    parts.append("</table><table><tr><th>Tuyên bố</th><th>Quy tắc</th><th>Kết quả</th><th>Điều khoản</th><th>Lý do</th></tr>")
+    for finding in items[:ORG_ROWS]:
+        claim = claims.get(finding.get("claim_id"))
+        text = (claim.text[:140] + ("…" if len(claim.text) > 140 else "")) if claim else finding.get("claim_id")
+        page = f" <span class='muted'>(tr. {_e(claim.source_page)})</span>" if claim and claim.source_page is not None else ""
+        parts.append(f"<tr><td>“{_e(text)}”{page}</td><td><code>{_e(finding.get('rule_id'))}</code> {_e(finding.get('title'))}</td>"
+                     f"<td>{_e(OUTCOME_VI.get(finding.get('outcome'), finding.get('outcome')))} · {_e(finding.get('severity'))}</td>"
+                     f"<td>{_e(', '.join(finding.get('source_clauses') or []) or finding.get('source_document'))}</td>"
+                     f"<td>{_e(finding.get('reason'))}</td></tr>")
+    parts.append("</table>")
+    if len(items) > ORG_ROWS:
+        parts.append(f"<p class='muted'>Còn {len(items) - ORG_ROWS} phát hiện nữa trong tệp kết quả đầy đủ (result.json).</p>")
+    return "".join(parts)
 
 
 def _queue_item(item, verifications, claims, figures, legal, latest) -> str:
@@ -274,10 +335,7 @@ def _queue_item(item, verifications, claims, figures, legal, latest) -> str:
     parts.append(f"<p class='muted'>Vì sao mở trước:</p><ul>{reasons}</ul>")
     decision = latest.get(claim_id)
     if decision:
-        verdict = decision.get("reviewer_status")
-        text = DECISION_VI.get(decision.get("decision", ""), decision.get("decision", ""))
-        if verdict:
-            text += f" → {STATUS_VI.get(verdict, verdict)}"
+        text = _decision_text(decision)
         parts.append(f"<p><b>Người soát xét:</b> {_e(decision.get('reviewer'))} — {_e(text)}"
                      f"{(': ' + _e(decision.get('comment'))) if decision.get('comment') else ''}</p>")
     else:

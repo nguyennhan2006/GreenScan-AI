@@ -13,17 +13,17 @@ import { Chip } from '../components/badges.jsx'
 const ENGINE = {
   rules: ['Luật tất định', 'emerald'],
   deterministic: ['Phép tính bằng mã', 'emerald'],
-  lite: ['Từ khoá + n-gram (CPU)', 'emerald'],
+  lite: ['Tìm theo từ khoá (chạy trên CPU)', 'emerald'],
   llm: ['Mô hình ngôn ngữ', 'sky'],
   fpt: ['Vector qua FPT', 'sky'],
-  local: ['Vector trên máy', 'violet'],
+  local: ['Tìm theo nghĩa, chạy trên máy', 'violet'],
   http: ['Dịch vụ nội bộ', 'violet'],
 }
 
 const PROFILES = [
-  ['offline', 'Ngoại tuyến', 'Mọi laptop, không cần khoá API, tài liệu không rời máy. Đo 05/10: báo cáo HPG ~2 phút, RAM đỉnh 1,3 GB.'],
-  ['cloud', 'Laptop + AI đám mây', 'Thêm khoá FPT AI Marketplace: mô hình chỉ đọc các cặp luật không quyết được; có bộ nhớ đệm nên chạy lại không tốn thêm.'],
-  ['gpu', 'Máy chủ có GPU', 'Mô hình mở chạy bằng vLLM trên máy chủ của đơn vị; dùng cho tài liệu mật.'],
+  ['offline', 'Ngoại tuyến', 'Mọi máy tính xách tay, không cần khoá truy cập, tài liệu không rời máy. Đo 05/10: báo cáo HPG ~2 phút, RAM đỉnh 1,3 GB.'],
+  ['cloud', 'Máy tính xách tay + mô hình trên đám mây', 'Thêm khoá FPT AI Marketplace: mô hình chỉ đọc các cặp luật không quyết được; có bộ nhớ đệm nên chạy lại không tốn thêm.'],
+  ['gpu', 'Máy chủ có GPU', 'Mô hình mở chạy trên máy chủ của đơn vị; dùng cho tài liệu mật.'],
 ]
 
 export default function SettingsPage({ reviewer, onReviewerChange, onForget }) {
@@ -130,13 +130,13 @@ export default function SettingsPage({ reviewer, onReviewerChange, onForget }) {
       </details>
 
       <section className="rounded-xl border border-slate-200 bg-white p-5">
-        <h3 className="text-sm font-semibold text-slate-900">Dữ liệu gold từ quyết định người soát xét</h3>
+        <h3 className="text-sm font-semibold text-slate-900">Nhãn chuẩn từ quyết định người soát xét</h3>
         {gold ? (
           <dl className="mt-2 grid gap-1 text-xs sm:grid-cols-2">
             <div className="flex justify-between"><dt className="text-slate-500">Tổng quyết định</dt><dd className="font-mono">{gold.total_decisions}</dd></div>
             <div className="flex justify-between"><dt className="text-slate-500">Tuyên bố đã chạm</dt><dd className="font-mono">{gold.claims_touched}</dd></div>
             <div className="flex justify-between"><dt className="text-slate-500">Nhãn gold (xác nhận/sửa)</dt><dd className="font-mono">{gold.gold_records}</dd></div>
-            <div className="flex justify-between"><dt className="text-slate-500">Tỷ lệ người sửa kết quả AI</dt><dd className="font-mono">{Math.round((gold.ai_override_rate || 0) * 100)}%</dd></div>
+            <div className="flex justify-between"><dt className="text-slate-500">Tỷ lệ người sửa gợi ý của máy</dt><dd className="font-mono">{Math.round((gold.ai_override_rate || 0) * 100)}%</dd></div>
             <div className="flex justify-between sm:col-span-2"><dt className="text-slate-500">Người soát xét</dt><dd className="font-mono">{(gold.reviewers || []).join(', ') || '—'}</dd></div>
           </dl>
         ) : <p className="mt-2 text-xs text-slate-500">Chưa có quyết định nào.</p>}
@@ -144,7 +144,7 @@ export default function SettingsPage({ reviewer, onReviewerChange, onForget }) {
 
       <section className="rounded-xl border border-slate-200 bg-white p-5 text-xs text-slate-600">
         <h3 className="text-sm font-semibold text-slate-900">Hệ thống</h3>
-        <p className="mt-2">Phiên bản API <span className="font-mono">{health?.version || '—'}</span> · rubric <span className="font-mono">risk-rubric-v2</span> · schema <span className="font-mono">analysis-result-v2</span></p>
+        <p className="mt-2">Phiên bản máy chủ <span className="font-mono">{health?.version || '—'}</span> · thang chấm rủi ro phiên bản 2 · dạng dữ liệu <span className="font-mono">analysis-result-v2</span></p>
         <p className="mt-1">Lưu trữ: <code className="font-mono">.quantum/runs</code> (phiên), <code className="font-mono">.quantum/documents</code> (tệp gốc), <code className="font-mono">.quantum/reviews</code> (quyết định). Không tự xoá.</p>
       </section>
     </div>

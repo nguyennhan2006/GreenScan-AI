@@ -1,0 +1,1 @@
+{"tag": "gemma3-12b", "repo": "unsloth/gemma-3-12b-it", "cases": 193, "right": 85, "unparsed_texts": 230, "load_s": 226, "gen_s": 8042, "ntok_in": 143765, "ntok_out": 0}

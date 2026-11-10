@@ -1,0 +1,40 @@
+% ===================================================================== CHƯƠNG 9
+\chapter{Kết luận}\label{ch:ket-luan}
+
+\section{Những gì báo cáo đã làm}
+
+Báo cáo xuất phát từ một nhu cầu cụ thể: người soát xét báo cáo của doanh nghiệp niêm yết Việt Nam phải đọc hàng trăm trang chứa hàng trăm tuyên bố môi trường, trong khi pháp luật chưa định nghĩa tẩy xanh và chưa có bộ dữ liệu nào chứa các ca tẩy xanh đã được xác minh. Thay vì xây một mô hình gán nhãn “tẩy xanh” cho văn bản, báo cáo đặt lại câu hỏi ở cấp từng tuyên bố: có bằng chứng nào, ở trang nào, các con số có so được với nhau không, phép tính nào đã chạy, quy tắc nào thực sự áp dụng, và phần nào vẫn chưa biết.
+
+Từ câu hỏi đó, hệ thống GreenScan AI được thiết kế theo nguyên lý \emph{mô hình đọc, quy tắc quyết định, người duyệt}. Nguyên lý này không được chọn từ đầu mà được rút ra từ lỗi đã đo: khi mô hình ngôn ngữ được tự quyết, nó tạo ra kết luận “mâu thuẫn” sai trên tuyên bố thật, tức là lời cáo buộc nhắm vào một doanh nghiệp có tên. Nguyên lý được giữ bằng mười bất biến có kiểm thử, một cổng so sánh, một chốt chặn mâu thuẫn và một nhật ký quyết định chỉ ghi thêm.
+
+Hệ thống được đo trên bốn căn cứ tách bạch (ca dựng, nhãn xác nhận, vụ việc có phán quyết, nhãn chuẩn độc lập), với khoảng tin cậy cho mẫu nhỏ và dự đoán đăng ký trước. Kết quả chia thành hai nhóm rõ rệt (Bảng~\ref{tab:tong-hop-kq}).
+\begin{itemize}
+\item \textbf{Các bảo đảm viết thành mã đứng vững.} Không gợi ý sửa nào thêm con số mới (0/527). Gói quy tắc tổ chức không đổi kết luận nào và đạt 45/45 ca an toàn. Số kết luận “mâu thuẫn” sai trên tuyên bố thật giảm từ 24 về 0. Mọi đoạn bằng chứng đều có tài liệu và trang. Chế độ ngoại tuyến có 0 kết nối ra ngoài, và hệ thống giữ đúng 4/4 vụ có phán quyết.
+\item \textbf{Chất lượng phán đoán còn yếu.} Độ phủ thấp, kết luận “được ủng hộ” chưa đáng tin, khoảng 30\% câu được trích không phải tuyên bố, và chưa có quy tắc pháp lý nào áp được.
+\end{itemize}
+
+Hai nhóm này không mâu thuẫn nhau. Hệ thống được thiết kế để khi quy tắc còn yếu thì nó \emph{nhường người} chứ không phán bừa, và phần lớn thời gian nó làm đúng như vậy. Với người soát xét, điều đó có nghĩa là hệ thống chưa thay họ kết luận được, nhưng đã giúp họ biết nên mở tuyên bố nào trước, vì sao, bằng chứng ở trang nào, và hệ thống \emph{chưa} kiểm phần nào. Trên bộ báo cáo 264 trang của Hòa Phát, việc đó mất khoảng 2 phút trên một laptop văn phòng không GPU.
+
+\section{Đóng góp}
+
+\begin{enumerate}
+\item \textbf{Cách đặt bài toán} kiểm chứng tuyên bố môi trường ở cấp câu cho bối cảnh Việt Nam: năm loại kết luận, trong đó “chưa đủ bằng chứng” là một kết quả hợp lệ, và mục tiêu tối đa hoá độ phủ với giới hạn trên của hai loại lỗi nguy hiểm.
+\item \textbf{Một kiến trúc} trong đó mô hình chỉ đọc, các quyết định dứt khoát đi qua phép tính và quy tắc tất định, và tổ chức người dùng có thể thêm quy tắc riêng mà không làm yếu các bảo đảm của lõi.
+\item \textbf{Một cách học quy tắc của người dùng đúng mức}: lý do bắt buộc khi sửa kết luận quyết định nhãn đi về mô hình hay về gói quy tắc, để mô hình chỉ học cách đọc còn quy ước riêng của từng tổ chức nằm trong gói quy tắc có phiên bản.
+\item \textbf{Một quy trình đo trung thực} khi chưa có nhãn chuẩn: tách bốn căn cứ đo, đăng ký dự đoán trước và công bố cả kết quả âm.
+\item \textbf{Các bộ dữ liệu và bộ đo} cho tiếng Việt (bộ nhận diện tuyên bố, GS-Bench, GS-Eval), cùng một nguyên mẫu chạy được, có 530 kiểm thử tự động.
+\end{enumerate}
+
+\section{Điều báo cáo không khẳng định}
+
+Để tránh hiểu nhầm, báo cáo nêu rõ những điều sau \emph{không} được khẳng định:
+\begin{itemize}
+\item Không khẳng định độ chính xác của hệ thống, vì chưa có nhãn chuẩn độc lập. Mọi con số trên câu thật được đo bằng nhãn xác nhận.
+\item Không khẳng định doanh nghiệp nào tẩy xanh hay vi phạm pháp luật. Hệ thống kiểm tuyên bố, không phán xét doanh nghiệp.
+\item Không khẳng định lợi ích về thời gian, vì chưa đo với người dùng thật.
+\item Không khẳng định đáp ứng chuẩn mực đảm bảo nào, không khẳng định có đối tác hay khách hàng, và không khẳng định lợi thế lượng tử.
+\end{itemize}
+
+\section{Việc tiếp theo}
+
+Việc quan trọng nhất là xây bộ nhãn chuẩn độc lập do người có chuyên môn gán (H1), vì mọi con số khác phụ thuộc vào nó. Song song là tăng độ phủ mà không tăng kết luận sai (H3) và làm sạch bước trích tuyên bố (H2). Trước khi thí điểm với đơn vị thật, hướng H5 phải hoàn tất các bước tách việc đọc thuộc tính khỏi quy tắc, kiểm thử nhất quán và vòng soạn quy tắc có người duyệt, vì mỗi đơn vị sẽ mang theo quy ước riêng của mình. Các hướng còn lại được sắp theo thứ tự ở Bảng~\ref{tab:uu-tien}. Một công cụ hỗ trợ kiểm chứng chỉ đáng tin khi nó nói rõ nó không biết điều gì; báo cáo này cố gắng giữ nguyên tắc đó cả trong thiết kế lẫn trong cách trình bày kết quả.

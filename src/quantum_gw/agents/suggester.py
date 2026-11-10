@@ -48,7 +48,7 @@ class SuggestionAgent:
             items.append(
                 SuggestionItem(
                     code="missing_baseline",
-                    issue="Tuyên bố tăng/giảm hoặc cam kết tương lai nhưng thiếu năm cơ sở (baseline).",
+                    issue="Tuyên bố tăng/giảm hoặc cam kết tương lai nhưng thiếu năm gốc để so sánh.",
                     recommendation="Nêu rõ năm cơ sở so sánh, ví dụ 'so với mức năm 2020'.",
                 )
             )

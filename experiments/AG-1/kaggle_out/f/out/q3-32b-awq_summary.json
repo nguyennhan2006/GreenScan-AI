@@ -1,0 +1,1 @@
+{"tag": "q3-32b-awq", "repo": "Qwen/Qwen3-32B-AWQ", "cases": 453, "right": 356, "unparsed_texts": 0, "load_s": 399, "gen_s": 885, "ntok_in": 828510, "ntok_out": 75491}

@@ -53,6 +53,10 @@ materiality:
   # Merged columns read across the page ("(VSA) (VCCI) (VAMI) …"): the text
   # is not reliable enough to lead a work list; the source page is.
   garbled_factor: 0.50
+  # Probable non-claims (agents/claim_quality.py, claim-quality-v1, 2026-11-09):
+  # ranked low and never given a queue place unless contradicted. Marked, not
+  # removed: whether a sentence is a claim stays the reviewer's call.
+  suspect_non_claim_factor: 0.35
   # Which metric families carry the most consequence if misstated, for this
   # product and this jurisdiction. Emissions sit at the top because they are
   # what the Vietnamese disclosure regime measures and what investors price.

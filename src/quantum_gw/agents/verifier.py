@@ -41,6 +41,10 @@ from quantum_gw.verification.stance import (
 )
 
 
+# The company speaking about itself: its own report, its own financial
+# statements. A refutation cue here is prose, not a finding (contradiction guard).
+SELF_SOURCES = frozenset({"internal", "financial"})
+
 class _RecordingJudge:
     """Stands in for the model during the dry pass: notes the question, answers nothing."""
 
@@ -395,8 +399,24 @@ class VerificationAgent:
         top-ranked passage can be the one that contradicts the claim. A reviewer
         needs the stance per passage, not one status for the whole set.
         """
+        same_document = bool(claim.source_doc_id) and item.doc_id == claim.source_doc_id
+        guarded = not self.settings.self_evidence_can_contradict
         numeric = self._numeric_relation(claim, item)
         if numeric is not None:
+            # Two figures in the claim's own report that disagree are, on real
+            # reports, nearly always about two different things: 926 t CO2 from
+            # unfired bricks against 1,936 t from mineralised concrete, 23 t of
+            # paper trays against 14 t of PET liners (19 of 20 false numeric
+            # CONTRADICTED, GS-Eval v2). The figures stay visible to the reviewer.
+            if guarded and same_document and numeric.relation == CONTRADICTS:
+                return StanceSignal(
+                    relation=CONTEXT,
+                    reason=(
+                        f"{numeric.reason.rstrip('.')}, nhưng hai số nằm trong cùng tài liệu của tuyên bố "
+                        "và có thể nói về hai đối tượng khác nhau; không coi là mâu thuẫn."
+                    ),
+                    method="numeric",
+                )
             return numeric
 
         overlap = self._metric_overlap(claim, [item])
@@ -410,6 +430,20 @@ class VerificationAgent:
             claim_bigrams=content_bigrams(claim.text),
             topic_terms=self._taxonomy_terms(claim),
         )
+        # A refutation cue in the company's own prose is not a finding against
+        # it: "không ghi nhận trường hợp nào vi phạm" and a GRI index that lists
+        # "Nghị định ... về xử phạt vi phạm hành chính" were every one of the
+        # cue-based false CONTRADICTED on real reports (GS-Eval v2). Such a cue
+        # counts only inside a ruling on statements (cue.authoritative); else
+        # the passage is read as if it carried no cue.
+        if (
+            cue is not None
+            and guarded
+            and cue.relation == CONTRADICTS
+            and not cue.authoritative
+            and (same_document or item.source_type.value in SELF_SOURCES)
+        ):
+            cue = None
         if cue is not None:
             # A quantified claim is confirmed by its figure, not by a phrase. An
             # assurance statement that "reviewed the GHG management system"

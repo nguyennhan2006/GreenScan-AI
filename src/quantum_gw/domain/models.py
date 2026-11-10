@@ -80,6 +80,12 @@ class Claim(BaseModel):
     # taxonomy became bilingual.
     language: str = "unknown"
     confidence: float = 0.5
+    # Structural sign that the sentence is probably not a claim at all
+    # (agents/claim_quality.py, claim-quality-v1): a reason code such as
+    # "layout_glue", or None. The claim keeps its verdict and stays in the list
+    # with the reason shown; it is left out of the review queue and the risk
+    # score. Whether it is a claim stays the reviewer's call.
+    quality_flag: str | None = None
 
 
 class RetrievedEvidence(BaseModel):
@@ -194,6 +200,10 @@ class RunManifest(BaseModel):
     rule_pack_version: str = ""
     prompt_version: str = ""
     plan: list[str]
+    # Org packs configured for the run (legal/org_pack.py): org_id, version,
+    # sha256, approved/draft/rejected, rule count, load errors. None when the
+    # feature is off, and then the key is not written at all.
+    org_packs: list[dict[str, Any]] | None = Field(default=None, exclude_if=lambda value: value is None)
 
 
 class AnalysisSummary(BaseModel):
@@ -295,6 +305,11 @@ class AnalysisResult(BaseModel):
     # were present, which years, and whether absence of support may be read as
     # UNSUPPORTED. Shown as "evidence coverage" on the overview.
     corpus: dict[str, Any] = Field(default_factory=dict)
+    # One record per claim from the organisation's own rules (legal/org_pack.py):
+    # {"claim_id", "findings": [...]}. Beside the verdict, never part of it: no
+    # field above reads it. None when no org pack is configured, and then the key
+    # is not written, so result.json is what it was without the feature.
+    org_findings: list[dict[str, Any]] | None = Field(default=None, exclude_if=lambda value: value is None)
     quality_gates: list[QualityGate]
     summary: AnalysisSummary
     output_directory: str

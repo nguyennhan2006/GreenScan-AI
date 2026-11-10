@@ -1,0 +1,112 @@
+# Org pack giả lập cho GS-Eval v2 (D-RULES), agent r1, viết 04/11/2026.
+# Ghi chú cho người duyệt (comment YAML, hệ thống không đọc):
+# - QSV-POL-01 §4.3 (câu thứ hai) trái bất biến "mục tiêu không chứng minh thành tích" (ca conflict_with_law).
+# - QSV-POL-01 §6.2 là nỗ lực ghi đè verdict kiểm chứng (ca override_attempt); không quy tắc nào mã hoá nó.
+# - QSV_002 áp chỉ cho ngành loại trừ (applies_to_sectors), dùng claim_terms_absent làm quy tắc "cấm".
+kind: org_pack
+schema_version: org-pack-v0
+org_id: quy_sen_vang_esg
+org_name: Công ty Cổ phần Quản lý Quỹ Sen Vàng – Quỹ Đầu tư Cổ phiếu ESG Sen Vàng (tổ chức giả lập)
+org_type: fund
+pack_version: 1.1.0
+precedence: below_law
+approved_by: 'Chủ tịch Ủy ban Đầu tư (giả lập)'
+approved_at: '2026-07-28'
+documents:
+  - {doc_id: QSV-POL-01, title: 'Chính sách đặt tên, sàng lọc và loại trừ của Quỹ ESG Sen Vàng', path: internal_policy.md, role: policy}
+glossary:
+  - {term: 'quỹ ESG', synonyms: ['quỹ xanh', 'quỹ bền vững', 'ESG fund', 'green fund', 'sustainable fund'], definition: 'Quỹ dùng thuật ngữ ESG, xanh hoặc bền vững trong tên hay tài liệu quảng bá (§2.1).'}
+  - {term: 'net zero', synonyms: ['net-zero', 'phát thải ròng bằng 0', 'phát thải ròng bằng không', 'trung hòa carbon', 'carbon neutral'], definition: 'Mục tiêu phát thải ròng bằng không (§4.3).'}
+  - {term: 'tổ chức xếp hạng', synonyms: ['CSI', 'VCCI', 'VBCSD', 'DJSI', 'S&P Global', 'Brand Finance', 'Vietnam Report', 'VNSI', 'Nhịp cầu Đầu tư'], definition: 'Đơn vị thực hiện bảng xếp hạng hoặc giải thưởng bền vững (§4.2).'}
+  - {term: 'ngành loại trừ', synonyms: ['khai thác than', 'nhiệt điện than', 'thuốc lá', 'vũ khí gây sát thương hàng loạt'], definition: 'Danh sách tại §3.1.'}
+rules:
+  - rule_id: QSV_001
+    title: Quỹ dùng tên ESG, xanh hoặc bền vững phải có ít nhất 80% NAV đáp ứng tiêu chí, được ngân hàng giám sát xác nhận
+    source_document: QSV-POL-01
+    source_clauses: ['QSV-POL-01:§2.1', 'QSV-POL-01:§2.2']
+    claim_types: []          # dự kiến: green_finance
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-08-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: 'Bộ phận Pháp chế và Tuân thủ (giả lập)'
+    when:
+      - {id: fund_uses_esg_name, description: 'Câu nhắc tới quỹ mang tên ESG, xanh hoặc bền vững', source_clause: 'QSV-POL-01:§2.1', check: claim_terms_present, any_of_terms: ['quỹ esg', 'quỹ xanh', 'quỹ bền vững', 'esg fund', 'green fund', 'sustainable fund']}
+    conditions:
+      - {id: nav_share_threshold, description: 'Tỷ lệ NAV đầu tư vào chứng khoán đáp ứng tiêu chí ESG >= 80%', source_clause: 'QSV-POL-01:§2.1', check: numeric_threshold, numeric_field: esg_aligned_nav_pct, operator: '>=', threshold: 80}
+      - {id: custodian_confirmation, description: 'Có xác nhận của ngân hàng giám sát (bên thứ ba)', source_clause: 'QSV-POL-01:§2.1', check: evidence_independent}
+
+  - rule_id: QSV_002
+    title: Không trích tuyên bố xanh hoặc bền vững của doanh nghiệp thuộc ngành loại trừ
+    source_document: QSV-POL-01
+    source_clauses: ['QSV-POL-01:§3.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: ['coal_mining', 'coal_power', 'tobacco', 'weapons']
+    effective_from: '2026-08-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: 'Bộ phận Pháp chế và Tuân thủ (giả lập)'
+    conditions:
+      - {id: no_green_wording, description: 'Câu không dùng từ ngữ xanh, bền vững, thân thiện môi trường, trung hòa carbon', source_clause: 'QSV-POL-01:§3.1', check: claim_terms_absent, any_of_terms: ['xanh', 'bền vững', 'esg', 'green', 'sustainab', 'thân thiện môi trường', 'trung hòa carbon', 'net zero', 'tái tạo', 'renewable']}
+
+  - rule_id: QSV_003
+    title: Xếp hạng hoặc giải thưởng bền vững được trích phải nêu tổ chức xếp hạng và năm
+    source_document: QSV-POL-01
+    source_clauses: ['QSV-POL-01:§4.2']
+    claim_types: []          # dự kiến: generic_sustainability
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-08-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Bộ phận Pháp chế và Tuân thủ (giả lập)'
+    when:
+      - {id: cites_ranking, description: 'Câu dẫn một xếp hạng hoặc giải thưởng', source_clause: 'QSV-POL-01:§4.2', check: claim_terms_present, any_of_terms: ['top 5', 'top 10', 'top 20', 'top 50', 'top 100', 'xếp hạng', 'giải thưởng', 'vinh danh', 'ranking', 'award']}
+    conditions:
+      - {id: names_rater, description: 'Câu nêu tên tổ chức xếp hạng', source_clause: 'QSV-POL-01:§4.2', check: claim_terms_present, any_of_terms: ['csi', 'vcci', 'vbcsd', 'djsi', 'dow jones', 's&p global', 'brand finance', 'vietnam report', 'vnsi', 'nhịp cầu đầu tư', 'msci', 'sustainalytics', 'ftse']}
+      - {id: has_year, description: 'Câu nêu năm công bố (năm cụ thể, không phải khoảng tương đối)', source_clause: 'QSV-POL-01:§4.2', check: claim_attribute_present, attribute: period}
+
+  - rule_id: QSV_004
+    title: Doanh nghiệp có mục tiêu net zero kèm năm mục tiêu được xếp nhóm "đang chuyển đổi"
+    source_document: QSV-POL-01
+    source_clauses: ['QSV-POL-01:§4.3']
+    claim_types: []          # dự kiến: emissions_reduction
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-08-01'
+    effective_to: null
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Bộ phận Pháp chế và Tuân thủ (giả lập)'
+    when:
+      - {id: net_zero_target, description: 'Câu nói về net zero hoặc trung hòa carbon', source_clause: 'QSV-POL-01:§4.3', check: claim_terms_present, any_of_terms: ['net zero', 'net-zero', 'trung hòa carbon', 'phát thải ròng bằng 0', 'carbon neutral']}
+    conditions:
+      - {id: has_target_year, description: 'Câu nêu năm mục tiêu', source_clause: 'QSV-POL-01:§4.3', check: claim_attribute_present, attribute: period}
+
+  - rule_id: QSV_005
+    title: Tuyên bố "tích hợp ESG" chỉ được trích khi có mô tả quy trình và được Ủy ban Đầu tư thẩm định
+    source_document: QSV-POL-01
+    source_clauses: ['QSV-POL-01:§4.4']
+    claim_types: []          # dự kiến: esg_process_integration
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-08-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: partial
+    reviewed_by: 'Bộ phận Pháp chế và Tuân thủ (giả lập)'
+    when:
+      - {id: esg_integration_claim, description: 'Câu nói đã tích hợp ESG hoặc mục tiêu phát triển bền vững', source_clause: 'QSV-POL-01:§4.4', check: claim_terms_present, any_of_terms: ['tích hợp esg', 'esg integration', 'integrated esg', 'tích hợp các mục tiêu phát triển bền vững', 'lồng ghép esg']}
+    conditions:
+      - {id: process_described, description: 'Bằng chứng mô tả quy trình chấm điểm hoặc sàng lọc', source_clause: 'QSV-POL-01:§4.4', check: terms_present, any_of_terms: ['chấm điểm', 'sàng lọc', 'đánh giá esg', 'esg score', 'esg rating', 'screening', 'scoring']}
+      - {id: committee_review, description: 'Ủy ban Đầu tư đã thẩm định mức độ tích hợp thực chất', source_clause: 'QSV-POL-01:§4.4', check: manual}

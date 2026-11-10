@@ -1,0 +1,99 @@
+# Org pack trình diễn: chính sách tín dụng xanh của một ngân hàng GIẢ LẬP.
+# Kiểm:     quantum-agent org-validate configs/org_packs/demo_ngan_hang_xanh
+# Thử câu:  quantum-agent org-preview configs/org_packs/demo_ngan_hang_xanh --sector steel --text "..."
+# Bật:      QUANTUM_ORG_PACKS=configs/org_packs/demo_ngan_hang_xanh
+# Quy tắc nội bộ không bao giờ đổi kết luận kiểm chứng; xem docs/03-architecture/ORG_PACK.md.
+kind: org_pack
+schema_version: org-pack-v0
+org_id: demo_ngan_hang_xanh
+org_name: Ngân hàng TMCP Xanh Demo (tổ chức giả lập)
+org_type: bank
+pack_version: 0.1.0
+precedence: below_law
+approved_by: 'Khối Quản trị rủi ro (giả lập)'
+approved_at: '2026-10-20'
+documents:
+  - {doc_id: CS-TDX-01, title: 'Chính sách tín dụng xanh: tiêu chí sàng lọc tuyên bố môi trường', path: internal_policy.md, role: policy}
+glossary:
+  - {term: 'tín dụng xanh', synonyms: ['green loan', 'cho vay xanh'], definition: 'Khoản cấp tín dụng cho dự án hoặc hoạt động có lợi ích môi trường.'}
+  - {term: 'năm gốc', synonyms: ['baseline'], definition: 'Năm dùng làm mốc so sánh khi tuyên bố mức giảm.'}
+
+rules:
+  - rule_id: NHXD_001
+    title: Tuyên bố giảm phải nêu năm gốc
+    source_document: CS-TDX-01
+    source_clauses: ['CS-TDX-01:§2.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Tuân thủ (giả lập)'
+    when:
+      - {id: noi_ve_giam, description: 'Câu nói về việc giảm', source_clause: 'CS-TDX-01:§2.1', check: claim_terms_present, any_of_terms: ['giảm', 'cắt giảm', 'reduce', 'reduced', 'reduction']}
+    conditions:
+      - {id: co_nam_goc, description: 'Tuyên bố nêu năm gốc', source_clause: 'CS-TDX-01:§2.1', check: claim_attribute_present, attribute: baseline}
+
+  - rule_id: NHXD_002
+    title: Số liệu phát thải phải nêu phạm vi
+    source_document: CS-TDX-01
+    source_clauses: ['CS-TDX-01:§2.2']
+    legal_issue: org_policy
+    effective_from: '2026-01-01'
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Tuân thủ (giả lập)'
+    when:
+      - {id: noi_ve_phat_thai, description: 'Câu nói về phát thải', source_clause: 'CS-TDX-01:§2.2', check: claim_terms_present, any_of_terms: ['phát thải', 'khí nhà kính', 'CO2', 'tCO2e', 'emission', 'GHG']}
+      - {id: co_so_lieu, description: 'Câu có số liệu', source_clause: 'CS-TDX-01:§2.2', check: claim_attribute_present, attribute: value}
+    conditions:
+      - {id: co_pham_vi, description: 'Tuyên bố nêu phạm vi (Scope, nhà máy, hợp nhất)', source_clause: 'CS-TDX-01:§2.2', check: claim_attribute_present, attribute: scope}
+
+  - rule_id: NHXD_003
+    title: Không dùng từ ngữ tuyệt đối khi chưa có chứng nhận
+    source_document: CS-TDX-01
+    source_clauses: ['CS-TDX-01:§3.1']
+    legal_issue: org_policy
+    effective_from: '2026-01-01'
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: 'Phòng Tuân thủ (giả lập)'
+    conditions:
+      - {id: khong_tu_tuyet_doi, description: 'Không dùng từ ngữ tuyệt đối', source_clause: 'CS-TDX-01:§3.1', check: claim_terms_absent, any_of_terms: ['trung hòa carbon', 'trung hòa các-bon', 'net zero', 'carbon neutral', 'không phát thải', '100% xanh', '100 % xanh', 'hoàn toàn xanh', 'thân thiện với môi trường', 'thép xanh', 'green steel']}
+
+  - rule_id: NHXD_004
+    title: Thành tích môi trường ngành thép cần nguồn độc lập
+    source_document: CS-TDX-01
+    source_clauses: ['CS-TDX-01:§4.1']
+    legal_issue: org_policy
+    applies_to_sectors: [steel]
+    effective_from: '2026-01-01'
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: partial
+    reviewed_by: 'Phòng Tuân thủ (giả lập)'
+    when:
+      - {id: noi_ve_thanh_tich, description: 'Câu nói về thành tích môi trường', source_clause: 'CS-TDX-01:§4.1', check: claim_terms_present, any_of_terms: ['giảm', 'tiết kiệm', 'tái chế', 'tái sử dụng', 'tuần hoàn', 'reduce', 'recycle', 'recycled']}
+    conditions:
+      - {id: co_nguon_doc_lap, description: 'Có bằng chứng từ nguồn độc lập', source_clause: 'CS-TDX-01:§4.1', check: evidence_independent}
+
+  - rule_id: NHXD_005
+    title: Mục tiêu tương lai phải nêu năm đích và năm gốc
+    source_document: CS-TDX-01
+    source_clauses: ['CS-TDX-01:§2.3']
+    legal_issue: org_policy
+    effective_from: '2026-01-01'
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Tuân thủ (giả lập)'
+    when:
+      - {id: la_muc_tieu, description: 'Câu là mục tiêu hoặc cam kết', source_clause: 'CS-TDX-01:§2.3', check: claim_terms_present, any_of_terms: ['mục tiêu', 'cam kết', 'phấn đấu', 'đến năm', 'hướng tới', 'target', 'commit']}
+    conditions:
+      - {id: co_nam_dich, description: 'Nêu năm đích', source_clause: 'CS-TDX-01:§2.3', check: claim_attribute_present, attribute: period}
+      - {id: co_nam_goc, description: 'Nêu năm gốc', source_clause: 'CS-TDX-01:§2.3', check: claim_attribute_present, attribute: baseline}

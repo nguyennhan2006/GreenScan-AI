@@ -1,0 +1,130 @@
+# Org pack giả lập cho GS-Eval v2 (D-RULES, phần r2). Nhãn do claude-opus-5-5 soạn, chờ người duyệt.
+kind: org_pack
+schema_version: org-pack-v0
+org_id: det_may_mx
+org_name: Công ty TNHH Dệt may MX Việt Nam (tổ chức giả lập)
+org_type: fdi_manufacturer
+pack_version: 3.0.0
+precedence: below_law
+approved_by: 'Giám đốc Tuân thủ xã hội và Môi trường'
+approved_at: '2026-05-25'
+documents:
+  - {doc_id: POL-01, title: 'Phụ lục E – Quy tắc tuyên bố môi trường cho nhà cung cấp DM-ENV-E', path: internal_policy.md, role: policy}
+glossary:
+  - {term: 'GRS', synonyms: ['Global Recycled Standard', 'RCS', 'Recycled Claim Standard', 'Transaction Certificate'], definition: 'Chứng nhận chuỗi hành trình cho vật liệu tái chế (POL-01 §2.1).'}
+  - {term: 'Higg FEM', synonyms: ['vFEM', 'Facility Environmental Module'], definition: 'Điểm môi trường cấp nhà máy; chỉ công bố khi đã xác minh (POL-01 §4.1).'}
+  - {term: 'Higg MSI', synonyms: ['điểm vật liệu', 'Materials Sustainability Index'], definition: 'Điểm cấp vật liệu, không phải điểm sản phẩm (POL-01 §4.2).'}
+rules:
+  - rule_id: DMMX_001
+    title: Tuyên bố vật liệu tái chế phải nêu tỷ lệ và có chứng nhận chuỗi hành trình
+    source_document: POL-01
+    source_clauses: ['POL-01:§2.1']
+    claim_types: [waste_and_circularity]
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-06-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Tuân thủ (giả lập)'
+    when:
+      - {id: recycled_terms, description: 'Câu nói về vật liệu tái chế', source_clause: 'POL-01:§2.1', check: claim_terms_present, any_of_terms: ['tái chế', 'tái sinh', 'recycled', 'rpet']}
+    conditions:
+      - {id: has_value, description: 'Câu nêu tỷ lệ', source_clause: 'POL-01:§2.1', check: claim_attribute_present, attribute: value}
+      - {id: chain_of_custody, description: 'Bằng chứng nêu chứng nhận GRS/RCS hoặc Transaction Certificate', source_clause: 'POL-01:§2.1', check: terms_present, any_of_terms: ['GRS', 'Global Recycled Standard', 'RCS', 'Recycled Claim Standard', 'Transaction Certificate']}
+
+  - rule_id: DMMX_002
+    title: Từ ngữ môi trường chung chung phải kèm chất liệu và tỷ lệ
+    source_document: POL-01
+    source_clauses: ['POL-01:§2.2', 'POL-01:§1.2']
+    claim_types: [generic_sustainability]
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-06-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Tuân thủ (giả lập)'
+    when:
+      - {id: generic_terms, description: 'Câu dùng từ môi trường chung chung', source_clause: 'POL-01:§2.2', check: claim_terms_present, any_of_terms: ['bền vững', 'sustainable', 'conscious', 'thân thiện môi trường', 'thân thiện với môi trường', 'eco-friendly', 'xanh', 'green']}
+    conditions:
+      - {id: has_metric, description: 'Câu nêu chất liệu / chỉ số cụ thể', source_clause: 'POL-01:§2.2', check: claim_attribute_present, attribute: metric}
+      - {id: has_value, description: 'Câu nêu tỷ lệ / giá trị', source_clause: 'POL-01:§2.2', check: claim_attribute_present, attribute: value}
+
+  - rule_id: DMMX_003
+    title: Cấm tuyên bố trung hòa carbon / net zero ở cấp sản phẩm hoặc bộ sưu tập
+    source_document: POL-01
+    source_clauses: ['POL-01:§3.1', 'POL-01:§1.2']
+    claim_types: [emissions_reduction]
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-06-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: 'Phòng Tuân thủ (giả lập)'
+    when:
+      - {id: product_level, description: 'Câu nói về sản phẩm / bộ sưu tập', source_clause: 'POL-01:§3.1', check: claim_terms_present, any_of_terms: ['sản phẩm', 'bộ sưu tập', 'collection', 'product', 'garment', 'chiếc áo', 'áo thun', 'áo khoác', 'áo sơ mi', 'áo polo', 'quần']}
+    conditions:
+      - {id: no_neutrality_terms, description: 'Câu không chứa cụm trung hòa / net zero', source_clause: 'POL-01:§3.1', check: claim_terms_absent, any_of_terms: ['trung hòa carbon', 'trung hòa khí hậu', 'carbon neutral', 'carbon-neutral', 'climate neutral', 'net zero', 'net-zero', 'không phát thải carbon', 'climate positive']}
+
+  - rule_id: DMMX_004
+    title: Điểm môi trường chỉ công bố khi đã xác minh, nêu cấp áp dụng, không dùng điểm vật liệu như điểm sản phẩm
+    source_document: POL-01
+    source_clauses: ['POL-01:§4.1', 'POL-01:§4.2']
+    claim_types: [generic_sustainability]
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-06-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: partial
+    reviewed_by: 'Phòng Tuân thủ (giả lập)'
+    when:
+      - {id: score_terms, description: 'Câu nói về điểm môi trường', source_clause: 'POL-01:§4.1', check: claim_terms_present, any_of_terms: ['higg', 'điểm môi trường', 'environmental score', 'scorecard', 'điểm bền vững']}
+    conditions:
+      - {id: verified_independently, description: 'Có bằng chứng xác minh độc lập', source_clause: 'POL-01:§4.1', check: evidence_independent}
+      - {id: level_stated, description: 'Câu nêu cấp áp dụng (nhà máy, vật liệu, sản phẩm)', source_clause: 'POL-01:§4.1', check: claim_attribute_present, attribute: scope}
+      - {id: platform_crosscheck, description: 'Người soát xét đối chiếu với hồ sơ trên nền tảng Higg; điểm MSI không bị trình bày như điểm sản phẩm', source_clause: 'POL-01:§4.2', check: manual}
+
+  - rule_id: DMMX_005
+    title: Tuyên bố giảm nước, hóa chất, năng lượng cấp nhà máy phải nêu năm gốc và nhà máy
+    source_document: POL-01
+    source_clauses: ['POL-01:§5.1']
+    claim_types: [resource_efficiency]
+    legal_issue: org_policy
+    applies_to_sectors: [textile]
+    effective_from: '2026-06-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Tuân thủ (giả lập)'
+    when:
+      - {id: reduction_terms, description: 'Câu nói về giảm / tiết kiệm', source_clause: 'POL-01:§5.1', check: claim_terms_present, any_of_terms: ['giảm', 'cắt giảm', 'tiết kiệm', 'reduce', 'reduction', 'saving']}
+      - {id: resource_terms, description: 'Câu nói về nước, hóa chất, năng lượng', source_clause: 'POL-01:§5.1', check: claim_terms_present, any_of_terms: ['nước', 'hóa chất', 'năng lượng', 'điện', 'water', 'chemical', 'energy']}
+    conditions:
+      - {id: has_baseline, description: 'Câu nêu năm gốc', source_clause: 'POL-01:§5.1', check: claim_attribute_present, attribute: baseline}
+      - {id: has_scope, description: 'Câu nêu nhà máy áp dụng', source_clause: 'POL-01:§5.1', check: claim_attribute_present, attribute: scope}
+
+  - rule_id: DMMX_006
+    title: Nhãn Conscious chỉ dùng khi có từ 20% vật liệu ưu tiên (quy định mùa Thu-Đông 2025, đã hết hiệu lực)
+    source_document: POL-01
+    source_clauses: ['POL-01:§6.2']
+    claim_types: [generic_sustainability]
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2025-01-01'
+    effective_to: '2025-12-31'
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Tuân thủ (giả lập)'
+    when:
+      - {id: conscious_label, description: 'Câu dùng nhãn Conscious', source_clause: 'POL-01:§6.2', check: claim_terms_present, any_of_terms: ['conscious', 'lựa chọn ý thức']}
+    conditions:
+      - {id: preferred_share_min, description: 'Bằng chứng cho thấy tỷ lệ vật liệu ưu tiên từ 20% trở lên', source_clause: 'POL-01:§6.2', check: numeric_threshold, numeric_field: preferred_material_pct, operator: '>=', threshold: 20}

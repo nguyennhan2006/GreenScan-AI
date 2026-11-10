@@ -264,7 +264,7 @@ REASON_TEXT_VI = {
     "different_boundary": "khác ranh giới tổ chức (tập đoàn / công ty con / nhà máy / dự án)",
     "different_technology": "khác công nghệ sản xuất",
     "different_variant": "khác loại chỉ số con",
-    "different_scope": "khác ranh giới phát thải (Scope)",
+    "different_scope": "khác phạm vi phát thải",
     "target_vs_actual": "một bên là mục tiêu, một bên là số thực hiện",
     "magnitude_gap": "chênh lệch hàng chục lần trở lên — thường là khác ranh giới, ngành hoặc đơn vị; cần người xem",
 }

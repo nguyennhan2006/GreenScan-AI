@@ -199,3 +199,29 @@ Truy xuất theo ngữ nghĩa bằng embedding. Phù hợp để tìm đoạn v�
 
 ### Verdict
 Kết luận kiểm chứng claim. Enum chuẩn của dự án gồm: Supported, Partially supported, Unsupported, Contradicted, Insufficient evidence.
+
+## Bổ sung 31/10/2026 (chương trình AG, GS-Bench)
+
+### IR (biểu diễn trung gian)
+Bản ghi có cấu trúc của **một** số liệu: chỉ số, giá trị nguyên văn, bội số, đơn vị, loại giá trị (tuyệt đối, cường độ, tỷ trọng, thay đổi), kỳ, năm gốc, phạm vi phát thải, ranh giới tổ chức, thực hiện hay mục tiêu. Mô hình chỉ điền IR; so sánh do `irlib.py` làm, nên mỗi kết luận chỉ ra được phép tính.
+
+### Độ phủ (coverage) và precision trên phần dám kết luận
+- **Độ phủ** là tỷ lệ ca mà hệ thống dám nói "khớp" hoặc "mâu thuẫn"; phần còn lại chuyển người.
+- **Precision** là tỷ lệ đúng trong các ca đã dám nói.
+
+Hai số đi cùng nhau. Một hệ không bao giờ kết luận có precision không xác định; một hệ kết luận mọi ca thì độ phủ 1 nhưng có thể sai nhiều. Báo kèm số "mâu thuẫn sai" (vu oan doanh nghiệp) và "khớp sai" (bỏ lọt).
+
+### Oracle
+Thay một tầng của hệ thống bằng đáp án đúng để biết tầng đó làm mất bao nhiêu. Ví dụ: đưa IR gold cho `irlib` cho biết trần của cách "đọc bằng mô hình, tính bằng code" khi khâu đọc hoàn hảo.
+
+### Nhãn theo cấu trúc (họ nhiễu)
+Lấy một số liệu thật, viết lại thành tuyên bố đúng, rồi đổi đúng một chiều (giá trị, bội số, kỳ, phạm vi, mục tiêu/thực hiện, cường độ/tuyệt đối, chỉ số). Nhãn suy ra từ chiều đã đổi, không cần người gán từng ca. Đúng đến đâu còn phụ thuộc vào việc đọc số liệu gốc có đúng không.
+
+### Bootstrap theo công ty
+Lấy mẫu lại **cả công ty** (không lấy từng câu) để tính khoảng tin cậy. Các câu của cùng một công ty giống nhau, nên lấy mẫu từng câu sẽ cho khoảng hẹp giả.
+
+### Nhãn vàng, nhãn bạc
+- **Vàng:** người gán, có đo đồng thuận.
+- **Bạc:** mô hình gán (ở đây là Claude), có kiểm nhưng chưa đối chiếu với người.
+
+Số đo trên nhãn bạc không được gọi là "độ chính xác" trên slide.

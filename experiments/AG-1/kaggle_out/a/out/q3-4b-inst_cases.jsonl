@@ -1,0 +1,193 @@
+{"id": "ba-F01", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F02", "label": "C", "why": ["933.876 tCO2e: C khác phạm vi phát thải: s2 / s1; |933876 − 9.33876e+08| = 9.32942e+08 ghg_t; dung sai 500.5; khác phạm vi phát thải: s2 / s1+s2"]}
+{"id": "ba-F03", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F04", "label": "C", "why": ["833.876 tCO2e: C khác phạm vi phát thải: s2 / s1; |833876 − 9.33876e+08| = 9.33042e+08 ghg_t; dung sai 500.5; khác phạm vi phát thải: s2 / s1+s2"]}
+{"id": "ba-F05", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F06", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F07", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F08", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F09", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F10", "label": "N", "why": ["1,9 tCO2e/tấn sản phẩm: N khác chỉ số: air_pollutants / ghg_emissions; khác chỉ số: air_pollutants / ghg_emissions; khác chỉ số: air_pollutants / ghg_emissions"]}
+{"id": "ba-F11", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F12", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F13", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F14", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F15", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F16", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F17", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F18", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F19", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F20", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F21", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F22", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F23", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F24", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F25", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F26", "label": "N", "why": ["23.474.480 tCO2e: N khác phạm vi phát thải: s1+s2 / s1; khác phạm vi phát thải: s1+s2 / s2"]}
+{"id": "ba-F27", "label": "N", "why": ["24.474.480 tCO2e: N khác phạm vi phát thải: s1+s2 / s1; khác phạm vi phát thải: s1+s2 / s2"]}
+{"id": "ba-F28", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F29", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F30", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F31", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-F32", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-N01", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-N02", "label": "N", "why": ["23.369.500 tCO2e: N khác phạm vi phát thải: s1 / None"]}
+{"id": "ba-N03", "label": "C", "why": ["23.369.500 tCO2e: C |2.33695e+10 − 2.25406e+10| = 8.28897e+08 ghg_t; dung sai 1000"]}
+{"id": "ba-N04", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-N05", "label": "C", "why": ["933.876 tCO2e: C |933876 − 2.25406e+10| = 2.25397e+10 ghg_t; dung sai 500.5"]}
+{"id": "ba-N06", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-N08", "label": "N", "why": ["0,93 tCO2e: N khác phạm vi phát thải: s2 / None"]}
+{"id": "ba-N09", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-N10", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-N11", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-N12", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-N13", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-N14", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-N15", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-N16", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-N17", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-N18", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-N19", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "ba-N20", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-2a31912f6d377a83-0-S0", "label": "S", "why": ["34.325 m3: S |34325 − 34325| = 0 volume_m3; dung sai 1"]}
+{"id": "bb-2a31912f6d377a83-0-S1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-2a31912f6d377a83-0-C1", "label": "C", "why": ["48.055 m3: C |48055 − 34325| = 13730 volume_m3; dung sai 1"]}
+{"id": "bb-2a31912f6d377a83-0-C2", "label": "C", "why": ["34.325 m3: C |3.4325e+07 − 34325| = 3.42907e+07 volume_m3; dung sai 500.5"]}
+{"id": "bb-2a31912f6d377a83-0-N2", "label": "N", "why": ["34.325 m3: N khác loại giá trị: target / absolute"]}
+{"id": "bb-2a31912f6d377a83-0-N5", "label": "N", "why": ["34.325 m3/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bb-2a31912f6d377a83-0-N6", "label": "N", "why": ["34.325 m3: N khác chỉ số: wastewater / water_use"]}
+{"id": "bb-f5f8a5c13872aea7-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-f5f8a5c13872aea7-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-f5f8a5c13872aea7-0-C3", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-f5f8a5c13872aea7-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-f5f8a5c13872aea7-0-N6", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-9c78bf02decaf05d-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-9c78bf02decaf05d-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-9c78bf02decaf05d-0-C3", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-9c78bf02decaf05d-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-9c78bf02decaf05d-1-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-9c78bf02decaf05d-1-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-9c78bf02decaf05d-1-C3", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-9c78bf02decaf05d-1-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-270002ea10dc9ad7-0-S0", "label": "S", "why": ["10.730 m3: S |10730 − 10730| = 0 volume_m3; dung sai 1"]}
+{"id": "bb-270002ea10dc9ad7-0-S1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-270002ea10dc9ad7-0-C1", "label": "C", "why": ["8.584 m3: C |8584 − 10730| = 2146 volume_m3; dung sai 1"]}
+{"id": "bb-270002ea10dc9ad7-0-C2", "label": "C", "why": ["10.730 m3: C |1.073e+07 − 10730| = 1.07193e+07 volume_m3; dung sai 500.5"]}
+{"id": "bb-270002ea10dc9ad7-0-N2", "label": "N", "why": ["10.730 m3: N khác loại giá trị: target / absolute"]}
+{"id": "bb-270002ea10dc9ad7-0-N5", "label": "N", "why": ["10.730 m3/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bb-270002ea10dc9ad7-0-N6", "label": "N", "why": ["10.730 m3: N khác chỉ số: wastewater / water_use"]}
+{"id": "bb-9796bc7d982bb3ce-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-9796bc7d982bb3ce-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-9796bc7d982bb3ce-0-C3", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-9796bc7d982bb3ce-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-9796bc7d982bb3ce-0-N6", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-c5b8455b08f5a561-0-S0", "label": "S", "why": ["12.726 m3: S |12726 − 12726| = 0 volume_m3; dung sai 1"]}
+{"id": "bb-c5b8455b08f5a561-0-S1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-c5b8455b08f5a561-0-C1", "label": "C", "why": ["15.908 m3: C |15908 − 12726| = 3182 volume_m3; dung sai 1"]}
+{"id": "bb-c5b8455b08f5a561-0-C2", "label": "C", "why": ["12.726 m3: C |1.2726e+07 − 12726| = 1.27133e+07 volume_m3; dung sai 500.5"]}
+{"id": "bb-c5b8455b08f5a561-0-N2", "label": "N", "why": ["12.726 m3: N khác loại giá trị: target / absolute"]}
+{"id": "bb-c5b8455b08f5a561-0-N5", "label": "N", "why": ["12.726 m3/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bb-c5b8455b08f5a561-0-N6", "label": "N", "why": ["12.726 m3: N khác chỉ số: wastewater / water_use"]}
+{"id": "bb-d7a04b919bbe8cda-1-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-d7a04b919bbe8cda-1-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-d7a04b919bbe8cda-1-C3", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-d7a04b919bbe8cda-1-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-d7a04b919bbe8cda-1-N6", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-db8841dc88c6b9be-0-S0", "label": "S", "why": ["8.131 m3: S |8131 − 8131| = 0 volume_m3; dung sai 1"]}
+{"id": "bb-db8841dc88c6b9be-0-C1", "label": "C", "why": ["5.692 m3: C |5692 − 8131| = 2439 volume_m3; dung sai 1"]}
+{"id": "bb-db8841dc88c6b9be-0-C2", "label": "C", "why": ["8.131 m3: C |8.131e+06 − 8131| = 8.12287e+06 volume_m3; dung sai 500.5"]}
+{"id": "bb-db8841dc88c6b9be-0-N2", "label": "N", "why": ["8.131 m3: N khác loại giá trị: target / absolute"]}
+{"id": "bb-db8841dc88c6b9be-0-N5", "label": "N", "why": ["8.131 m3/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bb-db8841dc88c6b9be-0-N6", "label": "N", "why": ["8.131 m3: N khác chỉ số: wastewater / water_use"]}
+{"id": "bb-7843554e8927d787-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-7843554e8927d787-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-7843554e8927d787-0-C2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-7843554e8927d787-0-N1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-7843554e8927d787-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-7843554e8927d787-0-N5", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-7843554e8927d787-0-N6", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-ee4b9253a749cd8a-0-S0", "label": "S", "why": ["159.104 m3: S |159104 − 159104| = 0 volume_m3; dung sai 1"]}
+{"id": "bb-ee4b9253a749cd8a-0-S1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-ee4b9253a749cd8a-0-C1", "label": "C", "why": ["127.283 m3: C |127283 − 159104| = 31821 volume_m3; dung sai 1"]}
+{"id": "bb-ee4b9253a749cd8a-0-C2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-ee4b9253a749cd8a-0-N1", "label": "N", "why": ["159.104 m3: N khác kỳ: 2024 / 2025"]}
+{"id": "bb-ee4b9253a749cd8a-0-N2", "label": "N", "why": ["159.104 m3: N khác loại giá trị: target / absolute"]}
+{"id": "bb-ee4b9253a749cd8a-0-N5", "label": "N", "why": ["159.104 m3/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bb-ee4b9253a749cd8a-0-N6", "label": "N", "why": ["159.104 m3: N khác chỉ số: water_use / wastewater"]}
+{"id": "bb-631428f0da19badc-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-631428f0da19badc-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-631428f0da19badc-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-631428f0da19badc-0-N6", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-e14c97c34811ab03-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-e14c97c34811ab03-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-e14c97c34811ab03-0-C3", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-e14c97c34811ab03-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-e14c97c34811ab03-0-N6", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-c385bf4d13ea40ed-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-c385bf4d13ea40ed-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-c385bf4d13ea40ed-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-c385bf4d13ea40ed-0-N6", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-aa42b783af8c2d31-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-aa42b783af8c2d31-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-aa42b783af8c2d31-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-aa42b783af8c2d31-0-N6", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-34d38386ad1c87b3-0-S0", "label": "N", "why": ["1,8 MWp: N "]}
+{"id": "bb-34d38386ad1c87b3-0-C1", "label": "N", "why": ["2,2 MWp: N "]}
+{"id": "bb-34d38386ad1c87b3-0-C2", "label": "N", "why": ["1,8 MWp: N "]}
+{"id": "bb-34d38386ad1c87b3-0-N2", "label": "N", "why": ["1,8 MWp: N "]}
+{"id": "bb-34d38386ad1c87b3-0-N5", "label": "N", "why": ["1,8 MWp/tấn sản phẩm: N "]}
+{"id": "bb-34d38386ad1c87b3-0-N6", "label": "N", "why": ["1,8 MWp: N "]}
+{"id": "bb-8e42f94aa937f2ed-0-S0", "label": "S", "why": ["125.108 m3: S |125108 − 125108| = 0 volume_m3; dung sai 1"]}
+{"id": "bb-8e42f94aa937f2ed-0-S1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-8e42f94aa937f2ed-0-C1", "label": "C", "why": ["87.576 m3: C |87576 − 125108| = 37532 volume_m3; dung sai 1"]}
+{"id": "bb-8e42f94aa937f2ed-0-C2", "label": "C", "why": ["125.108 m3: C |1.25108e+08 − 125108| = 1.24983e+08 volume_m3; dung sai 500.5"]}
+{"id": "bb-8e42f94aa937f2ed-0-N2", "label": "N", "why": ["125.108 m3: N khác loại giá trị: target / absolute"]}
+{"id": "bb-8e42f94aa937f2ed-0-N5", "label": "N", "why": ["125.108 m3/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bb-8e42f94aa937f2ed-0-N6", "label": "N", "why": ["125.108 m3: N khác chỉ số: wastewater / water_use"]}
+{"id": "bb-ebf98e6bd3bc6405-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-ebf98e6bd3bc6405-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-ebf98e6bd3bc6405-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-ebf98e6bd3bc6405-0-N6", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-c46b97cef8117154-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-c46b97cef8117154-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-c46b97cef8117154-0-N1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-c46b97cef8117154-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-c46b97cef8117154-0-N6", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-c46b97cef8117154-1-S0", "label": "N", "why": ["4000 m3: N "]}
+{"id": "bb-c46b97cef8117154-1-C1", "label": "N", "why": ["3.200 m3: N "]}
+{"id": "bb-c46b97cef8117154-1-C2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-c46b97cef8117154-1-N1", "label": "N", "why": ["4000 m3: N "]}
+{"id": "bb-c46b97cef8117154-1-N2", "label": "N", "why": ["4000 m3: N "]}
+{"id": "bb-c46b97cef8117154-1-N5", "label": "N", "why": ["4000 m3/tấn sản phẩm: N "]}
+{"id": "bb-c46b97cef8117154-1-N6", "label": "N", "why": ["4000 m3: N "]}
+{"id": "bb-11bff39daa1d0a60-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-11bff39daa1d0a60-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-11bff39daa1d0a60-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-11bff39daa1d0a60-0-N6", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-2d1b0b7ae3d3450d-0-S0", "label": "S", "why": ["253.145 m3: S |253145 − 253145| = 0 volume_m3; dung sai 1"]}
+{"id": "bb-2d1b0b7ae3d3450d-0-S1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-2d1b0b7ae3d3450d-0-C1", "label": "C", "why": ["354.403 m3: C |354403 − 253145| = 101258 volume_m3; dung sai 1"]}
+{"id": "bb-2d1b0b7ae3d3450d-0-C2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-2d1b0b7ae3d3450d-0-N1", "label": "N", "why": ["253.145 m3: N khác kỳ: 2022 / 2023"]}
+{"id": "bb-2d1b0b7ae3d3450d-0-N2", "label": "N", "why": ["253.145 m3: N khác loại giá trị: target / absolute"]}
+{"id": "bb-2d1b0b7ae3d3450d-0-N5", "label": "N", "why": ["253.145 m3/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bb-2d1b0b7ae3d3450d-0-N6", "label": "N", "why": ["253.145 m3: N khác chỉ số: wastewater / water_use"]}
+{"id": "bb-5d74fc3fa628f4a0-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-5d74fc3fa628f4a0-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-5d74fc3fa628f4a0-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-5d74fc3fa628f4a0-0-N6", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-8a12299d98291537-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-8a12299d98291537-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-8a12299d98291537-0-C3", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-8a12299d98291537-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-d08482796aa8de43-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-d08482796aa8de43-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-d08482796aa8de43-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-d08482796aa8de43-0-N6", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-1d19e242d14134a1-0-S0", "label": "N", "why": ["14.421.569 Kwh: N khác loại giá trị: absolute / share"]}
+{"id": "bb-1d19e242d14134a1-0-S1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-1d19e242d14134a1-0-C1", "label": "N", "why": ["18.026.961 Kwh: N khác loại giá trị: absolute / share"]}
+{"id": "bb-1d19e242d14134a1-0-C2", "label": "N", "why": ["14.421.569 Kwh: N khác chỉ số: renewable_energy / electricity_consumption"]}
+{"id": "bb-1d19e242d14134a1-0-N2", "label": "N", "why": ["14.421.569 Kwh: N khác loại giá trị: target / share"]}
+{"id": "bb-1d19e242d14134a1-0-N5", "label": "N", "why": ["14.421.569 Kwh/tấn sản phẩm: N khác chỉ số: renewable_energy / electricity_consumption"]}
+{"id": "bb-1d19e242d14134a1-0-N6", "label": "N", "why": ["14.421.569 Kwh: N khác loại giá trị: absolute / share"]}

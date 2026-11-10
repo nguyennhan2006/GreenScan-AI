@@ -1,6 +1,7 @@
 import { Chip } from './badges.jsx'
-import { ATTRIBUTES, PENALTIES } from '../lib/claims.js'
+import { ATTRIBUTES, PENALTIES, RISK_COMPONENT_LABELS } from '../lib/claims.js'
 import { formatDate } from '../lib/format.js'
+import { labelOf } from '../lib/labels'
 
 /**
  * The three panels that were missing from v1 (spec S3-D, S3-E, S3-F). Each
@@ -89,10 +90,10 @@ export function LegalPanel({ legal, gate }) {
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
-        <span>Vấn đề pháp lý: <b className="text-slate-900">{legal.issue}</b></span>
+        <span>Vấn đề pháp lý: <b className="text-slate-900">{labelOf('legal_issue', legal.issue)}</b></span>
         <span>· Tính đến <span className="font-mono">{formatDate(legal.as_of_date)}</span></span>
-        <span>· Chế độ <code className="font-mono">{legal.check_mode}</code></span>
-        <span>· Rule pack <code className="font-mono">{legal.rule_pack_version}</code></span>
+        <span>· Chế độ {labelOf('check_mode', legal.check_mode)}</span>
+        <span>· bộ quy tắc <code className="font-mono">{legal.rule_pack_version}</code></span>
       </div>
 
       <div className={`rounded-lg border px-3 py-2 text-sm ${
@@ -152,6 +153,8 @@ export function LegalPanel({ legal, gate }) {
   )
 }
 
+const rubricLabel = (v) => (v ? `phiên bản ${String(v).replace(/^risk-rubric-v?/i, '')}` : '—')
+
 export function RiskBreakdown({ risk }) {
   if (!risk) return null
   const byName = new Map(risk.components.map((c) => [c.name, c]))
@@ -172,8 +175,8 @@ export function RiskBreakdown({ risk }) {
               const ratio = c.max_score ? c.score / c.max_score : 0
               const color = ratio === 0 ? 'bg-emerald-400' : ratio >= 0.99 ? 'bg-red-400' : 'bg-amber-400'
               return (
-                <li key={name} className="grid grid-cols-[150px_1fr_52px] items-center gap-2 text-xs" title={c.reason}>
-                  <span className="truncate font-mono text-slate-600">{name}</span>
+                <li key={name} className="grid grid-cols-[180px_1fr_52px] items-center gap-2 text-xs" title={c.reason}>
+                  <span className="truncate text-slate-700">{RISK_COMPONENT_LABELS[name] || name}</span>
                   <span className="relative h-2 rounded-full bg-slate-100" style={{ width: `${(c.max_score / maxWidth) * 100}%` }}>
                     <span className={`absolute inset-y-0 left-0 rounded-full ${color}`} style={{ width: `${ratio * 100}%` }} />
                   </span>
@@ -185,7 +188,7 @@ export function RiskBreakdown({ risk }) {
         </div>
       ))}
       <p className="text-[11px] text-slate-500">
-        Tổng <span className="font-mono">{risk.risk_score}/100</span> · dải <span className="font-mono">{risk.severity}</span> · rubric <span className="font-mono">{risk.rubric_version}</span>
+        Tổng <span className="font-mono">{risk.risk_score}/100</span> · mức <span className="font-mono">{labelOf('severity', risk.severity)}</span> · thang chấm <span className="font-mono">{rubricLabel(risk.rubric_version)}</span>
         {risk.requires_human_review && ' · cần người xem xét'} — điểm chỉ dùng để sắp thứ tự ưu tiên, không phải kết luận.
       </p>
     </div>

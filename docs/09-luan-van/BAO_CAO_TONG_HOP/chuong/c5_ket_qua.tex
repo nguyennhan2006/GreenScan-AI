@@ -1,0 +1,323 @@
+% ===================================================================== CHƯƠNG 5
+\chapter{Thực nghiệm và kết quả}\label{ch:ket-qua}
+
+Chương này trả lời: các thành phần của hệ thống làm được gì trên dữ liệu đã mô tả ở Chương~\ref{ch:du-lieu}, và các dự đoán đã đăng ký trước có đứng vững không. Kết quả được sắp theo mức độ gần với dữ liệu thật. Đầu tiên là phần “đọc” (nhận diện tuyên bố, so sánh mô hình), tiếp theo là phần đọc số liệu trên ca dựng, sau đó là toàn bộ hệ thống trên câu thật, và cuối cùng là các ca chạy đầu–cuối.
+
+\section{Thiết lập và cách đọc kết quả}
+
+Trừ khi ghi khác, hệ thống được chạy ở chế độ ngoại tuyến, không dùng mô hình ngôn ngữ, trên laptop Intel i7-1355U, 16 GB RAM, không GPU. Huấn luyện và các thí nghiệm bộ đọc chạy trên GPU Tesla T4 của Kaggle.
+
+Bốn quy ước khi đọc bảng:
+\begin{itemize}
+\item mỗi bảng ghi loại căn cứ: ca dựng, nhãn xác nhận, hay phán quyết;
+\item “độ phủ / độ chính xác / được ủng hộ sai / mâu thuẫn sai” lần lượt là tỷ lệ ca dám kết luận dứt khoát, độ chính xác trên phần đó, số kết luận “được ủng hộ” sai và số kết luận “mâu thuẫn” sai;
+\item số “trong mẫu” là số trên dữ liệu đã dùng để rút ra cách sửa, không phải bằng chứng;
+\item khoảng trong ngoặc vuông là khoảng tin cậy 95\%.
+\end{itemize}
+
+\section{Nhận diện tuyên bố bằng mô hình học trò}\label{sec:t1-kq}
+
+Cấu hình: mô hình mã hoá đa ngôn ngữ multilingual-e5-base (278 triệu tham số) được tinh chỉnh cho bốn lớp; kiểm chéo theo công ty, 3 hạt giống; 1.217 câu của 15 công ty (bộ dữ liệu tại ngày 13/10/2026). Căn cứ: \textbf{nhãn xác nhận}.
+
+\begin{table}[htbp]
+\centering
+\caption{Nhận diện tuyên bố: bốn hệ so với nhãn xác nhận (n = 1.217, 15 công ty)}\label{tab:t1-kq}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{YC{1.7cm}C{3.0cm}C{1.1cm}C{2.6cm}}
+\hdr\thd{Hệ} & \thd{Độ chính xác} & \thd{Macro-F1} & \thd{κ} & \thd{F1 “là tuyên bố”}\\
+Đoán toàn lớp đông nhất & — & 0,19 & — & 0,00\\
+Không huấn luyện (mDeBERTa-xnli) & 0,45 & 0,27 [0,24; 0,30] & 0,11 & 0,49\\
+Luật từ khoá hiện tại & 0,55 & 0,36 [0,33; 0,38] & 0,25 & 0,61\\
+\textbf{Học trò e5-base} & \textbf{0,80} & \textbf{0,73 [0,69; 0,76]} & \textbf{0,66} & \textbf{0,82 [0,79; 0,85]}\\
+\end{tabularx}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  xbar, y dir=reverse,
+  width=0.70\linewidth, height=5.4cm,
+  xmin=0, xmax=0.9, ymin=0.4, ymax=4.6,
+  ytick={1,2,3,4},
+  yticklabels={Đoán toàn lớp đông nhất (0{,}19),Không huấn luyện (0{,}27),Luật từ khoá (0{,}36),Học trò e5-base (0{,}73)},
+  yticklabel style={font=\small},
+  xticklabel style={font=\small,/pgf/number format/use comma},
+  xlabel={\small Macro-F1 bốn lớp, kiểm chéo theo công ty},
+  bar width=13pt,
+  axis x line*=bottom, axis y line*=left,
+  xmajorgrids, grid style={gray!25},
+]
+\addplot+[fill=gsteal!75, draw=gsteal, error bars/.cd, x dir=both, x explicit, error bar style={black}]
+ coordinates {(0.19,1) +- (0,0) (0.27,2) += (0.03,0) -= (0.03,0) (0.36,3) += (0.02,0) -= (0.03,0) (0.73,4) += (0.03,0) -= (0.04,0)};
+\end{axis}
+\end{tikzpicture}
+\caption[Macro-F1 của bốn hệ nhận diện tuyên bố]{Macro-F1 của bốn hệ trong bài toán nhận diện tuyên bố, kèm khoảng tin cậy 95\% bootstrap theo công ty. Căn cứ: nhãn xác nhận.}\label{fig:t1}
+\end{figure}
+
+\textbf{Mức chênh.} Học trò hơn luật +0,37 [0,33; 0,41] macro-F1 và hơn mô hình không huấn luyện +0,45 [0,41; 0,50]. Giữa các hạt giống, macro-F1 dao động trong khoảng 0,706–0,719.
+
+\textbf{Theo lớp.} F1 của lớp có số là 0,74, lớp định tính 0,71, lớp mơ hồ 0,57. Luật không nhận ra được lớp mơ hồ (F1 = 0). Nhầm lẫn chủ yếu nằm giữa “định tính” và “không phải tuyên bố” (63 và 27 câu), và từ “mơ hồ” sang “định tính” (20 câu). Đúng như dự đoán ở mục~\ref{sec:vi-sao-hoc-duoc}, các lỗi tập trung ở ranh giới chủ quan nhất.
+
+\textbf{Theo lát cắt.} Câu tiếng Việt 0,75 (n = 845), câu tiếng Anh 0,68 (n = 372). Câu cần ngữ cảnh 0,67 (n = 143). Câu môi trường có số 0,66 (n = 242), thấp hơn câu không có số 0,76 (n = 217).
+
+\textbf{Hai phép thử bỏ bớt không kết luận được.} Giữ số so với che số: +0,014 [−0,02; +0,04]. Thêm câu trước làm cặp đầu vào: −0,012 [−0,06; +0,02]. Cả hai khoảng đều chứa 0, nghĩa là che số không làm hại, và ngữ cảnh câu trước chưa giúp được với cách ghép hiện tại.
+
+\textbf{Kết quả âm được ghi lại.} Mô hình mDeBERTa-xnli sau tinh chỉnh sụp về dự đoán toàn “không phải tuyên bố” qua 18 lần thử. Mô hình e5-large hết bộ nhớ trên T4 hai lần.
+
+\textbf{Vì sao chưa đưa vào sản phẩm.} Thời gian suy luận của học trò là 118,7 ms/câu trên CPU (một câu mỗi lần, 4 luồng). Mức này vượt ngưỡng 50 ms/câu đã đăng ký trước cho chế độ ngoại tuyến. Điều kiện thay luật cũng đã được đăng ký: học trò phải hơn luật với cận dưới khoảng tin cậy lớn hơn 0, \emph{và} độ phủ lớp tuyên bố phải cao hơn luật ít nhất 10 điểm, đo trên nhãn chuẩn. Nhãn chuẩn chưa có, nên học trò chưa thay luật.
+
+\begin{hopy}{Ý nghĩa}
+Dữ liệu miền làm thay đổi rõ năng lực nhận diện tuyên bố: mô hình nhỏ tinh chỉnh vượt luật và vượt mô hình không huấn luyện với khoảng cách lớn, ổn định giữa các hạt giống. Hai việc còn lại là kỹ thuật (giảm thời gian suy luận bằng mô hình nhỏ hơn hoặc lượng tử hoá) và đo lường (nhãn chuẩn độc lập).
+\end{hopy}
+
+\section{Mô hình lớn hay luật: thang kích thước mô hình}\label{sec:thang-mo-hinh}
+
+Câu hỏi đặt ra là có nên giao việc kiểm chứng cho mô hình lớn không. Thí nghiệm ngày 10/10/2026 cho luật và năm mô hình làm cùng 51 ca dựng tay, với cùng một lời nhắc tiếng Việt và nhiệt độ 0. Căn cứ: \textbf{ca dựng}.
+
+\begin{table}[htbp]
+\centering
+\caption{Thang kích thước mô hình trên 51 ca dựng tay}\label{tab:thang}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{YC{2.4cm}C{2.4cm}C{2.6cm}C{2.0cm}}
+\hdr\thd{Hệ} & \thd{Đúng / 32 ca sạch} & \thd{Đúng / 19 trang thật} & \thd{Xác nhận sai trên trang thật} & \thd{Thời gian mỗi ca}\\
+Luật của hệ thống (ngoại tuyến) & 20 & 7 & 0 & gần 0\\
+gemma-4-26B-A4B & 29 & 18 & 1 & 1,2 s\\
+gemma-4-31B & 32 & 17 & 2 & 1,5 s\\
+Llama-3.3-70B & 30 & 15 & 3 & 2,8 s\\
+GLM-5.2 & 32 & 17 & 2 & 13,7 s\\
+qwen3:8b (CPU) & 28 & 12 & 4 & 66–257 s\\
+\end{tabularx}
+\end{table}
+
+Mô hình lớn đọc đúng hơn luật trên bộ ca sạch (kiểm định McNemar chính xác, p ≤ 0,022). Nhưng trên trang thật, \emph{mọi} mô hình đều có xác nhận sai, còn luật thì không. Mọi mô hình từ 26 tỷ tham số trở lên đều xác nhận sai hai ca vì bảng PDF bị dàn phẳng: “phạm vi 1 là 23.369.500” thực ra là số của riêng mảng thép, và “nông nghiệp 933.876” thực ra là số phạm vi 2. Luật đúng ít hơn vì nó ít khi dám kết luận (8/32 ca sạch, đúng 6; 3/19 trang thật, đúng 3).
+
+\begin{hopy}{Kết luận thiết kế}
+Mô hình làm \emph{bộ đọc gợi ý}; luật và số học làm \emph{bộ quyết định}. Tăng kích thước mô hình làm tăng số ca đọc đúng, nhưng không loại bỏ được xác nhận sai do bảng bị dàn phẳng.
+\end{hopy}
+
+\section{Cho mô hình tự quyết hay đặt chốt chặn}
+
+Ngày 28/09/2026, mô hình ngôn ngữ được bật để đọc 780 cặp tuyên bố–bằng chứng của hai báo cáo Hòa Phát. Thí nghiệm so ba cấu hình. Căn cứ: đếm kết quả rồi soát tay, không dùng bộ nhãn.
+
+\begin{table}[htbp]
+\centering
+\caption{Bật mô hình đọc cặp khó trên Hòa Phát (264 trang, 156 tuyên bố)}\label{tab:stance}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{YC{2.6cm}C{2.6cm}C{2.6cm}}
+\hdr\thd{Chỉ số} & \thd{Tắt mô hình} & \thd{Bật, mô hình tự quyết} & \thd{Bật, có chốt chặn}\\
+Ủng hộ một phần / được ủng hộ / mâu thuẫn / chưa đủ & 153 / 2 / 0 / 1 & 136 / 6 / \textbf{10} / 4 & 150 / 2 / 0 / 4\\
+Rủi ro cao và nghiêm trọng trên doanh nghiệp đối chứng & 0 & 8 + 2 & 0\\
+Câu chuyển cho người xem & 0 & 156 & 13\\
+Thời gian & 144 s & 632 s (710 lời gọi) & 188 s (có bộ nhớ đệm)\\
+\end{tabularx}
+\end{table}
+
+Mô hình đọc được nội dung: nó chỉ ra 327 cặp chỉ là bối cảnh, và chuyển đúng 3 tuyên bố sang “chưa đủ bằng chứng”. Nhưng khi tự quyết, nó tạo ra 10 kết luận “mâu thuẫn”, phần lớn sai khi soát tay. Chốt chặn đưa số này về 0, đồng thời vẫn giữ lại 13 câu cần người xem.
+
+\section{Đọc số liệu bằng mô hình nhỏ: chuỗi thí nghiệm có đăng ký trước}\label{sec:ag}
+
+Chuỗi thí nghiệm này kiểm một thiết kế: mô hình nhỏ chỉ \emph{điền biểu diễn trung gian} của số liệu, còn thư viện tất định đưa ra kết luận. Căn cứ: \textbf{ca dựng} (GS-Bench).
+
+\textbf{Mốc và trần.} Trên 142 ca sinh của GS-Bench v1, luật chỉ dám kết luận 4/142 ca (độ phủ 0,028) và không bắt được ca mâu thuẫn nào. Nếu biểu diễn trung gian được điền đúng hoàn toàn (đáp án vàng), thư viện tất định đạt độ phủ 0,528 với độ chính xác 1,0 và 0 kết luận sai. Con số 0,528 là trần của cách làm này trên tập đó.
+
+\textbf{Lỗi đọc và hàm neo.} Ở lượt đầu, chưa mô hình nào qua được cổng đã đăng ký. Mô hình 4 tỷ tham số không vu oan nhưng độ phủ thấp (0,134). Mô hình 32 tỷ có độ phủ cao (0,423) nhưng có 7 kết luận “mâu thuẫn” sai. Phân tích lỗi cho thấy cả 11 kết luận sai của mô hình 32 tỷ có cùng một nguyên nhân: mô hình tự thêm bội số mà câu không viết. Hàm neo tất định (mục~\ref{sec:kiem-chung}) được viết để sửa lỗi này, kèm 9 kiểm thử hồi quy.
+
+\textbf{Ngoài mẫu.} Bảng~\ref{tab:ag-ngoai-mau} cho kết quả trên các ca chưa dùng để rút ra cách sửa.
+
+\begin{table}[htbp]
+\centering
+\caption{Bộ đọc số liệu có hàm neo, trên dữ liệu ngoài mẫu (ca dựng)}\label{tab:ag-ngoai-mau}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{YC{3.6cm}C{3.4cm}C{3.4cm}}
+\hdr\thd{Hệ} & \thd{246 ca mới (v1.1)} & \thd{Tập G, 162 ca, 9 công ty (v1.2)} & \thd{Sạch v1.3, 87 ca}\\
+Luật & 0,077 / 0,63 / 7 / 0 & 0,006 / 1,0 / 0 / 0 & 0,011 / 1,0 / 0 / 0\\
+Qwen3-4B & 0,126 / 0,90 / 1 / 2 & 0,093 / 1,0 / 0 / 0 & 0,138 / 1,0 / 0 / 0\\
+Qwen3-8B & 0,220 / 0,96 / 1 / 1 & 0,068 / 0,91 / 1 / 0 & 0,115 / 1,0 / 0 / 0\\
+Qwen3-14B & 0,256 / 0,92 / 2 / 3 & 0,086 / 0,93 / 1 / 0 & 0,115 / 1,0 / 0 / 0\\
+Qwen3-32B & 0,329 / 0,95 / 2 / 2 & 0,228 / 0,97 / 1 / 0 & 0,253 / 1,0 / 0 / 0\\
+\rowcolor{white}\multicolumn{4}{p{\dimexpr\linewidth-2\tabcolsep}}{\footnotesize Mỗi ô: độ phủ / độ chính xác trên phần dám kết luận / số “được ủng hộ” sai / số “mâu thuẫn” sai. Cột hai và ba dùng thư viện bản v1.2 (thêm quy tắc hạ “mâu thuẫn” khi văn bản bằng chứng có viết đúng số của tuyên bố).}\\
+\end{tabularx}
+\end{table}
+
+Trên 246 ca mới, mọi kết luận “mâu thuẫn” sai của mọi mô hình đều rơi vào cùng một câu: một số con (2.175 hoặc 8.000 cây) bị so với số tổng (10.175 cây). Trên tập sạch 87 ca, mô hình kết luận được nhiều gấp 10–20 lần luật mà không sai ca nào. Kết quả này phải đọc kèm giới hạn: số ca dám kết luận rất nhỏ (luật 1, mô hình 4 tỷ 12, mô hình 32 tỷ 22). Không có ca sai nào trên 87 ca vẫn cho phép tỷ lệ vu oan thật lên tới khoảng 3,4\%.
+
+\textbf{Đường đọc kép.} Chính sách “luật cộng mô hình 4 tỷ, bỏ kết luận ‘được ủng hộ’ chỉ do luật đưa ra” đạt trên tập G: độ phủ 0,093, độ chính xác 1,0, 0 kết luận sai nguy hiểm. Phần tăng độ phủ so với luật có khoảng tin cậy [0,016; 0,185], tức qua phần thống kê của cổng đã đăng ký. Lý do bỏ kết luận “được ủng hộ” đơn độc của luật là: trên lượt kiểm ngoài mẫu, những kết luận này chỉ đúng 1/6.
+
+\textbf{Chạy tại máy.} Bộ đọc 4 tỷ tham số sau lượng tử hoá 4 bit, chạy qua Ollama với đúng mã đọc của sản phẩm, cho nhãn trùng 96,3\% với bản chạy đầy đủ trên GPU (bản 8 bit: 98,1\%). Đường kép với bộ đọc cục bộ vẫn giữ 0 kết luận sai nguy hiểm trên tập G. Phần còn thiếu của cổng là thời gian chạy trên laptop, vì laptop thử nghiệm không đủ RAM trống để đo.
+
+\textbf{Dựng hàng bảng.} Thí nghiệm dựng lại hàng bảng từ toạ độ chữ trên trang 39 báo cáo Hòa Phát dựng được đủ 10 hàng dữ liệu, và phép cộng dọc khớp 3/3. Trên 7 ca dựng của trang này, số ca đúng tăng từ 1/7 (trang thô) lên 3/7 (hàng dựng lại), không có kết luận sai. Các ca còn lại hụt vì biểu diễn trung gian chưa có chiều “mảng kinh doanh”. Một phát hiện phụ: tiêu đề trang 39 ghi “năm 2024” trong khi bảng ghi năm 2025, một điểm không nhất quán nội bộ của chính báo cáo.
+
+\section{Toàn hệ thống trên câu thật (GS-Eval v2)}\label{sec:gseval-kq}
+
+Phần này đo mã hiện tại trên câu thật của 8 doanh nghiệp. Căn cứ: \textbf{nhãn xác nhận}. Kho kết luận hiện tại gồm 1.138 tuyên bố khác nhau: 1.006 ủng hộ một phần, 72 chưa đủ bằng chứng, 52 mâu thuẫn, 8 được ủng hộ (số trước chốt chặn ngày 05/11).
+
+\subsection{Trích tuyên bố}
+
+44/146 câu mà hệ thống trích ra không phải tuyên bố, tức 30\% [23\%; 38\%]: dòng bảng ghép lại, mục lục, chỉ mục GRI, chân trang lặp, câu bối cảnh không nói về doanh nghiệp. Bộ gắn cờ thêm ngày 09/11 bắt được 15/61 câu không phải tuyên bố trên 210 câu có nhãn, và gắn nhầm 1/149 tuyên bố thật (một dòng bảng dính chữ). Trên toàn kho 1.138 câu, bộ gắn cờ đánh dấu 69 câu.
+
+\subsection{Kết luận và an toàn}
+
+\begin{table}[htbp]
+\centering
+\caption{Kết luận trên câu thật trước và sau chốt chặn mâu thuẫn (căn cứ: nhãn xác nhận)}\label{tab:chot-chan}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{YC{3.0cm}C{3.0cm}}
+\hdr\thd{Chỉ số} & \thd{Trước sửa} & \thd{Sau sửa 05/11}\\
+“Mâu thuẫn” đúng nhãn & 3/38 & \textbf{3/4}\\
+“Mâu thuẫn” sai trên tuyên bố thật (vu oan) & 24 & \textbf{0}\\
+“Mâu thuẫn” sai, tính cả câu không phải tuyên bố & 35 & 1\\
+Độ chính xác của kết luận (n = 102 tuyên bố thật) & 0,40 & 0,51\\
+κ / macro-F1 & 0,15 / 0,29 & 0,18 / 0,52\\
+GS-Bench v1.1 (453 ca, nhãn từng ca) & — & giống hệt trước\\
+Bốn vụ có phán quyết & 4/4 & 4/4\\
+\end{tabularx}
+\end{table}
+
+Trước khi sửa, trong 35 kết luận “mâu thuẫn” sai có 22 ca đi qua luật từ phủ định (đoạn bằng chứng có chữ “vi phạm”, kể cả trong câu “không ghi nhận vi phạm”) và 13 ca so số của hai đối tượng khác nhau, ví dụ khay giấy 23 tấn so với lót PET 14 tấn của một sáng kiến khác. Đây chính là hai đường tắt mà chốt chặn chặn lại.
+
+Điểm yếu lớn nhất còn lại là kết luận “được ủng hộ”: \textbf{5 ca, không ca nào đúng nhãn}. Ba ca thực ra chỉ được ủng hộ một phần, hai ca không phải tuyên bố. Sau chốt chặn, hệ thống kết luận dứt khoát 9/146 câu, đúng 3. Vì vậy người soát được khuyến nghị xác nhận lại mọi kết luận “được ủng hộ”.
+
+\begin{luuy}{Hai con số phải luôn được nói cùng nhau}
+“0 kết luận mâu thuẫn sai” trên ca dựng (GS-Bench) và “24 kết luận mâu thuẫn sai trên 146 câu thật” trước ngày 05/11 không mâu thuẫn với nhau. Ca dựng chỉ đo phép so số khi đã biết hai con số nói về cùng một đại lượng. Câu thật còn có câu bối cảnh, phủ định lành tính và nhiều sáng kiến cùng đơn vị trên một trang. Một bộ đo có đáp án theo cấu trúc là cần, nhưng không đủ.
+\end{luuy}
+
+\subsection{Lời giải thích}
+
+Lời giải thích dài trung bình 34 từ, không câu nào quá 80 từ. Nhưng chỉ có 54 lời giải thích khác nhau trên 146 mẫu: lời giải thích hiện là mẫu cố định theo nhánh luật. Lời giải thích được chấm bằng máy theo danh mục ý bắt buộc và khẳng định cấm của từng mẫu. Cần lưu ý rằng máy chấm cùng họ với công cụ gán nhãn, nên có thể thiên lệch (Chương~\ref{ch:co-so}). Kết quả chấm trên lời giải thích \emph{trước} chốt chặn được tóm tắt ở Bảng~\ref{tab:giai-thich}.
+
+\begin{table}[htbp]
+\centering
+\caption{Chất lượng lời giải thích theo loại kết luận (chấm bằng máy, trước chốt chặn)}\label{tab:giai-thich}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{YC{1.2cm}C{2.4cm}C{3.0cm}C{1.8cm}}
+\hdr\thd{Kết luận của hệ thống} & \thd{n} & \thd{Trung thực} & \thd{Chỉ ra việc cần làm} & \thd{Độ rõ (1–5)}\\
+Mâu thuẫn & 38 & 0,08 & 0,00 & 2,0\\
+Được ủng hộ & 5 & 0,00 & 0,00 & 2,0\\
+Chưa đủ bằng chứng & 48 & 0,60 & 0,98 & 3,0\\
+Ủng hộ một phần & 55 & 0,95 & 0,20 & 2,9\\
+\end{tabularx}
+\end{table}
+
+Khi hệ thống \emph{dừng phán đoán} (chưa đủ bằng chứng, ủng hộ một phần), lời giải thích phần lớn trung thực, và với “chưa đủ bằng chứng” thì gần như luôn chỉ ra việc cần làm tiếp. Khi hệ thống kết luận dứt khoát, lời giải thích lặp lại đúng lỗi của kết luận. Thuộc tính “còn thiếu” mà hệ thống báo khớp nhãn ở mức thấp (F1 từ 0,18 đến 0,30; năm gốc 0), vì hệ thống báo thiếu năm gốc cho mọi tuyên bố có chiều thay đổi.
+
+\subsection{Điểm rủi ro}
+
+Hai lượt gán nhãn độc lập đồng ý với nhau ở mức Spearman 0,73 trên tổng điểm. Mức này là \emph{trần thực tế} cho bất kỳ hệ chấm tự động nào trên bộ nhãn này. Hình~\ref{fig:rho} cho thấy tương quan giữa điểm của hệ thống và điểm đồng thuận của nhãn qua ba phiên bản.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  ybar, width=0.8\linewidth, height=6.2cm,
+  ymin=0, ymax=0.85, xmin=0.4, xmax=3.6,
+  xtick={1,2,3},
+  xticklabels={Trước chốt chặn\\(05/11)\\ρ = 0{,}23,Sau chốt chặn\\(05/11)\\ρ = 0{,}39,Thang điểm bản 3\\(09/11)\\ρ = 0{,}46},
+  xticklabel style={align=center,font=\small},
+  yticklabel style={font=\small,/pgf/number format/use comma},
+  ylabel={\small Spearman ρ (n = 148)},
+  bar width=30pt,
+  axis x line*=bottom, axis y line*=left,
+  ymajorgrids, grid style={gray!25},
+]
+\addplot+[fill=gsteal!75, draw=gsteal, error bars/.cd, y dir=both, y explicit, error bar style={black}]
+ coordinates {(1,0.23) += (0,0.14) -= (0,0.18) (2,0.39) += (0,0.12) -= (0,0.23) (3,0.46) += (0,0.13) -= (0,0.23)};
+\draw[dashed, gold, very thick] (axis cs:0.4,0.73) -- (axis cs:3.6,0.73);
+\node[anchor=south east, font=\small, text=gold] at (axis cs:3.55,0.735) {Trần: hai lượt nhãn đồng ý với nhau (0,73)};
+\end{axis}
+\end{tikzpicture}
+\caption[Tương quan hạng giữa điểm rủi ro và điểm đồng thuận]{Tương quan hạng giữa điểm rủi ro của hệ thống và điểm đồng thuận của nhãn, kèm khoảng tin cậy 95\% bootstrap theo công ty. Căn cứ: nhãn xác nhận.}\label{fig:rho}
+\end{figure}
+
+Thang điểm bản 3 sửa đúng lỗi đã đo, và kết quả khớp dự đoán đã đăng ký. Số tuyên bố bị phạt năm gốc khi năm gốc không áp dụng giảm từ 69 xuống 11. Điểm trung bình của hệ thống giảm từ 49,2 xuống 42,6, gần hơn với mức 30,2 của nhãn. Mức độ khớp đúng dải với đánh giá tổng thể tăng từ 0,473 lên 0,520, và lệch không quá một dải đạt 0,986. Phần còn sai: 34 câu không phải tuyên bố mà bộ gắn cờ chưa bắt vẫn bị phạt ở mọi thành phần; hai thành phần “bảo đảm độc lập” và “phạm vi, ranh giới” vẫn gần như ngẫu nhiên so với nhãn. Vì vậy điểm rủi ro chỉ được dùng để \emph{xếp thứ tự}, không dùng để kết luận.
+
+\subsection{Gợi ý sửa}
+
+\begin{itemize}
+\item \textbf{Không bịa số: 0/527 gợi ý thêm số mới.} Phép kiểm “không số mới” hoạt động đúng như thiết kế.
+\item Hệ thống gợi ý cho mọi câu (200/200), nên chưa phân biệt câu cần sửa với câu đã ổn: 16/16 câu đã ổn vẫn nhận gợi ý, và có 130 gợi ý trên 49 câu không phải tuyên bố môi trường.
+\item F1 theo loại gợi ý trên 151 tuyên bố: chỗ trống cho cụm mơ hồ 0,72; bổ sung phạm vi 0,66; dẫn bằng chứng 0,51; làm mềm lời tuyệt đối 0,47. Yếu nhất là nhận ra lời tuyệt đối (không bắt được ca nào trong 10 ca) và gợi ý năm gốc (độ chính xác 0,14).
+\end{itemize}
+
+\subsection{Quy tắc nội bộ}
+
+Trên 237 ca của 14 gói quy tắc (76 quy tắc), với thuộc tính tuyên bố được cho đúng, bộ áp quy tắc cho kết quả đúng 224/237 = 0,945 [0,908; 0,968]. Khi thuộc tính do bộ trích của hệ thống tự đọc (chạy đầu–cuối), con số này là 0,907 [0,863; 0,938]. Mười ba lỗi đều đến từ cách diễn đạt quy tắc: 8 ca vì loại tuyên bố do bộ trích gán không khớp loại mà quy tắc nhắm tới; 2 ca vì điều kiện kích hoạt thiếu từ đồng nghĩa; 3 ca vì điều kiện ngưỡng số xét mọi con số trong đoạn bằng chứng thay vì đúng con số của chỉ số.
+
+\textbf{Các ca an toàn đạt toàn bộ}: gói nháp 11/11, quy tắc hết hiệu lực 6/6, tiêm lệnh trong tài liệu nội bộ 11/11, vượt quyền 11/11, trái pháp luật 6/6 (tổng 45/45), và khác ngành 13/13. Kết luận kiểm chứng giống hệt khi có và không có gói quy tắc.
+
+\subsection{Ngôn ngữ hiển thị}
+
+Phép kiểm tự động trên 9.621 chuỗi hiển thị của 15 lượt chạy cho thấy: không chuỗi nào quá 80 từ, không lộ mã nội bộ hay tiếng Anh trong mã hiện tại. Lỗi từng có là 24 chuỗi hiện nguyên chữ “vi phạm” khi trích từ phủ định, mang sắc thái cáo buộc; sau chốt chặn, số chuỗi này về 0. Còn 8 đoạn bằng chứng không có số trang, đều thuộc ca thật dạng văn bản thuần.
+
+\section{Ca chạy đầu–cuối}\label{sec:hpg}
+
+\subsection{Bộ báo cáo Hòa Phát}
+
+Đầu vào là báo cáo phát triển bền vững 2025 và báo cáo thường niên 2024 của Hòa Phát (264 trang), chạy ở chế độ ngoại tuyến trên laptop. Kết quả lượt chạy ngày 09/11/2026:
+\begin{itemize}
+\item \textbf{156 tuyên bố}: 153 ủng hộ một phần, 2 được ủng hộ, 1 chưa đủ bằng chứng, 0 mâu thuẫn; 1 câu bị gắn cờ “có thể không phải tuyên bố”.
+\item \textbf{Hàng đợi 9/172 mục}, mỗi mục kèm lý do (nhóm chỉ số, thiếu thuộc tính nào, văn bản pháp lý liên quan); không mục nào trong hàng đợi bị gắn cờ.
+\item \textbf{Thời gian 107–154 giây}, RAM đỉnh 1,33 GB, không GPU, không khoá dịch vụ.
+\end{itemize}
+
+\textbf{Thủ tục trên số liệu công bố.} Hệ thống cộng lại bảng khí nhà kính trang 39: 22.540.603 + 933.876 = 23.474.479 tCO\textsubscript{2}e, so với số công bố 23.474.480. Kết luận: khớp trong sai số làm tròn.
+
+\textbf{Một mục trong hàng đợi.} Mục \#2: “cả hai khu liên hợp … đều có mức độ tự chủ điện năng rất cao” được kết luận “ủng hộ một phần”. Dòng tóm tắt ghi câu còn thiếu số liệu, kỳ báo cáo và năm gốc. Bằng chứng tìm được ở báo cáo thường niên 2024, trang 86: “tự chủ 90\% điện”, 788 triệu kWh. Người soát thấy ngay cần hỏi gì: con số nào, cho năm nào.
+
+\textbf{Một lỗi còn thấy.} Mục \#1 của hàng đợi là một câu bị dính chữ khi đọc PDF: chữ “HÒA PHÁT” ở đầu trang bị ghép vào giữa câu mô tả lò cao. Đây là lỗi của bước đọc tài liệu và được nêu như một hạn chế (mục~\ref{sec:loi-nguyen-mau}).
+
+Kết quả phẳng (153/156 “ủng hộ một phần”) phản ánh hai điều: thực trạng công bố của tuyên bố (thiếu thuộc tính), và giới hạn của bộ quy tắc pháp lý (0 quy tắc áp được). Đây không phải thành tích. Giá trị của lượt chạy nằm ở hàng đợi có lý do, thuộc tính còn thiếu và phép tính tái lập được.
+
+\subsection{Bốn vụ việc có phán quyết}
+
+Trên bốn vụ BNY Mellon (2022), DWS (2023), Keurig Dr Pepper (2024) và KLM (2024), hệ thống cho kết luận đúng 4/4, cả về quan hệ với bằng chứng lẫn văn bản pháp lý liên quan. Bộ bốn vụ được dùng làm cổng hồi quy cho mọi lần sửa mã.
+
+Một điểm cần báo: sau khi đổi sang thang điểm bản 3, mức rủi ro của vụ BNY giảm từ 78 (nghiêm trọng) xuống 70 (cao), nên số vụ khớp dải rủi ro giảm từ 2/4 xuống 1/4. Có một phương án là đặt sàn “nghiêm trọng” cho mâu thuẫn từ nguồn có thẩm quyền. Phương án này khôi phục được 4/4, nhưng nó chưa được đăng ký trước và sẽ được chỉnh để khớp đúng bốn vụ này. Vì vậy tác giả chưa áp dụng nó, và giữ nó như một quyết định mở.
+
+\section{Các dự đoán đã đăng ký: đúng và sai}\label{sec:du-doan}
+
+Trong hai ngày 31/10 và 01/11/2026, dự án đăng ký 21 dự đoán định lượng cho chuỗi thí nghiệm bộ đọc số liệu: \textbf{13 đúng, 8 sai}. Một số dự đoán sai có giá trị như dự đoán đúng, vì chúng sửa lại hiểu biết của nhóm:
+\begin{itemize}
+\item Hai dự đoán về độ phủ của mô hình 4 tỷ tham số (≥ 0,35 ở lượt đầu, ≥ 0,30 trên 246 ca mới) đều sai (0,134 và 0,126). Mô hình nhỏ đọc an toàn nhưng dè dặt.
+\item Dự đoán “kích thước không quan trọng từ 4 tỷ tham số trở lên” đúng trong mẫu nhưng bị bác ngoài mẫu: các mô hình 8, 14, 32 tỷ có độ phủ cao hơn rõ.
+\item Dự đoán dựng hàng bảng sẽ sửa được hai ca khó, và đúng ít nhất 5/7 ca, đều sai (3/7). Lý do là biểu diễn trung gian thiếu chiều “mảng kinh doanh”.
+\item Một kết luận cũ (“mô hình 4 tỷ mất độ phủ vì đọc sai năm bằng chứng”) đã được rút lại khi phát hiện lỗi nằm ở chính tập dữ liệu (năm lấy nhầm từ tiêu đề trang).
+\end{itemize}
+Các dự đoán đúng gồm: an toàn của mô hình 4 tỷ ngoài mẫu (độ chính xác 0,90, cận dưới 0,81, sát ngưỡng), hiệu quả của hàm neo ở mọi mô hình từ 4 tỷ trở lên, an toàn của đường đọc kép trên tập G, và độ trùng ≥ 0,95 của bộ đọc chạy tại máy.
+
+\section{Tổng hợp: điều đã chứng minh và điều chưa}
+
+\begin{table}[htbp]
+\centering
+\caption{Hai nhóm kết quả: bảo đảm viết thành mã và chất lượng phán đoán}\label{tab:tong-hop-kq}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{YY}
+\hdr\thd{Bảo đảm viết thành mã: đứng vững} & \thd{Chất lượng phán đoán: còn yếu}\\
+Gợi ý sửa không thêm số nào (0/527) & “Được ủng hộ” đúng 0/5 trên câu thật\\
+Quy tắc nội bộ không đổi kết luận; 45/45 ca an toàn & Độ phủ thấp: 7,7\% trên ca dựng, 9/146 trên câu thật\\
+Chế độ ngoại tuyến: 0 kết nối ra ngoài & 30\% câu được trích không phải tuyên bố (bộ gắn cờ mới bắt một phần)\\
+Mọi đoạn bằng chứng từ PDF có tên tài liệu và trang & Điểm rủi ro tương quan vừa phải (ρ = 0,46) so với trần 0,73\\
+“Mâu thuẫn” sai trên tuyên bố thật: 24 → 0 sau chốt chặn & Lời giải thích theo mẫu cố định; chưa nói phần nào của câu có bằng chứng\\
+4/4 vụ có phán quyết; 453/453 nhãn ca dựng giữ nguyên qua mọi lần sửa & 0 quy tắc pháp lý áp được; 0 nguồn bằng chứng độc lập\\
+\end{tabularx}
+\end{table}
+
+Hai nhóm này không mâu thuẫn nhau mà bổ sung cho nhau. Nguyên lý của hệ thống đặt cược rằng khi quy tắc còn yếu thì hệ thống sẽ \emph{nhường người} thay vì phán bừa. Phần lớn đúng như vậy: 88\% tuyên bố được xếp “ủng hộ một phần”. Chỗ đặt cược thua là những đường tắt cho phép quy tắc kết luận dứt khoát khi chưa đủ điều kiện. Hai đường tắt về mâu thuẫn đã được chặn; đường tắt về “được ủng hộ” (câu tự lặp lại ở tài liệu khác của cùng doanh nghiệp) là việc tiếp theo.
+
+\FloatBarrier
+\begin{hopy}{Tóm tắt chương}
+\begin{itemize}
+\item Mô hình học trò nhận diện tuyên bố đạt macro-F1 0,73 so với 0,36 của luật (nhãn xác nhận), nhưng chậm hơn ngưỡng 50 ms/câu nên chưa vào sản phẩm.
+\item Mô hình lớn đọc tốt hơn luật nhưng đều có xác nhận sai trên trang thật; khi tự quyết, mô hình tạo ra kết luận “mâu thuẫn” sai. Mô hình đọc, luật quyết định.
+\item Bộ đọc số liệu nhỏ cộng hàm neo và đường đọc kép tăng độ phủ 10–20 lần trên ca dựng mà không sai; bộ đọc chạy tại máy trùng 96,3\% với bản GPU.
+\item Trên câu thật, chốt chặn đưa “mâu thuẫn” sai trên tuyên bố thật từ 24 về 0. Điểm yếu còn lại là “được ủng hộ”, trích tuyên bố và độ phủ.
+\item Trên Hòa Phát, hệ thống chạy 264 trang trong khoảng 2 phút, ra hàng đợi 9 mục có lý do và cộng lại khớp bảng phát thải; 4/4 vụ có phán quyết đúng. 21 dự đoán đăng ký: 13 đúng, 8 sai, tất cả được công bố.
+\end{itemize}
+\end{hopy}

@@ -16,6 +16,10 @@ claim_extraction:
   provider: heuristic
   minimum_confidence: 0.40
   include_vague_claims: true
+  # claim-quality-v1: mark probable non-claims (layout glue, standard titles,
+  # quoted decrees); verdicts unchanged, marked sentences leave the queue and
+  # the risk score. Env QUANTUM_FLAG_SUSPECT_NON_CLAIMS=false restores v0.
+  flag_suspect_non_claims: true
 
 retrieval:
   top_k: 5
@@ -51,6 +55,7 @@ verification:
   partial_support_score: 0.22
   injection_policy: exclude
   qualitative_min_overlap: 0.20   # authority sources bypass this; see settings.py
+  self_evidence_can_contradict: false  # contradiction guard 05/11/2026; true = behaviour before GS-Eval v2
   llm_stance: "off"               # quoted: bare `off` is YAML boolean false
                                   # "off" | "on_ambiguous" — see verification/llm_judge.py
   llm_stance_min_overlap: 0.12

@@ -1,0 +1,86 @@
+# Org pack giả lập cho GS-Eval v2 (D-RULES, phần r2). BẢN NHÁP: approved_by rỗng nên được nạp, hiển thị là nháp, KHÔNG áp dụng.
+# Cùng tổ chức với pack hiep_hoi_nx (bản đang áp dụng); tách thư mục vì mỗi thư mục chỉ chứa một pack.yaml.
+kind: org_pack
+schema_version: org-pack-v0
+org_id: hiep_hoi_nx_du_thao
+org_name: Hiệp hội Thép và Xi măng NX (tổ chức giả lập) – dự thảo Hướng dẫn 2.0
+org_type: industry_association
+pack_version: 2.0.0-draft
+precedence: below_law
+approved_by: ''
+approved_at: ''
+documents:
+  - {doc_id: POL-02, title: 'Dự thảo Hướng dẫn báo cáo cường độ phát thải HD-NX-02', path: internal_policy.md, role: policy}
+glossary:
+  - {term: 'phát thải nhúng', synonyms: ['embedded emissions', 'phát thải gắn với sản phẩm'], definition: 'Phát thải gắn với sản phẩm theo cách tính CBAM (POL-02 §2.2).'}
+rules:
+  - rule_id: HHNX2_001
+    title: Cường độ phải tách riêng Phạm vi 1 và Phạm vi 2
+    source_document: POL-02
+    source_clauses: ['POL-02:§2.1']
+    claim_types: [emissions_reduction]
+    legal_issue: org_policy
+    applies_to_sectors: [steel, cement]
+    effective_from: '2026-07-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: ''
+    when:
+      - {id: intensity_terms, description: 'Câu nói về cường độ / phát thải trên mỗi tấn', source_clause: 'POL-02:§2.1', check: claim_terms_present, any_of_terms: ['cường độ phát thải', 'co2/tấn', 'co2e/tấn', 'trên mỗi tấn', 'per tonne', 'emission intensity']}
+    conditions:
+      - {id: no_combined_scope, description: 'Câu không gộp Phạm vi 1 và 2 thành một số', source_clause: 'POL-02:§2.1', check: claim_terms_absent, any_of_terms: ['phạm vi 1 và 2', 'phạm vi 1+2', 'scope 1+2', 'scope 1 and 2']}
+
+  - rule_id: HHNX2_002
+    title: Hội viên xuất khẩu sang EU phải nêu phát thải nhúng theo CBAM
+    source_document: POL-02
+    source_clauses: ['POL-02:§2.2']
+    claim_types: [emissions_reduction]
+    legal_issue: org_policy
+    applies_to_sectors: [steel, cement]
+    effective_from: '2026-07-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: ''
+    when:
+      - {id: eu_export, description: 'Câu nói về xuất khẩu sang EU', source_clause: 'POL-02:§2.2', check: claim_terms_present, any_of_terms: ['thị trường eu', 'sang eu', 'châu âu', 'cbam', 'export to the eu']}
+    conditions:
+      - {id: embedded_emissions, description: 'Bằng chứng nêu phát thải nhúng', source_clause: 'POL-02:§2.2', check: terms_present, any_of_terms: ['phát thải nhúng', 'embedded emissions', 'phát thải gắn với sản phẩm']}
+
+  - rule_id: HHNX2_003
+    title: Không dùng cụm thép xanh, xi măng xanh khi chưa có tiêu chí quốc gia
+    source_document: POL-02
+    source_clauses: ['POL-02:§2.3']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: [steel, cement]
+    effective_from: '2026-07-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: ''
+    conditions:
+      - {id: no_green_material_terms, description: 'Câu không chứa cụm bị hạn chế', source_clause: 'POL-02:§2.3', check: claim_terms_absent, any_of_terms: ['thép xanh', 'xi măng xanh', 'green steel', 'green cement']}
+
+  - rule_id: HHNX2_004
+    title: Xếp hạng nhóm phát thải thấp phải dựa trên số liệu đã thẩm định độc lập
+    source_document: POL-02
+    source_clauses: ['POL-02:§3.1']
+    claim_types: [emissions_reduction]
+    legal_issue: org_policy
+    applies_to_sectors: [steel, cement]
+    effective_from: '2026-07-01'
+    effective_to: null
+    severity: warning
+    on_fail: raise_priority
+    machine_executable: partial
+    reviewed_by: ''
+    when:
+      - {id: low_emission_label, description: 'Câu tự nhận nhóm phát thải thấp', source_clause: 'POL-02:§3.1', check: claim_terms_present, any_of_terms: ['nhóm phát thải thấp', 'low-emission group']}
+    conditions:
+      - {id: independent_verification, description: 'Có bằng chứng thẩm định độc lập', source_clause: 'POL-02:§3.1', check: evidence_independent}
+      - {id: verifier_checked, description: 'Người soát xét kiểm tư cách tổ chức thẩm định', source_clause: 'POL-02:§3.1', check: manual}

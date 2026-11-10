@@ -1,0 +1,52 @@
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {1.1}{\ignorespaces Phạm vi xử lý của báo cáo}}{5}{table.caption.7}%
+\contentsline {table}{\numberline {1.2}{\ignorespaces Câu hỏi nghiên cứu và nơi trả lời trong báo cáo}}{6}{table.caption.8}%
+\contentsline {table}{\numberline {1.3}{\ignorespaces Đối chiếu tiêu chí chấm Vòng 2 với các chương}}{7}{table.caption.9}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Các văn bản pháp lý chính trong sổ đăng ký pháp lý của hệ thống}}{9}{table.caption.10}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Năm yêu cầu thiết kế và cơ chế đáp ứng}}{14}{table.caption.11}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Mười bất biến kiến trúc và lỗi mà mỗi bất biến ngăn}}{16}{table.caption.12}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Mười bước của một lượt phân tích}}{18}{table.caption.14}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Năm loại kết luận và điều kiện đưa ra}}{19}{table.caption.15}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Chín thành phần của thang điểm rủi ro (tổng trần 100)}}{21}{table.caption.16}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces Bốn loại tri thức và nơi mỗi loại được “học”}}{25}{table.caption.17}%
+\contentsline {table}{\numberline {3.7}{\ignorespaces Bốn lý do sửa kết luận và đường đi của nhãn}}{25}{table.caption.18}%
+\contentsline {table}{\numberline {3.8}{\ignorespaces Ba chế độ chạy và dữ liệu rời máy}}{26}{table.caption.19}%
+\contentsline {table}{\numberline {3.9}{\ignorespaces Trạng thái các thành phần (theo mã nguồn, 09/11/2026)}}{27}{table.caption.20}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Nguồn dữ liệu, phạm vi và căn cứ sử dụng}}{30}{table.caption.21}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Bốn lớp của bài toán nhận diện tuyên bố, kèm ví dụ trong bộ dữ liệu}}{31}{table.caption.22}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Sáu tầng chọn mẫu của bộ dữ liệu huấn luyện (2.055 câu)}}{32}{table.caption.23}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Phân bố lớp của bộ dữ liệu huấn luyện}}{33}{table.caption.24}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Các phiên bản của GS-Bench}}{36}{table.caption.25}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Năm phần của GS-Eval v2}}{36}{table.caption.26}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Các đe doạ tính hợp lệ của dữ liệu và cách giảm}}{38}{table.caption.27}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Nhận diện tuyên bố: bốn hệ so với nhãn xác nhận (n = 1.217, 15 công ty)}}{40}{table.caption.28}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Thang kích thước mô hình trên 51 ca dựng tay}}{41}{table.caption.30}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Bật mô hình đọc cặp khó trên Hòa Phát (264 trang, 156 tuyên bố)}}{42}{table.caption.31}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces Bộ đọc số liệu có hàm neo, trên dữ liệu ngoài mẫu (ca dựng)}}{42}{table.caption.32}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces Kết luận trên câu thật trước và sau chốt chặn mâu thuẫn (căn cứ: nhãn xác nhận)}}{44}{table.caption.33}%
+\contentsline {table}{\numberline {5.6}{\ignorespaces Chất lượng lời giải thích theo loại kết luận (chấm bằng máy, trước chốt chặn)}}{44}{table.caption.34}%
+\contentsline {table}{\numberline {5.7}{\ignorespaces Hai nhóm kết quả: bảo đảm viết thành mã và chất lượng phán đoán}}{48}{table.caption.36}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Phạm vi chức năng của nguyên mẫu (09–10/11/2026)}}{49}{table.caption.37}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Lỗi đã biết của nguyên mẫu}}{53}{table.caption.39}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {7.1}{\ignorespaces Nhóm người dùng, việc cần làm và cách triển khai phù hợp}}{54}{table.caption.40}%
+\contentsline {table}{\numberline {7.2}{\ignorespaces Bốn cách triển khai}}{55}{table.caption.41}%
+\contentsline {table}{\numberline {7.3}{\ignorespaces Phân loại tài liệu và chế độ chạy được phép}}{55}{table.caption.42}%
+\contentsline {table}{\numberline {7.4}{\ignorespaces Rủi ro chính, biện pháp hiện có và phần còn thiếu}}{57}{table.caption.43}%
+\contentsline {table}{\numberline {7.5}{\ignorespaces Lộ trình và mốc kiểm chứng}}{58}{table.caption.44}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {8.1}{\ignorespaces Mức độ trả lời sáu câu hỏi nghiên cứu}}{62}{table.caption.45}%
+\contentsline {table}{\numberline {8.2}{\ignorespaces Cam kết ở Vòng 1, trạng thái ngày 10/11/2026 và hướng xử lý}}{62}{table.8.2}%
+\contentsline {table}{\numberline {8.3}{\ignorespaces Mười hướng phát triển và tiêu chí thành công}}{64}{table.8.3}%
+\contentsline {table}{\numberline {8.4}{\ignorespaces Bốn bước của hướng H5}}{66}{table.caption.46}%
+\contentsline {table}{\numberline {8.5}{\ignorespaces Thứ tự ưu tiên của các hướng phát triển}}{67}{table.caption.47}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {A.1}{\ignorespaces Công cụ trí tuệ nhân tạo đã dùng và cách kiểm soát đầu ra}}{74}{table.caption.49}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {B.1}{\ignorespaces Khẳng định và nơi kiểm lại}}{76}{table.B.1}%

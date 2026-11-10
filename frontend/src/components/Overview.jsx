@@ -49,19 +49,19 @@ export default function Overview({ summary, lastRunAt, onOpenQueue }) {
 
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <WorkTile
-          label="Claim chưa xử lý"
+          label="Tuyên bố chưa xử lý"
           count={s.unresolved.length}
           hint="Thiếu ít nhất một thuộc tính bắt buộc"
           onOpen={() => onOpenQueue('unresolved')}
         />
         <WorkTile
-          label="Claim thiếu bằng chứng"
+          label="Tuyên bố thiếu bằng chứng"
           count={s.noEvidence.length}
           hint="Không truy xuất được đoạn nào để đối chiếu"
           onOpen={() => onOpenQueue('noEvidence')}
         />
         <WorkTile
-          label="Claim có mâu thuẫn"
+          label="Tuyên bố có mâu thuẫn"
           count={s.contradicted.length}
           hint="Có bằng chứng ngược với tuyên bố"
           tone="red"
@@ -95,7 +95,7 @@ export default function Overview({ summary, lastRunAt, onOpenQueue }) {
 
       <div className="grid gap-4 lg:grid-cols-2">
         <section className="rounded-xl border border-slate-200 bg-white p-4">
-          <h3 className="text-sm font-semibold text-slate-900">Tài liệu đang review</h3>
+          <h3 className="text-sm font-semibold text-slate-900">Tài liệu đang soát xét</h3>
           <ul className="mt-3 divide-y divide-slate-100">
             {s.documents.map((d) => (
               <li key={d.name} className="flex items-center gap-3 py-2">
@@ -175,7 +175,7 @@ export default function Overview({ summary, lastRunAt, onOpenQueue }) {
           })}
         </ul>
         <p className="mt-3 text-xs text-slate-500">
-          Tỷ lệ dừng phán đoán: <b className="font-mono">{s.total ? Math.round((s.abstain.length / s.total) * 100) : 0}%</b> — “chưa đủ bằng chứng” là kết quả bình thường của quy trình evidence-first, không phải lỗi; hệ thống dừng lại thay vì suy đoán.
+          Tỷ lệ dừng phán đoán: <b className="font-mono">{s.total ? Math.round((s.abstain.length / s.total) * 100) : 0}%</b> — “chưa đủ bằng chứng” là kết quả bình thường của quy trình lấy bằng chứng làm gốc, không phải lỗi; hệ thống dừng lại thay vì suy đoán.
         </p>
       </section>
 

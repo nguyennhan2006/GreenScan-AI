@@ -1,0 +1,39 @@
+# Test fixture: every line marked BAD must be reported, all in one OrgPackError.
+kind: org_pack
+schema_version: org-pack-v0
+org_id: bad_pack
+org_name: Pack lỗi (tổ chức giả lập)
+org_type: bank
+pack_version: 0.0.1
+precedence: above_law                      # BAD: must be below_law
+approved_by: 'Ai đó'
+documents:
+  - {doc_id: POL-X, title: Chính sách, path: missing_policy.md, role: evidence}   # BAD: file missing; role must be policy
+rules:
+  - rule_id: BAD_001
+    title: Kiểu kiểm lạ
+    source_document: POL-X
+    legal_issue: org_policy
+    severity: warning
+    on_fail: set_verdict_supported         # BAD: only flag_for_review | raise_priority
+    machine_executable: full
+    conditions:
+      - {id: c1, check: claim_regex, any_of_terms: ['x']}       # BAD: unknown check
+  - rule_id: BAD_002
+    title: When dùng kiểm trên bằng chứng
+    source_document: POL-X
+    legal_issue: org_policy
+    severity: critical                     # BAD: info | warning | violation
+    on_fail: flag_for_review
+    machine_executable: full
+    when:
+      - {id: w1, check: evidence_independent}                   # BAD: when only takes claim_* checks
+    conditions:
+      - {id: c2, check: claim_attribute_present, attribute: colour}   # BAD: unknown attribute
+  - rule_id: BAD_003
+    source_document: POL-X                 # BAD: title missing
+    legal_issue: org_policy
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: full
+    conditions: []                         # BAD: at least one condition

@@ -1,0 +1,117 @@
+{
+  "pool_a_unique_claims": 1589,
+  "pool_a_status": {
+    "CONTRADICTED": 65,
+    "INSUFFICIENT_EVIDENCE": 74,
+    "PARTIALLY_SUPPORTED": 1405,
+    "SUPPORTED": 45
+  },
+  "pool_a_companies": {
+    "BNY": 1,
+    "TUYEN": 2,
+    "KDP": 1,
+    "TRA": 80,
+    "HPG": 643,
+    "DWS": 1,
+    "KLM": 8,
+    "CTD": 210,
+    "PAN": 281,
+    "SAB": 205,
+    "PNJ": 67,
+    "DHG": 90
+  },
+  "pool_b_claims": 721,
+  "explain_status": {
+    "SUPPORTED": 45,
+    "CONTRADICTED": 50,
+    "INSUFFICIENT_EVIDENCE": 50,
+    "PARTIALLY_SUPPORTED": 55
+  },
+  "score_status": {
+    "SUPPORTED": 45,
+    "CONTRADICTED": 50,
+    "INSUFFICIENT_EVIDENCE": 50,
+    "PARTIALLY_SUPPORTED": 55
+  },
+  "explain_companies": {
+    "HPG": 58,
+    "CTD": 19,
+    "PAN": 37,
+    "DHG": 15,
+    "KLM": 6,
+    "SAB": 35,
+    "PNJ": 14,
+    "TRA": 11,
+    "BNY": 1,
+    "DWS": 1,
+    "KDP": 1,
+    "TUYEN": 2
+  },
+  "score_companies": {
+    "HPG": 57,
+    "CTD": 18,
+    "PAN": 48,
+    "KLM": 6,
+    "SAB": 29,
+    "DHG": 13,
+    "PNJ": 13,
+    "TRA": 11,
+    "BNY": 1,
+    "DWS": 1,
+    "KDP": 1,
+    "TUYEN": 2
+  },
+  "explain_score_overlap": 106,
+  "edit_sources": {
+    "pool_a": 100,
+    "pool_b": 100,
+    "pool_a_proxy": {
+      "quantified": 34,
+      "qualitative": 33,
+      "vague": 33
+    },
+    "pool_b_t1": {
+      "QUANTIFIED_CLAIM": 33,
+      "QUALITATIVE_CLAIM": 34,
+      "VAGUE": 33
+    },
+    "companies": {
+      "HPG": 16,
+      "CTD": 26,
+      "PAN": 25,
+      "SAB": 26,
+      "TRA": 23,
+      "DHG": 26,
+      "PNJ": 20,
+      "VNM": 10,
+      "BVH": 10,
+      "POW": 7,
+      "DPR": 8,
+      "CTG": 1,
+      "MWG": 1,
+      "CNG": 1
+    }
+  },
+  "rules_pool": 300,
+  "batches": {
+    "explain": [
+      "benchmark\\gs_eval_v2\\explain\\batches\\explain_b01.jsonl",
+      "benchmark\\gs_eval_v2\\explain\\batches\\explain_b02.jsonl",
+      "benchmark\\gs_eval_v2\\explain\\batches\\explain_b03.jsonl",
+      "benchmark\\gs_eval_v2\\explain\\batches\\explain_b04.jsonl"
+    ],
+    "score": [
+      "benchmark\\gs_eval_v2\\score\\batches\\score_b01.jsonl",
+      "benchmark\\gs_eval_v2\\score\\batches\\score_b02.jsonl",
+      "benchmark\\gs_eval_v2\\score\\batches\\score_b03.jsonl",
+      "benchmark\\gs_eval_v2\\score\\batches\\score_b04.jsonl"
+    ],
+    "edit": [
+      "benchmark\\gs_eval_v2\\edit\\batches\\edit_b01.jsonl",
+      "benchmark\\gs_eval_v2\\edit\\batches\\edit_b02.jsonl",
+      "benchmark\\gs_eval_v2\\edit\\batches\\edit_b03.jsonl",
+      "benchmark\\gs_eval_v2\\edit\\batches\\edit_b04.jsonl"
+    ]
+  },
+  "seed": 20261104
+}

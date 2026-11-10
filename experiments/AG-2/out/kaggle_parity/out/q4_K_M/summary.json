@@ -1,0 +1,21 @@
+{
+ "model": "qwen3:4b-instruct-2507-q4_K_M",
+ "cases": 162,
+ "texts": 186,
+ "calls": 186,
+ "s_per_call": 1.7,
+ "wall_s": 311,
+ "labels": {
+  "N": 149,
+  "S": 5,
+  "C": 8
+ },
+ "ref": "experiments/AG-1/out/g_v12/4b_cases.jsonl",
+ "agreement": 0.963,
+ "confusion_ref_to_local": {
+  "S->N": 1,
+  "C->N": 3,
+  "N->S": 1,
+  "N->C": 1
+ }
+}

@@ -71,7 +71,7 @@ Kiểm trước khi nộp: giải nén zip vào một thư mục mới trên **m
 | **0:50–1:35** | Mở mục **#2** — *"…cả hai khu liên hợp… đều có mức độ tự chủ điện năng **rất cao**…"* (trang 7). Kéo tới **Bằng chứng** → bấm **Mở tài liệu gốc tại vị trí này** ở đoạn BCTN 2024 trang 86 | "Câu ở trang 7 nói 'rất cao' — không có số. Hệ thống tìm sang báo cáo thường niên 2024, trang 86: tự chủ 90%, 788 triệu kWh. Nó **không** tự kết luận 'đúng', vì tuyên bố không nêu số, kỳ hay năm gốc để so — kết luận là 'khớp một phần', và đây là danh sách thiếu gì. Bấm vào bằng chứng thì mở đúng trang gốc, đúng đoạn được tô." | Thuộc tính thiếu: số liệu, kỳ, năm gốc · trang gốc tô sáng | Trang không hiện → nói "đây là ảnh trang gốc" và chuyển sang SHOT-05 trên slide dự phòng |
 | **1:35–2:00** | Về hàng đợi → khung **Thủ tục trên số liệu công bố** → dòng cộng lại bảng khí nhà kính trang 39 | "Với số liệu, hệ thống làm thủ tục kiểm toán viên vẫn làm: cộng lại bảng. Phạm vi 1 cộng phạm vi 2: 22.540.603 cộng 933.876 bằng 23.474.479; doanh nghiệp công bố 23.474.480 — lệch 1 tấn, trong sai số làm tròn, nên **khớp**. Phép tính hiện ra trên màn hình — không phải mô hình đoán." | Phép tính đầy đủ, kết luận khớp | — |
 | **2:00–2:20** | Quay lại mục #2 → **Xét duyệt** → chọn kết luận của người soát, gõ lý do ngắn → **Lưu** | "Kết luận cuối là của người. Kiểm toán viên chọn, ghi lý do; quyết định được lưu kèm tên người soát và hàng đợi cập nhật." | Mục chuyển trạng thái; bộ đếm hàng đợi giảm | Lưu lỗi → bỏ bước, nói một câu ở bước sau |
-| **2:20–2:40** | *3. Giấy làm việc* → **Mở giấy làm việc** → cuộn nhanh → **In / Lưu PDF** (mở hộp thoại rồi đóng) | "Đầu ra cuối là giấy làm việc tiếng Việt: phạm vi tài liệu kèm mã băm, thủ tục đã chạy, kết quả từng mục kèm trang, những gì không kiểm và vì sao, quyết định người soát, và chỗ ký. In ra PDF được ngay." | Mục "những gì không kiểm"; chỗ ký | — |
+| **2:20–2:40** | *4. Giấy làm việc* → **Mở giấy làm việc** → cuộn nhanh → **In / Lưu PDF** (mở hộp thoại rồi đóng) | "Đầu ra cuối là giấy làm việc tiếng Việt: phạm vi tài liệu kèm mã băm, thủ tục đã chạy, kết quả từng mục kèm trang, những gì không kiểm và vì sao, quyết định người soát, và chỗ ký. In ra PDF được ngay." | Mục "những gì không kiểm"; chỗ ký | — |
 
 **Không mở trong demo:**
 - Mục **#1** của hàng đợi — chữ gãy dòng "HÒA PHÁT trò nền tảng…" (đúng là "vai trò"): lỗi trích đã biết (ISSUES P5).
@@ -123,7 +123,7 @@ Design one desktop web screen (1440x900) for an audit-support tool called GreenS
 Vietnamese, matching this style: off-white background #F7F7F4, navy #16283B text, deep
 green #1F7A52 accents, amber #C8892B for "insufficient evidence", font Be Vietnam Pro,
 dense but calm enterprise layout, left sidebar with three numbered steps
-("1. Tải tài liệu", "2. Soát theo hàng đợi", "3. Giấy làm việc").
+("1. Tải tài liệu", "2. Soát theo hàng đợi", "3. Sửa báo cáo (Studio)", "4. Giấy làm việc").
 Screen: "So chéo kỳ" — a table comparing the same company's environmental indicators
 across reporting years 2023, 2024, 2025 (rows: phát thải phạm vi 1, phạm vi 2, cường độ
 phát thải, nước sử dụng, năng lượng tái tạo). One indicator reported in 2023 and 2024 is

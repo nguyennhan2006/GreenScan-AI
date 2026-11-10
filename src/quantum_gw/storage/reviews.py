@@ -58,6 +58,43 @@ _TRANSITIONS = {
 # Only these are gold-quality: a human looked and committed to a verdict.
 GOLD_DECISIONS = (CONFIRM, OVERRIDE)
 
+# Why a reviewer overrode the AI. The reason decides where the label may go,
+# because "the machine was wrong" covers two different failures:
+#
+# * the model misread the sentence or the evidence — a model error, so the
+#   label may teach and judge the model;
+# * the rule the system applied does not fit this company or this case, or is
+#   wrong outright — the model did what the rule said, so the label is feedback
+#   for the rule pack. Feeding it to training would teach the model to break the
+#   rule for every company, which is how a checker becomes inconsistent.
+MODEL_MISREAD = "MODEL_MISREAD"              # read a figure, unit, scope or subject wrongly
+EVIDENCE_MISSED = "EVIDENCE_MISSED"          # missed or mis-picked a passage that was in the corpus
+RULE_NOT_APPLICABLE = "RULE_NOT_APPLICABLE"  # rule is sound in general, not for this company or case
+RULE_WRONG = "RULE_WRONG"                    # rule itself is wrong or outdated
+OVERRIDE_REASONS = (MODEL_MISREAD, EVIDENCE_MISSED, RULE_NOT_APPLICABLE, RULE_WRONG)
+RULE_REASONS = (RULE_NOT_APPLICABLE, RULE_WRONG)
+
+# Where a gold label may be used.
+ROUTE_MODEL = "model"      # trains and scores the model
+ROUTE_RULE = "rule"        # feedback for the rule pack; never a model label
+ROUTE_UNKNOWN = "unknown"  # override recorded before reasons existed; used for neither
+_REASON_ROUTE = {
+    MODEL_MISREAD: ROUTE_MODEL,
+    EVIDENCE_MISSED: ROUTE_MODEL,
+    RULE_NOT_APPLICABLE: ROUTE_RULE,
+    RULE_WRONG: ROUTE_RULE,
+}
+
+
+def label_route(record: dict) -> str:
+    """Where a finalized decision's label may go (ROUTE_*)."""
+    if record.get("decision") == CONFIRM:
+        return ROUTE_MODEL
+    if record.get("decision") == OVERRIDE:
+        return _REASON_ROUTE.get(record.get("override_reason") or "", ROUTE_UNKNOWN)
+    return ROUTE_UNKNOWN
+
+
 class ReviewError(ValueError):
     """Invalid decision, reviewer, or state transition."""
 
@@ -78,6 +115,14 @@ class ReviewRecord:
     reviewer_status: str | None = None
     evidence_snapshot: list[dict[str, Any]] = field(default_factory=list)
     claim_snapshot: dict[str, Any] = field(default_factory=dict)
+    # OVERRIDE only: why the AI verdict was wrong (OVERRIDE_REASONS), and for a
+    # rule reason, which rule (rule_id, or the reviewer's words when unknown).
+    override_reason: str | None = None
+    rule_ref: str = ""
+    # The rules in force when the reviewer decided, copied from the run manifest
+    # by the server: rule pack, org packs, prompt and pipeline versions. A label
+    # means something only under the rules it was given against.
+    rule_context: dict[str, Any] = field(default_factory=dict)
 
     def to_json(self) -> dict:
         return asdict(self)
@@ -126,15 +171,29 @@ class ReviewStore:
         ai_risk_score: float | None = None,
         evidence: list[dict] | None = None,
         claim: dict | None = None,
+        override_reason: str | None = None,
+        rule_ref: str = "",
+        rule_context: dict | None = None,
     ) -> ReviewRecord:
         decision = (decision or "").strip().upper()
         reviewer = (reviewer or "").strip()
+        override_reason = (override_reason or "").strip().upper() or None
+        rule_ref = (rule_ref or "").strip()
         if decision not in DECISIONS:
             raise ReviewError(f"Unknown decision {decision!r}; expected one of {DECISIONS}")
         if not reviewer:
             raise ReviewError("reviewer is required — an audit trail without an author is not one")
         if decision == OVERRIDE and not reviewer_status:
             raise ReviewError("OVERRIDE requires reviewer_status: the verdict replacing the AI one")
+        if decision == OVERRIDE and override_reason not in OVERRIDE_REASONS:
+            raise ReviewError(
+                f"OVERRIDE requires override_reason, one of {OVERRIDE_REASONS}: whether the model "
+                "misread or the rule does not fit decides whether the label may train the model"
+            )
+        if decision != OVERRIDE and override_reason:
+            raise ReviewError("override_reason applies to OVERRIDE only")
+        if override_reason in RULE_REASONS and not rule_ref:
+            raise ReviewError("a rule reason requires rule_ref: feedback that names no rule cannot reach one")
 
         previous = self.state_of(run_id, claim_id)
         if decision == REOPEN and previous != FINALIZED:
@@ -157,6 +216,9 @@ class ReviewStore:
             reviewer_status=reviewer_status,
             evidence_snapshot=snapshot_evidence(evidence),
             claim_snapshot=claim or {},
+            override_reason=override_reason,
+            rule_ref=rule_ref if override_reason in RULE_REASONS else "",
+            rule_context=dict(rule_context or {}),
         )
         self._append(record)
         return record
@@ -198,6 +260,10 @@ class ReviewStore:
         Only CONFIRM/OVERRIDE qualify. ABSTAIN and REQUEST_EVIDENCE are real
         workflow outcomes but they are not labels — treating them as such would
         teach a model that "we could not tell" is a verdict.
+
+        Every record carries `label_route`. Only ROUTE_MODEL records may train or
+        score a model (`model_labels`); ROUTE_RULE records go to the rule pack
+        (`rule_feedback`).
         """
         latest: dict[tuple[str, str], dict] = {}
         for r in self.all():
@@ -217,8 +283,40 @@ class ReviewStore:
                 "decided_at": r["decided_at"],
                 "comment": r.get("comment", ""),
                 "evidence_snapshot": r.get("evidence_snapshot", []),
+                "override_reason": r.get("override_reason"),
+                "rule_ref": r.get("rule_ref", ""),
+                "label_route": label_route(r),
+                "rule_context": r.get("rule_context", {}),
             })
         return out
+
+    def model_labels(self) -> list[dict]:
+        """Gold labels that may train or score a model: confirmations, and
+        overrides where the model misread. Never a rule mismatch."""
+        return [g for g in self.gold_records() if g["label_route"] == ROUTE_MODEL]
+
+    def rule_feedback(self) -> list[dict]:
+        """Overrides that say a rule does not fit, grouped by rule.
+
+        This is the queue for whoever maintains the rule pack or an org pack: a
+        candidate exception (RULE_NOT_APPLICABLE) or a rule fix (RULE_WRONG),
+        with every claim that raised it and the rule versions in force. Nothing
+        here changes a rule on its own; the path stays draft -> human review ->
+        tests -> new pack version.
+        """
+        groups: dict[tuple[str, str], dict] = {}
+        for g in self.gold_records():
+            if g["label_route"] != ROUTE_RULE:
+                continue
+            key = (g["rule_ref"], g["override_reason"])
+            group = groups.setdefault(key, {
+                "rule_ref": g["rule_ref"], "override_reason": g["override_reason"], "cases": [],
+            })
+            group["cases"].append({k: g[k] for k in (
+                "run_id", "claim_id", "claim_text", "ai_status", "label", "reviewer",
+                "decided_at", "comment", "rule_context",
+            )})
+        return sorted(groups.values(), key=lambda grp: (-len(grp["cases"]), grp["rule_ref"]))
 
     def stats(self) -> dict:
         rows = self.all()
@@ -230,14 +328,26 @@ class ReviewStore:
             by_state[state] = by_state.get(state, 0) + 1
         overrides = by_decision.get(OVERRIDE, 0)
         finalized = overrides + by_decision.get(CONFIRM, 0)
+        gold = self.gold_records()
+        by_route: dict[str, int] = {}
+        for g in gold:
+            by_route[g["label_route"]] = by_route.get(g["label_route"], 0) + 1
+        confirmed = sum(1 for g in gold if g["label_source"] == "human_confirmed")
+        model_wrong = by_route.get(ROUTE_MODEL, 0) - confirmed
+        judged = confirmed + model_wrong + by_route.get(ROUTE_RULE, 0)
         return {
             "total_decisions": len(rows),
             "claims_touched": len({(r["run_id"], r["claim_id"]) for r in rows}),
             "by_decision": by_decision,
             "by_state": by_state,
             "reviewers": sorted({r["reviewer"] for r in rows}),
-            "gold_records": len(self.gold_records()),
+            "gold_records": len(gold),
+            "gold_by_route": by_route,
             # How often the AI verdict was wrong where a human committed — the
             # single most honest quality number this store can produce.
             "ai_override_rate": round(overrides / finalized, 4) if finalized else None,
+            # The override rate split by cause, over current gold labels with a
+            # known cause: the model misread, or the rule did not fit.
+            "model_error_rate": round(model_wrong / judged, 4) if judged else None,
+            "rule_mismatch_rate": round(by_route.get(ROUTE_RULE, 0) / judged, 4) if judged else None,
         }

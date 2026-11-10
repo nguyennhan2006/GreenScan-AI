@@ -1,0 +1,16 @@
+[
+ {
+  "tag": "q3-1.7b",
+  "repo": "Qwen/Qwen3-1.7B",
+  "cand_index": 0,
+  "ok": true,
+  "sec": 347
+ },
+ {
+  "tag": "q3-4b-inst",
+  "repo": "Qwen/Qwen3-4B-Instruct-2507",
+  "cand_index": 0,
+  "ok": true,
+  "sec": 521
+ }
+]

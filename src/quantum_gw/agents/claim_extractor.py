@@ -5,6 +5,7 @@ from pathlib import Path
 
 import yaml
 
+from quantum_gw.agents.claim_quality import suspect_reason
 from quantum_gw.domain.enums import DocumentRole
 from quantum_gw.domain.models import Claim, EvidenceChunk
 from quantum_gw.settings import ClaimSettings
@@ -240,7 +241,10 @@ class ClaimExtractionAgent:
                 if canonical in seen:
                     continue
                 seen.add(canonical)
-                claims.append(self._claim(chunk, sentence, normalized, claim_type, confidence))
+                claim = self._claim(chunk, sentence, normalized, claim_type, confidence)
+                if getattr(self.settings, "flag_suspect_non_claims", False):
+                    claim.quality_flag = suspect_reason(sentence)
+                claims.append(claim)
         self.audit.write(
             "claims_extracted",
             {
@@ -248,6 +252,7 @@ class ClaimExtractionAgent:
                 "by_language": _tally(claim.language for claim in claims),
                 "by_type": _tally(claim.claim_type for claim in claims),
                 "rejected": rejected,
+                "flagged_suspect_non_claim": _tally(c.quality_flag for c in claims if c.quality_flag),
             },
         )
         return claims

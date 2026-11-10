@@ -1,0 +1,57 @@
+== benchmark/gs_eval_v2/rules/orgs/ban_le_lx/
+      BLLX_004 [warning, flag_for_review] Tuyên bố vật liệu tái chế phải nêu tỷ lệ và phần áp dụng — POL-01:§3.4; áp cho retail, dairy, beverage, food, household, personal_care, textile, jewelry; 1 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2026-02-01 đến nay
+      BLLX_005 [warning, flag_for_review] Tuyên bố so sánh môi trường phải có cơ sở so sánh và Pháp chế xác nhận tài liệu — POL-01:§3.5; áp cho retail, dairy, beverage, food, household, personal_care, textile, jewelry; 1 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2026-02-01 đến nay
+      BLLX_006 [info, flag_for_review] Huy hiệu Lựa chọn xanh chỉ gắn khi có từ 30% vật liệu tái chế (chiến dịch 2025, đã hết hiệu lực) — POL-01:§5.1; áp cho retail, dairy, beverage, food, household, personal_care, textile, jewelry; 1 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2025-03-01 đến 2025-12-31
+== benchmark/gs_eval_v2/rules/orgs/det_may_mx/
+      DMMX_004 [violation, raise_priority] Điểm môi trường chỉ công bố khi đã xác minh, nêu cấp áp dụng, không dùng điểm vật liệu như điểm sản phẩm — POL-01:§4.1, POL-01:§4.2; áp cho mọi ngành; 1 điều kiện áp dụng, 3 điều kiện; hiệu lực từ 2026-06-01 đến nay
+      DMMX_005 [warning, flag_for_review] Tuyên bố giảm nước, hóa chất, năng lượng cấp nhà máy phải nêu năm gốc và nhà máy — POL-01:§5.1; áp cho textile; 2 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2026-06-01 đến nay
+      DMMX_006 [info, flag_for_review] Nhãn Conscious chỉ dùng khi có từ 20% vật liệu ưu tiên (quy định mùa Thu-Đông 2025, đã hết hiệu lực) — POL-01:§6.2; áp cho mọi ngành; 1 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2025-01-01 đến 2025-12-31
+== benchmark/gs_eval_v2/rules/orgs/dia_oc_an_cu/
+      DOAC_004 [warning, flag_for_review] Dự án nêu là đạt EDGE phải có mức tiết kiệm năng lượng từ 20% trong bằng chứng — POL-AC-01:§3.2; áp cho mọi ngành; 1 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2026-01-01 đến nay
+      DOAC_005 [warning, flag_for_review] Không dùng từ tuyệt đối về công trình xanh — POL-AC-01:§4.1; áp cho mọi ngành; 0 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2026-01-01 đến nay
+    Lưu ý: `approved_by` để trống: pack là bản nháp, được nạp để xem nhưng không áp dụng.
+== benchmark/gs_eval_v2/rules/orgs/fnb_suoi_ngoc/
+      SN_004 [violation, raise_priority] Tuyên bố phân hủy sinh học phải nêu điều kiện phân hủy và có chứng nhận bên thứ ba — POL-SN-02:§3.1; áp cho mọi ngành; 1 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2025-01-01 đến nay
+      SN_005 [warning, flag_for_review] Tuyên bố "không nhựa" phải được đối chiếu bảng thành phần bao bì — POL-SN-02:§3.2; áp cho beverage, dairy, food; 1 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2025-01-01 đến nay
+      SN_006 [warning, flag_for_review] Cụm "thân thiện môi trường" cho sản phẩm hoặc bao bì phải có chứng nhận bên thứ ba — POL-SN-02:§4.1; áp cho beverage, dairy, food; 2 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2025-01-01 đến nay
+== benchmark/gs_eval_v2/rules/orgs/hiep_hoi_nx/
+      HHNX_003 [info, flag_for_review] Báo cáo cường độ phải nêu phương pháp tính — POL-01:§2.4; áp cho steel, cement; 2 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2026-06-01 đến nay
+      HHNX_004 [warning, raise_priority] Chỉ tự nhận nhóm phát thải thấp khi cường độ không vượt ngưỡng (hội viên thép) — POL-01:§3.1, POL-01:§3.2; áp cho steel; 1 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2026-06-01 đến nay
+      HHNX_005 [warning, flag_for_review] Cường độ phải nêu phạm vi phát thải và năm báo cáo — POL-01:§2.2; áp cho steel, cement; 2 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2026-06-01 đến nay
+== benchmark/gs_eval_v2/rules/orgs/hiep_hoi_nx_du_thao/
+      HHNX2_003 [violation, raise_priority] Không dùng cụm thép xanh, xi măng xanh khi chưa có tiêu chí quốc gia — POL-02:§2.3; áp cho steel, cement; 0 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2026-07-01 đến nay
+      HHNX2_004 [warning, raise_priority] Xếp hạng nhóm phát thải thấp phải dựa trên số liệu đã thẩm định độc lập — POL-02:§3.1; áp cho steel, cement; 1 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2026-07-01 đến nay
+    Lưu ý: `approved_by` để trống: pack là bản nháp, được nạp để xem nhưng không áp dụng.
+== benchmark/gs_eval_v2/rules/orgs/kt_minh_dinh/
+      KTMD_004 [warning, flag_for_review] Số liệu phát thải tuyệt đối phải nêu phương pháp và ranh giới bao phủ ít nhất 80% hoạt động — CL-MD-01:§3.3; áp cho mọi ngành; 2 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2026-07-01 đến nay
+      KTMD_005 [info, flag_for_review] Tuyên bố tuyệt đối cần thủ tục bổ sung do kiểm toán viên thiết kế — CL-MD-01:§5.1; áp cho mọi ngành; 1 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2026-07-01 đến nay
+      KTMD_006 [info, flag_for_review] (Hết hiệu lực) Chấp nhận số liệu khí nhà kính theo kiểm kê nội bộ của khách hàng — CL-MD-01:§7.2; áp cho mọi ngành; 1 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2025-01-01 đến 2026-06-30
+== benchmark/gs_eval_v2/rules/orgs/nang_luong_gio_long/
+      GL_004 [warning, flag_for_review] Phát thải tránh được nhờ điện tái tạo phải nêu kỳ, hệ số lưới và không tính như giảm Phạm vi 1/2 — POL-GL-01:§3.1, POL-GL-01:§3.2; áp cho mọi ngành; 3 điều kiện áp dụng, 3 điều kiện; hiệu lực từ 2024-01-01 đến nay
+      GL_005 [warning, flag_for_review] Tín chỉ dùng bù trừ khi tuyên bố hoàn thành hạn ngạch không quá trần nội bộ 50% — POL-GL-01:§4.1, POL-GL-01:§4.2; áp cho power; 2 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2024-01-01 đến nay
+      GL_006 [info, flag_for_review] Tài liệu điện xanh phải ghi tên chương trình "Gió Lộng Xanh" (chuyển tiếp 2024–2025) — POL-GL-01:§5.1; áp cho mọi ngành; 1 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2024-01-01 đến 2025-12-31
+== benchmark/gs_eval_v2/rules/orgs/nh_phu_sa_xanh/
+      NHPSX_004 [warning, raise_priority] Khách hàng ngành phát thải cao phải nêu năm mục tiêu và có kế hoạch giảm phát thải — POL-PSX-01:§6.1; áp cho steel, cement, power, chemicals; 1 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2026-07-01 đến nay
+      NHPSX_005 [info, flag_for_review] (Hết hiệu lực) Chấp nhận bản tự đánh giá của khách hàng thay cho xác nhận độc lập — POL-PSX-01:§8.2; áp cho mọi ngành; 1 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2024-03-01 đến 2025-12-31
+      NHPSX_006 [info, flag_for_review] Điện mặt trời áp mái của khách hàng hiện hữu được ghi nhận tín dụng xanh nội bộ dựa trên hồ sơ kỹ thuật — POL-PSX-01:§3.3; áp cho mọi ngành; 1 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2026-07-01 đến nay
+== benchmark/gs_eval_v2/rules/orgs/quy_sen_vang_esg/
+      QSV_003 [warning, flag_for_review] Xếp hạng hoặc giải thưởng bền vững được trích phải nêu tổ chức xếp hạng và năm — QSV-POL-01:§4.2; áp cho mọi ngành; 1 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2026-08-01 đến nay
+      QSV_004 [info, flag_for_review] Doanh nghiệp có mục tiêu net zero kèm năm mục tiêu được xếp nhóm "đang chuyển đổi" — QSV-POL-01:§4.3; áp cho mọi ngành; 1 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2026-08-01 đến nay
+      QSV_005 [warning, flag_for_review] Tuyên bố "tích hợp ESG" chỉ được trích khi có mô tả quy trình và được Ủy ban Đầu tư thẩm định — QSV-POL-01:§4.4; áp cho mọi ngành; 1 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2026-08-01 đến nay
+== benchmark/gs_eval_v2/rules/orgs/thep_kx/
+      THKX_004 [warning, flag_for_review] Số liệu khí nhà kính công bố phải có xác nhận độc lập — POL-01:§3.3; áp cho mọi ngành; 2 điều kiện áp dụng, 3 điều kiện; hiệu lực từ 2026-01-01 đến nay
+      THKX_005 [warning, flag_for_review] Cam kết trung hòa carbon / net zero phải nêu năm mục tiêu và có mục tiêu trung hạn được HĐQT duyệt — POL-01:§3.4; áp cho mọi ngành; 1 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2026-01-01 đến nay
+      THKX_006 [warning, flag_for_review] Tuyên bố tuân thủ pháp luật môi trường phải kèm thông tin xử phạt trong kỳ — POL-01:§3.5; áp cho mọi ngành; 2 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2026-01-01 đến nay
+== benchmark/gs_eval_v2/rules/orgs/ubgs_lac_hong/
+      UBLH_003 [warning, flag_for_review] Tuyên bố phát thải khí nhà kính của công ty ngoài ngành tài chính phải có số liệu và kỳ báo cáo — ST-LH-01:§3.1, ST-LH-01:§1.2; áp cho steel, cement, power, chemicals, construction, food, dairy, beverage, pharma, retail, jewelry, rubber, textile, coal_mining, paper, seafood, real_estate, manufacturing, transport, packaging, household, personal_care; 1 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2026-01-01 đến nay
+      UBLH_004 [warning, flag_for_review] Tuyên bố tuân thủ hoặc không bị xử phạt về môi trường phải nêu kỳ và được đối chiếu quyết định xử phạt — ST-LH-01:§3.2; áp cho mọi ngành; 2 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2026-01-01 đến nay
+      UBLH_005 [warning, flag_for_review] Tuyên bố nước thải, khí thải "đạt chuẩn" phải nêu QCVN và có kết quả quan trắc — ST-LH-01:§2.3; áp cho mọi ngành; 2 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2026-01-01 đến nay
+== benchmark/gs_eval_v2/rules/orgs/ubgs_lac_hong_du_thao/
+      UBLHDT_003 [warning, flag_for_review] (Dự thảo) Số liệu phát thải công bố phải kèm báo cáo đảm bảo độc lập nêu mức độ đảm bảo — ST-LH-02-DT:§4.1; áp cho mọi ngành; 1 điều kiện áp dụng, 2 điều kiện; hiệu lực từ … đến nay
+      UBLHDT_004 [info, flag_for_review] (Dự thảo) Công bố rủi ro khí hậu theo IFRS S2 do chuyên viên đánh giá — ST-LH-02-DT:§5.1; áp cho mọi ngành; 1 điều kiện áp dụng, 1 điều kiện; hiệu lực từ … đến nay
+    Lưu ý: `approved_by` để trống: pack là bản nháp, được nạp để xem nhưng không áp dụng.
+== benchmark/gs_eval_v2/rules/orgs/van_tai_canh_co/
+      CC_004 [violation, raise_priority] Không dùng "không phát thải", "bay xanh" cho dịch vụ dựa vào bù trừ — POL-CC-03:§2.4; áp cho mọi ngành; 1 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2025-01-01 đến nay
+      CC_005 [warning, flag_for_review] Tuyên bố về SAF phải nêu tỷ lệ phối trộn và cơ sở tính theo vòng đời (Cánh Cò Air) — POL-CC-03:§3.1; áp cho aviation; 1 điều kiện áp dụng, 2 điều kiện; hiệu lực từ 2025-01-01 đến nay
+      CC_006 [info, flag_for_review] "Giao hàng xanh" chỉ dùng khi xe điện chiếm từ 30% đội xe (chương trình 2022–2024) — POL-CC-03:§4.1; áp cho logistics; 1 điều kiện áp dụng, 1 điều kiện; hiệu lực từ 2022-01-01 đến 2024-12-31
+DONE

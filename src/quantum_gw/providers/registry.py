@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 from quantum_gw.settings import GatewaySettings
 
 from .anthropic import AnthropicProvider
@@ -52,6 +54,17 @@ PROVIDERS = {
     "openai": lambda s: OpenAIProvider(api_key=s.openai_api_key, model=s.openai_model),
     "anthropic": lambda s: AnthropicProvider(api_key=s.anthropic_api_key, model=s.anthropic_model),
     "openrouter": lambda s: OpenRouterProvider(api_key=s.openrouter_api_key, model=s.openrouter_model),
+    # Groq (US cloud, free tier may keep data): its own name so the runtime chip says "cloud", never "local:".
+    "groq": lambda s: OpenAICompatibleProvider(
+        base_url="https://api.groq.com/openai/v1",
+        model=s.groq_model,
+        api_key=s.groq_api_key,
+        name="groq",
+        require_api_key=True,
+        # request fields differ per model (reasoning_effort, reasoning_format, response_format): chosen by
+        # experiments/GROQ-PROBE/probe.py and set as JSON in GROQ_EXTRA_BODY
+        extra_body=json.loads(s.groq_extra_body) if s.groq_extra_body.strip() else None,
+    ),
 }
 
 

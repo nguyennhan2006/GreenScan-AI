@@ -14,6 +14,7 @@ import QueuePage from './pages/QueuePage.jsx'
 import ExportPage from './pages/ExportPage.jsx'
 import HistoryPage from './pages/HistoryPage.jsx'
 import LegalLibraryPage from './pages/LegalLibraryPage.jsx'
+import GuidePage from './pages/GuidePage.jsx'
 import SettingsPage from './pages/SettingsPage.jsx'
 
 // CodeMirror is only needed in Studio; keep it out of the first load.
@@ -152,13 +153,14 @@ export default function App() {
     return run(() => analyzeText(documents), runLabel ? `${runLabel} (sửa)` : 'Chạy lại sau khi sửa tuyên bố')
   }
 
-  const handleDecide = async (row, { decision, comment, reviewer_status }) => {
+  const handleDecide = async (row, { decision, comment, reviewer_status, override_reason, rule_ref }) => {
     if (!runId || !reviewer.trim()) return
     setReviewBusy(true)
     setError(null)
     try {
       await submitReview({
         run_id: runId, claim_id: row.id, reviewer: reviewer.trim(), decision, comment, reviewer_status,
+        override_reason, rule_ref,
         ai_status: row.status, ai_risk_score: row.score, evidence: row.evidence, claim: row.claim,
       })
       await refreshReviews(runId)
@@ -172,17 +174,19 @@ export default function App() {
   // ---------- routing ----------
 
   if (!reviewer || seg0 === 'start') {
-    return <StartPage reviewer={reviewer} onStart={(name, remember) => { saveReviewer(name, remember); navigate(route.segments.length && seg0 !== 'start' ? route.path : '/new') }} />
+    return <StartPage reviewer={reviewer} onStart={(name, remember) => { saveReviewer(name, remember); let seen = true; try { seen = !!localStorage.getItem('gs.guide.seen') } catch { /* không đọc được */ } navigate(route.segments.length && seg0 !== 'start' ? route.path : (seen ? '/new' : '/guide')) }} />
   }
   if (!seg0) {
-    navigate('/new', { replace: true })
+    // StartPage vừa điều hướng (vd. tới /guide lần đầu) nhưng route trong state chưa kịp cập nhật:
+    // chỉ chuyển về /new khi đường dẫn thật cũng đang trống, để không ghi đè điều hướng đó.
+    if (!window.location.hash.replace(/^#\/?/, '')) navigate('/new', { replace: true })
     return null
   }
 
   // Studio is an IDE: it takes the whole window and loads its own document view.
   if (seg0 === 'runs' && seg1 && seg2 === 'studio') {
     return (
-      <Suspense fallback={<p className="p-6 text-sm text-slate-500">Đang mở Studio…</p>}>
+      <Suspense fallback={<p className="p-6 text-sm text-slate-500">Đang mở trang Sửa báo cáo…</p>}>
         <StudioPage runId={seg1} reviewer={reviewer} />
       </Suspense>
     )
@@ -212,13 +216,13 @@ export default function App() {
   } else if (seg0 === 'runs' && !seg1) {
     active = 'runs'
     title = 'Lịch sử phân tích'
-    subtitle = 'Mở lại phiên đã lưu — không chạy lại pipeline'
+    subtitle = 'Mở lại phiên đã lưu — không chạy lại quy trình phân tích'
     body = <HistoryPage currentRunId={runId} onLabelChanged={(id, l) => id === runId && setLabel(l)} />
   } else if (seg0 === 'runs' && seg1 && (!seg2 || seg2 === 'review')) {
     if (seg2 === 'review') navigate(`/runs/${seg1}`, { replace: true })  // old link to the review page
     active = 'queue'
     title = 'Soát theo hàng đợi'
-    subtitle = 'Mở các mục theo thứ tự; xác nhận hoặc sửa kết quả của AI'
+    subtitle = 'Mở các mục theo thứ tự; xác nhận hoặc sửa gợi ý của máy'
     body = needRun(() => (
       <QueuePage
         runId={runId}
@@ -259,6 +263,7 @@ export default function App() {
           row={row}
           index={idx}
           legal={legalById.get(seg3)}
+          orgFindings={analysis.result.org_findings == null ? null : (analysis.result.org_findings.find((g) => g.claim_id === seg3)?.findings || [])}
           gates={analysis.result.quality_gates}
           suggestion={suggestionsById.get(seg3)}
           reviewStates={reviewStates}
@@ -281,6 +286,11 @@ export default function App() {
     body = needRun(() => (
       <ExportPage runId={runId} runLabel={runLabel} analysis={analysis.result} summary={summary} reviewStates={reviewStates} reviewDecisions={reviewDecisions} />
     ))
+  } else if (seg0 === 'guide') {
+    active = 'guide'
+    title = 'Hướng dẫn cho người mới'
+    subtitle = 'Bảy bước làm quen trên bộ mẫu Hòa Phát, khoảng 10 phút'
+    body = <GuidePage runId={runId} />
   } else if (seg0 === 'legal') {
     active = 'legal'
     title = 'Thư viện pháp lý'

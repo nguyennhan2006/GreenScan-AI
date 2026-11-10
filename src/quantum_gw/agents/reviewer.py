@@ -1,4 +1,5 @@
 from __future__ import annotations
+from ..labels_vi import LEGAL_ISSUE, vi
 
 from quantum_gw.domain.enums import VerificationStatus
 from quantum_gw.domain.models import (
@@ -25,19 +26,19 @@ class ReviewerAgent:
         legal_unavailable_reason: str = "",
     ) -> list[QualityGate]:
         gates: list[QualityGate] = []
-        gates.append(self._gate("G0", "Data admissibility", bool(chunks) and all(c.source_name and c.chunk_id for c in chunks), "All parsed chunks must retain source provenance."))
+        gates.append(self._gate("G0", "Dữ liệu đầu vào", bool(chunks) and all(c.source_name and c.chunk_id for c in chunks), "Mọi đoạn đã tách phải giữ nguồn gốc (tệp, vị trí)."))
         extraction_ok = all(v.claim.source_chunk_id and v.claim.source_name for v in verifications)
-        gates.append(self._gate("G1", "Extraction fidelity", extraction_ok, "Claims retain source chunk and document location."))
+        gates.append(self._gate("G1", "Trích xuất đúng nguồn", extraction_ok, "Mỗi tuyên bố giữ đoạn nguồn và vị trí trong tài liệu."))
         retrieval_ok = all(v.evidence or v.status == VerificationStatus.INSUFFICIENT_EVIDENCE for v in verifications)
-        gates.append(self._gate("G2", "Retrieval admissibility", retrieval_ok, "Each claim has admissible evidence or an explicit insufficient-evidence status."))
+        gates.append(self._gate("G2", "Bằng chứng hợp lệ", retrieval_ok, "Mỗi tuyên bố có bằng chứng hợp lệ hoặc được ghi rõ là chưa đủ bằng chứng."))
         calculation_ok = all(v.verification_tool_version and v.computed_values.get("calculation_method", "deterministic") for v in verifications)
-        gates.append(self._gate("G3", "Deterministic verification", calculation_ok, "Numeric comparisons are executed by deterministic code."))
+        gates.append(self._gate("G3", "Kiểm chứng bằng mã cố định", calculation_ok, "Phép so sánh số liệu do mã cố định thực hiện, không do mô hình ngôn ngữ."))
         citation_ok = all(v.status == VerificationStatus.INSUFFICIENT_EVIDENCE or all(e.citation for e in v.evidence) for v in verifications)
-        gates.append(self._gate("G4", "Citation integrity", citation_ok, "Every decisive evidence item has a document-level location."))
+        gates.append(self._gate("G4", "Trích dẫn đầy đủ", citation_ok, "Mỗi bằng chứng quyết định đều có vị trí trong tài liệu."))
         pending_review = any(r.requires_human_review for r in risks)
-        gates.append(QualityGate(gate_id="G5", name="Risk review", passed=not pending_review, status="PENDING_HUMAN_REVIEW" if pending_review else "PASS", details="High/critical or legal-conflict cases require reviewer approval."))
+        gates.append(QualityGate(gate_id="G5", name="Soát rủi ro", passed=not pending_review, status="PENDING_HUMAN_REVIEW" if pending_review else "PASS", details="Mục rủi ro cao, rất cao hoặc có xung đột pháp lý cần người soát duyệt."))
         reproducible = bool(manifest.config_hash and manifest.input_hashes and manifest.plan)
-        gates.append(self._gate("G6", "Reproducibility", reproducible, "Run manifest records configuration, input hashes, seed and plan."))
+        gates.append(self._gate("G6", "Tái lập được", reproducible, "Bản kê lượt chạy ghi cấu hình, mã băm tệp đầu vào, hạt giống ngẫu nhiên và kế hoạch."))
         gates.append(self._legal_gate(verifications, legal_checks or [], legal_unavailable_reason))
         self.audit.write("quality_gates_evaluated", {"gates": [g.model_dump(mode="json") for g in gates]})
         return gates
@@ -64,14 +65,13 @@ class ReviewerAgent:
         if unavailable_reason:
             return QualityGate(
                 gate_id="G7", name="Legal check", passed=True, status="PASS",
-                details=f"Legal layer not consulted: {unavailable_reason}",
+                details=f"Không dùng lớp pháp lý: {unavailable_reason}",
             )
         if len(legal_checks) < len(verifications):
             return QualityGate(
                 gate_id="G7", name="Legal check", passed=False, status="FAIL",
                 details=(
-                    f"Only {len(legal_checks)} of {len(verifications)} claims reached the "
-                    "legal layer."
+                    f"Chỉ {len(legal_checks)}/{len(verifications)} tuyên bố tới được lớp pháp lý."
                 ),
             )
         adverse = [c for c in legal_checks if c["legal_finding"] in {"NOT_MATCH", "PARTIAL_MATCH"}]
@@ -79,19 +79,19 @@ class ReviewerAgent:
             return QualityGate(
                 gate_id="G7", name="Legal check", passed=False, status="PENDING_HUMAN_REVIEW",
                 details=(
-                    f"{len(adverse)} claim(s) with an adverse legal finding: "
-                    + ", ".join(sorted({c["issue"] for c in adverse}))
+                    f"{len(adverse)} tuyên bố có kết quả pháp lý bất lợi: "
+                    + ", ".join(sorted({vi(LEGAL_ISSUE, c["issue"]) for c in adverse}))
                 ),
             )
         inconclusive = sum(1 for c in legal_checks if c["legal_finding"] == "INSUFFICIENT_EVIDENCE")
         blocked = sorted({
             b["document"] for c in legal_checks for b in c.get("blocked_sources", [])
         })
-        details = f"{len(legal_checks)} claim(s) checked against the registered corpus."
+        details = f"{len(legal_checks)} tuyên bố đã đối chiếu với kho văn bản pháp lý đã đăng ký."
         if inconclusive:
-            details += f" {inconclusive} inconclusive."
+            details += f" {inconclusive} tuyên bố chưa kết luận được."
         if blocked:
-            details += " Instruments in force without extracted text: " + ", ".join(blocked) + "."
+            details += " Văn bản đang hiệu lực nhưng chưa trích được nội dung: " + ", ".join(blocked) + "."
         return QualityGate(
             gate_id="G7", name="Legal check", passed=True, status="PASS", details=details
         )

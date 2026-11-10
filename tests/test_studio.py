@@ -98,7 +98,7 @@ def test_docx_in_place_writes_tracked_changes_and_a_clean_copy(tmp_path):
     out = tmp_path / "tracked.docx"
     out.write_bytes(tracked)
     xml = zipfile.ZipFile(out).read("word/document.xml").decode("utf-8")
-    assert 'w:author="GreenScan AI (quy tắc)"' in xml and "<w:ins " in xml and "<w:del " in xml
+    assert 'w:author="GreenScan (quy tắc)"' in xml and "<w:ins " in xml and "<w:del " in xml
     assert "Đoạn sẽ bị xóa." in xml  # deleted text stays, marked as w:delText
     visible = [p["text"] for p in docx_paragraphs(out) if p["text"]]
     assert "Đoạn mới thêm." in visible and "Đoạn sẽ bị xóa." not in visible

@@ -1,0 +1,133 @@
+# Org pack giả lập cho GS-Eval v2 (D-RULES, phần r2). Nhãn do claude-opus-5-5 soạn, chờ người duyệt.
+kind: org_pack
+schema_version: org-pack-v0
+org_id: thep_kx
+org_name: Công ty Cổ phần Thép KX (tổ chức giả lập)
+org_type: listed_company
+pack_version: 1.0.0
+precedence: below_law
+approved_by: 'Trưởng ban Phát triển bền vững'
+approved_at: '2026-01-05'
+documents:
+  - {doc_id: POL-01, title: 'Quy chế công bố thông tin phát triển bền vững QC-PTBV-02', path: internal_policy.md, role: policy}
+glossary:
+  - {term: 'năm gốc', synonyms: ['năm cơ sở', 'base year', 'baseline'], definition: 'Năm làm mốc so sánh cho tuyên bố giảm phát thải (POL-01 §3.1).'}
+  - {term: 'phạm vi phát thải', synonyms: ['Phạm vi 1', 'Phạm vi 2', 'Phạm vi 3', 'Scope 1', 'Scope 2', 'Scope 3'], definition: 'Phát thải trực tiếp; gián tiếp từ năng lượng mua; gián tiếp khác trong chuỗi giá trị.'}
+  - {term: 'thép xanh', synonyms: ['green steel', 'thép carbon thấp', 'low-carbon steel', 'thép sạch'], definition: 'Cụm từ hạn chế theo POL-01 §4.1; chưa có tiêu chí nội bộ.'}
+rules:
+  - rule_id: THKX_001
+    title: Tuyên bố giảm phát thải phải nêu năm gốc và kỳ báo cáo
+    source_document: POL-01
+    source_clauses: ['POL-01:§3.1', 'POL-01:§1.2']
+    claim_types: [emissions_reduction]
+    legal_issue: org_policy
+    applies_to_sectors: [steel]
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Ban Pháp chế (giả lập)'
+    when:
+      - {id: mentions_reduction, description: 'Câu nói về việc giảm', source_clause: 'POL-01:§3.1', check: claim_terms_present, any_of_terms: ['giảm', 'cắt giảm', 'reduce', 'reduction', 'decrease', 'lower']}
+      - {id: mentions_emissions, description: 'Câu nói về phát thải', source_clause: 'POL-01:§3.1', check: claim_terms_present, any_of_terms: ['phát thải', 'khí nhà kính', 'knk', 'co2', 'carbon', 'emission', 'ghg']}
+    conditions:
+      - {id: has_baseline, description: 'Câu nêu năm gốc', source_clause: 'POL-01:§3.1', check: claim_attribute_present, attribute: baseline}
+      - {id: has_period, description: 'Câu nêu kỳ báo cáo', source_clause: 'POL-01:§3.1', check: claim_attribute_present, attribute: period}
+
+  - rule_id: THKX_002
+    title: Số liệu phát thải định lượng phải nêu phạm vi hoặc ranh giới và kỳ báo cáo
+    source_document: POL-01
+    source_clauses: ['POL-01:§3.2', 'POL-01:§1.2']
+    claim_types: [emissions_reduction]
+    legal_issue: org_policy
+    applies_to_sectors: [steel]
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Ban Pháp chế (giả lập)'
+    when:
+      - {id: mentions_emissions, description: 'Câu nói về phát thải', source_clause: 'POL-01:§3.2', check: claim_terms_present, any_of_terms: ['phát thải', 'khí nhà kính', 'knk', 'co2', 'carbon', 'emission', 'ghg']}
+      - {id: has_value, description: 'Câu có số liệu', source_clause: 'POL-01:§3.2', check: claim_attribute_present, attribute: value}
+    conditions:
+      - {id: has_scope, description: 'Nêu Phạm vi 1/2/3 hoặc ranh giới (nhà máy, công ty mẹ, hợp nhất)', source_clause: 'POL-01:§3.2', check: claim_attribute_present, attribute: scope}
+      - {id: has_period, description: 'Nêu kỳ báo cáo', source_clause: 'POL-01:§3.2', check: claim_attribute_present, attribute: period}
+
+  - rule_id: THKX_003
+    title: Không dùng cụm thép xanh, thép sạch, thép carbon thấp
+    source_document: POL-01
+    source_clauses: ['POL-01:§4.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: 'Ban Pháp chế (giả lập)'
+    conditions:
+      - {id: no_restricted_terms, description: 'Câu không chứa cụm bị hạn chế', source_clause: 'POL-01:§4.1', check: claim_terms_absent, any_of_terms: ['thép xanh', 'thép sạch', 'thép carbon thấp', 'green steel', 'clean steel', 'low-carbon steel']}
+
+  - rule_id: THKX_004
+    title: Số liệu khí nhà kính công bố phải có xác nhận độc lập
+    source_document: POL-01
+    source_clauses: ['POL-01:§3.3']
+    claim_types: [emissions_reduction]
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: partial
+    reviewed_by: 'Ban Pháp chế (giả lập)'
+    notes: 'Tư cách công nhận của tổ chức thẩm định phải tra danh sách ngoài nên để manual.'
+    when:
+      - {id: mentions_emissions, description: 'Câu nói về phát thải', source_clause: 'POL-01:§3.3', check: claim_terms_present, any_of_terms: ['phát thải', 'khí nhà kính', 'knk', 'co2', 'emission', 'ghg']}
+      - {id: has_value, description: 'Câu có số liệu', source_clause: 'POL-01:§3.3', check: claim_attribute_present, attribute: value}
+    conditions:
+      - {id: independent_source, description: 'Có đoạn bằng chứng từ nguồn độc lập', source_clause: 'POL-01:§3.3', check: evidence_independent}
+      - {id: assurance_terms, description: 'Bằng chứng nói tới thẩm định / đảm bảo', source_clause: 'POL-01:§3.3', check: terms_present, any_of_terms: ['thẩm định', 'kiểm toán độc lập', 'xác nhận độc lập', 'assurance', 'verified', 'ISO 14064-3', 'ISAE 3410']}
+      - {id: assurer_accredited, description: 'Tổ chức thẩm định được công nhận theo ISO/IEC 17029 hoặc tương đương (người soát xét tra danh sách)', source_clause: 'POL-01:§3.3', check: manual}
+
+  - rule_id: THKX_005
+    title: Cam kết trung hòa carbon / net zero phải nêu năm mục tiêu và có mục tiêu trung hạn được HĐQT duyệt
+    source_document: POL-01
+    source_clauses: ['POL-01:§3.4']
+    claim_types: [emissions_reduction]
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: partial
+    reviewed_by: 'Ban Pháp chế (giả lập)'
+    when:
+      - {id: mentions_neutrality, description: 'Câu nói về trung hòa carbon / net zero', source_clause: 'POL-01:§3.4', check: claim_terms_present, any_of_terms: ['trung hòa carbon', 'net zero', 'net-zero', 'phát thải ròng bằng 0', 'carbon neutral', 'trung hòa khí hậu']}
+    conditions:
+      - {id: has_target_year, description: 'Câu nêu năm mục tiêu', source_clause: 'POL-01:§3.4', check: claim_attribute_present, attribute: period}
+      - {id: interim_target_approved, description: 'Có mục tiêu trung hạn đến 2030 được HĐQT phê duyệt (người soát xét xác nhận)', source_clause: 'POL-01:§3.4', check: manual}
+
+  - rule_id: THKX_006
+    title: Tuyên bố tuân thủ pháp luật môi trường phải kèm thông tin xử phạt trong kỳ
+    source_document: POL-01
+    source_clauses: ['POL-01:§3.5']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Ban Pháp chế (giả lập)'
+    notes: '§3.5 cho phép bỏ qua quyết định xử phạt dưới ngưỡng không trọng yếu; điều này có thể lỏng hơn Phụ lục IV mục 6.5 TT 96/2020 nên luật vẫn đứng.'
+    when:
+      - {id: mentions_compliance, description: 'Câu khẳng định tuân thủ / không vi phạm', source_clause: 'POL-01:§3.5', check: claim_terms_present, any_of_terms: ['tuân thủ', 'không vi phạm', 'không có vi phạm', 'không bị xử phạt', 'compliance', 'no violation']}
+      - {id: mentions_environment, description: 'Câu nói về môi trường', source_clause: 'POL-01:§3.5', check: claim_terms_present, any_of_terms: ['môi trường', 'environmental', 'xả thải', 'chất thải']}
+    conditions:
+      - {id: penalty_info, description: 'Bằng chứng có thông tin xử phạt về môi trường trong kỳ (kể cả bằng không)', source_clause: 'POL-01:§3.5', check: terms_present, any_of_terms: ['xử phạt', 'phạt tiền', 'quyết định xử phạt', 'penalt']}

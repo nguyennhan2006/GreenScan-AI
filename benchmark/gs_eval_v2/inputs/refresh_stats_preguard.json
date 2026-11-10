@@ -1,0 +1,42 @@
+{
+ "current_from": "2026-10-22",
+ "current_runs": [
+  "117602a7fa7a4b46",
+  "13720999a7084cad",
+  "19fa16a7d7e24590",
+  "2a775d33fbde407b",
+  "8f5b57bc65e4480d",
+  "9f5960580c21483a",
+  "a0e82a12ce584159",
+  "ac8e09dfe5a54bef",
+  "afdd9c6637044c6e",
+  "b36bbada51cc4793",
+  "b81d0a62e4e84b20",
+  "c892c13727c24bb9",
+  "d3ad3b9194ed4f22",
+  "ecdf04c3a3994cef",
+  "f0ccc44387c84baa"
+ ],
+ "current_pool_unique_claims": 1138,
+ "current_pool_status": {
+  "PARTIALLY_SUPPORTED": 1006,
+  "SUPPORTED": 8,
+  "INSUFFICIENT_EVIDENCE": 72,
+  "CONTRADICTED": 52
+ },
+ "items": 394,
+ "match": {
+  "not_extracted": 66,
+  "exact": 320,
+  "containment": 8
+ },
+ "status_changed_legacy_to_current": {
+  "SUPPORTED -> not_extracted": 37,
+  "PARTIALLY_SUPPORTED -> not_extracted": 14,
+  "CONTRADICTED -> not_extracted": 12,
+  "INSUFFICIENT_EVIDENCE -> not_extracted": 3,
+  "SUPPORTED -> PARTIALLY_SUPPORTED": 3,
+  "CONTRADICTED -> PARTIALLY_SUPPORTED": 1,
+  "CONTRADICTED -> INSUFFICIENT_EVIDENCE": 1
+ }
+}

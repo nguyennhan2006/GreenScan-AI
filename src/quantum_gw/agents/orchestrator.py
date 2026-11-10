@@ -14,7 +14,9 @@ from quantum_gw.domain.models import (
     AnalysisSummary,
     DocumentInput,
     RunManifest,
+    VerificationResult,
 )
+from quantum_gw.legal.org_pack import ClaimFacts, OrgPackSet
 from quantum_gw.settings import AppSettings, load_settings
 from quantum_gw.storage.audit import AuditLogger
 from quantum_gw.utils.text import file_sha256
@@ -71,6 +73,9 @@ class OrchestratorAgent:
 
         verifier = VerificationAgent(self.settings.verification, audit)
         judge = verifier.llm_judge
+        # The organisation's own rules, off unless QUANTUM_ORG_PACKS names a pack.
+        # A pack that fails validation is reported in the manifest and not applied.
+        org_packs = OrgPackSet(self.settings.legal.org_packs) if self.settings.legal.org_packs else None
         manifest = RunManifest(
             run_id=run_id,
             pipeline_version=self.settings.version,
@@ -82,11 +87,17 @@ class OrchestratorAgent:
             # The prompt version and the models that may answer it, e.g.
             # "stance-v1@fpt:GLM-5.2"; empty when no model is consulted.
             prompt_version=getattr(judge, "version", "") if judge is not None else "",
+            org_packs=org_packs.entries if org_packs is not None else None,
         )
         (output_dir / "manifest.json").write_text(
             json.dumps(manifest.model_dump(mode="json"), ensure_ascii=False, indent=2, default=str),
             encoding="utf-8",
         )
+        if org_packs is not None:
+            audit.write("org_packs_loaded", {"packs": [
+                {k: e[k] for k in ("path", "org_id", "pack_version", "status", "sha256", "errors")}
+                for e in org_packs.entries
+            ]})
 
         step("parse_and_ocr_documents", "PDF lớn có thể mất 1–2 phút")
         chunks = DocumentIntakeAgent(self.settings.intake, audit).run(documents)
@@ -131,6 +142,7 @@ class OrchestratorAgent:
         verifications = []
         risks = []
         legal_checks = []
+        org_findings = [] if org_packs is not None else None
         for index, (claim, evidence) in enumerate(work, start=1):
             step("check_applicable_law", f"{index}/{len(work)} tuyên bố: kiểm chứng, pháp lý, rủi ro")
             verification = verifier.run(claim, evidence)
@@ -139,6 +151,12 @@ class OrchestratorAgent:
             if legal_check is not None:
                 legal_checks.append(legal_check)
             risks.append(scorer.run(verification))
+            if org_packs is not None:
+                org_findings.append(self._org_record(org_packs, verification, legal_agent.sector))
+        if org_findings is not None:
+            audit.write("org_rules_checked", dict(Counter(
+                f["outcome"] for record in org_findings for f in record["findings"]
+            )))
 
         step("score_greenwashing_risk", "số liệu công bố và hàng đợi soát")
         figures = DisclosedFigureAgent(audit).run(chunks)
@@ -187,6 +205,7 @@ class OrchestratorAgent:
             scope_note=prioritizer.scope_note(priorities),
             entity=entity,
             corpus=corpus.to_json(),
+            org_findings=org_findings,
             quality_gates=gates,
             summary=summary,
             output_directory=str(output_dir),
@@ -206,6 +225,22 @@ class OrchestratorAgent:
         audit.write("data_layers_written", layer_counts)
         audit.write("run_completed", {"release_status": release_status})
         return result
+
+    @staticmethod
+    def _org_record(org_packs: OrgPackSet, verification: VerificationResult, sector: str | None) -> dict:
+        """The organisation's rules on one claim. Reads the verification; changes nothing in it."""
+        claim = verification.claim
+        record: dict = {"claim_id": claim.claim_id, "findings": []}
+        evidence = [
+            {"chunk_id": e.chunk_id, "text": e.text, "source_type": e.source_type.value,
+             "suspicious_instruction": e.suspicious_instruction, "below_threshold": e.below_threshold}
+            for e in verification.evidence
+        ]
+        try:
+            record["findings"] = org_packs.evaluate(ClaimFacts.from_claim(claim, sector), evidence)
+        except Exception as exc:  # noqa: BLE001 - an org rule that cannot run must not stop the run
+            record["error"] = f"Không đánh giá được quy tắc nội bộ: {exc}"
+        return record
 
     @staticmethod
     def _input_hashes(documents: list[DocumentInput]) -> dict[str, str]:

@@ -1,0 +1,74 @@
+{
+  "rubric_version": "risk-rubric-v3",
+  "items_rescored": 320,
+  "items_without_stored_verification": 8,
+  "items_flagged_suspect_non_claim": 23,
+  "before": {
+    "n": 148,
+    "total_spearman": 0.389,
+    "spearman_company_bootstrap95": [
+      0.165,
+      0.519
+    ],
+    "total_mean_system": 49.2,
+    "total_mean_reference": 30.2,
+    "severity_exact": 0.473,
+    "severity_within1": 0.986,
+    "penalised_when_not_applicable": {
+      "specificity": 43,
+      "quantitative_evidence": 45,
+      "baseline": 69,
+      "period": 44,
+      "scope_boundary": 34,
+      "evidence_support": 39,
+      "independent_assurance": 43,
+      "contradiction": 2,
+      "vague_or_exaggerated_language": 3
+    },
+    "qwk_by_component": {
+      "specificity": 0.268,
+      "quantitative_evidence": 0.419,
+      "baseline": 0.109,
+      "period": 0.201,
+      "scope_boundary": -0.092,
+      "evidence_support": 0.277,
+      "independent_assurance": -0.062,
+      "contradiction": 0.669,
+      "vague_or_exaggerated_language": 0.378
+    }
+  },
+  "after": {
+    "n": 148,
+    "total_spearman": 0.459,
+    "spearman_company_bootstrap95": [
+      0.241,
+      0.587
+    ],
+    "total_mean_system": 42.6,
+    "total_mean_reference": 30.2,
+    "severity_exact": 0.52,
+    "severity_within1": 0.986,
+    "penalised_when_not_applicable": {
+      "specificity": 34,
+      "quantitative_evidence": 36,
+      "baseline": 11,
+      "period": 36,
+      "scope_boundary": 26,
+      "evidence_support": 30,
+      "independent_assurance": 34,
+      "contradiction": 2,
+      "vague_or_exaggerated_language": 3
+    },
+    "qwk_by_component": {
+      "specificity": 0.305,
+      "quantitative_evidence": 0.474,
+      "baseline": 0.406,
+      "period": 0.282,
+      "scope_boundary": 0.013,
+      "evidence_support": 0.409,
+      "independent_assurance": 0.142,
+      "contradiction": 0.669,
+      "vague_or_exaggerated_language": 0.363
+    }
+  }
+}

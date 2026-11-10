@@ -1,0 +1,80 @@
+calib	bb-d60b174c243c3b89-0-S0	metric_has_digit	Trong khuôn khổ Tháng Thanh niên 2026, Đoàn Thanh niên Tập đoàn Bảo Việt phối hợp với Đoàn TNCS Hồ Chí Minh Bộ Tài chính
+calib	bb-d60b174c243c3b89-0-S1	metric_has_digit	Trong khuôn khổ Tháng Thanh niên 2026, Đoàn Thanh niên Tập đoàn Bảo Việt phối hợp với Đoàn TNCS Hồ Chí Minh Bộ Tài chính
+calib	bb-d60b174c243c3b89-0-C1	metric_has_digit	Trong khuôn khổ Tháng Thanh niên 2026, Đoàn Thanh niên Tập đoàn Bảo Việt phối hợp với Đoàn TNCS Hồ Chí Minh Bộ Tài chính
+calib	bb-d60b174c243c3b89-0-N1	metric_has_digit	Trong khuôn khổ Tháng Thanh niên 2026, Đoàn Thanh niên Tập đoàn Bảo Việt phối hợp với Đoàn TNCS Hồ Chí Minh Bộ Tài chính
+calib	bb-d60b174c243c3b89-0-N2	metric_has_digit	Trong khuôn khổ Tháng Thanh niên 2026, Đoàn Thanh niên Tập đoàn Bảo Việt phối hợp với Đoàn TNCS Hồ Chí Minh Bộ Tài chính
+heldout	bh-256e9fb0b2610f5e-0-S0	metric_has_digit	Sử dụng hệ thống điện năng lượng mặt trời: Suntory PepsiCo, Ước tính công suất/hiệu quả tiết kiệm năng lượng: Đèn năng l
+heldout	bh-256e9fb0b2610f5e-0-C1	metric_has_digit	Sử dụng hệ thống điện năng lượng mặt trời: Suntory PepsiCo, Ước tính công suất/hiệu quả tiết kiệm năng lượng: Đèn năng l
+heldout	bh-256e9fb0b2610f5e-0-C2	metric_has_digit	Sử dụng hệ thống điện năng lượng mặt trời: Suntory PepsiCo, Ước tính công suất/hiệu quả tiết kiệm năng lượng: Đèn năng l
+heldout	bh-256e9fb0b2610f5e-0-N2	metric_has_digit	Sử dụng hệ thống điện năng lượng mặt trời: Suntory PepsiCo, Ước tính công suất/hiệu quả tiết kiệm năng lượng: Đèn năng l
+heldout	bh-256e9fb0b2610f5e-0-N5	metric_has_digit	Sử dụng hệ thống điện năng lượng mặt trời: Suntory PepsiCo, Ước tính công suất/hiệu quả tiết kiệm năng lượng: Đèn năng l
+heldout	bh-256e9fb0b2610f5e-0-N6	metric_has_digit	Sử dụng hệ thống điện năng lượng mặt trời: Suntory PepsiCo, Ước tính công suất/hiệu quả tiết kiệm năng lượng: Đèn năng l
+heldout	bh-86c0150d1bdb2265-0-S0	unit_placeholder	Diện tích rừng ngập mặn được Vinamilk khoanh nuôi tái sinh 02 Đơn vị nhà máy và trang trại của Vinamilk được công nhận T
+heldout	bh-86c0150d1bdb2265-0-C1	unit_placeholder	Diện tích rừng ngập mặn được Vinamilk khoanh nuôi tái sinh 02 Đơn vị nhà máy và trang trại của Vinamilk được công nhận T
+heldout	bh-86c0150d1bdb2265-0-C2	unit_placeholder	Diện tích rừng ngập mặn được Vinamilk khoanh nuôi tái sinh 02 Đơn vị nhà máy và trang trại của Vinamilk được công nhận T
+heldout	bh-86c0150d1bdb2265-0-N2	unit_placeholder	Diện tích rừng ngập mặn được Vinamilk khoanh nuôi tái sinh 02 Đơn vị nhà máy và trang trại của Vinamilk được công nhận T
+heldout	bh-2924cd23d07ec79f-0-S0	other_env	Mặc dù thời gian giãn cách kéo dài, PNJLAB cán đích với doanh thu tăng trưởng 17% và hàng hóa được giao đúng hẹn GIÁM ĐỊ
+heldout	bh-2924cd23d07ec79f-0-C1	other_env	Mặc dù thời gian giãn cách kéo dài, PNJLAB cán đích với doanh thu tăng trưởng 17% và hàng hóa được giao đúng hẹn GIÁM ĐỊ
+heldout	bh-2924cd23d07ec79f-0-C3	other_env	Mặc dù thời gian giãn cách kéo dài, PNJLAB cán đích với doanh thu tăng trưởng 17% và hàng hóa được giao đúng hẹn GIÁM ĐỊ
+heldout	bh-2924cd23d07ec79f-0-N2	other_env	Mặc dù thời gian giãn cách kéo dài, PNJLAB cán đích với doanh thu tăng trưởng 17% và hàng hóa được giao đúng hẹn GIÁM ĐỊ
+heldout	bh-12d6bfbb4289bee1-0-S0	other_env	tế của nước ta trong thời gian qua do ô nhiễm môi trường gây ra tối thiểu từ 1,5% - 3% GDP Những thiệt hại của biến đổi 
+heldout	bh-12d6bfbb4289bee1-0-C1	other_env	tế của nước ta trong thời gian qua do ô nhiễm môi trường gây ra tối thiểu từ 1,5% - 3% GDP Những thiệt hại của biến đổi 
+heldout	bh-12d6bfbb4289bee1-0-N2	other_env	tế của nước ta trong thời gian qua do ô nhiễm môi trường gây ra tối thiểu từ 1,5% - 3% GDP Những thiệt hại của biến đổi 
+heldout	bh-42bb04afc41b5a1c-1-S0	period_not_dated	Hình minh hoạ: sơ đồ R.O Quy trình giúp tiết giảm được giảm 12%, tương đương 4.000m3/năm khoảng 50 triệu một năm Giúp ti
+heldout	bh-42bb04afc41b5a1c-1-C1	period_not_dated	Hình minh hoạ: sơ đồ R.O Quy trình giúp tiết giảm được giảm 12%, tương đương 4.000m3/năm khoảng 50 triệu một năm Giúp ti
+heldout	bh-42bb04afc41b5a1c-1-N1	period_not_dated	Hình minh hoạ: sơ đồ R.O Quy trình giúp tiết giảm được giảm 12%, tương đương 4.000m3/năm khoảng 50 triệu một năm Giúp ti
+heldout	bh-42bb04afc41b5a1c-1-N2	period_not_dated	Hình minh hoạ: sơ đồ R.O Quy trình giúp tiết giảm được giảm 12%, tương đương 4.000m3/năm khoảng 50 triệu một năm Giúp ti
+heldout	bh-42bb04afc41b5a1c-1-N6	period_not_dated	Hình minh hoạ: sơ đồ R.O Quy trình giúp tiết giảm được giảm 12%, tương đương 4.000m3/năm khoảng 50 triệu một năm Giúp ti
+heldout	bh-e4a22e9b25091836-0-S0	other_env	Tỷ trọng nợ phải trả và nguồn vốn chủ sở hữu không có biến động nhiều trong các năm gần đây đặc »» Tài sản cố định/Tổng 
+heldout	bh-e4a22e9b25091836-0-C1	other_env	Tỷ trọng nợ phải trả và nguồn vốn chủ sở hữu không có biến động nhiều trong các năm gần đây đặc »» Tài sản cố định/Tổng 
+heldout	bh-e4a22e9b25091836-0-N2	other_env	Tỷ trọng nợ phải trả và nguồn vốn chủ sở hữu không có biến động nhiều trong các năm gần đây đặc »» Tài sản cố định/Tổng 
+heldout	bh-cdea1d4e020ecf9e-0-S0	other_env	xuất ngày càng phức tạp, năm 2025, thiên tai làm 519 người chết, mất tích và bị thương trên phạm vi cả nước, thiệt hại v
+heldout	bh-cdea1d4e020ecf9e-0-C1	other_env	xuất ngày càng phức tạp, năm 2025, thiên tai làm 519 người chết, mất tích và bị thương trên phạm vi cả nước, thiệt hại v
+heldout	bh-cdea1d4e020ecf9e-0-N1	other_env	xuất ngày càng phức tạp, năm 2025, thiên tai làm 519 người chết, mất tích và bị thương trên phạm vi cả nước, thiệt hại v
+heldout	bh-cdea1d4e020ecf9e-0-N2	other_env	xuất ngày càng phức tạp, năm 2025, thiên tai làm 519 người chết, mất tích và bị thương trên phạm vi cả nước, thiệt hại v
+heldout	bh-cdea1d4e020ecf9e-0-N5	other_env	xuất ngày càng phức tạp, năm 2025, thiên tai làm 519 người chết, mất tích và bị thương trên phạm vi cả nước, thiệt hại v
+heldout	bh-24ec31c88923203e-0-S0	other_env	Hết năm 2012 tổng doanh thu của công ty đạt 1.477 tỷ đồng trong đó doanh thu các sản phẩm từ dược liệu của công ty đã đạ
+heldout	bh-24ec31c88923203e-0-C1	other_env	Hết năm 2012 tổng doanh thu của công ty đạt 1.477 tỷ đồng trong đó doanh thu các sản phẩm từ dược liệu của công ty đã đạ
+heldout	bh-24ec31c88923203e-0-N2	other_env	Hết năm 2012 tổng doanh thu của công ty đạt 1.477 tỷ đồng trong đó doanh thu các sản phẩm từ dược liệu của công ty đã đạ
+heldout	bh-bbd4e51bc7042cbc-0-S0	other_env	Doanh thu hàng sản xuất là dòng hàng chiếm tỉ trọng lớn nhất 83,8% trong cơ cấu doanh thu của công ty, thể hiện sự phát 
+heldout	bh-bbd4e51bc7042cbc-0-C1	other_env	Doanh thu hàng sản xuất là dòng hàng chiếm tỉ trọng lớn nhất 83,8% trong cơ cấu doanh thu của công ty, thể hiện sự phát 
+heldout	bh-bbd4e51bc7042cbc-0-N2	other_env	Doanh thu hàng sản xuất là dòng hàng chiếm tỉ trọng lớn nhất 83,8% trong cơ cấu doanh thu của công ty, thể hiện sự phát 
+heldout	bh-bea6856b8ea1f475-0-S0	other_env	Năm 2025, Bảo Việt đã cải thiện 3 bậc trong bảng điểm đánh giá so với năm 2023 và đạt điểm cao hơn 67% các doanh nghiệp 
+heldout	bh-bea6856b8ea1f475-0-C1	other_env	Năm 2025, Bảo Việt đã cải thiện 3 bậc trong bảng điểm đánh giá so với năm 2023 và đạt điểm cao hơn 67% các doanh nghiệp 
+heldout	bh-bea6856b8ea1f475-0-C3	other_env	Năm 2025, Bảo Việt đã cải thiện 3 bậc trong bảng điểm đánh giá so với năm 2023 và đạt điểm cao hơn 67% các doanh nghiệp 
+heldout	bh-bea6856b8ea1f475-0-N1	other_env	Năm 2025, Bảo Việt đã cải thiện 3 bậc trong bảng điểm đánh giá so với năm 2023 và đạt điểm cao hơn 67% các doanh nghiệp 
+heldout	bh-bea6856b8ea1f475-0-N2	other_env	Năm 2025, Bảo Việt đã cải thiện 3 bậc trong bảng điểm đánh giá so với năm 2023 và đạt điểm cao hơn 67% các doanh nghiệp 
+heldout	bh-3c5c5f73d7747fec-0-S0	other_env	REFRESH • NHẤN NÚT TÁI TẠO - BỨT PHÁ VƯƠN XA CỦNG CỐ VÀ PHÁT TRIỂN CÁC NĂNG LỰC DOANH NGHIỆP Sở hữu dây chuyền sản xuất 
+heldout	bh-3c5c5f73d7747fec-0-C1	other_env	REFRESH • NHẤN NÚT TÁI TẠO - BỨT PHÁ VƯƠN XA CỦNG CỐ VÀ PHÁT TRIỂN CÁC NĂNG LỰC DOANH NGHIỆP Sở hữu dây chuyền sản xuất 
+heldout	bh-3c5c5f73d7747fec-0-C2	other_env	REFRESH • NHẤN NÚT TÁI TẠO - BỨT PHÁ VƯƠN XA CỦNG CỐ VÀ PHÁT TRIỂN CÁC NĂNG LỰC DOANH NGHIỆP Sở hữu dây chuyền sản xuất 
+heldout	bh-3c5c5f73d7747fec-0-N2	other_env	REFRESH • NHẤN NÚT TÁI TẠO - BỨT PHÁ VƯƠN XA CỦNG CỐ VÀ PHÁT TRIỂN CÁC NĂNG LỰC DOANH NGHIỆP Sở hữu dây chuyền sản xuất 
+heldout	bh-3c5c5f73d7747fec-0-N5	other_env	REFRESH • NHẤN NÚT TÁI TẠO - BỨT PHÁ VƯƠN XA CỦNG CỐ VÀ PHÁT TRIỂN CÁC NĂNG LỰC DOANH NGHIỆP Sở hữu dây chuyền sản xuất 
+heldout	bh-ac0dcc6352bdadad-0-S0	other_env	“Được thành lập năm 2007, với tầm nhìn tiên phong trong sự nghiệp xanh hóa nguồn nhiên liệu tại Việt Nam, Công ty CP CNG
+heldout	bh-ac0dcc6352bdadad-0-C1	other_env	“Được thành lập năm 2007, với tầm nhìn tiên phong trong sự nghiệp xanh hóa nguồn nhiên liệu tại Việt Nam, Công ty CP CNG
+heldout	bh-ac0dcc6352bdadad-0-N2	other_env	“Được thành lập năm 2007, với tầm nhìn tiên phong trong sự nghiệp xanh hóa nguồn nhiên liệu tại Việt Nam, Công ty CP CNG
+heldout	bh-de130211938fb92a-0-S0	other_env	Giảm thiểu các ảnh • Phát triển cơ sở hạ • Tạo việc làm cho sinh viên và thu hút tài năng • Trên 850 dự án trải dài trên
+heldout	bh-de130211938fb92a-0-C1	other_env	Giảm thiểu các ảnh • Phát triển cơ sở hạ • Tạo việc làm cho sinh viên và thu hút tài năng • Trên 850 dự án trải dài trên
+heldout	bh-de130211938fb92a-0-C2	other_env	Giảm thiểu các ảnh • Phát triển cơ sở hạ • Tạo việc làm cho sinh viên và thu hút tài năng • Trên 850 dự án trải dài trên
+heldout	bh-de130211938fb92a-0-N2	other_env	Giảm thiểu các ảnh • Phát triển cơ sở hạ • Tạo việc làm cho sinh viên và thu hút tài năng • Trên 850 dự án trải dài trên
+heldout	bh-de130211938fb92a-0-N5	other_env	Giảm thiểu các ảnh • Phát triển cơ sở hạ • Tạo việc làm cho sinh viên và thu hút tài năng • Trên 850 dự án trải dài trên
+heldout	bh-e3f000701dd57fce-0-S0	other_env	Tri ân anh hùng, gia đình liệt sỹ có công với đất nước thiên tai và môi trường Chiếm tỷ trọng 39,2% Chiếm tỷ trọng 43,6%
+heldout	bh-e3f000701dd57fce-0-C1	other_env	Tri ân anh hùng, gia đình liệt sỹ có công với đất nước thiên tai và môi trường Chiếm tỷ trọng 39,2% Chiếm tỷ trọng 43,6%
+heldout	bh-e3f000701dd57fce-0-N2	other_env	Tri ân anh hùng, gia đình liệt sỹ có công với đất nước thiên tai và môi trường Chiếm tỷ trọng 39,2% Chiếm tỷ trọng 43,6%
+heldout	bh-e3f000701dd57fce-1-S0	other_env	Tri ân anh hùng, gia đình liệt sỹ có công với đất nước thiên tai và môi trường Chiếm tỷ trọng 39,2% Chiếm tỷ trọng 43,6%
+heldout	bh-e3f000701dd57fce-1-C1	other_env	Tri ân anh hùng, gia đình liệt sỹ có công với đất nước thiên tai và môi trường Chiếm tỷ trọng 39,2% Chiếm tỷ trọng 43,6%
+heldout	bh-e3f000701dd57fce-1-N2	other_env	Tri ân anh hùng, gia đình liệt sỹ có công với đất nước thiên tai và môi trường Chiếm tỷ trọng 39,2% Chiếm tỷ trọng 43,6%
+heldout	bh-e3f000701dd57fce-2-S0	other_env	Tri ân anh hùng, gia đình liệt sỹ có công với đất nước thiên tai và môi trường Chiếm tỷ trọng 39,2% Chiếm tỷ trọng 43,6%
+heldout	bh-e3f000701dd57fce-2-C1	other_env	Tri ân anh hùng, gia đình liệt sỹ có công với đất nước thiên tai và môi trường Chiếm tỷ trọng 39,2% Chiếm tỷ trọng 43,6%
+heldout	bh-e3f000701dd57fce-2-N2	other_env	Tri ân anh hùng, gia đình liệt sỹ có công với đất nước thiên tai và môi trường Chiếm tỷ trọng 39,2% Chiếm tỷ trọng 43,6%
+heldout	bh-e3f000701dd57fce-3-S0	other_env	Tri ân anh hùng, gia đình liệt sỹ có công với đất nước thiên tai và môi trường Chiếm tỷ trọng 39,2% Chiếm tỷ trọng 43,6%
+heldout	bh-e3f000701dd57fce-3-C1	other_env	Tri ân anh hùng, gia đình liệt sỹ có công với đất nước thiên tai và môi trường Chiếm tỷ trọng 39,2% Chiếm tỷ trọng 43,6%
+heldout	bh-e3f000701dd57fce-3-C3	other_env	Tri ân anh hùng, gia đình liệt sỹ có công với đất nước thiên tai và môi trường Chiếm tỷ trọng 39,2% Chiếm tỷ trọng 43,6%
+heldout	bh-e3f000701dd57fce-3-N2	other_env	Tri ân anh hùng, gia đình liệt sỹ có công với đất nước thiên tai và môi trường Chiếm tỷ trọng 39,2% Chiếm tỷ trọng 43,6%
+heldout	bh-e771363ec78bac11-0-S0	other_env	Bằng nhiệm vụ dọn dẹp vệ sinh, Ban quản lý công trường đã thúc đẩy gắn kết nội bộ, chia sẻ cùng đội ngũ kỹ sư và công nh
+heldout	bh-e771363ec78bac11-0-C1	other_env	Bằng nhiệm vụ dọn dẹp vệ sinh, Ban quản lý công trường đã thúc đẩy gắn kết nội bộ, chia sẻ cùng đội ngũ kỹ sư và công nh
+heldout	bh-e771363ec78bac11-0-C2	other_env	Bằng nhiệm vụ dọn dẹp vệ sinh, Ban quản lý công trường đã thúc đẩy gắn kết nội bộ, chia sẻ cùng đội ngũ kỹ sư và công nh
+heldout	bh-e771363ec78bac11-0-N2	other_env	Bằng nhiệm vụ dọn dẹp vệ sinh, Ban quản lý công trường đã thúc đẩy gắn kết nội bộ, chia sẻ cùng đội ngũ kỹ sư và công nh
+heldout	bh-e771363ec78bac11-0-N5	other_env	Bằng nhiệm vụ dọn dẹp vệ sinh, Ban quản lý công trường đã thúc đẩy gắn kết nội bộ, chia sẻ cùng đội ngũ kỹ sư và công nh
+heldout	bh-d51355abee1d0e73-0-S0	other_env	Doanh nghiệp Dược nước ngoài với công nghệ hiện đại, kinh nghiệm quốc tế, tiềm lực tài chính mạnh cùng với tâm lý chuộng
+heldout	bh-d51355abee1d0e73-0-C1	other_env	Doanh nghiệp Dược nước ngoài với công nghệ hiện đại, kinh nghiệm quốc tế, tiềm lực tài chính mạnh cùng với tâm lý chuộng
+heldout	bh-d51355abee1d0e73-0-N2	other_env	Doanh nghiệp Dược nước ngoài với công nghệ hiện đại, kinh nghiệm quốc tế, tiềm lực tài chính mạnh cùng với tâm lý chuộng

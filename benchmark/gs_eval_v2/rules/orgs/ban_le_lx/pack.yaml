@@ -1,0 +1,127 @@
+# Org pack giả lập cho GS-Eval v2 (D-RULES, phần r2). Nhãn do claude-opus-5-5 soạn, chờ người duyệt.
+kind: org_pack
+schema_version: org-pack-v0
+org_id: ban_le_lx
+org_name: Công ty Cổ phần Bán lẻ LX (tổ chức giả lập)
+org_type: retailer
+pack_version: 2.0.0
+precedence: below_law
+approved_by: 'Giám đốc Pháp chế'
+approved_at: '2026-01-20'
+documents:
+  - {doc_id: POL-01, title: 'Chính sách nội dung quảng cáo sản phẩm xanh CS-MKT-07', path: internal_policy.md, role: policy}
+glossary:
+  - {term: 'thân thiện môi trường', synonyms: ['eco-friendly', 'environmentally friendly', 'sản phẩm xanh', 'green product'], definition: 'Cụm chỉ dùng khi có chứng nhận theo POL-01 §3.2.'}
+  - {term: 'phân hủy sinh học', synonyms: ['tự phân hủy', 'biodegradable', 'compostable', 'ủ thành phân'], definition: 'Phải kèm điều kiện phân hủy và tiêu chuẩn thử nghiệm (POL-01 §3.3).'}
+  - {term: 'nhựa tái chế', synonyms: ['rPET', 'nhựa tái sinh', 'recycled plastic'], definition: 'Phải nêu tỷ lệ và phần áp dụng (POL-01 §3.4).'}
+rules:
+  - rule_id: BLLX_001
+    title: Cấm từ ngữ tuyệt đối về môi trường
+    source_document: POL-01
+    source_clauses: ['POL-01:§3.1']
+    claim_types: [generic_sustainability]
+    legal_issue: org_policy
+    applies_to_sectors: [retail, dairy, beverage, food, household, personal_care, textile, jewelry]
+    effective_from: '2026-02-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: 'Phòng Pháp chế (giả lập)'
+    conditions:
+      - {id: no_absolute_terms, description: 'Câu không chứa từ ngữ tuyệt đối', source_clause: 'POL-01:§3.1', check: claim_terms_absent, any_of_terms: ['xanh nhất', '100% xanh', 'không gây hại cho môi trường', 'không gây hại môi trường', 'vô hại với môi trường', 'số 1 về môi trường', 'số một về môi trường', 'tốt nhất cho môi trường', 'thân thiện môi trường nhất', 'greenest', 'zero environmental impact', 'harmless to the environment']}
+
+  - rule_id: BLLX_002
+    title: Cụm thân thiện môi trường / sản phẩm xanh phải có chứng nhận
+    source_document: POL-01
+    source_clauses: ['POL-01:§3.2']
+    claim_types: [generic_sustainability]
+    legal_issue: org_policy
+    applies_to_sectors: [retail, dairy, beverage, food, household, personal_care, textile, jewelry]
+    effective_from: '2026-02-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Pháp chế (giả lập)'
+    notes: '§3.2 chấp nhận cả chứng nhận của hiệp hội ngành; có thể lỏng hơn Luật BVMT 2020 Điều 145, khi đó luật vẫn đứng.'
+    when:
+      - {id: green_label_terms, description: 'Câu dùng cụm thân thiện môi trường / sản phẩm xanh', source_clause: 'POL-01:§3.2', check: claim_terms_present, any_of_terms: ['thân thiện môi trường', 'thân thiện với môi trường', 'environmentally friendly', 'eco-friendly', 'sản phẩm xanh', 'green product']}
+    conditions:
+      - {id: cert_evidence, description: 'Bằng chứng nói tới chứng nhận', source_clause: 'POL-01:§3.2', check: terms_present, any_of_terms: ['Nhãn sinh thái Việt Nam', 'Nhãn xanh Việt Nam', 'chứng nhận', 'certificate', 'certified', 'ecolabel', 'FSC']}
+      - {id: independent_source, description: 'Chứng nhận đến từ nguồn độc lập', source_clause: 'POL-01:§3.2', check: evidence_independent}
+
+  - rule_id: BLLX_003
+    title: Tuyên bố phân hủy sinh học phải nêu điều kiện và tiêu chuẩn thử nghiệm
+    source_document: POL-01
+    source_clauses: ['POL-01:§3.3']
+    claim_types: [waste_and_circularity]
+    legal_issue: org_policy
+    applies_to_sectors: [retail, dairy, beverage, food, household, personal_care, textile, jewelry]
+    effective_from: '2026-02-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Pháp chế (giả lập)'
+    when:
+      - {id: biodegradable_terms, description: 'Câu nói phân hủy sinh học / ủ thành phân', source_clause: 'POL-01:§3.3', check: claim_terms_present, any_of_terms: ['phân hủy sinh học', 'phân huỷ sinh học', 'tự phân hủy', 'biodegradable', 'compostable', 'ủ thành phân']}
+    conditions:
+      - {id: condition_stated, description: 'Câu nêu điều kiện phân hủy', source_clause: 'POL-01:§3.3', check: claim_terms_present, any_of_terms: ['ủ công nghiệp', 'ủ tại nhà', 'điều kiện ủ', 'industrial compost', 'home compost', 'trong đất', 'môi trường biển']}
+      - {id: test_standard, description: 'Bằng chứng nêu tiêu chuẩn thử nghiệm', source_clause: 'POL-01:§3.3', check: terms_present, any_of_terms: ['EN 13432', 'ASTM D6400', 'ISO 17088', 'TCVN', 'OK compost']}
+
+  - rule_id: BLLX_004
+    title: Tuyên bố vật liệu tái chế phải nêu tỷ lệ và phần áp dụng
+    source_document: POL-01
+    source_clauses: ['POL-01:§3.4']
+    claim_types: [waste_and_circularity]
+    legal_issue: org_policy
+    applies_to_sectors: [retail, dairy, beverage, food, household, personal_care, textile, jewelry]
+    effective_from: '2026-02-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Pháp chế (giả lập)'
+    when:
+      - {id: recycled_terms, description: 'Câu nói về tái chế', source_clause: 'POL-01:§3.4', check: claim_terms_present, any_of_terms: ['tái chế', 'tái sinh', 'recycled', 'recyclable', 'rpet']}
+    conditions:
+      - {id: has_value, description: 'Câu nêu tỷ lệ', source_clause: 'POL-01:§3.4', check: claim_attribute_present, attribute: value}
+      - {id: has_scope, description: 'Câu nêu phần áp dụng (thân chai, nắp, bao bì, sản phẩm)', source_clause: 'POL-01:§3.4', check: claim_attribute_present, attribute: scope}
+
+  - rule_id: BLLX_005
+    title: Tuyên bố so sánh môi trường phải có cơ sở so sánh và Pháp chế xác nhận tài liệu
+    source_document: POL-01
+    source_clauses: ['POL-01:§3.5']
+    claim_types: [generic_sustainability]
+    legal_issue: org_policy
+    applies_to_sectors: [retail, dairy, beverage, food, household, personal_care, textile, jewelry]
+    effective_from: '2026-02-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: partial
+    reviewed_by: 'Phòng Pháp chế (giả lập)'
+    when:
+      - {id: comparative_terms, description: 'Câu so sánh môi trường', source_clause: 'POL-01:§3.5', check: claim_terms_present, any_of_terms: ['xanh hơn', 'ít nhựa hơn', 'thân thiện hơn', 'so với sản phẩm', 'so với bao bì', 'so với phiên bản', 'greener', 'less plastic', 'more sustainable']}
+    conditions:
+      - {id: comparison_basis, description: 'Câu nêu cơ sở so sánh', source_clause: 'POL-01:§3.5', check: claim_attribute_present, attribute: baseline}
+      - {id: legal_doc_checked, description: 'Phòng Pháp chế xác nhận tài liệu chứng minh hợp pháp', source_clause: 'POL-01:§3.5', check: manual}
+
+  - rule_id: BLLX_006
+    title: Huy hiệu Lựa chọn xanh chỉ gắn khi có từ 30% vật liệu tái chế (chiến dịch 2025, đã hết hiệu lực)
+    source_document: POL-01
+    source_clauses: ['POL-01:§5.1']
+    claim_types: [waste_and_circularity]
+    legal_issue: org_policy
+    applies_to_sectors: [retail, dairy, beverage, food, household, personal_care, textile, jewelry]
+    effective_from: '2025-03-01'
+    effective_to: '2025-12-31'
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Pháp chế (giả lập)'
+    when:
+      - {id: badge_terms, description: 'Câu nói về huy hiệu Lựa chọn xanh', source_clause: 'POL-01:§5.1', check: claim_terms_present, any_of_terms: ['lựa chọn xanh', 'green choice']}
+    conditions:
+      - {id: recycled_share_min, description: 'Bằng chứng cho thấy tỷ lệ vật liệu tái chế từ 30% trở lên', source_clause: 'POL-01:§5.1', check: numeric_threshold, numeric_field: recycled_share_pct, operator: '>=', threshold: 30}

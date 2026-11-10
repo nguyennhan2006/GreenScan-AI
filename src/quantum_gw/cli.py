@@ -1,19 +1,42 @@
 from __future__ import annotations
 
 import json
+import sys
+from collections import Counter
+from datetime import date
 from pathlib import Path
 
 import typer
 import uvicorn
 
+from quantum_gw.agents.claim_extractor import ClaimExtractionAgent
 from quantum_gw.agents.orchestrator import OrchestratorAgent
 from quantum_gw.domain.enums import DocumentRole, SourceType
-from quantum_gw.domain.models import DocumentInput
+from quantum_gw.domain.models import DocumentInput, EvidenceChunk
 from quantum_gw.evaluation.real_cases import evaluate_real_cases
 from quantum_gw.evaluation.runner import evaluate_golden_set
+from quantum_gw.legal.org_pack import (
+    OUTCOME_VI,
+    ClaimFacts,
+    OrgPackError,
+    describe_claim,
+    describe_finding,
+    describe_pack,
+    evaluate_claim,
+    load_org_pack,
+)
 from quantum_gw.settings import load_settings
 
 app = typer.Typer(help="Evidence-first greenwashing-risk analysis agent")
+
+
+@app.callback()
+def _utf8_output() -> None:
+    # Output sent to a file or pipe falls back to the Windows ANSI code page (cp1258),
+    # which cannot encode most Vietnamese letters: every command crashed when redirected.
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
 
 
 def _csv_values(raw: str, count: int, default: str) -> list[str]:
@@ -89,6 +112,69 @@ def validate_config(config: str = typer.Option("configs/default.yaml")) -> None:
     settings = load_settings(config)
     typer.echo(json.dumps(settings.model_dump(mode="json"), ensure_ascii=False, indent=2))
     typer.echo(f"Config hash: {settings.stable_hash()}")
+
+
+@app.command("org-validate")
+def org_validate(
+    paths: list[Path] = typer.Argument(..., help="Thư mục org pack hoặc tệp pack.yaml, một hay nhiều"),
+) -> None:
+    """Kiểm org pack: in OK kèm tóm tắt, hoặc toàn bộ lỗi. Pack lỗi không bao giờ được áp dụng."""
+    failed = 0
+    for path in paths:
+        try:
+            pack = load_org_pack(path)
+        except OrgPackError as exc:
+            failed += 1
+            typer.echo(f"LỖI {exc.path}: {len(exc.problems)} lỗi, pack sẽ KHÔNG được áp dụng.")
+            for problem in exc.problems:
+                typer.echo(f"  - {problem}")
+            continue
+        typer.echo(f"OK  {pack.path}")
+        for line in describe_pack(pack):
+            typer.echo(f"    {line}")
+    if failed:
+        raise typer.Exit(code=1)
+
+
+class _NoAudit:
+    """`ClaimExtractionAgent.describe` writes no event; a preview keeps no run log."""
+
+    def write(self, event: str, payload: dict | None = None) -> None:
+        return None
+
+
+@app.command("org-preview")
+def org_preview(
+    path: Path = typer.Argument(..., help="Thư mục org pack hoặc tệp pack.yaml"),
+    text: str = typer.Option(..., "--text", help="Câu tuyên bố cần thử"),
+    sector: str = typer.Option("", help="Ngành của doanh nghiệp, ví dụ steel; để trống = không rõ"),
+    as_of: str = typer.Option("", "--as-of", help="Ngày xét hiệu lực quy tắc (YYYY-MM-DD); mặc định hôm nay"),
+    config: str = typer.Option("configs/default.yaml"),
+) -> None:
+    """Thử pack trên một câu: bộ trích luật lấy thuộc tính, rồi chạy từng quy tắc, không có bằng chứng."""
+    try:
+        pack = load_org_pack(path)
+    except OrgPackError as exc:
+        typer.echo(str(exc))
+        raise typer.Exit(code=1) from None
+    try:
+        day = date.fromisoformat(as_of) if as_of else None
+    except ValueError:
+        raise typer.BadParameter("--as-of phải là ngày dạng YYYY-MM-DD") from None
+    chunk = EvidenceChunk(chunk_id="org-preview", doc_id="org-preview", source_name="org-preview",
+                          role=DocumentRole.CLAIM_SOURCE, source_type=SourceType.INTERNAL, text=text)
+    claim = ClaimExtractionAgent(load_settings(config).claim_extraction, _NoAudit()).describe(text, chunk)
+    facts = ClaimFacts.from_claim(claim, sector.strip() or None)
+    typer.echo(f"Câu: “{text}”")
+    typer.echo(f"Thuộc tính (bộ trích luật): {describe_claim(facts)}")
+    if pack.draft:
+        typer.echo("Pack đang là bản nháp: dưới đây là xem thử như đã duyệt; khi chạy thật, pack nháp KHÔNG được áp dụng.")
+    typer.echo("Xem thử không có bằng chứng: điều kiện cần bằng chứng sẽ là “chưa xác định” (?).\n")
+    findings = evaluate_claim([pack], facts, [], day, preview=True)
+    for finding in findings:
+        typer.echo("\n".join(describe_finding(finding)) + "\n")
+    tally = Counter(f.outcome for f in findings)
+    typer.echo("Tóm tắt: " + " · ".join(f"{n} {OUTCOME_VI[o].lower()}" for o, n in tally.most_common()))
 
 
 @app.command()

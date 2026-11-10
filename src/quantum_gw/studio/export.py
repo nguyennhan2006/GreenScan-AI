@@ -26,7 +26,7 @@ from pathlib import Path
 
 from quantum_gw.parsers.office import docx_paragraphs
 
-AI_AUTHOR = "GreenScan AI (quy tắc)"
+AI_AUTHOR = "GreenScan (quy tắc)"
 LLM_AUTHOR = "GreenScan AI (LLM)"
 _TOKENS = re.compile(r"\s+|\w+|[^\w\s]", re.U)
 
@@ -393,7 +393,7 @@ def pdf_from_lines(new: list[str], change_list: list[dict], title: str, note: st
 _SEVERITY_LABEL = {"error": "Nghiêm trọng", "warning": "Cần xem", "info": "Thông tin"}
 _ACTION_LABEL = {"accept": "Chấp nhận", "reject": "Từ chối", "edit": "Sửa tay", "ignore": "Bỏ qua",
                  "save": "Lưu phiên bản", "restore": "Khôi phục", "rework": "Sửa lại đề xuất"}
-_ACTOR_LABEL = {"user": "Người", "ai-rule": "AI (quy tắc)", "ai-llm": "AI (LLM)", "system": "Hệ thống"}
+_ACTOR_LABEL = {"user": "Người", "ai-rule": "Máy (quy tắc)", "ai-llm": "AI (LLM)", "system": "Hệ thống"}
 
 
 def review_html(ctx: dict) -> str:

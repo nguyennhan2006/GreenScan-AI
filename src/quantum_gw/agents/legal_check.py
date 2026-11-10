@@ -43,7 +43,7 @@ class LegalCheckAgent:
         self.checker: LegalChecker | None = None
         self.unavailable_reason = ""
         if not settings.enabled:
-            self.unavailable_reason = "Legal layer disabled in configuration."
+            self.unavailable_reason = "lớp pháp lý đang tắt trong cấu hình."
             return
         if settings.check_mode not in CHECK_MODES:
             self.unavailable_reason = (
@@ -54,7 +54,7 @@ class LegalCheckAgent:
             corpus = LegalCorpus.from_registry(settings.registry_file)
             pack = RulePack.from_yaml(settings.rule_pack_file)
         except (OSError, ValueError, KeyError) as exc:
-            self.unavailable_reason = f"Could not load legal corpus or rule pack: {exc}"
+            self.unavailable_reason = f"không nạp được kho văn bản hoặc bộ quy tắc pháp lý: {exc}"
         else:
             self.checker = LegalChecker(corpus, pack)
         self.audit.write(

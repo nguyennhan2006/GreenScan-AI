@@ -1,0 +1,1 @@
+{"tag": "q3-4b-inst", "repo": "Qwen/Qwen3-4B-Instruct-2507", "cases": 453, "right": 303, "unparsed_texts": 0, "load_s": 239, "gen_s": 278, "ntok_in": 312024, "ntok_out": 53220}

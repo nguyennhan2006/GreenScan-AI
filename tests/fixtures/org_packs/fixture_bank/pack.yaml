@@ -1,0 +1,108 @@
+# Test fixture (tests/test_org_pack.py). One rule per behaviour under test.
+kind: org_pack
+schema_version: org-pack-v0
+org_id: fixture_bank
+org_name: Ngân hàng Kiểm Thử (tổ chức giả lập)
+org_type: bank
+pack_version: 0.1.0
+precedence: below_law
+approved_by: 'Phòng Tuân thủ (giả lập)'
+approved_at: '2026-10-20'
+documents:
+  - {doc_id: POL-T, title: Chính sách kiểm thử, path: internal_policy.md, role: policy}
+glossary:
+  - {term: 'tín dụng xanh', synonyms: ['green loan'], definition: 'Khoản cho vay dự án môi trường.'}
+rules:
+  - rule_id: FB_001
+    title: Tuyên bố giảm phải nêu năm gốc
+    source_document: POL-T
+    source_clauses: ['POL-T:§2.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: ''
+    when:
+      - {id: mentions_reduction, description: Câu nói về giảm, source_clause: 'POL-T:§2.1', check: claim_terms_present, any_of_terms: ['giảm', 'cắt giảm', 'reduce']}
+    conditions:
+      - {id: has_baseline, description: Có năm gốc, source_clause: 'POL-T:§2.1', check: claim_attribute_present, attribute: baseline}
+  - rule_id: FB_002
+    title: Không dùng từ ngữ tuyệt đối
+    source_document: POL-T
+    source_clauses: ['POL-T:§3.1']
+    legal_issue: org_policy
+    effective_from: '2026-01-01'
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    conditions:
+      - {id: no_absolute_terms, description: Không có từ tuyệt đối, source_clause: 'POL-T:§3.1', check: claim_terms_absent, any_of_terms: ['trung hòa carbon', 'net zero', 'thân thiện với môi trường']}
+  - rule_id: FB_003
+    title: Thép xanh cần bằng chứng độc lập
+    source_document: POL-T
+    source_clauses: ['POL-T:§4.1']
+    legal_issue: org_policy
+    applies_to_sectors: [steel]
+    effective_from: '2026-01-01'
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: partial
+    when:
+      - {id: green_steel, description: Câu nói về thép xanh, source_clause: 'POL-T:§4.1', check: claim_terms_present, any_of_terms: ['thép xanh', 'green steel']}
+    conditions:
+      - {id: independent, description: Có nguồn độc lập, source_clause: 'POL-T:§4.1', check: evidence_independent}
+  - rule_id: FB_004
+    title: Quy tắc chỉ cho ngành ngân hàng
+    source_document: POL-T
+    source_clauses: ['POL-T:§5.1']
+    legal_issue: org_policy
+    applies_to_sectors: [bank]
+    effective_from: '2026-01-01'
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: full
+    conditions:
+      - {id: has_period, description: Có kỳ, source_clause: 'POL-T:§5.1', check: claim_attribute_present, attribute: period}
+  - rule_id: FB_005
+    title: Quy tắc đã hết hiệu lực
+    source_document: POL-T
+    source_clauses: ['POL-T:§5.2']
+    legal_issue: org_policy
+    effective_from: '2024-01-01'
+    effective_to: '2025-12-31'
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: full
+    conditions:
+      - {id: has_scope, description: Có phạm vi, source_clause: 'POL-T:§5.2', check: claim_attribute_present, attribute: scope}
+  - rule_id: FB_006
+    title: Số liệu phát thải cần xác nhận và ngưỡng
+    source_document: POL-T
+    source_clauses: ['POL-T:§6.1']
+    legal_issue: org_policy
+    effective_from: '2026-01-01'
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: partial
+    when:
+      - {id: mentions_emissions, description: Câu nói về phát thải, source_clause: 'POL-T:§6.1', check: claim_terms_present, any_of_terms: ['phát thải', 'emission']}
+    conditions:
+      - {id: assured, description: Bằng chứng nhắc tới kiểm toán độc lập, source_clause: 'POL-T:§6.1', check: terms_present, any_of_terms: ['kiểm toán độc lập', 'assurance']}
+      - {id: intensity_reported, description: Có giá trị cường độ từ 1 trở lên, source_clause: 'POL-T:§6.2', check: numeric_threshold, operator: '>=', threshold: 1}
+  - rule_id: FB_007
+    title: Đối chiếu danh mục dự án (người quyết)
+    source_document: POL-T
+    source_clauses: ['POL-T:§7.1']
+    legal_issue: org_policy
+    effective_from: '2026-01-01'
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: none
+    when:
+      - {id: mentions_project, description: Câu nói về dự án, source_clause: 'POL-T:§7.1', check: claim_terms_present, any_of_terms: ['dự án', 'project']}
+    conditions:
+      - {id: in_portfolio, description: Dự án có trong danh mục tín dụng xanh, source_clause: 'POL-T:§7.1', check: manual}

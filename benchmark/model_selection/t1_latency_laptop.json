@@ -1,0 +1,56 @@
+{
+ "machine": {
+  "cpu": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+  "threads": 4,
+  "torch": "2.14.0+cpu",
+  "ram_gb": 15.6
+ },
+ "models": {
+  "e5-small": {
+   "fp32": {
+    "ms_mean": 59.3,
+    "ms_p90": 110.1,
+    "params_millions": 117.7,
+    "ram_model_gb": 0.44,
+    "ram_peak_delta_gb": 0.45,
+    "n": 100
+   },
+   "int8": {
+    "ms_mean": 107.7,
+    "ms_p90": 168.3,
+    "params_millions": 96.2,
+    "ram_model_gb": 0.49,
+    "ram_peak_delta_gb": 0.49,
+    "n": 100
+   }
+  },
+  "e5-base": {
+   "fp32": {
+    "ms_mean": 245.2,
+    "ms_p90": 435.7,
+    "params_millions": 278.0,
+    "ram_model_gb": 0.97,
+    "ram_peak_delta_gb": 0.98,
+    "n": 100
+   },
+   "int8": {
+    "ms_mean": 126.5,
+    "ms_p90": 213.8,
+    "params_millions": 192.4,
+    "ram_model_gb": 0.51,
+    "ram_peak_delta_gb": 0.51,
+    "n": 100
+   }
+  },
+  "e5-large": {
+   "fp32": {
+    "ms_mean": 2548.4,
+    "ms_p90": 5974.0,
+    "params_millions": 559.9,
+    "ram_model_gb": 1.79,
+    "ram_peak_delta_gb": 1.8,
+    "n": 100
+   }
+  }
+ }
+}

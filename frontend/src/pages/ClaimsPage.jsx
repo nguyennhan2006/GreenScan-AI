@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link } from '../lib/router.jsx'
 import { PriorityBadge, STATUS_LABELS, STATUS_ORDER, StatusBadge, WorkflowPill } from '../components/badges.jsx'
 import { AttributeDots } from '../components/AttributeChecklist.jsx'
+import { labelOf } from '../lib/labels'
 
 /**
  * Claim list (mockup #5): the queue, as a table.
@@ -102,11 +103,12 @@ export default function ClaimsPage({ runId, rows, summary, reviewStates = {}, in
                       {r.claim.source_name}{r.claim.source_page ? ` · tr. ${r.claim.source_page}` : ''}
                       {r.contradicting.length > 0 && <span className="ml-2 text-red-700">{r.contradicting.length} đoạn mâu thuẫn</span>}
                       {r.evidence.length === 0 && <span className="ml-2 text-sky-700">chưa có đoạn nào</span>}
+                      {r.suspect && <span className="ml-2 text-amber-700" title={labelOf('quality_flag', r.suspect)}>có thể không phải tuyên bố</span>}
                     </p>
                   </td>
                   <td className="px-3 py-2.5 text-xs text-slate-700">
-                    {r.claim.claim_type}
-                    {r.claim.metric && <span className="block text-slate-400">{r.claim.metric}</span>}
+                    {labelOf('claim_type', r.claim.claim_type)}
+                    {r.claim.metric && <span className="block text-slate-400">{labelOf('metric', r.claim.metric)}</span>}
                   </td>
                   <td className="px-3 py-2.5"><StatusBadge status={r.status} /></td>
                   <td className="px-3 py-2.5"><AttributeDots attributes={r.attributes} /></td>

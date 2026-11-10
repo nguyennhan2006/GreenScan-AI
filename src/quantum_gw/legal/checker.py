@@ -15,6 +15,7 @@ import uuid
 from dataclasses import asdict, dataclass, field
 from datetime import UTC, date, datetime
 from typing import Any
+from ..labels_vi import CLAIM_TYPE, LEGAL_ISSUE, vi
 
 from .corpus import CHECK_MODES, CURRENT, LegalCorpus
 from .rules import (
@@ -204,9 +205,9 @@ class LegalChecker:
         if not rules:
             result.legal_finding = INSUFFICIENT_EVIDENCE
             result.notes = (
-                f"Có văn bản áp dụng nhưng rule pack '{self.rule_pack.version}' chưa có "
-                f"rule nào cho claim_type '{claim_type}' / vấn đề '{issue}'. "
-                "Rule phải do người soạn và duyệt, không sinh tự động lúc chạy."
+                f"Có văn bản áp dụng nhưng bộ quy tắc pháp lý (phiên bản {self.rule_pack.version}) chưa có "
+                f"quy tắc nào cho loại tuyên bố «{vi(CLAIM_TYPE, claim_type)}», vấn đề «{vi(LEGAL_ISSUE, issue)}». "
+                "Quy tắc phải do người soạn và duyệt, không sinh tự động lúc chạy."
             )
             return result
 

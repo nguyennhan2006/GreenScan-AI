@@ -1,0 +1,23 @@
+[
+ {
+  "tag": "q3-8b",
+  "repo": "Qwen/Qwen3-8B",
+  "cand_index": 0,
+  "ok": true,
+  "sec": 404
+ },
+ {
+  "tag": "q3-14b-awq",
+  "repo": "Qwen/Qwen3-14B-AWQ",
+  "cand_index": 0,
+  "ok": true,
+  "sec": 346
+ },
+ {
+  "tag": "gemma3-12b",
+  "repo": "unsloth/gemma-3-12b-it",
+  "cand_index": 1,
+  "ok": true,
+  "sec": 8270
+ }
+]

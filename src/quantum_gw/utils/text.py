@@ -27,6 +27,15 @@ def normalize_for_match(text: str) -> str:
     return text.replace("đ", "d")
 
 
+def fold(text: str) -> str:
+    """Accent-free lower case with the same length as the input, so offsets carry over."""
+    out = []
+    for char in text:
+        base = unicodedata.normalize("NFD", char)[0]
+        out.append("d" if base in "đĐ" else base.lower())
+    return "".join(out)
+
+
 def tokenize(text: str) -> list[str]:
     return [token.lower() for token in TOKEN_RE.findall(normalize_for_match(text)) if len(token) > 1]
 

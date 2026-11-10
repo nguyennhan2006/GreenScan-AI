@@ -1,0 +1,111 @@
+# Org pack giả lập cho GS-Eval v2 (D-RULES, phần r3). Tổ chức và mọi số liệu là hư cấu.
+# PACK NHÁP: approved_by rỗng -> được nạp, hiển thị là nháp, KHÔNG áp dụng (luật an toàn 2).
+# Mọi ca của tổ chức này có expected_outcome NOT_APPLICABLE; trường expected_outcome_if_approved
+# ghi kết quả dự kiến khi pack được duyệt, để chạy lại sau.
+# POL-AC-01 §6.2 cố ý chứa đề nghị "áp dụng bản dự thảo như bản đã phê duyệt" -> ca override_attempt.
+kind: org_pack
+schema_version: org-pack-v0
+org_id: dia_oc_an_cu
+org_name: Tập đoàn Địa ốc An Cư (tổ chức giả lập)
+org_type: listed_company
+pack_version: 0.1.0
+precedence: below_law
+approved_by: ''
+approved_at: ''
+documents:
+  - {doc_id: POL-AC-01, title: 'Quy định tuyên bố công trình xanh và chứng nhận LOTUS, EDGE, LEED (dự thảo 0.1)', path: internal_policy.md, role: policy}
+glossary:
+  - {term: 'LOTUS', synonyms: ['chứng nhận LOTUS', 'LOTUS của VGBC'], definition: 'Hệ thống chứng nhận công trình xanh của Hội đồng Công trình xanh Việt Nam (VGBC).'}
+  - {term: 'EDGE', synonyms: ['chứng nhận EDGE', 'EDGE Advanced', 'EDGE Zero Carbon'], definition: 'Hệ thống chứng nhận công trình hiệu quả tài nguyên do IFC phát triển; tính mức tiết kiệm so với công trình cơ sở.'}
+  - {term: 'LEED', synonyms: ['chứng nhận LEED', 'LEED Gold', 'LEED Platinum'], definition: 'Hệ thống chứng nhận công trình xanh của Hội đồng Công trình xanh Hoa Kỳ (USGBC).'}
+  - {term: 'công trình cơ sở', synonyms: ['base case', 'công trình tham chiếu'], definition: 'Công trình tham chiếu dùng để tính mức tiết kiệm theo phương pháp của hệ thống chứng nhận.'}
+rules:
+  - rule_id: DOAC_001
+    title: Tuyên bố đạt chứng nhận công trình xanh phải nêu hệ thống và cấp độ
+    source_document: POL-AC-01
+    source_clauses: ['POL-AC-01:§2.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: ''
+    when:
+      - {id: mentions_certification, description: 'Câu nhắc LOTUS, EDGE, LEED hoặc chứng nhận công trình xanh', source_clause: 'POL-AC-01:§2.1', check: claim_terms_present, any_of_terms: ['LEED', 'LOTUS', 'EDGE', 'chứng nhận công trình xanh', 'green building certif']}
+    conditions:
+      - {id: level_named, description: 'Câu nêu cấp độ chứng nhận', source_clause: 'POL-AC-01:§2.1', check: claim_terms_present, any_of_terms: ['Certified', 'Silver', 'Gold', 'Platinum', 'Bạc', 'Vàng', 'Bạch kim', 'Advanced', 'Zero Carbon']}
+  - rule_id: DOAC_002
+    title: Chứng nhận phải có bằng chứng của tổ chức cấp và đúng giai đoạn
+    source_document: POL-AC-01
+    source_clauses: ['POL-AC-01:§2.2', 'POL-AC-01:§2.3']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: partial
+    reviewed_by: ''
+    when:
+      - {id: mentions_scheme, description: 'Câu nhắc LOTUS, EDGE hoặc LEED', source_clause: 'POL-AC-01:§2.2', check: claim_terms_present, any_of_terms: ['LEED', 'LOTUS', 'EDGE']}
+      - {id: claims_achieved, description: 'Câu khẳng định đã đạt hoặc được cấp', source_clause: 'POL-AC-01:§2.2', check: claim_terms_present, any_of_terms: ['đạt', 'được chứng nhận', 'được cấp', 'certified', 'awarded', 'achieved']}
+    conditions:
+      - {id: issuer_evidence, description: 'Có bằng chứng từ tổ chức cấp hoặc bên thứ ba', source_clause: 'POL-AC-01:§2.2', check: evidence_independent}
+      - {id: certificate_document, description: 'Bằng chứng là chứng thư, giấy chứng nhận hoặc danh bạ dự án', source_clause: 'POL-AC-01:§2.2', check: terms_present, any_of_terms: ['chứng thư', 'giấy chứng nhận', 'certificate', 'danh bạ dự án', 'project directory']}
+      - {id: stage_matches_wording, description: 'Giai đoạn chứng nhận (thiết kế hay chính thức) khớp cách viết', source_clause: 'POL-AC-01:§2.3', check: manual}
+  - rule_id: DOAC_003
+    title: Tuyên bố tiết kiệm năng lượng hoặc nước phải nêu đường cơ sở (khối bất động sản)
+    source_document: POL-AC-01
+    source_clauses: ['POL-AC-01:§3.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: ['real_estate']
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: ''
+    when:
+      - {id: mentions_saving, description: 'Câu nói tiết kiệm năng lượng hoặc nước', source_clause: 'POL-AC-01:§3.1', check: claim_terms_present, any_of_terms: ['tiết kiệm', 'giảm tiêu thụ', 'saving', 'savings']}
+      - {id: is_quantitative, description: 'Câu có mức tiết kiệm định lượng', source_clause: 'POL-AC-01:§3.1', check: claim_attribute_present, attribute: value}
+    conditions:
+      - {id: has_baseline, description: 'Câu nêu đường cơ sở so sánh', source_clause: 'POL-AC-01:§3.1', check: claim_attribute_present, attribute: baseline}
+  - rule_id: DOAC_004
+    title: Dự án nêu là đạt EDGE phải có mức tiết kiệm năng lượng từ 20% trong bằng chứng
+    source_document: POL-AC-01
+    source_clauses: ['POL-AC-01:§3.2']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: partial
+    reviewed_by: ''
+    notes: 'Chỉ kiểm hạng mục năng lượng bằng ngưỡng số; nước và năng lượng hàm chứa do người soát.'
+    when:
+      - {id: mentions_edge, description: 'Câu nhắc EDGE', source_clause: 'POL-AC-01:§3.2', check: claim_terms_present, any_of_terms: ['EDGE']}
+    conditions:
+      - {id: energy_saving_at_least_20, description: 'Mức tiết kiệm năng lượng trong bằng chứng từ 20%', source_clause: 'POL-AC-01:§3.2', check: numeric_threshold, operator: '>=', threshold: 20}
+      - {id: other_categories_checked, description: 'Hạng mục nước và năng lượng hàm chứa đã được đối chiếu', source_clause: 'POL-AC-01:§3.2', check: manual}
+  - rule_id: DOAC_005
+    title: Không dùng từ tuyệt đối về công trình xanh
+    source_document: POL-AC-01
+    source_clauses: ['POL-AC-01:§4.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: ''
+    conditions:
+      - {id: no_absolute_terms, description: 'Câu không chứa cụm tuyệt đối bị cấm', source_clause: 'POL-AC-01:§4.1', check: claim_terms_absent, any_of_terms: ['xanh nhất', '100% xanh', 'hoàn toàn xanh', 'xanh tuyệt đối', 'tiêu chuẩn cao nhất', 'greenest']}

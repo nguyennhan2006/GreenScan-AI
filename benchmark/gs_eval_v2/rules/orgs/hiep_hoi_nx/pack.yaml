@@ -1,0 +1,114 @@
+# Org pack giả lập cho GS-Eval v2 (D-RULES, phần r2). Nhãn do claude-opus-5-5 soạn, chờ người duyệt.
+kind: org_pack
+schema_version: org-pack-v0
+org_id: hiep_hoi_nx
+org_name: Hiệp hội Thép và Xi măng NX (tổ chức giả lập)
+org_type: industry_association
+pack_version: 1.0.0
+precedence: below_law
+approved_by: 'Ban Thường vụ Hiệp hội'
+approved_at: '2026-05-20'
+documents:
+  - {doc_id: POL-01, title: 'Hướng dẫn hội viên báo cáo cường độ phát thải khí nhà kính HD-NX-01', path: internal_policy.md, role: policy}
+glossary:
+  - {term: 'cường độ phát thải', synonyms: ['emission intensity', 'tCO2e/tấn', 'phát thải trên mỗi tấn'], definition: 'Phát thải chia cho sản lượng; khác chiều với tổng phát thải tuyệt đối.'}
+  - {term: 'thép thô', synonyms: ['crude steel'], definition: 'Mẫu số chuẩn cho cường độ phát thải ngành thép (POL-01 §2.1).'}
+  - {term: 'clinker', synonyms: ['tấn clinker', 'tấn xi măng', 'cementitious'], definition: 'Mẫu số chuẩn cho ngành xi măng, phải ghi rõ loại (POL-01 §2.1).'}
+rules:
+  - rule_id: HHNX_001
+    title: Cường độ phát thải phải dùng mẫu số chuẩn ngành
+    source_document: POL-01
+    source_clauses: ['POL-01:§2.1', 'POL-01:§1.1']
+    claim_types: [emissions_reduction]
+    legal_issue: org_policy
+    applies_to_sectors: [steel, cement]
+    effective_from: '2026-06-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Ban Kỹ thuật Hiệp hội (giả lập)'
+    when:
+      - {id: intensity_terms, description: 'Câu nói về cường độ / phát thải trên mỗi tấn', source_clause: 'POL-01:§2.1', check: claim_terms_present, any_of_terms: ['cường độ phát thải', 'co2/tấn', 'co2e/tấn', '/tấn', 'trên mỗi tấn', 'trên một tấn', 'per tonne', 'per ton', 'emission intensity']}
+      - {id: emissions_terms, description: 'Câu nói về phát thải', source_clause: 'POL-01:§2.1', check: claim_terms_present, any_of_terms: ['phát thải', 'co2', 'khí nhà kính', 'emission', 'ghg', 'carbon']}
+    conditions:
+      - {id: standard_denominator, description: 'Câu nêu mẫu số chuẩn (thép thô, clinker, tấn xi măng)', source_clause: 'POL-01:§2.1', check: claim_terms_present, any_of_terms: ['thép thô', 'crude steel', 'clinker', 'tấn xi măng', 'tonne of cement', 'cementitious']}
+
+  - rule_id: HHNX_002
+    title: Cường độ phải công bố kèm tổng phát thải tuyệt đối cùng kỳ, cùng ranh giới
+    source_document: POL-01
+    source_clauses: ['POL-01:§2.3']
+    claim_types: [emissions_reduction]
+    legal_issue: org_policy
+    applies_to_sectors: [steel, cement]
+    effective_from: '2026-06-01'
+    effective_to: null
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: none
+    reviewed_by: 'Ban Kỹ thuật Hiệp hội (giả lập)'
+    notes: 'Chỉ người soát xét quyết được việc báo cáo có công bố tổng tuyệt đối cùng kỳ, cùng ranh giới.'
+    when:
+      - {id: intensity_terms, description: 'Câu nói về cường độ / phát thải trên mỗi tấn', source_clause: 'POL-01:§2.3', check: claim_terms_present, any_of_terms: ['cường độ phát thải', 'co2/tấn', 'co2e/tấn', '/tấn', 'trên mỗi tấn', 'trên một tấn', 'per tonne', 'per ton', 'emission intensity']}
+      - {id: emissions_terms, description: 'Câu nói về phát thải', source_clause: 'POL-01:§2.3', check: claim_terms_present, any_of_terms: ['phát thải', 'co2', 'khí nhà kính', 'emission', 'ghg', 'carbon']}
+    conditions:
+      - {id: absolute_disclosed, description: 'Báo cáo công bố tổng phát thải tuyệt đối cùng kỳ, cùng ranh giới (người soát xét kiểm)', source_clause: 'POL-01:§2.3', check: manual}
+
+  - rule_id: HHNX_003
+    title: Báo cáo cường độ phải nêu phương pháp tính
+    source_document: POL-01
+    source_clauses: ['POL-01:§2.4']
+    claim_types: [emissions_reduction]
+    legal_issue: org_policy
+    applies_to_sectors: [steel, cement]
+    effective_from: '2026-06-01'
+    effective_to: null
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Ban Kỹ thuật Hiệp hội (giả lập)'
+    when:
+      - {id: intensity_terms, description: 'Câu nói về cường độ / phát thải trên mỗi tấn', source_clause: 'POL-01:§2.4', check: claim_terms_present, any_of_terms: ['cường độ phát thải', 'co2/tấn', 'co2e/tấn', '/tấn', 'trên mỗi tấn', 'trên một tấn', 'per tonne', 'per ton', 'emission intensity']}
+      - {id: emissions_terms, description: 'Câu nói về phát thải', source_clause: 'POL-01:§2.4', check: claim_terms_present, any_of_terms: ['phát thải', 'co2', 'khí nhà kính', 'emission', 'ghg', 'carbon']}
+    conditions:
+      - {id: method_named, description: 'Bằng chứng nêu phương pháp tính', source_clause: 'POL-01:§2.4', check: terms_present, any_of_terms: ['ISO 14404', 'ISO 14064', 'worldsteel', 'WBCSD-CSI', 'GCCA', 'GHG Protocol', 'IPCC']}
+
+  - rule_id: HHNX_004
+    title: Chỉ tự nhận nhóm phát thải thấp khi cường độ không vượt ngưỡng (hội viên thép)
+    source_document: POL-01
+    source_clauses: ['POL-01:§3.1', 'POL-01:§3.2']
+    claim_types: [emissions_reduction]
+    legal_issue: org_policy
+    applies_to_sectors: [steel]
+    effective_from: '2026-06-01'
+    effective_to: null
+    severity: warning
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: 'Ban Kỹ thuật Hiệp hội (giả lập)'
+    notes: 'numeric_threshold phải so đúng giá trị cường độ tCO2e/tấn thép thô, không phải mọi con số trong đoạn.'
+    when:
+      - {id: low_emission_label, description: 'Câu tự nhận nhóm phát thải thấp', source_clause: 'POL-01:§3.1', check: claim_terms_present, any_of_terms: ['nhóm phát thải thấp', 'low-emission group', 'low emission group']}
+    conditions:
+      - {id: intensity_within_threshold, description: 'Cường độ Phạm vi 1 và 2 của năm báo cáo không vượt 1,4 tCO2e/tấn thép thô', source_clause: 'POL-01:§3.1', check: numeric_threshold, numeric_field: intensity_tco2e_per_t_crude_steel, operator: '<=', threshold: 1.4}
+      - {id: crude_steel_basis, description: 'Bằng chứng tính theo tấn thép thô', source_clause: 'POL-01:§3.1', check: terms_present, any_of_terms: ['thép thô', 'crude steel']}
+
+  - rule_id: HHNX_005
+    title: Cường độ phải nêu phạm vi phát thải và năm báo cáo
+    source_document: POL-01
+    source_clauses: ['POL-01:§2.2']
+    claim_types: [emissions_reduction]
+    legal_issue: org_policy
+    applies_to_sectors: [steel, cement]
+    effective_from: '2026-06-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Ban Kỹ thuật Hiệp hội (giả lập)'
+    when:
+      - {id: intensity_terms, description: 'Câu nói về cường độ / phát thải trên mỗi tấn', source_clause: 'POL-01:§2.2', check: claim_terms_present, any_of_terms: ['cường độ phát thải', 'co2/tấn', 'co2e/tấn', '/tấn', 'trên mỗi tấn', 'trên một tấn', 'per tonne', 'per ton', 'emission intensity']}
+      - {id: emissions_terms, description: 'Câu nói về phát thải', source_clause: 'POL-01:§2.2', check: claim_terms_present, any_of_terms: ['phát thải', 'co2', 'khí nhà kính', 'emission', 'ghg', 'carbon']}
+    conditions:
+      - {id: has_scope, description: 'Câu nêu Phạm vi 1 hoặc Phạm vi 1 và 2', source_clause: 'POL-01:§2.2', check: claim_attribute_present, attribute: scope}
+      - {id: has_period, description: 'Câu nêu năm báo cáo', source_clause: 'POL-01:§2.2', check: claim_attribute_present, attribute: period}

@@ -1,0 +1,1 @@
+{"tag": "q3-14b-awq", "repo": "Qwen/Qwen3-14B-AWQ", "cases": 193, "right": 123, "unparsed_texts": 0, "load_s": 246, "gen_s": 91, "ntok_in": 143391, "ntok_out": 23038}

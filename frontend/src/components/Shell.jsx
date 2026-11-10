@@ -14,10 +14,11 @@ import { Icon } from './icons.jsx'
 const FLOW = [
   { key: 'new', step: 1, label: 'Tải tài liệu', to: '/new' },
   { key: 'queue', step: 2, label: 'Soát theo hàng đợi', to: (id) => `/runs/${id}`, needsRun: true },
-  { key: 'studio', step: 3, label: 'Sửa báo cáo (Studio)', to: (id) => `/runs/${id}/studio`, needsRun: true },
+  { key: 'studio', step: 3, label: 'Sửa báo cáo', to: (id) => `/runs/${id}/studio`, needsRun: true },
   { key: 'export', step: 4, label: 'Giấy làm việc', to: (id) => `/runs/${id}/export`, needsRun: true },
 ]
 const MORE = [
+  { key: 'guide', label: 'Hướng dẫn cho người mới', to: '/guide', icon: 'help' },
   { key: 'claims', label: 'Tất cả tuyên bố', to: (id) => `/runs/${id}/claims`, icon: 'list', needsRun: true },
   { key: 'runs', label: 'Lịch sử phân tích', to: '/runs', icon: 'clock' },
   { key: 'legal', label: 'Thư viện pháp lý', to: '/legal', icon: 'scale' },

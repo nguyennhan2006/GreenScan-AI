@@ -1,9 +1,11 @@
 from __future__ import annotations
+from ..labels_vi import SCOPE, VERDICT, vi
 
 from pathlib import Path
 
 import yaml
 
+from quantum_gw.agents.claim_quality import reason_vi
 from quantum_gw.domain.enums import Severity, VerificationStatus
 from quantum_gw.domain.models import RiskAssessment, RiskComponent, VerificationResult
 from quantum_gw.settings import ReviewSettings
@@ -28,30 +30,43 @@ class RiskScoringAgent:
 
     def run(self, verification: VerificationResult) -> RiskAssessment:
         claim = verification.claim
+        # A sentence that is probably not a claim (claim-quality-v1) is not
+        # scored: every "missing attribute" would be penalised on a table cell
+        # or a decree's title, and GS-Eval v2 found exactly that -- 43 non-claims
+        # penalised on every component. A contradiction is still scored: it must
+        # reach a reviewer whatever the sentence looks like.
+        if claim.quality_flag and verification.status != VerificationStatus.CONTRADICTED:
+            return self._not_scored(verification)
         components: list[RiskComponent] = []
 
-        components.append(self._component("specificity", 12 if claim.is_vague else (6 if not claim.metric else 1), "Claim specificity and identifiable metric."))
-        components.append(self._component("quantitative_evidence", 12 if not claim.values else 2, "Presence of a quantitative value in the claim."))
+        components.append(self._component("specificity", 12 if claim.is_vague else (6 if not claim.metric else 1), "Mức cụ thể của tuyên bố và chỉ số xác định được."))
+        components.append(self._component("quantitative_evidence", 12 if not claim.values else 2, "Tuyên bố có giá trị định lượng hay không."))
         # Baseline and period are scored separately: they fail independently and
         # a reviewer fixes them differently. A combined component could only say
         # "something about time is missing", which is not actionable.
-        needs_baseline = bool(claim.direction or claim.is_future_commitment)
+        #
+        # risk-rubric-v3: a base year is needed for a change that is stated with
+        # a figure ("giảm 20 %") or set as a target ("giảm … vào 2030"). The v2
+        # rule asked for one whenever a trend word appeared ("giảm thiểu tác động
+        # môi trường"), which penalised 69 claims that GS-Eval v2 labels say need
+        # none; the missing figure there is already scored by quantitative_evidence.
+        needs_baseline = bool(claim.direction and (claim.values or claim.is_future_commitment))
         baseline_penalty = 8 if (needs_baseline and not claim.baseline) else 0
         components.append(self._component(
             "baseline", baseline_penalty,
-            "Baseline year to compare against." if needs_baseline
-            else "No comparison asserted, so no baseline is required."))
+            "Cần năm gốc để so sánh." if needs_baseline
+            else "Không nêu mức thay đổi có số liệu hay mục tiêu tăng/giảm nên không cần năm gốc."))
 
         period_penalty = 8 if not claim.period else 0
         components.append(self._component(
-            "period", period_penalty, "Reporting or target period the figure belongs to."))
+            "period", period_penalty, "Kỳ báo cáo hoặc kỳ mục tiêu của số liệu."))
 
         # Boundary: one plant, the parent, or the consolidated group. Without it
         # a percentage cannot be checked against any table.
         components.append(self._component(
             "scope_boundary", 0 if claim.scope else 8,
-            f"Applicable boundary: {claim.scope}." if claim.scope
-            else "No entity, facility or emission scope stated."))
+            f"Phạm vi áp dụng: {vi(SCOPE, claim.scope)}." if claim.scope
+            else "Không nêu pháp nhân, cơ sở hay phạm vi phát thải."))
 
         evidence_penalty = {
             VerificationStatus.SUPPORTED: 0,
@@ -60,11 +75,11 @@ class RiskScoringAgent:
             VerificationStatus.CONTRADICTED: 18,
             VerificationStatus.INSUFFICIENT_EVIDENCE: 12,
         }[verification.status]
-        components.append(self._component("evidence_support", evidence_penalty, f"Verification status: {verification.status}."))
+        components.append(self._component("evidence_support", evidence_penalty, f"Kết quả kiểm chứng: {vi(VERDICT, verification.status)}."))
 
         independent = any(e.source_type.value in {"legal", "external", "standard"} for e in verification.evidence)
-        components.append(self._component("independent_assurance", 0 if independent else 8, "Independent/legal/standard source coverage."))
-        components.append(self._component("contradiction", 18 if verification.status == VerificationStatus.CONTRADICTED else 0, "Direct contradiction penalty."))
+        components.append(self._component("independent_assurance", 0 if independent else 8, "Có nguồn độc lập, văn bản pháp lý hoặc chuẩn mực hay không."))
+        components.append(self._component("contradiction", 18 if verification.status == VerificationStatus.CONTRADICTED else 0, "Điểm cộng thêm khi nguồn mâu thuẫn trực tiếp."))
 
         # Scored from the terms the extractor matched against configs/taxonomy.yaml.
         # This used to be a second, shorter, Vietnamese-only copy of that list
@@ -72,9 +87,9 @@ class RiskScoringAgent:
         # us in creating a more sustainable future" -- scored 0 on the component
         # named for exactly that problem.
         vague_reason = (
-            "Vague or promotional language: " + ", ".join(claim.vague_terms_matched[:4])
+            "Ngôn ngữ mơ hồ hoặc quảng bá: " + ", ".join(claim.vague_terms_matched[:4])
             if claim.vague_terms_matched
-            else "No vague or promotional language detected."
+            else "Không thấy ngôn ngữ mơ hồ hoặc quảng bá."
         )
         components.append(self._component(
             "vague_or_exaggerated_language",
@@ -109,6 +124,30 @@ class RiskScoringAgent:
             materiality="unknown",
             severity_cap_reason=cap_reason,
             requires_human_review=requires_review,
+            rubric_version=self.version,
+        )
+        self.audit.write("risk_scored", assessment.model_dump(mode="json"))
+        return assessment
+
+    def _not_scored(self, verification: VerificationResult) -> RiskAssessment:
+        claim = verification.claim
+        why = reason_vi(claim.quality_flag) or "có dấu hiệu không phải tuyên bố"
+        reason = f"Không chấm: câu có thể không phải tuyên bố ({why}); người soát xem trang gốc để quyết định."
+        components = [
+            RiskComponent(name=name, score=0.0, max_score=float(spec["max_score"]), reason=reason, status="not_applicable")
+            for name, spec in self.rubric["components"].items()
+        ]
+        contradiction_strength = _contradiction_strength(verification)
+        assessment = RiskAssessment(
+            claim_id=claim.claim_id,
+            risk_score=0.0,
+            severity=Severity.LOW,
+            components=components,
+            evidence_strength=_evidence_strength(verification),
+            contradiction_strength=contradiction_strength,
+            materiality="unknown",
+            severity_cap_reason=reason,
+            requires_human_review=verification.requires_llm_review or contradiction_strength != "none",
             rubric_version=self.version,
         )
         self.audit.write("risk_scored", assessment.model_dump(mode="json"))

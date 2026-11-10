@@ -1,0 +1,176 @@
+{
+ "dual": {
+  "missing": 207,
+  "all": {
+   "n": 246,
+   "right": 113,
+   "decided": 0,
+   "coverage": 0.0,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-a sạch": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-a trang thật": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-b": {
+   "n": 246,
+   "right": 113,
+   "decided": 0,
+   "coverage": 0.0,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0,
+   "precision_ci95": null,
+   "coverage_ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "B-b_by_family_right": {
+   "C1": "0/49",
+   "C2": "0/20",
+   "C3": "0/6",
+   "N1": "15/15",
+   "N2": "49/49",
+   "N4": "10/10",
+   "N5": "20/20",
+   "N6": "19/19",
+   "S0": "0/49",
+   "S1": "0/9"
+  }
+ },
+ "agree": {
+  "missing": 207,
+  "all": {
+   "n": 246,
+   "right": 197,
+   "decided": 103,
+   "coverage": 0.419,
+   "precision": 0.903,
+   "false_S": 9,
+   "false_C": 1
+  },
+  "B-a sạch": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-a trang thật": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-b": {
+   "n": 246,
+   "right": 197,
+   "decided": 103,
+   "coverage": 0.419,
+   "precision": 0.903,
+   "false_S": 9,
+   "false_C": 1,
+   "precision_ci95": [
+    0.843,
+    0.955
+   ],
+   "coverage_ci95": [
+    0.349,
+    0.539
+   ]
+  },
+  "B-b_by_family_right": {
+   "C1": "38/49",
+   "C2": "16/20",
+   "C3": "2/6",
+   "N1": "14/15",
+   "N2": "48/49",
+   "N4": "9/10",
+   "N5": "17/20",
+   "N6": "16/19",
+   "S0": "30/49",
+   "S1": "7/9"
+  }
+ },
+ "32b_v12": {
+  "missing": 207,
+  "all": {
+   "n": 246,
+   "right": 188,
+   "decided": 79,
+   "coverage": 0.321,
+   "precision": 0.975,
+   "false_S": 2,
+   "false_C": 0
+  },
+  "B-a sạch": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-a trang thật": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-b": {
+   "n": 246,
+   "right": 188,
+   "decided": 79,
+   "coverage": 0.321,
+   "precision": 0.975,
+   "false_S": 2,
+   "false_C": 0,
+   "precision_ci95": [
+    0.919,
+    1.0
+   ],
+   "coverage_ci95": [
+    0.285,
+    0.405
+   ]
+  },
+  "B-b_by_family_right": {
+   "C1": "32/49",
+   "C2": "14/20",
+   "C3": "3/6",
+   "N1": "15/15",
+   "N2": "48/49",
+   "N4": "10/10",
+   "N5": "20/20",
+   "N6": "18/19",
+   "S0": "22/49",
+   "S1": "6/9"
+  }
+ }
+}

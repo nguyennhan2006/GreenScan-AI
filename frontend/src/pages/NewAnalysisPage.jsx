@@ -20,17 +20,17 @@ import { Icon } from '../components/icons.jsx'
  */
 
 const ROLES = [
-  ['claim_source', 'Cần kiểm', 'Báo cáo chứa tuyên bố cần kiểm (BCPTBV, BCTN).'],
-  ['evidence', 'Đối chiếu', 'Tài liệu để so (BCTC, báo cáo kiểm kê KNK, quyết định của cơ quan nhà nước…).'],
+  ['claim_source', 'Cần kiểm', 'Báo cáo chứa tuyên bố cần kiểm (báo cáo phát triển bền vững, báo cáo thường niên).'],
+  ['evidence', 'Đối chiếu', 'Tài liệu để so (báo cáo tài chính, báo cáo kiểm kê khí nhà kính, quyết định của cơ quan nhà nước…).'],
   ['reference', 'Tham khảo', 'Bối cảnh phụ, xếp sau tài liệu đối chiếu.'],
 ]
 const SOURCE_TYPES = [
   ['internal', 'Doanh nghiệp tự phát hành', 'Báo cáo bền vững, báo cáo thường niên.'],
-  ['financial', 'Báo cáo tài chính', 'BCTC, thuyết minh.'],
-  ['environmental', 'Môi trường', 'Báo cáo kiểm kê KNK, ĐTM, quan trắc.'],
+  ['financial', 'Báo cáo tài chính', 'Báo cáo tài chính, thuyết minh.'],
+  ['environmental', 'Môi trường', 'Báo cáo kiểm kê khí nhà kính, đánh giá tác động môi trường, quan trắc.'],
   ['legal', 'Pháp lý — độc lập', 'Quyết định, kết luận thanh tra, bản án.'],
   ['external', 'Bên thứ ba — độc lập', 'Báo cáo đảm bảo, kiểm định, báo chí.'],
-  ['standard', 'Tiêu chuẩn — độc lập', 'ISO, GHG Protocol, quy chuẩn.'],
+  ['standard', 'Tiêu chuẩn — độc lập', 'Tiêu chuẩn ISO, hướng dẫn kiểm kê khí nhà kính, quy chuẩn.'],
 ]
 const INDEPENDENT = new Set(['legal', 'external', 'standard'])
 
@@ -115,7 +115,7 @@ function PreviewLine({ p }) {
     <span className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[11px] text-slate-500">
       {p.pages != null && <span title="Số trang có lớp chữ / tổng số trang">{p.text_pages}/{p.pages} trang có chữ</span>}
       <span title="Ước lượng số câu sẽ được đọc">~{p.sentences} câu</span>
-      <span title="Ước lượng theo HPG: 264 trang ≈ 2 phút trên laptop">≈ {p.estimated_seconds < 60 ? `${p.estimated_seconds} giây` : `${minutes} phút`}</span>
+      <span title="Ước lượng theo HPG: 264 trang ≈ 2 phút trên máy tính xách tay">≈ {p.estimated_seconds < 60 ? `${p.estimated_seconds} giây` : `${minutes} phút`}</span>
       {g.report_type_label && <span className="text-emerald-800" title="Đoán từ tên tệp và các trang đầu">{g.report_type_label}{g.year ? ` ${g.year}` : ''}</span>}
       {g.company && <span className="text-emerald-800" title="Tên doanh nghiệp đọc được ở các trang đầu">{g.company}</span>}
       {(p.warnings || []).map((w, i) => <span key={i} className={/không có OCR|Không đọc/.test(w) ? 'font-semibold text-red-700' : 'text-amber-700'}>⚠ {w}</span>)}
@@ -171,7 +171,7 @@ function Progress({ job, startedAt, onRetry }) {
           <div className="mt-2"><button type="button" onClick={onRetry} className="rounded-lg border border-red-300 bg-white px-3 py-1.5 text-xs font-semibold text-red-800">← Sửa đầu vào và chạy lại</button></div>
         </div>
       )}
-      {!failed && <p className="mt-4 text-xs text-slate-500">Một báo cáo bền vững kèm báo cáo thường niên mất khoảng 2 phút trên laptop. Có thể mở trang khác; kết quả được lưu trong Lịch sử.</p>}
+      {!failed && <p className="mt-4 text-xs text-slate-500">Một báo cáo bền vững kèm báo cáo thường niên mất khoảng 2 phút trên máy tính xách tay. Có thể mở trang khác; kết quả được lưu trong Lịch sử.</p>}
     </section>
   )
 }
@@ -249,7 +249,7 @@ export default function NewAnalysisPage({ onDone, runtime }) {
     if (ticker) {
       const sample = samples.find((x) => x.id === ticker[1].toLowerCase())
       if (sample) { await loadSample(sample); setUrl(''); return }
-      setError(`Chưa có danh mục báo cáo theo mã CK cho ${ticker[1].toUpperCase()} ${ticker[2]}. Dán đường dẫn tới tệp PDF/DOCX của báo cáo.`)
+      setError(`Chưa có danh mục báo cáo theo mã chứng khoán cho ${ticker[1].toUpperCase()} ${ticker[2]}. Dán đường dẫn tới tệp PDF/DOCX của báo cáo.`)
       return
     }
     setFetching(true); setError(null)
@@ -333,13 +333,13 @@ export default function NewAnalysisPage({ onDone, runtime }) {
           </label>
           <label className="block text-sm text-slate-700">
             Tên phiên <span className="text-slate-400">(không bắt buộc)</span>
-            <input value={label} onChange={(e) => setLabel(e.target.value)} placeholder="Ví dụ: HPG – BCPTBV 2025 + BCTN 2024" className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm" />
+            <input value={label} onChange={(e) => setLabel(e.target.value)} placeholder="Ví dụ: Hòa Phát – báo cáo bền vững 2025 + báo cáo thường niên 2024" className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm" />
             <span className="mt-1 block text-[11px] text-slate-500">Để tìm lại trong Lịch sử; không ảnh hưởng kết quả.</span>
           </label>
         </div>
 
         <div className="mt-4 flex gap-2">
-          {[['files', 'Tệp, URL hoặc mẫu'], ['text', 'Dán văn bản']].map(([k, l]) => (
+          {[['files', 'Tệp, đường dẫn web hoặc bộ mẫu'], ['text', 'Dán văn bản']].map(([k, l]) => (
             <button key={k} type="button" onClick={() => setMode(k)} className={`rounded-lg px-4 py-2 text-sm font-semibold ${mode === k ? 'bg-[#0F3D2E] text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>{l}</button>
           ))}
         </div>
@@ -362,10 +362,10 @@ export default function NewAnalysisPage({ onDone, runtime }) {
                 className="min-w-0 flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100" />
               <button type="button" onClick={fromUrl} disabled={!url.trim() || fetching} title="Máy chủ tải tệp về rồi thêm vào danh sách như tệp tải lên"
                 className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:border-emerald-500 hover:bg-emerald-50 disabled:opacity-40">
-                {fetching ? 'Đang tải…' : <><Icon name="download" className="h-4 w-4" />Lấy từ URL</>}
+                {fetching ? 'Đang tải…' : <><Icon name="download" className="h-4 w-4" />Lấy từ đường dẫn web</>}
               </button>
               {samples.map((s) => (
-                <button key={s.id} type="button" onClick={() => loadSample(s)} disabled={fetching} title={`Nạp bộ mẫu để demo: ${s.files.map((f) => f.name).join(' + ')}`}
+                <button key={s.id} type="button" onClick={() => loadSample(s)} disabled={fetching} title={`Nạp bộ mẫu để thử: ${s.files.map((f) => f.name).join(' + ')}`}
                   className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-100 px-3.5 py-2 text-[13px] font-semibold text-emerald-900 transition hover:bg-emerald-200 hover:shadow disabled:opacity-40">
                   <Icon name="star" className="h-4 w-4" />Mẫu {s.id.toUpperCase()}
                 </button>
@@ -397,7 +397,7 @@ export default function NewAnalysisPage({ onDone, runtime }) {
             </label>
             <label className="block text-sm font-semibold text-slate-700">
               Tài liệu đối chiếu <span className="font-normal text-slate-400">(không bắt buộc)</span>
-              <textarea value={evidenceText} onChange={(e) => setEvidenceText(e.target.value)} rows={3} placeholder="Dán số liệu từ báo cáo kiểm kê, BCTC, quyết định…" className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm font-normal" />
+              <textarea value={evidenceText} onChange={(e) => setEvidenceText(e.target.value)} rows={3} placeholder="Dán số liệu từ báo cáo kiểm kê, báo cáo tài chính, quyết định…" className="mt-1 w-full rounded-lg border border-slate-300 p-3 text-sm font-normal" />
             </label>
           </div>
         )}
@@ -438,8 +438,8 @@ export default function NewAnalysisPage({ onDone, runtime }) {
         </div>
       </section>
 
-      <section className="grid gap-3 text-xs text-slate-600 sm:grid-cols-3">
-        {[['Chọn tài liệu', 'Báo cáo cần kiểm và tài liệu để đối chiếu.'], ['Soát theo hàng đợi', 'Mở các mục theo thứ tự ưu tiên; xác nhận hoặc sửa kết quả của AI.'], ['Giấy làm việc', 'In hoặc lưu PDF, kèm quyết định của người soát xét.']].map(([t, d], i) => (
+      <section className="grid gap-3 text-xs text-slate-600 sm:grid-cols-2 lg:grid-cols-4">
+        {[['Chọn tài liệu', 'Báo cáo cần kiểm và tài liệu để đối chiếu.'], ['Soát theo hàng đợi', 'Mở các mục theo thứ tự ưu tiên; xác nhận hoặc sửa gợi ý của máy.'], ['Sửa báo cáo', 'Khi báo cáo là của chính đơn vị: sửa câu theo gợi ý, xuất DOCX có theo dõi thay đổi.'], ['Giấy làm việc', 'In hoặc lưu PDF, kèm quyết định của người soát xét.']].map(([t, d], i) => (
           <div key={t} className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-4">
             <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${i === 0 ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600'}`}>{i + 1}</span>
             <span><b className="text-sm text-slate-900">{t}</b><p className="mt-0.5 leading-relaxed">{d}</p></span>

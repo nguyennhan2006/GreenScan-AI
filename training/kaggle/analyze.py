@@ -106,7 +106,7 @@ def item_boot(n, fn, seed=13):
     return [vals[int(0.025 * len(vals))], vals[int(0.975 * len(vals)) - 1]] if vals else None
 
 
-STUDENTS = ("e5-base", "e5-large", "mdeberta-xnli")   # whichever the run trained
+STUDENTS = ("e5-small", "e5-base", "qwen3-0.6b", "e5-large", "bge-m3", "qwen3-1.7b", "mdeberta-xnli")   # whichever the run trained
 
 
 def main():

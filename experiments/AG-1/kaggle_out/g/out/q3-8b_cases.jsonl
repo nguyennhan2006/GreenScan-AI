@@ -1,0 +1,162 @@
+{"id": "bh-256e9fb0b2610f5e-0-S0", "label": "N", "why": ["300 kw: N khác chỉ số: electricity_consumption / renewable_energy"]}
+{"id": "bh-256e9fb0b2610f5e-0-C1", "label": "N", "why": ["375 kw: N khác chỉ số: electricity_consumption / renewable_energy"]}
+{"id": "bh-256e9fb0b2610f5e-0-C2", "label": "N", "why": ["300 kw: N khác chỉ số: electricity_consumption / renewable_energy"]}
+{"id": "bh-256e9fb0b2610f5e-0-N2", "label": "N", "why": ["300 kw: N khác chỉ số: electricity_consumption / renewable_energy"]}
+{"id": "bh-256e9fb0b2610f5e-0-N5", "label": "N", "why": ["300 kw/tấn sản phẩm: N khác chỉ số: electricity_consumption / renewable_energy"]}
+{"id": "bh-256e9fb0b2610f5e-0-N6", "label": "S", "why": ["300 kw: S |0.3 − 0.3| = 0 power_mw; dung sai 0.001"]}
+{"id": "bh-86c0150d1bdb2265-0-S0", "label": "N", "why": ["02 Đơn vị: N khác đơn vị: đơn vị / none"]}
+{"id": "bh-86c0150d1bdb2265-0-C1", "label": "N", "why": ["7 Đơn vị: N khác đơn vị: đơn vị / none"]}
+{"id": "bh-86c0150d1bdb2265-0-C2", "label": "N", "why": ["02 Đơn vị: N khác đơn vị: đơn vị / none"]}
+{"id": "bh-86c0150d1bdb2265-0-N2", "label": "N", "why": ["02 : N khác loại giá trị: target / absolute"]}
+{"id": "bh-2924cd23d07ec79f-0-S0", "label": "N", "why": ["10 %: N khác chỉ số: change / energy_consumption"]}
+{"id": "bh-2924cd23d07ec79f-0-C1", "label": "N", "why": ["25 %: N khác chỉ số: change / energy_consumption"]}
+{"id": "bh-2924cd23d07ec79f-0-C3", "label": "N", "why": ["10 %: N khác chỉ số: change / energy_consumption"]}
+{"id": "bh-2924cd23d07ec79f-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-12d6bfbb4289bee1-0-S0", "label": "N", "why": ["1,5 %: N "]}
+{"id": "bh-12d6bfbb4289bee1-0-C1", "label": "N", "why": ["16,5 %: N "]}
+{"id": "bh-12d6bfbb4289bee1-0-N2", "label": "N", "why": ["1,5 % GDP: N "]}
+{"id": "bh-a37ff2f36e8c7a2b-0-S0", "label": "N", "why": ["0,03 %: N khác loại giá trị: intensity / share"]}
+{"id": "bh-a37ff2f36e8c7a2b-0-C1", "label": "N", "why": ["15,03 %: N khác loại giá trị: intensity / share"]}
+{"id": "bh-a37ff2f36e8c7a2b-0-N1", "label": "N", "why": ["0,03 %: N khác loại giá trị: intensity / share"]}
+{"id": "bh-a37ff2f36e8c7a2b-0-N2", "label": "N", "why": ["0,03 %: N khác loại giá trị: intensity / share"]}
+{"id": "bh-42bb04afc41b5a1c-1-S0", "label": "N", "why": ["12 %: N khác chỉ số: change / water_use; khác chỉ số: change / wastewater; khác chỉ số: change / water_use"]}
+{"id": "bh-42bb04afc41b5a1c-1-C1", "label": "N", "why": ["12 %: N khác chỉ số: change / water_use; khác chỉ số: change / wastewater; khác chỉ số: change / water_use"]}
+{"id": "bh-42bb04afc41b5a1c-1-N1", "label": "N", "why": ["12 %: N khác chỉ số: change / water_use; khác chỉ số: change / wastewater; khác chỉ số: change / water_use"]}
+{"id": "bh-42bb04afc41b5a1c-1-N2", "label": "N", "why": ["12 %: N khác chỉ số: ghg_emissions / water_use; khác chỉ số: ghg_emissions / wastewater; khác chỉ số: ghg_emissions / water_use"]}
+{"id": "bh-42bb04afc41b5a1c-1-N6", "label": "N", "why": ["12 %: N khác chỉ số: wastewater / water_use; khác loại giá trị: share / absolute; khác chỉ số: wastewater / water_use"]}
+{"id": "bh-489f9d772e830f0e-0-S0", "label": "N", "why": ["950 ha: N |950 − 500| = 450 area_ha; dung sai 1; số của tuyên bố có trong câu bằng chứng nhưng chưa được đọc ra: chuyển người"]}
+{"id": "bh-489f9d772e830f0e-0-C1", "label": "C", "why": ["1.188 ha: C |1188 − 500| = 688 area_ha; dung sai 1"]}
+{"id": "bh-489f9d772e830f0e-0-C2", "label": "C", "why": ["950 ha: C |950000 − 500| = 949500 area_ha; dung sai 500.5"]}
+{"id": "bh-489f9d772e830f0e-0-N2", "label": "N", "why": ["950 ha: N khác loại giá trị: target / absolute"]}
+{"id": "bh-489f9d772e830f0e-0-N5", "label": "N", "why": ["950 ha/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bh-2abb39872ba73557-0-S0", "label": "N", "why": ["7.000 viên: N khác chỉ số: waste_generated / waste_recycled"]}
+{"id": "bh-2abb39872ba73557-0-C1", "label": "N", "why": ["4.900 viên: N khác chỉ số: waste_generated / waste_recycled"]}
+{"id": "bh-2abb39872ba73557-0-C2", "label": "N", "why": ["7.000 viên: N khác chỉ số: waste_generated / waste_recycled"]}
+{"id": "bh-2abb39872ba73557-0-N2", "label": "N", "why": ["7.000 viên: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bh-2abb39872ba73557-0-N5", "label": "N", "why": ["7.000 viên/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bh-2abb39872ba73557-0-N6", "label": "N", "why": ["7.000 viên: N khác chỉ số: waste_generated / waste_recycled"]}
+{"id": "bh-752eb0e07be3dea9-0-S0", "label": "N", "why": ["1 : N khác loại giá trị: absolute / intensity"]}
+{"id": "bh-752eb0e07be3dea9-0-C1", "label": "N", "why": ["6 cây: N khác loại giá trị: target / intensity"]}
+{"id": "bh-752eb0e07be3dea9-0-N2", "label": "N", "why": ["1 : N khác loại giá trị: absolute / intensity"]}
+{"id": "bh-752eb0e07be3dea9-0-N5", "label": "N", "why": ["1 cây/tấn sản phẩm: N khác đơn vị: count_tree/tấn sản phẩm / none"]}
+{"id": "bh-e4a22e9b25091836-0-S0", "label": "N", "why": ["67 %: N "]}
+{"id": "bh-e4a22e9b25091836-0-C1", "label": "N", "why": ["82 %: N "]}
+{"id": "bh-e4a22e9b25091836-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-079acf7a91109441-0-S0", "label": "S", "why": ["9 ha: S |9000 − 9000| = 0 area_ha; dung sai 1000"]}
+{"id": "bh-079acf7a91109441-0-C1", "label": "C", "why": ["13 ha: C |13000 − 9000| = 4000 area_ha; dung sai 1000"]}
+{"id": "bh-079acf7a91109441-0-C2", "label": "C", "why": ["9 ha: C |9e+06 − 9000| = 8.991e+06 area_ha; dung sai 500500"]}
+{"id": "bh-079acf7a91109441-0-N2", "label": "N", "why": ["9 ha: N khác loại giá trị: target / absolute"]}
+{"id": "bh-079acf7a91109441-0-N5", "label": "N", "why": ["9 ha/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bh-cdea1d4e020ecf9e-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-cdea1d4e020ecf9e-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-cdea1d4e020ecf9e-0-N1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-cdea1d4e020ecf9e-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-cdea1d4e020ecf9e-0-N5", "label": "N", "why": ["119,9 tỷ đồng/tấn sản phẩm: N "]}
+{"id": "bh-24ec31c88923203e-0-S0", "label": "N", "why": ["56 %: N khác kỳ: None / 2012"]}
+{"id": "bh-24ec31c88923203e-0-C1", "label": "N", "why": ["56 %: N khác kỳ: None / 2012"]}
+{"id": "bh-24ec31c88923203e-0-N2", "label": "N", "why": ["56 %: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bh-7e4c135fa8258de0-0-S0", "label": "N", "why": ["860.512 KW: N khác kỳ: None / 2021; khác kỳ: None / 2021"]}
+{"id": "bh-7e4c135fa8258de0-0-S1", "label": "N", "why": ["860,5 KW: N khác kỳ: None / 2021; khác kỳ: None / 2021"]}
+{"id": "bh-7e4c135fa8258de0-0-C1", "label": "N", "why": ["602.358 KW: N khác kỳ: None / 2021; khác kỳ: None / 2021"]}
+{"id": "bh-7e4c135fa8258de0-0-C2", "label": "N", "why": ["860.512 KW: N khác kỳ: None / 2021; khác kỳ: None / 2021"]}
+{"id": "bh-7e4c135fa8258de0-0-N2", "label": "N", "why": ["860.512 KW: N khác loại giá trị: target / absolute; khác loại giá trị: target / absolute"]}
+{"id": "bh-7e4c135fa8258de0-0-N5", "label": "N", "why": ["860.512 KW/tấn sản phẩm: N khác loại giá trị: intensity / absolute; khác loại giá trị: intensity / absolute"]}
+{"id": "bh-7e4c135fa8258de0-0-N6", "label": "N", "why": ["860.512 KW: N khác chỉ số: renewable_energy / electricity_consumption; khác chỉ số: renewable_energy / electricity_consumption"]}
+{"id": "bh-7e4c135fa8258de0-1-S0", "label": "N", "why": ["241.728 KW: N khác kỳ: None / 2021; khác kỳ: None / 2021"]}
+{"id": "bh-7e4c135fa8258de0-1-S1", "label": "N", "why": ["241,7 KW: N khác kỳ: None / 2021; khác kỳ: None / 2021"]}
+{"id": "bh-7e4c135fa8258de0-1-C1", "label": "N", "why": ["193.382 KW: N khác kỳ: None / 2021; khác kỳ: None / 2021"]}
+{"id": "bh-7e4c135fa8258de0-1-C2", "label": "N", "why": ["241.728 KW: N khác kỳ: None / 2021; khác kỳ: None / 2021"]}
+{"id": "bh-7e4c135fa8258de0-1-N2", "label": "N", "why": ["241.728 KW: N khác loại giá trị: target / absolute; khác loại giá trị: target / absolute"]}
+{"id": "bh-7e4c135fa8258de0-1-N5", "label": "N", "why": ["241.728 KW/tấn sản phẩm: N khác loại giá trị: intensity / absolute; khác loại giá trị: intensity / absolute"]}
+{"id": "bh-7e4c135fa8258de0-1-N6", "label": "N", "why": ["241.728 KW: N khác chỉ số: renewable_energy / electricity_consumption; khác chỉ số: renewable_energy / electricity_consumption"]}
+{"id": "bh-2b222a6ddb74a7f1-0-S0", "label": "S", "why": ["9 ha: S |9000 − 9000| = 0 area_ha; dung sai 1000"]}
+{"id": "bh-2b222a6ddb74a7f1-0-C1", "label": "C", "why": ["14 ha: C |14000 − 9000| = 5000 area_ha; dung sai 1000"]}
+{"id": "bh-2b222a6ddb74a7f1-0-C2", "label": "C", "why": ["9 ha: C |9e+06 − 9000| = 8.991e+06 area_ha; dung sai 500500"]}
+{"id": "bh-2b222a6ddb74a7f1-0-N2", "label": "N", "why": ["9 ha: N khác loại giá trị: target / absolute"]}
+{"id": "bh-2b222a6ddb74a7f1-0-N5", "label": "N", "why": ["9 ha/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bh-aae28ea7d360fa29-0-S0", "label": "N", "why": ["7,6 %: N khác kỳ: 2022 / 2021"]}
+{"id": "bh-aae28ea7d360fa29-0-C1", "label": "N", "why": ["22,6 %: N khác kỳ: 2022 / 2021"]}
+{"id": "bh-aae28ea7d360fa29-0-C3", "label": "N", "why": ["7,6 %: N khác kỳ: 2022 / 2021"]}
+{"id": "bh-aae28ea7d360fa29-0-N2", "label": "N", "why": ["7,6 %: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bh-aae28ea7d360fa29-0-N6", "label": "N", "why": ["7,6 %: N khác chỉ số: renewable_energy / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-1-S0", "label": "N", "why": ["2.760 kg: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-1-C1", "label": "N", "why": ["3.864 kg: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-1-C2", "label": "N", "why": ["2.760 kg: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-1-N1", "label": "N", "why": ["2.760 kg: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-1-N2", "label": "N", "why": ["2.760 kg: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-1-N5", "label": "N", "why": ["2.760 kg/tấn sản phẩm: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-2-S0", "label": "N", "why": ["855 kg: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-2-C1", "label": "N", "why": ["1.069 kg: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-2-C2", "label": "N", "why": ["855 kg: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-2-N1", "label": "N", "why": ["855 kg: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-2-N2", "label": "N", "why": ["855 kg: N khác chỉ số: renewable_energy / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-2-N5", "label": "N", "why": ["855 kg/tấn sản phẩm: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-4-S0", "label": "N", "why": ["100 lít: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-4-C1", "label": "N", "why": ["80 lít: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-4-C2", "label": "N", "why": ["100 lít: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-4-N2", "label": "N", "why": ["100 lít: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-aae28ea7d360fa29-4-N5", "label": "N", "why": ["100 lít/tấn sản phẩm: N khác chỉ số: fuel_consumption / electricity_consumption"]}
+{"id": "bh-bbd4e51bc7042cbc-0-S0", "label": "N", "why": ["83,8 %: N "]}
+{"id": "bh-bbd4e51bc7042cbc-0-C1", "label": "N", "why": ["68,8 %: N "]}
+{"id": "bh-bbd4e51bc7042cbc-0-N2", "label": "N", "why": ["83,8 %: N "]}
+{"id": "bh-bea6856b8ea1f475-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-bea6856b8ea1f475-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-bea6856b8ea1f475-0-C3", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-bea6856b8ea1f475-0-N1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-bea6856b8ea1f475-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-3c5c5f73d7747fec-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-3c5c5f73d7747fec-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-3c5c5f73d7747fec-0-C2", "label": "N", "why": ["4 sản phẩm: N "]}
+{"id": "bh-3c5c5f73d7747fec-0-N2", "label": "N", "why": ["4 sản phẩm: N "]}
+{"id": "bh-3c5c5f73d7747fec-0-N5", "label": "N", "why": ["4 sản phẩm/tấn sản phẩm: N "]}
+{"id": "bh-ac0dcc6352bdadad-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-ac0dcc6352bdadad-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-ac0dcc6352bdadad-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-8be4715d7a95430c-0-S0", "label": "N", "why": ["35 %: N khác chỉ số: electricity_consumption / energy_consumption"]}
+{"id": "bh-8be4715d7a95430c-0-C1", "label": "N", "why": ["50 %: N khác chỉ số: electricity_consumption / energy_consumption"]}
+{"id": "bh-8be4715d7a95430c-0-N1", "label": "N", "why": ["35 %: N khác chỉ số: electricity_consumption / energy_consumption"]}
+{"id": "bh-8be4715d7a95430c-0-N2", "label": "N", "why": ["35 %: N khác chỉ số: electricity_consumption / energy_consumption"]}
+{"id": "bh-8be4715d7a95430c-0-N6", "label": "N", "why": ["35 %: N khác chỉ số: renewable_energy / energy_consumption"]}
+{"id": "bh-de130211938fb92a-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-de130211938fb92a-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-de130211938fb92a-0-C2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-de130211938fb92a-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bh-de130211938fb92a-0-N5", "label": "N", "why": ["2.300 nhân viên/tấn sản phẩm: N "]}
+{"id": "bh-e3f000701dd57fce-0-S0", "label": "N", "why": ["39,2 %: N "]}
+{"id": "bh-e3f000701dd57fce-0-C1", "label": "N", "why": ["54,2 %: N "]}
+{"id": "bh-e3f000701dd57fce-0-N2", "label": "N", "why": ["39,2 %: N "]}
+{"id": "bh-e3f000701dd57fce-1-S0", "label": "N", "why": ["43,6 %: N "]}
+{"id": "bh-e3f000701dd57fce-1-C1", "label": "N", "why": ["58,6 %: N "]}
+{"id": "bh-e3f000701dd57fce-1-N2", "label": "N", "why": ["43,6 %: N "]}
+{"id": "bh-e3f000701dd57fce-2-S0", "label": "N", "why": ["14,6 %: N "]}
+{"id": "bh-e3f000701dd57fce-2-C1", "label": "N", "why": ["29,6 %: N "]}
+{"id": "bh-e3f000701dd57fce-2-N2", "label": "N", "why": ["14,6 %: N "]}
+{"id": "bh-e3f000701dd57fce-3-S0", "label": "N", "why": ["10,9 %: N "]}
+{"id": "bh-e3f000701dd57fce-3-C1", "label": "N", "why": ["10,9 %: N "]}
+{"id": "bh-e3f000701dd57fce-3-C3", "label": "N", "why": ["10,9 %: N "]}
+{"id": "bh-e3f000701dd57fce-3-N2", "label": "N", "why": ["10,9 %: N "]}
+{"id": "bh-e771363ec78bac11-0-S0", "label": "N", "why": ["651 giờ: N khác chỉ số: electricity_consumption / other_env; khác chỉ số: electricity_consumption / other_env"]}
+{"id": "bh-e771363ec78bac11-0-C1", "label": "N", "why": ["814 giờ: N khác chỉ số: electricity_consumption / other_env; khác chỉ số: electricity_consumption / other_env"]}
+{"id": "bh-e771363ec78bac11-0-C2", "label": "N", "why": ["651 giờ: N khác chỉ số: energy_consumption / other_env; khác chỉ số: energy_consumption / other_env"]}
+{"id": "bh-e771363ec78bac11-0-N2", "label": "N", "why": ["651 giờ: N khác chỉ số: electricity_consumption / other_env; khác chỉ số: electricity_consumption / other_env"]}
+{"id": "bh-e771363ec78bac11-0-N5", "label": "N", "why": ["651 giờ/tấn sản phẩm: N khác chỉ số: energy_consumption / other_env; khác chỉ số: energy_consumption / other_env"]}
+{"id": "bh-1c6744cbbe0ddbef-0-S0", "label": "N", "why": ["5 chai: N khác chỉ số: waste_recycled / recycled_input; khác chỉ số: waste_recycled / recycled_input"]}
+{"id": "bh-1c6744cbbe0ddbef-0-C1", "label": "N", "why": ["10 chai: N khác chỉ số: waste_recycled / recycled_input; khác chỉ số: waste_recycled / recycled_input"]}
+{"id": "bh-1c6744cbbe0ddbef-0-C2", "label": "N", "why": ["5 chai: N khác chỉ số: waste_recycled / recycled_input; khác chỉ số: waste_recycled / recycled_input"]}
+{"id": "bh-1c6744cbbe0ddbef-0-N2", "label": "N", "why": ["5 chai: N khác chỉ số: waste_recycled / recycled_input; khác chỉ số: waste_recycled / recycled_input"]}
+{"id": "bh-1c6744cbbe0ddbef-0-N5", "label": "N", "why": ["5 chai/tấn sản phẩm: N khác chỉ số: waste_recycled / recycled_input; khác chỉ số: waste_recycled / recycled_input"]}
+{"id": "bh-4eaa023bef040348-0-S0", "label": "N", "why": ["3.000.000 tấn: N khác loại giá trị: target / absolute"]}
+{"id": "bh-4eaa023bef040348-0-S1", "label": "N", "why": ["3,0 tấn: N khác loại giá trị: target / absolute"]}
+{"id": "bh-4eaa023bef040348-0-C1", "label": "N", "why": ["2.400.000 tấn: N khác loại giá trị: target / absolute"]}
+{"id": "bh-4eaa023bef040348-0-C2", "label": "N", "why": ["3.000.000 tấn: N khác loại giá trị: target / absolute"]}
+{"id": "bh-4eaa023bef040348-0-N1", "label": "N", "why": ["3.000.000 tấn: N khác loại giá trị: target / absolute"]}
+{"id": "bh-4eaa023bef040348-0-N2", "label": "N", "why": ["3.000.000 tấn: N khác kỳ: None / 2026"]}
+{"id": "bh-4eaa023bef040348-0-N5", "label": "N", "why": ["3.000.000 tấn/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bh-3958feef5779ca82-0-S0", "label": "S", "why": ["0 m3: S |0 − 0| = 0 volume_m3; dung sai 1"]}
+{"id": "bh-3958feef5779ca82-0-C1", "label": "C", "why": ["5 m3: C |5 − 0| = 5 volume_m3; dung sai 1"]}
+{"id": "bh-3958feef5779ca82-0-N2", "label": "N", "why": ["0 m3: N khác loại giá trị: target / absolute"]}
+{"id": "bh-3958feef5779ca82-0-N5", "label": "N", "why": ["0 m3/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bh-3958feef5779ca82-0-N6", "label": "N", "why": ["0 m3: N khác chỉ số: wastewater / water_use"]}
+{"id": "bh-d51355abee1d0e73-0-S0", "label": "N", "why": ["50 %: N "]}
+{"id": "bh-d51355abee1d0e73-0-C1", "label": "N", "why": ["65 %: N "]}
+{"id": "bh-d51355abee1d0e73-0-N2", "label": "N", "why": ["50 %: N "]}

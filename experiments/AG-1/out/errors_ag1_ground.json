@@ -1,0 +1,232 @@
+{
+ "q3-1.7b": {
+  "buckets": {
+   "not_run": 262,
+   "miss_ev": 25,
+   "ok": 22,
+   "field:e.scope": 9,
+   "field:c.metric": 8,
+   "miss_claim": 4,
+   "WRONG_S:field:c.value_kind": 3,
+   "field:c.value_kind": 3,
+   "field:c.scope": 3,
+   "field:c.period": 3,
+   "WRONG_S:field:c.metric": 1
+  },
+  "by_family": {
+   "S0 restate": {
+    "ok": 6,
+    "miss_ev": 7,
+    "field:c.value_kind": 2,
+    "field:c.period": 1,
+    "field:e.scope": 3,
+    "miss_claim": 4,
+    "field:c.metric": 3
+   },
+   "S1 rounded": {
+    "ok": 5,
+    "field:e.scope": 1,
+    "field:c.metric": 1
+   },
+   "C1 value": {
+    "ok": 5,
+    "miss_ev": 11,
+    "field:c.scope": 1,
+    "field:c.period": 1,
+    "field:e.scope": 4,
+    "field:c.value_kind": 1,
+    "field:c.metric": 3
+   },
+   "C2 magnitude": {
+    "ok": 6,
+    "miss_ev": 2,
+    "field:c.scope": 1,
+    "field:e.scope": 1,
+    "field:c.metric": 1
+   },
+   "C3 direction": {
+    "miss_ev": 5,
+    "field:c.scope": 1,
+    "field:c.period": 1
+   },
+   "N5 basis": {
+    "WRONG_S:field:c.value_kind": 3
+   },
+   "N6 metric": {
+    "WRONG_S:field:c.metric": 1
+   }
+  }
+ },
+ "q3-4b": {
+  "buckets": {
+   "not_run": 262,
+   "ok": 61,
+   "miss_ev": 5,
+   "field:e.metric": 4,
+   "field:e.value_kind": 3,
+   "field:c.metric": 3,
+   "WRONG_C:value": 1
+  },
+  "by_family": {
+   "S0 restate": {
+    "ok": 20,
+    "WRONG_C:value": 1,
+    "field:e.value_kind": 1,
+    "miss_ev": 2,
+    "field:e.metric": 1,
+    "field:c.metric": 1
+   },
+   "S1 rounded": {
+    "ok": 6,
+    "field:c.metric": 1
+   },
+   "C1 value": {
+    "ok": 21,
+    "field:e.value_kind": 1,
+    "miss_ev": 2,
+    "field:e.metric": 1,
+    "field:c.metric": 1
+   },
+   "C2 magnitude": {
+    "ok": 9,
+    "miss_ev": 1,
+    "field:e.metric": 1
+   },
+   "C3 direction": {
+    "ok": 5,
+    "field:e.value_kind": 1,
+    "field:e.metric": 1
+   }
+  }
+ },
+ "q3-8b": {
+  "buckets": {
+   "not_run": 262,
+   "ok": 57,
+   "field:e.period": 6,
+   "other": 5,
+   "field:e.value_kind": 4,
+   "field:e.metric": 3,
+   "field:c.metric": 2,
+   "WRONG_S:field:e.metric": 1
+  },
+  "by_family": {
+   "S0 restate": {
+    "ok": 18,
+    "other": 3,
+    "field:e.period": 2,
+    "field:c.metric": 1,
+    "field:e.metric": 1,
+    "field:e.value_kind": 1
+   },
+   "S1 rounded": {
+    "ok": 6,
+    "field:e.value_kind": 1
+   },
+   "C1 value": {
+    "ok": 20,
+    "other": 1,
+    "field:e.period": 2,
+    "field:c.metric": 1,
+    "field:e.metric": 1,
+    "field:e.value_kind": 1
+   },
+   "C2 magnitude": {
+    "ok": 7,
+    "other": 1,
+    "field:e.period": 1,
+    "field:e.metric": 1,
+    "field:e.value_kind": 1
+   },
+   "C3 direction": {
+    "ok": 6,
+    "field:e.period": 1
+   },
+   "N6 metric": {
+    "WRONG_S:field:e.metric": 1
+   }
+  }
+ },
+ "q3-14b": {
+  "buckets": {
+   "not_run": 262,
+   "ok": 63,
+   "field:e.period": 3,
+   "miss_ev": 3,
+   "field:c.metric": 3,
+   "field:e.metric": 3,
+   "other": 2,
+   "WRONG_S:field:e.metric": 1
+  },
+  "by_family": {
+   "S0 restate": {
+    "ok": 20,
+    "other": 2,
+    "field:e.period": 1,
+    "miss_ev": 1,
+    "field:c.metric": 1,
+    "field:e.metric": 1
+   },
+   "S1 rounded": {
+    "ok": 7
+   },
+   "C1 value": {
+    "ok": 22,
+    "field:e.period": 1,
+    "miss_ev": 1,
+    "field:c.metric": 1,
+    "field:e.metric": 1
+   },
+   "C2 magnitude": {
+    "ok": 9,
+    "miss_ev": 1,
+    "field:c.metric": 1
+   },
+   "C3 direction": {
+    "ok": 5,
+    "field:e.period": 1,
+    "field:e.metric": 1
+   },
+   "N6 metric": {
+    "WRONG_S:field:e.metric": 1
+   }
+  }
+ },
+ "q3-32b": {
+  "buckets": {
+   "not_run": 262,
+   "ok": 65,
+   "field:c.metric": 5,
+   "field:e.period": 4,
+   "miss_claim": 2,
+   "WRONG_C:field:e.metric": 1
+  },
+  "by_family": {
+   "S0 restate": {
+    "ok": 21,
+    "WRONG_C:field:e.metric": 1,
+    "field:e.period": 1,
+    "miss_claim": 1,
+    "field:c.metric": 2
+   },
+   "S1 rounded": {
+    "ok": 7
+   },
+   "C1 value": {
+    "ok": 22,
+    "field:e.period": 1,
+    "miss_claim": 1,
+    "field:c.metric": 2
+   },
+   "C2 magnitude": {
+    "ok": 9,
+    "field:e.period": 1,
+    "field:c.metric": 1
+   },
+   "C3 direction": {
+    "ok": 6,
+    "field:e.period": 1
+   }
+  }
+ }
+}

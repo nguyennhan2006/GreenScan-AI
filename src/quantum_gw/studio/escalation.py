@@ -41,10 +41,10 @@ def decide(confidence: float | None, doc_class: str, tau: float | None, cloud_al
     low = disagreement or (tau is not None and confidence is not None and confidence < tau)
     if not low:
         if tau is None and not disagreement:
-            return {"route": "local", "reason": "τ chưa hiệu chỉnh (thí nghiệm B6): không leo thang."}
+            return {"route": "local", "reason": "Ngưỡng chưa hiệu chỉnh: không chuyển lên mô hình."}
         return {"route": "local", "reason": "Độ tin cậy đủ; xử lý bằng luật và mẫu."}
     if doc_class != "A":
         return {"route": "human", "reason": f"Tài liệu lớp {doc_class} ({DOC_CLASSES.get(doc_class, '?')}): không gửi ra ngoài, chuyển người duyệt."}
     if not cloud_allowed:
-        return {"route": "human", "reason": "Chế độ offline: không gọi API, chuyển người duyệt."}
-    return {"route": "llm", "reason": "Độ tin cậy thấp, tài liệu công khai, chế độ cloud bật."}
+        return {"route": "human", "reason": "Chế độ ngoại tuyến: không gọi mô hình, chuyển người soát xét."}
+    return {"route": "llm", "reason": "Độ tin cậy thấp, tài liệu công khai, chế độ có mạng đang bật."}

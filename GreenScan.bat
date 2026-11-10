@@ -2,6 +2,9 @@
 rem GreenScan - nhap dup de chay. Lan dau tu cai dat (can Python 3.11+ va Node.js 20+).
 rem Sau do mo http://localhost:8000 trong trinh duyet. Dong cua so nay de dung.
 setlocal
+rem Bang ma UTF-8 cho Python: cua so cmd tieng Viet (cp1258) khong in duoc chu co dau.
+set PYTHONUTF8=1
+set PYTHONIOENCODING=utf-8
 cd /d "%~dp0"
 
 if not exist ".venv\Scripts\python.exe" (

@@ -54,7 +54,7 @@ export default function EvidencePanel({ evidence, onJumpToSource }) {
               title={
                 onJumpToSource
                   ? 'Mở tài liệu gốc tại vị trí này'
-                  : 'Cần endpoint phục vụ tài liệu gốc để mở đúng trang'
+                  : 'Máy chủ chưa phục vụ tài liệu gốc nên chưa mở được đúng trang'
               }
               className="ml-auto rounded border border-slate-300 px-2 py-0.5 text-xs font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
             >

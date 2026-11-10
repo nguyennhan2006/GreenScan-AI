@@ -1,0 +1,15 @@
+[
+ {
+  "tag": "q3-32b-awq",
+  "tp": 2,
+  "max_len": 4096,
+  "env": {
+   "EXTRA_INPUT": "candidates_v2.jsonl"
+  },
+  "cands": [
+   {
+    "repo": "Qwen/Qwen3-32B-AWQ"
+   }
+  ]
+ }
+]

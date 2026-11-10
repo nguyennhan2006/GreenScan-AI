@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import re
 from typing import Any
 
 import httpx
@@ -35,6 +36,7 @@ class OpenAICompatibleProvider(LLMProvider):
         name: str | None = None,
         require_api_key: bool = False,
         extra_headers: dict[str, str] | None = None,
+        extra_body: dict[str, Any] | None = None,
     ):
         self.base_url = base_url.rstrip("/")
         self.model = model
@@ -43,6 +45,7 @@ class OpenAICompatibleProvider(LLMProvider):
         self.max_tokens = max_tokens
         self.require_api_key = require_api_key
         self.extra_headers = extra_headers or {}
+        self.extra_body = extra_body or {}  # provider-specific request fields, e.g. Groq's reasoning_effort
         if name:
             self.name = name
 
@@ -80,6 +83,7 @@ class OpenAICompatibleProvider(LLMProvider):
             "temperature": 0,
             "max_tokens": self.max_tokens,
             "messages": payload_messages,
+            **self.extra_body,
         }
         try:
             with httpx.Client(timeout=self.timeout) as client:
@@ -90,7 +94,8 @@ class OpenAICompatibleProvider(LLMProvider):
                 body = response.json()
         except httpx.HTTPError as exc:
             raise ProviderUnavailableError(f"{self.name}: {exc}") from exc
-        content = body["choices"][0]["message"]["content"]
+        # Qwen3 served without a reasoning switch puts <think>…</think> before the answer.
+        content = re.sub(r"<think>.*?</think>", "", body["choices"][0]["message"]["content"] or "", flags=re.S).strip()
         return LLMResponse(
             text=content,
             parsed=extract_json(content) if response_schema else None,

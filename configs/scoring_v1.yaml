@@ -1,5 +1,8 @@
-version: risk-rubric-v2
+version: risk-rubric-v3
 meaning: Higher score means higher greenwashing risk.
+# v3 (2026-11-09): base year only for a change stated with a figure or a target
+# (scorer.py); sentences flagged by claim-quality-v1 are not scored. Weights and
+# bands unchanged.
 
 # v2 splits `baseline_and_period` into `baseline` + `period` and adds
 # `scope_boundary`, so the five mandatory attributes each have their own

@@ -1,0 +1,65 @@
+% ===================================================================== PHỤ LỤC
+\chapter{Khai báo công cụ trí tuệ nhân tạo và phân định trách nhiệm}\label{pl:ai}
+\chaptermark{Khai báo công cụ trí tuệ nhân tạo}
+
+Điều 14 của Thể lệ cho phép dùng công cụ trí tuệ nhân tạo hỗ trợ, với điều kiện khai báo rõ trong tài liệu. Phụ lục này liệt kê các công cụ đã dùng, việc mỗi công cụ làm, cách đầu ra được kiểm tra, và người chịu trách nhiệm. Danh sách thống nhất với phần khai báo trong báo cáo nộp chính thức của đội.
+
+\begin{table}[htbp]
+\centering
+\caption{Công cụ trí tuệ nhân tạo đã dùng và cách kiểm soát đầu ra}\label{tab:cong-cu-ai}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{3.4cm}YL{4.3cm}}
+\hdr\thd{Công cụ} & \thd{Dùng vào việc} & \thd{Đầu ra được kiểm thế nào}\\
+Claude (Anthropic) & Hỗ trợ lập trình; gán nhãn lượt đầu cho bộ nhận diện tuyên bố (hai lượt độc lập) và nhãn máy cho bộ đo GS-Eval v2, theo bộ quy tắc gán nhãn do tác giả đặt; chấm máy trong một số thí nghiệm; hỗ trợ soạn thảo tài liệu và báo cáo này & Mã: kiểm thử tự động và cổng hồi quy. Nhãn: trọng tài, kiểm mẫu, tác giả xem lại và xác nhận. Văn bản: tác giả đọc, sửa, đối chiếu số liệu và duyệt\\
+GLM-5.2 (qua FPT AI Marketplace) & Mô hình đọc cặp khó ở chế độ đám mây; thí nghiệm & Chỉ đọc; mọi quyết định đi qua quy tắc; kết quả đo được báo cáo kèm căn cứ\\
+Qwen3 (nhiều cỡ; chạy trên Kaggle và tại máy qua Ollama) & Thí nghiệm thang mô hình; bộ đọc số liệu 4 tỷ tham số; đường đọc kép & Đo trên ca dựng và nhãn xác nhận; dự đoán đăng ký trước; báo cả kết quả âm\\
+gemma-4-26B-A4B, gemma-4-31B-it, Llama-3.3-70B, gpt-oss-120b (qua Groq) & Thí nghiệm so sánh giữa các mô hình & Như trên\\
+multilingual-e5-base & Nền của mô hình học trò nhận diện tuyên bố (được tinh chỉnh) & Đo theo cổng chọn mô hình đăng ký trước; chưa nối vào sản phẩm\\
+\end{tabularx}
+\end{table}
+
+\textbf{Nguyên tắc dùng công cụ.}
+\begin{enumerate}
+\item Trong hệ thống, không mô hình nào được tự quyết một kết luận; mô hình chỉ đọc. Đây là bất biến có kiểm thử, không phải một khuyến nghị.
+\item Nhãn do công cụ gán và đã được tác giả xác nhận được gọi là \emph{nhãn xác nhận}. Nhãn này dùng để dạy mô hình và dò lỗi, không bao giờ được gọi là nhãn chuẩn, và không được dùng để công bố độ chính xác. Độ chính xác chỉ được công bố khi có nhãn người độc lập (hướng H1).
+\item Trong báo cáo này, công cụ hỗ trợ soạn thảo; nội dung, lập luận, cách đặt vấn đề và mọi số liệu do tác giả quyết định. Mỗi số liệu được đối chiếu với tệp kết quả gốc trong kho mã (Phụ lục~\ref{pl:minh-chung}).
+\item Tác giả chịu trách nhiệm về toàn bộ dữ liệu, hệ thống và báo cáo, kể cả các phần có dùng công cụ hỗ trợ.
+\end{enumerate}
+
+\textbf{Thư viện mã nguồn mở chính:} FastAPI, PyMuPDF, Tesseract OCR, React, Tailwind. \textbf{Dữ liệu:} báo cáo công khai của doanh nghiệp (bản quyền thuộc doanh nghiệp), văn bản pháp luật và tài liệu công của cơ quan có thẩm quyền.
+
+% ---------------------------------------------------------------------
+\chapter{Bản đồ minh chứng}\label{pl:minh-chung}
+
+Bảng dưới đây dẫn từ các khẳng định chính của báo cáo tới nơi kiểm lại được trong kho mã của dự án. Đường dẫn tính từ thư mục gốc của kho mã.
+
+{\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{xltabular}{\linewidth}{YL{6.4cm}C{1.4cm}}
+\hiderowcolors
+\caption{Khẳng định và nơi kiểm lại}\label{tab:minh-chung}\\
+\showrowcolors
+\hdr\thd{Khẳng định} & \thd{Minh chứng} & \thd{Chương}\\
+\endfirsthead
+\hdr\thd{Khẳng định} & \thd{Minh chứng} & \thd{Chương}\\
+\endhead
+Mười bất biến kiến trúc, 15 kiểm thử & \tep{tests/test_architecture_invariants.py} & 3\\
+Chốt chặn mâu thuẫn, 6 kiểm thử & \tep{tests/test_contradiction_guard.py} & 3, 5\\
+47 bẫy kết luận & \tep{tests/test_verdict_traps.py} & 6\\
+17 ca theo danh mục kiểm tra của kiểm toán viên & \tep{tests/test_audit_checklist.py} & 6\\
+Lý do bắt buộc khi sửa kết luận, định tuyến nhãn & \tep{src/quantum_gw/storage/reviews.py}; \tep{frontend/src/components/DecisionBar.jsx}; \tep{tests/test_review_workflow.py} & 3, 8\\
+Gói quy tắc tổ chức và luật an toàn & \tep{configs/org_packs/}; \tep{tests/test_org_pack.py} & 3, 5\\
+Gợi ý sửa không thêm số & \tep{tests/test_studio.py} & 3, 5\\
+Hàng đợi ưu tiên & \tep{configs/priority_v1.yaml}; \tep{tests/test_review_priority.py} & 3\\
+Chuẩn ngôn ngữ giao diện được kiểm bằng máy & \tep{tools/check_ui_language.py}; \tep{tests/test_ui_language.py} & 6\\
+Sổ đăng ký 11 văn bản pháp luật & \tep{configs/legal/LEGAL_SOURCE_REGISTRY.yaml} & 2, 3\\
+Cổng chọn mô hình và điều kiện thay luật & \tep{configs/measurement_decisions.yaml} & 4, 5, 8\\
+Dữ liệu huấn luyện bộ nhận diện tuyên bố & \tep{training/data/t1/train_claude.jsonl} & 4\\
+GS-Bench & \tep{benchmark/gs_bench_v1/} & 4, 5\\
+GS-Eval v2, kết quả trước và sau chốt chặn & \tep{benchmark/gs_eval_v2/}; \tep{docs/10-chung-ket-2026-11/DANH_GIA_HE_THONG_2026-11-05.md} & 4, 5\\
+Thang mô hình & \tep{benchmark/size_ladder_2026-10-10/} & 5\\
+Kế hoạch thử độ dễ dùng (16 nhiệm vụ, SUS, SEQ) & \tep{benchmark/gs_eval_v2/usability/} & 7\\
+Đóng gói nộp bài, quét khoá bí mật, mã băm & \tep{tools/package_submission.py} & 6\\
+Khởi động trên Windows & \tep{GreenScan.bat} & 6\\
+\end{xltabular}}

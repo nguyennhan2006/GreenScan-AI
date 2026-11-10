@@ -1,0 +1,44 @@
+{
+ "figures_kept": 35,
+ "by_pair": {
+  "32b+readerB": 29,
+  "claude+32b": 6
+ },
+ "not_kept": {
+  "sentence used in v1.1": 47,
+  "reader B: thực hiện / mục tiêu không khớp từ báo hiệu": 10,
+  "reader B: đơn vị không có nguyên văn": 9,
+  "reader B: cường độ không khớp đơn vị có '/'": 5,
+  "32B listed it twice": 1
+ },
+ "cases": 162,
+ "sentences": 28,
+ "by_label": {
+  "S": 38,
+  "C": 55,
+  "N": 69
+ },
+ "by_family": {
+  "S0 restate": 35,
+  "C1 value": 35,
+  "C2 magnitude": 16,
+  "N2 status": 35,
+  "N5 basis": 18,
+  "N6 metric": 8,
+  "C3 direction": 4,
+  "N1 period": 8,
+  "S1 rounded": 3
+ },
+ "by_company": {
+  "ctd": 31,
+  "vnm": 9,
+  "pnj": 14,
+  "tra": 48,
+  "bvh": 32,
+  "dpr": 10,
+  "cng": 3,
+  "pow": 7,
+  "dhg": 8
+ },
+ "irlib_vs_family_mismatches": 0
+}

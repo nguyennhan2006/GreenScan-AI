@@ -1,0 +1,147 @@
+% ===================================================================== CHƯƠNG 7
+\chapter{Khả năng ứng dụng và triển khai}\label{ch:trien-khai}
+
+Chương này xét hệ thống từ phía đơn vị sẽ dùng nó: ai dùng và dùng vào việc gì, chạy trên hạ tầng nào với chi phí bao nhiêu, dữ liệu được bảo vệ ra sao, những rủi ro nào đã có cách kiểm soát, lợi ích nào đã chắc chắn và lợi ích nào chưa đo. Chương kết thúc bằng lộ trình từ nguyên mẫu tới sản phẩm. Báo cáo không nêu đối tác hay khách hàng nào, vì tới thời điểm viết chưa có thoả thuận thí điểm nào được ký.
+
+\section{Người dùng và cách dùng}
+
+\begin{table}[htbp]
+\centering
+\caption{Nhóm người dùng, việc cần làm và cách triển khai phù hợp}\label{tab:nguoi-dung}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{3.3cm}YL{3.4cm}}
+\hdr\thd{Nhóm} & \thd{Việc hệ thống hỗ trợ} & \thd{Triển khai phù hợp}\\
+Công ty kiểm toán, đơn vị cung cấp dịch vụ đảm bảo (người dùng trực tiếp) & Chọn tuyên bố cần mở trước; xem bằng chứng có số trang; cộng lại bảng; ghi quyết định và lý do; xuất giấy làm việc tái dựng được & Laptop ngoại tuyến hoặc máy chủ nội bộ\\
+Kiểm toán nội bộ, bộ phận ESG và quan hệ nhà đầu tư của doanh nghiệp & Tự soát trước khi công bố; nhận gợi ý sửa câu thiếu năm gốc, thiếu phạm vi, thiếu mốc trung gian mà không thêm số & Laptop ngoại tuyến; bản nháp là tài liệu nội bộ\\
+Ngân hàng, chuyên viên tín dụng xanh (nhóm mở rộng) & Đối chiếu tuyên bố “dự án xanh” với hồ sơ xác nhận; lập danh sách hồ sơ cần xin thêm & Máy chủ nội bộ; cần gói quy tắc theo Thông tư 17/2022 và Quyết định 21/2025\\
+Nhà phân tích, nhà đầu tư, người nghiên cứu (nhóm mở rộng) & Đọc nhanh báo cáo đã công bố; so tuyên bố với số liệu trong cùng bộ tài liệu & Laptop; được dùng chế độ đám mây vì tài liệu đã công khai\\
+\end{tabularx}
+\end{table}
+
+Điểm chung của bốn nhóm là họ cần \emph{danh sách việc phải kiểm kèm lý do}, không cần một nhãn “tẩy xanh” cho cả doanh nghiệp. Vì vậy cùng một lõi phục vụ được cả bốn nhóm; điều thay đổi giữa các nhóm là gói quy tắc tổ chức (mục~\ref{sec:quy-tac-nguoi-dung}) và chế độ chạy được phép theo loại tài liệu.
+
+\section{Mô hình triển khai và chi phí vận hành}
+
+\begin{table}[htbp]
+\centering
+\caption{Bốn cách triển khai}\label{tab:trien-khai}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{2.8cm}L{3.3cm}YL{2.6cm}}
+\hdr\thd{Cách triển khai} & \thd{Hạ tầng} & \thd{Chi phí và đặc điểm} & \thd{Phù hợp với}\\
+Laptop ngoại tuyến (mặc định) & Laptop văn phòng 8–16 GB RAM, không GPU & Không phí gọi mô hình; tài liệu không rời máy; 264 trang trong khoảng 2 phút & Cá nhân, nhóm nhỏ, mọi loại tài liệu\\
+Máy chủ CPU nội bộ & 4 nhân, 16 GB RAM & Không phí gọi mô hình; nhiều người dùng chung, các lượt tải xếp hàng chạy lần lượt & Một nhóm soát xét\\
+Máy chủ GPU tại đơn vị & GPU, phục vụ mô hình bằng vLLM & Bật được mô hình đọc cặp khó; nếu máy chủ mô hình lỗi, hệ thống báo lỗi chứ không tự chuyển sang dịch vụ bên ngoài & Tổ chức lớn\\
+Đám mây (tuỳ chọn) & Dịch vụ mô hình bên ngoài & Trả phí theo lượt gọi; chỉ dùng cho tài liệu đã công khai & Nhà phân tích, nghiên cứu\\
+\end{tabularx}
+\end{table}
+
+Thiết kế cho phép chạy được trên laptop là một lựa chọn có chủ đích, không chỉ để tiết kiệm. Giấy làm việc kiểm toán thường không được phép rời khỏi máy của đơn vị, nên một công cụ chỉ chạy trên đám mây sẽ không dùng được cho đúng nhóm người dùng chính.
+
+Bản chạy thử cho Ban Giám khảo cần một đường dẫn truy cập được từ bên ngoài. Nếu đặt trên Hugging Face Spaces thì không gian phải ở chế độ công khai; khi đó bản chạy thử chỉ chứa tài liệu đã công bố, có lớp mật khẩu và trần dung lượng tải lên. Nếu không đáp ứng được, bản chạy thử được đặt trên một máy chủ riêng. Tại ngày 10/11/2026, đường dẫn này chưa được triển khai.
+
+\section{Bảo mật dữ liệu và tuân thủ}
+
+\subsection*{Phân loại tài liệu và chế độ được phép}
+
+\begin{table}[htbp]
+\centering
+\caption{Phân loại tài liệu và chế độ chạy được phép}\label{tab:phan-loai}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{3.6cm}L{4.6cm}Y}
+\hdr\thd{Loại tài liệu} & \thd{Chế độ được phép} & \thd{Căn cứ}\\
+A – đã công bố (báo cáo thường niên, báo cáo phát triển bền vững) & Mọi chế độ & Tài liệu công khai\\
+B – nội bộ, chưa công bố (bản nháp, số liệu nội bộ) & Ngoại tuyến; GPU tại đơn vị; dịch vụ riêng có hợp đồng xử lý dữ liệu & Bí mật kinh doanh; dữ liệu cá nhân có thể có trong tài liệu\\
+C – giấy làm việc kiểm toán & Chỉ ngoại tuyến hoặc GPU tại đơn vị & Nghĩa vụ bảo mật hồ sơ kiểm toán\\
+\end{tabularx}
+\end{table}
+
+Ba căn cứ pháp lý quyết định cách phân loại trên.
+\begin{itemize}
+\item \textbf{Luật Kiểm toán độc lập số 67/2011/QH12, Điều 43}: doanh nghiệp kiểm toán có nghĩa vụ bảo mật, không được tiết lộ hồ sơ kiểm toán khi chưa có chấp thuận của khách hàng. Gửi giấy làm việc cho một dịch vụ mô hình bên ngoài có thể bị coi là tiết lộ.
+\item \textbf{Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 và Nghị định 356/2025/NĐ-CP}: báo cáo doanh nghiệp có thể chứa tên lãnh đạo, người lao động. Gửi đoạn văn tới một mô hình đặt ở nước ngoài là chuyển dữ liệu xuyên biên giới, kéo theo các nghĩa vụ đánh giá tác động. Che tên giảm được rủi ro nhưng không loại được ngữ cảnh nhận diện, nên chế độ đám mây chỉ dành cho tài liệu loại A.
+\item \textbf{Chuẩn mực đảm bảo}: hồ sơ làm việc phải tái dựng được \cite{isae3000,issa5000}. Đây là lý do mỗi lượt chạy có bản kê và mỗi quyết định được ghi chỉ thêm.
+\end{itemize}
+
+\subsection*{Biện pháp kỹ thuật}
+
+\begin{itemize}
+\item Chế độ ngoại tuyến là mặc định; phép đo ghi nhận 0 kết nối ra ngoài trong một lượt chạy đầy đủ. Đầu trang luôn hiện chế độ đang dùng.
+\item Tài liệu được lưu theo mã băm SHA-256, nên có thể chứng minh kết quả ứng với đúng tệp nào.
+\item Nhật ký quyết định chỉ ghi thêm: không sửa, không xoá bản ghi cũ; một quyết định mới chỉ được ghi đè lên quyết định cũ bằng một bản ghi mới.
+\item Đoạn bằng chứng có dấu hiệu chèn lệnh vào mô hình bị đánh dấu trước khi đưa cho mô hình đọc. Đây là một kiểu tấn công đã được ghi nhận với các hệ thống dùng mô hình ngôn ngữ trên văn bản bên ngoài \cite{greshake2023}.
+\item \textbf{Chưa có}: sổ ghi từng lần gửi dữ liệu ra ngoài khi bật chế độ đám mây, và phân quyền nhiều cấp. Đây là hai điều kiện phải có trước khi triển khai cho nhiều người dùng.
+\end{itemize}
+
+\section{Rủi ro và cách kiểm soát}
+
+Bảng~\ref{tab:rui-ro} liệt kê tám rủi ro chính khi đưa hệ thống vào dùng thật. Với mỗi rủi ro, bảng ghi biện pháp đã có trong nguyên mẫu và phần còn thiếu; phần còn thiếu được chuyển thành hướng phát triển ở Chương~\ref{ch:pham-vi}.
+
+\begin{table}[htbp]
+\centering
+\caption{Rủi ro chính, biện pháp hiện có và phần còn thiếu}\label{tab:rui-ro}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{2.8cm}YL{4.0cm}}
+\hdr\thd{Rủi ro} & \thd{Biện pháp hiện có} & \thd{Còn thiếu}\\
+Vu oan doanh nghiệp (kết luận “mâu thuẫn” sai) & Cổng so sánh và chốt chặn mâu thuẫn; mọi “mâu thuẫn” bắt buộc có người duyệt; trên tuyên bố thật, số “mâu thuẫn” sai giảm từ 24 về 0 & Đo lại trên nhãn chuẩn độc lập\\
+Bỏ lọt (kết luận “được ủng hộ” sai) & Mặc định trả “chưa đủ bằng chứng” khi thiếu; khuyến nghị người soát xác nhận mọi kết luận “được ủng hộ” & Chặn đường tắt “câu tự lặp lại ở tài liệu khác của cùng doanh nghiệp”\\
+Pháp luật thay đổi & Sổ đăng ký văn bản có ngày hiệu lực; quy tắc pháp lý chỉ áp dụng khi người phụ trách pháp lý duyệt & Theo dõi thông tư thay Thông tư 96/2020 (dự thảo 09/2026 có phụ lục ESG)\\
+Dùng sai điểm rủi ro (đọc thành điểm tẩy xanh, xếp hạng doanh nghiệp) & Giao diện ghi rõ điểm chỉ dùng để xếp thứ tự soát; không có bảng xếp hạng doanh nghiệp & Thử với người dùng thật (nhiệm vụ T04, T06)\\
+Quy tắc chuẩn không khớp với doanh nghiệp & Gói quy tắc tổ chức nằm dưới luật, không đổi kết luận; lý do bắt buộc khi sửa kết luận, nhãn được định tuyến về mô hình hoặc gói quy tắc & Dữ liệu dùng thật; tách đọc thuộc tính khỏi quy tắc lớp (mục~\ref{sec:huong})\\
+Rò rỉ dữ liệu & Phân loại A/B/C; ngoại tuyến mặc định & Sổ ghi gửi ra ngoài; phân quyền\\
+Phụ thuộc nhà cung cấp mô hình & Lõi chạy không cần mô hình bên ngoài; cấu hình được nhiều nhà cung cấp. Ví dụ thực tế: một dịch vụ mô hình trong nước trả lỗi xác thực từ 31/10/2026, lõi vẫn chạy bình thường & —\\
+Giấy phép phần mềm & Kiểm giấy phép của thành phần dùng trong bản phân phối & Thay mô hình nhúng tiếng Việt có giấy phép phi thương mại; với PyMuPDF (giấy phép AGPL), mua giấy phép thương mại hoặc thay thế\\
+\end{tabularx}
+\end{table}
+
+\section{Lợi ích: phần đã chắc chắn và phần chưa đo}
+
+\textbf{Đã chắc chắn}, vì đã đo hoặc được bảo đảm bằng mã:
+\begin{enumerate}
+\item \emph{Giảm rủi ro vu oan.} Trên tuyên bố thật, không còn kết luận “mâu thuẫn” sai sau chốt chặn, và mọi kết luận dứt khoát đều qua người duyệt.
+\item \emph{Truy vết.} Mọi đoạn bằng chứng dẫn về tên tài liệu và số trang; mỗi lượt chạy có bản kê tái lập.
+\item \emph{Thứ tự soát.} Trên Hòa Phát, 156 tuyên bố rải trên 264 trang được thu về 9 mục nên mở trước, mỗi mục có lý do, sau khoảng 2 phút máy chạy.
+\item \emph{Phép tính tự động.} Cộng lại bảng phát thải được làm bằng mã, không qua mô hình.
+\item \emph{Chi phí và bảo mật.} Không phí gọi mô hình ở chế độ mặc định; tài liệu không rời máy.
+\end{enumerate}
+
+\textbf{Chưa đo}: thời gian người soát tiết kiệm được, và người dùng có hiểu đúng kết luận hay không. Báo cáo không đưa ra con số thời gian nào cho tới khi đo. Kế hoạch đo đã được soạn sẵn với ngưỡng đặt trước:
+\begin{itemize}
+\item 3–5 người tham gia, theo 16 nhiệm vụ gắn với vai trò (11 nhiệm vụ cho kiểm toán viên, còn lại cho chuyên viên phân tích, cán bộ tín dụng xanh và người quản trị quy tắc nội bộ);
+\item hoàn thành không cần trợ giúp ở các nhiệm vụ lõi: ít nhất 4/5 người;
+\item 0 lỗi nghiêm trọng ở hai nhiệm vụ dễ hiểu sai nhất: T04 “hiểu vì sao một tuyên bố bị gắn cờ” và T06 “phân biệt ‘chưa đủ bằng chứng’, ‘ủng hộ một phần’ và ‘mâu thuẫn’”;
+\item điểm SUS (thang khả dụng hệ thống, bản tiếng Việt) trung bình ít nhất 68; điểm SEQ (độ dễ của từng nhiệm vụ, thang 7) trung bình ít nhất 5;
+\item thời gian xử lý mỗi tuyên bố khi có và khi không có hệ thống.
+\end{itemize}
+Lỗi nghiêm trọng ở T04 và T06 được đặt ngưỡng 0 vì đó chính là rủi ro dùng sai: người dùng đọc “chưa đủ bằng chứng” thành “doanh nghiệp sai”.
+
+\section{Lộ trình từ nguyên mẫu tới sản phẩm}
+
+\begin{table}[htbp]
+\centering
+\caption{Lộ trình và mốc kiểm chứng}\label{tab:lo-trinh}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{2.7cm}YL{4.3cm}}
+\hdr\thd{Giai đoạn} & \thd{Việc} & \thd{Mốc kiểm chứng}\\
+12/2026 – 02/2027 & Bộ nhãn chuyên gia từ 300 cặp trở lên; đo lại mọi con số trên nhãn người; hiệu chỉnh ngưỡng mức rủi ro & Hệ số đồng thuận κ ≥ 0,6; bộ số đầu tiên trên nhãn người\\
+Quý I – II/2027 & Quy tắc pháp lý có người duyệt (Quyết định 13/2024 với Nghị định 119/2025; Thông tư 96/2020 phần môi trường); so sánh với kỳ trước; dựng bảng PDF & Ít nhất một phát hiện pháp lý đúng trên doanh nghiệp thật\\
+Quý II – III/2027 & Thử độ dễ dùng; thí điểm với 1–2 công ty kiểm toán hoặc ngân hàng & Đạt các ngưỡng ở mục trên; thời gian soát mỗi tuyên bố\\
+Từ 2027 & Theo dõi thông tư thay Thông tư 96/2020; bản cài ngoại tuyến có bản quyền theo năm; gói quy tắc theo ngành & Hợp đồng thí điểm đầu tiên\\
+\end{tabularx}
+\end{table}
+
+Hướng thương mại phù hợp với cách thiết kế là bản cài ngoại tuyến bán theo năm cho công ty kiểm toán và ngân hàng, cộng gói quy tắc theo ngành. Trước khi thương mại hoá phải thay mô hình nhúng có giấy phép phi thương mại và rà lại giấy phép của mọi thành phần.
+
+\FloatBarrier
+\begin{hopy}{Tóm tắt chương}
+\begin{itemize}
+\item Người dùng trực tiếp là người soát xét; cùng lõi phục vụ người soạn báo cáo, ngân hàng và nhà phân tích qua gói quy tắc và chế độ chạy.
+\item Chế độ mặc định chạy trên laptop, không phí gọi mô hình, tài liệu không rời máy; đây là điều kiện để dùng được với giấy làm việc kiểm toán.
+\item Rủi ro lớn nhất (vu oan, bỏ lọt, dùng sai điểm rủi ro) đều có biện pháp viết thành mã; phần còn thiếu là nhãn người, sổ ghi gửi dữ liệu ra ngoài, phân quyền và thử với người dùng thật.
+\item Lợi ích về an toàn và truy vết đã chắc chắn; lợi ích về thời gian chưa đo và không được nêu thành số.
+\end{itemize}
+\end{hopy}

@@ -1,0 +1,465 @@
+# D-UX · Bộ nguyên tắc đánh giá chuyên gia (heuristic evaluation) cho GreenScan
+# 10 nguyên tắc Nielsen (H01–H10) + 8 nguyên tắc riêng cho AI hỗ trợ kiểm toán (A01–A08). LABELING_GUIDE.md §5.
+
+meta:
+  bo: D-UX
+  tep: heuristics.yaml
+  labeler: claude-opus-5-5
+  guide_version: gs-eval-v2.0
+  review_status: pending_human_review
+  ngay_soan: "2026-11-04"
+  nguon_ly_thuyet:
+    - "Nielsen J. (1994), 10 Usability Heuristics; bản diễn đạt cập nhật trên nngroup.com [KIẾN THỨC NỀN — chưa đối chiếu bản gốc trong repo]."
+    - "Nielsen J. (1995), Severity Ratings for Usability Problems [KIẾN THỨC NỀN — chưa đối chiếu bản gốc]."
+    - "Amershi S. et al. (2019), Guidelines for Human-AI Interaction, CHI 2019 — gợi ý cho nhóm A [KIẾN THỨC NỀN]."
+    - "Lee J. D. & See K. A. (2004), Trust in Automation: Designing for Appropriate Reliance — cơ sở cho A05 [KIẾN THỨC NỀN]."
+    - "Nguyên tắc nội bộ: PRODUCTION_UI_SPEC_2026-09-20.md §1 (P1–P8), §4.6; UX_FLOW.md §3, §10; HUMAN_REVIEW_SPEC.md; EVIDENCE_CARD_SPEC.md §8; LABELING_GUIDE.md §4."
+  quy_uoc_quan_sat: >-
+    Trường quan_sat_so_bo ghi điều đã thấy trên ảnh chụp 15/10/2026 hoặc trong mã/đầu ra ngày 04/11/2026, kèm nguồn.
+    Mức gợi ý trong đó là của người soạn (một người, mô phỏng chuyên gia); phải có ít nhất 2 người chấm độc lập
+    theo PROTOCOL.md mới đưa vào danh sách vấn đề chính thức.
+
+thang_muc_do_nielsen:
+  yeu_to_can_nhac: ["tần suất: bao nhiêu người, bao nhiêu lần gặp", "tác động: khó vượt qua đến đâu", "độ dai dẳng: gặp một lần rồi quen hay lặp lại mãi"]
+  muc:
+    0: "Không phải vấn đề khả dụng."
+    1: "Chỉ thẩm mỹ — sửa nếu còn thời gian."
+    2: "Vấn đề nhỏ — ưu tiên thấp."
+    3: "Vấn đề lớn — quan trọng, ưu tiên cao."
+    4: "Thảm hoạ — bắt buộc sửa trước khi phát hành."
+  quy_uoc_greenscan:   # đề xuất của bộ này, Nhân duyệt
+    - "Vấn đề có thể làm sai một kết luận ghi vào giấy làm việc (đọc chưa đủ bằng chứng thành vi phạm, gán quyết định của AI cho người, áp dụng quy tắc nháp, mất vết quyết định) chấm tối thiểu 3."
+    - "Vấn đề khiến người dùng cáo buộc doanh nghiệp khi bằng chứng không đủ, hoặc làm quy tắc nội bộ đổi kết luận kiểm chứng, chấm 4."
+    - "Mỗi vấn đề do ≥ 2 người chấm độc lập (≥ 3 nếu có); lấy trung bình; chênh ≥ 2 mức thì thảo luận rồi chấm lại."
+    - "Điểm tốt (thiết kế đúng nguyên tắc) ghi mức 0 và từ khoá “điểm tốt” để giữ khi sửa giao diện."
+
+nguyen_tac:
+
+  # ---------------- 10 nguyên tắc Nielsen ----------------
+
+  - id: H01
+    ten: "Hiển thị trạng thái hệ thống"
+    ten_goc: "Visibility of system status"
+    nhom: nielsen
+    cau_hoi_kiem:
+      - "Người dùng có luôn biết phiên nào đang mở, đang ở bước nào của quy trình, hệ thống đang làm gì (đang phân tích, đã lưu, đang rà soát) không?"
+      - "Sau mỗi thao tác (ghi quyết định, chấp nhận gợi ý, lưu phiên bản) giao diện có phản hồi ngay và đúng chỗ không?"
+      - "Trạng thái chạy (ngoại tuyến, AI đám mây, LLM tắt) có hiện nhất quán giữa các màn không?"
+    cach_kiem_tren_greenscan:
+      - "Ảnh 03, 17, 21: khung “Phiên đang mở”, chip “Có dùng AI đám mây cho phần khó”."
+      - "Ảnh 08: thanh trên Studio “Đang rà soát”, “LLM: tắt”, “Đã lưu”."
+      - "T01: lúc chạy chỉ có “Đang chờ đến lượt…” / “Đang phân tích…”, không có tiến độ từng bước (UI_V2_REVIEW màn 4) — kiểm người dùng có biết phải chờ bao lâu."
+      - "T07: ô “Đã chốt …/9” và các tab hàng đợi đổi ngay sau quyết định."
+    thang_muc_do:
+      0: "Trạng thái rõ ở mọi màn."
+      1: "Nhãn trạng thái đúng nhưng khó thấy."
+      2: "Phải đoán trạng thái hoặc tìm ở màn khác (ví dụ không chắc đã lưu)."
+      3: "Trạng thái mâu thuẫn giữa hai màn làm hiểu sai việc dữ liệu có rời máy hay quyết định đã ghi hay chưa."
+      4: "Quyết định đã ghi mà giao diện không phản ánh, dẫn tới ghi trùng hoặc nộp giấy làm việc thiếu."
+    quan_sat_so_bo:
+      - "Chip đầu trang “Có dùng AI đám mây cho phần khó” (ảnh 03, 17, 21) hiện cùng lúc Studio ghi “LLM: tắt” (ảnh 08, lớp “B · Nội bộ”). Có lý do (lớp B không leo thang lên API, quyết định 14/10 §5.3) nhưng không giải thích tại chỗ. Gợi ý mức 2."
+      - "Điểm tốt: ảnh 17 nói rõ “Mới chốt 0/9 … mục chưa xem sẽ ghi “chưa xem””. Mức 0."
+    lien_ket: {nhiem_vu: [T01, T02, T07, T15], lint: [UXL-12]}
+    review_status: pending_human_review
+
+  - id: H02
+    ten: "Khớp với thế giới thực (từ vựng kiểm toán)"
+    ten_goc: "Match between system and the real world"
+    nhom: nielsen
+    cau_hoi_kiem:
+      - "Nhãn có dùng từ của kiểm toán viên (giấy làm việc, người soát xét, cơ sở dẫn liệu: phân loại, chính xác, đúng kỳ, đầy đủ) thay vì từ của đội phát triển (BM25, RRF, τ, rule pack, claim_type) không?"
+      - "Con số hiển thị có kèm nghĩa không (63/90 là điểm ưu tiên; 92 % là độ khớp từ khoá, không phải độ tin cậy của kết luận)?"
+      - "Thuật ngữ tiếng Anh có được thay hoặc giải nghĩa không?"
+    cach_kiem_tren_greenscan:
+      - "Ảnh 05: dòng “nguồn internal · khớp từ khóa 92 % · ngữ nghĩa 37 %” dưới mỗi đoạn bằng chứng."
+      - "Ảnh 03: “63/90” cạnh nút “Mở”, không nhãn."
+      - "Ảnh 08: “τ chưa hiệu chỉnh (thí nghiệm B6): không leo thang”."
+      - "Đối chiếu nhãn nút với PRODUCTION_UI_SPEC Phụ lục A; chạy UXL-02, UXL-03."
+    thang_muc_do:
+      0: "Từ ngữ quen với kiểm toán viên."
+      1: "Một từ tiếng Anh quen trong nghề (Scope 1, tCO2e) chưa giải nghĩa."
+      2: "Thuật ngữ nội bộ lộ ra màn hình (τ, thí nghiệm B6, internal, claim_type)."
+      3: "Con số dễ bị đọc thành độ tin cậy của kết luận, ảnh hưởng quyết định."
+      4: "Nhãn khiến người dùng hiểu ngược kết luận."
+    quan_sat_so_bo:
+      - "Ảnh 05: “nguồn internal” và hai phần trăm truy xuất đặt sát đoạn bằng chứng, dễ đọc thành “độ tin cậy 92 %”. Gợi ý mức 2–3, cần kiểm bằng T04."
+      - "Ảnh 08: “τ chưa hiệu chỉnh (thí nghiệm B6)” là ngôn ngữ nội bộ. Gợi ý mức 2."
+      - "[TỪ MÃ] DecisionBar.jsx: nút “Abstain” tiếng Anh; Phụ lục A định nhãn “Chưa đủ để kết luận”. Gợi ý mức 2."
+      - "[ĐÃ ĐO 04/11] result.json phiên demo: 156/156 legal_checks.notes chứa định danh mã (ví dụ claim_type 'biodiversity', rule pack 'vn-green-v0.1-draft'); 1404/1404 lý do thành phần rủi ro là câu tiếng Anh (ví dụ “Claim specificity and identifiable metric.”; 58 câu có cả định danh mã như “Applicable boundary: ghg_scope_1_2_3.”). Mức tuỳ việc chuỗi có hiện trên giao diện [CHƯA XÁC MINH]."
+    lien_ket: {nhiem_vu: [T03, T04, T06, T15], lint: [UXL-02, UXL-03]}
+    review_status: pending_human_review
+
+  - id: H03
+    ten: "Người dùng kiểm soát và tự do"
+    ten_goc: "User control and freedom"
+    nhom: nielsen
+    cau_hoi_kiem:
+      - "Có thoát, quay lại, hoàn tác ở mọi bước không (Ctrl+Z, khôi phục phiên bản, Mở lại quyết định, đóng khung xem nguồn)?"
+      - "Rời Studio về hàng đợi có giữ vị trí, bộ lọc không?"
+      - "Có bị ép đi theo một thứ tự cứng không?"
+    cach_kiem_tren_greenscan:
+      - "T05 (đóng khung nguồn quay lại đúng thẻ), T08 (Mở lại), T10 (khôi phục phiên bản)."
+      - "Ảnh 08: “← Hàng đợi”, “Lưu phiên bản”, khung dưới “Phiên bản (0)”."
+    thang_muc_do:
+      0: "Mọi thao tác đều có đường lui rõ."
+      1: "Đường lui có nhưng phải tìm."
+      2: "Quay lại làm mất vị trí hoặc bộ lọc."
+      3: "Một thao tác quan trọng không hoàn tác được nhưng còn vết để làm lại bằng tay."
+      4: "Mất công việc hoặc mất quyết định không lấy lại được."
+    quan_sat_so_bo:
+      - "Điểm tốt [TỪ MÃ]: hộp xác nhận chấp nhận hàng loạt nói rõ cách hoàn tác (“Ctrl+Z hoặc khôi phục một phiên bản đã lưu”). Mức 0."
+    lien_ket: {nhiem_vu: [T02, T05, T08, T10], lint: []}
+    review_status: pending_human_review
+
+  - id: H04
+    ten: "Nhất quán và tuân chuẩn"
+    ten_goc: "Consistency and standards"
+    nhom: nielsen
+    cau_hoi_kiem:
+      - "Một khái niệm có đúng một tên trên mọi màn không (cùng enum thì cùng nhãn)?"
+      - "Số bước quy trình có khớp giữa thanh bên, nút và tiêu đề không?"
+      - "Cùng một đại lượng có cùng con số ở mọi nơi hiển thị không?"
+    cach_kiem_tren_greenscan:
+      - "So nhãn trên ảnh 03, 05, 08, 17 với PRODUCTION_UI_SPEC Phụ lục A."
+      - "So số thuộc tính thiếu ở chip hàng đợi với lý do ưu tiên và tab Thuộc tính; chạy UXL-12."
+    thang_muc_do:
+      0: "Nhất quán."
+      1: "Khác biệt nhỏ về chữ, không đổi nghĩa."
+      2: "Cùng khái niệm hai tên, hoặc số bước lệch, làm người dùng chần chừ."
+      3: "Hai con số khác nhau cho cùng đại lượng ở hai màn, người dùng không biết tin số nào khi ghi giấy làm việc."
+      4: "Cùng nhãn mang hai nghĩa trái nhau."
+    quan_sat_so_bo:
+      - "Đánh số bước lệch: thanh bên “3 Sửa báo cáo (Studio)”, “4 Giấy làm việc”; nút ở hàng đợi “Bước 3 · Xuất →” (ảnh 03); thẻ ở màn giấy làm việc “BƯỚC 3 · GIẤY LÀM VIỆC” (ảnh 17). Gợi ý mức 2."
+      - "Cùng kết luận PARTIALLY_SUPPORTED: “Ủng hộ một phần” (ảnh 03, đúng Phụ lục A) và “Khớp một phần” (Inspector ảnh 08). Gợi ý mức 2."
+      - "“Cần soát (9)” ở hàng đợi và “Cần xem 146” trong Studio là hai tập khác nhau với tên gần giống. Gợi ý mức 2."
+      - "[ĐÃ KIỂM 04/11] Chip hàng đợi ghi “thiếu 3/5 thuộc tính”, “2/5”, “1/5” cho mục #1–#3 (ảnh 03), còn lý do ưu tiên trong result.json cùng phiên ghi “thiếu 4/5”, “3/5”, “2/5”. Nguyên nhân [CHƯA XÁC MINH] (có thể khác cách đếm “thiếu” với “một phần”). Gợi ý mức 2, lên 3 nếu cả hai con số cùng hiện ra cho người dùng."
+    lien_ket: {nhiem_vu: [T03, T04, T11, T15], lint: [UXL-12]}
+    review_status: pending_human_review
+
+  - id: H05
+    ten: "Phòng lỗi"
+    ten_goc: "Error prevention"
+    nhom: nielsen
+    cau_hoi_kiem:
+      - "Thao tác rủi ro (chấp nhận hàng loạt, khôi phục văn bản gốc, xuất khi còn mục chưa soát, ghi đè không lý do) có bước xác nhận hoặc ràng buộc không?"
+      - "Tài liệu bằng chứng có bị khoá không cho sửa không?"
+      - "Có chặn dữ liệu nhập sai (tên người soát xét rỗng, ghi đè thiếu trạng thái) không?"
+    cach_kiem_tren_greenscan:
+      - "Ảnh 08: tài liệu bằng chứng ghi “Bằng chứng · chỉ đọc”, có biểu tượng khoá."
+      - "Ảnh 17: cảnh báo khi còn mục chưa chốt."
+      - "[TỪ MÃ] DecisionBar.jsx: nút bị vô hiệu khi tên người xem xét rỗng; ô lý do chỉ “khuyến nghị”."
+    thang_muc_do:
+      0: "Lỗi bị chặn từ trước."
+      1: "Có cảnh báo nhưng dễ bỏ qua với lỗi vô hại."
+      2: "Lỗi dễ mắc nhưng sửa được ngay."
+      3: "Lỗi làm hỏng vết kiểm toán (quyết định không lý do, sửa nhầm hàng loạt) mà không bị chặn."
+      4: "Lỗi làm sai kết luận đã phát hành mà không có cảnh báo."
+    quan_sat_so_bo:
+      - "[TỪ MÃ] Lý do quyết định là tuỳ chọn với cả Ghi đè, Abstain, Yêu cầu thêm bằng chứng (DecisionBar.jsx, placeholder “khuyến nghị”), trong khi HUMAN_REVIEW_SPEC.md §3.3 yêu cầu bắt buộc với quyết định không chấp nhận. Gợi ý mức 3 vì ảnh hưởng vết kiểm toán."
+      - "Điểm tốt: giấy làm việc vẫn in được khi còn mục chưa xem nhưng có cảnh báo và ghi “chưa xem” (ảnh 17). Mức 0."
+    lien_ket: {nhiem_vu: [T01, T07, T10, T13, T14], lint: [UXL-09]}
+    review_status: pending_human_review
+
+  - id: H06
+    ten: "Nhận ra hơn là nhớ lại"
+    ten_goc: "Recognition rather than recall"
+    nhom: nielsen
+    cau_hoi_kiem:
+      - "Người dùng có phải nhớ thông tin từ màn trước (trang, mã tuyên bố, quyết định đã ghi) không?"
+      - "Nghĩa của nhãn, lựa chọn, phím tắt có hiện tại chỗ (tooltip, chú giải) không?"
+    cach_kiem_tren_greenscan:
+      - "Ảnh 14 (thẻ di chuột), ảnh 15 (hướng dẫn lần đầu), nút “Phím tắt” (ảnh 08)."
+      - "Ảnh 03: dòng chú thích “Thứ tự là thứ tự nên mở, không phải mức độ “xấu”.”"
+      - "T06, T16: tìm lại một tuyên bố cụ thể có cần nhớ số trang không."
+    thang_muc_do:
+      0: "Thông tin cần có ngay tại chỗ."
+      1: "Phải rê chuột mới thấy nghĩa của nhãn phụ."
+      2: "Phải nhớ thông tin từ màn khác để làm tiếp."
+      3: "Phải nhớ thông tin then chốt (ví dụ trang nguồn) để ghi giấy làm việc."
+      4: "Không có cách tra lại thông tin đã thấy."
+    quan_sat_so_bo:
+      - "Điểm tốt: chú thích thứ tự hàng đợi và ô “Độ phủ kho tài liệu 75 % — chưa đủ để kết luận vắng bằng chứng” (ảnh 03) nói nghĩa ngay tại chỗ. Mức 0."
+    lien_ket: {nhiem_vu: [T02, T06, T12, T16], lint: []}
+    review_status: pending_human_review
+
+  - id: H07
+    ten: "Linh hoạt và hiệu quả"
+    ten_goc: "Flexibility and efficiency of use"
+    nhom: nielsen
+    cau_hoi_kiem:
+      - "Người dùng thạo có lối tắt (F8 / Shift+F8, Ctrl+., Ctrl+Enter, chấp nhận hàng loạt, bộ lọc) không?"
+      - "Đi từ hàng đợi → bằng chứng → quyết định mất bao nhiêu thao tác?"
+      - "Việc cấu hình có cần kỹ năng kỹ thuật không?"
+    cach_kiem_tren_greenscan:
+      - "Đếm số bấm tối thiểu theo duong_di_mong_doi của T04, T07, T09."
+      - "So thời gian lần đầu và lần thứ hai cùng nhiệm vụ (nếu buổi thử có lặp)."
+      - "Ảnh 21: mục “Đổi chế độ”."
+    thang_muc_do:
+      0: "Có cả đường cho người mới và lối tắt cho người thạo."
+      1: "Thiếu lối tắt cho thao tác ít dùng."
+      2: "Thao tác lặp nhiều lần mà không có cách làm nhanh."
+      3: "Việc thường xuyên cần kỹ năng kỹ thuật (sửa tệp, khởi động lại)."
+      4: "Không làm được việc nếu không có lập trình viên."
+    quan_sat_so_bo:
+      - "Ảnh 21: đổi chế độ chạy phải đặt QUANTUM_PROFILE trong .env và khởi động lại. Hợp lý với người quản trị, không hợp với kiểm toán viên. Gợi ý mức 1–2."
+    lien_ket: {nhiem_vu: [T09, T10, T15, T16], lint: []}
+    review_status: pending_human_review
+
+  - id: H08
+    ten: "Thẩm mỹ và tối giản"
+    ten_goc: "Aesthetic and minimalist design"
+    nhom: nielsen
+    cau_hoi_kiem:
+      - "Mỗi màn có xoay quanh một quyết định không; có thông tin thừa cạnh tranh với bằng chứng không?"
+      - "Điểm rủi ro có bị phóng to thành tiêu đề không (P5)?"
+      - "Văn bản lặp lại có làm loãng thông tin phân biệt không?"
+    cach_kiem_tren_greenscan:
+      - "Ảnh 03 (bốn ô số liệu), ảnh 05 (thẻ bằng chứng), ảnh 16 (chế độ tập trung)."
+    thang_muc_do:
+      0: "Gọn, đúng trọng tâm."
+      1: "Một vài chi tiết thừa."
+      2: "Thông tin lặp làm khó tìm điều khác biệt."
+      3: "Thông tin phụ lấn thông tin cần cho quyết định."
+      4: "Màn hình khiến người dùng bỏ sót bằng chứng then chốt."
+    quan_sat_so_bo:
+      - "Ảnh 05: các thẻ đều “Một phần” với cùng câu “Cùng chủ đề nhưng chưa đủ số liệu để xác nhận.” — lặp, ít thông tin phân biệt giữa các đoạn. Gợi ý mức 1–2."
+      - "Điểm tốt: không có số điểm to hay xếp hạng doanh nghiệp (P1, P5). Mức 0."
+    lien_ket: {nhiem_vu: [T03, T04], lint: [UXL-01]}
+    review_status: pending_human_review
+
+  - id: H09
+    ten: "Giúp nhận ra, chẩn đoán và khắc phục lỗi"
+    ten_goc: "Help users recognize, diagnose, and recover from errors"
+    nhom: nielsen
+    cau_hoi_kiem:
+      - "Thông báo lỗi có bằng tiếng Việt, nói cái gì sai, ở đâu, làm gì tiếp không?"
+      - "Lỗi máy chủ (ví dụ 400 “REOPEN before deciding again”) có được dịch sang lời người dùng không?"
+      - "Bộ quy tắc nội bộ sai có được báo theo UXL-13 không?"
+    cach_kiem_tren_greenscan:
+      - "Gây lỗi có chủ đích: chốt lần hai; tải tệp scan; nạp pack sai (bản mẫu T14); tắt máy chủ API rồi thao tác."
+    thang_muc_do:
+      0: "Thông báo rõ, có cách sửa."
+      1: "Thông báo đúng nhưng hơi kỹ thuật."
+      2: "Thông báo tiếng Anh hoặc mã lỗi thô, người dùng phải đoán."
+      3: "Không có thông báo; thao tác thất bại im lặng."
+      4: "Thất bại im lặng mà người dùng tưởng đã thành công (ví dụ pack lỗi nhưng tưởng đã áp dụng)."
+    quan_sat_so_bo:
+      - "PRODUCTION_UI_SPEC F9: máy chủ trả “REOPEN before deciding again” (tiếng Anh); cách giao diện hiển thị [CHƯA XÁC MINH]."
+      - "Điểm tốt [TỪ MÃ]: cảnh báo trang scan nêu tên tệp và số trang sẽ mất chữ (NewAnalysisPage.jsx). Mức 0."
+    lien_ket: {nhiem_vu: [T08, T14], lint: [UXL-13]}
+    review_status: pending_human_review
+
+  - id: H10
+    ten: "Trợ giúp và tài liệu"
+    ten_goc: "Help and documentation"
+    nhom: nielsen
+    cau_hoi_kiem:
+      - "Có hướng dẫn lần đầu, trợ giúp theo ngữ cảnh, giải nghĩa thuật ngữ không?"
+      - "Giới hạn của hệ thống (OCR chưa cài, PDF xuất không giữ bố cục, chưa có nguồn độc lập) có được nói đúng chỗ người dùng cần không?"
+    cach_kiem_tren_greenscan:
+      - "Ảnh 15 (hướng dẫn lần đầu), nút “Hướng dẫn”, “Phím tắt” (ảnh 08)."
+      - "Ảnh 21: dòng “Đọc trang scan (OCR): chưa cài”."
+      - "T12: giao diện có nói PDF xuất không giữ bố cục gốc không (quyết định 14/10 §5.2)."
+    thang_muc_do:
+      0: "Trợ giúp có sẵn, ngắn, đúng chỗ."
+      1: "Trợ giúp có nhưng nằm sâu."
+      2: "Thiếu giải thích cho một khái niệm người dùng hay hỏi."
+      3: "Giới hạn quan trọng không được nói, người dùng hiểu sai khả năng của hệ thống."
+      4: "Giới hạn bị che, dẫn tới dùng kết quả sai mục đích."
+    quan_sat_so_bo:
+      - "Điểm tốt: ảnh 21 nói thật “chưa cài” với OCR và ghi “Chỉ những gì hệ thống thực sự có”. Mức 0."
+    lien_ket: {nhiem_vu: [T09, T12], lint: [UXL-02]}
+    review_status: pending_human_review
+
+  # ---------------- 8 nguyên tắc riêng cho AI hỗ trợ kiểm toán ----------------
+
+  - id: A01
+    ten: "Nguồn gốc hiện rõ"
+    ten_goc: "Provenance visible"
+    nhom: ai_kiem_toan
+    cau_hoi_kiem:
+      - "Mọi kết luận, đoạn bằng chứng, gợi ý sửa có tên tài liệu + trang (và khối, bảng nếu có) không? Bấm có tới đúng trang không?"
+      - "Căn cứ của gợi ý có nhãn mức xác minh (quy tắc của hệ thống, tri thức miền chưa đối chiếu, tham chiếu quốc tế, căn cứ ứng viên) không?"
+      - "Có tách bạch văn bản của doanh nghiệp, bằng chứng, văn bản pháp luật, quy tắc của tổ chức không?"
+    cach_kiem_tren_greenscan:
+      - "T05; UXL-04, UXL-05."
+      - "Ảnh 05 (“Mở nguồn →”), ảnh 10 (trang gốc tô vàng), ảnh 08 (dòng “§ … — nhãn xác minh”)."
+    thang_muc_do:
+      0: "Mọi phát hiện về được nguồn trong 1–2 bấm."
+      1: "Có trang nhưng thiếu khối, bảng."
+      2: "Có trang nhưng không định vị được đoạn trên ảnh trang, không có lời giải thích."
+      3: "Trích dẫn sai trang ở một số ca."
+      4: "Kết luận không có đường về nguồn, hoặc trích dẫn bịa."
+    quan_sat_so_bo:
+      - "[ĐÃ ĐO 04/11] result.json phiên demo: 780/780 đoạn bằng chứng có trang và citation. Điểm tốt, mức 0."
+      - "[TỪ MÃ] suggest.py gắn căn cứ bốn mức nhãn: “Quy tắc nội bộ”, “Tri thức miền, chưa đối chiếu điều khoản”, “Tham chiếu quốc tế, không ràng buộc tại Việt Nam”, “Căn cứ ứng viên, chưa có người xác minh”. Điểm tốt về cơ chế; xem A08 về tên nhãn."
+      - "Citation trong dữ liệu có dạng tiếng Anh “(page 49, block 13)”; nếu hiện ra thì thuộc H02."
+    lien_ket: {nhiem_vu: [T04, T05, T09, T16], lint: [UXL-04, UXL-05]}
+    review_status: pending_human_review
+
+  - id: A02
+    ten: "Mức chắc chắn và phạm vi kiểm hiện rõ"
+    ten_goc: "Uncertainty and coverage visible"
+    nhom: ai_kiem_toan
+    cau_hoi_kiem:
+      - "Có phân biệt rõ ủng hộ một phần, chưa đủ bằng chứng, chưa được chứng minh, mâu thuẫn không; abstain có được trình bày là kết quả hợp lệ (P3) không?"
+      - "Độ phủ kho tài liệu và những gì KHÔNG kiểm có hiện ra (màn hình và giấy làm việc) không?"
+      - "Phương pháp đứng sau từng nhận định (so số, cụm từ, xu hướng, mô hình, tương đồng) có hiện cạnh nhận định (P6) không; căn cứ yếu như “tương đồng” có được nói là yếu không?"
+    cach_kiem_tren_greenscan:
+      - "Ảnh 03: ô “Độ phủ kho tài liệu 75 %”; giấy làm việc mục 5; T06; UXL-06."
+      - "Ảnh 05: tìm nhãn phương pháp trên thẻ bằng chứng."
+    thang_muc_do:
+      0: "Mức chắc chắn và giới hạn hiện rõ, đúng chỗ."
+      1: "Có nhưng phải tìm."
+      2: "Thiếu nhãn phương pháp hoặc độ phủ ở một màn quan trọng."
+      3: "Kết quả dừng phán đoán trông giống kết luận tiêu cực."
+      4: "Hệ thống trình bày “không tìm thấy” như “sai”."
+    quan_sat_so_bo:
+      - "Điểm tốt: ảnh 03 ghi “Độ phủ kho tài liệu 75 % — chưa đủ để kết luận vắng bằng chứng”; giấy làm việc có mục 5 (ảnh 17, workpaper.py). Mức 0."
+      - "[ĐÃ ĐO 04/11] 713/780 (91 %) quan hệ bằng chứng của phiên demo dựa trên phương pháp tương đồng (similarity). Ảnh 05 không thấy nhãn phương pháp trên thẻ, chỉ có phần trăm truy xuất [CHƯA XÁC MINH nhãn có ở chỗ khác]. Gợi ý mức 2."
+    lien_ket: {nhiem_vu: [T03, T04, T06, T11, T12], lint: [UXL-06, UXL-08]}
+    review_status: pending_human_review
+
+  - id: A03
+    ten: "Nhãn AI / luật / người và nơi xử lý dữ liệu"
+    ten_goc: "Attribution of AI, rules and humans; processing location"
+    nhom: ai_kiem_toan
+    cau_hoi_kiem:
+      - "Mỗi kết luận có cho biết ai làm ra (luật tất định, phép tính bằng mã, mô hình cục bộ, mô hình đám mây, người) không?"
+      - "Trạng thái AI đề xuất → Đã có người xem → Đã chốt có hiện ở mọi chỗ hiện kết luận, kể cả giấy làm việc (P7) không?"
+      - "Nhật ký có tách nguồn nội dung (ai-rule, ai-llm) với người chấp nhận không?"
+      - "Người dùng có biết dữ liệu có rời máy không?"
+    cach_kiem_tren_greenscan:
+      - "Ảnh 03 (chip “AI đề xuất”), ảnh 21 (bảng Việc / Ai làm / Chi tiết), ảnh 08 (“LLM: không leo thang”)."
+      - "audit_json và GET /v1/reviews/{run_id}; UXL-08."
+    thang_muc_do:
+      0: "Luôn biết ai làm ra kết luận và dữ liệu đi đâu."
+      1: "Nhãn có nhưng chữ nhỏ, khó thấy."
+      2: "Một nhóm kết quả thiếu nhãn nguồn, hoặc trạng thái chạy mâu thuẫn bề ngoài."
+      3: "Kết quả của AI có thể bị hiểu là của người (hoặc ngược lại) trong giấy làm việc."
+      4: "Dữ liệu mật có thể gửi ra ngoài mà người dùng không biết."
+    quan_sat_so_bo:
+      - "Điểm tốt: ảnh 21 trả lời “ai làm việc gì” bằng bảng Việc / Ai làm / Chi tiết, ghi mô hình chỉ đọc cặp khó và mọi kết luận của nó chuyển người xác nhận. Mức 0."
+      - "[TỪ MÃ] StudioPage.jsx: chấp nhận gợi ý được ghi actor “ai-rule” kèm user là người soát xét. Hợp lý nếu tab Nhật ký hiện cả hai vế (ai đề xuất, ai chấp nhận) [CHƯA XÁC MINH cách hiển thị]."
+      - "Xem H01 về chip “Có dùng AI đám mây cho phần khó” cạnh “LLM: tắt”."
+    lien_ket: {nhiem_vu: [T04, T07, T09, T15], lint: [UXL-08]}
+    review_status: pending_human_review
+
+  - id: A04
+    ten: "Đảo ngược được và có vết"
+    ten_goc: "Reversible actions with audit trail"
+    nhom: ai_kiem_toan
+    cau_hoi_kiem:
+      - "Mọi quyết định, sửa đổi có hoàn tác hoặc mở lại được không; kết quả gốc của AI có được giữ (HUMAN_REVIEW_SPEC §3.2) không?"
+      - "Nhật ký có ghi ai, lúc nào, trước / sau, lý do không; có xuất được không?"
+      - "Giấy làm việc có phản ánh đúng quyết định cuối và có cách tra lịch sử không?"
+    cach_kiem_tren_greenscan:
+      - "T08, T10; audit_json (Studio); GET /v1/reviews/{run_id}/{claim_id} (history)."
+    thang_muc_do:
+      0: "Đảo ngược được, vết đầy đủ."
+      1: "Vết đủ nhưng khó xem."
+      2: "Thiếu một trường vết (lý do hoặc thời điểm) ở một loại thao tác."
+      3: "Một loại thao tác không để lại vết hoặc ghi đè kết quả gốc."
+      4: "Mất vết quyết định đã dùng cho giấy làm việc."
+    quan_sat_so_bo:
+      - "[TỪ MÃ] session.py: nhật ký Studio chỉ nhận actor trong {user, ai-rule, ai-llm, system}, hành động trong {accept, reject, edit, ignore, save, restore, rework}, có seq và ts; từ chối nếu văn bản gốc đã đổi. Điểm tốt, mức 0."
+      - "PRODUCTION_UI_SPEC F9: không cho nhảy thẳng AI → Đã chốt; chốt lần hai phải REOPEN. Điểm tốt."
+    lien_ket: {nhiem_vu: [T07, T08, T10, T11, T12], lint: [UXL-08, UXL-09, UXL-11]}
+    review_status: pending_human_review
+
+  - id: A05
+    ten: "Không ép tin máy (hiệu chỉnh niềm tin)"
+    ten_goc: "No pressure to over-trust; calibrated reliance"
+    nhom: ai_kiem_toan
+    cau_hoi_kiem:
+      - "Nút nổi bật hay mặc định có thiên về “chấp nhận AI” không?"
+      - "Chấp nhận hàng loạt có xác nhận và nêu số lượng không?"
+      - "Có cảnh báo khi xác nhận ca mâu thuẫn / rủi ro cao mà chưa mở bằng chứng (HUMAN_REVIEW_SPEC §13) không?"
+      - "Có cho thấy điều AI không chắc hoặc không kiểm, để người dùng biết chỗ cần tự xét đoán?"
+    cach_kiem_tren_greenscan:
+      - "Ảnh 08: nút “Chấp nhận” nền đậm, “Từ chối” viền đỏ, “Sửa lại” viền."
+      - "Câu NT3 (PROTOCOL.md): điểm cao ở ca bằng chứng yếu là dấu hiệu tin quá mức."
+      - "Đo từ nhật ký: tỷ lệ chấp nhận gợi ý mà không mở tab Bằng chứng trước đó [cần ghi thao tác — CHƯA có công cụ]."
+    thang_muc_do:
+      0: "Giao diện trung lập; người dùng chủ động xét đoán."
+      1: "Nút chấp nhận nổi bật hơn nhưng có đủ thông tin trước khi bấm."
+      2: "Thao tác hàng loạt hoặc mặc định khiến dễ chấp nhận mà không đọc."
+      3: "Không có rào cản khi xác nhận ca rủi ro cao mà chưa xem bằng chứng."
+      4: "Giao diện tự chấp nhận thay người, hoặc ẩn lựa chọn từ chối."
+    quan_sat_so_bo:
+      - "Điểm tốt [TỪ MÃ]: chấp nhận hàng loạt có hộp xác nhận nêu số lượng và loại đề xuất. Mức 0."
+      - "Ảnh 08: “Chấp nhận” là nút nổi bật nhất trên thẻ gợi ý. Chưa chấm; đo bằng T09 + NT3."
+      - "HUMAN_REVIEW_SPEC §13 yêu cầu cảnh báo khi xác nhận ca mâu thuẫn hoặc critical mà chưa xem thẻ bằng chứng — chưa thấy trong DecisionBar.jsx [CHƯA XÁC MINH có ở chỗ khác]."
+    lien_ket: {nhiem_vu: [T04, T09, T10], lint: [UXL-09]}
+    review_status: pending_human_review
+
+  - id: A06
+    ten: "Gợi ý sửa an toàn"
+    ten_goc: "Safe edit suggestions"
+    nhom: ai_kiem_toan
+    cau_hoi_kiem:
+      - "Gợi ý có bao giờ thêm số không có trong câu hoặc bằng chứng không?"
+      - "Chỗ thiếu dữ liệu có dùng chỗ trống “[bổ sung: …]” rõ ràng không?"
+      - "Mỗi gợi ý có lý do, mã quy tắc, căn cứ kèm nhãn xác minh không? Gợi ý có chỉ thuộc 4 loại cho phép (thêm phạm vi / điều kiện, chỗ trống bổ sung số liệu, dẫn chiếu bằng chứng, làm nhẹ lời nói quá) không?"
+      - "Tài liệu bằng chứng có bị khoá không?"
+    cach_kiem_tren_greenscan:
+      - "Ảnh 08: thẻ VG-02, SC-01; UXL-10."
+      - "KE_HOACH_PHAN_BIEN_HE_THONG_VA_EDITOR_2026-10-14.md §3 (rào chắn), §5.1 (tài liệu evidence chỉ đọc)."
+    thang_muc_do:
+      0: "Không bịa số; chỗ trống rõ; căn cứ có nhãn."
+      1: "Lý do gợi ý chung chung."
+      2: "Căn cứ thiếu nhãn xác minh."
+      3: "Gợi ý viết lại làm đổi nghĩa tuyên bố mà không báo."
+      4: "Gợi ý chèn số không có nguồn."
+    quan_sat_so_bo:
+      - "[TỪ MÃ] suggest.py loại mọi gợi ý thêm số mới (assert_no_new_numbers). Điểm tốt, mức 0."
+      - "Ảnh 08: chỗ trống “[bổ sung: số liệu định lượng — chỉ số, giá trị, đơn vị]” hiện như tracked change màu xanh; tài liệu BCTN “Bằng chứng · chỉ đọc”. Điểm tốt, mức 0."
+    lien_ket: {nhiem_vu: [T09, T10, T12], lint: [UXL-10]}
+    review_status: pending_human_review
+
+  - id: A07
+    ten: "Ngôn ngữ không cáo buộc, đúng từ vựng nghề"
+    ten_goc: "Non-accusatory, audit-appropriate language"
+    nhom: ai_kiem_toan
+    cau_hoi_kiem:
+      - "Có từ cấm (vi phạm, gian lận, sai phạm, lừa dối, “doanh nghiệp X greenwashing”, điểm trung thực, xếp hạng) ngoài câu miễn trừ phủ định không?"
+      - "Câu miễn trừ cố định có ở chân trang và trong giấy làm việc không?"
+      - "Kết quả quy tắc nội bộ mức “violation” có được diễn đạt trung tính (ví dụ “chưa đáp ứng quy tắc nội bộ”) không?"
+    cach_kiem_tren_greenscan:
+      - "UXL-07 trên result.json, chuỗi giao diện, giấy làm việc; ảnh 17 (chân trang)."
+    thang_muc_do:
+      0: "Trung tính, đúng nghề."
+      1: "Một từ hơi nặng ở chỗ phụ."
+      2: "Từ ngữ gợi ý lỗi của doanh nghiệp ở kết quả chưa đủ bằng chứng."
+      3: "Từ cấm xuất hiện trong nhãn kết luận hoặc giấy làm việc."
+      4: "Giao diện khẳng định doanh nghiệp vi phạm / gian lận."
+    quan_sat_so_bo:
+      - "[ĐÃ ĐO 04/11] Phiên demo: 0 từ cấm trong lý do kiểm chứng, lý do bằng chứng, lý do ưu tiên, ghi chú pháp lý, lý do thành phần rủi ro; giấy làm việc chỉ có “vi phạm” trong hai câu miễn trừ phủ định. Điểm tốt, mức 0."
+      - "Schema org pack có severity “violation” (LABELING_GUIDE §4): cần ánh xạ nhãn hiển thị trước khi làm giao diện (phòng trước)."
+    lien_ket: {nhiem_vu: [T03, T04, T06, T13], lint: [UXL-06, UXL-07]}
+    review_status: pending_human_review
+
+  - id: A08
+    ten: "Quy tắc của người dùng có ranh giới rõ (org pack)"
+    ten_goc: "Bounded, transparent user-supplied rules"
+    nhom: ai_kiem_toan
+    cau_hoi_kiem:
+      - "Có thấy bộ quy tắc nào đang áp dụng, phiên bản, ai duyệt, nháp hay đã duyệt không?"
+      - "Phát hiện từ quy tắc nội bộ có nhãn nguồn riêng (tổ chức · rule_id · điều khoản), tách khỏi văn bản pháp luật và rubric GreenScan không?"
+      - "Có nói rõ quy tắc nội bộ không đổi kết luận kiểm chứng, không vượt luật không?"
+      - "Pack sai có bị từ chối kèm thông báo dễ hiểu; câu lệnh chèn trong tài liệu nội bộ có bị bỏ qua không?"
+      - "Có xem được tác động trước / sau khi áp dụng không?"
+    cach_kiem_tren_greenscan:
+      - "T13, T14 trên bản mẫu (04/11 chưa có tính năng); UXL-13, UXL-14; luật an toàn 1–5 ở LABELING_GUIDE.md §4."
+    thang_muc_do:
+      0: "Nguồn, trạng thái, tác động và giới hạn của quy tắc đều rõ."
+      1: "Thiếu một thông tin phụ (ví dụ ngày duyệt)."
+      2: "Không thấy được tác động trước / sau."
+      3: "Phát hiện từ quy tắc nội bộ trông giống kết luận kiểm chứng hoặc giống căn cứ pháp luật."
+      4: "Quy tắc nội bộ làm đổi kết luận, hoặc bản nháp được áp dụng âm thầm."
+    quan_sat_so_bo:
+      - "04/11: chưa có bộ nạp và màn hình org pack; đánh giá trên bản mẫu."
+      - "Va chạm tên: nhãn “Quy tắc nội bộ” hiện dùng cho rubric của chính GreenScan (ảnh 08; suggest.py _RUBRIC). Khi có org pack, người dùng sẽ không phân biệt được. Đề xuất đổi thành “Quy tắc của GreenScan” và dành “Quy tắc nội bộ — [tên tổ chức]” cho org pack. Gợi ý mức 3 (phòng trước)."
+      - "[ĐÃ KIỂM 04/11] manifest đã có trường rule_pack_version — có chỗ ghi phiên bản pack để tái lập (P8)."
+    lien_ket: {nhiem_vu: [T09, T13, T14], lint: [UXL-13, UXL-14]}
+    review_status: pending_human_review

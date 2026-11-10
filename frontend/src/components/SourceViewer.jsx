@@ -164,7 +164,7 @@ export default function SourceViewer({ evidence, onClose }) {
         <footer className="border-t border-slate-200 px-4 py-2">
           <p className="text-xs text-slate-500">
             Phần được tô vàng là đoạn hệ thống trích dẫn. Nếu không thấy vùng tô, đoạn trích
-            có thể trải qua nhiều khối bố cục hoặc trang là bản scan — mở PDF gốc để đối chiếu.
+            có thể trải qua nhiều khối bố cục hoặc trang là bản quét — mở PDF gốc để đối chiếu.
           </p>
         </footer>
       </div>

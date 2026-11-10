@@ -1,0 +1,33 @@
+{
+ "calib": {
+  "cases_in": 453,
+  "kept": 448,
+  "dropped": {
+   "metric_has_digit": 5
+  },
+  "B-b_kept": 397,
+  "B-b_by_label": {
+   "S": 93,
+   "C": 122,
+   "N": 182
+  },
+  "companies": 7
+ },
+ "heldout": {
+  "cases_in": 162,
+  "kept": 87,
+  "dropped": {
+   "metric_has_digit": 6,
+   "unit_placeholder": 4,
+   "other_env": 60,
+   "period_not_dated": 5
+  },
+  "B-b_kept": 87,
+  "B-b_by_label": {
+   "S": 19,
+   "C": 28,
+   "N": 40
+  },
+  "companies": 7
+ }
+}

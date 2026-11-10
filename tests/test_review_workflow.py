@@ -13,9 +13,15 @@ from quantum_gw.storage.reviews import (
     CONFIRM,
     FINALIZED,
     HUMAN_REVIEWED,
+    MODEL_MISREAD,
     OVERRIDE,
     REOPEN,
     REQUEST_EVIDENCE,
+    ROUTE_MODEL,
+    ROUTE_RULE,
+    ROUTE_UNKNOWN,
+    RULE_NOT_APPLICABLE,
+    RULE_WRONG,
     ReviewError,
     ReviewStore,
 )
@@ -61,11 +67,12 @@ def test_request_evidence_keeps_the_claim_open(store):
 
 def test_override_requires_the_replacement_verdict(store):
     with pytest.raises(ReviewError, match="reviewer_status"):
-        decide(store, OVERRIDE, ai_status="SUPPORTED")
+        decide(store, OVERRIDE, ai_status="SUPPORTED", override_reason=MODEL_MISREAD)
 
 
 def test_override_records_both_verdicts(store):
-    rec = decide(store, OVERRIDE, ai_status="SUPPORTED", reviewer_status="CONTRADICTED")
+    rec = decide(store, OVERRIDE, ai_status="SUPPORTED", reviewer_status="CONTRADICTED",
+                 override_reason=MODEL_MISREAD)
     assert rec.ai_status == "SUPPORTED"
     assert rec.reviewer_status == "CONTRADICTED"
 
@@ -89,7 +96,8 @@ def test_reopen_only_applies_to_finalized(store):
 def test_reopen_then_decide_again(store):
     decide(store, CONFIRM, ai_status="SUPPORTED")
     assert decide(store, REOPEN, comment="tìm được bảng mới").new_state == HUMAN_REVIEWED
-    assert decide(store, OVERRIDE, reviewer_status="CONTRADICTED").new_state == FINALIZED
+    assert decide(store, OVERRIDE, reviewer_status="CONTRADICTED",
+                  override_reason=MODEL_MISREAD).new_state == FINALIZED
 
 
 def test_history_is_append_only(store):
@@ -128,7 +136,8 @@ def test_only_committed_verdicts_become_gold(store):
 
 
 def test_override_label_uses_the_human_verdict(store):
-    decide(store, OVERRIDE, ai_status="SUPPORTED", reviewer_status="CONTRADICTED")
+    decide(store, OVERRIDE, ai_status="SUPPORTED", reviewer_status="CONTRADICTED",
+           override_reason=MODEL_MISREAD)
     gold = store.gold_records()[0]
     assert gold["label"] == "CONTRADICTED"
     assert gold["label_source"] == "human_override"
@@ -143,7 +152,8 @@ def test_reopened_claim_leaves_the_gold_set(store):
 
 def test_stats_report_override_rate(store):
     decide(store, CONFIRM, claim_id="a", ai_status="SUPPORTED")
-    decide(store, OVERRIDE, claim_id="b", ai_status="SUPPORTED", reviewer_status="UNSUPPORTED")
+    decide(store, OVERRIDE, claim_id="b", ai_status="SUPPORTED", reviewer_status="UNSUPPORTED",
+           override_reason=MODEL_MISREAD)
     stats = store.stats()
     assert stats["gold_records"] == 2
     assert stats["ai_override_rate"] == 0.5
@@ -158,3 +168,88 @@ def test_runs_are_isolated(store):
 def test_unknown_decision_is_rejected(store):
     with pytest.raises(ReviewError, match="Unknown decision"):
         decide(store, "LOOKS_FINE")
+
+
+# ---------- why the AI was wrong decides where the label may go ----------
+
+
+def test_override_requires_a_reason(store):
+    with pytest.raises(ReviewError, match="override_reason"):
+        decide(store, OVERRIDE, ai_status="SUPPORTED", reviewer_status="CONTRADICTED")
+    with pytest.raises(ReviewError, match="override_reason"):
+        decide(store, OVERRIDE, ai_status="SUPPORTED", reviewer_status="CONTRADICTED",
+               override_reason="BECAUSE")
+
+
+def test_reason_belongs_to_override_only(store):
+    with pytest.raises(ReviewError, match="OVERRIDE only"):
+        decide(store, CONFIRM, ai_status="SUPPORTED", override_reason=MODEL_MISREAD)
+
+
+def test_rule_reason_must_name_the_rule(store):
+    with pytest.raises(ReviewError, match="rule_ref"):
+        decide(store, OVERRIDE, ai_status="UNSUPPORTED", reviewer_status="SUPPORTED",
+               override_reason=RULE_NOT_APPLICABLE)
+
+
+def test_rule_mismatch_never_becomes_a_model_label(store):
+    """The core of it: a company-specific exception must not teach the model to
+    break the rule for every company."""
+    decide(store, CONFIRM, claim_id="a", ai_status="SUPPORTED")
+    decide(store, OVERRIDE, claim_id="b", ai_status="SUPPORTED", reviewer_status="CONTRADICTED",
+           override_reason=MODEL_MISREAD)
+    decide(store, OVERRIDE, claim_id="c", ai_status="UNSUPPORTED", reviewer_status="SUPPORTED",
+           override_reason=RULE_NOT_APPLICABLE, rule_ref="NHXD_001", comment="ngân hàng này không đòi năm gốc")
+    routes = {g["claim_id"]: g["label_route"] for g in store.gold_records()}
+    assert routes == {"a": ROUTE_MODEL, "b": ROUTE_MODEL, "c": ROUTE_RULE}
+    assert [g["claim_id"] for g in store.model_labels()] == ["a", "b"]
+
+
+def test_legacy_override_without_reason_is_used_for_neither(store, tmp_path):
+    import json
+    legacy = {"decision_id": "x", "run_id": "run-1", "claim_id": "old", "reviewer": "quynh",
+              "decided_at": "2026-10-01T00:00:00+00:00", "decision": OVERRIDE,
+              "previous_state": AI_SUGGESTED, "new_state": FINALIZED, "ai_status": "SUPPORTED",
+              "reviewer_status": "UNSUPPORTED"}
+    store.path.parent.mkdir(parents=True, exist_ok=True)
+    store.path.write_text(json.dumps(legacy) + chr(10), encoding="utf-8")
+    [gold] = store.gold_records()
+    assert gold["label_route"] == ROUTE_UNKNOWN
+    assert store.model_labels() == [] and store.rule_feedback() == []
+
+
+def test_rule_feedback_groups_cases_by_rule(store):
+    for claim_id in ("c1", "c2"):
+        decide(store, OVERRIDE, claim_id=claim_id, ai_status="UNSUPPORTED", reviewer_status="SUPPORTED",
+               override_reason=RULE_NOT_APPLICABLE, rule_ref="NHXD_001")
+    decide(store, OVERRIDE, claim_id="c3", ai_status="UNSUPPORTED", reviewer_status="SUPPORTED",
+           override_reason=RULE_WRONG, rule_ref="VN_GREEN_004")
+    groups = store.rule_feedback()
+    assert [(g["rule_ref"], g["override_reason"], len(g["cases"])) for g in groups] == [
+        ("NHXD_001", RULE_NOT_APPLICABLE, 2), ("VN_GREEN_004", RULE_WRONG, 1)]
+
+
+def test_rule_ref_is_dropped_for_model_reasons(store):
+    rec = decide(store, OVERRIDE, ai_status="SUPPORTED", reviewer_status="CONTRADICTED",
+                 override_reason=MODEL_MISREAD, rule_ref="NHXD_001")
+    assert rec.rule_ref == ""
+
+
+def test_label_keeps_the_rules_it_was_given_against(store):
+    context = {"rule_pack_version": "vn_green_v0.1", "org_packs": [{"org_id": "demo", "pack_version": "0.1.0"}]}
+    decide(store, CONFIRM, ai_status="SUPPORTED", rule_context=context)
+    assert store.gold_records()[0]["rule_context"] == context
+
+
+def test_stats_split_the_override_rate_by_cause(store):
+    decide(store, CONFIRM, claim_id="a", ai_status="SUPPORTED")
+    decide(store, CONFIRM, claim_id="b", ai_status="SUPPORTED")
+    decide(store, OVERRIDE, claim_id="c", ai_status="SUPPORTED", reviewer_status="CONTRADICTED",
+           override_reason=MODEL_MISREAD)
+    decide(store, OVERRIDE, claim_id="d", ai_status="UNSUPPORTED", reviewer_status="SUPPORTED",
+           override_reason=RULE_NOT_APPLICABLE, rule_ref="NHXD_001")
+    stats = store.stats()
+    assert stats["ai_override_rate"] == 0.5
+    assert stats["model_error_rate"] == 0.25
+    assert stats["rule_mismatch_rate"] == 0.25
+    assert stats["gold_by_route"] == {ROUTE_MODEL: 3, ROUTE_RULE: 1}

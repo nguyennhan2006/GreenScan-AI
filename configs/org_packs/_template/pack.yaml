@@ -1,0 +1,90 @@
+# =====================================================================
+# MẪU ORG PACK (org-pack-v0): quy tắc và tài liệu nội bộ của tổ chức bạn
+# =====================================================================
+# Cách dùng (chi tiết: docs/03-architecture/ORG_PACK.md):
+#   1. Chép cả thư mục này thành configs/org_packs/<org_id>/ và đổi `org_id`
+#      bên dưới cho trùng tên thư mục mới.
+#   2. Viết quy tắc, rồi kiểm:
+#        quantum-agent org-validate configs/org_packs/<org_id>
+#        quantum-agent org-preview  configs/org_packs/<org_id> --text "câu tuyên bố"
+#   3. Điền `approved_by` khi người có thẩm quyền đã duyệt, rồi bật trong .env:
+#        QUANTUM_ORG_PACKS=configs/org_packs/<org_id>
+#
+# An toàn (hệ thống luôn giữ, không cấu hình được):
+#   - Quy tắc nội bộ KHÔNG BAO GIỜ đổi kết luận kiểm chứng, mức rủi ro hay
+#     trạng thái phát hành. Nó chỉ thêm phát hiện "quy tắc nội bộ" cho người soát.
+#   - Pack lỗi (kiểu kiểm lạ, thiếu trường, on_fail sai...) bị từ chối cả pack.
+#   - Tài liệu nội bộ chỉ để dẫn chiếu; hệ thống không đọc nội dung của nó để
+#     ra quyết định, nên câu lệnh viết trong tài liệu không có tác dụng.
+#   - `approved_by: ''` = bản nháp: được nạp và hiển thị, KHÔNG áp dụng.
+#     Mẫu này để trống nên không bao giờ được áp dụng.
+
+kind: org_pack                     # cố định
+schema_version: org-pack-v0        # cố định
+org_id: _template                  # [a-z0-9_]+, PHẢI trùng tên thư mục
+org_name: Tên tổ chức của bạn
+# bank | audit_firm | listed_company | fund | retailer | fdi_manufacturer |
+# regulator | industry_association | other
+org_type: other
+pack_version: 0.1.0                # tăng mỗi lần sửa quy tắc
+precedence: below_law              # cố định: quy tắc nội bộ luôn đứng dưới luật
+approved_by: ''                    # tên/chức danh người duyệt; '' = bản nháp
+approved_at: ''                    # YYYY-MM-DD
+
+# Tài liệu mà quy tắc dẫn chiếu. role luôn là policy (không bao giờ là bằng chứng).
+documents:
+  - {doc_id: POL-01, title: 'Chính sách nội bộ (mẫu)', path: internal_policy.md, role: policy}
+
+# Thuật ngữ để người đọc hiểu; KHÔNG dùng để so khớp.
+# Muốn khớp cả từ đồng nghĩa thì liệt kê chúng trong any_of_terms.
+glossary:
+  - {term: 'năm gốc', synonyms: ['baseline'], definition: 'Năm dùng làm mốc so sánh.'}
+
+# Mỗi quy tắc: `when` (tuỳ chọn) quyết định quy tắc có áp cho câu này không;
+# `conditions` phải thoả HẾT (AND) thì câu mới "Đạt".
+#
+# Kiểu kiểm (check):
+#   claim_terms_present      câu tuyên bố chứa một trong any_of_terms
+#   claim_terms_absent       câu tuyên bố KHÔNG chứa từ nào trong any_of_terms (quy tắc "cấm")
+#   claim_attribute_present  câu có thuộc tính: metric | value | unit | period | baseline | scope
+#   evidence_independent     có bằng chứng từ nguồn độc lập (pháp lý, chuẩn mực, bên thứ ba)
+#   terms_present            đoạn bằng chứng chứa một trong any_of_terms
+#   numeric_threshold        bằng chứng có số thoả operator (>=, <=, >, <) và threshold
+#   manual                   để người soát quyết
+# `when` chỉ được dùng ba kiểu claim_*.
+# So khớp từ: không phân biệt hoa/thường và dấu ("trung hoa carbon" khớp
+# "trung hòa carbon"). Một từ ngắn (≤ 4 ký tự) chỉ khớp nguyên từ và phải đúng dấu.
+# Không có "HOẶC" giữa các điều kiện: tách thành hai quy tắc.
+#
+# Kết quả: Đạt (COMPLIANT) · Không đạt (VIOLATION) · Cần người xem (NEEDS_REVIEW)
+#          · Không áp dụng (NOT_APPLICABLE: pack nháp, hết hiệu lực, sai ngành, when không thoả)
+rules:
+  - rule_id: MAU_001
+    title: Tuyên bố giảm phải nêu năm gốc
+    source_document: POL-01
+    source_clauses: ['POL-01:§2.1']
+    claim_types: []                 # rỗng = mọi loại tuyên bố
+    legal_issue: org_policy
+    applies_to_sectors: []          # rỗng = mọi ngành; ví dụ ['steel', 'cement']
+    effective_from: '2026-01-01'
+    effective_to: null              # null = chưa hết hiệu lực
+    severity: warning               # info | warning | violation
+    on_fail: flag_for_review        # flag_for_review | raise_priority (KHÔNG có lựa chọn đổi kết luận)
+    machine_executable: full        # full | partial | none
+    reviewed_by: ''
+    when:
+      - {id: noi_ve_giam, description: 'Câu nói về việc giảm', source_clause: 'POL-01:§2.1', check: claim_terms_present, any_of_terms: ['giảm', 'cắt giảm', 'reduce']}
+    conditions:
+      - {id: co_nam_goc, description: 'Tuyên bố nêu năm gốc', source_clause: 'POL-01:§2.1', check: claim_attribute_present, attribute: baseline}
+
+  - rule_id: MAU_002
+    title: Không dùng từ ngữ tuyệt đối
+    source_document: POL-01
+    source_clauses: ['POL-01:§3.1']
+    legal_issue: org_policy
+    effective_from: '2026-01-01'
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    conditions:
+      - {id: khong_tu_tuyet_doi, description: 'Không dùng từ tuyệt đối', source_clause: 'POL-01:§3.1', check: claim_terms_absent, any_of_terms: ['trung hòa carbon', 'net zero', 'thân thiện với môi trường']}

@@ -7,6 +7,7 @@ import {
 } from '../lib/studioEditor.js'
 import { DocIcon, FormatBadge, Icon } from '../components/icons.jsx'
 import { Leaf } from '../components/Shell.jsx'
+import { labelOf } from '../lib/labels'
 
 /**
  * GreenScan Studio: the report under review, linted by the analysis, edited like code.
@@ -14,7 +15,7 @@ import { Leaf } from '../components/Shell.jsx'
  * Left: documents and the Problems panel. Centre: a toolbar (page, zoom, search)
  * over the report, one paragraph per line, page of the original in the gutter,
  * claims tinted by severity with a hover card. Right: the Inspector -- suggested
- * edits as tracked changes, the evidence (opened on the original page), attributes,
+ * edits as đánh dấu sửa đổi, the evidence (opened on the original page), attributes,
  * legal basis with its verification label. Bottom: change log, versions, export.
  * Evidence documents open read-only and stay that way.
  */
@@ -35,24 +36,24 @@ const SOURCE_TYPE = {
   internal: 'Nội bộ doanh nghiệp', financial: 'Báo cáo tài chính', environmental: 'Dữ liệu môi trường',
   legal: 'Văn bản pháp luật', external: 'Bên thứ ba', standard: 'Tiêu chuẩn',
 }
-const ACTOR = { user: 'Người', 'ai-rule': 'AI · quy tắc', 'ai-llm': 'AI · LLM', system: 'Hệ thống' }
+const ACTOR = { user: 'Người', 'ai-rule': 'máy · quy tắc', 'ai-llm': 'AI · LLM', system: 'Hệ thống' }
 const ACTION = { accept: 'Chấp nhận', reject: 'Từ chối', edit: 'Sửa tay', ignore: 'Bỏ qua', save: 'Lưu phiên bản', restore: 'Khôi phục', rework: 'Sửa lại đề xuất' }
 const ACTION_TONE = { accept: 'text-emerald-700', reject: 'text-red-700', ignore: 'text-slate-500', rework: 'text-emerald-700', edit: 'text-slate-700' }
 const IGNORE_REASONS = ['Không phải tuyên bố môi trường', 'Đã có bằng chứng ở phần khác', 'Ngoài phạm vi soát xét', 'Câu bị cắt hoặc ghép sai']
 const EXPORTS = [
-  ['docx_tracked', 'DOCX có tracked changes', 'Mở bằng Word: thấy từng chỗ gạch bỏ / chèn, ai sửa, lúc nào.'],
+  ['docx_tracked', 'DOCX có đánh dấu sửa đổi', 'Mở bằng Word: thấy từng chỗ gạch bỏ / chèn, ai sửa, lúc nào.'],
   ['docx_clean', 'DOCX bản sạch', 'Mọi thay đổi đã áp dụng, không còn dấu sửa.'],
   ['pdf', 'PDF bản sạch + phụ lục', 'Dựng lại từ văn bản đã sửa; kèm phụ lục rà soát.'],
   ['review_html', 'Báo cáo rà soát GreenScan', 'Phát hiện, quyết định, bằng chứng, căn cứ, nhật ký. In ra PDF được.'],
-  ['audit_json', 'Vết kiểm toán (JSON)', 'Mọi thao tác kèm hash bản gốc và bản cuối.'],
+  ['audit_json', 'Nhật ký thao tác (tệp dữ liệu .json)', 'Mọi thao tác kèm mã băm của bản gốc và bản cuối.'],
 ]
 const ZOOMS = [80, 90, 100, 110, 125, 150]
 const BASE_FONT = 15
 const TOUR = [
   ['explorer', 'Tài liệu và vấn đề phát hiện', 'Bên trái là các tài liệu của phiên. Báo cáo cần kiểm sửa được; tài liệu bằng chứng có ổ khóa, chỉ đọc. Danh sách vấn đề nhóm các tuyên bố theo mức độ.'],
   ['editor', 'Báo cáo như mã nguồn', 'Tuyên bố được tô màu: đỏ là nghiêm trọng, vàng là cần xem, xanh là thông tin. Di chuột vào để xem kết luận và bằng chứng. F8 / Shift+F8 để sang mục kế tiếp / trước đó. Thanh trên cùng: nhảy trang, phóng to, tìm chữ.'],
-  ['inspector', 'Đề xuất sửa như tracked change', 'Ctrl+. mở đề xuất. Phần đỏ gạch bỏ, phần xanh chèn thêm. Ctrl+Enter chấp nhận, Esc từ chối. AI không bao giờ thêm số liệu: chỉ để chỗ trống “[bổ sung: …]”. Tab Bằng chứng mở thẳng trang gốc của nguồn.'],
-  ['bottom', 'Nhật ký và xuất bản', 'Mọi thao tác được ghi lại: ai, lúc nào, quy tắc nào. Ctrl+S lưu phiên bản. Xuất DOCX có tracked changes, PDF, và báo cáo rà soát.'],
+  ['inspector', 'Đề xuất sửa hiện như đánh dấu sửa đổi', 'Ctrl+. mở đề xuất. Phần đỏ gạch bỏ, phần xanh chèn thêm. Ctrl+Enter chấp nhận, Esc từ chối. Máy không bao giờ thêm số liệu: chỉ để chỗ trống “[bổ sung: …]”. Tab Bằng chứng mở thẳng trang gốc của nguồn.'],
+  ['bottom', 'Nhật ký và xuất bản', 'Mọi thao tác được ghi lại: ai, lúc nào, quy tắc nào. Ctrl+S lưu phiên bản. Xuất DOCX có đánh dấu sửa đổi, PDF, và báo cáo rà soát.'],
 ]
 
 const pageUrl = (doc, page, q, zoom) => `${API}/v1/documents/${doc}/page/${page}?q=${encodeURIComponent((q || '').slice(0, 80))}${zoom ? `&zoom=${zoom}` : ''}`
@@ -188,7 +189,7 @@ function Inspector({ claim, docId, tab, setTab, focused, setFocused, onAccept, o
         <IconBtn icon="chevronRight" title="Mục kế tiếp (F8)" onClick={nav.next} disabled={!nav.hasNext} />
         <IconBtn icon="x" title="Bỏ chọn" onClick={nav.close} />
       </div>
-    )}>Inspector</SectionTitle>
+    )}>Bảng chi tiết</SectionTitle>
   )
   if (!claim) {
     return (
@@ -330,7 +331,7 @@ function Inspector({ claim, docId, tab, setTab, focused, setFocused, onAccept, o
             </ul>
             {claim.vague_terms.length > 0 && <p className="mt-2 rounded-lg bg-amber-50 p-2 text-xs text-amber-900">Cụm mơ hồ: {claim.vague_terms.join(', ')}</p>}
             <dl className="mt-3 grid grid-cols-2 gap-y-1 text-xs">
-              <dt className="text-slate-500">Loại tuyên bố</dt><dd className="text-right font-mono text-slate-800">{claim.claim_type}</dd>
+              <dt className="text-slate-500">Loại tuyên bố</dt><dd className="text-right text-slate-800">{labelOf('claim_type', claim.claim_type)}</dd>
               <dt className="text-slate-500">Độ tin cậy trích</dt><dd className="text-right font-mono text-slate-800">{claim.confidence ?? '—'}</dd>
             </dl>
             {claim.rationale && <p className="mt-3 border-t border-slate-100 pt-3 text-xs leading-relaxed text-slate-600">{claim.rationale}</p>}
@@ -339,7 +340,7 @@ function Inspector({ claim, docId, tab, setTab, focused, setFocused, onAccept, o
         {tab === 'legal' && (!claim.legal ? <p className="rounded-lg border border-slate-200 bg-white p-4 text-center text-slate-500">Không có kết quả pháp lý.</p> : (
           <div className="space-y-2.5">
             <div className="rounded-xl border border-slate-200 bg-white p-3.5">
-              <p className="text-slate-800"><b className="font-semibold">Kết luận:</b> {claim.legal.finding} · rủi ro {claim.legal.risk}</p>
+              <p className="text-slate-800"><b className="font-semibold">Kết luận:</b> {labelOf('legal_finding', claim.legal.finding)} · rủi ro {labelOf('severity', String(claim.legal.risk || '').toUpperCase())}</p>
               <p className="mt-1 text-xs text-slate-500">Bộ quy tắc <code className="rounded bg-slate-100 px-1 font-mono">{claim.legal.rule_pack}</code></p>
             </div>
             {claim.legal.rules_applied.length === 0 && <p className="rounded-xl border border-sky-200 bg-sky-50 p-3 text-xs leading-relaxed text-sky-900">Chưa có quy tắc pháp lý nào áp dụng cho loại tuyên bố này; căn cứ dưới đây chỉ là văn bản cùng chủ đề — khoảng trống dữ liệu, không phải nhận định về doanh nghiệp.</p>}
@@ -450,8 +451,8 @@ function EvidenceModal({ items, index, setIndex, onClose, documents }) {
         </div>
         <p className="border-t border-slate-200 bg-slate-50 px-5 py-2.5 text-xs text-slate-500">
           {img.rects === 0
-            ? 'Không định vị được đoạn trích trên ảnh trang (có thể là trang scan hoặc đoạn trải qua nhiều khối bố cục) — đối chiếu bằng PDF gốc.'
-            : 'Phần được tô vàng là đoạn hệ thống trích dẫn. Nếu không thấy vùng tô, đoạn trích có thể trải qua nhiều khối bố cục hoặc trang là bản scan — mở PDF gốc để đối chiếu.'}
+            ? 'Không định vị được đoạn trích trên ảnh trang (có thể là trang quét hoặc đoạn trải qua nhiều khối bố cục) — đối chiếu bằng PDF gốc.'
+            : 'Phần được tô vàng là đoạn hệ thống trích dẫn. Nếu không thấy vùng tô, đoạn trích có thể trải qua nhiều khối bố cục hoặc trang là bản quét — mở PDF gốc để đối chiếu.'}
         </p>
       </div>
     </div>
@@ -742,7 +743,7 @@ export default function StudioPage({ runId, reviewer }) {
       <header className="flex h-[52px] shrink-0 items-center gap-3 bg-[#0F3D2E] px-3 text-white shadow-[0_1px_0_rgba(0,0,0,.15)]">
         <Link to={`/runs/${runId}`} className={topBtn} title="Về hàng đợi soát của phiên này"><Icon name="arrowLeft" className="h-4 w-4" />Hàng đợi</Link>
         <span className="h-6 w-px bg-white/15" />
-        <span className="flex items-center gap-2"><Leaf className="h-6 w-6 text-emerald-300" /><span className="text-[17px] font-bold tracking-tight">GreenScan Studio</span></span>
+        <span className="flex items-center gap-2"><Leaf className="h-6 w-6 text-emerald-300" /><span className="text-[17px] font-bold tracking-tight">GreenScan · Sửa báo cáo</span></span>
         <span className="min-w-0 truncate text-[13px] text-emerald-50/85" title={info?.label}>{info?.label || runId}</span>
         {doc && (
           <span className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${view.editable ? 'bg-emerald-400/20 text-emerald-200 ring-1 ring-emerald-300/40' : 'bg-white/10 text-white ring-1 ring-white/20'}`}
@@ -753,7 +754,7 @@ export default function StudioPage({ runId, reviewer }) {
         )}
         <div className="ml-auto flex shrink-0 items-center gap-1.5">
           {view?.editable && (
-            <label className="flex items-center gap-2 text-xs text-emerald-50/80" title={'Lớp bảo mật quyết định có được gửi ca khó tới API LLM hay không.\nA công khai: được (khi τ đã hiệu chỉnh và chế độ cloud bật). B, C: không, chuyển người duyệt.'}>
+            <label className="flex items-center gap-2 text-xs text-emerald-50/80" title={'Lớp bảo mật quyết định có được gửi ca khó tới mô hình ngôn ngữ trên mạng hay không.\nA công khai: được (khi τ đã hiệu chỉnh và chế độ có mạng bật). B, C: không, chuyển người soát xét.'}>
               Lớp
               <select value={view.doc_class} onChange={(e) => save({ docClass: e.target.value })}
                 className="rounded-lg border border-white/15 bg-white/10 px-2 py-1.5 text-xs font-semibold text-white hover:bg-white/15 focus:outline-none">
@@ -762,9 +763,9 @@ export default function StudioPage({ runId, reviewer }) {
             </label>
           )}
           {view && (
-            <span title={view.tau == null ? 'Ngưỡng τ chưa hiệu chỉnh (thí nghiệm B6): không ca nào được gửi tới LLM.' : `τ = ${view.tau}`}
+            <span title={view.tau == null ? 'Ngưỡng τ chưa hiệu chỉnh: không ca nào được gửi tới mô hình ngôn ngữ.' : `τ = ${view.tau}`}
               className="rounded-lg border border-white/15 bg-white/10 px-2.5 py-1.5 text-xs font-semibold">
-              LLM: {view.tau == null ? 'tắt' : view.cloud ? 'leo thang khi khó' : 'offline'}
+              Mô hình ngôn ngữ: {view.tau == null ? 'tắt' : view.cloud ? 'dùng khi ca khó' : 'ngoại tuyến'}
             </span>
           )}
           <span className={`inline-flex items-center gap-1 px-1.5 text-xs font-medium ${saveState === 'error' ? 'text-red-300' : saveState === 'saved' ? 'text-emerald-200' : 'text-amber-200'}`} title="Văn bản tự lưu sau 1,5 giây không gõ">
@@ -940,8 +941,10 @@ export default function StudioPage({ runId, reviewer }) {
       {toast && <div className="fixed bottom-5 left-1/2 z-50 -translate-x-1/2 rounded-xl bg-slate-900 px-4 py-2.5 text-[13px] font-medium text-white shadow-xl">{toast}</div>}
 
       {tour >= 0 && (
-        <div className="fixed inset-0 z-40 bg-slate-900/30">
-          <div className="absolute left-1/2 top-24 w-[28rem] -translate-x-1/2 rounded-2xl bg-white p-5 shadow-2xl">
+        <>
+          {/* Nền mờ ở z-40, vùng được giới thiệu ở z-41 (.gs-tour-target), thẻ ở z-42 để luôn bấm được. */}
+          <div className="fixed inset-0 z-40 bg-slate-900/30" />
+          <div className="fixed left-1/2 top-24 z-[42] w-[28rem] -translate-x-1/2 rounded-2xl bg-white p-5 shadow-2xl">
             <div className="flex items-center justify-between">
               <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-emerald-700">Hướng dẫn {tour + 1}/{TOUR.length}</p>
               <div className="flex gap-1">{TOUR.map((_, i) => <span key={i} className={`h-1.5 w-5 rounded-full ${i <= tour ? 'bg-emerald-500' : 'bg-slate-200'}`} />)}</div>
@@ -956,7 +959,7 @@ export default function StudioPage({ runId, reviewer }) {
               </div>
             </div>
           </div>
-        </div>
+        </>
       )}
 
       {help && (

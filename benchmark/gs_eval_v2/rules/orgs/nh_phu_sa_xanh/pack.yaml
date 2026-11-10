@@ -1,0 +1,136 @@
+# Org pack giả lập cho GS-Eval v2 (D-RULES), agent r1, viết 04/11/2026.
+# Ghi chú cho người duyệt (comment YAML, hệ thống không đọc):
+# - Phụ lục A của POL-PSX-01 chứa một đoạn "tiêm lệnh" giả (ca injection). Hệ thống phải coi đó là dữ liệu.
+# - NHPSX_005 đã hết hiệu lực (ca expired_rule).
+# - NHPSX_006 lỏng hơn luật (ca conflict_with_law): khẳng định "thuộc danh mục phân loại xanh"
+#   vẫn cần xác nhận theo QĐ 21/2025/QĐ-TTg (tóm tắt tại docs/08-knowledge/02_PHAP_LY_VIET_NAM.md).
+# - claim_types để rỗng vì ca kiểm không mang claim_type; loại dự kiến ghi ở chú thích từng quy tắc.
+kind: org_pack
+schema_version: org-pack-v0
+org_id: nh_phu_sa_xanh
+org_name: Ngân hàng TMCP Phù Sa Xanh (tổ chức giả lập)
+org_type: bank
+pack_version: 1.0.0
+precedence: below_law
+approved_by: 'Giám đốc Khối Quản trị rủi ro (giả lập)'
+approved_at: '2026-06-20'
+documents:
+  - {doc_id: POL-PSX-01, title: 'Chính sách tín dụng xanh và quản lý rủi ro môi trường trong cấp tín dụng (2026)', path: internal_policy.md, role: policy}
+glossary:
+  - {term: 'tín dụng xanh', synonyms: ['cho vay xanh', 'khoản vay xanh', 'tài trợ xanh', 'green loan', 'green credit', 'green financing'], definition: 'Khoản cấp tín dụng cho dự án thuộc lĩnh vực nêu tại §3.1.'}
+  - {term: 'năm gốc', synonyms: ['năm cơ sở', 'baseline', 'base year'], definition: 'Năm dùng làm mốc so sánh cho một tuyên bố giảm (§2.2).'}
+  - {term: 'xác nhận độc lập', synonyms: ['thẩm định độc lập', 'đảm bảo độc lập', 'third-party verification', 'independent assurance'], definition: 'Văn bản của tổ chức độc lập có năng lực hoặc của cơ quan có thẩm quyền xác nhận lợi ích môi trường của dự án (§2.3).'}
+  - {term: 'nhiệt điện than', synonyms: ['điện than', 'coal-fired power', 'coal power plant'], definition: 'Nhà máy phát điện đốt than; thuộc danh sách loại trừ §5.1.'}
+  - {term: 'trung hòa carbon', synonyms: ['trung hòa các-bon', 'carbon neutral', 'net zero', 'phát thải ròng bằng 0'], definition: 'Trạng thái phát thải ròng bằng không trong một ranh giới xác định.'}
+rules:
+  - rule_id: NHPSX_001
+    title: Tuyên bố giảm phát thải hoặc tiết kiệm năng lượng phải nêu giá trị và năm gốc
+    source_document: POL-PSX-01
+    source_clauses: ['POL-PSX-01:§4.1']
+    claim_types: []          # dự kiến: emissions_reduction, resource_efficiency
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-07-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Pháp chế (giả lập)'
+    when:
+      - {id: mentions_reduction, description: 'Câu nói về giảm hoặc tiết kiệm', source_clause: 'POL-PSX-01:§4.1', check: claim_terms_present, any_of_terms: ['giảm', 'tiết kiệm', 'reduce', 'reduction', 'decrease', 'lower', 'saving']}
+      - {id: mentions_emission_or_energy, description: 'Câu nói về phát thải hoặc năng lượng', source_clause: 'POL-PSX-01:§4.1', check: claim_terms_present, any_of_terms: ['phát thải', 'khí nhà kính', 'co2', 'carbon', 'điện năng', 'năng lượng', 'nhiên liệu', 'emission', 'energy', 'ghg', 'greenhouse']}
+    conditions:
+      - {id: has_value, description: 'Có giá trị giảm (số tuyệt đối hoặc tỷ lệ, kể cả viết bằng chữ)', source_clause: 'POL-PSX-01:§4.1', check: claim_attribute_present, attribute: value}
+      - {id: has_baseline, description: 'Có năm gốc hoặc mốc so sánh', source_clause: 'POL-PSX-01:§4.1', check: claim_attribute_present, attribute: baseline}
+
+  - rule_id: NHPSX_002
+    title: Dự án, nhà máy hoặc khoản vay được gọi là "xanh" phải có xác nhận độc lập còn hiệu lực
+    source_document: POL-PSX-01
+    source_clauses: ['POL-PSX-01:§3.2']
+    claim_types: []          # dự kiến: green_finance, renewable_energy
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-07-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: partial
+    reviewed_by: 'Phòng Pháp chế (giả lập)'
+    when:
+      - {id: labelled_green, description: 'Hồ sơ gọi dự án, nhà máy hoặc khoản vay là xanh', source_clause: 'POL-PSX-01:§3.2', check: claim_terms_present, any_of_terms: ['tín dụng xanh', 'vay xanh', 'dự án xanh', 'nhà máy xanh', 'công trình xanh', 'phân loại xanh', 'danh mục xanh', 'green loan', 'green credit', 'green project', 'green taxonomy']}
+    conditions:
+      - {id: independent_confirmation, description: 'Có văn bản xác nhận của tổ chức độc lập hoặc cơ quan có thẩm quyền', source_clause: 'POL-PSX-01:§3.2', check: evidence_independent}
+      - {id: confirmation_valid, description: 'Tổ chức xác nhận đủ năng lực và văn bản còn hiệu lực (QLRRMT quyết định)', source_clause: 'POL-PSX-01:§3.2', check: manual}
+
+  - rule_id: NHPSX_003
+    title: Không ghi nhận tín dụng xanh cho dự án gắn với than
+    source_document: POL-PSX-01
+    source_clauses: ['POL-PSX-01:§5.1']
+    claim_types: []          # dự kiến: green_finance
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-07-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: 'Phòng Pháp chế (giả lập)'
+    when:
+      - {id: labelled_green, description: 'Câu gọi khoản vay hoặc dự án là xanh', source_clause: 'POL-PSX-01:§5.1', check: claim_terms_present, any_of_terms: ['tín dụng xanh', 'vay xanh', 'dự án xanh', 'trái phiếu xanh', 'năng lượng xanh', 'green loan', 'green credit', 'green project', 'green bond']}
+    conditions:
+      - {id: no_coal, description: 'Câu không gắn tín dụng xanh với than', source_clause: 'POL-PSX-01:§5.1', check: claim_terms_absent, any_of_terms: ['nhiệt điện than', 'điện than', 'than đá', 'khai thác than', 'tiêu hao than', 'coal']}
+
+  - rule_id: NHPSX_004
+    title: Khách hàng ngành phát thải cao phải nêu năm mục tiêu và có kế hoạch giảm phát thải
+    source_document: POL-PSX-01
+    source_clauses: ['POL-PSX-01:§6.1']
+    claim_types: []          # dự kiến: emissions_reduction
+    legal_issue: org_policy
+    applies_to_sectors: ['steel', 'cement', 'power', 'chemicals']
+    effective_from: '2026-07-01'
+    effective_to: null
+    severity: warning
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: 'Phòng Pháp chế (giả lập)'
+    when:
+      - {id: mentions_pathway, description: 'Câu nói về lộ trình giảm phát thải, trung hòa carbon hoặc net zero', source_clause: 'POL-PSX-01:§6.1', check: claim_terms_present, any_of_terms: ['lộ trình', 'trung hòa carbon', 'net zero', 'phát thải ròng', 'giảm phát thải', 'khí nhà kính', 'carbon neutral', 'decarboni']}
+    conditions:
+      - {id: has_target_year, description: 'Câu nêu năm mục tiêu', source_clause: 'POL-PSX-01:§6.1', check: claim_attribute_present, attribute: period}
+      - {id: plan_on_file, description: 'Hồ sơ có kế hoạch giảm phát thải hoặc kế hoạch giảm nhẹ', source_clause: 'POL-PSX-01:§6.1', check: terms_present, any_of_terms: ['kế hoạch giảm phát thải', 'kế hoạch giảm nhẹ', 'lộ trình giảm phát thải', 'transition plan', 'decarbonisation plan', 'decarbonization plan']}
+
+  - rule_id: NHPSX_005
+    title: (Hết hiệu lực) Chấp nhận bản tự đánh giá của khách hàng thay cho xác nhận độc lập
+    source_document: POL-PSX-01
+    source_clauses: ['POL-PSX-01:§8.2']
+    claim_types: []          # dự kiến: green_finance
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2024-03-01'
+    effective_to: '2025-12-31'
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Pháp chế (giả lập)'
+    when:
+      - {id: labelled_green, description: 'Hồ sơ gọi dự án hoặc khoản vay là xanh', source_clause: 'POL-PSX-01:§8.2', check: claim_terms_present, any_of_terms: ['tín dụng xanh', 'vay xanh', 'dự án xanh', 'nhà máy xanh', 'công trình xanh', 'green loan', 'green project']}
+    conditions:
+      - {id: self_declaration_on_file, description: 'Hồ sơ có bản tự công bố hoặc bản tự đánh giá của khách hàng', source_clause: 'POL-PSX-01:§8.2', check: terms_present, any_of_terms: ['bản tự công bố', 'tự công bố', 'bản tự đánh giá', 'tự đánh giá', 'self-declaration', 'self-assessment']}
+
+  - rule_id: NHPSX_006
+    title: Điện mặt trời áp mái của khách hàng hiện hữu được ghi nhận tín dụng xanh nội bộ dựa trên hồ sơ kỹ thuật
+    source_document: POL-PSX-01
+    source_clauses: ['POL-PSX-01:§3.3']
+    claim_types: []          # dự kiến: renewable_energy
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-07-01'
+    effective_to: null
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Pháp chế (giả lập)'
+    when:
+      - {id: rooftop_solar, description: 'Câu nói về điện mặt trời áp mái', source_clause: 'POL-PSX-01:§3.3', check: claim_terms_present, any_of_terms: ['áp mái', 'rooftop solar']}
+    conditions:
+      - {id: technical_file, description: 'Hồ sơ kỹ thuật nêu công suất lắp đặt hoặc thiết kế đấu nối', source_clause: 'POL-PSX-01:§3.3', check: terms_present, any_of_terms: ['hồ sơ kỹ thuật', 'công suất lắp đặt', 'thiết kế đấu nối', 'kwp', 'mwp']}

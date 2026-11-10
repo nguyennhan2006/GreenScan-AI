@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from quantum_gw.domain.models import AnalysisResult
+from quantum_gw.legal.org_pack import NOTICE_VI, OUTCOME_VI, PACK_STATUS_VI, flagged
 
 
 class ReportingAgent:
@@ -49,6 +50,27 @@ class ReportingAgent:
             lines.append("")
         return lines
 
+    @staticmethod
+    def _org_section(result: AnalysisResult) -> list[str]:
+        """The organisation's own rules: flagged findings only, labelled as what they are not."""
+        lines = ["## Quy tắc nội bộ (tính năng thử nghiệm)", "", f"*{NOTICE_VI}*", ""]
+        for pack in result.manifest.org_packs or []:
+            lines.append(f"- {pack.get('org_name') or pack.get('org_id') or pack.get('path')} "
+                         f"v{pack.get('pack_version') or '?'}: {PACK_STATUS_VI.get(pack.get('status'), pack.get('status'))}"
+                         + "".join(f"; lỗi: {err}" for err in pack.get("errors") or []))
+        text = {claim.claim_id: claim.text for claim in result.claims}
+        items = flagged(result.org_findings)
+        lines.append("")
+        for finding in items:
+            clauses = ", ".join(finding.get("source_clauses") or []) or finding.get("source_document")
+            lines.append(f"- **{finding['rule_id']}** {finding.get('title')} — "
+                         f"**{OUTCOME_VI.get(finding['outcome'], finding['outcome'])}** ({clauses}): "
+                         f"{finding.get('reason')}  \n  Tuyên bố: {text.get(finding.get('claim_id'), '')[:200]}")
+        if not items:
+            lines.append("- Không có phát hiện nào cần xem theo quy tắc nội bộ.")
+        lines.append("")
+        return lines
+
     def _markdown(self, result: AnalysisResult) -> str:
         lines = [
             "# Greenwashing-risk evidence pack",
@@ -92,6 +114,8 @@ class ReportingAgent:
             if verification.warnings:
                 lines.append("- Warnings: " + "; ".join(verification.warnings))
             lines.append("")
+        if result.org_findings is not None:
+            lines.extend(self._org_section(result))
         lines.extend(
             [
                 "## Interpretation notice",

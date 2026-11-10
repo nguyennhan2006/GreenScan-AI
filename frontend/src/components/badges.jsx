@@ -19,14 +19,6 @@ export const STATUS_LABELS = {
   INSUFFICIENT_EVIDENCE: 'Chưa đủ bằng chứng',
 }
 
-export const STATUS_LABELS_EN = {
-  SUPPORTED: 'Supported',
-  PARTIALLY_SUPPORTED: 'Partially supported',
-  UNSUPPORTED: 'Unsupported',
-  CONTRADICTED: 'Contradicted',
-  INSUFFICIENT_EVIDENCE: 'Insufficient evidence',
-}
-
 export const STATUS_ORDER = [
   'SUPPORTED', 'PARTIALLY_SUPPORTED', 'UNSUPPORTED', 'CONTRADICTED', 'INSUFFICIENT_EVIDENCE',
 ]
@@ -49,7 +41,7 @@ export const PRIORITY = {
 }
 
 export const WORKFLOW = {
-  AI_SUGGESTED: { label: 'AI đề xuất', className: 'bg-slate-100 text-slate-700 border-slate-300' },
+  AI_SUGGESTED: { label: 'Máy gợi ý', className: 'bg-slate-100 text-slate-700 border-slate-300' },
   HUMAN_REVIEWED: { label: 'Đã có người xem', className: 'bg-amber-100 text-amber-800 border-amber-300' },
   FINALIZED: { label: 'Đã chốt', className: 'bg-emerald-100 text-emerald-800 border-emerald-300' },
 }

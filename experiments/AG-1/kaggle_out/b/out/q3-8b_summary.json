@@ -1,0 +1,1 @@
+{"tag": "q3-8b", "repo": "Qwen/Qwen3-8B", "cases": 193, "right": 111, "unparsed_texts": 0, "load_s": 289, "gen_s": 109, "ntok_in": 143391, "ntok_out": 25330}

@@ -1,0 +1,122 @@
+{
+ "q3-4b": {
+  "buckets": {
+   "miss_ev": 39,
+   "ok": 28,
+   "field:c.value_kind": 27,
+   "not_run": 14,
+   "miss_claim": 13,
+   "field:e.period": 6,
+   "field:e.metric": 6,
+   "field:c.metric": 5,
+   "field:c.dim": 4,
+   "field:e.status": 2,
+   "WRONG_C:field:c.value_kind": 2,
+   "field:c.period": 1,
+   "WRONG_S:other": 1
+  },
+  "by_family": {
+   "S0 restate": {
+    "field:c.value_kind": 9,
+    "field:e.period": 3,
+    "miss_claim": 7,
+    "field:e.status": 1,
+    "ok": 10,
+    "miss_ev": 13,
+    "field:c.dim": 1,
+    "field:e.metric": 2,
+    "field:c.metric": 1,
+    "WRONG_C:field:c.value_kind": 2
+   },
+   "S1 rounded": {
+    "field:c.value_kind": 5,
+    "miss_ev": 1,
+    "ok": 3
+   },
+   "C1 value": {
+    "field:c.value_kind": 10,
+    "field:e.period": 3,
+    "miss_claim": 5,
+    "field:c.metric": 2,
+    "field:e.status": 1,
+    "ok": 10,
+    "miss_ev": 13,
+    "field:c.dim": 2,
+    "field:c.period": 1,
+    "field:e.metric": 2
+   },
+   "C2 magnitude": {
+    "ok": 3,
+    "miss_ev": 11,
+    "field:c.value_kind": 3,
+    "field:c.metric": 2,
+    "miss_claim": 1
+   },
+   "C3 direction": {
+    "field:c.dim": 1,
+    "ok": 2,
+    "miss_ev": 1,
+    "field:e.metric": 2
+   },
+   "N4 boundary": {
+    "WRONG_S:other": 1
+   }
+  }
+ },
+ "q3-1.7b": {
+  "buckets": {
+   "miss_claim": 48,
+   "miss_ev": 42,
+   "field:c.scope": 22,
+   "not_run": 14,
+   "ok": 7,
+   "field:c.metric": 5,
+   "field:c.value_kind": 4,
+   "field:e.metric": 4,
+   "WRONG_S:field:c.scope": 1,
+   "WRONG_S:field:c.value_kind": 1
+  },
+  "by_family": {
+   "S0 restate": {
+    "miss_ev": 14,
+    "field:c.value_kind": 2,
+    "miss_claim": 20,
+    "field:c.scope": 6,
+    "field:e.metric": 2,
+    "field:c.metric": 2,
+    "ok": 3
+   },
+   "S1 rounded": {
+    "miss_ev": 4,
+    "field:c.scope": 2,
+    "ok": 1,
+    "miss_claim": 2
+   },
+   "C1 value": {
+    "miss_ev": 14,
+    "field:c.value_kind": 2,
+    "miss_claim": 20,
+    "field:c.scope": 7,
+    "field:e.metric": 2,
+    "field:c.metric": 2,
+    "ok": 2
+   },
+   "C2 magnitude": {
+    "miss_ev": 9,
+    "miss_claim": 4,
+    "field:c.scope": 5,
+    "field:c.metric": 1,
+    "ok": 1
+   },
+   "C3 direction": {
+    "miss_ev": 1,
+    "field:c.scope": 2,
+    "miss_claim": 2,
+    "WRONG_S:field:c.value_kind": 1
+   },
+   "N4 boundary": {
+    "WRONG_S:field:c.scope": 1
+   }
+  }
+ }
+}

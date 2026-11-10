@@ -6,6 +6,8 @@ import EvidencePanel from '../components/EvidencePanel.jsx'
 import SourceViewer from '../components/SourceViewer.jsx'
 import DecisionBar from '../components/DecisionBar.jsx'
 import { LegalPanel, NumericCheckCard, RiskBreakdown } from '../components/ClaimPanels.jsx'
+import { OrgFindings } from '../components/OrgPackPanel.jsx'
+import { labelOf, vnDecimal } from '../lib/labels'
 
 /**
  * One claim, in audit order (mockup #6 + spec S3): verbatim → 5 attributes →
@@ -20,6 +22,7 @@ const TABS = [
   ['evidence', 'Bằng chứng'],
   ['numeric', 'Kiểm tra số'],
   ['legal', 'Pháp lý'],
+  ['org', 'Quy tắc nội bộ'],
   ['risk', 'Rủi ro & việc cần làm'],
   ['review', 'Xét duyệt'],
 ]
@@ -55,7 +58,7 @@ function highlightVague(text, terms) {
     }
     if (!best) break
     parts.push(rest.slice(0, best.idx))
-    parts.push(<u key={parts.length} className="decoration-dotted decoration-amber-600 underline-offset-4" title="Từ ngữ mơ hồ/quảng bá theo taxonomy">{rest.slice(best.idx, best.idx + best.len)}</u>)
+    parts.push(<u key={parts.length} className="decoration-dotted decoration-amber-600 underline-offset-4" title="Từ ngữ mơ hồ hoặc quảng bá (theo danh mục phân loại)">{rest.slice(best.idx, best.idx + best.len)}</u>)
     rest = rest.slice(best.idx + best.len)
   }
   parts.push(rest)
@@ -63,7 +66,7 @@ function highlightVague(text, terms) {
 }
 
 export default function ClaimDetailPage({
-  runId, rows, row, index, legal, gates, suggestion,
+  runId, rows, row, index, legal, gates, suggestion, orgFindings,
   reviewStates = {}, reviewHistory = {}, reviewer, onReviewerChange, onDecide, reviewBusy, onRecheck, loading, initialTab,
   order = null,
 }) {
@@ -116,10 +119,11 @@ export default function ClaimDetailPage({
           <div className="flex flex-wrap items-center gap-2">
             <StatusBadge status={row.status} size="md" />
             <WorkflowPill state={state} />
-            <Chip>{claim.claim_type}</Chip>
-            <Chip>{claim.language}</Chip>
+            <Chip>{labelOf('claim_type', claim.claim_type)}</Chip>
+            <Chip>{labelOf('language', claim.language)}</Chip>
             {claim.is_future_commitment && <Chip tone="violet">cam kết tương lai</Chip>}
             {row.flagged && <Chip tone="red">có dấu hiệu tiêm lệnh trong bằng chứng</Chip>}
+            {row.suspect && <Chip tone="amber" className="cursor-help"><span title={`Máy gợi ý: ${labelOf('quality_flag', row.suspect)}. Câu vẫn giữ kết luận kiểm chứng nhưng không vào hàng đợi và không chấm điểm rủi ro; người soát xem trang gốc để quyết định.`}>có thể không phải tuyên bố</span></Chip>}
             <span className="ml-auto"><PriorityBadge severity={row.severity} /></span>
           </div>
           <blockquote className="mt-3 border-l-2 border-emerald-700 pl-4 text-xl leading-relaxed text-slate-900">
@@ -164,19 +168,20 @@ export default function ClaimDetailPage({
           </section>
           <section className="rounded-xl border border-slate-200 bg-white p-4">
             <h3 className="text-sm font-semibold text-slate-900">Giá trị trích xuất</h3>
-            <p className="text-[11px] text-slate-500">Heuristic theo taxonomy — nhãn “AI đề xuất” khi có LLM chuẩn hoá.</p>
+            <p className="text-[11px] text-slate-500">Máy đọc theo danh mục phân loại; khi bật mô hình ngôn ngữ, giá trị được chuẩn hoá thêm.</p>
             <dl className="mt-2 space-y-1 text-xs">
               {Object.entries(ATTR_VALUE).map(([k, l]) => {
                 const v = claim[k]
-                const shown = Array.isArray(v) ? (v.length ? v.join(', ') : null) : v
+                const kind = k === 'units' ? 'unit' : k === 'scope' ? 'scope' : k === 'direction' ? 'direction' : k === 'metric' ? 'metric' : null
+                const shown = Array.isArray(v) ? (v.length ? (kind ? labelOf(kind, v) : v.join(', ')) : null) : (kind ? labelOf(kind, v) : v)
                 return (
                   <div key={k} className="flex justify-between gap-3">
                     <dt className="text-slate-500">{l}</dt>
-                    <dd className={`text-right font-mono ${shown == null ? 'text-red-700' : 'text-slate-900'}`}>{shown == null ? 'không nêu' : String(shown)}</dd>
+                    <dd className={`text-right ${shown == null ? 'text-red-700' : 'text-slate-900'}`}>{shown == null ? 'không nêu' : String(shown)}</dd>
                   </div>
                 )
               })}
-              <div className="flex justify-between gap-3"><dt className="text-slate-500">Độ tin cậy trích xuất</dt><dd className="font-mono">{claim.confidence?.toFixed(2)}</dd></div>
+              <div className="flex justify-between gap-3"><dt className="text-slate-500">Độ tin cậy trích xuất</dt><dd className="font-mono">{vnDecimal(claim.confidence)}</dd></div>
             </dl>
           </section>
         </div>
@@ -196,6 +201,11 @@ export default function ClaimDetailPage({
           <LegalPanel legal={legal} gate={gateG7} />
         </Section>
 
+        {/* E2. Internal rules (org packs): beside the verdict, never on it */}
+        <Section id="sec-org" title="Quy tắc nội bộ" meta={orgFindings ? `${orgFindings.filter((f) => f.outcome !== 'NOT_APPLICABLE').length} quy tắc áp dụng` : 'chưa bật'}>
+          <OrgFindings findings={orgFindings} />
+        </Section>
+
         {/* F+G. Risk & to-do */}
         <div id="sec-risk" className="grid scroll-mt-24 gap-4 lg:grid-cols-2">
           <Section title="Phân rã rủi ro" meta="gợi ý ưu tiên xem xét">
@@ -208,7 +218,6 @@ export default function ClaimDetailPage({
                   <p className="font-semibold text-slate-900">☐ {it.issue}</p>
                   <p className="mt-0.5 text-slate-700">{it.recommendation}</p>
                   {it.example_fix && <p className="mt-1 rounded bg-emerald-50 px-2 py-1 font-mono text-[11px] text-emerald-900">{it.example_fix}</p>}
-                  <p className="mt-1 font-mono text-[10px] text-slate-400">{it.code}</p>
                 </li>
               ))}
             </ul>
@@ -232,6 +241,11 @@ export default function ClaimDetailPage({
             onReviewerChange={onReviewerChange}
             onDecide={(d) => onDecide(row, d)}
             busy={reviewBusy}
+            ruleOptions={[
+              ...(legal?.rules_applied || []).map((id) => ({ id, label: `${id} · quy tắc pháp lý` })),
+              ...(orgFindings || []).filter((f) => f.outcome !== 'NOT_APPLICABLE')
+                .map((f) => ({ id: f.rule_id, label: `${f.rule_id} · ${f.title || 'quy tắc nội bộ'}` })),
+            ]}
           />
         </div>
       </div>

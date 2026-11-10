@@ -1,0 +1,176 @@
+% ===================================================================== CHƯƠNG 1
+\chapter{Mở đầu}\label{ch:mo-dau}
+
+Chương này trả lời ba câu hỏi. Vì sao việc kiểm chứng tuyên bố môi trường trong báo cáo của doanh nghiệp niêm yết là một bài toán thực tiễn đáng giải? Vì sao báo cáo đặt lại câu hỏi từ “trí tuệ nhân tạo có phát hiện được tẩy xanh không” thành “tuyên bố này có bằng chứng không, và còn thiếu gì”? Và báo cáo xử lý những gì, không xử lý những gì, theo những câu hỏi nào? Sau chương này, người đọc biết đề tài nằm ở đâu và các chương sau phải chứng minh điều gì.
+
+\section{Bối cảnh}
+
+\subsection{Nhu cầu bằng chứng trong công bố môi trường ở Việt Nam}
+
+Thông tin môi trường của doanh nghiệp niêm yết không còn là phần trang trí của báo cáo thường niên. Thông tư 96/2020/TT-BTC (Phụ lục IV, mục 6) yêu cầu công ty đại chúng công bố các chỉ tiêu môi trường như phát thải khí nhà kính trực tiếp và gián tiếp, tiêu thụ năng lượng, sử dụng nước, số lần và số tiền bị xử phạt về môi trường. Quyết định 13/2024/QĐ-TTg đưa 2.166 cơ sở vào danh mục phải kiểm kê khí nhà kính hai năm một lần theo Nghị định 06/2022/NĐ-CP, đã được sửa đổi bởi Nghị định 119/2025/NĐ-CP; các nhà máy thép, xi măng và nhiệt điện còn phải được tổ chức độc lập thẩm định từ kỳ báo cáo năm 2026.
+
+Dòng vốn xanh làm nhu cầu này cấp bách hơn. Ngân hàng phải quản lý rủi ro môi trường khi cấp tín dụng theo Thông tư 17/2022/TT-NHNN. Trái phiếu xanh có căn cứ tại Điều 150 Luật Bảo vệ môi trường 2020. Danh mục phân loại xanh theo Quyết định 21/2025/QĐ-TTg đòi hỏi xác nhận độc lập cho dự án. Theo số liệu Ngân hàng Nhà nước công bố tháng 5/2025, dư nợ tín dụng xanh tại 31/3/2025 vào khoảng 704 nghìn tỷ đồng, khoảng 4,3\% tổng dư nợ. Mọi quyết định cấp vốn đó dựa trên một tiền đề: thông tin môi trường doanh nghiệp công bố đủ tin cậy để người khác ra quyết định.
+
+\subsection{Thực trạng công bố}
+
+Tiền đề trên chưa vững. Hąbek và Bùi Thị Ngọc Hân \cite{habek2025} khảo sát 673 công ty niêm yết trên HOSE và HNX giai đoạn 2015–2024. Đến năm 2024 có 107 công ty trên HOSE (28,38\%) phát hành báo cáo phát triển bền vững. Tỷ lệ doanh nghiệp chỉ dùng thông tin định tính giảm từ 94,4\% (2015) xuống 72,5\% (2024) nhưng vẫn chiếm đa số, và việc đảm bảo của bên thứ ba còn rất hạn chế.
+
+Từ đó rút ra ba nhận xét. Thứ nhất, phần lớn thông tin môi trường được viết bằng chữ, không có con số để đối chiếu. Thứ hai, khi có số liệu thì hiếm khi có bên thứ ba bảo đảm. Thứ ba, các khảo sát hiện có đo \emph{mức độ công bố}, tức doanh nghiệp có nói hay không. Trong phạm vi tài liệu tác giả đã rà, chưa có nghiên cứu Việt Nam nào đo \emph{mức độ khớp} giữa từng lời tuyên bố và bằng chứng đi kèm. Đó là khoảng trống mà báo cáo này nhắm tới.
+
+\subsection{Khoảng trống pháp lý}
+
+Pháp luật Việt Nam chưa có định nghĩa “tẩy xanh”. Các căn cứ gần nhất đều điều chỉnh quan hệ cụ thể: Luật Bảo vệ môi trường về sản phẩm “thân thiện môi trường” phải được chứng nhận, Luật Quảng cáo về tài liệu chứng minh, Luật Bảo vệ quyền lợi người tiêu dùng 2023 (Điều 10) về thông tin gây nhầm lẫn. Không văn bản nào điều chỉnh chung báo cáo gửi nhà đầu tư. Ở châu Âu, ba cơ quan giám sát tài chính (ESMA, EBA, EIOPA) định nghĩa tẩy xanh là việc tuyên bố, hành động hay truyền thông về bền vững không phản ánh rõ ràng và công bằng hồ sơ bền vững thực chất, dù cố ý hay vô ý \cite{esas2024}.
+
+Hệ quả cho người làm nghề là: không có định nghĩa pháp lý thì không có ngưỡng “vi phạm” để người hay máy đối chiếu. Điều còn lại là một câu hỏi quen thuộc của nghề kiểm toán: \emph{thông tin này có bằng chứng đủ và thích hợp đi kèm không}.
+
+\section{Người dùng và vấn đề thực tiễn}
+
+Báo cáo nhắm tới những người đọc báo cáo doanh nghiệp để ra quyết định. Họ gặp cùng một khó khăn dưới ba hình thức.
+
+\textbf{Kiểm toán viên và người soát xét.} Báo cáo phát triển bền vững và báo cáo thường niên dài hàng trăm trang. Khi làm dịch vụ đảm bảo thông tin phi tài chính, hoặc khi đọc “thông tin khác” đi kèm báo cáo tài chính, người soát phải chọn tuyên bố nào mở trước. Đọc thủ công từng câu thì không đủ thời gian; chỉ đọc phần được nhấn mạnh thì dễ bỏ sót. Chuẩn mực ISSA 5000 áp dụng cho kỳ bắt đầu từ ngày 15/12/2026 sẽ làm tăng nhu cầu có hồ sơ làm việc tái dựng được \cite{issa5000}.
+
+\textbf{Ngân hàng và nhà phân tích.} Cán bộ tín dụng cần biết tuyên bố “dự án xanh” của khách hàng dựa trên văn bản xác nhận nào, thiếu gì, và cần xin thêm hồ sơ gì. Họ không cần một nhãn “tẩy xanh” đúng/sai; họ cần danh sách thiếu sót cụ thể.
+
+\textbf{Doanh nghiệp tự soát.} Bộ phận ESG, quan hệ nhà đầu tư hay kiểm soát nội bộ muốn biết trước khi công bố câu nào sẽ bị hỏi “bằng chứng đâu”. Ví dụ: một mức giảm phát thải theo phần trăm không nêu năm gốc, hay một cam kết “phát thải ròng bằng 0 năm 2050” không có mốc trung gian. Với nhóm này, công cụ có ích là công cụ gợi ý cách sửa mà không bịa thêm số liệu.
+
+Để thống nhất, báo cáo xác định \textbf{người dùng trực tiếp là người soát xét}: kiểm toán viên, chuyên viên dịch vụ đảm bảo, kiểm toán nội bộ. Cũng trên lõi đó, chức năng gợi ý sửa phục vụ người soạn báo cáo của doanh nghiệp. Ngân hàng là nhóm mở rộng khi đã có bộ quy tắc theo Thông tư 17/2022.
+
+Một quan sát trên dữ liệu thật cho thấy vấn đề nằm ở đâu. Trên bộ báo cáo phát triển bền vững 2025 và báo cáo thường niên 2024 của Hòa Phát (264 trang), hệ thống đếm được 156 tuyên bố môi trường; gần như tuyên bố nào cũng thiếu ít nhất một trong năm thuộc tính cần để kiểm chứng. Ở lượt chạy ngày 22/10/2026, 153/156 tuyên bố nhận kết luận “ủng hộ một phần”. Một hệ thống trả cùng một nhãn cho gần như mọi dòng thì không giúp người soát chọn việc. Giá trị phải nằm ở chỗ khác: nói được \emph{tuyên bố nào nên mở trước, vì sao, bằng chứng ở trang nào, và còn thiếu gì}.
+
+\section{Đặt lại câu hỏi}
+
+Cách đặt vấn đề phổ biến trong học máy coi tẩy xanh là một nhãn của văn bản: đưa câu vào, mô hình trả “tẩy xanh” hay “không”. Báo cáo không đi theo cách đó, vì ba lý do độc lập.
+
+\begin{enumerate}
+\item \textbf{Lý do khái niệm.} Seele và Gatti \cite{seele2017} cho rằng tẩy xanh là một \emph{cáo buộc từ bên ngoài}, không phải thuộc tính tự thân của văn bản. Họ phân biệt tẩy xanh, cáo buộc oan, tẩy xanh tiềm năng và không tẩy xanh. Định nghĩa của ESMA, EBA, EIOPA tính cả trường hợp vô ý, nên một công cụ chỉ đọc văn bản không nói được gì về ý định.
+\item \textbf{Lý do pháp lý.} Pháp luật Việt Nam không có định nghĩa tẩy xanh. Gán nhãn đó cho một doanh nghiệp niêm yết là một phát biểu không có cơ sở pháp lý, có thể ảnh hưởng tới uy tín và giá cổ phiếu. Vì vậy hệ thống được định vị là công cụ nội bộ cho người soát.
+\item \textbf{Lý do dữ liệu.} Khảo sát gần nhất về phát hiện tẩy xanh bằng xử lý ngôn ngữ tự nhiên \cite{calamai2025} tổng hợp 61 công trình và kết luận rằng chưa có bộ dữ liệu công khai nào gồm các ca tẩy xanh đã được xác minh. Phần lớn nghiên cứu chỉ đo các tác vụ thay thế. Không có đáp án tẩy xanh đáng tin thì một mô hình “phát hiện tẩy xanh” không có gì để được đo đúng.
+\end{enumerate}
+
+Vì vậy câu hỏi trục được thay bằng:
+
+\begin{hopy}{Câu hỏi trục của hệ thống}
+Với tuyên bố này: hệ thống đã tìm được bằng chứng nào, ở trang nào; các con số có so được với nhau không; phép tính nào đã chạy; quy tắc nào thực sự áp dụng; và phần nào vẫn chưa biết?
+\end{hopy}
+
+Câu hỏi mới có ba tính chất mà câu hỏi cũ không có. Nó \emph{trả lời được cho từng tuyên bố}, không cần kết luận về cả doanh nghiệp. Nó \emph{kiểm tra được}: số có khớp không, đơn vị, kỳ, phạm vi có cùng nhau không đều là phép thử có đáp án. Và nó cho phép một kết quả bên cạnh “đúng” và “sai”: \textbf{chưa đủ bằng chứng để kết luận}. Nguyên tắc nền là \emph{vắng bằng chứng không phải bằng chứng trái chiều}.
+
+Trong báo cáo, cụm “rủi ro tẩy xanh” chỉ mức không nhất quán giữa tuyên bố với bằng chứng định lượng, bằng chứng pháp lý và nguồn bên ngoài. Cụm này luôn được tách khỏi “kết luận vi phạm”, vốn thuộc thẩm quyền của cơ quan nhà nước.
+
+\section{Mục tiêu}
+
+\textbf{Mục tiêu tổng quát.} Xây dựng và đo một hệ thống hỗ trợ người soát xét kiểm chứng tuyên bố môi trường trong báo cáo của doanh nghiệp niêm yết Việt Nam theo nguyên tắc bằng chứng trước, chạy được trên máy tính xách tay văn phòng, không phải gửi tài liệu ra ngoài.
+
+\textbf{Mục tiêu cụ thể.}
+\begin{enumerate}
+\item Phát biểu bài toán một cách hình thức: đầu vào, đầu ra, năm loại kết luận và thước đo tách bạch giữa độ phủ với hai loại kết luận sai nguy hiểm.
+\item Xây bộ kiểm chứng nhiều tầng, trong đó kết luận dứt khoát chỉ đến từ phép tính hoặc quy tắc tất định.
+\item Đo năng lực của mô hình nhỏ chạy tại máy trong vai trò “đọc”, và chỉ rõ chỗ chúng thất bại.
+\item Cho phép tổ chức người dùng đưa quy tắc riêng vào hệ thống mà không làm yếu các bảo đảm của lõi.
+\item Xây quy trình đo phù hợp với tình trạng chưa có nhãn chuẩn độc lập: đăng ký trước, khoảng tin cậy cho mẫu nhỏ, báo cả kết quả âm.
+\item Ghi lại các lỗi đã đo cùng nguyên nhân gốc, để người sau tái lập và sửa.
+\end{enumerate}
+
+\section{Phạm vi xử lý}\label{sec:pham-vi}
+
+Phạm vi được chia làm ba phần: phần báo cáo xử lý, phần cố ý không xử lý, và phần thuộc phạm vi nhưng chưa làm xong. Phần thứ ba được trình bày lại ở Chương~\ref{ch:pham-vi} thành hướng phát triển.
+
+\begin{table}[htbp]
+\centering
+\caption{Phạm vi xử lý của báo cáo}\label{tab:pham-vi}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{3.3cm}Y}
+\hdr\thd{Khía cạnh} & \thd{Trong phạm vi}\\
+Đối tượng kiểm & Tuyên bố môi trường ở cấp câu, định lượng và định tính, trong báo cáo phát triển bền vững, báo cáo thường niên và bản cáo bạch của doanh nghiệp niêm yết Việt Nam.\\
+Ngôn ngữ, định dạng & Tiếng Việt và tiếng Anh; PDF có lớp chữ, PDF bản scan (đọc bằng nhận dạng ký tự tại máy), DOCX, HTML.\\
+Việc hệ thống làm & Tách tuyên bố; đọc năm thuộc tính; tìm bằng chứng có số trang trong bộ tài liệu được cung cấp; so hai con số khi chúng so được; đưa ra một trong năm kết luận; chấm điểm rủi ro để xếp hàng đợi; gợi ý sửa không thêm số; áp quy tắc nội bộ của tổ chức; xuất giấy làm việc.\\
+Môi trường chạy & Laptop văn phòng không GPU; chế độ ngoại tuyến là mặc định.\\
+Người quyết định cuối & Người soát xét. Mọi kết luận của máy là gợi ý và được ghi vào nhật ký quyết định chỉ ghi thêm.\\
+\end{tabularx}
+
+\vspace{6pt}
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{5.2cm}Y}
+\hdr\thd{Cố ý không xử lý} & \thd{Lý do}\\
+Kết luận về cả doanh nghiệp, xếp hạng doanh nghiệp, kết luận vi phạm pháp luật & Thuộc thẩm quyền của cơ quan nhà nước; trái với bất biến “kiểm chứng tuyên bố, không phán xét doanh nghiệp”.\\
+Hình ảnh và biểu đồ gợi “xanh”; im lặng có chọn lọc; che giấu vi phạm & Cần dữ liệu ngoài văn bản; hệ thống chỉ đọc chữ.\\
+Tư vấn chiến lược ESG, lộ trình cho doanh nghiệp FDI, trò chuyện tự do, bảng điều khiển theo doanh nghiệp & Không phục vụ câu hỏi trục; hai mục sau mâu thuẫn với nguyên tắc chỉ đánh giá từng tuyên bố.\\
+Thành phần lượng tử & Bài toán chính là đọc hiểu và kiểm chứng văn bản; chưa có bằng chứng về lợi thế lượng tử ở quy mô này (mục~\ref{sec:luong-tu}).\\
+\end{tabularx}
+\end{table}
+
+Phần thuộc phạm vi nhưng \textbf{chưa làm xong} gồm: quy tắc pháp lý đã được người có chuyên môn duyệt (hiện chỉ có một quy tắc nháp), nguồn bằng chứng độc lập với doanh nghiệp, trích dẫn tới ô bảng, so sánh với kỳ trước và với doanh nghiệp cùng ngành, và đối chiếu sâu với báo cáo tài chính. Chương~\ref{ch:pham-vi} giải thích vì sao từng phần chưa xong và đưa ra kế hoạch.
+
+\section{Câu hỏi nghiên cứu}\label{sec:cau-hoi}
+
+Từ câu hỏi trục, báo cáo đặt sáu câu hỏi. Mỗi câu gắn với một thành phần của hệ thống và một nhóm kết quả đo, để Chương~\ref{ch:pham-vi} có thể trả lời từng câu và nói rõ mức độ trả lời được.
+
+\begin{description}[leftmargin=0pt,labelsep=0.5em,itemsep=4pt]
+\item[CH1 (đặt bài toán).] Nên đặt bài toán ở đơn vị nào, với đầu ra và thước đo nào, để người soát xét dùng được ngay trên báo cáo thật?
+\item[CH2 (kiểm chứng và biết dừng).] Hệ thống nên kết luận khi nào và nhường người khi nào, để mở rộng phần kết luận được mà không vu oan doanh nghiệp?
+\item[CH3 (số học tất định).] Có kiểm được tính nhất quán của số liệu (giá trị, đơn vị, kỳ, phạm vi, mốc so sánh) bằng thủ tục tất định không, sao cho mô hình ngôn ngữ chỉ đọc số mà không bao giờ tự sinh hay sửa số?
+\item[CH4 (mô hình nhỏ chạy tại máy).] Mô hình nhỏ chạy trên máy người dùng đi được tới đâu trong phần “đọc” (nhận diện tuyên bố, đọc số liệu) so với luật từ khoá và mô hình lớn?
+\item[CH5 (quy tắc của người dùng và tính nhất quán).] Làm thế nào để tổ chức đưa quy tắc riêng vào mà không làm yếu các bảo đảm của lõi? Khi quy tắc chuẩn không khớp với một doanh nghiệp cụ thể, hệ thống nên “học” ở đâu và tới mức nào để logic kiểm tra vẫn nhất quán?
+\item[CH6 (đo khi chưa có nhãn chuẩn).] Khi chưa có nhãn chuẩn độc lập, đo hệ thống thế nào để con số không bị hiểu nhầm thành độ chính xác?
+\end{description}
+
+\begin{table}[htbp]
+\centering
+\caption{Câu hỏi nghiên cứu và nơi trả lời trong báo cáo}\label{tab:cau-hoi}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{1.4cm}YYY}
+\hdr\thd{Câu hỏi} & \thd{Thiết kế} & \thd{Dữ liệu và cách đo} & \thd{Kết quả, đánh giá}\\
+CH1 & Mục \ref{sec:phat-bieu}, \ref{sec:yeu-cau} & Mục \ref{sec:nguon-du-lieu} & Mục \ref{sec:hpg}, \ref{sec:tra-loi}\\
+CH2 & Mục \ref{sec:kiem-chung}, \ref{sec:ba-dai-luong} & Mục \ref{sec:gsbench}, \ref{sec:gseval} & Mục \ref{sec:gseval-kq}, \ref{sec:tra-loi}\\
+CH3 & Mục \ref{sec:kiem-chung} & Mục \ref{sec:gsbench} & Mục \ref{sec:ag}\\
+CH4 & Mục \ref{sec:che-do} & Mục \ref{sec:t1} & Mục \ref{sec:t1-kq}, \ref{sec:thang-mo-hinh}, \ref{sec:ag}\\
+CH5 & Mục \ref{sec:quy-tac-nguoi-dung} & Mục \ref{sec:gseval} & Mục \ref{sec:gseval-kq}, \ref{sec:huong}\\
+CH6 & — & Mục \ref{sec:can-cu}, \ref{sec:chi-so} & Mục \ref{sec:du-doan}, \ref{sec:tra-loi}\\
+\end{tabularx}
+\end{table}
+
+\section{Đóng góp}
+
+Báo cáo có năm đóng góp. Con số cụ thể nằm ở Chương~\ref{ch:ket-qua}; ở đây chỉ nêu bản chất.
+
+\begin{enumerate}
+\item \textbf{Một kiến trúc “bằng chứng trước” chạy được trên laptop.} Đường xử lý mười bước, bước nào cũng để lại vết: đọc tài liệu giữ số trang, nhận diện tuyên bố, tìm bằng chứng, kiểm chứng, đối chiếu pháp lý, chấm rủi ro, xếp hàng đợi, cổng chất lượng và giấy làm việc. Báo cáo 264 trang được xử lý trong khoảng 2 phút trên máy không GPU, không có kết nối ra ngoài.
+\item \textbf{Mười bất biến kiến trúc được thi hành bằng kiểm thử.} Quan trọng nhất: số học là việc của mã, mô hình không được ghi đè; “chưa đủ bằng chứng” là kết quả hợp lệ; mô hình không tự kết luận “được ủng hộ” hay “mâu thuẫn”.
+\item \textbf{Một cách đưa quy tắc của người dùng vào mà không làm yếu lõi.} Quy tắc là dữ liệu có phiên bản và có người duyệt, đứng dưới pháp luật, chỉ thêm phát hiện chứ không đổi kết luận. Báo cáo cũng đề xuất cách phân vai “học” để logic kiểm tra nhất quán khi quy tắc chuẩn không khớp với từng doanh nghiệp.
+\item \textbf{Một bộ dữ liệu và quy trình đo phù hợp khi chưa có nhãn chuẩn.} Gồm bộ nhãn nhận diện tuyên bố tiếng Việt có che số, bộ ca dựng có đáp án theo cấu trúc, bộ câu thật của 8 doanh nghiệp, cùng quy ước đăng ký trước và báo cả dự đoán sai.
+\item \textbf{Ghi nhận trung thực lỗi và giới hạn.} Mỗi lỗi đã gặp trở thành một kiểm thử. Kết quả phẳng trên Hòa Phát, độ phủ thấp và các kết luận sai trên câu thật đều được báo cáo cùng nguyên nhân.
+\end{enumerate}
+
+\section{Cấu trúc báo cáo và đối chiếu tiêu chí Vòng 2}
+
+Thứ tự chương được chọn theo sáu tiêu chí chấm của Vòng 2 trong Thể lệ cuộc thi. Bảng~\ref{tab:tieu-chi} cho biết mỗi tiêu chí được trả lời ở đâu.
+
+\begin{table}[htbp]
+\centering
+\caption{Đối chiếu tiêu chí chấm Vòng 2 với các chương}\label{tab:tieu-chi}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{5.6cm}C{1.6cm}Y}
+\hdr\thd{Tiêu chí Vòng 2} & \thd{Trọng số} & \thd{Chương, mục trả lời}\\
+Làm rõ và xử lý bài toán & 20\% & Chương \ref{ch:mo-dau}; mục \ref{sec:phat-bieu}–\ref{sec:yeu-cau}; mục \ref{sec:hpg}; mục \ref{sec:tra-loi}\\
+Chất lượng dữ liệu và cách tiếp cận dữ liệu & 15\% & Chương \ref{ch:du-lieu}\\
+Tính hợp lý của giải pháp, thuật toán & 20\% & Chương \ref{ch:co-so}, \ref{ch:thiet-ke}, \ref{ch:ket-qua}\\
+Chất lượng prototype, nguyên mẫu & 20\% & Chương \ref{ch:nguyen-mau}\\
+Khả năng ứng dụng và triển khai thực tế & 15\% & Chương \ref{ch:trien-khai}\\
+Trình bày, tài liệu & 10\% & Toàn báo cáo; Phụ lục \ref{pl:minh-chung} (bản đồ minh chứng)\\
+\end{tabularx}
+\end{table}
+
+Chương~\ref{ch:co-so} trình bày cơ sở lý thuyết làm căn cứ cho các lựa chọn thiết kế. Chương~\ref{ch:thiet-ke} phát biểu bài toán và mô tả giải pháp. Chương~\ref{ch:du-lieu} trình bày dữ liệu, quy trình gán nhãn và cách đo. Chương~\ref{ch:ket-qua} báo cáo kết quả. Chương~\ref{ch:nguyen-mau} và~\ref{ch:trien-khai} trình bày nguyên mẫu và khả năng triển khai. Chương~\ref{ch:pham-vi} trả lời sáu câu hỏi, đối chiếu cam kết ban đầu với hiện trạng và chuyển phần chưa giải quyết thành hướng phát triển. Chương~\ref{ch:ket-luan} kết luận.
+
+\FloatBarrier
+\begin{hopy}{Tóm tắt chương}
+\begin{itemize}
+\item Công bố môi trường đã thành nghĩa vụ (Thông tư 96/2020, Quyết định 13/2024) và là đầu vào của dòng vốn xanh, nhưng phần lớn vẫn là thông tin định tính, ít được bên thứ ba bảo đảm.
+\item Pháp luật Việt Nam chưa định nghĩa tẩy xanh, và chưa có bộ dữ liệu tẩy xanh đã xác minh. Vì vậy báo cáo hỏi “tuyên bố này có bằng chứng không, thiếu gì” thay vì “doanh nghiệp có tẩy xanh không”.
+\item Phạm vi: tuyên bố môi trường cấp câu, tiếng Việt và tiếng Anh, chạy ngoại tuyến trên laptop; không kết luận về doanh nghiệp, không đọc hình ảnh, không có thành phần lượng tử.
+\item Sáu câu hỏi nghiên cứu CH1–CH6 được trả lời lại ở Chương~\ref{ch:pham-vi}; thứ tự chương bám theo sáu tiêu chí chấm của Vòng 2.
+\end{itemize}
+\end{hopy}

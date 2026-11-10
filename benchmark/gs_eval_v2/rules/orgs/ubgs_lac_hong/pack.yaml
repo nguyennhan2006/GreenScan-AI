@@ -1,0 +1,120 @@
+# Org pack giả lập cho GS-Eval v2 (D-RULES), agent r1, viết 04/11/2026.
+# Ghi chú cho người duyệt (comment YAML, hệ thống không đọc):
+# - Bản nháp sửa đổi của cùng cơ quan nằm ở orgs/ubgs_lac_hong_du_thao (approved_by rỗng, ca draft_rule).
+#   Tách thư mục vì mỗi thư mục chỉ có một pack.yaml, mà bản chính thức cần đủ ca normal COMPLIANT/VIOLATION.
+# - UBLH_003 không áp cho ngành tài chính (miễn chỉ tiêu 6.1-6.3 Phụ lục IV TT 96/2020, theo 02_PHAP_LY_VIET_NAM.md);
+#   UBLH_004 áp mọi ngành vì chỉ tiêu 6.5 không được miễn.
+kind: org_pack
+schema_version: org-pack-v0
+org_id: ubgs_lac_hong
+org_name: Ủy ban Giám sát Công bố Thông tin Bền vững Lạc Hồng (cơ quan quản lý giả lập)
+org_type: regulator
+pack_version: 1.0.0
+precedence: below_law
+approved_by: 'Chủ tịch Ủy ban (giả lập)'
+approved_at: '2025-12-15'
+documents:
+  - {doc_id: ST-LH-01, title: 'Sổ tay giám sát công bố thông tin bền vững của công ty đại chúng (2026)', path: internal_policy.md, role: policy}
+glossary:
+  - {term: 'thân thiện với môi trường', synonyms: ['thân thiện môi trường', 'thân thiện hơn với môi trường', 'environmentally friendly', 'eco-friendly'], definition: 'Tuyên bố sản phẩm, dịch vụ hoặc hoạt động ít tác động tới môi trường (§2.2).'}
+  - {term: 'trung hòa carbon', synonyms: ['trung hòa các-bon', 'carbon neutral', 'net zero', 'phát thải ròng bằng 0', 'climate neutral'], definition: 'Đã đạt phát thải ròng bằng không trong một ranh giới xác định (§2.1).'}
+  - {term: 'QCVN', synonyms: ['quy chuẩn kỹ thuật quốc gia'], definition: 'Quy chuẩn kỹ thuật quốc gia về nước thải, khí thải (§2.3).'}
+  - {term: 'xử phạt', synonyms: ['bị phạt', 'quyết định xử phạt', 'penalty', 'fined'], definition: 'Xử phạt vi phạm hành chính về môi trường (§3.2).'}
+rules:
+  - rule_id: UBLH_001
+    title: Tuyên bố đã đạt trung hòa carbon phải nêu ranh giới và cách đạt được
+    source_document: ST-LH-01
+    source_clauses: ['ST-LH-01:§2.1']
+    claim_types: []          # dự kiến: emissions_reduction
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: partial
+    reviewed_by: 'Vụ Pháp chế (giả lập)'
+    when:
+      - {id: carbon_neutral_claim, description: 'Câu nói về trung hòa carbon hoặc net zero', source_clause: 'ST-LH-01:§2.1', check: claim_terms_present, any_of_terms: ['trung hòa carbon', 'trung hòa các-bon', 'carbon neutral', 'climate neutral', 'net zero', 'net-zero', 'phát thải ròng bằng 0']}
+      - {id: achieved_not_target, description: 'Câu nói đã đạt, không phải mục tiêu tương lai', source_clause: 'ST-LH-01:§2.1', check: claim_terms_absent, any_of_terms: ['mục tiêu', 'hướng tới', 'cam kết', 'lộ trình', 'phấn đấu', 'đến năm', 'sẽ ', 'target', 'aim to', 'aims to', 'commit', 'pledge', 'by 20']}
+    conditions:
+      - {id: has_boundary, description: 'Câu nêu ranh giới (cơ sở, sản phẩm, công ty mẹ hay hợp nhất)', source_clause: 'ST-LH-01:§2.1', check: claim_attribute_present, attribute: scope}
+      - {id: how_achieved, description: 'Cách đạt được (giảm thực tế hay bù trừ) và bằng chứng hủy/khóa tín chỉ nếu có bù trừ', source_clause: 'ST-LH-01:§2.1', check: manual}
+
+  - rule_id: UBLH_002
+    title: Tuyên bố "thân thiện môi trường" phải dẫn chứng nhận; tổ chức cấp do chuyên viên đánh giá
+    source_document: ST-LH-01
+    source_clauses: ['ST-LH-01:§2.2']
+    claim_types: []          # dự kiến: generic_sustainability
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: partial
+    reviewed_by: 'Vụ Pháp chế (giả lập)'
+    when:
+      - {id: eco_friendly_claim, description: 'Câu gọi sản phẩm, dịch vụ hoặc hoạt động là thân thiện môi trường', source_clause: 'ST-LH-01:§2.2', check: claim_terms_present, any_of_terms: ['thân thiện môi trường', 'thân thiện với môi trường', 'environmentally friendly', 'eco-friendly']}
+    conditions:
+      - {id: certification_cited, description: 'Câu dẫn một chứng nhận cụ thể', source_clause: 'ST-LH-01:§2.2', check: claim_terms_present, any_of_terms: ['chứng nhận', 'certificate', 'certified', 'certification', 'nhãn sinh thái', 'ecolabel', 'eco-label']}
+      - {id: issuer_competent, description: 'Tổ chức cấp có thẩm quyền hoặc được công nhận (chuyên viên quyết định)', source_clause: 'ST-LH-01:§2.2', check: manual}
+
+  - rule_id: UBLH_003
+    title: Tuyên bố phát thải khí nhà kính của công ty ngoài ngành tài chính phải có số liệu và kỳ báo cáo
+    source_document: ST-LH-01
+    source_clauses: ['ST-LH-01:§3.1', 'ST-LH-01:§1.2']
+    claim_types: []          # dự kiến: emissions_reduction
+    legal_issue: org_policy
+    applies_to_sectors: ['steel', 'cement', 'power', 'chemicals', 'construction', 'food', 'dairy', 'beverage', 'pharma', 'retail', 'jewelry', 'rubber', 'textile', 'coal_mining', 'paper', 'seafood', 'real_estate', 'manufacturing', 'transport', 'packaging', 'household', 'personal_care']
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Vụ Pháp chế (giả lập)'
+    when:
+      - {id: ghg_claim, description: 'Câu nói về phát thải khí nhà kính', source_clause: 'ST-LH-01:§3.1', check: claim_terms_present, any_of_terms: ['phát thải', 'khí nhà kính', 'knk', 'co2', 'tco2e', 'ghg', 'greenhouse', 'emission']}
+    conditions:
+      - {id: has_value, description: 'Có số liệu phát thải', source_clause: 'ST-LH-01:§3.1', check: claim_attribute_present, attribute: value}
+      - {id: has_period, description: 'Có kỳ báo cáo', source_clause: 'ST-LH-01:§3.1', check: claim_attribute_present, attribute: period}
+
+  - rule_id: UBLH_004
+    title: Tuyên bố tuân thủ hoặc không bị xử phạt về môi trường phải nêu kỳ và được đối chiếu quyết định xử phạt
+    source_document: ST-LH-01
+    source_clauses: ['ST-LH-01:§3.2']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: partial
+    reviewed_by: 'Vụ Pháp chế (giả lập)'
+    when:
+      - {id: compliance_claim, description: 'Câu nói về tuân thủ hoặc xử phạt', source_clause: 'ST-LH-01:§3.2', check: claim_terms_present, any_of_terms: ['xử phạt', 'bị phạt', 'tuân thủ', 'compliant', 'compliance', 'penalt', 'fined']}
+      - {id: environmental_topic, description: 'Nội dung là môi trường', source_clause: 'ST-LH-01:§3.2', check: claim_terms_present, any_of_terms: ['môi trường', 'environment', 'chất thải', 'waste', 'nước thải', 'khí thải']}
+    conditions:
+      - {id: has_period, description: 'Có kỳ áp dụng', source_clause: 'ST-LH-01:§3.2', check: claim_attribute_present, attribute: period}
+      - {id: sanction_cross_check, description: 'Đã đối chiếu danh sách quyết định xử phạt của cơ quan có thẩm quyền', source_clause: 'ST-LH-01:§3.2', check: manual}
+
+  - rule_id: UBLH_005
+    title: Tuyên bố nước thải, khí thải "đạt chuẩn" phải nêu QCVN và có kết quả quan trắc
+    source_document: ST-LH-01
+    source_clauses: ['ST-LH-01:§2.3']
+    claim_types: []          # dự kiến: waste_and_circularity
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Vụ Pháp chế (giả lập)'
+    when:
+      - {id: meets_standard_claim, description: 'Câu nói đạt chuẩn hoặc trong giới hạn cho phép', source_clause: 'ST-LH-01:§2.3', check: claim_terms_present, any_of_terms: ['đạt chuẩn', 'đạt quy chuẩn', 'qcvn', 'giới hạn cho phép', 'met the', 'meets the', 'within the permitted']}
+      - {id: discharge_topic, description: 'Nội dung là nước thải hoặc khí thải', source_clause: 'ST-LH-01:§2.3', check: claim_terms_present, any_of_terms: ['nước thải', 'khí thải', 'wastewater', 'exhaust']}
+    conditions:
+      - {id: standard_cited, description: 'Câu nêu QCVN áp dụng', source_clause: 'ST-LH-01:§2.3', check: claim_terms_present, any_of_terms: ['qcvn', 'quy chuẩn kỹ thuật quốc gia']}
+      - {id: monitoring_results, description: 'Có kết quả quan trắc kèm theo', source_clause: 'ST-LH-01:§2.3', check: terms_present, any_of_terms: ['quan trắc', 'kết quả phân tích', 'kết quả đo', 'monitoring', 'vimcerts']}

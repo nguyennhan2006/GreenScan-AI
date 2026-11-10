@@ -1,0 +1,21 @@
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+[ag0] 453 cases to run, 0 cached
+[ag0] 25/453
+[ag0] 50/453
+[ag0] 75/453
+[ag0] 100/453
+[ag0] 125/453
+[ag0] 150/453
+[ag0] 175/453
+[ag0] 200/453
+[ag0] 225/453
+[ag0] 250/453
+[ag0] 275/453
+[ag0] 300/453
+[ag0] 325/453
+[ag0] 350/453
+[ag0] 375/453
+[ag0] 400/453
+[ag0] 425/453
+[ag0] 450/453
+[ag0] done

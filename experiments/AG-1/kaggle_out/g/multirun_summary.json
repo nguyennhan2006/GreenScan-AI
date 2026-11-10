@@ -1,0 +1,30 @@
+[
+ {
+  "tag": "q3-8b",
+  "repo": "Qwen/Qwen3-8B",
+  "cand_index": 0,
+  "ok": true,
+  "sec": 379
+ },
+ {
+  "tag": "q3-14b-awq",
+  "repo": "Qwen/Qwen3-14B-AWQ",
+  "cand_index": 0,
+  "ok": true,
+  "sec": 316
+ },
+ {
+  "tag": "q3-32b-awq",
+  "repo": "Qwen/Qwen3-32B-AWQ",
+  "cand_index": 0,
+  "ok": true,
+  "sec": 579
+ },
+ {
+  "tag": "q3-4b-inst",
+  "repo": "Qwen/Qwen3-4B-Instruct-2507",
+  "cand_index": 0,
+  "ok": true,
+  "sec": 312
+ }
+]

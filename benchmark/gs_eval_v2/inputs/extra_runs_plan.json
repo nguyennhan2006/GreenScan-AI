@@ -1,0 +1,50 @@
+[
+ {
+  "ticker": "CTD",
+  "sr": "d:\\Sinh viên CNhan\\AI quantum\\docs\\ai-quantum-greenwashing-agent\\data\\crawl\\vn30\\raw\\objects\\sha256\\c2\\c2eb88a2a7bd71ba5fd5dead16d9e99f53b588b533cd1dcbfc0c34e17a03df76.pdf",
+  "sr_year": 2025,
+  "sr_pages": 97,
+  "ar": "d:\\Sinh viên CNhan\\AI quantum\\docs\\ai-quantum-greenwashing-agent\\data\\crawl\\vn30\\raw\\objects\\sha256\\d5\\d5958507c072397a141b55e3f4c780741de4764ace522c10cdc0d65a9a6cee39.pdf",
+  "ar_year": 2025,
+  "ar_pages": 127
+ },
+ {
+  "ticker": "DHG",
+  "sr": "d:\\Sinh viên CNhan\\AI quantum\\docs\\ai-quantum-greenwashing-agent\\data\\crawl\\vn30\\raw\\objects\\sha256\\20\\2035fdc39ce8985122a930228e030b1a3815d24f52e158039615fc6c25dcc633.pdf",
+  "sr_year": 2025,
+  "sr_pages": 98,
+  "ar": "d:\\Sinh viên CNhan\\AI quantum\\docs\\ai-quantum-greenwashing-agent\\data\\crawl\\vn30\\raw\\objects\\sha256\\3e\\3ea6cc5eab6e2026e19000952d0398c1953550c8da6f52938a097f46ce0b1677.pdf",
+  "ar_year": 2023,
+  "ar_pages": 32
+ },
+ {
+  "ticker": "PAN",
+  "sr": "d:\\Sinh viên CNhan\\AI quantum\\docs\\ai-quantum-greenwashing-agent\\data\\crawl\\vn30\\raw\\objects\\sha256\\6a\\6a7170ffe7de7d941a0a2c40d6489a444cdb54d420514ed64c40405c93f147d4.pdf",
+  "sr_year": 2025,
+  "sr_pages": 88,
+  "ar": "d:\\Sinh viên CNhan\\AI quantum\\docs\\ai-quantum-greenwashing-agent\\data\\crawl\\vn30\\raw\\objects\\sha256\\da\\da72e17d30cb9e4a71abbc430c8ee9194b895931040b74c1d9e2429e995372d9.pdf",
+  "ar_year": 2025,
+  "ar_pages": 113
+ },
+ {
+  "ticker": "PNJ",
+  "sr": "d:\\Sinh viên CNhan\\AI quantum\\docs\\ai-quantum-greenwashing-agent\\data\\crawl\\vn30\\raw\\objects\\sha256\\0f\\0ff212c8265ac9cddbbd67de9439011e3340d14e8d7f6677f0c7e9f64a41bc26.pdf",
+  "sr_year": 2023,
+  "sr_pages": 50,
+  "ar": "d:\\Sinh viên CNhan\\AI quantum\\docs\\ai-quantum-greenwashing-agent\\data\\crawl\\vn30\\raw\\objects\\sha256\\15\\155007fda80fbf9fb8f1b5ddf9cf106b724252c2f04c7493ccb08c681b3dad7a.pdf",
+  "ar_year": 2023,
+  "ar_pages": 125
+ },
+ {
+  "ticker": "SAB",
+  "sr": "d:\\Sinh viên CNhan\\AI quantum\\docs\\ai-quantum-greenwashing-agent\\data\\crawl\\vn30\\raw\\objects\\sha256\\5b\\5baad98cb3adb5dc958152ae258a42fc365ca0959a8d09199152148e36113b5f.pdf",
+  "sr_year": 2024,
+  "sr_pages": 55
+ },
+ {
+  "ticker": "TRA",
+  "sr": "d:\\Sinh viên CNhan\\AI quantum\\docs\\ai-quantum-greenwashing-agent\\data\\crawl\\vn30\\raw\\objects\\sha256\\f1\\f1a715242af35d175d64754b34f602f9794c069d2b3150c3a097bf9d25519524.pdf",
+  "sr_year": 2025,
+  "sr_pages": 111
+ }
+]

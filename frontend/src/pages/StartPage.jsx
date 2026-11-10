@@ -56,8 +56,8 @@ export default function StartPage({ reviewer, onStart }) {
 
           <p className="mt-6 text-xs leading-relaxed text-slate-500">
             Không có tài khoản hay mật khẩu: tên chỉ dùng để ghi vào nhật ký quyết định
-            (ai xác nhận / ghi đè tuyên bố nào, lúc nào). Nhật ký này là nguồn của bộ dữ liệu
-            gold, nên hãy dùng đúng tên thật trong nhóm.
+            (ai xác nhận / ghi đè tuyên bố nào, lúc nào). Nhật ký này là nguồn của bộ nhãn
+            chuẩn, nên hãy dùng đúng tên thật trong nhóm.
           </p>
         </form>
       </div>
@@ -66,7 +66,7 @@ export default function StartPage({ reviewer, onStart }) {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(52,211,153,0.35),_transparent_55%),radial-gradient(ellipse_at_bottom_right,_rgba(16,185,129,0.25),_transparent_50%)]" />
         <div className="relative flex h-full flex-col justify-between p-12 text-emerald-50">
           <div className="space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-widest text-emerald-300">Evidence-first</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-emerald-300">Bằng chứng trước</p>
             <p className="max-w-md text-2xl font-semibold leading-snug text-white">
               “Dữ liệu minh bạch cho những quyết định tốt hơn.”
             </p>
@@ -75,10 +75,10 @@ export default function StartPage({ reviewer, onStart }) {
             <li>· Mỗi tuyên bố được kiểm theo 5 thuộc tính bắt buộc</li>
             <li>· Mọi kết luận kèm đoạn trích và số trang</li>
             <li>· “Chưa đủ bằng chứng” là một kết quả hợp lệ</li>
-            <li>· Người xem xét chốt, AI chỉ đề xuất</li>
+            <li>· Người soát xét chốt, máy chỉ gợi ý</li>
           </ul>
           <p className="text-xs text-emerald-50/60">
-            GreenScan AI — kiểm chứng tuyên bố môi trường bằng bằng chứng, không cáo buộc.
+            GreenScan — kiểm chứng tuyên bố môi trường bằng bằng chứng, không cáo buộc.
           </p>
         </div>
       </div>

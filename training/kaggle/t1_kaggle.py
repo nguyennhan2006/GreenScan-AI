@@ -30,6 +30,17 @@ Experiments (masked sentence unless stated):
   final          each student on all 498 × 3 seeds, probabilities averaged → comparison set
   CPU latency    best final model, batch 1, 4 threads, on the Kaggle CPU
 
+Run 4 (2026-10-16) is a candidate sweep for step 4, under the rules registered the same day
+(configs/measurement_decisions.yaml, model_selection_v2.t1_claim_detection), on ~2,150 training labels:
+  * students: e5-small, e5-base, e5-large (gradient checkpointing; v3 ran out of memory), bge-m3,
+    Qwen3-0.6B and Qwen3-1.7B as classifiers with LoRA (the "Qwen3 1.7B" TARGET_PIPELINE proposed and
+    nobody measured). Same folds, same seeds, same input for all of them.
+  * 2 seeds instead of 3 (four times the data; the time budget is the binding limit), cheapest model
+    first, a time guard that skips (and records) what would not finish inside the Kaggle session.
+  * the raw/pair ablations are dropped (inconclusive in v3); the learning curve stays on the best.
+  * CPU latency for every final model, not only the best (the laptop number comes from
+    training/latency_t1.py: the decision limit is ms on the team's i7-1355U).
+
 Outputs in /kaggle/working: results.json, preds_cv.jsonl, preds_compare.jsonl, log.txt
 """
 import gc
@@ -57,21 +68,34 @@ CLAIMS = {1, 2, 3}
 # whatever the lr, and needs its own diagnosis. multilingual-e5-large takes its slot. The NLI model stays
 # as the zero-shot baseline.
 ZS_MODEL = "MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7"
-MODELS = {"e5-base": "intfloat/multilingual-e5-base",
-          "e5-large": "intfloat/multilingual-e5-large"}
-HP = {"e5-base": dict(lr=3e-5, epochs=6, fp16=True, prefix="query: "),
-      "e5-large": dict(lr=2e-5, epochs=6, fp16=True, prefix="query: ", batch=8)}   # v3 run 1: OOM at batch 16 on T4
-RETRY = {"e5-base": dict(lr=5e-5, epochs=10), "e5-large": dict(lr=3e-5, epochs=10)}
+# v4: cheapest first, so a time-out costs the most expensive candidate, never the baseline
+MODELS = {"e5-small": "intfloat/multilingual-e5-small",
+          "e5-base": "intfloat/multilingual-e5-base",
+          "qwen3-0.6b": "Qwen/Qwen3-0.6B",
+          "e5-large": "intfloat/multilingual-e5-large",
+          "bge-m3": "BAAI/bge-m3",
+          "qwen3-1.7b": "Qwen/Qwen3-1.7B"}
+LORA_TARGETS = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+HP = {"e5-small": dict(lr=5e-5, epochs=6, fp16=True, prefix="query: "),
+      "e5-base": dict(lr=3e-5, epochs=6, fp16=True, prefix="query: "),
+      "qwen3-0.6b": dict(lr=2e-4, epochs=4, fp16=True, prefix="", lora=16),
+      "e5-large": dict(lr=2e-5, epochs=6, fp16=True, prefix="query: ", ckpt=True),   # v3: OOM without checkpointing
+      "bge-m3": dict(lr=2e-5, epochs=6, fp16=True, prefix="", ckpt=True),
+      "qwen3-1.7b": dict(lr=2e-4, epochs=4, fp16=True, prefix="", lora=16, ckpt=True)}
+RETRY = {k: dict(lr=v["lr"] * 1.5, epochs=v["epochs"] + 4) for k, v in HP.items()}
+BUDGET_SECONDS = 10.5 * 3600      # Kaggle stops a GPU session at 12 h; leave room for the curve and latency
 HYPOTHESES = {   # zero-shot: one Vietnamese hypothesis per class, same meaning as the codebook
     "NOT_CLAIM": "Câu này không phải là tuyên bố môi trường của doanh nghiệp.",
     "QUALITATIVE_CLAIM": "Câu này là tuyên bố về một hành động môi trường cụ thể của doanh nghiệp, không có số liệu.",
     "QUANTIFIED_CLAIM": "Câu này là tuyên bố môi trường của doanh nghiệp có số liệu cụ thể.",
     "VAGUE": "Câu này là khẩu hiệu hoặc cam kết chung chung về môi trường, phát triển bền vững.",
 }
-MAX_LEN, BATCH, SEEDS, DEVICE = 160, 16, [13, 29, 47], "cuda" if torch.cuda.is_available() else "cpu"
+MAX_LEN, BATCH, SEEDS, DEVICE = 160, 16, [13, 29], "cuda" if torch.cuda.is_available() else "cpu"
+STARTED = time.time()
 if SMOKE:
-    MODELS = {k: "hf-internal-testing/tiny-random-bert" for k in MODELS}
-    ZS_MODEL = MODELS["e5-base"]
+    MODELS = {k: ("hf-internal-testing/tiny-random-LlamaForCausalLM" if "lora" in HP[k] else
+                  "hf-internal-testing/tiny-random-bert") for k in MODELS}
+    ZS_MODEL = "hf-internal-testing/tiny-random-bert"
     HP = {k: {**v, "epochs": 1, "fp16": False} for k, v in HP.items()}
     RETRY = {k: {**v, "epochs": 1} for k, v in RETRY.items()}
     SEEDS = [13, 29]
@@ -130,9 +154,21 @@ def fit(key, rows, variant, seed, lr, epochs, steps=None):
     hp = HP[key]
     seed_all(seed)
     tok = AutoTokenizer.from_pretrained(MODELS[key])
+    if tok.pad_token is None:
+        tok.pad_token = tok.eos_token
     model = AutoModelForSequenceClassification.from_pretrained(
         MODELS[key], num_labels=4, ignore_mismatched_sizes=True,
-        id2label=dict(enumerate(LABELS)), label2id=L2I).to(DEVICE)
+        id2label=dict(enumerate(LABELS)), label2id=L2I)
+    model.config.pad_token_id = tok.pad_token_id
+    if hp.get("ckpt"):
+        model.config.use_cache = False
+        model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
+    if hp.get("lora"):                                    # decoder as a classifier: LoRA + a trained head
+        from peft import LoraConfig, get_peft_model
+        targets = [t for t in LORA_TARGETS if any(n.endswith(t) for n, _ in model.named_modules())]
+        model = get_peft_model(model, LoraConfig(task_type="SEQ_CLS", r=hp["lora"], lora_alpha=2 * hp["lora"],
+                                                 lora_dropout=0.05, target_modules=targets or None))
+    model = model.to(DEVICE)
     y = torch.tensor([L2I[r["label"]] for r in rows])
     counts = torch.bincount(y, minlength=4).float().clamp(min=1)
     weight = (counts.sum() / counts).sqrt()
@@ -232,7 +268,7 @@ def main():
                "audit": [i for i, r in enumerate(compare) if r["set"] == "audit"],
                "hpg": [i for i, r in enumerate(compare) if r["set"] == "hpg"]}
     folds = list(GroupKFold(n_splits=5).split(train, y_tr, groups=[r["company_id"] for r in train]))
-    res = {"version": 3, "reference": "Claude labels (2 blind passes + adjudication) — agreement, not accuracy",
+    res = {"version": 4, "reference": "Claude labels (2 blind passes + adjudication) — agreement, not accuracy",
            "labels": LABELS, "hp": HP, "retry_recipe": RETRY, "seeds": SEEDS, "configs": {}, "learning_curve": {},
            "timings": {}, "env": {"torch": torch.__version__,
                                   "gpu": torch.cuda.get_device_name(0) if DEVICE == "cuda" else None}}
@@ -262,6 +298,8 @@ def main():
     def cv(key, seed, variant="masked", frac=1.0):
         oof = np.zeros((len(train), 4))
         for k, (tr, te) in enumerate(folds):
+            if time.time() - STARTED > BUDGET_SECONDS:
+                raise TimeoutError(f"time budget reached before {key} fold {k} seed {seed}")
             p, m, tk = train_predict(key, [train[i] for i in tr], [train[i] for i in te], variant=variant, seed=seed,
                                      frac=frac, tag=f"{key}·{variant}·s{seed}·f{frac}")
             oof[te] = p
@@ -282,8 +320,12 @@ def main():
         free(zs)
 
     # 2. students: CV × seeds (probabilities averaged), final models × seeds on the comparison set
-    best, best_f1, best_model = None, -1, None
+    best, best_f1 = None, -1
     for key in MODELS:
+      if time.time() - STARTED > BUDGET_SECONDS:
+          STATS.setdefault("skipped", []).append(key)
+          log(f"{key} SKIPPED: time budget ({BUDGET_SECONDS / 3600:.1f} h) used up")
+          continue
       try:
         t = time.time()
         per_seed, oof_sum = {}, np.zeros((len(train), 4))
@@ -295,25 +337,27 @@ def main():
                 record(f"{key}·masked·s{s}", oof)       # the paired reference for the ablations
             log(f"{key} seed {s} CV macro-F1 {per_seed[s]:.3f}")
         cv_secs = round(time.time() - t, 1)
-        cmp, last = np.zeros((len(compare), 4)), None
+        cmp, latency = np.zeros((len(compare), 4)), {}
         final_seed = {}
         for s in SEEDS:
             p, m, tk = train_predict(key, train, compare, seed=s, tag=f"{key}·final·s{s}")
             cmp += p / len(SEEDS)
             final_seed[s] = metrics(y_cmp, p.argmax(1))["macro_f1"]
-            if last is None:
-                last = (m.to("cpu"), tk)        # kept for the latency test; off the GPU so the next student fits
-            else:
-                free(m, tk)
+            if not latency:                       # every candidate's CPU cost, batch 1, 4 threads
+                m = m.to("cpu")
+                torch.set_num_threads(4)
+                sample = compare[:100]
+                t0 = time.time()
+                for r in sample:
+                    predict(m, tk, [r], "masked", HP[key]["prefix"], device="cpu")
+                latency = {"cpu_ms_per_sentence_batch1_4threads": round(1000 * (time.time() - t0) / len(sample), 1),
+                           "parameters_millions": round(sum(x.numel() for x in m.parameters()) / 1e6, 1)}
+            free(m, tk)
         record(key, oof_sum / len(SEEDS), cmp, {"cv_seconds": cv_secs, "cv_macro_f1_by_seed": per_seed,
-                                                 "compare_macro_f1_by_seed": final_seed})
+                                                 "compare_macro_f1_by_seed": final_seed, **latency})
         f1 = res["configs"][key]["cv"]["macro_f1"]
         if f1 > best_f1:
-            if best_model:
-                free(*best_model)
-            best, best_f1, best_model = key, f1, last
-        else:
-            free(*last)
+            best, best_f1 = key, f1
       except Exception as e:                       # noqa: BLE001
         log(f"{key} FAILED: {type(e).__name__}: {str(e)[:300]}")
         STATS.setdefault("failed", {})[key] = f"{type(e).__name__}: {str(e)[:300]}"
@@ -322,28 +366,25 @@ def main():
     res["best"] = best
     log("best student:", best)
 
-    # 3. ablations on the best student, seed 13, paired with `<best>·masked·s13`
-    for variant in ("raw", "pair"):
-        record(f"{best}·{variant}·s{SEEDS[0]}", cv(best, SEEDS[0], variant=variant))
-
-    # 4. learning curve, seed 13, equal optimizer steps per fraction (1.0 is `<best>·masked·s13`)
+    # 3. learning curve on the best student, seed 13, equal optimizer steps per fraction
+    #    (1.0 is `<best>·masked·s13`); v3's raw/pair ablations were inconclusive and are not repeated
+    if best is None:
+        save()
+        log("no student finished")
+        return
     res["learning_curve"]["1.0"] = res["configs"][f"{best}·masked·s{SEEDS[0]}"]["cv"]["macro_f1"]
     for frac in (0.25, 0.5, 0.75):
-        res["learning_curve"][str(frac)] = metrics(y_tr, cv(best, SEEDS[0], frac=frac).argmax(1))["macro_f1"]
+        try:
+            res["learning_curve"][str(frac)] = metrics(y_tr, cv(best, SEEDS[0], frac=frac).argmax(1))["macro_f1"]
+        except TimeoutError as e:
+            STATS.setdefault("skipped", []).append(f"learning curve {frac}: {e}")
+            log(f"learning curve {frac} SKIPPED: {e}")
+            break
         log("learning curve", frac, round(res["learning_curve"][str(frac)], 3))
         save()
-
-    # 5. CPU latency of the best final model, batch 1
-    model, tok = best_model
-    model = model.to("cpu")
-    torch.set_num_threads(4)
-    t = time.time()
-    for r in compare:
-        predict(model, tok, [r], "masked", HP[best]["prefix"], device="cpu")
-    res["timings"]["cpu_ms_per_sentence_batch1_4threads"] = round(1000 * (time.time() - t) / len(compare), 1)
-    res["timings"]["parameters_millions"] = round(sum(p.numel() for p in model.parameters()) / 1e6, 1)
+    res["timings"]["total_hours"] = round((time.time() - STARTED) / 3600, 2)
     save()
-    log("done", res["timings"], "retries", STATS["retries"])
+    log("done", res["timings"], "retries", STATS["retries"], "skipped", STATS.get("skipped"))
 
 
 if __name__ == "__main__":

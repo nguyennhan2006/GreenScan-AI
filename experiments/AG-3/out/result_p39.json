@@ -1,0 +1,120 @@
+{
+ "rows": [
+  "Năm 2025, Phạm vi 1: 22.540.603 tCO2e",
+  "Năm 2025, Phạm vi 2: 933.876 tCO2e",
+  "Năm 2025, Cộng: 23.474.480 tCO2e",
+  "Năm 2025, Phát thải theo tổng công ty năm: 2. tCO2e; 2025 tCO2e",
+  "Năm 2025, Thép: 23.369.500 tCO2e; 99,55%",
+  "Năm 2025, Nông nghiệp: 90.846 tCO2e; 0,39%",
+  "Năm 2025, Bất động sản: 2.836 tCO2e; 0,01%",
+  "Năm 2025, Điện máy gia dụng: 9.666 tCO2e; 0,04%",
+  "Năm 2025, Tòa nhà văn phòng: 1.631 tCO2e; 0,01%",
+  "Năm 2025, Cộng: 23.474.480 tCO2e; 100%"
+ ],
+ "cases": [
+  {
+   "id": "N01",
+   "gold": [
+    "S"
+   ],
+   "raw": "N",
+   "rows": "N",
+   "why_rows": [
+    "23,47 tCO2e: N khác phạm vi phát thải: s1+s2 / s1; khác phạm vi phát thải: s1+s2 / s2; khác phạm vi phát thải: s1+s2 / None; khác phạm vi phát thải: s1+s2 / None; khác phạm vi phát thải: s1+s2 / None; khác chỉ số: ghg_emissions / other_env; khác phạm vi phát thải: s1+s2 / None; khác loại giá trị: absolute / share;"
+   ],
+   "claim": "Năm 2025, tổng phát thải khí nhà kính phạm vi 1 và 2 toàn Tập đoàn là 23,47 triệu tCO2e."
+  },
+  {
+   "id": "N02",
+   "gold": [
+    "C"
+   ],
+   "raw": "N",
+   "rows": "N",
+   "why_rows": [
+    "23.369.500 tCO2e: N |2.33695e+07 − 2.25406e+07| = 828897 ghg_t; dung sai 1; khác phạm vi phát thải: s1 / s2; khác phạm vi phát thải: s1 / None; khác phạm vi phát thải: s1 / None; khác phạm vi phát thải: s1 / None; khác chỉ số: ghg_emissions / other_env; khác phạm vi phát thải: s1 / None; khác loại giá trị: absolute / s"
+   ],
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 1 toàn Tập đoàn là 23.369.500 tCO2e."
+  },
+  {
+   "id": "N03",
+   "gold": [
+    "S"
+   ],
+   "raw": "N",
+   "rows": "N",
+   "why_rows": [
+    "23.369.500 tCO2e: N khác phạm vi phát thải: None / s1; khác phạm vi phát thải: None / s2; |2.33695e+07 − 2.34745e+07| = 104980 ghg_t; dung sai 1; |2.33695e+07 − 2| = 2.33695e+07 ghg_t; dung sai 1; |2.33695e+07 − 2.33695e+07| = 0 ghg_t; dung sai 1; khác chỉ số: ghg_emissions / other_env; |2.33695e+07 − 90846| = 2.32787e"
+   ],
+   "claim": "Năm 2025, mảng thép phát thải 23.369.500 tCO2e, chiếm 99,55% tổng phát thải khí nhà kính của Tập đoàn."
+  },
+  {
+   "id": "N04",
+   "gold": [
+    "S"
+   ],
+   "raw": "N",
+   "rows": "S",
+   "why_rows": [
+    "0,39 %: S khác loại giá trị: share / absolute; khác loại giá trị: share / absolute; khác loại giá trị: share / absolute; khác loại giá trị: share / absolute; khác loại giá trị: share / absolute; khác chỉ số: ghg_emissions / other_env; khác loại giá trị: share / absolute; |0.39 − 0.39| = 0 percent; dung sai 0."
+   ],
+   "claim": "Năm 2025, mảng nông nghiệp chiếm 0,39% tổng phát thải khí nhà kính của Tập đoàn."
+  },
+  {
+   "id": "N05",
+   "gold": [
+    "C"
+   ],
+   "raw": "N",
+   "rows": "N",
+   "why_rows": [
+    "933.876 tCO2e: N khác phạm vi phát thải: None / s1; khác phạm vi phát thải: None / s2; |933876 − 2.34745e+07| = 2.25406e+07 ghg_t; dung sai 1; |933876 − 2| = 933874 ghg_t; dung sai 1; |933876 − 2.33695e+07| = 2.24356e+07 ghg_t; dung sai 1; khác chỉ số: ghg_emissions / other_env; |933876 − 90846| = 843030 ghg_t; dung"
+   ],
+   "claim": "Năm 2025, mảng nông nghiệp phát thải 933.876 tCO2e."
+  },
+  {
+   "id": "N06",
+   "gold": [
+    "N"
+   ],
+   "raw": "N",
+   "rows": "N",
+   "why_rows": [
+    "23,47 tCO2e: N khác phạm vi phát thải: s3 / s1; khác phạm vi phát thải: s3 / s2; khác phạm vi phát thải: s3 / None; khác phạm vi phát thải: s3 / None; khác phạm vi phát thải: s3 / None; khác chỉ số: ghg_emissions / other_env; khác phạm vi phát thải: s3 / None; khác loại giá trị: absolute / share; khác phạm vi phát"
+   ],
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 3 toàn Tập đoàn là 23,47 triệu tCO2e."
+  },
+  {
+   "id": "N08",
+   "gold": [
+    "S"
+   ],
+   "raw": "N",
+   "rows": "S",
+   "why_rows": [
+    "0,93 tCO2e: S khác phạm vi phát thải: s2 / s1; |930000 − 933876| = 3876 ghg_t; dung sai 5000.5; khác phạm vi phát thải: s2 / None; khác phạm vi phát thải: s2 / None; khác phạm vi phát thải: s2 / None; khác chỉ số: ghg_emissions / other_env; khác phạm vi phát thải: s2 / None; khác loại giá trị: absolute / share; k"
+   ],
+   "claim": "Năm 2025, phát thải khí nhà kính phạm vi 2 toàn Tập đoàn là 0,93 triệu tCO2e."
+  }
+ ],
+ "summary": {
+  "raw": {
+   "right": 1,
+   "n": 7,
+   "false_S": 0,
+   "false_C": 0,
+   "decided": 0
+  },
+  "rows": {
+   "right": 3,
+   "n": 7,
+   "false_S": 0,
+   "false_C": 0,
+   "decided": 2
+  }
+ },
+ "evidence_figures": {
+  "raw": 1,
+  "rows": 15
+ }
+}

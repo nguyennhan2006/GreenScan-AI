@@ -1,0 +1,246 @@
+{"id": "bb-79d11206b3494e8d-0-S0", "label": "S", "why": ["11.111 cây: S |11111 − 11111| = 0 count_tree; dung sai 1"]}
+{"id": "bb-79d11206b3494e8d-0-S1", "label": "S", "why": ["11,1 cây xanh: S |11100 − 11111| = 11 count_tree; dung sai 50.5"]}
+{"id": "bb-79d11206b3494e8d-0-C1", "label": "C", "why": ["7.778 cây: C |7778 − 11111| = 3333 count_tree; dung sai 1"]}
+{"id": "bb-79d11206b3494e8d-0-N2", "label": "N", "why": ["11.111 cây: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-5d58a842f6fca59c-0-S0", "label": "N", "why": ["2,3 %: N khác kỳ: None / 2024; khác chỉ số: wastewater / waste_recycled"]}
+{"id": "bb-5d58a842f6fca59c-0-C1", "label": "N", "why": ["17,3 %: N khác kỳ: None / 2024; khác chỉ số: wastewater / waste_recycled"]}
+{"id": "bb-5d58a842f6fca59c-0-N2", "label": "N", "why": ["2,3 %: N khác thực hiện / mục tiêu: target / actual; khác chỉ số: wastewater / waste_recycled"]}
+{"id": "bb-5d58a842f6fca59c-0-N6", "label": "N", "why": ["2,3 %: N khác chỉ số: water_use / wastewater; khác chỉ số: water_use / waste_recycled"]}
+{"id": "bb-5d58a842f6fca59c-2-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-5d58a842f6fca59c-2-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-5d58a842f6fca59c-2-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-5d58a842f6fca59c-3-S0", "label": "N", "why": ["0 sự cố: N khác chỉ số: other_env / wastewater; khác chỉ số: other_env / waste_recycled"]}
+{"id": "bb-5d58a842f6fca59c-3-C1", "label": "N", "why": ["5 sự cố: N khác chỉ số: other_env / wastewater; khác chỉ số: other_env / waste_recycled"]}
+{"id": "bb-5d58a842f6fca59c-3-N2", "label": "N", "why": ["0 sự cố: N khác chỉ số: other_env / wastewater; khác chỉ số: other_env / waste_recycled"]}
+{"id": "bb-bfa0b1a6f98116de-0-S0", "label": "S", "why": ["100 %: S |100 − 100| = 0 percent; dung sai 1"]}
+{"id": "bb-bfa0b1a6f98116de-0-C1", "label": "C", "why": ["85 %: C |85 − 100| = 15 percent; dung sai 1"]}
+{"id": "bb-bfa0b1a6f98116de-0-N2", "label": "N", "why": ["100 %: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-bfa0b1a6f98116de-0-N6", "label": "N", "why": ["100 %: N khác chỉ số: electricity_consumption / renewable_energy"]}
+{"id": "bb-6123c89dc052d927-0-S0", "label": "S", "why": ["4.252 m3: S |4252 − 4252| = 0 volume_m3; dung sai 1"]}
+{"id": "bb-6123c89dc052d927-0-C1", "label": "C", "why": ["5.315 m3: C |5315 − 4252| = 1063 volume_m3; dung sai 1"]}
+{"id": "bb-6123c89dc052d927-0-C2", "label": "C", "why": ["4.252 m3: C |4.252e+06 − 4252| = 4.24775e+06 volume_m3; dung sai 500.5"]}
+{"id": "bb-6123c89dc052d927-0-N2", "label": "N", "why": ["4.252 m3: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-6123c89dc052d927-0-N5", "label": "N", "why": ["4.252 m3/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bb-6123c89dc052d927-0-N6", "label": "N", "why": ["4.252 m3: N khác chỉ số: wastewater / water_use"]}
+{"id": "bb-3faa8f81a4b996c7-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-3faa8f81a4b996c7-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-3faa8f81a4b996c7-0-C2", "label": "N", "why": ["2,7 MWp: N "]}
+{"id": "bb-3faa8f81a4b996c7-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-3faa8f81a4b996c7-0-N4", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-3faa8f81a4b996c7-0-N5", "label": "N", "why": ["2,7 MWp/tấn sản phẩm: N "]}
+{"id": "bb-3faa8f81a4b996c7-0-N6", "label": "N", "why": ["2,7 MWp: N "]}
+{"id": "bb-66e81287e24c3df7-0-S0", "label": "N", "why": ["18 lần: N khác chỉ số: electricity_consumption / energy_consumption"]}
+{"id": "bb-66e81287e24c3df7-0-C1", "label": "N", "why": ["25 lần: N khác chỉ số: electricity_consumption / energy_consumption"]}
+{"id": "bb-66e81287e24c3df7-0-C3", "label": "N", "why": ["18 lần: N khác chỉ số: electricity_consumption / energy_consumption"]}
+{"id": "bb-66e81287e24c3df7-0-N2", "label": "N", "why": ["18 lần: N khác chỉ số: electricity_consumption / energy_consumption"]}
+{"id": "bb-66e81287e24c3df7-0-N6", "label": "N", "why": ["18 lần: N khác chỉ số: renewable_energy / energy_consumption"]}
+{"id": "bb-27682defff29c549-0-S0", "label": "S", "why": ["30 %: S |30 − 30| = 0 percent; dung sai 1"]}
+{"id": "bb-27682defff29c549-0-C1", "label": "C", "why": ["45 %: C |45 − 30| = 15 percent; dung sai 1"]}
+{"id": "bb-27682defff29c549-0-N2", "label": "N", "why": ["30 %: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-f4660d330938f1ee-0-S0", "label": "S", "why": ["10 %: S |10 − 10| = 0 percent; dung sai 1"]}
+{"id": "bb-f4660d330938f1ee-0-C1", "label": "C", "why": ["25 %: C |25 − 10| = 15 percent; dung sai 1"]}
+{"id": "bb-f4660d330938f1ee-0-C3", "label": "C", "why": ["10 %: C ngược chiều: decrease / increase"]}
+{"id": "bb-f4660d330938f1ee-0-N2", "label": "N", "why": ["10 %: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-f4660d330938f1ee-0-N6", "label": "N", "why": ["10 %: N khác chỉ số: renewable_energy / electricity_consumption"]}
+{"id": "bb-a2c8c39b965d9a2d-0-S0", "label": "N", "why": ["50 m2: N |50 − 50| = 0 m2; dung sai 1; |50 − 140| = 90 m2; dung sai 1; |50 − 300| = 250 m2; dung sai 1"]}
+{"id": "bb-a2c8c39b965d9a2d-0-C1", "label": "C", "why": ["40 m2: C |40 − 50| = 10 m2; dung sai 1; |40 − 140| = 100 m2; dung sai 1; |40 − 300| = 260 m2; dung sai 1"]}
+{"id": "bb-a2c8c39b965d9a2d-0-C2", "label": "C", "why": ["50 m2: C |50000 − 50| = 49950 m2; dung sai 500.5; |50000 − 140| = 49860 m2; dung sai 500.5; |50000 − 300| = 49700 m2; dung sai 500.5"]}
+{"id": "bb-a2c8c39b965d9a2d-0-N2", "label": "N", "why": ["50 m2: N khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-a2c8c39b965d9a2d-0-N4", "label": "N", "why": ["50 m2: N |50 − 50| = 0 m2; dung sai 1; |50 − 140| = 90 m2; dung sai 1; |50 − 300| = 250 m2; dung sai 1"]}
+{"id": "bb-a2c8c39b965d9a2d-0-N5", "label": "N", "why": ["50 m2/tấn sản phẩm: N khác loại giá trị: intensity / absolute; khác loại giá trị: intensity / absolute; khác loại giá trị: intensity / absolute"]}
+{"id": "bb-a2c8c39b965d9a2d-1-S0", "label": "N", "why": ["140 m2: N |140 − 50| = 90 m2; dung sai 1; |140 − 140| = 0 m2; dung sai 1; |140 − 300| = 160 m2; dung sai 1"]}
+{"id": "bb-a2c8c39b965d9a2d-1-C1", "label": "C", "why": ["196 m2: C |196 − 50| = 146 m2; dung sai 1; |196 − 140| = 56 m2; dung sai 1; |196 − 300| = 104 m2; dung sai 1"]}
+{"id": "bb-a2c8c39b965d9a2d-1-C2", "label": "C", "why": ["140 m2: C |140000 − 50| = 139950 m2; dung sai 500.5; |140000 − 140| = 139860 m2; dung sai 500.5; |140000 − 300| = 139700 m2; dung sai 500.5"]}
+{"id": "bb-a2c8c39b965d9a2d-1-N2", "label": "N", "why": ["140 m2: N khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-a2c8c39b965d9a2d-1-N4", "label": "N", "why": ["140 m2: N |140 − 50| = 90 m2; dung sai 1; |140 − 140| = 0 m2; dung sai 1; |140 − 300| = 160 m2; dung sai 1"]}
+{"id": "bb-a2c8c39b965d9a2d-1-N5", "label": "N", "why": ["140 m2/tấn sản phẩm: N khác loại giá trị: intensity / absolute; khác loại giá trị: intensity / absolute; khác loại giá trị: intensity / absolute"]}
+{"id": "bb-a2c8c39b965d9a2d-2-S0", "label": "N", "why": ["300 m2: N |300 − 50| = 250 m2; dung sai 1; |300 − 140| = 160 m2; dung sai 1; |300 − 300| = 0 m2; dung sai 1"]}
+{"id": "bb-a2c8c39b965d9a2d-2-C1", "label": "C", "why": ["375 m2: C |375 − 50| = 325 m2; dung sai 1; |375 − 140| = 235 m2; dung sai 1; |375 − 300| = 75 m2; dung sai 1"]}
+{"id": "bb-a2c8c39b965d9a2d-2-C2", "label": "C", "why": ["300 m2: C |300000 − 50| = 299950 m2; dung sai 500.5; |300000 − 140| = 299860 m2; dung sai 500.5; |300000 − 300| = 299700 m2; dung sai 500.5"]}
+{"id": "bb-a2c8c39b965d9a2d-2-N2", "label": "N", "why": ["300 m2: N khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-a2c8c39b965d9a2d-2-N4", "label": "N", "why": ["300 m2: N |300 − 50| = 250 m2; dung sai 1; |300 − 140| = 160 m2; dung sai 1; |300 − 300| = 0 m2; dung sai 1"]}
+{"id": "bb-a2c8c39b965d9a2d-2-N5", "label": "N", "why": ["300 m2/tấn sản phẩm: N khác loại giá trị: intensity / absolute; khác loại giá trị: intensity / absolute; khác loại giá trị: intensity / absolute"]}
+{"id": "bb-94d4705cfa9d5bc0-0-S0", "label": "S", "why": ["1.000 cây xanh: S |1000 − 1000| = 0 count_tree; dung sai 1"]}
+{"id": "bb-94d4705cfa9d5bc0-0-C1", "label": "C", "why": ["1.400 cây xanh: C |1400 − 1000| = 400 count_tree; dung sai 1"]}
+{"id": "bb-94d4705cfa9d5bc0-0-N1", "label": "N", "why": ["1.000 cây xanh: N khác kỳ: 2022 / 2023"]}
+{"id": "bb-94d4705cfa9d5bc0-0-N2", "label": "N", "why": ["1.000 cây: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-da3b456d8aadbcbe-0-S0", "label": "N", "why": ["3 %: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-da3b456d8aadbcbe-0-C1", "label": "N", "why": ["18 %: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-da3b456d8aadbcbe-0-N2", "label": "S", "why": ["3 %: S |3 − 3| = 0 percent; dung sai 1"]}
+{"id": "bb-da3b456d8aadbcbe-0-N6", "label": "N", "why": ["3 %: N khác chỉ số: electricity_consumption / renewable_energy"]}
+{"id": "bb-e6f8028c485d11cc-0-S0", "label": "S", "why": ["20 %: S |20 − 20| = 0 percent; dung sai 1"]}
+{"id": "bb-e6f8028c485d11cc-0-C1", "label": "C", "why": ["35 %: C |35 − 20| = 15 percent; dung sai 1"]}
+{"id": "bb-e6f8028c485d11cc-0-C3", "label": "C", "why": ["20 %: C ngược chiều: increase / decrease"]}
+{"id": "bb-e6f8028c485d11cc-0-N1", "label": "N", "why": ["20 %: N khác kỳ: 2024 / 2025"]}
+{"id": "bb-e6f8028c485d11cc-0-N2", "label": "N", "why": ["20 %: N khác thực hiện / mục tiêu: actual / target"]}
+{"id": "bb-ef9f0f417b68dd07-0-S0", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-ef9f0f417b68dd07-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-ef9f0f417b68dd07-0-N2", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-ef9f0f417b68dd07-0-N4", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-3b29def9c38d8fa0-0-S0", "label": "N", "why": ["25 ha: N khác kỳ: 2023 / None"]}
+{"id": "bb-3b29def9c38d8fa0-0-C1", "label": "N", "why": ["35 ha: N khác kỳ: 2023 / None"]}
+{"id": "bb-3b29def9c38d8fa0-0-C2", "label": "N", "why": ["25 ha: N khác kỳ: 2023 / None"]}
+{"id": "bb-3b29def9c38d8fa0-0-N1", "label": "N", "why": ["25 ha: N khác kỳ: 2022 / None"]}
+{"id": "bb-3b29def9c38d8fa0-0-N2", "label": "N", "why": ["25 ha: N khác loại giá trị: target / absolute"]}
+{"id": "bb-3b29def9c38d8fa0-0-N5", "label": "N", "why": ["25 ha/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bb-3bb0ebc5c16cd1d3-0-S0", "label": "N", "why": ["10 %: N khác chỉ số: electricity_consumption / ghg_emissions; khác loại giá trị: change / absolute; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-0-C1", "label": "N", "why": ["25 %: N khác chỉ số: electricity_consumption / ghg_emissions; khác loại giá trị: change / absolute; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-0-C3", "label": "N", "why": ["10 %: N khác chỉ số: electricity_consumption / ghg_emissions; khác loại giá trị: change / absolute; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-0-N2", "label": "N", "why": ["10 %: N khác chỉ số: electricity_consumption / ghg_emissions; khác loại giá trị: change / absolute; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-0-N6", "label": "N", "why": ["10 %: N khác chỉ số: renewable_energy / ghg_emissions; khác chỉ số: renewable_energy / electricity_consumption; khác chỉ số: renewable_energy / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-1-S0", "label": "S", "why": ["55.624 kWh: S khác chỉ số: electricity_consumption / ghg_emissions; |55624 − 55624| = 0 energy_kwh; dung sai 1; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-1-S1", "label": "S", "why": ["55,6 kWh: S khác chỉ số: electricity_consumption / ghg_emissions; |55600 − 55624| = 24 energy_kwh; dung sai 50.5; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-1-C1", "label": "C", "why": ["77.874 kWh: C khác chỉ số: electricity_consumption / ghg_emissions; |77874 − 55624| = 22250 energy_kwh; dung sai 1; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-1-C2", "label": "C", "why": ["55.624 kWh: C khác chỉ số: electricity_consumption / ghg_emissions; |5.5624e+07 − 55624| = 5.55684e+07 energy_kwh; dung sai 500.5; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-1-N2", "label": "N", "why": ["55.624 Wh: N khác chỉ số: electricity_consumption / ghg_emissions; khác thực hiện / mục tiêu: actual / target; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-1-N5", "label": "N", "why": ["55.624 kWh/tấn sản phẩm: N khác chỉ số: electricity_consumption / ghg_emissions; khác loại giá trị: intensity / absolute; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-1-N6", "label": "N", "why": ["55.624 kWh: N khác chỉ số: renewable_energy / ghg_emissions; khác chỉ số: renewable_energy / electricity_consumption; khác chỉ số: renewable_energy / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-2-S0", "label": "N", "why": ["200,25 GJ: N khác chỉ số: energy_consumption / ghg_emissions; khác chỉ số: energy_consumption / electricity_consumption; khác chỉ số: energy_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-2-C1", "label": "N", "why": ["140,17 GJ: N khác chỉ số: energy_consumption / ghg_emissions; khác chỉ số: energy_consumption / electricity_consumption; khác chỉ số: energy_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-2-C2", "label": "N", "why": ["200,25 GJ: N khác chỉ số: energy_consumption / ghg_emissions; khác chỉ số: energy_consumption / electricity_consumption; khác chỉ số: energy_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-2-N2", "label": "N", "why": ["200,25 GJ: N khác chỉ số: energy_consumption / ghg_emissions; khác chỉ số: energy_consumption / electricity_consumption; khác chỉ số: energy_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-2-N5", "label": "N", "why": ["200,25 GJ/tấn sản phẩm: N khác chỉ số: electricity_consumption / ghg_emissions; khác loại giá trị: intensity / absolute; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-2-N6", "label": "N", "why": ["200,25 GJ: N khác chỉ số: energy_consumption / ghg_emissions; khác chỉ số: energy_consumption / electricity_consumption; khác chỉ số: energy_consumption / ghg_emissions"]}
+{"id": "bb-3bb0ebc5c16cd1d3-3-S0", "label": "S", "why": ["47,3 tấn CO2: S |47.3 − 47.3| = 0 ghg_t; dung sai 0.1; khác chỉ số: ghg_emissions / electricity_consumption; khác loại giá trị: absolute / intensity"]}
+{"id": "bb-3bb0ebc5c16cd1d3-3-C1", "label": "C", "why": ["59,1 tấn CO2: C |59.1 − 47.3| = 11.8 ghg_t; dung sai 0.1; khác chỉ số: ghg_emissions / electricity_consumption; khác loại giá trị: absolute / intensity"]}
+{"id": "bb-3bb0ebc5c16cd1d3-3-C2", "label": "C", "why": ["47,3 tấn CO2: C |47300 − 47.3| = 47252.7 ghg_t; dung sai 50.05; khác chỉ số: ghg_emissions / electricity_consumption; khác loại giá trị: absolute / intensity"]}
+{"id": "bb-3bb0ebc5c16cd1d3-3-N2", "label": "N", "why": ["47,3 tấn CO2: N khác thực hiện / mục tiêu: actual / target; khác chỉ số: ghg_emissions / electricity_consumption; khác loại giá trị: absolute / intensity"]}
+{"id": "bb-3bb0ebc5c16cd1d3-3-N5", "label": "N", "why": ["47,3 tấn CO2/tấn sản phẩm: N khác loại giá trị: intensity / absolute; khác chỉ số: ghg_emissions / electricity_consumption; khác đơn vị: ghg_t/tấn sản phẩm / percent"]}
+{"id": "bb-65612c217b51a18c-1-S0", "label": "S", "why": ["12,15 kWh/1 tỷ đồng doanh thu: S khác kỳ: 2024 / 2025; |12.15 − 12.15| = 0 energy_kwh/1 tỷ đồng doanh thu; dung sai 0.01; khác loại giá trị: intensity / share"]}
+{"id": "bb-65612c217b51a18c-1-C1", "label": "C", "why": ["8,50 kWh/1 tỷ đồng doanh thu: C khác kỳ: 2024 / 2025; |8.5 − 12.15| = 3.65 energy_kwh/1 tỷ đồng doanh thu; dung sai 0.01; khác loại giá trị: intensity / share"]}
+{"id": "bb-65612c217b51a18c-1-N1", "label": "N", "why": ["12,15 kWh/1 tỷ đồng doanh thu: N khác kỳ: 2023 / 2025; khác kỳ: 2023 / 2024; khác loại giá trị: intensity / share"]}
+{"id": "bb-65612c217b51a18c-1-N2", "label": "N", "why": ["12,15 kWh/1 tỷ đồng doanh thu: N khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual; khác loại giá trị: intensity / share"]}
+{"id": "bb-65612c217b51a18c-1-N6", "label": "N", "why": ["12,15 kWh/1 tỷ đồng doanh thu: N khác chỉ số: electricity_consumption / energy_consumption; khác chỉ số: electricity_consumption / energy_consumption; khác chỉ số: electricity_consumption / energy_consumption"]}
+{"id": "bb-27c68eaebdcc9716-0-S0", "label": "S", "why": ["10.000 m2: S |10000 − 10000| = 0 m2; dung sai 1"]}
+{"id": "bb-27c68eaebdcc9716-0-S1", "label": "S", "why": ["10,0 m2: S |10000 − 10000| = 0 m2; dung sai 50.5"]}
+{"id": "bb-27c68eaebdcc9716-0-C1", "label": "C", "why": ["14.000 m2: C |14000 − 10000| = 4000 m2; dung sai 1"]}
+{"id": "bb-27c68eaebdcc9716-0-C2", "label": "C", "why": ["10.000 m2: C |1e+07 − 10000| = 9.99e+06 m2; dung sai 500.5"]}
+{"id": "bb-27c68eaebdcc9716-0-N2", "label": "N", "why": ["10.000 m2: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-27c68eaebdcc9716-0-N5", "label": "N", "why": ["10.000 m2/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bb-0252ab47096fb1d5-0-S0", "label": "S", "why": ["291.295.250 m3: S |2.91295e+08 − 2.91295e+08| = 0 volume_m3; dung sai 1"]}
+{"id": "bb-0252ab47096fb1d5-0-S1", "label": "S", "why": ["291,3 m3: S |2.913e+08 − 2.91295e+08| = 4750 volume_m3; dung sai 50000.5"]}
+{"id": "bb-0252ab47096fb1d5-0-C1", "label": "C", "why": ["233.036.200 m3: C |2.33036e+08 − 2.91295e+08| = 5.8259e+07 volume_m3; dung sai 1"]}
+{"id": "bb-0252ab47096fb1d5-0-C2", "label": "C", "why": ["291.295.250 m3: C |2.91295e+11 − 2.91295e+08| = 2.91004e+11 volume_m3; dung sai 500.5"]}
+{"id": "bb-0252ab47096fb1d5-0-N2", "label": "N", "why": ["291.295.250 m3: N khác loại giá trị: target / absolute"]}
+{"id": "bb-0252ab47096fb1d5-0-N4", "label": "N", "why": ["291.295.250 m3: N khác ranh giới tổ chức: group / facility"]}
+{"id": "bb-0252ab47096fb1d5-0-N5", "label": "N", "why": ["291.295.250 m3/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bb-0252ab47096fb1d5-0-N6", "label": "N", "why": ["291.295.250 m3: N khác chỉ số: wastewater / water_use"]}
+{"id": "bb-72005dead814c7a9-0-S0", "label": "N", "why": ["100 cây: N khác đơn vị: count_tree / none"]}
+{"id": "bb-72005dead814c7a9-0-C1", "label": "N", "why": ["125 cây: N khác đơn vị: count_tree / none"]}
+{"id": "bb-72005dead814c7a9-0-N2", "label": "N", "why": ["100 cây: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-4077acf6cc0d921d-0-S0", "label": "S", "why": ["100 %: S |100 − 100| = 0 percent; dung sai 1"]}
+{"id": "bb-4077acf6cc0d921d-0-C1", "label": "C", "why": ["85 %: C |85 − 100| = 15 percent; dung sai 1"]}
+{"id": "bb-4077acf6cc0d921d-0-N2", "label": "N", "why": ["100 %: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-4077acf6cc0d921d-0-N6", "label": "N", "why": ["100 %: N khác chỉ số: water_use / wastewater"]}
+{"id": "bb-10524786c378c2d1-0-S0", "label": "N", "why": ["50 m2: N |50 − 50| = 0 m2; dung sai 1; |50 − 140| = 90 m2; dung sai 1; |50 − 300| = 250 m2; dung sai 1"]}
+{"id": "bb-10524786c378c2d1-0-C1", "label": "C", "why": ["70 m2: C |70 − 50| = 20 m2; dung sai 1; |70 − 140| = 70 m2; dung sai 1; |70 − 300| = 230 m2; dung sai 1"]}
+{"id": "bb-10524786c378c2d1-0-C2", "label": "C", "why": ["50 m2: C |50000 − 50| = 49950 m2; dung sai 500.5; |50000 − 140| = 49860 m2; dung sai 500.5; |50000 − 300| = 49700 m2; dung sai 500.5"]}
+{"id": "bb-10524786c378c2d1-0-N2", "label": "N", "why": ["50 m2: N khác loại giá trị: target / absolute; khác loại giá trị: target / absolute; khác loại giá trị: target / absolute"]}
+{"id": "bb-10524786c378c2d1-0-N4", "label": "N", "why": ["50 m2: N |50 − 50| = 0 m2; dung sai 1; |50 − 140| = 90 m2; dung sai 1; |50 − 300| = 250 m2; dung sai 1"]}
+{"id": "bb-10524786c378c2d1-0-N5", "label": "N", "why": ["50 m2/tấn sản phẩm: N khác loại giá trị: intensity / absolute; khác loại giá trị: intensity / absolute; khác loại giá trị: intensity / absolute"]}
+{"id": "bb-10524786c378c2d1-1-S0", "label": "N", "why": ["140 m2: N |140 − 50| = 90 m2; dung sai 1; |140 − 140| = 0 m2; dung sai 1; |140 − 300| = 160 m2; dung sai 1"]}
+{"id": "bb-10524786c378c2d1-1-C1", "label": "C", "why": ["196 m2: C |196 − 50| = 146 m2; dung sai 1; |196 − 140| = 56 m2; dung sai 1; |196 − 300| = 104 m2; dung sai 1"]}
+{"id": "bb-10524786c378c2d1-1-C2", "label": "C", "why": ["140 m2: C |140000 − 50| = 139950 m2; dung sai 500.5; |140000 − 140| = 139860 m2; dung sai 500.5; |140000 − 300| = 139700 m2; dung sai 500.5"]}
+{"id": "bb-10524786c378c2d1-1-N2", "label": "N", "why": ["140 m2: N khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-10524786c378c2d1-1-N4", "label": "N", "why": ["140 m2: N |140 − 50| = 90 m2; dung sai 1; |140 − 140| = 0 m2; dung sai 1; |140 − 300| = 160 m2; dung sai 1"]}
+{"id": "bb-10524786c378c2d1-1-N5", "label": "N", "why": ["140 m2/tấn sản phẩm: N khác loại giá trị: intensity / absolute; khác loại giá trị: intensity / absolute; khác loại giá trị: intensity / absolute"]}
+{"id": "bb-10524786c378c2d1-2-S0", "label": "N", "why": ["300 m2: N |300 − 50| = 250 m2; dung sai 1; |300 − 140| = 160 m2; dung sai 1; |300 − 300| = 0 m2; dung sai 1"]}
+{"id": "bb-10524786c378c2d1-2-C1", "label": "C", "why": ["420 m2: C |420 − 50| = 370 m2; dung sai 1; |420 − 140| = 280 m2; dung sai 1; |420 − 300| = 120 m2; dung sai 1"]}
+{"id": "bb-10524786c378c2d1-2-C2", "label": "C", "why": ["300 m2: C |300000 − 50| = 299950 m2; dung sai 500.5; |300000 − 140| = 299860 m2; dung sai 500.5; |300000 − 300| = 299700 m2; dung sai 500.5"]}
+{"id": "bb-10524786c378c2d1-2-N2", "label": "N", "why": ["300 m2: N khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-10524786c378c2d1-2-N4", "label": "N", "why": ["300 m2: N |300 − 50| = 250 m2; dung sai 1; |300 − 140| = 160 m2; dung sai 1; |300 − 300| = 0 m2; dung sai 1"]}
+{"id": "bb-10524786c378c2d1-2-N5", "label": "N", "why": ["300 m2/tấn sản phẩm: N khác loại giá trị: intensity / absolute; khác loại giá trị: intensity / absolute; khác loại giá trị: intensity / absolute"]}
+{"id": "bb-ad63422e5dc9bdf8-0-S0", "label": "S", "why": ["11.000 cây: S |11000 − 11000| = 0 count_tree; dung sai 1"]}
+{"id": "bb-ad63422e5dc9bdf8-0-S1", "label": "S", "why": ["11,0 cây xanh: S |11000 − 11000| = 0 count_tree; dung sai 50.5"]}
+{"id": "bb-ad63422e5dc9bdf8-0-C1", "label": "C", "why": ["13.750 cây: C |13750 − 11000| = 2750 count_tree; dung sai 1"]}
+{"id": "bb-ad63422e5dc9bdf8-0-N2", "label": "N", "why": ["11.000 cây: N khác thực hiện / mục tiêu: actual / target"]}
+{"id": "bb-3e613e7e3a6513b6-0-S0", "label": "N", "why": ["10.175 cây: N |10175 − 10175| = 0 count_tree; dung sai 1; |10175 − 11111| = 936 count_tree; dung sai 1"]}
+{"id": "bb-3e613e7e3a6513b6-0-S1", "label": "N", "why": ["10,2 cây rừng: N |10200 − 10175| = 25 count_tree; dung sai 50.5; |10200 − 11111| = 911 count_tree; dung sai 50.5"]}
+{"id": "bb-3e613e7e3a6513b6-0-C1", "label": "C", "why": ["8.140 cây: C |8140 − 10175| = 2035 count_tree; dung sai 1; |8140 − 11111| = 2971 count_tree; dung sai 1"]}
+{"id": "bb-3e613e7e3a6513b6-0-N1", "label": "N", "why": ["10.175 cây: N khác kỳ: 2023 / 2024; khác kỳ: 2023 / 2024"]}
+{"id": "bb-3e613e7e3a6513b6-0-N2", "label": "N", "why": ["10.175 cây: N khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-3e613e7e3a6513b6-1-S0", "label": "C", "why": ["2.175 cây: C |2175 − 10175| = 8000 count_tree; dung sai 1; |2175 − 11111| = 8936 count_tree; dung sai 1"]}
+{"id": "bb-3e613e7e3a6513b6-1-C1", "label": "C", "why": ["2.719 cây: C |2719 − 10175| = 7456 count_tree; dung sai 1; |2719 − 11111| = 8392 count_tree; dung sai 1"]}
+{"id": "bb-3e613e7e3a6513b6-1-N1", "label": "N", "why": ["2.175 cây: N khác kỳ: 2023 / 2024; khác kỳ: 2023 / 2024"]}
+{"id": "bb-3e613e7e3a6513b6-1-N2", "label": "N", "why": ["2.175 cây: N khác loại giá trị: target / absolute; khác loại giá trị: target / absolute"]}
+{"id": "bb-3e613e7e3a6513b6-2-S0", "label": "C", "why": ["8.000 cây: C |8000 − 10175| = 2175 count_tree; dung sai 1; |8000 − 11111| = 3111 count_tree; dung sai 1"]}
+{"id": "bb-3e613e7e3a6513b6-2-C1", "label": "C", "why": ["5.600 cây: C |5600 − 10175| = 4575 count_tree; dung sai 1; |5600 − 11111| = 5511 count_tree; dung sai 1"]}
+{"id": "bb-3e613e7e3a6513b6-2-N1", "label": "N", "why": ["8.000 cây: N khác kỳ: 2023 / 2024; khác kỳ: 2023 / 2024"]}
+{"id": "bb-3e613e7e3a6513b6-2-N2", "label": "N", "why": ["8.000 cây: N khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-3e613e7e3a6513b6-3-S0", "label": "N", "why": ["11.111 cây xanh: N |11111 − 10175| = 936 count_tree; dung sai 1; |11111 − 11111| = 0 count_tree; dung sai 1"]}
+{"id": "bb-3e613e7e3a6513b6-3-S1", "label": "N", "why": ["11,1 cây xanh: N |11100 − 10175| = 925 count_tree; dung sai 50.5; |11100 − 11111| = 11 count_tree; dung sai 50.5"]}
+{"id": "bb-3e613e7e3a6513b6-3-C1", "label": "C", "why": ["13.889 cây xanh: C |13889 − 10175| = 3714 count_tree; dung sai 1; |13889 − 11111| = 2778 count_tree; dung sai 1"]}
+{"id": "bb-3e613e7e3a6513b6-3-N1", "label": "N", "why": ["11.111 cây xanh: N khác kỳ: 2023 / 2024; khác kỳ: 2023 / 2024"]}
+{"id": "bb-3e613e7e3a6513b6-3-N2", "label": "N", "why": ["11.111 cây: N khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-9d32b060a0639665-0-S0", "label": "S", "why": ["84 %: S khác chỉ số: wastewater / water_use; |84 − 84| = 0 percent; dung sai 1"]}
+{"id": "bb-9d32b060a0639665-0-C1", "label": "C", "why": ["69 %: C khác chỉ số: wastewater / water_use; |69 − 84| = 15 percent; dung sai 1"]}
+{"id": "bb-9d32b060a0639665-0-N2", "label": "N", "why": ["84 %: N khác chỉ số: wastewater / water_use; khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-9d32b060a0639665-0-N6", "label": "N", "why": ["84 %: N khác loại giá trị: share / intensity; khác chỉ số: water_use / wastewater"]}
+{"id": "bb-e60180a9a03b9e7f-0-S0", "label": "S", "why": ["15,4 %: S |15.4 − 15.4| = 0 percent; dung sai 0.1"]}
+{"id": "bb-e60180a9a03b9e7f-0-C1", "label": "C", "why": ["30,4 %: C |30.4 − 15.4| = 15 percent; dung sai 0.1"]}
+{"id": "bb-e60180a9a03b9e7f-0-N2", "label": "N", "why": ["15,4 %: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-e60180a9a03b9e7f-0-N6", "label": "N", "why": ["15,4 %: N khác chỉ số: water_use / wastewater"]}
+{"id": "bb-d60b174c243c3b89-0-S0", "label": "S", "why": ["100.000 cây xanh: S |100000 − 100000| = 0 count_tree; dung sai 1"]}
+{"id": "bb-d60b174c243c3b89-0-S1", "label": "N", "why": ["100.000 cây xanh: N khác loại giá trị: target / absolute", "100,0 cây xanh: N khác loại giá trị: target / absolute"]}
+{"id": "bb-d60b174c243c3b89-0-C1", "label": "N", "why": ["100.000 cây: N khác loại giá trị: target / absolute", "70.000 cây: N khác loại giá trị: target / absolute"]}
+{"id": "bb-d60b174c243c3b89-0-N1", "label": "N", "why": ["100.000 cây xanh: N khác kỳ: 2025 / 2026"]}
+{"id": "bb-d60b174c243c3b89-0-N2", "label": "N", "why": ["100.000 cây: N khác thực hiện / mục tiêu: actual / target"]}
+{"id": "bb-3126990194391145-0-S0", "label": "N", "why": ["556.240 kWh: N khác chỉ số: energy_consumption / electricity_consumption; khác chỉ số: energy_consumption / ghg_emissions"]}
+{"id": "bb-3126990194391145-0-S1", "label": "S", "why": ["556,2 kWh: S |556200 − 556240| = 40 energy_kwh; dung sai 50.5; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3126990194391145-0-C1", "label": "N", "why": ["778.736 kWh: N khác chỉ số: energy_consumption / electricity_consumption; khác chỉ số: energy_consumption / ghg_emissions"]}
+{"id": "bb-3126990194391145-0-C2", "label": "N", "why": ["556.240 kWh: N khác chỉ số: energy_consumption / electricity_consumption; khác chỉ số: energy_consumption / ghg_emissions"]}
+{"id": "bb-3126990194391145-0-N1", "label": "N", "why": ["556.240 kWh: N khác chỉ số: energy_consumption / electricity_consumption; khác chỉ số: energy_consumption / ghg_emissions"]}
+{"id": "bb-3126990194391145-0-N2", "label": "N", "why": ["556.240 kWh: N khác thực hiện / mục tiêu: target / actual; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3126990194391145-0-N5", "label": "N", "why": ["556.240 kWh/tấn sản phẩm: N khác loại giá trị: intensity / absolute; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3126990194391145-0-N6", "label": "N", "why": ["556.240 kWh: N khác chỉ số: renewable_energy / electricity_consumption; khác chỉ số: renewable_energy / ghg_emissions"]}
+{"id": "bb-3126990194391145-1-S0", "label": "N", "why": ["19 %: N khác loại giá trị: change / absolute; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3126990194391145-1-C1", "label": "N", "why": ["34 %: N khác loại giá trị: change / absolute; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3126990194391145-1-C3", "label": "N", "why": ["19 %: N khác loại giá trị: change / absolute; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3126990194391145-1-N2", "label": "N", "why": ["19 %: N khác loại giá trị: change / absolute; khác chỉ số: electricity_consumption / ghg_emissions"]}
+{"id": "bb-3126990194391145-1-N6", "label": "N", "why": ["19 %: N khác chỉ số: renewable_energy / electricity_consumption; khác chỉ số: renewable_energy / ghg_emissions"]}
+{"id": "bb-3126990194391145-2-S0", "label": "S", "why": ["108 tấn CO2: S khác chỉ số: ghg_emissions / electricity_consumption; |108 − 108| = 0 ghg_t; dung sai 1"]}
+{"id": "bb-3126990194391145-2-C1", "label": "C", "why": ["86 tấn CO2: C khác chỉ số: ghg_emissions / electricity_consumption; |86 − 108| = 22 ghg_t; dung sai 1"]}
+{"id": "bb-3126990194391145-2-C2", "label": "C", "why": ["108 tấn CO2: C khác chỉ số: ghg_emissions / electricity_consumption; |108000 − 108| = 107892 ghg_t; dung sai 500.5"]}
+{"id": "bb-3126990194391145-2-N1", "label": "N", "why": ["108 tấn CO2: N khác chỉ số: ghg_emissions / electricity_consumption; khác kỳ: 2024 / 2025"]}
+{"id": "bb-3126990194391145-2-N2", "label": "N", "why": ["108 tấn CO2: N khác chỉ số: ghg_emissions / electricity_consumption; khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-3126990194391145-2-N5", "label": "N", "why": ["108 tấn CO2/tấn sản phẩm: N khác chỉ số: ghg_emissions / electricity_consumption; khác loại giá trị: intensity / absolute"]}
+{"id": "bb-7f15e0f1af81ab70-0-S0", "label": "S", "why": ["1.907 tấn CO2: S |1907 − 1907| = 0 ghg_t; dung sai 1"]}
+{"id": "bb-7f15e0f1af81ab70-0-C1", "label": "C", "why": ["2.384 tấn CO2: C |2384 − 1907| = 477 ghg_t; dung sai 1"]}
+{"id": "bb-7f15e0f1af81ab70-0-C2", "label": "C", "why": ["1.907 tấn CO2: C |1.907e+06 − 1907| = 1.90509e+06 ghg_t; dung sai 500.5"]}
+{"id": "bb-7f15e0f1af81ab70-0-N1", "label": "N", "why": ["1.907 tấn CO2: N khác kỳ: 2023 / 2024"]}
+{"id": "bb-7f15e0f1af81ab70-0-N2", "label": "N", "why": ["1.907 CO2: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-7f15e0f1af81ab70-0-N5", "label": "N", "why": ["1.907 tCO2e/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bb-fa10ef71409026a5-0-S0", "label": "N", "why": ["24,14 tấn: N khác đơn vị: mass_t / none"]}
+{"id": "bb-fa10ef71409026a5-0-C1", "label": "N", "why": ["19,31 tấn: N khác đơn vị: mass_t / none"]}
+{"id": "bb-fa10ef71409026a5-0-C2", "label": "N", "why": ["24,14 tấn: N khác đơn vị: mass_t / none"]}
+{"id": "bb-fa10ef71409026a5-0-N1", "label": "N", "why": ["24,14 tấn: N khác kỳ: 2022 / 2023"]}
+{"id": "bb-fa10ef71409026a5-0-N2", "label": "N", "why": ["24,14 tấn: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-fa10ef71409026a5-0-N5", "label": "N", "why": ["24,14 tấn/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bb-e049e7ee670608b5-0-S0", "label": "N", "why": ["2.500 cây: N |2500 − 2500| = 0 count_tree; dung sai 1; |2500 − 3400| = 900 count_tree; dung sai 1"]}
+{"id": "bb-e049e7ee670608b5-0-C1", "label": "C", "why": ["3.125 cây: C |3125 − 2500| = 625 count_tree; dung sai 1; |3125 − 3400| = 275 count_tree; dung sai 1"]}
+{"id": "bb-e049e7ee670608b5-0-N2", "label": "N", "why": ["2.500 cây: N khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-e049e7ee670608b5-1-S0", "label": "N", "why": ["5 ha: N khác đơn vị: area_ha / count_tree; khác đơn vị: area_ha / count_tree"]}
+{"id": "bb-e049e7ee670608b5-1-C1", "label": "N", "why": ["10 ha: N khác đơn vị: area_ha / count_tree; khác đơn vị: area_ha / count_tree"]}
+{"id": "bb-e049e7ee670608b5-1-C2", "label": "N", "why": ["5 ha: N khác đơn vị: area_ha / count_tree; khác đơn vị: area_ha / count_tree"]}
+{"id": "bb-e049e7ee670608b5-1-N2", "label": "N", "why": ["5 ha: N khác loại giá trị: target / absolute; khác loại giá trị: target / absolute"]}
+{"id": "bb-e049e7ee670608b5-1-N5", "label": "N", "why": ["5 ha/tấn sản phẩm: N khác loại giá trị: intensity / absolute; khác loại giá trị: intensity / absolute"]}
+{"id": "bb-e049e7ee670608b5-2-S0", "label": "N", "why": ["3.400 cây: N |3400 − 2500| = 900 count_tree; dung sai 1; |3400 − 3400| = 0 count_tree; dung sai 1"]}
+{"id": "bb-e049e7ee670608b5-2-C1", "label": "C", "why": ["2.720 cây: C |2720 − 2500| = 220 count_tree; dung sai 1; |2720 − 3400| = 680 count_tree; dung sai 1"]}
+{"id": "bb-e049e7ee670608b5-2-N2", "label": "N", "why": ["3.400 cây: N khác thực hiện / mục tiêu: target / actual; khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-afe2a182b05a215c-0-S0", "label": "S", "why": ["10 %: S |10 − 10| = 0 percent; dung sai 1"]}
+{"id": "bb-afe2a182b05a215c-0-C1", "label": "C", "why": ["25 %: C |25 − 10| = 15 percent; dung sai 1"]}
+{"id": "bb-afe2a182b05a215c-0-C3", "label": "C", "why": ["10 %: C ngược chiều: increase / decrease"]}
+{"id": "bb-afe2a182b05a215c-0-N2", "label": "N", "why": ["10 %: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-afe2a182b05a215c-0-N6", "label": "N", "why": ["10 %: N khác chỉ số: waste_generated / hazardous_waste"]}
+{"id": "bb-830cc9c896eea804-0-S0", "label": "S", "why": ["1.000 cây xanh: S |1000 − 1000| = 0 count_tree; dung sai 1"]}
+{"id": "bb-830cc9c896eea804-0-C1", "label": "C", "why": ["700 cây xanh: C |700 − 1000| = 300 count_tree; dung sai 1"]}
+{"id": "bb-830cc9c896eea804-0-N1", "label": "N", "why": ["1.000 cây xanh: N khác kỳ: 2022 / 2023"]}
+{"id": "bb-830cc9c896eea804-0-N2", "label": "N", "why": ["1.000 cây: N khác thực hiện / mục tiêu: target / actual"]}
+{"id": "bb-06e7e237e5fbe986-0-S0", "label": "S", "why": ["2,7 MWp: S |2.7 − 2.7| = 0 power_mw; dung sai 0.1"]}
+{"id": "bb-06e7e237e5fbe986-0-C1", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-06e7e237e5fbe986-0-C2", "label": "C", "why": ["2,7 MWp: C |2700 − 2.7| = 2697.3 power_mw; dung sai 50.05"]}
+{"id": "bb-06e7e237e5fbe986-0-N1", "label": "N", "why": ["2,7 MWp: N khác kỳ: 2022 / 2023"]}
+{"id": "bb-06e7e237e5fbe986-0-N2", "label": "N", "why": ["2,7 MWp: N khác chỉ số: other_env / renewable_energy"]}
+{"id": "bb-06e7e237e5fbe986-0-N4", "label": "N", "why": ["không đọc được số liệu trong tuyên bố"]}
+{"id": "bb-06e7e237e5fbe986-0-N5", "label": "N", "why": ["2,7 MWp/tấn sản phẩm: N khác loại giá trị: intensity / absolute"]}
+{"id": "bb-06e7e237e5fbe986-0-N6", "label": "S", "why": ["2,7 MWp: S |2.7 − 2.7| = 0 power_mw; dung sai 0.1"]}

@@ -1,0 +1,278 @@
+% =====================================================================
+% GreenScan AI — Báo cáo tổng hợp (dạng sách), Vòng 2 AI–Quantum Challenge 2026
+% Biên dịch:  xelatex main.tex  (chạy 3 lần để mục lục và tham chiếu ổn định)
+% Tác giả chịu trách nhiệm: xem \tacgia bên dưới (đổi một dòng nếu cần).
+% =====================================================================
+\documentclass[12pt,a4paper,oneside]{report}
+\usepackage[a4paper,left=3cm,right=2.2cm,top=2.6cm,bottom=2.5cm,headsep=0.8cm,footskip=1cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\newfontfamily\headfont{Calibri}
+\usepackage[table]{xcolor}
+\usepackage{graphicx,tabularx,array,booktabs,enumitem,fancyhdr,makecell,needspace,amsmath,amssymb}
+\usepackage{xltabular}
+\usepackage[section]{placeins}
+\renewcommand{\topfraction}{0.85}\renewcommand{\bottomfraction}{0.5}\renewcommand{\textfraction}{0.12}\renewcommand{\floatpagefraction}{0.8}
+\setcounter{topnumber}{3}\setcounter{totalnumber}{4}
+\makeatletter\setlength{\@fptop}{0pt}\setlength{\@fpsep}{14pt}\makeatother
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\usepackage[hidelinks]{hyperref}
+\urlstyle{tt}
+\def\UrlBreaks{\do\/\do\_\do\-\do\.}
+
+% ---------- thông tin chung ----------
+\newcommand{\tacgia}{Nguyễn Chơn Nhân}
+\newcommand{\tensp}{GreenScan AI}
+
+% ---------- màu ----------
+\definecolor{gsteal}{HTML}{086778}
+\definecolor{ink}{HTML}{1F2D33}
+\definecolor{rowbg}{HTML}{F1F6F5}
+\definecolor{gold}{HTML}{B07A22}
+\definecolor{muted}{HTML}{5E6E72}
+\definecolor{boxbg}{HTML}{EDF5F3}
+\definecolor{warnbg}{HTML}{FBF4E6}
+
+% ---------- dàn trang ----------
+\linespread{1.3}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{3.5pt}
+\hyphenpenalty=10000 \exhyphenpenalty=10000 \emergencystretch=3em \tolerance=2000
+\setlist{nosep,leftmargin=1.6em,topsep=2pt,itemsep=1.5pt}
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{5pt}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\thd}[1]{\textcolor{white}{\bfseries #1}}
+\newcommand{\hdr}{\rowcolor{gsteal}}
+\newcommand{\bangchu}{\small\linespread{1.08}\selectfont}
+\newcommand{\tep}[1]{\nolinkurl{#1}}
+
+% ---------- tên tiếng Việt ----------
+\renewcommand{\chaptername}{Chương}
+\renewcommand{\contentsname}{Mục lục}
+\renewcommand{\listtablename}{Danh mục bảng}
+\renewcommand{\listfigurename}{Danh mục hình}
+\renewcommand{\tablename}{Bảng}
+\renewcommand{\figurename}{Hình}
+\renewcommand{\bibname}{Tài liệu tham khảo}
+\renewcommand{\appendixname}{Phụ lục}
+
+% ---------- tiêu đề chương, mục ----------
+\titleformat{\chapter}[display]
+  {\headfont\color{gsteal}}
+  {\fontsize{13}{16}\selectfont\MakeUppercase{\chaptertitlename}\ \thechapter}
+  {3pt}
+  {\fontsize{21}{26}\selectfont\bfseries\color{ink}}
+  [\vspace{3pt}{\color{gsteal}\titlerule[1.1pt]}]
+\titlespacing*{\chapter}{0pt}{-6pt}{16pt}
+\titleformat{\section}{\headfont\fontsize{14}{17}\selectfont\bfseries\color{gsteal}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\headfont\fontsize{12.5}{15}\selectfont\bfseries\color{ink}}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{14pt}{5pt}
+\titlespacing*{\subsection}{0pt}{10pt}{3pt}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{1}
+
+% ---------- mục lục ----------
+\renewcommand{\cfttoctitlefont}{\headfont\fontsize{21}{26}\selectfont\bfseries\color{ink}}
+\renewcommand{\cftlottitlefont}{\headfont\fontsize{21}{26}\selectfont\bfseries\color{ink}}
+\renewcommand{\cftloftitlefont}{\headfont\fontsize{21}{26}\selectfont\bfseries\color{ink}}
+\renewcommand{\cftchapfont}{\bfseries}
+\renewcommand{\cftchappagefont}{\bfseries}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftchappresnum}{Chương }
+\renewcommand{\cftchapaftersnum}{.}
+\setlength{\cftchapnumwidth}{5.2em}
+\setlength{\cftbeforechapskip}{5pt}
+\renewcommand{\cfttabpresnum}{Bảng }
+\renewcommand{\cfttabaftersnum}{.}
+\setlength{\cfttabnumwidth}{4.6em}
+\renewcommand{\cftfigpresnum}{Hình }
+\renewcommand{\cftfigaftersnum}{.}
+\setlength{\cftfignumwidth}{4.6em}
+\setlength{\cfttabindent}{0pt}
+\setlength{\cftfigindent}{0pt}
+
+% ---------- đầu trang, chân trang ----------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{gsteal}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[L]{\small\color{muted}\nouppercase{\leftmark}}
+\fancyhead[R]{\small\color{muted}\tensp{} · Báo cáo tổng hợp}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptertitlename\ \thechapter. #1}{}}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\renewcommand{\headrule}{}\fancyfoot[C]{\small\thepage}}
+
+% ---------- chú thích bảng, hình ----------
+\captionsetup{font=small,labelfont={bf,color=gsteal},labelsep=period,skip=5pt,justification=raggedright,singlelinecheck=false}
+\captionsetup[table]{position=top}
+
+% ---------- hộp ý chính ----------
+\newsavebox{\hopybox}
+\newenvironment{hopy}[1]
+ {\setlength{\fboxsep}{8pt}\def\hopytitle{#1}%
+  \begin{lrbox}{\hopybox}\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}%
+  \linespread{1.2}\selectfont{\headfont\bfseries\color{gsteal}\hopytitle}\par\smallskip}
+ {\end{minipage}\end{lrbox}\par\medskip\noindent\fcolorbox{gsteal}{boxbg}{\usebox{\hopybox}}\par\medskip}
+\newenvironment{luuy}[1]
+ {\setlength{\fboxsep}{8pt}\def\luuytitle{#1}%
+  \begin{lrbox}{\hopybox}\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}%
+  \linespread{1.2}\selectfont{\headfont\bfseries\color{gold}\luuytitle}\par\smallskip}
+ {\end{minipage}\end{lrbox}\par\medskip\noindent\fcolorbox{gold}{warnbg}{\usebox{\hopybox}}\par\medskip}
+
+\newcommand{\chuongkhongso}[1]{\chapter*{#1}\addcontentsline{toc}{chapter}{#1}\markboth{#1}{}}
+
+\begin{document}
+
+% ===================================================================== BÌA
+\begin{titlepage}
+\newgeometry{left=2.4cm,right=2.4cm,top=2cm,bottom=2cm}
+\begin{center}
+{\color{gsteal}\rule{\linewidth}{1.2pt}}\par\vspace{6pt}
+{\headfont\bfseries\color{gsteal}\fontsize{13}{16}\selectfont HỌC VIỆN TÀI CHÍNH}\par\vspace{3pt}
+{\headfont\color{ink}\fontsize{10.5}{13.5}\selectfont AI–QUANTUM CHALLENGE 2026\\CUỘC THI TRÍ TUỆ NHÂN TẠO VÀ LƯỢNG TỬ TRONG KINH TẾ – TÀI CHÍNH – KẾ TOÁN}\par
+\vspace{6pt}{\color{gsteal}\rule{\linewidth}{0.5pt}}\par
+\vspace{1.3cm}
+\includegraphics[width=3.1cm]{img/p1_img0.png}\par
+\vspace{1.3cm}
+{\headfont\bfseries\color{gold}\fontsize{14}{17}\selectfont BÁO CÁO TỔNG HỢP}\par\vspace{10pt}
+{\headfont\bfseries\color{gsteal}\fontsize{34}{40}\selectfont GreenScan AI}\par\vspace{12pt}
+{\fontsize{17}{23}\selectfont\bfseries\color{ink} Kiểm chứng tuyên bố môi trường trong báo cáo\\của doanh nghiệp niêm yết theo hướng “bằng chứng trước”}\par\vspace{12pt}
+{\fontsize{13}{17}\selectfont\itshape\color{muted} Phạm vi giải quyết, dữ liệu, giải pháp, kết quả\\và hướng phát triển}\par
+\vfill
+{\linespread{1.4}\selectfont
+\begin{tabular}{r@{\quad}l}
+Tác giả chịu trách nhiệm: & \textbf{\tacgia}\\
+Đội thi: & Eco Nexus (mã đội AQ2026119)\\
+Vòng thi: & Vòng 2 – Bán kết\\
+Phiên bản báo cáo: & 10/11/2026\\
+\end{tabular}\par}
+\vfill
+{\color{gsteal}\rule{\linewidth}{0.5pt}}\par\vspace{4pt}
+{\headfont\bfseries\color{gsteal} THÁNG 11 NĂM 2026}
+\end{center}
+\restoregeometry
+\end{titlepage}
+
+\pagenumbering{roman}
+\setcounter{page}{2}
+
+% ===================================================================== CAM ĐOAN
+\chuongkhongso{Lời cam đoan và phân định trách nhiệm}
+
+Tôi, \textbf{\tacgia}, thành viên đội Eco Nexus (mã đội AQ2026119), xin cam đoan báo cáo này do tôi thực hiện và chịu trách nhiệm.
+
+Toàn bộ dữ liệu, bộ quy tắc gán nhãn, các bộ nhãn, hệ thống \tensp{} và các kết quả đo được trình bày trong báo cáo đều do tôi xây dựng, rà soát và xác nhận. Tôi chịu trách nhiệm về tính đúng đắn của chúng trước Ban Tổ chức và Ban Giám khảo, kể cả với những phần mà trong quá trình làm tôi có dùng công cụ trí tuệ nhân tạo hỗ trợ.
+
+Các công cụ trí tuệ nhân tạo chỉ giữ vai trò công cụ: hỗ trợ lập trình, gán nhãn lượt đầu theo bộ quy tắc do tôi đặt ra, và hỗ trợ soạn thảo. Mọi đầu ra của công cụ chỉ được đưa vào dữ liệu, hệ thống hay báo cáo sau khi tôi đã đọc, kiểm tra và chấp nhận. Theo Điều 14 của Thể lệ, các công cụ này được khai báo đầy đủ ở Phụ lục~\ref{pl:ai}.
+
+Tôi cam kết không làm sai lệch dữ liệu hay kết quả. Mỗi con số trong báo cáo đều ghi rõ được đo trên loại căn cứ nào (mục “Cách đọc các con số”). Không con số nào được trình bày như độ chính xác trên nhãn chuẩn độc lập khi bộ nhãn đó chưa có. Những kết quả không như dự đoán, kể cả dự đoán sai đã đăng ký trước, được giữ lại và báo cáo cùng kết quả đúng.
+
+Báo cáo kế thừa các tài liệu kỹ thuật, nhật ký thí nghiệm và ghi chú đọc tài liệu của dự án, nhưng được viết lại thành một mạch lập luận thống nhất. Tôi cảm ơn các thành viên đội Eco Nexus, Lê Diễm Quỳnh và Phan Thanh Thảo, đã đóng góp ý kiến chuyên môn trong quá trình xây dựng giải pháp.
+
+\vspace{1.2cm}
+\hfill\begin{tabular}{c}
+\textit{Tháng 11 năm 2026}\\
+\textbf{Tác giả}\\[1.6cm]
+\textbf{\tacgia}
+\end{tabular}
+
+% ===================================================================== TÓM TẮT
+\chuongkhongso{Tóm tắt}
+
+Báo cáo của doanh nghiệp niêm yết ngày càng chứa nhiều tuyên bố môi trường, trong khi kiểm toán viên, ngân hàng và chính doanh nghiệp đều phải trả lời cùng một câu hỏi trên hàng trăm trang: tuyên bố này có căn cứ không, và thiếu gì. Báo cáo này trình bày \tensp{}, một hệ thống hỗ trợ người soát xét kiểm chứng từng tuyên bố môi trường theo hướng “bằng chứng trước”.
+
+\textbf{Cách đặt bài toán.} Hệ thống không gán nhãn “tẩy xanh” cho doanh nghiệp. Đơn vị đánh giá là \emph{một tuyên bố}. Với mỗi tuyên bố, hệ thống trả về một trong năm kết luận, trong đó có kết luận “chưa đủ bằng chứng”, kèm đoạn bằng chứng có số trang, phép tính đã chạy, thuộc tính còn thiếu và vị trí trong hàng đợi soát. Mục tiêu là mở rộng phần hệ thống dám kết luận trong khi giữ thấp hai loại sai nguy hiểm: kết luận “mâu thuẫn” sai, tức vu oan doanh nghiệp, và kết luận “được ủng hộ” sai, tức bỏ lọt.
+
+\textbf{Giải pháp.} Thiết kế theo nguyên tắc \emph{mô hình đọc, quy tắc quyết định, người duyệt}. Mô hình chỉ làm phần cần hiểu ngôn ngữ. Số học, cổng kiểm tra hai con số có so được không, và điều kiện ra kết luận đều do mã tất định đảm nhận. Mười bất biến kiến trúc được thi hành bằng kiểm thử. Quy tắc nội bộ của tổ chức được đưa vào dưới dạng dữ liệu có phiên bản; chúng đứng dưới pháp luật và không bao giờ đổi kết luận kiểm chứng.
+
+\textbf{Dữ liệu.} Kho dữ liệu gồm 670 tài liệu công khai của 21 doanh nghiệp niêm yết (2021–2025), 11 văn bản pháp luật có ngày hiệu lực, 4 vụ việc có phán quyết và bộ báo cáo 264 trang của Hòa Phát dùng để chạy đối chứng. Có ba bộ đo: 453 ca dựng có đáp án theo cấu trúc (GS-Bench), bộ câu thật của 8 doanh nghiệp (GS-Eval v2), và bộ 2.055 câu dùng để huấn luyện mô hình nhận diện tuyên bố.
+
+\textbf{Kết quả.} Hệ thống chạy ngoại tuyến hết 264 trang trong khoảng 2 phút trên laptop không có GPU, đưa 9/172 mục vào hàng đợi kèm lý do, và cộng lại khớp bảng phát thải khí nhà kính. Các bảo đảm được viết thành mã đều đứng vững: gợi ý sửa không thêm số nào (0/527), quy tắc nội bộ không đổi kết luận (45/45 ca an toàn), 4/4 vụ có phán quyết cho kết luận đúng. Sau chốt chặn ngày 05/11, kết luận “mâu thuẫn” sai trên tuyên bố thật giảm từ 24 về 0. Ngược lại, chất lượng phán đoán dứt khoát còn yếu. Hệ thống hiếm khi dám kết luận (7,7\% trên ca dựng), chưa kết luận “được ủng hộ” đúng câu nào trên câu thật, và điểm rủi ro mới tương quan vừa phải với nhãn (ρ = 0,46). Mô hình học trò nhận diện tuyên bố đạt macro-F1 0,73 so với 0,36 của luật, nhưng chưa đạt yêu cầu tốc độ để đưa vào sản phẩm.
+
+\textbf{Phạm vi và hướng phát triển.} Báo cáo nêu rõ sáu câu hỏi đã đặt ra, mức trả lời được của từng câu và căn cứ. Phần chưa giải quyết được chuyển thành mười hướng phát triển có thứ tự ưu tiên và tiêu chí thành công: nhãn chuẩn độc lập, tăng độ phủ mà không tăng kết luận sai (chặn đường tắt còn lại của kết luận “được ủng hộ”, nối đường đọc kép), quy tắc pháp lý có người duyệt, nguồn bằng chứng độc lập, và cơ chế giữ logic kiểm tra nhất quán khi quy tắc chuẩn không khớp với từng doanh nghiệp.
+
+\medskip
+\noindent\textbf{Từ khoá:} tẩy xanh; kiểm chứng tuyên bố; công bố môi trường; kiểm toán; dự đoán có từ chối; quy tắc dạng mã; xử lý ngôn ngữ tự nhiên tiếng Việt.
+
+% ===================================================================== MỤC LỤC
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Mục lục}
+\tableofcontents
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Danh mục bảng}
+\listoftables
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Danh mục hình}
+\listoffigures
+
+% ===================================================================== THUẬT NGỮ
+\chuongkhongso{Thuật ngữ và cách đọc các con số}
+
+\section*{Thuật ngữ dùng trong báo cáo}
+{\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{4.4cm}Y}
+\hdr\thd{Thuật ngữ} & \thd{Nghĩa trong báo cáo này}\\
+Tuyên bố môi trường & Một câu (hoặc một phần câu sau khi tách) trong báo cáo của doanh nghiệp, nói về kết quả, hành động hay cam kết môi trường của chính doanh nghiệp đó.\\
+Năm thuộc tính bắt buộc & Chỉ số, giá trị kèm đơn vị, kỳ báo cáo, năm gốc, phạm vi hoặc ranh giới. Thiếu thuộc tính là thông tin cho người soát, không phải lỗi của hệ thống.\\
+Năm loại kết luận & Được ủng hộ; Ủng hộ một phần; Chưa được chứng minh; Mâu thuẫn với nguồn; Chưa đủ bằng chứng.\\
+Kết luận dứt khoát & Hai kết luận “Được ủng hộ” và “Mâu thuẫn với nguồn”. Các kết luận còn lại là cách hệ thống nhường quyết định cho người.\\
+Độ phủ & Tỷ lệ tuyên bố mà hệ thống dám kết luận dứt khoát.\\
+Độ chính xác trên phần dám kết luận & Trong các kết luận dứt khoát, tỷ lệ kết luận trùng với căn cứ đối chiếu.\\
+Vu oan, bỏ lọt & Vu oan: kết luận “mâu thuẫn” sai. Bỏ lọt: kết luận “được ủng hộ” sai. Hai loại được đếm và báo riêng, không gộp.\\
+Cổng so sánh & Phép kiểm xem hai con số có thực sự nói về cùng một đại lượng không (chỉ số, đơn vị, kỳ, phạm vi, ranh giới, loại giá trị, mục tiêu hay thực hiện) trước khi so.\\
+Biểu diễn trung gian & Dạng có cấu trúc của một con số môi trường (chỉ số, giá trị, đơn vị, kỳ, phạm vi, ranh giới, mục tiêu hay thực hiện) để mã tất định so sánh.\\
+Gói quy tắc tổ chức & Quy tắc và tài liệu nội bộ của một tổ chức (ngân hàng, công ty kiểm toán, doanh nghiệp) được nạp vào hệ thống dưới dạng dữ liệu có phiên bản, có người duyệt.\\
+Bộ quy tắc gán nhãn & Văn bản định nghĩa từng nhãn, ví dụ và các quy ước ranh giới, được viết trước khi gán nhãn.\\
+Chế độ ngoại tuyến & Chế độ chạy mặc định: không gửi tài liệu ra khỏi máy, không cần khoá dịch vụ mô hình.\\
+Đăng ký trước & Ghi dự đoán, ngưỡng và điều kiện bác bỏ vào sổ đo trước khi chạy thí nghiệm. Dự đoán sai cũng được giữ lại.\\
+\end{tabularx}}
+
+\section*{Cách đọc các con số}
+Mỗi con số trong báo cáo được đo trên một trong bốn loại căn cứ dưới đây. Độ tin cậy của bốn loại khác nhau, nên các con số không được cộng gộp và không được gọi chung là “độ chính xác”.
+
+{\bangchu
+\rowcolors{2}{rowbg}{white}
+\noindent\begin{tabularx}{\linewidth}{L{3.6cm}YL{4.2cm}}
+\hdr\thd{Loại căn cứ} & \thd{Đáp án đến từ đâu} & \thd{Trả lời được câu hỏi nào}\\
+Ca dựng (GS-Bench) & Tuyên bố được dựng từ một số liệu thật rồi gây nhiễu có kiểm soát. Đáp án suy ra từ cách dựng, không từ luật của hệ thống. & Hệ thống có mắc các lỗi đã biết trước không?\\
+Nhãn xác nhận & Nhãn do tác giả xây dựng theo bộ quy tắc gán nhãn: công cụ mô hình ngôn ngữ gán lượt đầu (hai lượt độc lập, có phân xử), sau đó tác giả rà soát, sửa và xác nhận. & Hệ thống hành xử thế nào trên câu thật, so với một chuẩn thống nhất?\\
+Vụ việc có phán quyết & Kết luận của cơ quan có thẩm quyền (SEC, tòa án Hà Lan). & Hệ thống có đi ngược phán quyết đã có không? (chỉ 4 vụ)\\
+Nhãn chuẩn độc lập & Người gán độc lập, không xem nhãn máy. \textbf{Chưa có} tại ngày viết (0/88 cặp, 0/79 câu đã chuẩn bị). & Độ chính xác của hệ thống. Chỉ loại này mới trả lời được.\\
+\end{tabularx}}
+
+\medskip
+Nguyên tắc đi kèm: \textbf{nhãn máy để dạy và để dò lỗi, nhãn người để đo}. Nếu dùng nhãn chuẩn độc lập để huấn luyện thì sẽ không còn gì để đo một cách trung thực. Vì thế bộ nhãn chuẩn, khi có, chỉ dùng để đánh giá.
+
+% ===================================================================== CHƯƠNG
+\cleardoublepage
+\pagenumbering{arabic}
+\input{chuong/c1_mo_dau}
+\input{chuong/c2_co_so_ly_thuyet}
+\input{chuong/c3_thiet_ke}
+\input{chuong/c4_du_lieu}
+\input{chuong/c5_ket_qua}
+\input{chuong/c6_nguyen_mau}
+\input{chuong/c7_trien_khai}
+\input{chuong/c8_pham_vi_va_huong_phat_trien}
+\input{chuong/c9_ket_luan}
+
+% ===================================================================== TÀI LIỆU THAM KHẢO
+\input{chuong/tai_lieu_tham_khao}
+
+% ===================================================================== PHỤ LỤC
+\appendix
+\addtocontents{toc}{\protect\renewcommand{\protect\cftchappresnum}{Phụ lục }}
+\input{chuong/phu_luc}
+
+\end{document}

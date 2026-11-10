@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import os
-import shutil
 from pathlib import Path
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
@@ -18,6 +17,7 @@ from quantum_gw.api_studio import router as studio_router
 from quantum_gw.domain.enums import DocumentRole, SourceType
 from quantum_gw.domain.models import AnalysisResult, ClaimSuggestion, DocumentInput
 from quantum_gw.jobs import JobRunner
+from quantum_gw.parsers.ocr import TesseractOCR
 from quantum_gw.providers import ModelGateway
 from quantum_gw.settings import load_settings
 from quantum_gw.storage.documents import (
@@ -56,6 +56,44 @@ class _ApiPrefix:
 
 
 app.add_middleware(_ApiPrefix)
+
+
+class _DemoAuth:
+    """Password protection for a publicly deployed prototype (off unless configured).
+
+    QUANTUM_DEMO_USERS="giamkhao:matkhau;doi:matkhau2" turns on HTTP Basic
+    authentication for every route except /health, so a demo link given to a
+    jury is not an open upload endpoint for the internet. Unset (the default,
+    and every local run) means no authentication at all.
+    """
+
+    def __init__(self, app):
+        self.app = app
+        import base64
+
+        pairs = [p.strip() for p in os.environ.get("QUANTUM_DEMO_USERS", "").replace(",", ";").split(";")]
+        self.allowed = {
+            "Basic " + base64.b64encode(pair.encode("utf-8")).decode("ascii")
+            for pair in pairs if ":" in pair
+        }
+
+    async def __call__(self, scope, receive, send):
+        if not self.allowed or scope["type"] != "http" or scope.get("path") in {"/health", "/api/health"}:
+            await self.app(scope, receive, send)
+            return
+        headers = dict(scope.get("headers") or [])
+        if headers.get(b"authorization", b"").decode("latin-1") in self.allowed:
+            await self.app(scope, receive, send)
+            return
+        await send({
+            "type": "http.response.start", "status": 401,
+            "headers": [(b"www-authenticate", b'Basic realm="GreenScan", charset="UTF-8"'),
+                        (b"content-type", b"text/plain; charset=utf-8")],
+        })
+        await send({"type": "http.response.body", "body": "Cần tài khoản thử nghiệm (xem tài liệu hướng dẫn).".encode("utf-8")})
+
+
+app.add_middleware(_DemoAuth)
 
 cors_origins = [
     origin.strip()
@@ -118,6 +156,27 @@ def _run_store() -> RunStore:
 JOBS = JobRunner(workers=int(os.environ.get("QUANTUM_JOB_WORKERS", "1")))
 
 
+@app.on_event("startup")
+def _install_demo_seed() -> None:
+    """Seeded demo runs (deploy/seed/) into the store, so a jury sees finished analyses at once."""
+    try:
+        from quantum_gw.storage.seed import install
+
+        copied = install(load_settings().runs_dir)
+        if copied["runs"] or copied["documents"]:
+            _console(f"[phiên mẫu] đã cài {copied['runs']} phiên, {copied['documents']} tài liệu vào kho")
+    except Exception as exc:  # seeding must never stop the server
+        _console(f"[phiên mẫu] bỏ qua: {exc}")
+
+
+def _console(message: str) -> None:
+    """Print a startup line without crashing on a console that cannot show Vietnamese (Windows cp1258)."""
+    try:
+        print(message, flush=True)
+    except UnicodeEncodeError:
+        print(message.encode("ascii", "replace").decode("ascii"), flush=True)
+
+
 def _with_company(documents: list[DocumentInput], company: str) -> list[DocumentInput]:
     name = (company or "").strip()
     if not name:
@@ -145,8 +204,17 @@ async def _stored_uploads(files: list[UploadFile], roles: str, source_types: str
     # from the file path, so a stable path is what makes the id reproducible.
     store = DocumentStore()
     documents = []
+    # A deployed demo shares one CPU between every visitor: cap what one upload
+    # can cost. QUANTUM_MAX_UPLOAD_MB (default 80) per file; 0 = no limit.
+    limit_mb = float(os.environ.get("QUANTUM_MAX_UPLOAD_MB", "80") or 0)
     for index, upload in enumerate(files):
-        record = store.put(await upload.read(), upload.filename or f"upload-{index}.txt")
+        data = await upload.read()
+        if limit_mb and len(data) > limit_mb * 1024 * 1024:
+            raise HTTPException(
+                status_code=413,
+                detail=f"Tệp {upload.filename} lớn hơn giới hạn {limit_mb:.0f} MB của bản chạy thử.",
+            )
+        record = store.put(data, upload.filename or f"upload-{index}.txt")
         documents.append(
             DocumentInput(
                 path=str(record.path),
@@ -244,10 +312,10 @@ def job_status(job_id: str) -> dict:
 
 
 _RETRIEVAL_DETAIL = {
-    "lite": "BM25 + n-gram ký tự, hợp nhất RRF (chạy trên CPU, không tải mô hình).",
+    "lite": "Tìm theo từ khoá và theo cụm ký tự, gộp hai bảng xếp hạng (chạy trên CPU, không tải mô hình).",
     "fpt": "BM25 + vector {fpt} qua FPT AI Marketplace.",
-    "local": "BM25 + vector {model} chạy trên máy ({device}).",
-    "http": "BM25 + vector qua dịch vụ nhúng nội bộ.",
+    "local": "Tìm theo từ khoá và theo nghĩa bằng mô hình {model} chạy trên máy ({device}).",
+    "http": "Tìm theo từ khoá và theo nghĩa qua dịch vụ nội bộ.",
 }
 
 
@@ -267,7 +335,7 @@ def runtime() -> dict:
         fpt=embedding.fpt_model, model=embedding.model, device=embedding.device
     )
     if settings.reranker.provider != "none":
-        retrieval += f" Sắp xếp lại bằng cross-encoder ({settings.reranker.provider})."
+        retrieval += f" Xếp hạng lại bằng mô hình chuyên xếp hạng ({settings.reranker.provider})."
     if stance_on and route:
         stance = (
             f"Mô hình {route[0].split(':', 1)[-1]} đọc những cặp tuyên bố–bằng chứng mà luật và "
@@ -299,12 +367,12 @@ def runtime() -> dict:
     return {
         "profile": os.environ.get("QUANTUM_PROFILE", "") or "custom",
         "mode": "cloud" if cloud else "offline",
-        "label": "Có dùng AI đám mây cho phần khó" if cloud else "Ngoại tuyến — không gửi tài liệu ra ngoài",
+        "label": "Có dùng mô hình trên đám mây cho phần khó" if cloud else "Ngoại tuyến — không gửi tài liệu ra ngoài",
         "sends_documents_out": cloud,
         "tasks": tasks,
         "ocr": {
             "enabled": settings.intake.ocr_enabled,
-            "available": shutil.which(settings.intake.tesseract_command) is not None,
+            "available": TesseractOCR(settings.intake.tesseract_command, settings.intake.ocr_languages).available,
             "languages": settings.intake.ocr_languages,
         },
         "hardware": hardware,
@@ -380,13 +448,43 @@ class ReviewRequest(BaseModel):
     ai_risk_score: float | None = None
     evidence: list[dict] = Field(default_factory=list)
     claim: dict = Field(default_factory=dict)
+    # OVERRIDE only: why the AI was wrong (reviews.OVERRIDE_REASONS) and, for a
+    # rule reason, which rule.
+    override_reason: str | None = None
+    rule_ref: str = ""
+
+
+def _rule_context(run_id: str) -> dict:
+    """The rules in force for a saved run, read from its manifest on the server.
+
+    Taken from disk, not from the request: the label must be tied to the rules
+    the run actually used, not to what a client says they were. An unknown run
+    gives {} and the label is then visibly unversioned.
+    """
+    try:
+        manifest = _run_store().load(run_id).manifest
+    except (KeyError, FileNotFoundError, ValueError):
+        return {}
+    context: dict = {
+        "pipeline_version": manifest.pipeline_version,
+        "config_hash": manifest.config_hash,
+        "rule_pack_version": manifest.rule_pack_version,
+        "prompt_version": manifest.prompt_version,
+        "corpus_version": manifest.corpus_version,
+    }
+    if manifest.org_packs is not None:
+        context["org_packs"] = [
+            {k: p.get(k) for k in ("org_id", "pack_version", "sha256", "status")}
+            for p in manifest.org_packs
+        ]
+    return context
 
 
 @app.post("/v1/reviews")
 def create_review(request: ReviewRequest) -> dict:
     """Record one human decision. Append-only; never edits an earlier one."""
     try:
-        record = ReviewStore().record(**request.model_dump())
+        record = ReviewStore().record(**request.model_dump(), rule_context=_rule_context(request.run_id))
     except ReviewError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     return record.to_json()
@@ -418,6 +516,13 @@ def export_gold() -> dict:
     """Human-adjudicated labels only — the seed of the gold set."""
     store = ReviewStore()
     return {"stats": store.stats(), "records": store.gold_records()}
+
+
+@app.get("/v1/reviews-export/rule-feedback")
+def export_rule_feedback() -> dict:
+    """Overrides that blame a rule, not the model, grouped by rule: the queue for
+    an org-pack exception or a rule-pack fix. Never a model label."""
+    return {"groups": ReviewStore().rule_feedback()}
 
 
 # ---------- saved runs ----------
@@ -540,6 +645,33 @@ def legal_corpus() -> dict:
         "enabled": settings.legal.enabled,
         "check_mode": settings.legal.check_mode,
         "documents": documents,
+    }
+
+
+@app.get("/v1/org-packs")
+def org_packs() -> dict:
+    """The org packs a run would use (QUANTUM_ORG_PACKS): approved, draft or refused, with their rules.
+
+    Read-only. A refused pack is listed with every reason; nothing here applies a rule.
+    """
+    from quantum_gw.legal.org_pack import OrgPackSet
+
+    settings = load_settings()
+    loaded = OrgPackSet(settings.legal.org_packs)
+    rules = {
+        pack.org_id: [
+            {"rule_id": r.rule_id, "title": r.title, "severity": r.severity, "on_fail": r.on_fail,
+             "source_clauses": r.source_clauses, "applies_to_sectors": r.applies_to_sectors,
+             "effective_from": r.effective_from.isoformat() if r.effective_from else None,
+             "effective_to": r.effective_to.isoformat() if r.effective_to else None}
+            for r in pack.rules
+        ]
+        for pack in loaded.packs
+    }
+    return {
+        "enabled": bool(settings.legal.org_packs),
+        "packs": [{**entry, "rules": rules.get(entry["org_id"], []) if entry["status"] != "rejected" else []}
+                  for entry in loaded.entries],
     }
 
 

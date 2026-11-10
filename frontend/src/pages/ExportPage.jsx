@@ -15,10 +15,10 @@ import { formatDateTime, shortId } from '../lib/format.js'
  */
 
 const FILES = [
-  ['json', 'Kết quả đầy đủ (JSON)', 'result.json — mọi tuyên bố, bằng chứng, lập trường, rủi ro, pháp lý, hàng đợi.'],
-  ['md', 'Gói bằng chứng (Markdown)', 'evidence_pack.md — bản đọc theo thứ tự tài liệu.'],
-  ['manifest', 'Manifest tái lập', 'manifest.json — mã băm đầu vào, cấu hình, phiên bản bộ quy tắc và prompt.'],
-  ['audit', 'Nhật ký chạy (JSONL)', 'audit.jsonl — từng bước pipeline đã làm gì, theo thứ tự.'],
+  ['json', 'Kết quả đầy đủ (tệp dữ liệu .json)', 'result.json — mọi tuyên bố, bằng chứng, quan hệ bằng chứng – tuyên bố, mức cần chú ý, pháp lý, hàng đợi.'],
+  ['md', 'Gói bằng chứng (bản văn bản .md)', 'evidence_pack.md — bản đọc theo thứ tự tài liệu.'],
+  ['manifest', 'Phiếu tái lập kết quả', 'manifest.json — mã băm đầu vào, cấu hình, phiên bản bộ quy tắc và lời nhắc gửi mô hình.'],
+  ['audit', 'Nhật ký các bước (.jsonl)', 'audit.jsonl — từng bước của quy trình phân tích đã làm gì, theo thứ tự.'],
 ]
 
 export default function ExportPage({ runId, runLabel, analysis, summary, reviewStates = {}, reviewDecisions = [] }) {
@@ -39,7 +39,7 @@ export default function ExportPage({ runId, runLabel, analysis, summary, reviewS
     <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
       <div className="space-y-4">
         <section className="rounded-xl border-2 border-emerald-700/30 bg-white p-5">
-          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800">Bước 3 · Giấy làm việc</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800">Bước 4 · Giấy làm việc</p>
           <h3 className="mt-1 text-base font-semibold text-slate-900">Giấy làm việc tiếng Việt, in được</h3>
           <p className="mt-1 text-sm text-slate-600">
             Mục tiêu, phạm vi tài liệu, thủ tục đã làm, hàng đợi soát kèm kết quả và trang nguồn, những gì
@@ -72,7 +72,7 @@ export default function ExportPage({ runId, runLabel, analysis, summary, reviewS
             ))}
             <li className="flex items-start gap-3 rounded-lg border border-slate-200 p-3">
               <div className="flex-1">
-                <p className="text-sm font-medium text-slate-900">Quyết định người soát xét (JSON)</p>
+                <p className="text-sm font-medium text-slate-900">Quyết định người soát xét (tệp dữ liệu .json)</p>
                 <p className="text-xs text-slate-500">{reviewDecisions.length} quyết định · {finalized} tuyên bố đã chốt — nhật ký chỉ ghi thêm, là nguồn của bộ dữ liệu gold.</p>
               </div>
               <button type="button" onClick={downloadReviews} className="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700">Tải xuống</button>

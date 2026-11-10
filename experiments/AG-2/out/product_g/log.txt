@@ -1,0 +1,26 @@
+[reader] 162 cases, 186 unique texts, model qwen3:4b-instruct-2507-q4_K_M
+Traceback (most recent call last):
+  File "D:\Sinh viên CNhan\AI quantum\docs\greenscan-ai\GreenScan-AI\src\quantum_gw\providers\ollama.py", line 53, in generate
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Sinh viên CNhan\AI quantum\docs\greenscan-ai\GreenScan-AI\.venv\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/chat'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Sinh viên CNhan\AI quantum\docs\greenscan-ai\GreenScan-AI\experiments\AG-2\product_reader.py", line 60, in <module>
+    main()
+    ~~~~^^
+  File "D:\Sinh viên CNhan\AI quantum\docs\greenscan-ai\GreenScan-AI\experiments\AG-2\product_reader.py", line 35, in main
+    reader.raw(t)
+    ~~~~~~~~~~^^^
+  File "D:\Sinh viên CNhan\AI quantum\docs\greenscan-ai\GreenScan-AI\src\quantum_gw\verification\ir_reader.py", line 129, in raw
+    reply = self.provider.generate([{"role": "user", "content": prompt}]).text
+            ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Sinh viên CNhan\AI quantum\docs\greenscan-ai\GreenScan-AI\src\quantum_gw\providers\ollama.py", line 56, in generate
+    raise ProviderUnavailableError(f"ollama: {exc}") from exc
+quantum_gw.providers.base.ProviderUnavailableError: ollama: Server error '500 Internal Server Error' for url 'http://localhost:11434/api/chat'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500

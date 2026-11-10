@@ -1,3 +1,4 @@
+import { labelOf } from './labels'
 /**
  * Derived views over an AnalyzeResponse.
  *
@@ -47,7 +48,7 @@ export const ATTRIBUTES = [
     label: 'Phạm vi / ranh giới',
     assertion: 'đầy đủ',
     components: ['scope_boundary'],
-    hint: 'Một nhà máy, công ty mẹ hay toàn tập đoàn; Scope 1/2/3.',
+    hint: 'Một nhà máy, công ty mẹ hay toàn tập đoàn; với phát thải là phạm vi 1, 2, 3.',
     fix: 'Nêu phạm vi pháp nhân/cơ sở, hoặc phạm vi phát thải.',
   },
   {
@@ -56,7 +57,7 @@ export const ATTRIBUTES = [
     assertion: 'căn cứ kiểm chứng',
     components: ['evidence_support', 'independent_assurance'],
     hint: 'Có nguồn đối chiếu và phương pháp tính kiểm chứng được.',
-    fix: 'Dẫn bảng số liệu, phương pháp tính hoặc assurance statement.',
+    fix: 'Dẫn bảng số liệu, phương pháp tính hoặc báo cáo đảm bảo độc lập.',
   },
 ]
 
@@ -66,11 +67,28 @@ export const PENALTIES = [
   { key: 'vague_or_exaggerated_language', label: 'Ngôn ngữ mơ hồ hoặc phóng đại' },
 ]
 
+/** Tên tiếng Việt của từng thành phần điểm rủi ro (backend trả mã kỹ thuật). */
+export const RISK_COMPONENT_LABELS = {
+  specificity: 'Mức cụ thể của câu',
+  quantitative_evidence: 'Có số liệu định lượng',
+  baseline: 'Năm gốc',
+  period: 'Kỳ báo cáo',
+  scope_boundary: 'Phạm vi / ranh giới',
+  evidence_support: 'Bằng chứng đối chiếu',
+  independent_assurance: 'Đảm bảo độc lập',
+  contradiction: 'Mâu thuẫn với dữ liệu khác',
+  vague_or_exaggerated_language: 'Ngôn ngữ mơ hồ, phóng đại',
+  anomaly: 'Số liệu bất thường',
+  evidence_gap: 'Khoảng trống bằng chứng',
+  materiality: 'Mức trọng yếu',
+  obligation: 'Nghĩa vụ pháp lý liên quan',
+}
+
 export const RELATIONS = {
   SUPPORTS: { label: 'Ủng hộ', labelVi: 'Ủng hộ', className: 'bg-emerald-100 text-emerald-800 border-emerald-300' },
   CONTRADICTS: { label: 'Mâu thuẫn', labelVi: 'Mâu thuẫn', className: 'bg-red-100 text-red-800 border-red-300' },
   PARTIAL: { label: 'Một phần', labelVi: 'Một phần', className: 'bg-amber-100 text-amber-800 border-amber-300' },
-  CONTEXT: { label: 'Ngữ cảnh', labelVi: 'Ngữ cảnh', className: 'bg-slate-100 text-slate-700 border-slate-300' },
+  CONTEXT: { label: 'Chỉ liên quan', labelVi: 'Chỉ liên quan', className: 'bg-slate-100 text-slate-700 border-slate-300' },
 }
 
 /** Abstain is a normal workflow outcome, not a failure. */
@@ -85,26 +103,26 @@ export const ABSTAIN_STATUSES = new Set(['INSUFFICIENT_EVIDENCE', 'UNSUPPORTED']
  * about *evidence to add*, never about phrasing the claim more attractively.
  */
 export function actionFor(attributeKey, claim, evidence = []) {
-  const metric = claim.metric || 'chỉ số đang nêu'
+  const metric = labelOf('metric', claim.metric) || 'chỉ số đang nêu'
   const period = claim.period ? `kỳ đang nêu: ${claim.period}` : 'chưa nêu kỳ nào'
-  const unit = claim.units?.[0]
+  const unit = labelOf('unit', claim.units?.[0])
   const value = claim.values?.[0]
 
   switch (attributeKey) {
     case 'specific_metric':
       return value == null
-        ? `Nêu con số và đơn vị cho ${metric} (ví dụ: 12.400 tCO2e), thay vì mô tả định tính.`
+        ? `Nêu con số và đơn vị cho ${metric} (ví dụ: 12.400 tấn CO2 tương đương), thay vì mô tả định tính.`
         : `Gắn ${value}${unit ? ` ${unit}` : ''} với một chỉ số có tên rõ ràng.`
     case 'baseline':
       return `Nêu năm gốc để so sánh — “giảm so với năm nào?” (${period}).`
     case 'period':
       return `Xác định kỳ mà ${metric} áp dụng (năm tài chính hay năm dương lịch).`
     case 'scope_boundary':
-      return 'Nêu phạm vi: công ty mẹ, toàn tập đoàn, nhà máy cụ thể, dòng sản phẩm, hay Scope 1/2/3.'
+      return 'Nêu phạm vi: công ty mẹ, toàn tập đoàn, nhà máy cụ thể, dòng sản phẩm, hay phạm vi phát thải 1 (trực tiếp), 2 (năng lượng mua vào), 3 (chuỗi giá trị).'
     case 'evidence_methodology': {
       const parts = [`cùng chỉ số (${metric})`]
       if (claim.period) parts.push(`cùng kỳ (${claim.period})`)
-      if (claim.scope) parts.push(`cùng phạm vi (${claim.scope})`)
+      if (claim.scope) parts.push(`cùng phạm vi (${labelOf('scope', claim.scope)})`)
       const near = evidence.filter((e) => e.relation === 'PARTIAL').length
       const tail = near
         ? ` Hiện có ${near} đoạn liên quan nhưng chưa khớp đủ ba điều kiện.`
@@ -126,6 +144,8 @@ function componentMap(risk) {
 function attributeState(components, keys) {
   const present = keys.map((k) => components.get(k)).filter(Boolean)
   if (!present.length) return { state: 'unknown', detail: '' }
+  // Not scored (claim-quality-v1): a 0 here means "not checked", not "satisfied".
+  if (present.every((c) => c.status === 'not_applicable')) return { state: 'unknown', detail: present[0].reason }
   // Components are penalties: 0 = attribute satisfied, max = absent.
   const ratios = present.map((c) => (c.max_score ? c.score / c.max_score : 0))
   const detail = present.map((c) => c.reason).join(' ')
@@ -167,6 +187,7 @@ export function buildRows(analysis) {
       missing: attributes.filter((a) => a.state === 'missing'),
       isAbstain: ABSTAIN_STATUSES.has(v.status),
       flagged: evidence.some((e) => e.suspicious_instruction),
+      suspect: v.claim.quality_flag || null,
       requiresReview: risk?.requires_human_review ?? false,
     }
   })

@@ -330,7 +330,7 @@ def cross_foot(figures: list[DisclosedFigure]) -> list[FigureCheck]:
                 difference=round(difference, 4),
                 tolerance=tolerance,
                 note=(
-                    f"Cộng lại các thành phần (Scope {'+'.join(str(s) for s in sorted(covered))}) "
+                    f"Cộng lại các thành phần (phạm vi {'+'.join(str(s) for s in sorted(covered))}) "
                     f"trên trang {page}: "
                     + (
                         f"khớp với số công bố trong sai số làm tròn ({difference:+,.0f} {unit})."

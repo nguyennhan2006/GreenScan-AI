@@ -10,7 +10,7 @@
  */
 
 export const METRIC_VI = {
-  emissions: 'phát thải KNK',
+  emissions: 'phát thải khí nhà kính',
   renewable_energy: 'năng lượng tái tạo',
   energy: 'năng lượng',
   water: 'nước',

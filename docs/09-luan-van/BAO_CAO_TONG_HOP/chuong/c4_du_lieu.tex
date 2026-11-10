@@ -1,0 +1,284 @@
+% ===================================================================== CHƯƠNG 4
+\chapter{Dữ liệu và cách tiếp cận dữ liệu}\label{ch:du-lieu}
+
+Chương này trả lời ba câu hỏi. Hệ thống được xây và được đo trên dữ liệu nào, lấy từ đâu, có quyền sử dụng không? Các bộ nhãn được tạo ra thế nào, ai chịu trách nhiệm? Và vì sao bộ dữ liệu huấn luyện hiện tại đủ để một mô hình học được nhiệm vụ của nó? Kết quả đo nằm ở Chương~\ref{ch:ket-qua}.
+
+\section{Nguyên tắc: bốn loại căn cứ và hai vai của nhãn}\label{sec:can-cu}
+
+Tại ngày viết, dự án chưa có nhãn chuẩn do người gán độc lập: 0/88 cặp tuyên bố–bằng chứng và 0/79 câu của lô nhận diện tuyên bố đầu tiên. Vì vậy mọi con số trong báo cáo thuộc một trong bốn loại căn cứ đã nêu ở phần “Cách đọc các con số”: ca dựng, nhãn xác nhận, vụ việc có phán quyết, và nhãn chuẩn độc lập (chưa có). Mỗi bảng ở Chương~\ref{ch:ket-qua} ghi rõ loại căn cứ của nó.
+
+Nhãn trong dự án có hai vai, và hai vai này không được trộn:
+\begin{itemize}
+\item \textbf{Nhãn để dạy và dò lỗi.} Đây là nhãn xác nhận: được tạo nhanh với máy hỗ trợ, theo một bộ quy tắc viết trước, rồi được tác giả rà soát và xác nhận. Nhãn này dùng để huấn luyện mô hình nhỏ và để tìm nhanh các lỗi lớn của hệ thống. Ví dụ, lỗi “mâu thuẫn” sai trên câu thật được tìm ra chỉ trong một ngày nhờ loại nhãn này.
+\item \textbf{Nhãn để đo.} Đây là nhãn chuẩn độc lập: người gán không xem nhãn máy. Chỉ loại nhãn này mới cho phép nói về độ chính xác. Khi có, nó chỉ dùng để đánh giá, không dùng để huấn luyện.
+\end{itemize}
+
+\section{Nguồn dữ liệu và quyền sử dụng}\label{sec:nguon-du-lieu}
+
+\begin{table}[htbp]
+\centering
+\caption{Nguồn dữ liệu, phạm vi và căn cứ sử dụng}\label{tab:nguon}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{3.2cm}YL{4.6cm}}
+\hdr\thd{Nguồn} & \thd{Phạm vi} & \thd{Căn cứ sử dụng}\\
+Báo cáo của doanh nghiệp niêm yết & 670 tài liệu (442 PDF) của 21 doanh nghiệp, 11 ngành, 2021–2025; 15.658 đoạn văn; 7.960 câu ứng viên tuyên bố; 3.786 câu bằng chứng có số & Công khai trên trang quan hệ nhà đầu tư; thu thập theo robots.txt, không vượt đăng nhập; bản quyền thuộc doanh nghiệp; chỉ dùng cho nghiên cứu và kiểm thử; lưu mã băm SHA-256 từng tệp để tái lập mà không phân phối lại\\
+Văn bản pháp luật Việt Nam & 11 văn bản trong sổ đăng ký pháp lý (Bảng~\ref{tab:phap-ly}), có ngày ký, ngày hiệu lực, chuỗi sửa đổi & Văn bản công khai; ngày hiệu lực đối chiếu bản ký\\
+Vụ việc có phán quyết & SEC: BNY Mellon 2022, DWS 2023, Keurig Dr Pepper 2024; Tòa Amsterdam: KLM 2024 & Tài liệu công của cơ quan có thẩm quyền. Các vụ SEC là dàn xếp “không thừa nhận, không phủ nhận”\\
+Bộ đối chứng Việt Nam & Hòa Phát: báo cáo phát triển bền vững 2025 và báo cáo thường niên 2024 (264 trang) & Tài liệu đối chứng, không phải cáo buộc\\
+\end{tabularx}
+\end{table}
+
+Các số ở Bảng~\ref{tab:nguon} được đếm ở đợt kiểm kê dữ liệu ngày 09/08/2026. Bảng dữ liệu thô đếm lại ngày 05/11/2026 có 1.061 bản ghi của 21 mã, trong đó có 45 báo cáo phát triển bền vững. Hai con số tài liệu khác nhau vì được đếm ở hai thời điểm. Điều quan trọng hơn con số là thành phần: chỉ một phần nhỏ kho là báo cáo phát triển bền vững, nên phần lớn câu trong kho không phải tuyên bố môi trường. Đó là lý do bộ nhận diện tuyên bố cần được xây và đo riêng (mục~\ref{sec:t1}).
+
+Kho có hai giới hạn về tính đại diện, được nêu ngay từ đầu:
+\begin{itemize}
+\item Kho nghiêng về nhóm VN30. Trong 11 ngành, chỉ có 2 ngành phát thải cao (điện, xây dựng). Ngành thép được kiểm riêng qua bộ đối chứng Hòa Phát.
+\item Toàn bộ bằng chứng mà hệ thống tìm được trong các lượt chạy đều là tài liệu do chính doanh nghiệp công bố. Trên lượt Hòa Phát ngày 22/10/2026, 780/780 đoạn bằng chứng là nguồn nội bộ. Nguồn độc lập (dữ liệu vệ tinh về phát thải, danh mục cơ sở theo Quyết định 13/2024, quan trắc tự động) mới ở mức danh sách cần thu thập.
+\end{itemize}
+
+\section{Tiền xử lý và chất lượng dữ liệu}
+
+Dữ liệu đi qua ba tầng: \emph{thô} (tệp gốc và văn bản đọc ra), \emph{sạch} (đoạn văn đã chuẩn hoá, giữ số trang và toạ độ từng khối chữ) và \emph{trích xuất} (tuyên bố, câu bị loại, dữ kiện số). Bản scan được đọc bằng Tesseract tại máy, cho cả tiếng Việt và tiếng Anh.
+
+Ba quyết định tiền xử lý ảnh hưởng nhiều nhất tới chất lượng:
+\begin{enumerate}
+\item \textbf{Mọi câu bị loại đều được lưu kèm lý do} (tiêu đề, mục lục, dòng bảng, câu cụt…), để người soát hỏi được “hệ thống đã bỏ qua gì”. Câu bị loại cũng chính là lớp âm có sẵn cho bài toán nhận diện tuyên bố. Trên Hòa Phát, số “tuyên bố” giảm từ 419 (bản 17/09, khi còn tính cả tiêu đề) xuống 156.
+\item \textbf{Số liệu được chuẩn hoá} về đơn vị, hệ số “nghìn/triệu/tỷ”, dấu thập phân kiểu Việt và kiểu Anh. Một lỗi cụ thể đã được sửa và có kiểm thử: khi bỏ dấu tiếng Việt, “cộng” (trong “tổng cộng”) và “công” (trong “công ty”) bị gộp làm một, làm sai việc nhận ra dòng tổng của bảng.
+\item \textbf{Câu có thể không phải tuyên bố được đánh dấu, không bị xoá} (mục~\ref{sec:ba-dai-luong}), để người soát vẫn thấy và để việc đánh dấu có thể được đo.
+\end{enumerate}
+
+Mỗi con số trở thành một \emph{dữ kiện có cấu trúc}: chỉ số, giá trị, đơn vị, kỳ, phạm vi phát thải, công ty mẹ hay tập đoàn, mục tiêu hay thực hiện, cường độ hay tuyệt đối.
+
+\section{Bộ dữ liệu huấn luyện nhận diện tuyên bố}\label{sec:t1}
+
+Trong ba bộ dữ liệu của dự án, đây là bộ dùng để \emph{huấn luyện}. Vì vậy mục này trình bày kỹ: bài toán, nguồn câu, cách chọn mẫu, quy trình tạo nhãn, thống kê, lý do bộ dữ liệu huấn luyện được, và các giới hạn.
+
+\subsection{Bài toán và bốn lớp}
+
+Bài toán nhận diện tuyên bố (gọi tắt là T1) phân loại một câu, với các con số đã được che, vào một trong bốn lớp. Bảng~\ref{tab:t1-lop} nêu định nghĩa và một ví dụ thật cho mỗi lớp.
+
+\begin{table}[htbp]
+\centering
+\caption{Bốn lớp của bài toán nhận diện tuyên bố, kèm ví dụ trong bộ dữ liệu}\label{tab:t1-lop}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{2.6cm}L{4.4cm}Y}
+\hdr\thd{Lớp} & \thd{Định nghĩa} & \thd{Ví dụ (số đã che thành \textless E1\textgreater, \textless E2\textgreater…)}\\
+Tuyên bố có số & Doanh nghiệp nói về kết quả hoặc mục tiêu môi trường của mình, có số liệu & “Trồng cây cung cấp \textless E1\textgreater{} tấn thức ăn thô xanh cho bò sữa và luân canh cây họ đậu, phủ xanh \textless E2\textgreater{} ha diện tích đất đồng cỏ.”\\
+Tuyên bố định tính & Doanh nghiệp nói về hành động môi trường cụ thể, không có số & “Application of Biofloc technology in treating pond water to improve water quality and reduce diseases.” (câu tiếng Anh trong báo cáo)\\
+Mơ hồ & Có nội dung môi trường nhưng chung chung, không kiểm được & “…luôn chú trọng tối đa hóa hiệu năng sử dụng, tiết kiệm năng lượng, đồng thời góp phần bảo vệ môi trường…”\\
+Không phải tuyên bố & Tiêu đề, bảng, định nghĩa, thông tin không phải về môi trường & “…Danh sách cổ đông lớn sở hữu trên \textless E1\textgreater\% vốn cổ phần của Công ty…” (tiêu đề bảng)\\
+\end{tabularx}
+\end{table}
+
+Việc tách lớp “mơ hồ” khỏi lớp “định tính” có lý do thực tế. Với người soát, câu mơ hồ là loại cần gợi ý sửa (thêm chỉ số, thêm kỳ), còn câu định tính cụ thể là loại cần tìm bằng chứng hành động.
+
+\subsection{Nguồn câu và cách chọn mẫu}
+
+Bộ cắt câu của chính sản phẩm được chạy trên toàn kho và tạo ra 66.539 câu ứng viên. Trong số đó, 4.598 câu (khoảng 6,9\%) được luật trích tuyên bố hiện tại nhận là tuyên bố; 6.631 câu có thuật ngữ môi trường nhưng bị luật từ chối hoặc bỏ sót; phần còn lại không có dấu hiệu môi trường.
+
+Nếu lấy mẫu ngẫu nhiên thì hơn 90\% mẫu sẽ là câu dễ, không phải tuyên bố, và mô hình gần như không thấy ranh giới khó. Vì vậy mẫu được \textbf{chọn theo tầng}, dựa trên hai dấu hiệu rẻ: luật hiện tại có nhận câu là tuyên bố không, và câu có thuật ngữ môi trường hay con số không. Nhãn yếu của luật \emph{chỉ dùng để chọn mẫu}, không dùng làm nhãn huấn luyện.
+
+\begin{table}[htbp]
+\centering
+\caption{Sáu tầng chọn mẫu của bộ dữ liệu huấn luyện (2.055 câu)}\label{tab:t1-tang}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{YC{2.0cm}C{2.0cm}}
+\hdr\thd{Tầng} & \thd{Số câu} & \thd{Tỷ lệ}\\
+Luật nhận là tuyên bố, không có số & 523 & 25,5\%\\
+Luật nhận là tuyên bố, có số & 487 & 23,7\%\\
+Có thuật ngữ môi trường, luật bỏ, có số & 424 & 20,6\%\\
+Có thuật ngữ môi trường, luật bỏ, không có số & 346 & 16,8\%\\
+Câu khác, có số & 145 & 7,1\%\\
+Câu khác & 130 & 6,3\%\\
+\end{tabularx}
+\end{table}
+
+Kết quả là 49\% câu trong bộ dữ liệu được luật nhận là tuyên bố, trong khi tỷ lệ này trên toàn kho chỉ khoảng 7\%. Sự lệch này có chủ đích: bộ dữ liệu tập trung vào vùng mà luật hay sai.
+
+\subsection{Che số}
+
+Mọi con số trong câu được thay bằng ký hiệu \textless E1\textgreater, \textless E2\textgreater… trước khi gán nhãn và huấn luyện. Việc che có hai mục đích. Về riêng tư, câu có thể được gửi cho công cụ gán nhãn bên ngoài mà không lộ số liệu. Về học máy, việc che buộc mô hình học \emph{cấu trúc câu} (chủ thể, hành động, đối tượng môi trường) thay vì học thuộc các con số cụ thể. Phép thử bỏ che (mục~\ref{sec:t1-kq}) cho thấy việc che không làm mất tín hiệu.
+
+\subsection{Quy trình tạo nhãn và trách nhiệm}\label{sec:quy-trinh-nhan}
+
+Bộ nhãn được tạo theo năm bước. Quy trình được mô tả một lần ở đây; từ các mục sau, bộ nhãn được dùng như dữ liệu thông thường của báo cáo.
+
+\begin{enumerate}
+\item \textbf{Viết bộ quy tắc gán nhãn trước.} Tác giả viết bộ quy tắc định nghĩa bốn lớp, kèm ví dụ và các quy ước ranh giới (câu về tổ chức khác, câu mô tả cơ chế chung, mục tiêu chỉ có năm). Bộ quy tắc được đánh số phiên bản.
+\item \textbf{Gán lượt đầu có máy hỗ trợ.} Một công cụ mô hình ngôn ngữ lớn gán hai lượt độc lập (gọi là lượt A và lượt B) theo đúng bộ quy tắc, trên câu đã che số, không xem nhãn của luật.
+\item \textbf{Phân xử.} Những câu hai lượt lệch nhau được phân xử ở một lượt riêng, có ghi lý do.
+\item \textbf{Kiểm mẫu.} Một phần câu hai lượt đã đồng ý được rút ngẫu nhiên để kiểm lại, với giả định nhãn có thể sai.
+\item \textbf{Tác giả rà soát và xác nhận.} Tác giả đọc lại, sửa và xác nhận bộ nhãn. Từ bước này, tác giả chịu trách nhiệm về bộ nhãn.
+\end{enumerate}
+
+Trên lô đầu 579 câu, hai lượt đồng ý ở 554 câu. Hệ số κ giữa hai lượt là 0,92 trên năm nhãn của bản quy tắc đầu, và 0,98 trên câu hỏi nhị phân “có phải tuyên bố không”. Lượt phân xử đọc lại 170 câu và đổi nhãn 21 câu. Trong 42 câu hai lượt đồng ý được rút ngẫu nhiên để kiểm, không câu nào phải sửa. Bộ hiện tại có 2.055 câu, gồm 1.521 câu hai lượt đồng ý và 534 câu đã phân xử.
+
+\begin{luuy}{Vì sao vẫn gọi là “nhãn xác nhận”, chưa gọi là “nhãn chuẩn”}
+Hai lượt gán dùng cùng một công cụ nên có thể sai giống nhau. Vì thế κ = 0,92 cho biết bộ nhãn \emph{nhất quán}, chưa cho biết bộ nhãn \emph{đúng}. Người rà soát nhãn máy cũng dễ bị neo vào nhãn có sẵn. Vì vậy mọi kết quả đo trên bộ này được ghi là “so với nhãn xác nhận”. Độ chính xác chỉ được nói khi có nhãn của người gán độc lập (mục~\ref{sec:t1-dev-test}).
+\end{luuy}
+
+\subsection{Thống kê bộ dữ liệu}
+
+\begin{table}[htbp]
+\centering
+\caption{Phân bố lớp của bộ dữ liệu huấn luyện}\label{tab:t1-phan-bo}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{YC{2.2cm}C{2.2cm}}
+\hdr\thd{Lớp} & \thd{Số câu} & \thd{Tỷ lệ}\\
+Không phải tuyên bố & 1.334 & 64,9\%\\
+Tuyên bố định tính & 427 & 20,8\%\\
+Mơ hồ & 153 & 7,4\%\\
+Tuyên bố có số & 141 & 6,9\%\\
+\textbf{Tổng} & \textbf{2.055} & \textbf{100\%}\\
+\end{tabularx}
+\end{table}
+
+Một số đặc điểm khác của bộ dữ liệu:
+\begin{itemize}
+\item \textbf{Ngôn ngữ:} 1.416 câu tiếng Việt và 639 câu tiếng Anh, vì nhiều doanh nghiệp công bố song ngữ.
+\item \textbf{Doanh nghiệp:} 17 doanh nghiệp, nhưng phân bố không đều. Mười doanh nghiệp đầu (PAN 240, DHG 234, PNJ 226, SAB 226, CTD 221, BVH 218, TRA 211, VNM 208, POW 126, DPR 103) chiếm 98\% số câu; bảy doanh nghiệp còn lại chỉ có từ 1 đến 27 câu.
+\item \textbf{Câu cần ngữ cảnh:} 205 câu được đánh dấu là phải đọc câu trước mới gán đúng.
+\item \textbf{Câu khó nằm sát ranh giới:} 502 câu luật nhận là tuyên bố nhưng thực ra không phải; 213 câu là tuyên bố thật mà luật bỏ sót (123 câu định tính, 46 câu có số, 44 câu mơ hồ).
+\end{itemize}
+
+\subsection{Vì sao bộ dữ liệu này huấn luyện được}\label{sec:vi-sao-hoc-duoc}
+
+Một bộ dữ liệu 2.055 câu nghe có vẻ nhỏ. Bộ dữ liệu này vẫn đủ để mô hình học được nhiệm vụ, vì năm lý do sau. Lý do thứ năm không làm việc học dễ hơn; nó bảo đảm con số đo được là thật.
+
+\begin{enumerate}
+\item \textbf{Tín hiệu nằm ngay trên bề mặt câu.} Một tuyên bố thường có ba thành phần: chủ thể là doanh nghiệp, một hành động hoặc cam kết, và một đối tượng môi trường. Câu có số còn có ký hiệu \textless E\textgreater{} đi kèm đơn vị. Câu mơ hồ dùng những cụm chung chung như “luôn chú trọng”, “góp phần bảo vệ môi trường”. Mô hình mã hoá đa ngôn ngữ đã hiểu nghĩa tiếng Việt từ trước, nên tinh chỉnh chỉ cần dạy nó \emph{đặt ranh giới} giữa bốn lớp, không phải học ngôn ngữ từ đầu. Bằng chứng: mô hình không huấn luyện chỉ đạt macro-F1 0,27, còn mô hình tinh chỉnh đạt 0,73 (mục~\ref{sec:t1-kq}). Phần tăng này đến từ dữ liệu miền.
+\item \textbf{Nhãn nhất quán.} Cả bộ được gán theo một bộ quy tắc duy nhất, hai lượt đồng ý với κ = 0,92 và có phân xử. Nhãn càng ít nhiễu thì mô hình học trò càng dễ học một quy tắc ổn định.
+\item \textbf{Câu khó được đặt đúng chỗ.} Nhờ chọn theo tầng, bộ dữ liệu chứa 502 câu luật trích thừa và 213 câu luật bỏ sót. Mô hình được học đúng những chỗ mà luật đang sai, thay vì học lại những gì luật đã làm tốt.
+\item \textbf{Che số không làm mất tín hiệu.} Kết quả giữ số và che số gần như bằng nhau (chênh +0,014, khoảng tin cậy chứa 0). Như vậy mô hình học cấu trúc câu, đồng thời yêu cầu riêng tư vẫn được giữ.
+\item \textbf{Đo theo doanh nghiệp.} Dữ liệu được chia theo doanh nghiệp: mô hình luôn được chấm trên doanh nghiệp nó chưa thấy khi học. Các câu trong cùng một báo cáo rất giống nhau, nên chia theo câu sẽ cho số đẹp nhưng không thật.
+\end{enumerate}
+
+Có dấu hiệu cho thấy thêm dữ liệu vẫn có ích ở quy mô này. Đo trên cùng 498 câu của lô đầu, macro-F1 tăng từ 0,665 (lượt huấn luyện thứ hai) lên 0,726 (lượt thứ ba), Δ = +0,061, khoảng tin cậy 95\% [+0,021; +0,098]. Tuy vậy, lượt thứ ba vừa dùng nhiều câu hơn vừa sửa công thức huấn luyện, nên chưa tách được phần đóng góp của dữ liệu. Đường học với số bước huấn luyện cố định cho từng cỡ dữ liệu là thí nghiệm cần làm để trả lời dứt khoát.
+
+\subsection{Giới hạn của bộ dữ liệu}
+
+\begin{itemize}
+\item \textbf{Trần chất lượng là bộ quy tắc gán nhãn.} Mô hình học trò chỉ giỏi tới mức nhãn nó học. Mọi số hiện có đo mức mô hình làm giống nhãn xác nhận, chưa đo độ đúng so với chuyên gia độc lập.
+\item \textbf{Hai lớp thiểu số mỏng.} Lớp mơ hồ có 153 câu, lớp có số có 141 câu. Ranh giới giữa “mơ hồ” và “định tính” lại mang tính chủ quan, nên macro-F1 dễ dao động ở hai lớp này.
+\item \textbf{Phân bố lệch so với thực tế.} Vì cố ý chọn nhiều câu khó, con số kiểm chéo sẽ khác khi chạy trên cả một báo cáo thật. Độ chính xác thật phải được đo trên một báo cáo đầy đủ (tập kiểm tra Hòa Phát).
+\item \textbf{Ít ngành.} Dữ liệu chủ yếu đến từ hàng tiêu dùng, dược, bảo hiểm, điện và xây dựng. Áp sang thép là một bước chuyển miền.
+\item \textbf{Thiếu ngữ cảnh.} 205 câu cần câu trước mới gán đúng, nhưng mô hình chỉ thấy một câu. Thử ghép câu trước làm cặp đầu vào chưa giúp được (mục~\ref{sec:t1-kq}).
+\item \textbf{Định nghĩa lớp nằm trong nhãn.} Các quy ước ranh giới (câu về tổ chức khác, mục tiêu chỉ có năm) được “nướng” vào nhãn, và do đó vào trọng số của mô hình học trò. Nếu một tổ chức cần quy ước khác, mô hình hiện tại không đổi theo được nếu không huấn luyện lại. Đây là lý do của hướng phát triển “tách đọc thuộc tính khỏi quy tắc phân lớp” (mục~\ref{sec:huong}).
+\end{itemize}
+
+\subsection{Tập phát triển, tập kiểm tra và nhãn chuẩn độc lập}\label{sec:t1-dev-test}
+
+Ngoài bộ huấn luyện, dự án đã chuẩn bị hai tập để đo trên nhãn của người:
+\begin{itemize}
+\item \textbf{Tập phát triển} gồm 160 câu của 12 doanh nghiệp, cân bằng theo nhãn (79 câu tiếng Việt, 81 câu tiếng Anh). Tập này dùng để đo chính bộ nhãn xác nhận so với người.
+\item \textbf{Tập kiểm tra} gồm 594 câu của báo cáo Hòa Phát 2025, một doanh nghiệp không có trong kho huấn luyện, cắt bằng chính bộ cắt câu của sản phẩm (151 câu luật giữ, 348 câu có thuật ngữ môi trường mà luật bỏ, 95 câu ngẫu nhiên).
+\end{itemize}
+Quy trình gán nhãn chuẩn đã được thiết kế: ba người gán độc lập (chuyên môn kiểm toán – ESG, pháp lý, kỹ thuật), họp thống nhất quy ước ở lô đầu, rồi gán các lô còn lại. Lô đầu gồm 79 câu, và bộ nhãn xác nhận cho 79 câu đó được cất riêng, không mở trước khi người gán nộp nhãn. Tại ngày viết, chưa có kết quả nhãn chuẩn nào được gộp.
+
+\section{GS-Bench: ca dựng có đáp án theo cấu trúc}\label{sec:gsbench}
+
+GS-Bench là thước đo tạm khi chưa có nhãn chuẩn. Mỗi ca là một tuyên bố cộng một đoạn bằng chứng, kèm đáp án: được ủng hộ, mâu thuẫn, hoặc không so được. Bộ có hai tầng:
+\begin{itemize}
+\item \textbf{Ca dựng tay (51 ca):} 32 ca sạch thuộc 13 nhóm lỗi (làm tròn, lệch một con số, khác phạm vi phát thải, khác kỳ, mục tiêu so với thực hiện, khác ranh giới, đơn vị, cộng bảng, phủ định…) và 19 ca dùng nguyên văn ba trang thật của Hòa Phát. Đáp án suy từ GHG Protocol, không từ luật của hệ thống.
+\item \textbf{Ca sinh có kiểm soát:} lấy một số liệu thật trong báo cáo, dựng tuyên bố đúng, rồi gây \emph{đúng một} loại nhiễu: đổi giá trị, đơn vị, kỳ, phạm vi, công ty mẹ hay tập đoàn, mục tiêu hay thực hiện, cường độ hay tuyệt đối, bội số. Đáp án là hệ quả của loại nhiễu, nên biết trước.
+\end{itemize}
+
+\begin{table}[htbp]
+\centering
+\caption{Các phiên bản của GS-Bench}\label{tab:gsbench}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{2.4cm}L{1.6cm}Y}
+\hdr\thd{Phiên bản} & \thd{Ngày} & \thd{Nội dung}\\
+v1 & 31/10 & 193 ca = 51 ca dựng tay + 142 ca sinh từ 26 số liệu thật của 5 doanh nghiệp\\
+v1.1 & 31/10 & 453 ca = 51 + 402 (được ủng hộ 95, mâu thuẫn 123, không so được 184), 7 doanh nghiệp\\
+Ngoài mẫu v1.2 & 31/10 & 162 ca của 9 doanh nghiệp chưa dùng để hiệu chỉnh\\
+Sạch v1.3 & 01/11 & Loại các ca hỏng theo quy tắc tất định; còn 87 ca ngoài mẫu sạch\\
+\end{tabularx}
+\end{table}
+
+Bộ được sửa theo từng lỗi nhãn tìm ra trong chính nó. Ở v1.1, 16/455 ca (3,5\%) có nhãn sai và đã được ghi vào danh sách đính chính. Ở v1.2, hậu kiểm cho thấy 75/162 ca hỏng (số liệu không thuộc môi trường, đơn vị giả, năm lấy nhầm từ tiêu đề trang); các ca này bị loại theo quy tắc, không gán lại nhãn nào.
+
+GS-Bench trả lời một câu hỏi hẹp: \emph{khi đã biết tuyên bố và bằng chứng nói về cùng một con số, hệ thống có so đúng không?} Nó không trả lời được câu thật có phải tuyên bố không, hay đoạn bằng chứng có nói về cùng đối tượng không. Đó là việc của GS-Eval v2.
+
+\section{GS-Eval v2: câu thật của tám doanh nghiệp}\label{sec:gseval}
+
+GS-Eval v2 đo mã hiện tại của hệ thống trên \emph{câu thật}, ở chế độ ngoại tuyến, không dùng mô hình ngôn ngữ, không gọi mạng. Bộ gồm năm phần (Bảng~\ref{tab:gseval}).
+
+\begin{table}[htbp]
+\centering
+\caption{Năm phần của GS-Eval v2}\label{tab:gseval}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{2.7cm}YL{3.6cm}}
+\hdr\thd{Phần} & \thd{Mục đích và cỡ mẫu} & \thd{Cách tạo nhãn}\\
+Giải thích & Kết luận và lời giải thích có đúng, có trung thực không; 200 mẫu (146 có đầu ra của mã hiện tại) & Một lượt; kiểm đối nghịch 20 mẫu\\
+Gợi ý sửa & Gợi ý có đúng loại, có thêm số không; 200 mẫu của 14 doanh nghiệp & Một lượt; kiểm đối nghịch 20 mẫu\\
+Chấm rủi ro & Điểm chín thành phần có khớp phán đoán chuyên môn không; 200 mẫu & Hai lượt độc lập, phân xử 122 mẫu lệch\\
+Quy tắc nội bộ & Gói quy tắc có chạy đúng và an toàn không; 14 gói, 76 quy tắc, 237 ca & Ca soạn theo loại, có ca phá luật an toàn\\
+Độ dễ dùng & 16 nhiệm vụ theo vai người dùng, thang SUS tiếng Việt, 18 nguyên tắc, 15 phép kiểm tự động & Bộ công cụ; chưa có người thử\\
+\end{tabularx}
+\end{table}
+
+\textbf{Chọn mẫu “lệch nhẹ nhưng cân bằng”.} Nếu rút ngẫu nhiên thì 88\% mẫu là “ủng hộ một phần” (1.006/1.138 tuyên bố), trong khi hai lớp dứt khoát, nơi rủi ro tập trung, gần như không có mẫu. Nếu cân bằng tuyệt đối thì mẫu không còn phản ánh kho. Bộ chọn điểm giữa: phân tầng theo kết luận (được ủng hộ 45, mâu thuẫn 50, chưa đủ bằng chứng 50, ủng hộ một phần 55), có trần tỷ trọng cho mỗi công ty, cố định hạt giống ngẫu nhiên.
+
+\textbf{Hướng dẫn gán nhãn} đặt bảy nguyên tắc và nhúng chính các bất biến kiểm chứng của sản phẩm, để nhãn không dạy hệ thống điều sai. Ví dụ: không bịa số; chỉ dùng bằng chứng được cho; không xem đầu ra của hệ thống khi gán; lệch một chiều là “không so được”, không phải mâu thuẫn; mục tiêu không chứng minh thực hiện. Mỗi mẫu giải thích có hai danh mục kiểm: những ý bắt buộc phải có, và những khẳng định không được nói. Nhờ đó lời giải thích của hệ thống được chấm khách quan hơn.
+
+\textbf{Kiểm định nhãn} gồm ba lớp. Lớp thứ nhất là hai lượt độc lập và phân xử (phần chấm rủi ro: 122/200 mẫu phải phân xử ít nhất một trường). Lớp thứ hai là kiểm đối nghịch, mặc định nghi ngờ nhãn: phần giải thích có 2/20 lỗi văn bản, không lỗi kết luận; phần gợi ý sửa có 3/20 lỗi. Lớp thứ ba là chương trình kiểm tất định: mọi con số trong nhãn phải xuất hiện trong câu hoặc bằng chứng; trích dẫn phải là nguyên văn; điểm tổng do chương trình tính, không do người gán.
+
+\textbf{Chạy lại mã hiện tại trên tài liệu cũ.} Mẫu ban đầu lấy từ mọi lượt chạy đã lưu, kể cả lượt do mã cũ tạo. Vì vậy mã hiện tại được chạy lại trên đúng các tài liệu đó, rồi ghép đầu ra theo nội dung câu. Kết quả: 328/394 mẫu ghép được, 66 câu mã hiện tại không còn trích ra (phần lớn là dòng bảng mà bản cũ từng trích nhầm). Mọi số ở Chương~\ref{ch:ket-qua} là của mã hiện tại.
+
+\section{Chia tập và chống rò rỉ}
+
+Dữ liệu được chia theo \textbf{doanh nghiệp}, để không doanh nghiệp nào có mặt ở cả tập phát triển và tập kiểm tra, và theo \textbf{năm}: 2021–2022 để huấn luyện, 2023 để phát triển, 2024 để kiểm tra, 2025 giữ ngoài. Báo cáo rò rỉ dữ liệu liệt kê 1 tài liệu trùng giữa các tập. Bài toán nhận diện tuyên bố dùng kiểm chéo 5 phần theo doanh nghiệp, với 3 hạt giống ngẫu nhiên.
+
+\section{Chỉ số và đăng ký trước}\label{sec:chi-so}
+
+Thay cho một con số gộp, báo cáo dùng ba chỉ số chính cho phần kết luận:
+\begin{itemize}
+\item \textbf{độ phủ} = số ca dám kết luận dứt khoát / tổng số ca;
+\item \textbf{độ chính xác trên phần dám kết luận} = số ca dám kết luận đúng / số ca dám kết luận;
+\item \textbf{số kết luận sai nguy hiểm}: số “mâu thuẫn” sai (vu oan) và số “được ủng hộ” sai (bỏ lọt), báo riêng.
+\end{itemize}
+Các chỉ số phụ gồm: độ chính xác, độ phủ và F1 của từng lớp, macro-F1; hệ số κ; κ có trọng số bậc hai cho thang thứ bậc; hệ số tương quan hạng Spearman; khoảng tin cậy Wilson cho tỷ lệ; bootstrap theo công ty (1.000–2.000 lần lặp) cho khoảng tin cậy của các chỉ số.
+
+\textbf{Đăng ký trước.} Với các thí nghiệm về bộ đọc số liệu, giả thuyết, cổng quyết định và điều kiện bác bỏ được ghi vào sổ đo \emph{trước} khi mô hình đọc dữ liệu kiểm. Ba quy ước giữ cho việc đăng ký có ý nghĩa:
+\begin{enumerate}
+\item số trên dữ liệu đã dùng để rút ra cách sửa được gọi là “trong mẫu” và không dùng làm bằng chứng;
+\item khi dữ liệu kiểm bị lộ hoặc hỏng, thay đổi được ghi thành sửa đổi có giờ, trước khi chạy tập mới;
+\item dự đoán sai được công bố cùng dự đoán đúng.
+\end{enumerate}
+Mọi thay đổi làm đổi kết luận của sản phẩm phải được đăng ký trước, chạy lại GS-Bench (không được tăng kết luận sai) và GS-Eval v2, rồi mới được bật.
+
+\section{Các đe doạ tính hợp lệ}
+
+\begin{table}[htbp]
+\centering
+\caption{Các đe doạ tính hợp lệ của dữ liệu và cách giảm}\label{tab:de-doa}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{3.6cm}YY}
+\hdr\thd{Đe doạ} & \thd{Cách giảm đã làm} & \thd{Phần còn lại}\\
+Hai lượt gán nhãn dùng cùng một công cụ & Quy tắc viết trước; không xem đầu ra hệ thống; phân xử; kiểm đối nghịch; kiểm tất định; tác giả rà soát & Sai lệch chung của công cụ; cần nhãn chuẩn độc lập\\
+Người gán chỉ thấy tối đa 3 đoạn bằng chứng & Kiểm lại các ca “mâu thuẫn”: người gán thấy đủ cặp số bị so & Một số ca có thể thiếu ngữ cảnh\\
+Mẫu rút theo kết luận của mã cũ & Chạy lại mã hiện tại, ghép theo nội dung câu & Tầng “được ủng hộ” hiện chỉ còn 5 mẫu\\
+Ít doanh nghiệp, ít ngành & Chia theo công ty; trần tỷ trọng mỗi công ty; bootstrap theo công ty & Chưa có ngân hàng, doanh nghiệp nhỏ; chỉ 8–12 cụm công ty\\
+Ca dựng không đại diện câu thật & Đo thêm trên câu thật (GS-Eval v2) & Hai loại số phải luôn được nói cùng nhau\\
+Mẫu nhỏ mỗi lớp & Khoảng Wilson, bootstrap cụm, báo cả số đếm & Khoảng tin cậy còn rộng\\
+\end{tabularx}
+\end{table}
+
+\FloatBarrier
+\begin{hopy}{Tóm tắt chương}
+\begin{itemize}
+\item Dữ liệu gồm 670 tài liệu công khai của 21 doanh nghiệp, 11 văn bản pháp luật, 4 vụ có phán quyết và bộ đối chứng Hòa Phát 264 trang. Quyền sử dụng và giới hạn đại diện được nêu rõ.
+\item Nhãn có hai vai: nhãn xác nhận để dạy và dò lỗi; nhãn chuẩn độc lập để đo. Nhãn chuẩn chưa có, và báo cáo không nói vượt điều đó.
+\item Bộ huấn luyện nhận diện tuyên bố có 2.055 câu đã che số, chọn theo tầng để tập trung vào ranh giới khó. Nhãn được tạo theo bộ quy tắc của tác giả, có máy hỗ trợ hai lượt, phân xử, kiểm mẫu, và được tác giả xác nhận.
+\item Bộ này huấn luyện được vì tín hiệu nằm trên bề mặt câu, nhãn nhất quán, câu khó đặt đúng chỗ, che số không mất tín hiệu. Con số đo được là thật vì dữ liệu được chia theo doanh nghiệp.
+\item GS-Bench đo phép so số trong điều kiện cô lập; GS-Eval v2 đo cả chuỗi trên câu thật. Hai loại số luôn được báo cùng nhau, kèm đăng ký trước và khoảng tin cậy.
+\end{itemize}
+\end{hopy}

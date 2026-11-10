@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 from typing import Any
 
@@ -123,6 +124,10 @@ class ClaimSettings(BaseModel):
     provider: str = "heuristic"
     minimum_confidence: float = 0.4
     include_vague_claims: bool = True
+    # claim-quality-v1 (2026-11-09): mark sentences that are probably not claims
+    # (layout glue, a standard's title, a quoted decree). Marking only: verdicts
+    # unchanged, the sentence leaves the queue and the risk score.
+    flag_suspect_non_claims: bool = True
 
 
 class RetrievalSettings(BaseModel):
@@ -197,6 +202,17 @@ class VerificationSettings(BaseModel):
     # until the gold set measures its precision per relation: unguarded on HPG
     # (28/09) it produced 10 CONTRADICTED and 2 CRITICAL on a control company.
     llm_stance_decisive: bool = False
+    # Contradiction guard (05/11/2026, GS-Eval v2). On 146 real sentences of 8
+    # companies, 35 of 38 CONTRADICTED were wrong: 19 of 20 numeric ones put two
+    # figures about different objects side by side inside one report, and every
+    # cue-based one read its cue out of the company's own prose ("không ghi nhận
+    # trường hợp nào vi phạm", a GRI index listing "Nghị định ... xử phạt vi
+    # phạm"). False (default): a passage from the claim's own document never
+    # contradicts it, and a cue phrase in the company's own documents
+    # (internal / financial) contradicts only when it sits in a ruling on
+    # statements. True restores the earlier behaviour.
+    # Env QUANTUM_SELF_EVIDENCE_CAN_CONTRADICT.
+    self_evidence_can_contradict: bool = False
 
 
 class LegalSettings(BaseModel):
@@ -208,6 +224,11 @@ class LegalSettings(BaseModel):
     # and a company can be compliant on one and misaligned on the other, so the
     # mode is explicit rather than inferred.
     check_mode: str = "current_policy_alignment"
+    # Org packs (docs/03-architecture/ORG_PACK.md): an organisation's own rules,
+    # applied beside the verdict and never to it. Env QUANTUM_ORG_PACKS. Empty =
+    # off, and then the field is left out of the dump, so the config hash, the
+    # manifest and result.json are exactly what they were without the feature.
+    org_packs: list[str] = Field(default_factory=list, exclude_if=lambda value: not value)
 
 
 class ReviewSettings(BaseModel):
@@ -257,6 +278,9 @@ class GatewaySettings(BaseModel):
     anthropic_model: str = ""
     openrouter_api_key: str = ""
     openrouter_model: str = ""
+    groq_api_key: str = ""
+    groq_model: str = "openai/gpt-oss-120b"
+    groq_extra_body: str = ""  # JSON of extra request fields, e.g. {"reasoning_effort": "low"}
 
 
 def load_gateway_settings() -> GatewaySettings:
@@ -286,6 +310,9 @@ def load_gateway_settings() -> GatewaySettings:
         gemini_model=env("GEMINI_MODEL", ""),
         openai_api_key=env("OPENAI_API_KEY", ""),
         openai_model=env("OPENAI_MODEL", ""),
+        groq_api_key=env("GROQ_API_KEY", ""),
+        groq_model=env("GROQ_MODEL", "openai/gpt-oss-120b"),
+        groq_extra_body=env("GROQ_EXTRA_BODY", ""),
         anthropic_api_key=env("ANTHROPIC_API_KEY", ""),
         anthropic_model=env("ANTHROPIC_MODEL", ""),
         openrouter_api_key=env("OPENROUTER_API_KEY", ""),
@@ -375,4 +402,14 @@ def load_settings(path: str | None = None) -> AppSettings:
     settings.verification.llm_cache_dir = os.getenv(
         "QUANTUM_LLM_CACHE_DIR", settings.verification.llm_cache_dir
     )
+    guard = os.getenv("QUANTUM_SELF_EVIDENCE_CAN_CONTRADICT")
+    if guard is not None and guard.strip():
+        settings.verification.self_evidence_can_contradict = guard.strip().lower() in {"1", "true", "yes", "on"}
+    flag = os.getenv("QUANTUM_FLAG_SUSPECT_NON_CLAIMS")
+    if flag is not None and flag.strip():
+        settings.claim_extraction.flag_suspect_non_claims = flag.strip().lower() in {"1", "true", "yes", "on"}
+    # Pack folders or pack.yaml files, separated by "," or ";". Set but empty = off.
+    org_packs = os.getenv("QUANTUM_ORG_PACKS")
+    if org_packs is not None:
+        settings.legal.org_packs = [p.strip() for p in re.split(r"[,;]", org_packs) if p.strip()]
     return settings

@@ -104,8 +104,8 @@ class DocumentStore:
             row = json.loads(line)
             if row["doc_id"] != doc_id:
                 continue
-            path = Path(row["path"])
-            if not path.is_file():
+            path = self._located(row)
+            if path is None:
                 return None
             return StoredDocument(
                 doc_id=row["doc_id"], sha256=row["sha256"], name=row["name"],
@@ -122,16 +122,33 @@ class DocumentStore:
             if not line.strip():
                 continue
             row = json.loads(line)
-            if row["sha256"] != sha256 or not Path(row["path"]).is_file():
+            path = self._located(row) if row["sha256"] == sha256 else None
+            if path is None:
                 continue
             record = StoredDocument(
                 doc_id=row["doc_id"], sha256=row["sha256"], name=row["name"],
-                path=Path(row["path"]), content_type=row["content_type"], bytes=row["bytes"],
+                path=path, content_type=row["content_type"], bytes=row["bytes"],
             )
             if name is None or row["name"] == name:
                 return record
             fallback = fallback or record
         return fallback
+
+    def _located(self, row: dict) -> Path | None:
+        """The stored file for an index row, or None.
+
+        The index keeps the absolute path of the machine that stored the file. A
+        store copied elsewhere -- the seeded demo runs of a deployed prototype, a
+        backup restored on another laptop -- keeps the blob layout but not that
+        path, so the blob is looked up by its content hash under this root.
+        """
+        path = Path(row["path"])
+        if path.is_file():
+            return path
+        raw = str(row["path"]).replace("\\", "/")
+        suffix = Path(raw).suffix.lower() or ".bin"
+        moved = self.blobs / row["sha256"][:2] / f"{row['sha256']}{suffix}"
+        return moved if moved.is_file() else None
 
     def is_servable(self, record: StoredDocument) -> bool:
         return record.path.suffix.lower() in SERVABLE

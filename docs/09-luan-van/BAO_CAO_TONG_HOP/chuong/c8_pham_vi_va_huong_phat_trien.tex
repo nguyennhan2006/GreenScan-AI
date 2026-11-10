@@ -1,0 +1,185 @@
+% ===================================================================== CHƯƠNG 8
+\chapter{Phạm vi đã giải quyết, hạn chế và hướng phát triển}\label{ch:pham-vi}
+
+Chương~\ref{ch:mo-dau} đã đặt phạm vi xử lý và sáu câu hỏi nghiên cứu. Chương này khép lại vòng đó theo bốn bước: trả lời từng câu hỏi và nói rõ trả lời được tới đâu; đối chiếu các cam kết đã nêu ở Vòng 1 với trạng thái hiện tại; nêu các hạn chế; rồi chuyển mọi phần chưa giải quyết thành hướng phát triển, mỗi hướng có việc cụ thể, tiêu chí thành công đặt trước và điều kiện dừng.
+
+Ba mức trả lời được dùng thống nhất trong chương:
+\begin{itemize}
+\item \textbf{Đã trả lời}: có kết quả đo, hoặc có bảo đảm viết thành mã, đủ để trả lời câu hỏi trong phạm vi đã nêu, kèm căn cứ đo được ghi rõ.
+\item \textbf{Trả lời một phần}: có lời giải về thiết kế và một phần kết quả đo, nhưng còn một điểm then chốt chưa đạt.
+\item \textbf{Chưa trả lời}: mới có kế hoạch.
+\end{itemize}
+
+\section{Trả lời sáu câu hỏi nghiên cứu}\label{sec:tra-loi}
+
+\textbf{CH1 – Đặt bài toán: đã trả lời.} Đơn vị xử lý là tuyên bố ở cấp câu. Đầu ra là một trong năm kết luận, kèm bằng chứng có số trang, phép tính đã chạy, các thuộc tính còn thiếu và lý do xếp hàng. Thước đo tách độ phủ khỏi hai loại lỗi nguy hiểm (mục~\ref{sec:phat-bieu}). Cách đặt này dùng được trên báo cáo thật: với bộ báo cáo 264 trang của Hòa Phát, hệ thống cho hàng đợi 9 mục nên mở trước, mỗi mục có lý do và trang nguồn (mục~\ref{sec:hpg}). Phần còn mở nằm ở bước đầu của đường xử lý: khoảng 30\% câu được trích không phải tuyên bố, và lỗi chữ dính khi đọc PDF có thể đưa một câu không phải tuyên bố lên đầu hàng đợi (mục~\ref{sec:loi-nguyen-mau}).
+
+\textbf{CH2 – Kiểm chứng và biết dừng: trả lời một phần.} Về an toàn, câu trả lời là có. Kết luận dứt khoát chỉ đến từ phép tính hoặc quy tắc tất định và phải qua cổng so sánh. Chốt chặn đưa số kết luận “mâu thuẫn” sai trên tuyên bố thật từ 24 về 0; 4/4 vụ có phán quyết và 453/453 nhãn ca dựng được giữ nguyên qua mọi lần sửa. Về độ phủ, câu trả lời chưa đạt. Hệ thống chỉ dám kết luận dứt khoát ở 7,7\% ca dựng và 9/146 câu thật, và kết luận “được ủng hộ” đúng 0/5 trên câu thật. Nói gọn: hệ thống đã biết \emph{dừng}, nhưng chưa biết nói “đúng” một cách đáng tin.
+
+\textbf{CH3 – Số học tất định: đã trả lời trên ca dựng, chưa đo trên số liệu thật bằng nhãn người.} Thủ tục tất định kiểm giá trị, đơn vị, kỳ, phạm vi và mốc so sánh. Mô hình chỉ đọc ra biểu diễn trung gian; hàm neo kiểm rằng mọi con số đọc ra đều có thật trong văn bản; gợi ý sửa không thêm con số nào (0/527). Trên Hòa Phát, phép cộng lại bảng phát thải khớp với số công bố trong sai số làm tròn. Còn mở: bảng PDF chưa được dựng trong sản phẩm nên trích dẫn mới tới trang, chưa tới ô; cổng “số học bằng mã” hiện luôn đạt nên chưa phải một phép kiểm thực.
+
+\textbf{CH4 – Mô hình nhỏ chạy tại máy: trả lời một phần.} Mô hình học trò nhận diện tuyên bố đạt macro-F1 0,73 so với 0,36 của luật (trên nhãn xác nhận), nhưng mất 118,7 ms mỗi câu, vượt ngưỡng 50 ms đặt trước, nên chưa vào sản phẩm. Bộ đọc số liệu 4 tỷ tham số chạy tại máy cho nhãn trùng 96,3\% với bản chạy trên GPU, nhưng đường đọc kép mới ở mức thực nghiệm. Câu trả lời cho “đi được tới đâu” là: mô hình nhỏ \emph{đọc} tốt hơn luật từ khoá; còn mô hình, lớn hay nhỏ, đều không được \emph{tự quyết}.
+
+\textbf{CH5 – Quy tắc của người dùng và tính nhất quán: trả lời một phần.} Vế “không làm yếu bảo đảm của lõi” đã được trả lời. Gói quy tắc tổ chức nằm dưới luật, không đổi kết luận kiểm chứng, và đạt toàn bộ 45/45 ca an toàn. Bộ áp quy tắc cho kết quả đúng 0,945 khi thuộc tính được cho đúng và 0,907 khi chạy đầu–cuối. Vế “học ở đâu và tới mức nào” mới có lời giải về thiết kế và bước đầu tiên: từ ngày 10/11/2026, mỗi lần sửa kết luận phải kèm lý do, và lý do quyết định nhãn đi về mô hình (lỗi đọc) hay về gói quy tắc (quy tắc không khớp) (mục~\ref{sec:ghi-ly-do}). Chưa có dữ liệu dùng thật cho phần này. Chưa tách việc đọc thuộc tính khỏi quy tắc xếp lớp, chưa có kiểm thử nhất quán, chưa có vòng soạn quy tắc có người duyệt. Số quy tắc pháp lý áp được hiện là 0.
+
+\textbf{CH6 – Đo khi chưa có nhãn chuẩn: đã trả lời về phương pháp; con số cuối cùng chờ nhãn chuẩn.} Báo cáo tách bốn căn cứ đo (ca dựng, nhãn xác nhận, vụ việc có phán quyết, nhãn chuẩn độc lập) và ghi căn cứ cạnh mỗi con số. Mẫu nhỏ có khoảng tin cậy Wilson. Các dự đoán được đăng ký trước khi chạy: 21 dự đoán, 13 đúng, 8 sai, và tất cả đều được công bố (mục~\ref{sec:du-doan}). Câu hỏi “hệ thống chính xác bao nhiêu” thì chưa trả lời được, và báo cáo không đưa ra con số nào thay cho câu trả lời đó.
+
+\begin{table}[htbp]
+\centering
+\caption{Mức độ trả lời sáu câu hỏi nghiên cứu}\label{tab:tra-loi}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{2.5cm}L{2.4cm}YL{1.6cm}}
+\hdr\thd{Câu hỏi} & \thd{Mức} & \thd{Phần còn mở} & \thd{Hướng}\\
+CH1 Đặt bài toán & Đã trả lời & Trích tuyên bố còn lẫn câu không phải tuyên bố; chữ dính khi đọc PDF & H2\\
+CH2 Kiểm chứng, biết dừng & Một phần & Độ phủ thấp; “được ủng hộ” chưa đáng tin & H3, H1\\
+CH3 Số học tất định & Đã trả lời trên ca dựng & Bảng PDF, trích dẫn tới ô; cổng số học luôn đạt & H6\\
+CH4 Mô hình nhỏ tại máy & Một phần & Độ trễ mô hình học trò; đường đọc kép chưa nối & H4, H3\\
+CH5 Quy tắc người dùng, nhất quán & Một phần & Dữ liệu dùng thật; tách đọc khỏi quy tắc; kiểm thử nhất quán; vòng soạn quy tắc; quy tắc pháp lý & H5, H8\\
+CH6 Đo khi chưa có nhãn chuẩn & Đã trả lời về phương pháp & Con số trên nhãn người & H1\\
+\end{tabularx}
+\end{table}
+
+\section{Cam kết ở Vòng 1 và trạng thái hiện tại}\label{sec:cam-ket}
+
+Hồ sơ Vòng 1 nêu một số cam kết rộng hơn những gì nguyên mẫu hiện làm được. Bảng~\ref{tab:cam-ket} đối chiếu từng cam kết với trạng thái ngày 10/11/2026 và chỉ ra nơi xử lý tiếp. Một số cam kết được \emph{bỏ có chủ đích} sau khi đo, vì chúng mâu thuẫn với nguyên tắc chỉ đánh giá từng tuyên bố. Phần còn lại trở thành hướng phát triển ở mục~\ref{sec:huong}.
+
+{\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{xltabular}{\linewidth}{YYL{1.7cm}}
+\hiderowcolors
+\caption{Cam kết ở Vòng 1, trạng thái ngày 10/11/2026 và hướng xử lý}\label{tab:cam-ket}\\
+\showrowcolors
+\hdr\thd{Cam kết ở Vòng 1} & \thd{Trạng thái} & \thd{Xử lý}\\
+\endfirsthead
+\hdr\thd{Cam kết ở Vòng 1} & \thd{Trạng thái} & \thd{Xử lý}\\
+\endhead
+Bộ nhãn chuẩn từ 100 cặp, hai người gán, κ ≥ 0,7 & Chưa có nhãn độc lập: 0/88 cặp, 0/79 câu; hiện chỉ có nhãn xác nhận & H1\\
+Ngưỡng F1 ≥ 0,75; Recall@10 ≥ 0,85; trích dẫn đúng ≥ 0,90; kết luận đúng ≥ 0,80 & Chưa đo trên nhãn người & H1\\
+Truy xuất lai: từ vựng, mô hình nhúng đa ngữ và xếp hạng lại & Mặc định chỉ dùng truy xuất từ vựng; mô hình nhúng và xếp hạng lại nằm sau cờ & H3\\
+Gói quy tắc theo Phụ lục I Quyết định 21/2025 cho 2–3 loại dự án & 0 quy tắc áp được; một quy tắc nháp chưa có người có chuyên môn duyệt & H8\\
+Trích dẫn tới ô bảng, tách biểu đồ & Trích dẫn tới trang; dựng hàng bảng mới ở mức thử nghiệm & H6\\
+Bằng chứng độc lập (báo cáo kiểm toán, quyết định xử phạt, công bố của sở giao dịch) & 0 nguồn độc lập trong chạy đầu–cuối; mọi bằng chứng lấy từ tài liệu của chính doanh nghiệp & H7\\
+Đối chiếu báo cáo tài chính (chi đầu tư xanh, mục đích sử dụng vốn) & Chưa làm & H7\\
+Bộ dữ liệu lõi 8–12 doanh nghiệp, mỗi doanh nghiệp 3 năm, 4–6 ngành & Chạy đầu–cuối trên 1 doanh nghiệp; bộ đo số liệu gồm 7–9 doanh nghiệp & H1, H7\\
+Đo thời gian xử lý so với làm thủ công & Chưa đo & H9\\
+Vòng phản hồi cải thiện mô hình từ quyết định của chuyên gia & Nhật ký quyết định chỉ ghi thêm; lý do sửa và định tuyến nhãn (10/11/2026); không tự huấn luyện lại & H5\\
+Tư vấn cải thiện báo cáo ESG và báo cáo tài chính & Gợi ý sửa bốn loại cho câu môi trường, không thêm số; không có phần báo cáo tài chính; chưa thử với người dùng & H7, H9\\
+Thử nghiệm QUBO ở Vòng 2 & Mới hình thức hoá, chưa có mã & H10\\
+Điểm rủi ro 0–100 cho cả tài liệu & Bỏ có chủ đích: không chấm tài liệu hay doanh nghiệp; điểm cấp tuyên bố chỉ dùng để xếp hàng & Không làm\\
+Lộ trình ESG cho doanh nghiệp FDI; trò chuyện tự do; bảng điều khiển theo doanh nghiệp & Cắt khỏi phạm vi (Bảng~\ref{tab:pham-vi}) & Không làm\\
+\end{xltabular}}
+
+\section{Hạn chế}\label{sec:han-che}
+
+\textbf{Về dữ liệu và đo lường.}
+\begin{itemize}
+\item \emph{Chưa có nhãn chuẩn độc lập.} Mọi con số trên câu thật dùng nhãn xác nhận: nhãn do công cụ mô hình ngôn ngữ gán hai lượt, có trọng tài và kiểm mẫu, sau đó được tác giả xem lại và xác nhận. Nhãn này đủ để huấn luyện và dò lỗi. Nó không đủ để công bố độ chính xác, vì người xác nhận nhãn cũng là người xây hệ thống.
+\item \emph{Mẫu nhỏ.} Nhiều kết quả dựa trên vài chục đến vài trăm ca nên khoảng tin cậy rộng; ví dụ kết luận “được ủng hộ” trên câu thật chỉ có 5 ca.
+\item \emph{Độ phủ dữ liệu.} Chạy đầu–cuối đầy đủ mới làm trên một doanh nghiệp thuộc một ngành. Ca dựng kiểm được từng cơ chế nhưng có thể không đại diện cho cách viết thật.
+\item \emph{Biến số bị trộn.} Giữa các phiên bản mô hình học trò, dữ liệu và công thức huấn luyện thay đổi cùng lúc, nên không tách được phần cải thiện do riêng dữ liệu.
+\end{itemize}
+
+\textbf{Về phương pháp.}
+\begin{itemize}
+\item Lõi quy tắc an toàn nhưng độ phủ thấp; kết luận “được ủng hộ” còn một đường tắt (câu tự lặp lại ở tài liệu khác của cùng doanh nghiệp).
+\item Điểm rủi ro chỉ tương quan vừa phải với đánh giá đối chiếu (ρ = 0,46, so với trần 0,73); yếu tố “bất thường so với kỳ trước” chưa được tính.
+\item Lời giải thích theo mẫu cố định, chưa chỉ ra phần nào của câu có bằng chứng.
+\item Hệ thống chỉ đọc chữ; không xét hình ảnh, biểu đồ hay im lặng có chọn lọc.
+\end{itemize}
+
+\textbf{Về pháp lý.} Chưa có quy tắc pháp lý nào áp được. Sổ đăng ký 11 văn bản cần người có chuyên môn pháp lý duyệt và cập nhật theo ngày hiệu lực.
+
+\textbf{Về sản phẩm và người dùng.} Chưa thử với người dùng thật. Còn các lỗi giao diện đã biết (Bảng~\ref{tab:loi-nguyen-mau}). Chưa có phân quyền nhiều cấp và sổ ghi gửi dữ liệu ra ngoài. Ảnh Docker chưa được dựng lại, và đường dẫn chạy thử công khai chưa được triển khai.
+
+\section{Hướng phát triển}\label{sec:huong}
+
+Mỗi phần chưa giải quyết được chuyển thành một hướng gồm: vấn đề còn mở, việc cần làm, và tiêu chí thành công đặt trước. Tiêu chí được đặt trước khi làm, cùng cách đã dùng với các dự đoán đăng ký ở Chương~\ref{ch:ket-qua}, để không chọn thước đo sau khi đã thấy kết quả. Riêng hướng H5, vốn trả lời vế còn mở của CH5, được trình bày chi tiết ở mục~\ref{sec:h5}.
+
+{\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{xltabular}{\linewidth}{L{2.6cm}YL{4.6cm}}
+\hiderowcolors
+\caption{Mười hướng phát triển và tiêu chí thành công}\label{tab:huong}\\
+\showrowcolors
+\hdr\thd{Hướng} & \thd{Vấn đề còn mở và việc cần làm} & \thd{Tiêu chí thành công}\\
+\endfirsthead
+\hdr\thd{Hướng} & \thd{Vấn đề còn mở và việc cần làm} & \thd{Tiêu chí thành công}\\
+\endhead
+H1. Nhãn chuẩn độc lập & Chưa có nhãn người độc lập. Gán độc lập 88 cặp và 79 câu đang có, rồi mở rộng lên ít nhất 300 cặp; ít nhất hai người có chuyên môn kế toán – kiểm toán hoặc môi trường, không xem nhãn của máy & κ ≥ 0,6 giữa hai người gán; mọi con số ở Chương~\ref{ch:ket-qua} được đo lại trên nhãn người và công bố cả khi kết quả giảm\\
+H2. Trích tuyên bố sạch hơn & Khoảng 30\% câu được trích không phải tuyên bố; chữ dính khi đọc PDF. Sửa bước đọc bố cục trang (tiêu đề chạy, chân trang), mở rộng bộ gắn cờ câu không phải tuyên bố & Tỉ lệ câu không phải tuyên bố trong hàng đợi giảm ít nhất một nửa trên cùng tập đo; không mất tuyên bố nào của 4/4 vụ có phán quyết\\
+H3. Độ phủ và kết luận “được ủng hộ” & Độ phủ 7,7\% trên ca dựng; “được ủng hộ” đúng 0/5 trên câu thật. Chặn đường tắt câu tự lặp lại; nối đường đọc kép sau cờ; bật truy xuất bằng mô hình nhúng sau khi đo & Độ phủ tăng trong khi số “mâu thuẫn” sai trên tuyên bố thật vẫn bằng 0; cận dưới Wilson của độ chính xác “được ủng hộ” đạt ngưỡng $1-\varepsilon_S$ đăng ký trước; giữ 453/453 và 4/4\\
+H4. Mô hình học trò vào sản phẩm & 118,7 ms/câu, vượt ngưỡng 50 ms. Rút gọn mô hình (chưng cất, lượng tử hoá, thư viện suy luận tối ưu cho CPU) & Đạt đủ các điều kiện đăng ký: ≤ 50 ms/câu và ≤ 2 GB RAM trên CPU; cận dưới chênh lệch (học trò − luật) lớn hơn 0; độ nhạy tuyên bố ≥ luật + 0,10; đo trên nhãn người\\
+H5. Nhất quán khi quy tắc khác nhau giữa tổ chức & Bốn bước (a)–(d) ở mục~\ref{sec:h5} và ba lỗi diễn đạt của gói quy tắc & Bảng~\ref{tab:h5}\\
+H6. Bảng PDF và số học thật & Trích dẫn mới tới trang; cổng số học luôn đạt. Dựng bảng trong sản phẩm, trích dẫn tới ô; biến cổng số học thành phép kiểm thật & Cộng lại đúng các bảng phát thải của bộ đo số liệu; cổng số học chặn được các ca lỗi cài sẵn\\
+H7. Kỳ trước, cùng ngành và nguồn độc lập & Mọi bằng chứng lấy từ tài liệu của chính doanh nghiệp; yếu tố bất thường chưa tính. Thêm báo cáo kỳ trước, doanh nghiệp cùng ngành, nguồn công khai độc lập (danh mục cơ sở phải kiểm kê khí nhà kính, quyết định xử phạt) và báo cáo tài chính & Ít nhất một nguồn độc lập trong chạy đầu–cuối; yếu tố bất thường được tính và có kiểm thử\\
+H8. Lớp pháp lý có người duyệt & 0 quy tắc áp được. Viết quy tắc cho Quyết định 13/2024 cùng Nghị định 119/2025 và phần môi trường của Thông tư 96/2020; người có chuyên môn pháp lý duyệt; theo dõi thông tư thay thế Thông tư 96/2020 & Ít nhất một phát hiện pháp lý đúng trên doanh nghiệp thật, được người có chuyên môn xác nhận\\
+H9. Người dùng thật và độ sẵn sàng triển khai & Chưa thử với người dùng; còn lỗi giao diện; chưa phân quyền, chưa có sổ ghi gửi ra ngoài. Thử độ dễ dùng, sửa các lỗi ở Bảng~\ref{tab:loi-nguyen-mau}, thêm phân quyền và sổ ghi & Đạt các ngưỡng đặt trước ở Chương~\ref{ch:trien-khai} (SUS ≥ 68, SEQ ≥ 5, 0 lỗi nghiêm trọng ở T04 và T06); có số đo thời gian cho mỗi tuyên bố\\
+H10. Chọn mẫu soát bằng tối ưu (QUBO) & Mới hình thức hoá. Chỉ thử khi đã có hàng đợi được đo trên nhãn người; so với thuật toán tham lam cổ điển trên cùng dữ liệu & Hơn thuật toán cổ điển trên dữ liệu thật; nếu không hơn thì dừng và công bố kết quả âm\\
+\end{xltabular}}
+
+\subsection{Hướng H5: nhất quán logic kiểm tra khi quy tắc khác nhau giữa các tổ chức}\label{sec:h5}
+
+\textbf{Vấn đề.} Quy tắc chuẩn của hệ thống không phải lúc nào cũng là cách áp dụng đúng cho một doanh nghiệp hay một tổ chức người dùng cụ thể. Ví dụ, với câu “đạt phát thải ròng bằng 0 vào năm 2050”, con số duy nhất là một năm. Tổ chức này có thể coi câu đó là “tuyên bố có số”; tổ chức khác lại yêu cầu phải có chỉ số và năm gốc mới tính là đo được. Khi người soát sửa một kết luận, sửa đổi đó có thể mang hai nghĩa rất khác nhau: hoặc mô hình đã đọc sai câu, hoặc quy tắc chuẩn không hợp với đơn vị này. Nếu mọi sửa đổi đều được đưa vào huấn luyện, mô hình sẽ học cả quy ước riêng của từng đơn vị như thể đó là cách đọc đúng. Khi đó cùng một câu sẽ bị đọc khác nhau tuỳ dữ liệu của đơn vị nào được đưa vào sau, logic kiểm tra mất nhất quán, và không ai giải thích được vì sao kết luận thay đổi.
+
+\textbf{Nguyên tắc: mỗi loại tri thức được học ở đúng một nơi.}
+\begin{itemize}
+\item \emph{Cách đọc câu} (câu có số không, có kỳ không, có năm gốc không) là phổ quát. Mô hình học phần này, và chỉ từ những nhãn có lý do “máy đọc sai” hoặc “máy bỏ sót bằng chứng”.
+\item \emph{Cách xếp loại và yêu cầu riêng của một tổ chức} nằm trong gói quy tắc có phiên bản, do người viết và người duyệt.
+\item \emph{Quyết định trên một tuyên bố cụ thể} nằm trong nhật ký quyết định, kèm lý do.
+\end{itemize}
+Hai ràng buộc giữ cho cách tách này đứng vững: mô hình không bao giờ học trực tiếp từ quy tắc riêng của một tổ chức, và gói quy tắc không bao giờ đổi kết luận kiểm chứng.
+
+\begin{table}[htbp]
+\centering
+\caption{Bốn bước của hướng H5}\label{tab:h5}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{L{2.6cm}YL{2.2cm}L{3.6cm}}
+\hdr\thd{Bước} & \thd{Nội dung} & \thd{Trạng thái} & \thd{Tiêu chí thành công}\\
+(a) Ghi lý do và định tuyến nhãn & Bốn lý do sửa (Bảng~\ref{tab:ly-do-sua}); “máy đọc sai” và “máy bỏ sót bằng chứng” đưa nhãn về mô hình; “quy tắc không áp dụng cho trường hợp này” và “quy tắc sai” đưa vào hàng phản hồi theo từng quy tắc; ghi phiên bản gói quy tắc, lời nhắc và đường xử lý & Đã cài (10/11/2026); chưa có dữ liệu dùng thật & Không còn nhãn “không rõ đường đi” trong dữ liệu mới; theo dõi hai tỉ lệ: lỗi của mô hình và quy tắc không khớp\\
+(b) Tách đọc thuộc tính khỏi quy tắc xếp lớp & Mô hình đọc ra các thuộc tính (có số liệu, có kỳ, có năm gốc, có phạm vi, là cam kết tương lai…); lớp do một hàm quy tắc tính, tổ chức chỉnh bằng công tắc, ví dụ “mục tiêu chỉ nêu năm có tính là tuyên bố có số không” & Chưa làm & Đổi công tắc chỉ đổi lớp đúng như quy tắc, không phải huấn luyện lại; độ chính xác đọc thuộc tính được đo trên nhãn người\\
+(c) Kiểm thử nhất quán & Cùng đầu vào và cùng phiên bản cho cùng kết quả; cặp đối chứng chỉ khác nhau một thuộc tính phải đổi kết quả đúng như quy tắc; đổi gói quy tắc không đổi kết luận kiểm chứng & Vế cuối đã có (bất biến có kiểm thử); hai vế đầu chưa & Đạt 100\% trên bộ cặp đối chứng; chạy trong cổng hồi quy\\
+(d) Vòng soạn quy tắc có người duyệt & Người dùng mô tả quy tắc bằng lời; mô hình soạn bản nháp; bộ kiểm hợp lệ chạy thử trên các ca cũ và chỉ ra quyết định nào sẽ đổi; người duyệt; tăng phiên bản & Chưa làm (đã có bộ kiểm hợp lệ và luật an toàn) & Bản nháp không bao giờ có hiệu lực khi chưa duyệt; mọi thay đổi có phiên bản và quay lại được\\
+\end{tabularx}
+\end{table}
+
+Song song với bốn bước trên, ba lỗi diễn đạt quy tắc đã đo ở Chương~\ref{ch:ket-qua} cần được sửa trong bộ áp quy tắc: loại tuyên bố mà quy tắc nhắm tới phải được khớp mềm (8 ca); điều kiện kích hoạt phải đọc cả bảng từ đồng nghĩa (2 ca); điều kiện ngưỡng số chỉ được xét con số đi cùng chỉ số được nêu (3 ca). Bộ kiểm hợp lệ cũng phải \emph{từ chối}, thay vì chỉ cảnh báo, một gói có quy tắc dẫn tới tài liệu nguồn không có trong danh mục tài liệu của gói. Tiêu chí: đo lại trên 237 ca, và không được giảm ở 45/45 ca an toàn.
+
+\textbf{Đối chiếu với cách làm của các trợ lý cho doanh nghiệp.} Cách tách này gần với cách nhiều nền tảng trợ lý cho doanh nghiệp đang làm. Theo mô tả công khai về các trợ lý trả lời tự động trên Zalo, việc cá nhân hoá cho từng doanh nghiệp được thực hiện bằng kịch bản và kho tri thức riêng của doanh nghiệp, nạp vào lúc chạy, thay vì huấn luyện lại mô hình cho từng khách hàng\footnote{Các mô tả này đến từ trang giới thiệu dịch vụ của bên thứ ba, không phải tài liệu kỹ thuật chính thức của Zalo, ví dụ \url{https://mona.media/ai-tra-loi-tu-dong-zalo/} và \url{https://aiflamevn.com/chatbot-ai-zalo/} (truy cập 10/11/2026).}. Ở GreenScan, gói quy tắc tổ chức đóng vai trò của kho tri thức đó. Điểm khác là gói quy tắc có phiên bản, có người duyệt, và bị cấm đổi kết luận kiểm chứng, vì ở đây một kết luận sai có thể trở thành lời vu oan đối với một doanh nghiệp có tên.
+
+\section{Thứ tự ưu tiên và điều kiện dừng}\label{sec:uu-tien}
+
+\begin{table}[htbp]
+\centering
+\caption{Thứ tự ưu tiên của các hướng phát triển}\label{tab:uu-tien}
+\bangchu
+\rowcolors{2}{rowbg}{white}
+\begin{tabularx}{\linewidth}{C{1.1cm}L{1.9cm}YL{3.2cm}}
+\hdr\thd{Thứ tự} & \thd{Hướng} & \thd{Lý do} & \thd{Giai đoạn (Bảng~\ref{tab:lo-trinh})}\\
+1 & H1 & Mọi con số khác phụ thuộc vào nhãn người; không có H1 thì không có căn cứ để quyết định H3 và H4 & 12/2026 – 02/2027\\
+2 & H3, H2 & Chất lượng phán đoán là điểm yếu chính; H2 ít tốn kém và giảm việc thừa cho người soát & Song song với H1\\
+3 & H5 & Cần có trước khi thí điểm, vì mỗi đơn vị thí điểm sẽ có quy ước riêng & Trước thí điểm\\
+4 & H8, H6, H7 & Mở rộng phạm vi kiểm; H8 cần người có chuyên môn pháp lý & Quý I – II/2027\\
+5 & H9 & Cần sản phẩm đã sửa lỗi giao diện và đã có số đo trên nhãn người & Quý II – III/2027\\
+6 & H4 & Chỉ có giá trị khi thắng luật trên nhãn người; nếu không đạt độ trễ thì chỉ chạy ở chế độ GPU & Sau H1\\
+7 & H10 & Phụ thuộc hàng đợi đã đo; không phải điểm nghẽn hiện tại & Sau H1 và H3\\
+\end{tabularx}
+\end{table}
+
+Ba điều kiện dừng áp dụng cho mọi hướng:
+\begin{enumerate}
+\item Thay đổi nào làm tăng số kết luận “mâu thuẫn” sai trên tuyên bố thật, làm hỏng 453/453 hay 4/4, hoặc phá một bất biến, thì không được đưa vào sản phẩm, dù nó cải thiện chỉ số khác.
+\item Nếu nhãn người (H1) cho thấy một kết quả đã công bố là sai, con số được sửa và lần sửa được ghi rõ; con số cũ không được giữ lại.
+\item Không công bố độ chính xác, lợi ích về thời gian, đối tác hay lợi thế lượng tử khi chưa có số đo tương ứng.
+\end{enumerate}
+
+\FloatBarrier
+\begin{hopy}{Tóm tắt chương}
+\begin{itemize}
+\item Hai câu hỏi đã trả lời (CH1 đặt bài toán, CH3 số học tất định trên ca dựng), một câu đã trả lời về phương pháp (CH6), ba câu trả lời một phần (CH2 độ phủ, CH4 độ trễ, CH5 học quy tắc của người dùng).
+\item Các cam kết Vòng 1 chưa làm được ghi rõ; những cam kết trái nguyên tắc chỉ đánh giá từng tuyên bố được bỏ có chủ đích.
+\item Mọi phần chưa giải quyết trở thành mười hướng có tiêu chí thành công đặt trước; nhãn chuẩn độc lập (H1) đứng đầu vì mọi con số khác phụ thuộc vào nó.
+\item Hướng H5 giải quyết vấn đề quy tắc chuẩn không khớp doanh nghiệp bằng cách cho mỗi loại tri thức một nơi học: cách đọc ở mô hình, quy ước của tổ chức ở gói quy tắc có phiên bản, quyết định ở nhật ký.
+\end{itemize}
+\end{hopy}

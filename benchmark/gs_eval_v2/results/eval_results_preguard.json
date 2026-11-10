@@ -1,0 +1,1178 @@
+{
+ "run_date": "2026-11-05",
+ "system_output_source": "current-code runs (>= 2026-10-22), see inputs/refresh_stats.json",
+ "refresh_stats": {
+  "current_from": "2026-10-22",
+  "current_runs": [
+   "117602a7fa7a4b46",
+   "13720999a7084cad",
+   "19fa16a7d7e24590",
+   "2a775d33fbde407b",
+   "8f5b57bc65e4480d",
+   "9f5960580c21483a",
+   "a0e82a12ce584159",
+   "ac8e09dfe5a54bef",
+   "afdd9c6637044c6e",
+   "b36bbada51cc4793",
+   "b81d0a62e4e84b20",
+   "c892c13727c24bb9",
+   "d3ad3b9194ed4f22",
+   "ecdf04c3a3994cef",
+   "f0ccc44387c84baa"
+  ],
+  "current_pool_unique_claims": 1138,
+  "current_pool_status": {
+   "PARTIALLY_SUPPORTED": 1006,
+   "SUPPORTED": 8,
+   "INSUFFICIENT_EVIDENCE": 72,
+   "CONTRADICTED": 52
+  },
+  "items": 394,
+  "match": {
+   "not_extracted": 66,
+   "exact": 320,
+   "containment": 8
+  },
+  "status_changed_legacy_to_current": {
+   "SUPPORTED -> not_extracted": 37,
+   "PARTIALLY_SUPPORTED -> not_extracted": 14,
+   "CONTRADICTED -> not_extracted": 12,
+   "INSUFFICIENT_EVIDENCE -> not_extracted": 3,
+   "SUPPORTED -> PARTIALLY_SUPPORTED": 3,
+   "CONTRADICTED -> PARTIALLY_SUPPORTED": 1,
+   "CONTRADICTED -> INSUFFICIENT_EVIDENCE": 1
+  }
+ },
+ "explain": {
+  "n_labeled": 200,
+  "n_with_current_output": 146,
+  "not_extracted_by_current_system": {
+   "n": 54,
+   "reference_verdicts": {
+    "NOT_A_CLAIM": 23,
+    "PARTIALLY_SUPPORTED": 11,
+    "INSUFFICIENT_EVIDENCE": 10,
+    "SUPPORTED": 9,
+    "CONTRADICTED": 1
+   },
+   "legacy_status": {
+    "SUPPORTED": 37,
+    "CONTRADICTED": 10,
+    "INSUFFICIENT_EVIDENCE": 3,
+    "PARTIALLY_SUPPORTED": 4
+   }
+  },
+  "sample_by_system_status": {
+   "PARTIALLY_SUPPORTED": 55,
+   "CONTRADICTED": 38,
+   "INSUFFICIENT_EVIDENCE": 48,
+   "SUPPORTED": 5
+  },
+  "pool_by_system_status": {
+   "PARTIALLY_SUPPORTED": 1006,
+   "SUPPORTED": 8,
+   "INSUFFICIENT_EVIDENCE": 72,
+   "CONTRADICTED": 52
+  },
+  "reference_verdicts": {
+   "PARTIALLY_SUPPORTED": 49,
+   "NOT_A_CLAIM": 44,
+   "INSUFFICIENT_EVIDENCE": 34,
+   "CONTRADICTED": 3,
+   "SUPPORTED": 16
+  },
+  "reference_confidence": {
+   "low": 20,
+   "medium": 92,
+   "high": 34
+  },
+  "extraction_not_a_claim": {
+   "k": 44,
+   "n": 146,
+   "rate_sample": 0.301,
+   "wilson95": [
+    0.233,
+    0.38
+   ],
+   "rate_population_weighted": 0.367,
+   "by_system_status": {
+    "PARTIALLY_SUPPORTED": "21/55",
+    "CONTRADICTED": "11/38",
+    "INSUFFICIENT_EVIDENCE": "10/48",
+    "SUPPORTED": "2/5"
+   },
+   "company_bootstrap95": [
+    0.206,
+    0.454
+   ]
+  },
+  "verdict_on_claims": {
+   "n": 102,
+   "accuracy_sample": 0.402,
+   "accuracy_population_weighted": 0.574,
+   "accuracy_company_bootstrap95": [
+    0.34,
+    0.456
+   ],
+   "cohen_kappa": 0.15,
+   "macro_f1_present_classes": 0.294,
+   "per_class": {
+    "SUPPORTED": {
+     "tp": 0,
+     "fp": 3,
+     "fn": 16,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "PARTIALLY_SUPPORTED": {
+     "tp": 21,
+     "fp": 13,
+     "fn": 28,
+     "precision": 0.618,
+     "recall": 0.429,
+     "f1": 0.506
+    },
+    "CONTRADICTED": {
+     "tp": 3,
+     "fp": 24,
+     "fn": 0,
+     "precision": 0.111,
+     "recall": 1.0,
+     "f1": 0.2
+    },
+    "UNSUPPORTED": {
+     "tp": 0,
+     "fp": 0,
+     "fn": 0,
+     "precision": null,
+     "recall": null,
+     "f1": null
+    },
+    "INSUFFICIENT_EVIDENCE": {
+     "tp": 17,
+     "fp": 21,
+     "fn": 17,
+     "precision": 0.447,
+     "recall": 0.5,
+     "f1": 0.472
+    }
+   }
+  },
+  "confusion_system_rows_reference_cols": {
+   "CONTRADICTED": {
+    "NOT_A_CLAIM": 11,
+    "INSUFFICIENT_EVIDENCE": 9,
+    "CONTRADICTED": 3,
+    "PARTIALLY_SUPPORTED": 11,
+    "SUPPORTED": 4
+   },
+   "INSUFFICIENT_EVIDENCE": {
+    "PARTIALLY_SUPPORTED": 14,
+    "INSUFFICIENT_EVIDENCE": 17,
+    "NOT_A_CLAIM": 10,
+    "SUPPORTED": 7
+   },
+   "PARTIALLY_SUPPORTED": {
+    "PARTIALLY_SUPPORTED": 21,
+    "NOT_A_CLAIM": 21,
+    "SUPPORTED": 5,
+    "INSUFFICIENT_EVIDENCE": 8
+   },
+   "SUPPORTED": {
+    "NOT_A_CLAIM": 2,
+    "PARTIALLY_SUPPORTED": 3
+   }
+  },
+  "decisive": {
+   "n_system_decisive": 43,
+   "precision_vs_reference": 0.07,
+   "false_contradicted": 35,
+   "false_contradicted_on_real_claims": 24,
+   "false_contradicted_ref_breakdown": {
+    "NOT_A_CLAIM": 11,
+    "INSUFFICIENT_EVIDENCE": 9,
+    "PARTIALLY_SUPPORTED": 11,
+    "SUPPORTED": 4
+   },
+   "false_supported": 5,
+   "false_supported_ref_breakdown": {
+    "NOT_A_CLAIM": 2,
+    "PARTIALLY_SUPPORTED": 3
+   }
+  },
+  "missing_attributes_vs_reference": {
+   "metric": {
+    "tp": 3,
+    "fp": 10,
+    "fn": 13,
+    "precision": 0.231,
+    "recall": 0.188,
+    "f1": 0.207
+   },
+   "value": {
+    "tp": 7,
+    "fp": 10,
+    "fn": 23,
+    "precision": 0.412,
+    "recall": 0.233,
+    "f1": 0.298
+   },
+   "period": {
+    "tp": 9,
+    "fp": 14,
+    "fn": 35,
+    "precision": 0.391,
+    "recall": 0.205,
+    "f1": 0.269
+   },
+   "baseline": {
+    "tp": 0,
+    "fp": 14,
+    "fn": 6,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+   },
+   "scope": {
+    "tp": 4,
+    "fp": 17,
+    "fn": 20,
+    "precision": 0.19,
+    "recall": 0.167,
+    "f1": 0.178
+   }
+  },
+  "rationale": {
+   "words_mean": 34.3,
+   "words_max": 59,
+   "over_80_words": 0,
+   "reference_plain_words_mean": 77.0,
+   "must_mention_coverage_proxy_mean": 0.022,
+   "share_items_coverage_ge_half": 0.014,
+   "rationales_with_ungrounded_numbers": 17,
+   "distinct_rationales": 54
+  },
+  "examples_false_contradicted": [
+   {
+    "item_id": "A-47436b7a393af31f",
+    "company": "PNJ",
+    "ref": "NOT_A_CLAIM",
+    "claim": "1 Hiểu về Phát Triển Bền Vững - Đào tạo, nâng cao nhận thức - Cập nhật điểm mới Cao Sức khỏe & An toàn khách hàng 2 Xây dựng kế hoạch bền vững hàng năm GRI 416"
+   },
+   {
+    "item_id": "A-8b1a179b349c75da",
+    "company": "TRA",
+    "ref": "INSUFFICIENT_EVIDENCE",
+    "claim": "Sáng tạo sản phẩm xanh chăm Thu nhập bình quân của người lao động năm 2026: Tăng ít nhất 5% so với năm 2025."
+   },
+   {
+    "item_id": "A-7711740b648d2ed5",
+    "company": "SAB",
+    "ref": "PARTIALLY_SUPPORTED",
+    "claim": "All wastewater generated within SABECO’s brewing system is treated either at the brewery's wastewater treatment system or connected to the centralized wastewate"
+   },
+   {
+    "item_id": "A-0662cf5cacf24f98",
+    "company": "PAN",
+    "ref": "INSUFFICIENT_EVIDENCE",
+    "claim": "Plastic trays have also been replaced with recyclable paper trays to improve environmental friendliness, with an estimated weight of around 23 tons."
+   },
+   {
+    "item_id": "A-6c3ca1d1473dd509",
+    "company": "DHG",
+    "ref": "NOT_A_CLAIM",
+    "claim": "Bảo mật thông tin khách hàng DHG Pharma 2 6 1 3 4 Phát triển bền vững 5."
+   },
+   {
+    "item_id": "A-8b6f2cd2da6ef563",
+    "company": "CTD",
+    "ref": "INSUFFICIENT_EVIDENCE",
+    "claim": "Mức giảm phát thải CO2 tương đương 10,78 tấn."
+   },
+   {
+    "item_id": "A-1238a0a584ff5838",
+    "company": "SAB",
+    "ref": "PARTIALLY_SUPPORTED",
+    "claim": "Water-stress Level 9% [GRI 303] 36% Contributing to the UN SDGs In order to implement our Water Sustainability Program, we have assessed water risks across our "
+   },
+   {
+    "item_id": "A-98a59ea0dcfeab53",
+    "company": "TRA",
+    "ref": "INSUFFICIENT_EVIDENCE",
+    "claim": "2 Nguyên phụ liệu thuốc thành phẩm hủy 29,375kg Thiêu đốt Công ty CP xử lý, tái chế chất thải công nghiệp Hòa Bình 3 Chất thải nguy hại 638,5kg Làm sạch, Thiêu "
+   }
+  ]
+ },
+ "explain_judge": {
+  "overall": {
+   "n": 146,
+   "must_mention_coverage": 0.022,
+   "items_violating_must_not_say": 19,
+   "faithful_share": 0.575,
+   "actionable_share": 0.397,
+   "clarity_mean": 2.68
+  },
+  "faithful_wilson95": [
+   0.494,
+   0.653
+  ],
+  "by_system_status": {
+   "CONTRADICTED": {
+    "n": 38,
+    "must_mention_coverage": 0.019,
+    "items_violating_must_not_say": 14,
+    "faithful_share": 0.079,
+    "actionable_share": 0.0,
+    "clarity_mean": 2.0
+   },
+   "INSUFFICIENT_EVIDENCE": {
+    "n": 48,
+    "must_mention_coverage": 0.051,
+    "items_violating_must_not_say": 0,
+    "faithful_share": 0.604,
+    "actionable_share": 0.979,
+    "clarity_mean": 3.0
+   },
+   "PARTIALLY_SUPPORTED": {
+    "n": 55,
+    "must_mention_coverage": 0.0,
+    "items_violating_must_not_say": 0,
+    "faithful_share": 0.945,
+    "actionable_share": 0.2,
+    "clarity_mean": 2.93
+   },
+   "SUPPORTED": {
+    "n": 5,
+    "must_mention_coverage": 0.0,
+    "items_violating_must_not_say": 5,
+    "faithful_share": 0.0,
+    "actionable_share": 0.0,
+    "clarity_mean": 2.0
+   }
+  },
+  "by_reference_verdict": {
+   "CONTRADICTED": {
+    "n": 3,
+    "must_mention_coverage": 0.2,
+    "items_violating_must_not_say": 0,
+    "faithful_share": 1.0,
+    "actionable_share": 0.0,
+    "clarity_mean": 2.0
+   },
+   "INSUFFICIENT_EVIDENCE": {
+    "n": 34,
+    "must_mention_coverage": 0.052,
+    "items_violating_must_not_say": 5,
+    "faithful_share": 0.676,
+    "actionable_share": 0.559,
+    "clarity_mean": 2.68
+   },
+   "NOT_A_CLAIM": {
+    "n": 44,
+    "must_mention_coverage": 0.0,
+    "items_violating_must_not_say": 7,
+    "faithful_share": 0.682,
+    "actionable_share": 0.273,
+    "clarity_mean": 2.66
+   },
+   "PARTIALLY_SUPPORTED": {
+    "n": 49,
+    "must_mention_coverage": 0.007,
+    "items_violating_must_not_say": 5,
+    "faithful_share": 0.469,
+    "actionable_share": 0.367,
+    "clarity_mean": 2.71
+   },
+   "SUPPORTED": {
+    "n": 16,
+    "must_mention_coverage": 0.02,
+    "items_violating_must_not_say": 2,
+    "faithful_share": 0.312,
+    "actionable_share": 0.562,
+    "clarity_mean": 2.75
+   }
+  },
+  "judge": "claude-sonnet-5-5 per explain/judge (rubric: must_mention, must_not_say, faithful, actionable, clarity 1-5)"
+ },
+ "score": {
+  "n_pass_A": 200,
+  "n_pass_B": 200,
+  "n_both": 200,
+  "n_adjudicated_items": 122,
+  "inter_pass_agreement": {
+   "components": {
+    "specificity": {
+     "qwk": 0.585,
+     "exact": 0.73,
+     "within1": 0.915
+    },
+    "quantitative_evidence": {
+     "qwk": 0.66,
+     "exact": 0.715,
+     "within1": 0.89
+    },
+    "baseline": {
+     "qwk": 0.777,
+     "exact": 0.905,
+     "within1": 0.955
+    },
+    "period": {
+     "qwk": 0.596,
+     "exact": 0.64,
+     "within1": 0.885
+    },
+    "scope_boundary": {
+     "qwk": 0.697,
+     "exact": 0.705,
+     "within1": 0.96
+    },
+    "evidence_support": {
+     "qwk": 0.663,
+     "exact": 0.755,
+     "within1": 0.945
+    },
+    "independent_assurance": {
+     "qwk": 0.645,
+     "exact": 0.67,
+     "within1": 0.875
+    },
+    "contradiction": {
+     "qwk": 0.826,
+     "exact": 0.925,
+     "within1": 1.0
+    },
+    "vague_or_exaggerated_language": {
+     "qwk": 0.838,
+     "exact": 0.805,
+     "within1": 0.99
+    }
+   },
+   "total": {
+    "spearman": 0.734,
+    "holistic_band_qwk": 0.752,
+    "holistic_verdict_kappa": 0.691
+   }
+  },
+  "system_vs_consensus": {
+   "n": 148,
+   "components": {
+    "specificity": {
+     "n": 148,
+     "qwk_system_vs_consensus": 0.268,
+     "exact": 0.318,
+     "system_mean_level": 1.26,
+     "reference_mean_level": 1.16,
+     "not_applicable_by_reference": 43,
+     "system_penalised_when_not_applicable": 43
+    },
+    "quantitative_evidence": {
+     "n": 148,
+     "qwk_system_vs_consensus": 0.419,
+     "exact": 0.446,
+     "system_mean_level": 2.09,
+     "reference_mean_level": 1.41,
+     "not_applicable_by_reference": 45,
+     "system_penalised_when_not_applicable": 45
+    },
+    "baseline": {
+     "n": 148,
+     "qwk_system_vs_consensus": 0.109,
+     "exact": 0.426,
+     "system_mean_level": 1.82,
+     "reference_mean_level": 0.41,
+     "not_applicable_by_reference": 120,
+     "system_penalised_when_not_applicable": 69
+    },
+    "period": {
+     "n": 148,
+     "qwk_system_vs_consensus": 0.201,
+     "exact": 0.264,
+     "system_mean_level": 2.35,
+     "reference_mean_level": 0.98,
+     "not_applicable_by_reference": 50,
+     "system_penalised_when_not_applicable": 44
+    },
+    "scope_boundary": {
+     "n": 148,
+     "qwk_system_vs_consensus": -0.092,
+     "exact": 0.095,
+     "system_mean_level": 2.15,
+     "reference_mean_level": 1.08,
+     "not_applicable_by_reference": 43,
+     "system_penalised_when_not_applicable": 34
+    },
+    "evidence_support": {
+     "n": 148,
+     "qwk_system_vs_consensus": 0.15,
+     "exact": 0.291,
+     "system_mean_level": 1.83,
+     "reference_mean_level": 1.24,
+     "not_applicable_by_reference": 41,
+     "system_penalised_when_not_applicable": 39
+    },
+    "independent_assurance": {
+     "n": 148,
+     "qwk_system_vs_consensus": -0.062,
+     "exact": 0.419,
+     "system_mean_level": 2.92,
+     "reference_mean_level": 1.82,
+     "not_applicable_by_reference": 43,
+     "system_penalised_when_not_applicable": 43
+    },
+    "contradiction": {
+     "n": 148,
+     "qwk_system_vs_consensus": 0.181,
+     "exact": 0.716,
+     "system_mean_level": 0.81,
+     "reference_mean_level": 0.15,
+     "not_applicable_by_reference": 35,
+     "system_penalised_when_not_applicable": 10
+    },
+    "vague_or_exaggerated_language": {
+     "n": 148,
+     "qwk_system_vs_consensus": 0.378,
+     "exact": 0.426,
+     "system_mean_level": 0.51,
+     "reference_mean_level": 0.95,
+     "not_applicable_by_reference": 28,
+     "system_penalised_when_not_applicable": 3
+    }
+   },
+   "total_spearman": 0.227,
+   "total_mean_system": 55.9,
+   "total_mean_reference": 30.2,
+   "severity_vs_holistic_band": {
+    "n": 148,
+    "exact": 0.365,
+    "within1": 0.811,
+    "qwk": 0.083,
+    "system_bands": {
+     "high": 23,
+     "medium": 106,
+     "critical": 16,
+     "low": 3
+    },
+    "reference_bands": {
+     "medium": 63,
+     "low": 80,
+     "critical": 2,
+     "high": 3
+    }
+   },
+   "rubric_band_reference_vs_holistic": 0.588,
+   "spearman_company_bootstrap95": [
+    0.048,
+    0.368
+   ]
+  }
+ },
+ "edit": {
+  "n_labeled": 200,
+  "by_source": {
+   "A": 100,
+   "B": 100
+  },
+  "reference": {
+   "is_green_claim": 151,
+   "needs_edit": 135,
+   "issue_codes": {
+    "NO_EVIDENCE_REF": 35,
+    "MISSING_PERIOD": 43,
+    "MISSING_SCOPE": 41,
+    "MISSING_BASELINE": 11,
+    "NO_FIGURE": 65,
+    "VAGUE_TERM": 58,
+    "UNVERIFIED_LABEL_OR_CERT": 17,
+    "OFFSET_NEUTRALITY": 1,
+    "ABSOLUTE_CLAIM": 10,
+    "OTHER": 5,
+    "IRRELEVANT_CLAIM": 1,
+    "HIDDEN_TRADEOFF": 3
+   },
+   "edit_kinds": {
+    "evidence_ref": 52,
+    "add_scope": 74,
+    "placeholder": 89,
+    "soften": 19
+   },
+   "priority": {
+    "low": 126,
+    "medium": 60,
+    "high": 14
+   }
+  },
+  "system": {
+   "suggestions_total": 527,
+   "kinds": {
+    "add_scope": 194,
+    "evidence_ref": 200,
+    "placeholder": 117,
+    "soften": 16
+   },
+   "rule_codes": {
+    "SC-01": 194,
+    "EV-02": 200,
+    "VG-02": 71,
+    "VG-01": 46,
+    "OC-04": 7,
+    "OC-05": 3,
+    "OC-01": 5,
+    "OC-03": 1
+   },
+   "suggestions_on_non_green_sentences": 130,
+   "suggestions_introducing_new_numbers": 0
+  },
+  "needs_edit_detection_on_green_claims": {
+   "tp": 135,
+   "fp": 16,
+   "fn": 0,
+   "precision": 0.894,
+   "recall": 1.0,
+   "f1": 0.944
+  },
+  "issue_codes_on_green_claims": {
+   "MISSING_PERIOD": {
+    "tp": 41,
+    "fp": 76,
+    "fn": 2,
+    "precision": 0.35,
+    "recall": 0.953,
+    "f1": 0.512
+   },
+   "MISSING_BASELINE": {
+    "tp": 11,
+    "fp": 68,
+    "fn": 0,
+    "precision": 0.139,
+    "recall": 1.0,
+    "f1": 0.244
+   },
+   "MISSING_SCOPE": {
+    "tp": 28,
+    "fp": 74,
+    "fn": 13,
+    "precision": 0.275,
+    "recall": 0.683,
+    "f1": 0.392
+   },
+   "NO_FIGURE": {
+    "tp": 31,
+    "fp": 24,
+    "fn": 34,
+    "precision": 0.564,
+    "recall": 0.477,
+    "f1": 0.517
+   },
+   "VAGUE_TERM": {
+    "tp": 23,
+    "fp": 11,
+    "fn": 35,
+    "precision": 0.676,
+    "recall": 0.397,
+    "f1": 0.5
+   },
+   "ABSOLUTE_CLAIM": {
+    "tp": 0,
+    "fp": 4,
+    "fn": 10,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+   },
+   "OFFSET_NEUTRALITY": {
+    "tp": 1,
+    "fp": 4,
+    "fn": 0,
+    "precision": 0.2,
+    "recall": 1.0,
+    "f1": 0.333
+   },
+   "NO_EVIDENCE_REF": {
+    "tp": 35,
+    "fp": 116,
+    "fn": 0,
+    "precision": 0.232,
+    "recall": 1.0,
+    "f1": 0.376
+   }
+  },
+  "macro_f1_issue_codes": 0.359,
+  "edit_kinds_on_green_claims": {
+   "add_scope": {
+    "tp": 72,
+    "fp": 74,
+    "fn": 2,
+    "precision": 0.493,
+    "recall": 0.973,
+    "f1": 0.655
+   },
+   "placeholder": {
+    "tp": 63,
+    "fp": 22,
+    "fn": 26,
+    "precision": 0.741,
+    "recall": 0.708,
+    "f1": 0.724
+   },
+   "evidence_ref": {
+    "tp": 52,
+    "fp": 99,
+    "fn": 0,
+    "precision": 0.344,
+    "recall": 1.0,
+    "f1": 0.512
+   },
+   "soften": {
+    "tp": 8,
+    "fp": 7,
+    "fn": 11,
+    "precision": 0.533,
+    "recall": 0.421,
+    "f1": 0.471
+   }
+  },
+  "reference_issues_outside_product_vocabulary": {
+   "VAGUE_TERM": 35,
+   "NO_FIGURE": 34,
+   "UNVERIFIED_LABEL_OR_CERT": 17,
+   "MISSING_SCOPE": 13,
+   "ABSOLUTE_CLAIM": 10,
+   "OTHER": 5,
+   "HIDDEN_TRADEOFF": 3,
+   "MISSING_PERIOD": 2,
+   "IRRELEVANT_CLAIM": 1
+  }
+ },
+ "rules": {
+  "packs_loaded": 14,
+  "pack_load_errors": {},
+  "n_rules": 76,
+  "n_cases": 237,
+  "n_evaluated": 237,
+  "expected_outcomes": {
+   "COMPLIANT": 60,
+   "VIOLATION": 72,
+   "NOT_APPLICABLE": 48,
+   "NEEDS_REVIEW": 57
+  },
+  "case_types": {
+   "normal": 140,
+   "edge": 39,
+   "override_attempt": 11,
+   "injection": 11,
+   "other_sector": 13,
+   "expired_rule": 6,
+   "conflict_with_law": 6,
+   "draft_rule": 11
+  },
+  "labeled_attributes": {
+   "accuracy": 0.945,
+   "wilson95": [
+    0.908,
+    0.968
+   ],
+   "macro_f1": 0.945,
+   "per_class": {
+    "COMPLIANT": {
+     "tp": 55,
+     "fp": 2,
+     "fn": 5,
+     "precision": 0.965,
+     "recall": 0.917,
+     "f1": 0.94
+    },
+    "VIOLATION": {
+     "tp": 66,
+     "fp": 1,
+     "fn": 6,
+     "precision": 0.985,
+     "recall": 0.917,
+     "f1": 0.95
+    },
+    "NEEDS_REVIEW": {
+     "tp": 55,
+     "fp": 0,
+     "fn": 2,
+     "precision": 1.0,
+     "recall": 0.965,
+     "f1": 0.982
+    },
+    "NOT_APPLICABLE": {
+     "tp": 48,
+     "fp": 10,
+     "fn": 0,
+     "precision": 0.828,
+     "recall": 1.0,
+     "f1": 0.906
+    }
+   },
+   "confusion_expected_rows": {
+    "COMPLIANT": {
+     "COMPLIANT": 55,
+     "NOT_APPLICABLE": 5
+    },
+    "VIOLATION": {
+     "VIOLATION": 66,
+     "NOT_APPLICABLE": 4,
+     "COMPLIANT": 2
+    },
+    "NEEDS_REVIEW": {
+     "NEEDS_REVIEW": 55,
+     "NOT_APPLICABLE": 1,
+     "VIOLATION": 1
+    },
+    "NOT_APPLICABLE": {
+     "NOT_APPLICABLE": 48
+    }
+   },
+   "accuracy_by_case_type": {
+    "conflict_with_law": "6/6",
+    "draft_rule": "11/11",
+    "edge": "35/39",
+    "expired_rule": "6/6",
+    "injection": "11/11",
+    "normal": "131/140",
+    "other_sector": "13/13",
+    "override_attempt": "11/11"
+   }
+  },
+  "end_to_end_extractor_attributes": {
+   "accuracy": 0.907,
+   "wilson95": [
+    0.863,
+    0.938
+   ],
+   "macro_f1": 0.908,
+   "per_class": {
+    "COMPLIANT": {
+     "tp": 49,
+     "fp": 3,
+     "fn": 11,
+     "precision": 0.942,
+     "recall": 0.817,
+     "f1": 0.875
+    },
+    "VIOLATION": {
+     "tp": 64,
+     "fp": 7,
+     "fn": 8,
+     "precision": 0.901,
+     "recall": 0.889,
+     "f1": 0.895
+    },
+    "NEEDS_REVIEW": {
+     "tp": 54,
+     "fp": 0,
+     "fn": 3,
+     "precision": 1.0,
+     "recall": 0.947,
+     "f1": 0.973
+    },
+    "NOT_APPLICABLE": {
+     "tp": 48,
+     "fp": 12,
+     "fn": 0,
+     "precision": 0.8,
+     "recall": 1.0,
+     "f1": 0.889
+    }
+   },
+   "confusion_expected_rows": {
+    "COMPLIANT": {
+     "COMPLIANT": 49,
+     "VIOLATION": 5,
+     "NOT_APPLICABLE": 6
+    },
+    "VIOLATION": {
+     "VIOLATION": 64,
+     "NOT_APPLICABLE": 5,
+     "COMPLIANT": 3
+    },
+    "NEEDS_REVIEW": {
+     "NEEDS_REVIEW": 54,
+     "NOT_APPLICABLE": 1,
+     "VIOLATION": 2
+    },
+    "NOT_APPLICABLE": {
+     "NOT_APPLICABLE": 48
+    }
+   },
+   "accuracy_by_case_type": {
+    "conflict_with_law": "6/6",
+    "draft_rule": "11/11",
+    "edge": "32/39",
+    "expired_rule": "6/6",
+    "injection": "11/11",
+    "normal": "125/140",
+    "other_sector": "13/13",
+    "override_attempt": "11/11"
+   }
+  },
+  "safety_case_mismatches": [],
+  "verdict_changes": "0 by construction: evaluate_claim reads claims/evidence and returns findings only; tests/test_org_pack.py checks pipeline verdict invariance"
+ },
+ "ux": {
+  "runs": {
+   "117602a7fa7a4b46": {
+    "strings": 1182,
+    "over_80_words": 0,
+    "sentence_over_40_words": 0,
+    "internal_code_leaks": 0,
+    "english_strings": 0,
+    "forbidden_terms": 0,
+    "evidence_items": 985,
+    "evidence_without_doc_or_page": 0,
+    "insufficient_or_unsupported": 1,
+    "insufficient_with_neutral_phrase": 1
+   },
+   "13720999a7084cad": {
+    "strings": 480,
+    "over_80_words": 0,
+    "sentence_over_40_words": 0,
+    "internal_code_leaks": 0,
+    "english_strings": 0,
+    "forbidden_terms": 0,
+    "evidence_items": 400,
+    "evidence_without_doc_or_page": 0,
+    "insufficient_or_unsupported": 0,
+    "insufficient_with_neutral_phrase": 0
+   },
+   "19fa16a7d7e24590": {
+    "strings": 3,
+    "over_80_words": 0,
+    "sentence_over_40_words": 0,
+    "internal_code_leaks": 0,
+    "english_strings": 0,
+    "forbidden_terms": 0,
+    "evidence_items": 2,
+    "evidence_without_doc_or_page": 2,
+    "insufficient_or_unsupported": 0,
+    "insufficient_with_neutral_phrase": 0
+   },
+   "2a775d33fbde407b": {
+    "strings": 3,
+    "over_80_words": 0,
+    "sentence_over_40_words": 0,
+    "internal_code_leaks": 0,
+    "english_strings": 0,
+    "forbidden_terms": 0,
+    "evidence_items": 2,
+    "evidence_without_doc_or_page": 2,
+    "insufficient_or_unsupported": 0,
+    "insufficient_with_neutral_phrase": 0
+   },
+   "8f5b57bc65e4480d": {
+    "strings": 936,
+    "over_80_words": 0,
+    "sentence_over_40_words": 0,
+    "internal_code_leaks": 0,
+    "english_strings": 0,
+    "forbidden_terms": 0,
+    "evidence_items": 780,
+    "evidence_without_doc_or_page": 0,
+    "insufficient_or_unsupported": 0,
+    "insufficient_with_neutral_phrase": 0
+   },
+   "9f5960580c21483a": {
+    "strings": 1260,
+    "over_80_words": 0,
+    "sentence_over_40_words": 0,
+    "internal_code_leaks": 0,
+    "english_strings": 0,
+    "forbidden_terms": 6,
+    "evidence_items": 1050,
+    "evidence_without_doc_or_page": 0,
+    "insufficient_or_unsupported": 2,
+    "insufficient_with_neutral_phrase": 1
+   },
+   "a0e82a12ce584159": {
+    "strings": 1686,
+    "over_80_words": 0,
+    "sentence_over_40_words": 0,
+    "internal_code_leaks": 0,
+    "english_strings": 0,
+    "forbidden_terms": 0,
+    "evidence_items": 1405,
+    "evidence_without_doc_or_page": 0,
+    "insufficient_or_unsupported": 40,
+    "insufficient_with_neutral_phrase": 40
+   },
+   "ac8e09dfe5a54bef": {
+    "strings": 15,
+    "over_80_words": 0,
+    "sentence_over_40_words": 0,
+    "internal_code_leaks": 0,
+    "english_strings": 0,
+    "forbidden_terms": 0,
+    "evidence_items": 12,
+    "evidence_without_doc_or_page": 0,
+    "insufficient_or_unsupported": 1,
+    "insufficient_with_neutral_phrase": 1
+   },
+   "afdd9c6637044c6e": {
+    "strings": 1230,
+    "over_80_words": 0,
+    "sentence_over_40_words": 0,
+    "internal_code_leaks": 0,
+    "english_strings": 0,
+    "forbidden_terms": 0,
+    "evidence_items": 1025,
+    "evidence_without_doc_or_page": 0,
+    "insufficient_or_unsupported": 27,
+    "insufficient_with_neutral_phrase": 27
+   },
+   "b36bbada51cc4793": {
+    "strings": 402,
+    "over_80_words": 0,
+    "sentence_over_40_words": 0,
+    "internal_code_leaks": 0,
+    "english_strings": 0,
+    "forbidden_terms": 10,
+    "evidence_items": 335,
+    "evidence_without_doc_or_page": 0,
+    "insufficient_or_unsupported": 1,
+    "insufficient_with_neutral_phrase": 1
+   },
+   "b81d0a62e4e84b20": {
+    "strings": 3,
+    "over_80_words": 0,
+    "sentence_over_40_words": 0,
+    "internal_code_leaks": 0,
+    "english_strings": 0,
+    "forbidden_terms": 0,
+    "evidence_items": 2,
+    "evidence_without_doc_or_page": 2,
+    "insufficient_or_unsupported": 0,
+    "insufficient_with_neutral_phrase": 0
+   },
+   "c892c13727c24bb9": {
+    "strings": 936,
+    "over_80_words": 0,
+    "sentence_over_40_words": 0,
+    "internal_code_leaks": 0,
+    "english_strings": 0,
+    "forbidden_terms": 0,
+    "evidence_items": 780,
+    "evidence_without_doc_or_page": 0,
+    "insufficient_or_unsupported": 1,
+    "insufficient_with_neutral_phrase": 1
+   },
+   "d3ad3b9194ed4f22": {
+    "strings": 936,
+    "over_80_words": 0,
+    "sentence_over_40_words": 0,
+    "internal_code_leaks": 0,
+    "english_strings": 0,
+    "forbidden_terms": 0,
+    "evidence_items": 780,
+    "evidence_without_doc_or_page": 0,
+    "insufficient_or_unsupported": 1,
+    "insufficient_with_neutral_phrase": 1
+   },
+   "ecdf04c3a3994cef": {
+    "strings": 3,
+    "over_80_words": 0,
+    "sentence_over_40_words": 0,
+    "internal_code_leaks": 0,
+    "english_strings": 0,
+    "forbidden_terms": 0,
+    "evidence_items": 2,
+    "evidence_without_doc_or_page": 2,
+    "insufficient_or_unsupported": 0,
+    "insufficient_with_neutral_phrase": 0
+   },
+   "f0ccc44387c84baa": {
+    "strings": 546,
+    "over_80_words": 0,
+    "sentence_over_40_words": 0,
+    "internal_code_leaks": 0,
+    "english_strings": 0,
+    "forbidden_terms": 8,
+    "evidence_items": 455,
+    "evidence_without_doc_or_page": 0,
+    "insufficient_or_unsupported": 0,
+    "insufficient_with_neutral_phrase": 0
+   }
+  },
+  "totals": {
+   "strings": 9621,
+   "over_80_words": 0,
+   "sentence_over_40_words": 0,
+   "internal_code_leaks": 0,
+   "english_strings": 0,
+   "forbidden_terms": 24,
+   "evidence_items": 8015,
+   "evidence_without_doc_or_page": 8,
+   "insufficient_or_unsupported": 74,
+   "insufficient_with_neutral_phrase": 73
+  },
+  "checks": {
+   "UXL-01_length": "PASS",
+   "UXL-03_code_leak": "PASS",
+   "UXL-04_doc_and_page": "FAIL",
+   "UXL-06a_neutral_phrase": "FAIL",
+   "UXL-07_forbidden_terms": "FAIL",
+   "UXL-10_safe_suggestions": "PASS"
+  },
+  "UXL-13_bad_packs": {
+   "cases": {
+    "E1": {
+     "rejected": true,
+     "vietnamese": true,
+     "no_traceback": true,
+     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_qehoqkvs\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - quy tắc `NHXD_001`, đi"
+    },
+    "E2": {
+     "rejected": true,
+     "vietnamese": true,
+     "no_traceback": true,
+     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_qehoqkvs\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - tệp không phải YAML UT"
+    },
+    "E3": {
+     "rejected": true,
+     "vietnamese": true,
+     "no_traceback": true,
+     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_qehoqkvs\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - quy tắc `NHXD_001`: th"
+    },
+    "E4": {
+     "rejected": true,
+     "vietnamese": true,
+     "no_traceback": true,
+     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_qehoqkvs\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - `org_id` chỉ gồm chữ t"
+    },
+    "E5": {
+     "rejected": true,
+     "vietnamese": true,
+     "no_traceback": true,
+     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_qehoqkvs\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - `precedence` phải là `"
+    },
+    "E6": {
+     "rejected": true,
+     "vietnamese": true,
+     "no_traceback": true,
+     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_qehoqkvs\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - quy tắc `NHXD_001`: `o"
+    },
+    "E7": {
+     "rejected": true,
+     "vietnamese": true,
+     "no_traceback": true,
+     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_qehoqkvs\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - quy tắc `NHXD_001`: `e"
+    },
+    "E8": {
+     "rejected": false,
+     "draft": false
+    },
+    "E9": {
+     "rejected": false,
+     "draft": true
+    }
+   },
+   "verdict": "FAIL (E8; 8/9 đạt)",
+   "failed": [
+    "E8"
+   ],
+   "note": "E10 (injection sentence in policy doc) is covered by tests/test_org_pack.py and by rule cases of type injection"
+  }
+ }
+}

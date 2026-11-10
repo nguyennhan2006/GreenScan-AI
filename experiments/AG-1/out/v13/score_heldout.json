@@ -1,0 +1,292 @@
+{
+ "rules": {
+  "missing": 0,
+  "all": {
+   "n": 87,
+   "right": 41,
+   "decided": 1,
+   "coverage": 0.011,
+   "precision": 1.0,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-a sạch": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-a trang thật": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-b": {
+   "n": 87,
+   "right": 41,
+   "decided": 1,
+   "coverage": 0.011,
+   "precision": 1.0,
+   "false_S": 0,
+   "false_C": 0,
+   "precision_ci95": [
+    1.0,
+    1.0
+   ],
+   "coverage_ci95": [
+    0.0,
+    0.047
+   ]
+  },
+  "B-b_by_family_right": {
+   "C1": "0/16",
+   "C2": "0/11",
+   "C3": "0/1",
+   "N1": "5/5",
+   "N2": "16/16",
+   "N5": "13/13",
+   "N6": "6/6",
+   "S0": "1/16",
+   "S1": "0/3"
+  }
+ },
+ "q4": {
+  "missing": 0,
+  "all": {
+   "n": 87,
+   "right": 52,
+   "decided": 12,
+   "coverage": 0.138,
+   "precision": 1.0,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-a sạch": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-a trang thật": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-b": {
+   "n": 87,
+   "right": 52,
+   "decided": 12,
+   "coverage": 0.138,
+   "precision": 1.0,
+   "false_S": 0,
+   "false_C": 0,
+   "precision_ci95": [
+    1.0,
+    1.0
+   ],
+   "coverage_ci95": [
+    0.045,
+    0.314
+   ]
+  },
+  "B-b_by_family_right": {
+   "C1": "4/16",
+   "C2": "4/11",
+   "C3": "0/1",
+   "N1": "5/5",
+   "N2": "16/16",
+   "N5": "13/13",
+   "N6": "6/6",
+   "S0": "4/16",
+   "S1": "0/3"
+  }
+ },
+ "q8": {
+  "missing": 0,
+  "all": {
+   "n": 87,
+   "right": 50,
+   "decided": 10,
+   "coverage": 0.115,
+   "precision": 1.0,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-a sạch": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-a trang thật": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-b": {
+   "n": 87,
+   "right": 50,
+   "decided": 10,
+   "coverage": 0.115,
+   "precision": 1.0,
+   "false_S": 0,
+   "false_C": 0,
+   "precision_ci95": [
+    1.0,
+    1.0
+   ],
+   "coverage_ci95": [
+    0.013,
+    0.364
+   ]
+  },
+  "B-b_by_family_right": {
+   "C1": "4/16",
+   "C2": "3/11",
+   "C3": "0/1",
+   "N1": "5/5",
+   "N2": "16/16",
+   "N5": "13/13",
+   "N6": "6/6",
+   "S0": "3/16",
+   "S1": "0/3"
+  }
+ },
+ "q14": {
+  "missing": 0,
+  "all": {
+   "n": 87,
+   "right": 50,
+   "decided": 10,
+   "coverage": 0.115,
+   "precision": 1.0,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-a sạch": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-a trang thật": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-b": {
+   "n": 87,
+   "right": 50,
+   "decided": 10,
+   "coverage": 0.115,
+   "precision": 1.0,
+   "false_S": 0,
+   "false_C": 0,
+   "precision_ci95": [
+    1.0,
+    1.0
+   ],
+   "coverage_ci95": [
+    0.0,
+    0.281
+   ]
+  },
+  "B-b_by_family_right": {
+   "C1": "4/16",
+   "C2": "4/11",
+   "C3": "0/1",
+   "N1": "5/5",
+   "N2": "16/16",
+   "N5": "13/13",
+   "N6": "6/6",
+   "S0": "2/16",
+   "S1": "0/3"
+  }
+ },
+ "q32": {
+  "missing": 0,
+  "all": {
+   "n": 87,
+   "right": 62,
+   "decided": 22,
+   "coverage": 0.253,
+   "precision": 1.0,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-a sạch": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-a trang thật": {
+   "n": 0,
+   "right": 0,
+   "decided": 0,
+   "coverage": null,
+   "precision": null,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-b": {
+   "n": 87,
+   "right": 62,
+   "decided": 22,
+   "coverage": 0.253,
+   "precision": 1.0,
+   "false_S": 0,
+   "false_C": 0,
+   "precision_ci95": [
+    1.0,
+    1.0
+   ],
+   "coverage_ci95": [
+    0.137,
+    0.38
+   ]
+  },
+  "B-b_by_family_right": {
+   "C1": "9/16",
+   "C2": "7/11",
+   "C3": "0/1",
+   "N1": "5/5",
+   "N2": "16/16",
+   "N5": "13/13",
+   "N6": "6/6",
+   "S0": "6/16",
+   "S1": "0/3"
+  }
+ }
+}

@@ -1,0 +1,137 @@
+# Org pack giả lập cho GS-Eval v2 (D-RULES, phần r3). Tổ chức và mọi số liệu là hư cấu.
+# Hiệu lực xét theo ngày rà soát (trường as_of của ca kiểm), không theo năm của báo cáo nguồn.
+# Ca an toàn cài sẵn:
+#   GL_005 cố ý LỎNG HƠN LUẬT: trần nội bộ 50% hạn ngạch, trong khi tài liệu pháp lý của dự án
+#          (docs/08-knowledge/02_PHAP_LY_VIET_NAM.md mục 4) ghi trần bù trừ 30% -> kiểm luật an toàn 4.
+#   GL_006 đã hết hiệu lực (effective_to 2025-12-31) -> kiểm luật an toàn 2.
+#   numeric_threshold hiện quét MỌI số trong bằng chứng (kể cả năm, số hiệu); ca R-nang_luong_gio_long-16 kiểm điểm này.
+kind: org_pack
+schema_version: org-pack-v0
+org_id: nang_luong_gio_long
+org_name: Công ty Cổ phần Năng lượng Tái tạo Gió Lộng (tổ chức giả lập)
+org_type: listed_company
+pack_version: 1.2.0
+precedence: below_law
+approved_by: 'Trưởng Ban Kiểm soát nội bộ'
+approved_at: '2026-03-16'
+documents:
+  - {doc_id: POL-GL-01, title: 'Quy chế tuyên bố điện tái tạo và chứng chỉ I-REC (phiên bản 1.2)', path: internal_policy.md, role: policy}
+glossary:
+  - {term: 'I-REC', synonyms: ['chứng chỉ I-REC', 'chứng chỉ năng lượng tái tạo quốc tế', 'International REC'], definition: 'Chứng chỉ thuộc tính năng lượng tái tạo; chỉ là căn cứ tuyên bố khi đã hủy cho đúng người thụ hưởng và kỳ tiêu thụ.'}
+  - {term: 'hủy chứng chỉ', synonyms: ['huỷ chứng chỉ', 'redeem', 'redemption', 'retire'], definition: 'Thao tác trên sổ đăng ký làm chứng chỉ không thể chuyển nhượng tiếp, gắn với người thụ hưởng và kỳ tiêu thụ.'}
+  - {term: 'phát thải tránh được', synonyms: ['avoided emissions', 'lượng CO2 tránh được'], definition: 'Phát thải ước tính không xảy ra so với kịch bản dùng điện lưới; không phải giảm phát thải Phạm vi 1/2 của Công ty.'}
+  - {term: 'điện tái tạo', synonyms: ['renewable electricity', 'điện từ nguồn tái tạo'], definition: 'Điện phát từ gió, mặt trời và nguồn tái tạo khác; cụm trung tính quy chế khuyến nghị thay cho "điện sạch".'}
+rules:
+  - rule_id: GL_001
+    title: Tuyên bố định lượng về điện tái tạo phải nêu đơn vị và kỳ
+    source_document: POL-GL-01
+    source_clauses: ['POL-GL-01:§2.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2024-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Phát triển bền vững'
+    when:
+      - {id: mentions_renewable_power, description: 'Câu nói về điện hoặc năng lượng tái tạo', source_clause: 'POL-GL-01:§2.1', check: claim_terms_present, any_of_terms: ['điện tái tạo', 'năng lượng tái tạo', 'điện mặt trời', 'năng lượng mặt trời', 'điện gió', 'điện xanh', 'I-REC', 'renewable', 'solar', 'wind power', 'wind farm', 'green electricity']}
+      - {id: is_quantitative, description: 'Câu có giá trị định lượng', source_clause: 'POL-GL-01:§2.1', check: claim_attribute_present, attribute: value}
+    conditions:
+      - {id: has_unit, description: 'Câu nêu đơn vị (MWh, kWh, MWp, % hoặc đơn vị đếm)', source_clause: 'POL-GL-01:§2.1', check: claim_attribute_present, attribute: unit}
+      - {id: has_period, description: 'Câu nêu kỳ hoặc năm mục tiêu', source_clause: 'POL-GL-01:§2.1', check: claim_attribute_present, attribute: period}
+  - rule_id: GL_002
+    title: Không dùng "điện sạch", "không phát thải" và từ tuyệt đối tương đương
+    source_document: POL-GL-01
+    source_clauses: ['POL-GL-01:§2.2']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2024-01-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: 'Phòng Phát triển bền vững'
+    when:
+      - {id: mentions_power, description: 'Câu nói về điện hoặc năng lượng', source_clause: 'POL-GL-01:§2.2', check: claim_terms_present, any_of_terms: ['điện', 'năng lượng', 'electricity', 'power', 'energy']}
+    conditions:
+      - {id: no_absolute_terms, description: 'Câu không chứa cụm bị cấm ở §2.2', source_clause: 'POL-GL-01:§2.2', check: claim_terms_absent, any_of_terms: ['điện sạch', 'năng lượng sạch', 'không phát thải', 'phát thải bằng 0', 'phát thải bằng không', '100% sạch', 'hoàn toàn sạch', 'clean electricity', 'clean energy', 'zero emission', 'zero-emission', 'emission-free']}
+  - rule_id: GL_003
+    title: Tuyên bố điện xanh hoặc dựa trên I-REC phải có I-REC đã hủy, đúng kỳ, xác nhận bên thứ ba
+    source_document: POL-GL-01
+    source_clauses: ['POL-GL-01:§2.3', 'POL-GL-01:§2.4']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2024-01-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: 'Phòng Phát triển bền vững'
+    when:
+      - {id: mentions_rec_or_green_power, description: 'Câu nhắc I-REC, điện xanh hoặc 100% điện tái tạo', source_clause: 'POL-GL-01:§2.3', check: claim_terms_present, any_of_terms: ['I-REC', 'IREC', 'chứng chỉ năng lượng tái tạo', 'điện xanh', '100% điện tái tạo', '100% năng lượng tái tạo', '100% renewable', 'green electricity']}
+    conditions:
+      - {id: rec_redeemed, description: 'Bằng chứng cho thấy I-REC đã được hủy', source_clause: 'POL-GL-01:§2.3(a)', check: terms_present, any_of_terms: ['đã hủy', 'đã huỷ', 'xác nhận hủy', 'xác nhận huỷ', 'redeemed', 'redemption', 'retired']}
+      - {id: has_period, description: 'Câu nêu kỳ tiêu thụ', source_clause: 'POL-GL-01:§2.3(b)', check: claim_attribute_present, attribute: period}
+      - {id: third_party_confirmation, description: 'Có xác nhận của sổ đăng ký hoặc bên thứ ba độc lập', source_clause: 'POL-GL-01:§2.3(c)', check: evidence_independent}
+  - rule_id: GL_004
+    title: Phát thải tránh được nhờ điện tái tạo phải nêu kỳ, hệ số lưới và không tính như giảm Phạm vi 1/2
+    source_document: POL-GL-01
+    source_clauses: ['POL-GL-01:§3.1', 'POL-GL-01:§3.2']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2024-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: partial
+    reviewed_by: 'Phòng Phát triển bền vững'
+    notes: 'Điều kiện §3.2 cần người soát xem cách trình bày trong báo cáo, nên quy tắc không bao giờ tự cho COMPLIANT.'
+    when:
+      - {id: mentions_renewable, description: 'Câu nói về điện hoặc năng lượng tái tạo', source_clause: 'POL-GL-01:§3.1', check: claim_terms_present, any_of_terms: ['điện tái tạo', 'năng lượng tái tạo', 'điện mặt trời', 'năng lượng mặt trời', 'điện gió', 'renewable', 'solar', 'wind power', 'wind farm']}
+      - {id: mentions_reduction, description: 'Câu nói phát thải giảm hoặc tránh được', source_clause: 'POL-GL-01:§3.1', check: claim_terms_present, any_of_terms: ['tránh', 'giảm phát thải', 'cắt giảm', 'giảm được', 'tấn CO2', 'tCO2', 'avoided', 'emission reduction', 'carbon footprint reduction']}
+      - {id: is_quantitative, description: 'Câu có số lượng phát thải', source_clause: 'POL-GL-01:§3.1', check: claim_attribute_present, attribute: value}
+    conditions:
+      - {id: has_period, description: 'Câu nêu kỳ', source_clause: 'POL-GL-01:§3.1', check: claim_attribute_present, attribute: period}
+      - {id: grid_factor_disclosed, description: 'Bằng chứng nêu hệ số phát thải lưới dùng để tính', source_clause: 'POL-GL-01:§3.1', check: terms_present, any_of_terms: ['hệ số phát thải', 'emission factor', 'hệ số lưới', 'EF lưới']}
+      - {id: not_counted_as_own_reduction, description: 'Không trình bày như giảm phát thải Phạm vi 1/2 của Công ty', source_clause: 'POL-GL-01:§3.2', check: manual}
+  - rule_id: GL_005
+    title: Tín chỉ dùng bù trừ khi tuyên bố hoàn thành hạn ngạch không quá trần nội bộ 50%
+    source_document: POL-GL-01
+    source_clauses: ['POL-GL-01:§4.1', 'POL-GL-01:§4.2']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: ['power']
+    effective_from: '2024-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Phát triển bền vững'
+    notes: 'Trần nội bộ lỏng hơn trần bù trừ trong tài liệu pháp lý của dự án; kết quả COMPLIANT ở đây không được che phát hiện pháp lý.'
+    when:
+      - {id: mentions_quota, description: 'Câu nói về hạn ngạch phát thải', source_clause: 'POL-GL-01:§4.1', check: claim_terms_present, any_of_terms: ['hạn ngạch', 'quota']}
+      - {id: mentions_offset, description: 'Câu nói về tín chỉ hoặc bù trừ', source_clause: 'POL-GL-01:§4.1', check: claim_terms_present, any_of_terms: ['tín chỉ', 'bù trừ', 'offset', 'carbon credit']}
+    conditions:
+      - {id: offset_share_within_internal_cap, description: 'Lượng tín chỉ bù trừ không quá 50% hạn ngạch được phân bổ', source_clause: 'POL-GL-01:§4.1', check: numeric_threshold, operator: '<=', threshold: 50}
+  - rule_id: GL_006
+    title: Tài liệu điện xanh phải ghi tên chương trình "Gió Lộng Xanh" (chuyển tiếp 2024–2025)
+    source_document: POL-GL-01
+    source_clauses: ['POL-GL-01:§5.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2024-01-01'
+    effective_to: '2025-12-31'
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Phát triển bền vững'
+    when:
+      - {id: mentions_green_power, description: 'Câu nhắc điện xanh hoặc I-REC', source_clause: 'POL-GL-01:§5.1', check: claim_terms_present, any_of_terms: ['điện xanh', 'green electricity', 'I-REC']}
+    conditions:
+      - {id: program_named, description: 'Câu ghi tên chương trình Gió Lộng Xanh', source_clause: 'POL-GL-01:§5.1', check: claim_terms_present, any_of_terms: ['Gió Lộng Xanh']}

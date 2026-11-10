@@ -1,0 +1,92 @@
+# Org pack giả lập cho GS-Eval v2 (D-RULES), agent r1, viết 04/11/2026.
+# BẢN NHÁP (approved_by rỗng) của cơ quan ubgs_lac_hong: được nạp, hiển thị là nháp, KHÔNG áp dụng.
+# Mọi ca của pack này có expected_outcome NOT_APPLICABLE (case_type draft_rule).
+# effective_from để null để lý do duy nhất của NOT_APPLICABLE là trạng thái nháp, không phải ngày hiệu lực.
+kind: org_pack
+schema_version: org-pack-v0
+org_id: ubgs_lac_hong_du_thao
+org_name: Ủy ban Giám sát Công bố Thông tin Bền vững Lạc Hồng (cơ quan quản lý giả lập) – Dự thảo sửa đổi Sổ tay 2027
+org_type: regulator
+pack_version: 1.1.0-draft
+precedence: below_law
+approved_by: ''
+approved_at: ''
+documents:
+  - {doc_id: ST-LH-02-DT, title: 'Dự thảo sửa đổi, bổ sung Sổ tay giám sát công bố thông tin bền vững (lấy ý kiến)', path: internal_policy.md, role: policy}
+glossary:
+  - {term: 'danh mục Scope 3', synonyms: ['category', 'hạng mục Scope 3'], definition: 'Các nhóm nguồn phát thải gián tiếp trong chuỗi giá trị (§2.1).'}
+  - {term: 'hủy tín chỉ', synonyms: ['khóa tín chỉ', 'retirement', 'retired credits'], definition: 'Ghi nhận tín chỉ đã dùng để bù trừ trên hệ thống đăng ký (§3.1).'}
+rules:
+  - rule_id: UBLHDT_001
+    title: (Dự thảo) Tuyên bố phát thải Scope 3 phải nêu các danh mục được tính
+    source_document: ST-LH-02-DT
+    source_clauses: ['ST-LH-02-DT:§2.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: null
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: ''
+    when:
+      - {id: scope3_claim, description: 'Câu nói về phát thải Scope 3', source_clause: 'ST-LH-02-DT:§2.1', check: claim_terms_present, any_of_terms: ['scope 3', 'phạm vi 3']}
+    conditions:
+      - {id: categories_named, description: 'Câu nêu danh mục Scope 3 được tính', source_clause: 'ST-LH-02-DT:§2.1', check: claim_terms_present, any_of_terms: ['danh mục', 'category', 'categories', 'hạng mục']}
+
+  - rule_id: UBLHDT_002
+    title: (Dự thảo) Tuyên bố trung hòa carbon phải nêu loại tín chỉ và có bằng chứng hủy tín chỉ
+    source_document: ST-LH-02-DT
+    source_clauses: ['ST-LH-02-DT:§3.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: null
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: ''
+    when:
+      - {id: neutrality_claim, description: 'Câu nói về trung hòa carbon hoặc net zero', source_clause: 'ST-LH-02-DT:§3.1', check: claim_terms_present, any_of_terms: ['trung hòa carbon', 'net zero', 'carbon neutral']}
+    conditions:
+      - {id: credit_type_named, description: 'Câu nêu loại tín chỉ được dùng', source_clause: 'ST-LH-02-DT:§3.1', check: claim_terms_present, any_of_terms: ['tín chỉ', 'carbon credit', 'offset']}
+      - {id: retirement_evidence, description: 'Bằng chứng hủy tín chỉ trên hệ thống đăng ký', source_clause: 'ST-LH-02-DT:§3.1', check: terms_present, any_of_terms: ['hủy tín chỉ', 'khóa tín chỉ', 'retired', 'retirement']}
+
+  - rule_id: UBLHDT_003
+    title: (Dự thảo) Số liệu phát thải công bố phải kèm báo cáo đảm bảo độc lập nêu mức độ đảm bảo
+    source_document: ST-LH-02-DT
+    source_clauses: ['ST-LH-02-DT:§4.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: null
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: ''
+    when:
+      - {id: emissions_figure, description: 'Câu nêu số liệu phát thải', source_clause: 'ST-LH-02-DT:§4.1', check: claim_terms_present, any_of_terms: ['tco2e', 'tấn co2', 'phát thải']}
+    conditions:
+      - {id: independent_assurance, description: 'Có báo cáo của bên độc lập', source_clause: 'ST-LH-02-DT:§4.1', check: evidence_independent}
+      - {id: assurance_level, description: 'Báo cáo nêu mức độ đảm bảo', source_clause: 'ST-LH-02-DT:§4.1', check: terms_present, any_of_terms: ['đảm bảo hạn chế', 'đảm bảo hợp lý', 'limited assurance', 'reasonable assurance']}
+
+  - rule_id: UBLHDT_004
+    title: (Dự thảo) Công bố rủi ro khí hậu theo IFRS S2 do chuyên viên đánh giá
+    source_document: ST-LH-02-DT
+    source_clauses: ['ST-LH-02-DT:§5.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: null
+    effective_to: null
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: none
+    reviewed_by: ''
+    when:
+      - {id: climate_risk_claim, description: 'Câu nói về công bố rủi ro khí hậu', source_clause: 'ST-LH-02-DT:§5.1', check: claim_terms_present, any_of_terms: ['ifrs s2', 'rủi ro khí hậu', 'climate-related risk', 'climate risk']}
+    conditions:
+      - {id: s2_review, description: 'Chuyên viên đánh giá mức độ đầy đủ của công bố', source_clause: 'ST-LH-02-DT:§5.1', check: manual}

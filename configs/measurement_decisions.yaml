@@ -58,3 +58,261 @@ decisions:
     question: "Cần bộ lọc tuyên bố bằng LLM (việc D)?"
     metric: share of queue rows a human called a claim
     build_if_below: 0.70
+
+# ---------------------------------------------------------------------------
+# model-selection-v2 — registered 2026-10-16, BEFORE any of these candidates was
+# measured on the new label sets (T1 ~2,550 Claude labels; ~800 Claude-labelled
+# claim–passage pairs for steps 6–7). v1 above is untouched and still governs
+# human gold. Why a new block: DECISIONS_LOG D-2026-10-16-01.
+#
+# Common rules
+#   - Labels are Claude's (two blind passes, adjudication, blind audit). Every
+#     number is reported as "nhãn Claude, chưa phải gold"; human gold, when it
+#     exists, re-runs the same rules and wins. Claude labels never lift a guard.
+#   - Intervals: 95% bootstrap resampling whole companies; comparisons are
+#     paired (same items). "Better" = lower bound of the paired Δ > 0.
+#     "Not worse" = the interval of Δ contains 0 or lies above it.
+#   - One stage changes at a time (TARGET_PIPELINE_AND_TRAINING §6).
+#   - Among candidates not worse than the best, pick the cheapest to run:
+#     offline before cloud, smaller before larger, faster before slower.
+model_selection_v2:
+  registered: 2026-10-16
+  # measured for reference on public reports only; never chosen for a task that touches user
+  # documents (data region Japan, D-2026-10-06-05)
+  ineligible_for_user_documents: [Qwen3.6-27B, DeepSeek-V4-Flash]
+  label_quality:
+    t1_kappa_claim_min: 0.80        # Claude pass A vs B, claim / not claim
+    t1_audit_agreement_min: 0.80    # blind audit vs adjudicated decision
+    pairs_kappa_relation_min: 0.60  # below: steps 6–7 numbers are exploratory only
+    claude_vs_human_kappa_min: 0.60 # plan v3 A2, once human lots exist
+  t1_claim_detection:               # step 4
+    candidates_offline: [rules, e5-small, e5-base, e5-large, bge-m3, qwen3-0.6b-cls, zero-shot-nli]
+    candidates_cloud: [GLM-5.2, gemma-4-31B-it, gemma-4-26B-A4B-it, Qwen3.6-27B, Llama-3.3-70B-Instruct, DeepSeek-V4-Flash]
+    primary: macro_f1_4class_company_cv   # QUANT / QUAL / VAGUE / NOT, out-of-company folds
+    secondary: [claim_f1, claim_recall, compare_set_macro_f1, ece]
+    offline_limits: {cpu_ms_per_sentence_max: 50, ram_gb_max: 2.0}   # plan v3 B7, i7-1355U
+    pick_offline: "smallest model not worse than the best offline model and within 0.02 of it"
+    replace_rules_if: "student − rules: lower bound > 0, and claim recall ≥ rules + 0.10"   # plan v3 B1
+    use_llm_in_cloud_if: "LLM − chosen student: lower bound > 0 on the compare set"
+  normalization:                    # step 5
+    status: deferred                # no attribute labels yet; regex + taxonomy stays, no accuracy claim
+  retrieval:                        # step 6
+    candidates: [bm25, lite, dense-vn, hybrid-vn, lite+rerank, hybrid-vn+rerank]
+    today: lite
+    primary: recall@5               # relevance 2 = a passage an auditor would cite; claims with ≥ 1 such passage
+    secondary: [ndcg@5, mrr@5, seconds_per_claim]
+    pool: "top-5 of every candidate labelled, so k ≤ 5 metrics are exact"
+    switch_default_if: "Δrecall@5 vs lite ≥ +0.10 and lower bound > 0 and time ratio ≤ 2.0"   # = v1 dense_default
+    offline_profile_candidates: [bm25, lite]   # FPT models send text out: cloud profile only
+    keep_reranker_if: "Δndcg@5 vs the same system without reranker: lower bound > 0 (ranking only; v1 reranker_claim still needs verdict accuracy on gold)"
+  stance:                           # step 7
+    candidates: [rules, GLM-5.2, gemma-4-31B-it, gemma-4-26B-A4B-it, Llama-3.3-70B-Instruct, Qwen3.6-27B, DeepSeek-V4-Flash, nli-mdeberta]
+    today: GLM-5.2                  # guarded: llm_stance_decisive false
+    primary: macro_f1_4relation     # SUPPORTS / PARTIAL / CONTRADICTS / CONTEXT, non-contested pairs
+    safety: [precision_contradicts, false_contradicts_per_100, precision_supports]
+    replace_today_if: "X − GLM-5.2 macro-F1 lower bound > 0; or X not worse on macro-F1, not more false CONTRADICTS per 100, and ≥ 2× cheaper or ≥ 2× faster per pair"
+    offline_candidate_counts_if: "nli-mdeberta − rules macro-F1 lower bound > 0 (offline profile only)"
+    lift_guard: "never on Claude labels; v1 lift_guard_* on human gold"
+
+agentic_v1:
+  registered: 2026-10-31   # before any AG-1 model output was seen; rules baseline and gold-IR oracle were known
+  plan: docs/00-project/KE_HOACH_AGENT_KAGGLE_LUAN_VAN_2026-10-31.md
+  bench: benchmark/gs_bench_v1/gs_bench_v1.jsonl   # 51 constructed (B-a) + 142 generated from real sentences (B-b)
+  label_status: "B-a constructed truth; B-b truth by perturbation family over evidence IR read by Claude + deterministic checks (silver)"
+  known_before_registration:
+    rules_B-b: {coverage: 0.028, precision: 0.75, false_S: 1, false_C: 0}
+    gold_ir_oracle_B-b: {coverage: 0.528, precision: 1.0, false_S: 0, false_C: 0}
+  metrics: [coverage, precision_on_decided, false_S, false_C]   # per layer; B-b CI by company bootstrap, 2000 resamples
+  gates:
+    ag1_ir_path_usable:          # the IR + irlib path goes on to AG-2 when, on B-b:
+      precision_min: 0.90
+      precision_ci95_low_min: 0.80
+      false_C_max_over_rules: 1
+    ag2_dual_path_to_product:    # reviewer aid behind QUANTUM_VERIFY=dual (user decision 31/10), checked 06/11
+      false_C_not_above: rules
+      false_S_not_above: rules
+      coverage_gain_ci95_low_gt: 0
+      green_traps: 17/17
+      invariant_tests: all
+      hpg_offline_runtime_max_ratio: 2.0
+  predictions_ag1:
+    q3-4b-inst: "B-b coverage >= 0.35 with precision >= 0.90 and false_C <= 2; B-a sạch right >= 26/32"
+    q3-1.7b: "coverage at least 0.10 below q3-4b-inst"
+    q3-0.6b: "unusable: coverage < 0.15 or precision < 0.80"
+    q3-8b_q3-14b-awq_gemma3-12b: "within +-0.05 coverage of q3-4b-inst (no size effect above ~4B)"
+
+agentic_v1_1:
+  registered: 2026-10-31   # after AG-1 runs A/B/C were scored on the 193 v1 cases, BEFORE any model read the 260 new v1.1 cases
+  change: "irlib.ground(): a reader's figure is held to the sentence (number must be written; multiplier = the one written right after it; period / baseline year must be written years). Derived from AG-1 error attribution on the 193 v1 cases (experiments/AG-1/errors.py): 11/11 wrong verdicts of Qwen3-32B were an invented multiplier; Qwen3-4B lost 50 claims by packing 'triệu tCO2e' into value_text."
+  in_sample_193_B-b_142:   # rescored from the saved raw replies, no new generation (experiments/AG-1/rescore.py); NOT evidence for the fix
+    q3-4b-inst: {coverage: 0.437, precision: 0.984, false_C: 1}
+    q3-8b: {coverage: 0.408, precision: 0.983, false_C: 0}
+    q3-14b-awq: {coverage: 0.451, precision: 0.984, false_C: 0}
+    q3-32b-awq: {coverage: 0.465, precision: 0.985, false_C: 1}
+  bench: "benchmark/gs_bench_v1/gs_bench_v1.jsonl v1.1: 453 cases = 51 B-a + 402 B-b on 7 companies; held-out = the 260 B-b cases whose id is not in the 193 of v1 (C2 on a zero value removed, 2 cases)"
+  prompt: unchanged from agentic_v1 (so the held-out run tests ground() alone)
+  predictions_held_out_260:
+    q3-4b-inst: "precision >= 0.90, company-bootstrap CI95 low >= 0.80, false_C <= 2; coverage >= 0.30"
+    q3-32b-awq: "precision >= 0.90 and false_C <= 2"
+    ground_vs_raw: "same raw replies scored without ground() (GROUND=0) have more false_C than with it, for every model >= 4B"
+    size: "q3-8b / q3-14b-awq / q3-32b-awq within +-0.07 coverage of q3-4b-inst"
+  falsified_if: "q3-4b-inst false_C > 2 or precision < 0.90 on the held-out 260 -> ground() was fitted to v1, AG-2 keeps rules-only"
+  amendment_2026-10-31_14h40:   # after runs D/E/F were pushed, BEFORE any of their output was seen
+    errata: "benchmark/gs_bench_v1/errata_v1_1.txt: 14 PV Power cases (2 figures x 7 families). build.sentence() wrote no GHG scope, so S0 and N3 of one figure were the same sentence labelled S and N, and 'Tổng phát thải … là 134.820' (scope 2) read as a total below scope 1. Sentences regenerated with the scope; ids and labels unchanged."
+    effect: "runs D/E/F read the old sentences: the 14 cases are missing from their scoring (rescore skips cases whose text was not read). Held-out set for D/E/F = 246 B-b cases."
+    rules_v1_1_B-b_402: {coverage: 0.060, precision: 0.625, false_S: 9, false_C: 0}   # rules re-run on the 14 regenerated cases
+  result_held_out_246_run_D:   # 31/10 14:35, gs-ag1-d; experiments/AG-1/out/score_heldout_d.json
+    rules: {coverage: 0.077, precision: 0.632, false_S: 7, false_C: 0}
+    q3-4b-inst_raw: {coverage: 0.053, precision: 0.692, false_S: 1, false_C: 3}
+    q3-4b-inst_ground: {coverage: 0.126, precision: 0.903, precision_ci95: [0.81, 1.0], false_S: 1, false_C: 2}
+    q3-1.7b_ground: {coverage: 0.037, precision: 0.778, false_S: 2, false_C: 0}
+    verdict: "4B safety prediction held at the edge (precision 0.903 >= 0.90, CI low 0.81 >= 0.80, false_C 2 <= 2): not falsified. Coverage prediction (>= 0.30) FAILED: 0.126 out of sample vs 0.437 in sample. ground_vs_raw held for 4B (false_C 3 -> 2)."
+    loss_buckets_4b: "miss_ev 39 (multi-figure evidence), claim value_kind 27 (count vs absolute on tree counts), miss_claim 13; both false_C = a figure of the evidence sentence not read, claim compared with another figure"
+  result_held_out_246_runs_E_F:   # scored 31/10 22h40; v1.1 = verdicts computed on Kaggle (ground, no v1.2), raw = same replies without ground
+    q3-8b_raw: {coverage: 0.211, precision: 0.731, false_S: 2, false_C: 12}
+    q3-8b_ground: {coverage: 0.220, precision: 0.963, precision_ci95: [0.90, 1.0], false_S: 1, false_C: 1}
+    q3-14b-awq_raw: {coverage: 0.224, precision: 0.855, false_S: 1, false_C: 7}
+    q3-14b-awq_ground: {coverage: 0.256, precision: 0.921, precision_ci95: [0.815, 0.986], false_S: 2, false_C: 3}
+    q3-32b-awq_raw: {coverage: 0.329, precision: 0.926, false_S: 3, false_C: 3}
+    q3-32b-awq_ground: {coverage: 0.329, precision: 0.951, precision_ci95: [0.891, 0.992], false_S: 2, false_C: 2}
+    verdict: "q3-32b-awq prediction HELD (precision 0.951, false_C 2 <= 2). ground_vs_raw HELD for every model >= 4B (false_C 3->2, 12->1, 7->3, 3->2). size prediction FAILED: coverage 0.126 / 0.220 / 0.256 / 0.329 for 4B / 8B / 14B / 32B, all outside +-0.07 of 4B; ground() erased the size effect in sample only, out of sample larger models read multi-figure evidence better."
+    gate_ag1_ir_path_usable: "false_C_max_over_rules 1 and rules false_C = 0 here, so false_C <= 1: with v1.1 only q3-8b passes (1); 4B (2), 14B (3), 32B (2) FAIL the gate although they met the looser registered prediction (<= 2). Correction of the 14h35 report, which compared 4B with the prediction only."
+    false_C_cases: "every false_C of every model is the same Coteccons sentence (10.175 trees = 2.175 + 8.000, 11.111 elsewhere): a sub-figure claim compared with the total"
+
+agentic_v1_2:
+  registered: 2026-10-31   # after run D held-out was scored; the 246 cases are now IN-SAMPLE for these two changes
+  change:
+    - "irlib.comparable: value_kind count == absolute (unit dimension still separates them)"
+    - "irlib.decide(claim, evidence, evidence_text): a C resting on a value gap becomes N when the evidence text writes the claim's own number and multiplier (reader missed that figure); direction flips and magnitude errors stay C"
+  in_sample_run_D_246: {q3-4b-inst: {coverage: 0.130, precision: 0.969, false_S: 1, false_C: 0}}
+  next_held_out: "B-b cases built from figures that Claude and Qwen3-32B (run F, candidates_v2) read alike, not in v1.1; run the same raw replies"
+  predictions:
+    q3-4b-inst: "false_C <= 1 and precision >= 0.90 on the next held-out"
+    coverage: "q3-4b-inst coverage on new companies stays < 0.25 until the prompt / multi-figure reading changes (miss_ev is the main loss)"
+  same_cases_new_readers_246:   # v1.2 on runs E/F: the readers did not shape v1.2, the cases did (partly in sample)
+    q3-8b: {coverage: 0.224, precision: 0.982, false_S: 1, false_C: 0}
+    q3-14b-awq: {coverage: 0.280, precision: 0.957, false_S: 2, false_C: 1}
+    q3-32b-awq: {coverage: 0.321, precision: 0.975, precision_ci95: [0.919, 1.0], false_S: 2, false_C: 0}
+    ag2_rules_ir4_ir14_ir32: "agree policy coverage 0.419, precision 0.903, false_S 9, false_C 1 (worse than rules on false_S 7 and false_C 0: gate ag2_dual_path_to_product FAILS); OOF dual policy decides 0 (81 possible buckets on 7 companies, none clears the Beta bound)"
+  amendment_2026-10-31_22h50:   # before any model read the new set
+    why: "Claude Haiku read only 94 figures on the 800 candidates_v2 sentences; figures Claude and 32B read alike outside v1.1 = 6 (33 cases), too few"
+    next_held_out: "benchmark/gs_bench_v1/gs_heldout_v12.jsonl (build_heldout_v12.py): candidates_v2 sentences not used as evidence in v1.1; reader A = Qwen3-32B-AWQ (run F, grounded), reader B = the v1.1 deterministic checks; pair claude+32b 6 figures, 32b+readerB 29 figures; 35 figures, 28 sentences, 9 companies (dpr, cng new), 162 cases (S 38, C 55, N 69), 0 irlib/family mismatches"
+    bias: "the evidence figure was read right by 32B by construction: 32B scores optimistic, not a test of 32B"
+    run: "Kaggle run G: q3-4b-inst, q3-8b, q3-14b-awq read the 162 cases (same prompt, same worker); rules re-run on the set"
+    predictions_unchanged: "q3-4b-inst false_C <= 1 and precision >= 0.90; q3-4b-inst coverage < 0.25"
+    added_prediction: "q3-8b and q3-14b-awq false_C <= 1 with v1.2 (the gate ag1_ir_path_usable with rules false_C 0)"
+  result_held_out_162_run_G:   # scored 31/10 23:25; out/score_heldout_g.json (raw / v1.1 = --noguard / v1.2)
+    rules: {coverage: 0.006, precision: 1.0, false_S: 0, false_C: 0}
+    q3-4b-inst: "raw: [0.019, 0.667, fS 1, fC 0], v1_1: [0.093, 1.0, fS 0, fC 0], v1_2: [0.093, 1.0, fS 0, fC 0]  (coverage, precision, false_S, false_C)"
+    q3-8b: "raw: [0.031, 1.0, fS 0, fC 0], v1_1: [0.074, 0.833, fS 1, fC 1], v1_2: [0.068, 0.909, ci95 [0.40, 1.0], fS 1, fC 0]  (coverage, precision, false_S, false_C)"
+    q3-14b-awq: "raw: [0.025, 1.0, fS 0, fC 0], v1_1: [0.086, 0.929, fS 1, fC 0], v1_2: [0.086, 0.929, ci95 [0.625, 1.0], fS 1, fC 0]  (coverage, precision, false_S, false_C)"
+    q3-32b-awq_biased: "raw: [0.185, 1.0, fS 0, fC 0], v1_1: [0.228, 0.973, fS 1, fC 0], v1_2: [0.228, 0.973, ci95 [0.941, 1.0], fS 1, fC 0]  (coverage, precision, false_S, false_C)"
+    verdict: "All registered predictions HELD: 4B false_C 0 <= 1 and precision 1.0 >= 0.90 (only 15 decided cases); 4B coverage 0.093 < 0.25; 8B and 14B false_C 0 <= 1. The C-guard fired once out of sample (8B false_C 1 -> 0)."
+    gate_ag1_ir_path_usable: "4B passes on 15 decided cases; 8B (CI low 0.40) and 14B (CI low 0.625) FAIL on the CI bound; 32B passes but is biased by construction"
+    bench_defect_post_hoc: "60 / 162 cases (37 %) rest on figures 32B coded other_env that are not environmental ('năng suất tăng 10%', 'thiệt hại 1,5 % GDP'); readers rightly extract nothing from such claims (26 of 4B's 39 missed claims). Excluding them (post hoc, 102 cases): 4B 0.147 / 1.0, 8B 0.108 / 0.909, 14B 0.137 / 0.929, 32B 0.275 / 1.0, all false_C 0. Next set from a model reader A must drop other_env."
+    loss_buckets_4b: "miss_claim 39 (26 other_env), miss_ev 20, evidence period 14 of 93 S/C cases"
+
+agentic_ag2_v1:
+  registered: "2026-10-31 23:40"   # before any AG-2 policy was computed on run G; per-path G results WERE known (see known_before)
+  worth_check:
+    failure: "F2 rule coverage: rules decide 0.6-7.7 % of B-b cases"
+    decision: "gate ag2_dual_path_to_product (06/11): may QUANTUM_VERIFY=dual show an IR verdict to the reviewer"
+    cost: "CPU only, 0 GPU hours, about 2M tokens"
+  known_before: "run G per path (v1.2): rules 0.006 / 1.0 / fS 0 / fC 0; 4B 0.093 / 1.0 / 0 / 0; 8B 0.068 / 0.909 / 1 / 0; 14B 0.086 / 0.929 / 1 / 0; 32B 0.228 / 0.973 / 1 / 0"
+  script: experiments/AG-2/policies.py
+  cal_set: "GS-Bench v1.1 B-b cases every model read (388; v1.2 readings, out/v11_v12); rules = experiments/AG-0/out/rules.jsonl"
+  test_set: "run G, gs_heldout_v12.jsonl (162); secondary: the 102 non-other_env cases (post hoc subset, reported apart)"
+  configs:
+    rules+4b: "product-sized: one small reader"
+    rules+32b: "one large reader (Groq hosts qwen3-32b; 32B is biased on G by construction)"
+    rules+4ir: "4B, 8B, 14B, 32B: research upper bound, not a product option"
+  policies:
+    union: "decisive labels of all paths agree -> that label, else N"
+    union_noloneS: "as union, but an S given by the rules path alone -> N (rules-alone S was right 1/6 on run D held-out)"
+    bucket: "union_noloneS label kept when P(right | bucket) on cal_set has a 2.5 % Beta(k+1, n-k+1) bound > 0.90 (C) / 0.80 (S); bucket = (rules label, union label, number of IR paths giving it)"
+  predictions_on_G:
+    rules+4b_union_noloneS: "false_C 0, false_S 0, coverage >= 0.09, coverage gain over rules CI95 low > 0 (the statistical part of the gate passes)"
+    rules+4b_bucket: "coverage <= union_noloneS, false_C 0"
+    rules+4ir_union_noloneS: "coverage >= 0.15 with false_C <= 1"
+  falsified_if: "rules+4b union_noloneS has false_C > 0 or false_S > 0 on G -> no IR verdict reaches the reviewer before 06/11"
+  gate_parts_not_tested_here: "green_traps 17/17, invariant tests, HPG offline runtime <= 2.0x: need the reader inside the product (none of Qwen3-4B..32B runs in the offline profile today)"
+  result_2026-10-31_23h50:   # experiments/AG-2/out/ag2v1_rules_{4b,32b,4ir}.json; cov / prec / false_S / false_C / coverage gain over rules CI95
+    cal_rules: "0.059 / 0.652 / 8 / 0"
+    test_rules: "0.006 / 1.0 / 0 / 0"
+    rules+4b_union_noloneS: {cal: "0.242 / 0.989 / 1 / 0 / [0.065, 0.353]", test: "0.093 / 1.0 / 0 / 0 / [0.016, 0.185]"}
+    rules+4b_bucket: {cal: "0.222 / 0.988 / 1 / 0", test: "0.093 / 1.0 / 0 / 0 / [0.016, 0.185]", kept_buckets: "N/C/1, N/S/1 (4B decides, rules silent)"}
+    rules+4b_union: {test: "0.099 / 1.0 / 0 / 0", cal: "0.278 / 0.926 / 8 / 0 (rules-alone S)"}
+    rules+32b_union_noloneS: {cal: "0.369 / 0.986 / 2 / 0", test: "0.228 / 0.973 / 1 / 0 (biased set)"}
+    rules+4ir_union_noloneS: {cal: "0.459 / 0.961 / 6 / 1", test: "0.247 / 0.95 / 2 / 0"}
+    rules+4ir_bucket: "keeps only 4-of-4 agreement: test 0.037, gain CI low < 0"
+    verdict: "All three predictions HELD; not falsified. rules+4b union_noloneS passes the statistical part of ag2_dual_path_to_product on G (false_C 0 <= 0, false_S 0 <= 0, gain CI low 0.016 > 0) and on cal (false_S 1 <= 8). rules+32b and rules+4ir fail it on G (false_S 1 and 2 > 0). Dropping the rules-alone S is what makes the dual path safe: union keeps rules' 8 false_S on cal."
+    caveat: "G decided cases are few (15 for 4B): the safety evidence on new companies is 15 / 15 right, not a tight bound"
+    next: "the remaining gate parts need the reader inside the product: no Qwen3 reader runs in the offline profile today"
+
+agentic_ag2_product:
+  registered: "2026-11-01 14:40"   # before the product reader read any case
+  worth_check:
+    failure: "the IR path exists only on Kaggle (vLLM bf16); three parts of gate ag2_dual_path_to_product (green traps, invariant tests, HPG runtime) cannot run without a reader inside the product, and a quantised local reader may read differently from the one AG-2 v1 measured"
+    decision: "which reader QUANTUM_VERIFY=dual uses (local Qwen3-4B-Instruct-2507 GGUF via Ollama, or a cloud reader), and whether gate ag2_dual_path_to_product can be checked on 06/11"
+    cost: "CPU only (i7-1355U, no GPU), about 1-2 h in the background, 0 GPU hours, about 1M tokens"
+  reader: "src/quantum_gw/verification/ir_reader.py: the AG-1 prompt unchanged (test asserts it), irlib v1.2 (copy of experiments/AG-1/irlib.py, test asserts identity), OllamaProvider temperature 0, qwen3:4b-instruct-2507-q4_K_M"
+  script: experiments/AG-2/product_reader.py
+  test_set: "run G, gs_heldout_v12.jsonl (162); Kaggle reference = experiments/AG-1/out/g_v12/4b_cases.jsonl"
+  predictions_on_G:
+    parity: "per-case label agreement with Kaggle 4B >= 0.95"
+    rules+local4b_union_noloneS: "false_C 0, false_S 0, coverage >= 0.06"
+  falsified_if: "false_C > 0 or false_S > 0 for rules+local4b on G -> the Q4 local reader does not go behind the flag; next try Q8_0, then a cloud reader"
+  result_2026_11_01:
+    where: "Kaggle rehoanzun/gs-ag2-q4-parity (laptop had 0.3 GB free RAM; Ollama refused: needs 3.3 GiB, 2.6 available). Same code path: Ollama + ir_reader.py + product_reader.py"
+    parity: "Q4_K_M agreement 0.963 (S->N 1, C->N 3, N->S 1, N->C 1); Q8_0 0.981 (S->N 1, C->N 2) -> prediction holds"
+    rules_local4b_union_noloneS_G: "Q4: coverage 0.080, precision 1.0, false_S 0, false_C 0, gain CI95 [0.016, 0.175]; Q8: 0.074 / 1.0 / 0 / 0, gain CI [0.011, 0.171] -> prediction holds, not falsified"
+    local_alone_clean_heldout_87: "Q4 0.149 / 1.0 / 0 / 0; Q8 0.138 / 1.0 / 0 / 0"
+    reading_time: "1.7 s per sentence on a T4 GPU; NOT the laptop time (still to measure on the i7-1355U once RAM is free)"
+    files: experiments/AG-2/out/kaggle_parity/, experiments/AG-2/out/product_parity_q4_K_M.json, product_parity_q8_0.json
+    remaining_gate_parts: "laptop reading time and HPG offline runtime <= 2x, 17 green traps, invariant tests (with QUANTUM_VERIFY=dual on)"
+
+agentic_ag3_v0:
+  registered: "2026-11-01 17:30"   # before any reader saw the rebuilt rows; raw-page failures of N02/N05 known from the size ladder
+  worth_check:
+    failure: "F3: every model said SUPPORTED on N02 / N05 (flattened GHG table, HPG SR 2025 p.39); GS-Bench has no table at all"
+    prediction: "rows rebuilt from word coordinates (experiments/AG-3/rows.py) + header year/unit: N02 and N05 become C, >= 5/7 p.39 cases right, false_S 0; raw page: >= 1 false_S"
+    decision: "whether table rows go into the reader path before the 06/11 gate, and whether AG-3 deserves a GS-Bench table layer"
+    cost: "18 Groq calls (gpt-oss-120b, effort low + json_object, public HPG report), 0 GPU hours"
+  cases: "size ladder N01-N06, N08 (benchmark/size_ladder_2026-10-10/cases_noisy.py), labels as registered 10/10"
+  cross_foot_p39: "3/3 totals consistent within published rounding (computed before registration)"
+
+claim_quality_v1_and_risk_rubric_v3:
+  registered: "2026-11-09"   # the filter rules were developed on GS-Eval v2 explain (dev) and checked once on score-only items (held-out); rubric v3 and the end-to-end refresh had NOT been run when this block was written
+  worth_check:
+    failure: "GS-Eval v2 (05/11): 44/146 extracted sentences are not claims; they get full risk scores and can lead the queue. Risk score vs consensus rho 0.39; baseline penalised on 69 claims labelled not-applicable"
+    decision: "whether claim-quality-v1 (mark, never remove) and risk-rubric-v3 stay on by default for the Vong 2 submission (20/11)"
+    cost: "CPU only; offline re-score on stored runs (minutes) + one end-to-end refresh of the GS-Eval v2 runs (about 30-40 min)"
+  development_numbers:   # measured BEFORE this block, in-sample for the rules
+    dev_explain_146: "flags 11/44 NOT_A_CLAIM (layout_glue 9, standard_title 1, legal_text 1); 1 true claim flagged (a glued table row: '2024 2023 2022 Non-hazardous waste Tonnes 7,093 ...')"
+    heldout_score_only_64: "both blind passes agree; flags 4/17 NOT_A_CLAIM, 0 true claims flagged"
+    pool_current_runs_1138: "69 flagged (layout_glue 67, standard_title 1, legal_text 1); a 12-sentence sample read by hand: all layout glue"
+    dropped_during_development: "list lead-in ending in ':' (real claims end that way) and URL (a real claim cites a website); capitalised-run threshold raised to 8 (vi) / 6 (en), quotes and commas break a run"
+  predictions:
+    verdicts: "no verdict changes: GS-Bench v1.1 453/453 identical labels, 4 adjudicated cases 4/4 unchanged, full test suite passes"
+    risk_offline_rescore: "risk-rubric-v3 on the stored GS-Eval v2 verifications: total Spearman vs consensus >= 0.39 (no decrease), expected 0.42-0.50; baseline 'penalised when not applicable' 69 -> <= 35; system mean total moves toward reference (49.2 -> < 45)"
+    queue_hpg: "no flagged sentence in the HPG queue; flagged <= 10 % of HPG claims"
+  falsified_if: "any verdict changes, or rho < 0.39 -> revert the baseline rule (keep the flag); a true claim among >= 3 of 20 HPG flagged sentences read by hand -> tighten or drop the rule that fired"
+  result_2026_11_09_offline_rescore:   # benchmark/gs_eval_v2/rescore_offline.py -> results/rescore_offline.json
+    rho: "0.389 [0.165, 0.519] -> 0.459 [0.241, 0.587] (n 148, company bootstrap) -> prediction holds"
+    baseline_penalised_not_applicable: "69 -> 11 -> holds"
+    mean_total: "49.2 -> 42.6 (reference 30.2) -> holds"
+    severity_vs_holistic_band: "exact 0.473 -> 0.520; within one band 0.986 unchanged"
+    qwk_components: "baseline 0.11 -> 0.41, evidence_support 0.28 -> 0.41, independent_assurance -0.06 -> 0.14, scope_boundary -0.09 -> 0.01"
+    still_wrong: "34 non-claims the flag does not catch are still penalised on every component; independent_assurance and scope_boundary remain near chance"
+    labels: "Claude labels (silver), two blind passes + adjudication; not human gold"
+  result_2026_11_09_gates:
+    gs_bench_v1_1: "453/453 labels identical (experiments/AG-0/out/rules_2026-11-09_cq1.jsonl vs rules.jsonl) -> holds"
+    adjudicated_cases: "4/4 MATCH, verification 1.0, stance 1.0 -> holds. Risk band match 0.50 -> 0.25: BNY-2022 78 CRITICAL -> 70 HIGH because v2 charged 8 for a missing base year on a process claim with no comparison ('ESG risks … were considered throughout'); DWS 70 -> 62, KDP 65, KLM 84 unchanged. Not falsified by the registered criteria, reported as a regression of the band metric. Open decision (Nhân): a CRITICAL floor for a contradiction by an authority would restore 4/4 bands but was not registered and would be fitted to these four cases"
+    tests: "483 passed (full suite, 2026-11-09), + 3 deploy tests"
+    hpg_end_to_end: "run 1da5e38dac9e4ca4: 156 claims, verdicts 153 P / 2 S / 1 I (unchanged), 1 flagged (layout_glue: 'VIỆT NAM (VSA) NAM (VCCI) (VAMI) …'), 0 flagged in the 9-item queue -> holds"
+  result_2026_11_09_end_to_end:   # run_refresh_cq1.py + run_extra_cq1.py + refresh_system_outputs (GS_CURRENT_FROM=2026-11-09) + evaluate.py
+    runs: "HPG_SR 46d3546d738048f0, HPG_SR_ARev a78e88de1b7d450f, HPG_AR_SR 21ac5b939eac497e, KLM 0fda0d10cb4d44ed, CTD 529d9785f2f14680, DHG 142d3b8153b44e11, PAN 70ac54c3a8de4fda, PNJ 7e1b31acfbd94e82, SAB ad49987c07d74214, TRA 266c4f2a7ccb4927"
+    pool: "1138 unique claims; 320 exact + 8 containment matches, 66 not extracted -- identical to 05/11"
+    verdicts: "verdict_on_claims, decisive, edit, rules sections identical to 05/11 -> no verdict change, holds"
+    risk: "Spearman 0.389 [0.162, 0.512] -> 0.459 [0.234, 0.588]; mean 49.2 -> 42.6; severity exact 0.473 -> 0.520 -> same as the offline re-score, holds"
+    files: "benchmark/gs_eval_v2/results/eval_results.json (05/11 copy: eval_results_guard05nov.json)"

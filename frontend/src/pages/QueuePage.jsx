@@ -95,7 +95,7 @@ export default function QueuePage({ runId, runLabel, result, rows, summary, revi
               Xem giấy làm việc
             </a>
             <Link to={`/runs/${runId}/export`} className="rounded-lg bg-[#0F3D2E] px-3 py-1.5 text-xs font-semibold text-white">
-              Bước 3 · Xuất →
+              Bước 4 · Xuất →
             </Link>
           </div>
         </div>
@@ -129,7 +129,7 @@ export default function QueuePage({ runId, runLabel, result, rows, summary, revi
       <div className="rounded-xl border border-slate-200 bg-white">
         {list.length === 0 ? (
           <p className="p-6 text-center text-sm text-slate-500">
-            {tab === 'todo' ? 'Đã soát hết các mục trong hàng đợi. Sang Bước 3 để xuất giấy làm việc.' : 'Không có mục nào ở đây.'}
+            {tab === 'todo' ? 'Đã soát hết các mục trong hàng đợi. Sang Bước 4 để xuất giấy làm việc.' : 'Không có mục nào ở đây.'}
           </p>
         ) : (
           <ul className="divide-y divide-slate-100">

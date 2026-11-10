@@ -29,6 +29,7 @@ from pathlib import Path
 
 import yaml
 
+from quantum_gw.agents.claim_quality import reason_vi
 from quantum_gw.domain.enums import VerificationStatus
 from quantum_gw.domain.models import Claim, RiskComponent, VerificationResult
 from quantum_gw.storage.audit import AuditLogger
@@ -182,6 +183,13 @@ class PrioritizationAgent:
         )
 
         priorities: list[ReviewPriority] = []
+        # Probable non-claims (claim-quality-v1) are ranked like the rest but
+        # never take a queue place; a contradicted one still does, because a
+        # contradiction must reach a reviewer whatever the sentence looks like.
+        self._outside_queue = {
+            v.claim.claim_id for v in verifications
+            if v.claim.quality_flag and v.status != VerificationStatus.CONTRADICTED
+        }
         for verification in verifications:
             claim = verification.claim
             components = [
@@ -211,9 +219,13 @@ class PrioritizationAgent:
             sorted(priorities, key=lambda p: -p.priority_score), start=1
         ):
             priority.rank = rank
-        queued = self._queue_size(sorted(priorities, key=lambda p: -p.priority_score))
+        eligible = sorted(
+            (p for p in priorities if p.item_id not in self._outside_queue), key=lambda p: -p.priority_score
+        )
+        queued = self._queue_size(eligible)
+        queued_ids = {p.item_id for p in eligible[:queued]}
         for priority in priorities:
-            priority.in_queue = priority.rank <= queued
+            priority.in_queue = priority.item_id in queued_ids
 
         self.audit.write(
             "claims_prioritised",
@@ -342,6 +354,10 @@ class PrioritizationAgent:
         it, so a sentence with one is never moved.
         """
         text = normalize_text(claim.text)
+        if claim.quality_flag:
+            return policy.get("suspect_non_claim_factor", 0.35), (
+                f"; có thể không phải tuyên bố ({reason_vi(claim.quality_flag)}) nên để ngoài hàng đợi — cần đọc trang gốc"
+            )
         if _GARBLED_LAYOUT.search(text):
             return policy["garbled_factor"], (
                 "; chữ có dấu hiệu dính cột hoặc lỗi trình bày nên hạ bậc — cần đọc trang gốc"
@@ -437,11 +453,21 @@ class PrioritizationAgent:
         policy = self.policy["queue"]
         queued = [p for p in priorities if p.in_queue]
         rest = [p for p in priorities if not p.in_queue]
+        outside = sum(1 for p in priorities if p.item_id in getattr(self, "_outside_queue", ()))
+        suspect = (
+            f" Trong đó {outside} câu có dấu hiệu không phải tuyên bố (chữ dàn trang, tên tiêu chuẩn, trích văn bản "
+            f"pháp luật) được để ngoài hàng đợi và không chấm điểm rủi ro; chúng vẫn nằm trong danh sách tuyên bố "
+            f"kèm lý do để người soát tự quyết."
+            if outside else ""
+        )
         if not rest:
             return (
                 f"Toàn bộ {len(priorities)} mục (tuyên bố và số liệu công bố) đều nằm trong hàng đợi soát của lượt này "
                 f"(chính sách `{self.version}`)."
             )
+        return self._scope_note_cut(priorities, queued, rest, policy) + suspect
+
+    def _scope_note_cut(self, priorities, queued, rest, policy) -> str:
         cut = min((p.priority_score for p in queued), default=0.0)
         top = max((p.priority_score for p in rest), default=0.0)
         return (

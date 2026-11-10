@@ -162,14 +162,19 @@ def cmd_score(args: argparse.Namespace) -> int:
     if args.from_reviews:
         from quantum_gw.storage.reviews import ReviewStore
 
-        gold = {(g["run_id"], g["claim_id"]): g for g in ReviewStore(args.reviews_file).gold_records()}
+        store = ReviewStore(args.reviews_file)
+        # Only labels that judge the model: an override that blames a rule says
+        # the system followed a rule that does not fit, not that it misread.
+        gold = {(g["run_id"], g["claim_id"]): g for g in store.model_labels()}
+        skipped = len(store.gold_records()) - len(gold)
         adopted = 0
         for r in rows:
             g = gold.get((r["run_id"], r["claim_id"]))
             if g and r.get("human_status") is None:
                 r["human_status"] = g["label"]
                 adopted += 1
-        print(f"Adopted {adopted} verdict label(s) from the reviewer decision store.\n")
+        print(f"Adopted {adopted} verdict label(s) from the reviewer decision store; "
+              f"{skipped} left out (rule feedback, or an override with no recorded reason).\n")
 
     total = len(rows)
     labelled = [r for r in rows if r.get("human_is_real_claim") is not None]

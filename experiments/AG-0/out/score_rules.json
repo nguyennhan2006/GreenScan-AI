@@ -1,0 +1,60 @@
+{
+ "rules": {
+  "missing": 0,
+  "all": {
+   "n": 193,
+   "right": 94,
+   "decided": 15,
+   "coverage": 0.078,
+   "precision": 0.8,
+   "false_S": 2,
+   "false_C": 1
+  },
+  "B-a sạch": {
+   "n": 32,
+   "right": 20,
+   "decided": 8,
+   "coverage": 0.25,
+   "precision": 0.75,
+   "false_S": 1,
+   "false_C": 1
+  },
+  "B-a trang thật": {
+   "n": 19,
+   "right": 7,
+   "decided": 3,
+   "coverage": 0.158,
+   "precision": 1.0,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "B-b": {
+   "n": 142,
+   "right": 67,
+   "decided": 4,
+   "coverage": 0.028,
+   "precision": 0.75,
+   "false_S": 1,
+   "false_C": 0,
+   "precision_ci95": [
+    0.5,
+    1.0
+   ],
+   "coverage_ci95": [
+    0.0,
+    0.052
+   ]
+  },
+  "B-b_by_family_right": {
+   "C1": "0/26",
+   "C2": "0/11",
+   "C3": "0/7",
+   "N1": "5/5",
+   "N2": "26/26",
+   "N5": "11/11",
+   "N6": "22/23",
+   "S0": "3/26",
+   "S1": "0/7"
+  }
+ }
+}

@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import { legalCorpus } from '../api.js'
 import { Chip } from '../components/badges.jsx'
+import { OrgPackLibrary } from '../components/OrgPackPanel.jsx'
 import { formatDate } from '../lib/format.js'
+import { labelOf } from '../lib/labels'
 
 /**
  * Legal library (mockup #8): the registered instruments as the legal layer
@@ -49,8 +51,7 @@ export default function LegalLibraryPage() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
         <span>{data.documents.length} văn bản đăng ký · <b>{usable}</b> đã trích được toàn văn</span>
-        <span>· lớp pháp lý: {data.enabled ? 'bật' : 'tắt'} · chế độ <code className="font-mono">{data.check_mode}</code></span>
-        <span className="ml-auto font-mono text-[11px] text-slate-400">{data.registry_file}</span>
+        <span title={data.registry_file}>· lớp pháp lý: {data.enabled ? 'bật' : 'tắt'} · chế độ {labelOf('check_mode', data.check_mode)}</span>
       </div>
 
       <div className="rounded-xl border border-slate-200 bg-white">
@@ -58,7 +59,7 @@ export default function LegalLibraryPage() {
           <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm số hiệu hoặc tên văn bản…" className="min-w-64 flex-1 rounded-lg border border-slate-300 px-3 py-1.5 text-sm" />
           <select value={issue} onChange={(e) => setIssue(e.target.value)} className="rounded-lg border border-slate-300 px-2 py-1.5 text-sm">
             <option value="all">Tất cả vấn đề pháp lý</option>
-            {issues.map((i) => <option key={i} value={i}>{i}</option>)}
+            {issues.map((i) => <option key={i} value={i}>{labelOf('legal_issue', i)}</option>)}
           </select>
         </div>
         <ul className="divide-y divide-slate-100">
@@ -74,7 +75,7 @@ export default function LegalLibraryPage() {
                 </p>
                 <p className="text-sm text-slate-800">{d.title}</p>
                 <p className="mt-1 flex flex-wrap gap-1.5">
-                  {(d.legal_issues || []).map((i) => <Chip key={i}>{i}</Chip>)}
+                  {(d.legal_issues || []).map((i) => <Chip key={i}>{labelOf('legal_issue', i)}</Chip>)}
                   {(d.relations?.amends || []).length > 0 && <Chip tone="amber">sửa đổi {d.relations.amends.join(', ')}</Chip>}
                 </p>
                 {!d.usable && d.text_acquisition_note && <p className="mt-1 text-[11px] text-slate-500">{d.text_acquisition_note}</p>}
@@ -82,8 +83,8 @@ export default function LegalLibraryPage() {
               <div className="text-right text-xs">
                 <p className="text-slate-500">Hiệu lực <span className="font-mono text-slate-800">{formatDate(d.effective_from)}</span>{d.effective_to ? ` → ${formatDate(d.effective_to)}` : ''}</p>
                 <p className="mt-1 flex justify-end gap-1.5">
-                  <Chip tone={d.status === 'effective' ? 'emerald' : 'slate'}>{d.status === 'effective' ? 'Đang hiệu lực' : d.status}</Chip>
-                  <Chip tone={d.usable ? (d.text_is_ocr ? 'amber' : 'emerald') : 'slate'}>{d.usable ? (d.text_is_ocr ? 'toàn văn (OCR)' : 'toàn văn') : 'chưa trích được'}</Chip>
+                  <Chip tone={d.status === 'effective' ? 'emerald' : 'slate'}>{labelOf('doc_status', d.status)}</Chip>
+                  <Chip tone={d.usable ? (d.text_is_ocr ? 'amber' : 'emerald') : 'slate'}>{d.usable ? (d.text_is_ocr ? 'toàn văn (nhận dạng từ bản quét)' : 'toàn văn') : 'chưa trích được'}</Chip>
                 </p>
                 {d.url && <a href={d.url} target="_blank" rel="noreferrer" className="mt-1 inline-block text-emerald-800 hover:underline">Nguồn ↗</a>}
               </div>
@@ -91,6 +92,7 @@ export default function LegalLibraryPage() {
           ))}
         </ul>
       </div>
+      <OrgPackLibrary />
       <p className="text-[11px] text-slate-500">Thư viện chỉ liệt kê văn bản và trạng thái trích xuất; việc “văn bản nào áp dụng cho tuyên bố nào” nằm ở panel Bối cảnh pháp lý của từng tuyên bố, chọn theo ngày hiệu lực.</p>
     </div>
   )

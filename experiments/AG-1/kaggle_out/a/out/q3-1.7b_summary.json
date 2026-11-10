@@ -1,0 +1,1 @@
+{"tag": "q3-1.7b", "repo": "Qwen/Qwen3-1.7B", "cases": 193, "right": 97, "unparsed_texts": 0, "load_s": 179, "gen_s": 64, "ntok_in": 143391, "ntok_out": 18992}

@@ -1,0 +1,131 @@
+# Org pack giả lập cho GS-Eval v2 (D-RULES, phần r3). Tổ chức và mọi số liệu là hư cấu.
+# Hiệu lực xét theo ngày rà soát (trường as_of của ca kiểm), không theo năm của báo cáo nguồn.
+# SN_006 cố ý LỎNG HƠN yêu cầu pháp lý: chỉ đòi "một tổ chức bên thứ ba", trong khi tổng hợp pháp lý của dự án
+#   (docs/08-knowledge/02_PHAP_LY_VIET_NAM.md mục 2) ghi sản phẩm "thân thiện môi trường" cần cơ quan có thẩm quyền
+#   chứng nhận hoặc công nhận [điều khoản CHƯA XÁC MINH trên văn bản gốc] -> kiểm luật an toàn 4.
+# Glossary coi "nhựa tái sinh" là đồng nghĩa "nhựa tái chế" nhưng any_of_terms của SN_002 không có từ này:
+#   ca R-fnb_suoi_ngoc-17 kiểm việc mở rộng từ khoá bằng glossary.
+kind: org_pack
+schema_version: org-pack-v0
+org_id: fnb_suoi_ngoc
+org_name: Công ty Cổ phần Thực phẩm – Đồ uống Suối Ngọc (tổ chức giả lập)
+org_type: listed_company
+pack_version: 2.0.0
+precedence: below_law
+approved_by: 'Giám đốc Pháp chế – Tuân thủ'
+approved_at: '2026-05-20'
+documents:
+  - {doc_id: POL-SN-02, title: 'Chính sách tuyên bố về bao bì, nhựa và tái chế (phiên bản 2.0)', path: internal_policy.md, role: policy}
+glossary:
+  - {term: 'nhựa tái chế', synonyms: ['nhựa tái sinh', 'recycled plastic', 'rPET'], definition: 'Nhựa làm từ vật liệu đã qua sử dụng và được tái chế.'}
+  - {term: 'tái chế được', synonyms: ['có thể tái chế', 'recyclable'], definition: 'Bao bì có thể đưa vào tái chế sau khi dùng; khác với bao bì đã chứa vật liệu tái chế.'}
+  - {term: 'phân hủy sinh học', synonyms: ['phân huỷ sinh học', 'tự phân hủy', 'biodegradable', 'compostable'], definition: 'Chỉ dùng kèm điều kiện phân hủy và chứng nhận theo tiêu chuẩn.'}
+rules:
+  - rule_id: SN_001
+    title: Tuyên bố "có thể tái chế" phải nêu thành phần bao bì và không dùng cụm tuyệt đối
+    source_document: POL-SN-02
+    source_clauses: ['POL-SN-02:§2.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2025-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Pháp chế – Tuân thủ'
+    when:
+      - {id: mentions_recyclable, description: 'Câu nói bao bì có thể tái chế', source_clause: 'POL-SN-02:§2.1', check: claim_terms_present, any_of_terms: ['có thể tái chế', 'tái chế được', 'tái chế toàn bộ', 'recyclable']}
+    conditions:
+      - {id: component_named, description: 'Câu nêu thành phần bao bì', source_clause: 'POL-SN-02:§2.1', check: claim_terms_present, any_of_terms: ['chai', 'nắp', 'nhãn', 'hộp', 'lon', 'màng', 'ống hút', 'bottle', 'cap', 'label', 'carton']}
+      - {id: no_absolute_recyclability, description: 'Câu không dùng cụm tái chế tuyệt đối', source_clause: 'POL-SN-02:§2.1', check: claim_terms_absent, any_of_terms: ['100% tái chế', 'tái chế 100%', 'tái chế vô hạn', 'vô hạn lần', '100% recyclable', 'infinitely recyclable', 'endlessly recyclable']}
+  - rule_id: SN_002
+    title: Tuyên bố làm từ nhựa tái chế phải nêu tỷ lệ và có xác nhận bên thứ ba
+    source_document: POL-SN-02
+    source_clauses: ['POL-SN-02:§2.2', 'POL-SN-02:§5.2']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2025-01-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: 'Phòng Pháp chế – Tuân thủ'
+    when:
+      - {id: mentions_recycled_content, description: 'Câu nói bao bì làm từ nhựa hoặc vật liệu tái chế', source_clause: 'POL-SN-02:§2.2', check: claim_terms_present, any_of_terms: ['nhựa tái chế', 'rPET', 'r-PET', 'recycled plastic', 'recycled PET', 'recycled content', 'hàm lượng tái chế', 'vật liệu tái chế']}
+    conditions:
+      - {id: has_share, description: 'Câu nêu tỷ lệ vật liệu tái chế', source_clause: 'POL-SN-02:§2.2', check: claim_attribute_present, attribute: value}
+      - {id: third_party_certified, description: 'Có xác nhận của bên thứ ba', source_clause: 'POL-SN-02:§2.2', check: evidence_independent}
+  - rule_id: SN_003
+    title: Cụm "bao bì tái chế" không kèm tỷ lệ chỉ dùng khi tỷ lệ vật liệu tái chế từ 50%
+    source_document: POL-SN-02
+    source_clauses: ['POL-SN-02:§2.3', 'POL-SN-02:§1.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: ['beverage', 'dairy', 'food']
+    effective_from: '2025-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Pháp chế – Tuân thủ'
+    when:
+      - {id: mentions_recycled_packaging, description: 'Câu dùng cụm bao bì tái chế', source_clause: 'POL-SN-02:§2.3', check: claim_terms_present, any_of_terms: ['bao bì tái chế', 'recycled packaging']}
+    conditions:
+      - {id: recycled_share_at_least_50, description: 'Bảng thông số ghi tỷ lệ vật liệu tái chế từ 50%', source_clause: 'POL-SN-02:§2.3', check: numeric_threshold, operator: '>=', threshold: 50}
+  - rule_id: SN_004
+    title: Tuyên bố phân hủy sinh học phải nêu điều kiện phân hủy và có chứng nhận bên thứ ba
+    source_document: POL-SN-02
+    source_clauses: ['POL-SN-02:§3.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2025-01-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: 'Phòng Pháp chế – Tuân thủ'
+    when:
+      - {id: mentions_biodegradable, description: 'Câu nói phân hủy sinh học hoặc ủ phân được', source_clause: 'POL-SN-02:§3.1', check: claim_terms_present, any_of_terms: ['phân hủy sinh học', 'phân huỷ sinh học', 'tự phân hủy', 'tự phân huỷ', 'tự hủy', 'biodegradable', 'compostable']}
+    conditions:
+      - {id: condition_stated, description: 'Câu nêu điều kiện phân hủy', source_clause: 'POL-SN-02:§3.1', check: claim_terms_present, any_of_terms: ['ủ phân công nghiệp', 'ủ công nghiệp', 'điều kiện công nghiệp', 'tại nhà', 'industrial compost', 'home compost']}
+      - {id: third_party_certified, description: 'Có chứng nhận của bên thứ ba theo tiêu chuẩn', source_clause: 'POL-SN-02:§3.1', check: evidence_independent}
+  - rule_id: SN_005
+    title: Tuyên bố "không nhựa" phải được đối chiếu bảng thành phần bao bì
+    source_document: POL-SN-02
+    source_clauses: ['POL-SN-02:§3.2']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: ['beverage', 'dairy', 'food']
+    effective_from: '2025-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: none
+    reviewed_by: 'Phòng Pháp chế – Tuân thủ'
+    notes: 'Chỉ người soát quyết định; máy chỉ nhận diện câu và đưa vào hàng đợi.'
+    when:
+      - {id: mentions_plastic_free, description: 'Câu nói không nhựa hoặc plastic-free', source_clause: 'POL-SN-02:§3.2', check: claim_terms_present, any_of_terms: ['không nhựa', 'không chứa nhựa', 'plastic-free', 'plastic free', '0% nhựa', 'zero plastic']}
+    conditions:
+      - {id: packaging_bom_checked, description: 'Phòng Quản lý chất lượng đã đối chiếu bảng thành phần bao bì', source_clause: 'POL-SN-02:§3.2', check: manual}
+  - rule_id: SN_006
+    title: Cụm "thân thiện môi trường" cho sản phẩm hoặc bao bì phải có chứng nhận bên thứ ba
+    source_document: POL-SN-02
+    source_clauses: ['POL-SN-02:§4.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: ['beverage', 'dairy', 'food']
+    effective_from: '2025-01-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Pháp chế – Tuân thủ'
+    notes: 'Lỏng hơn yêu cầu pháp lý về chứng nhận của cơ quan có thẩm quyền; COMPLIANT ở đây không che phát hiện pháp lý.'
+    when:
+      - {id: mentions_eco_friendly, description: 'Câu dùng cụm thân thiện môi trường', source_clause: 'POL-SN-02:§4.1', check: claim_terms_present, any_of_terms: ['thân thiện môi trường', 'thân thiện với môi trường', 'environmentally friendly', 'eco-friendly', 'environment-friendly']}
+      - {id: about_product_or_packaging, description: 'Câu nói về sản phẩm hoặc bao bì', source_clause: 'POL-SN-02:§4.1', check: claim_terms_present, any_of_terms: ['sản phẩm', 'bao bì', 'chai', 'hộp', 'lon', 'product', 'packaging', 'bottle']}
+    conditions:
+      - {id: third_party_certificate, description: 'Có giấy chứng nhận của tổ chức bên thứ ba', source_clause: 'POL-SN-02:§4.1', check: evidence_independent}

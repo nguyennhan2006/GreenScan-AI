@@ -72,7 +72,7 @@ KIND_LABELS = {
     "soften": "Làm nhẹ lời nói quá",
 }
 
-_RUBRIC = {"label": "Rubric thuộc tính GreenScan (AttributeChecklist): chỉ số, số liệu, kỳ, năm gốc, phạm vi",
+_RUBRIC = {"label": "Thang thuộc tính của GreenScan: chỉ số, số liệu, kỳ, năm gốc, phạm vi",
            "verification": "Quy tắc nội bộ"}
 _GHG = {"label": "GHG Protocol Corporate Standard: ranh giới tổ chức, năm gốc (ch. 3–5)",
         "verification": "Tri thức miền, chưa đối chiếu điều khoản"}
@@ -194,7 +194,7 @@ def suggest(diag: dict, text: str) -> list[Suggestion]:
     if "năm gốc" in missing:
         slots.append("năm gốc: [bổ sung]")
     if "phạm vi" in missing and diag.get("claim_type") in {"emissions", "ghg", "energy", "carbon"}:
-        slots.append("phạm vi: [bổ sung: ranh giới tổ chức, Scope 1/2/3]")
+        slots.append("phạm vi: [bổ sung: ranh giới tổ chức, phạm vi phát thải 1/2/3]")
     elif "phạm vi" in missing:
         slots.append("phạm vi: [bổ sung: đơn vị, nhà máy hoặc toàn tập đoàn]")
     if slots:

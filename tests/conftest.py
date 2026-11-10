@@ -11,6 +11,9 @@ import pytest
 # live check is asked for explicitly with QUANTUM_TEST_LIVE_LLM=1.
 if os.environ.get("QUANTUM_TEST_LIVE_LLM") != "1":
     os.environ["QUANTUM_LLM_STANCE"] = "off"
+# Org packs are off by default; a QUANTUM_ORG_PACKS line in .env must not switch
+# them on for the whole suite (tests that need a pack set it on their settings).
+os.environ["QUANTUM_ORG_PACKS"] = ""
 
 # Everything the suite writes goes to a throw-away directory. Tests that build
 # their own OrchestratorAgent, and tools run as subprocesses, used to write into

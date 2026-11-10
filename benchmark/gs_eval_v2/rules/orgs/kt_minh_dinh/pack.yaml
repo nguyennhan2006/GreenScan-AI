@@ -1,0 +1,134 @@
+# Org pack giả lập cho GS-Eval v2 (D-RULES), agent r1, viết 04/11/2026.
+# Ghi chú cho người duyệt (comment YAML, hệ thống không đọc):
+# - KTMD_005 là quy tắc chỉ dành cho người (machine_executable: none).
+# - KTMD_006 đã hết hiệu lực sau 30/06/2026 (ca expired_rule).
+# - KTMD_004 dùng numeric_threshold: engine hiện lấy MỌI số trong đoạn bằng chứng, nên ca
+#   R-kt_minh_dinh-13 cố ý có "ISO 14064-1" để lộ lỗi này (numeric_field chưa được engine dùng).
+kind: org_pack
+schema_version: org-pack-v0
+org_id: kt_minh_dinh
+org_name: Công ty TNHH Kiểm toán và Đảm bảo Minh Định (tổ chức giả lập)
+org_type: audit_firm
+pack_version: 2.0.0
+precedence: below_law
+approved_by: 'Thành viên Ban Giám đốc phụ trách kiểm soát chất lượng (giả lập)'
+approved_at: '2026-06-25'
+documents:
+  - {doc_id: CL-MD-01, title: 'Checklist nội bộ chấp nhận và thực hiện hợp đồng đảm bảo thông tin bền vững (2026, phiên bản 2)', path: internal_policy.md, role: policy}
+glossary:
+  - {term: 'mức độ đảm bảo', synonyms: ['đảm bảo hạn chế', 'đảm bảo hợp lý', 'limited assurance', 'reasonable assurance'], definition: 'Mức độ tin cậy của kết luận đảm bảo (§2.3).'}
+  - {term: 'phạm vi phát thải', synonyms: ['Scope 1', 'Scope 2', 'Scope 3', 'Phạm vi 1', 'Phạm vi 2', 'Phạm vi 3', 'ranh giới tổ chức'], definition: 'Scope theo GHG Protocol hoặc ranh giới tổ chức (§2.2).'}
+  - {term: 'báo cáo đảm bảo', synonyms: ['assurance report', 'báo cáo xác nhận độc lập', 'verification statement'], definition: 'Báo cáo của bên độc lập nêu kết luận và mức độ đảm bảo.'}
+  - {term: 'tCO2e', synonyms: ['tấn CO2 tương đương', 'tCO2tđ', 'tCO2-eq'], definition: 'Tấn CO2 tương đương.'}
+rules:
+  - rule_id: KTMD_001
+    title: Chỉ tiêu định lượng trong phạm vi đảm bảo phải nêu kỳ báo cáo và đơn vị
+    source_document: CL-MD-01
+    source_clauses: ['CL-MD-01:§3.1', 'CL-MD-01:§2.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-07-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Kiểm soát chất lượng (giả lập)'
+    when:
+      - {id: quantified, description: 'Câu có giá trị số (kể cả viết bằng chữ)', source_clause: 'CL-MD-01:§2.1', check: claim_attribute_present, attribute: value}
+    conditions:
+      - {id: has_period, description: 'Có kỳ báo cáo', source_clause: 'CL-MD-01:§3.1', check: claim_attribute_present, attribute: period}
+      - {id: has_unit, description: 'Có đơn vị đo', source_clause: 'CL-MD-01:§3.1', check: claim_attribute_present, attribute: unit}
+
+  - rule_id: KTMD_002
+    title: Chỉ tiêu phát thải khí nhà kính phải nêu Scope hoặc ranh giới tổ chức
+    source_document: CL-MD-01
+    source_clauses: ['CL-MD-01:§3.2']
+    claim_types: []          # dự kiến: emissions_reduction
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-07-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Kiểm soát chất lượng (giả lập)'
+    when:
+      - {id: ghg_claim, description: 'Câu nói về phát thải khí nhà kính', source_clause: 'CL-MD-01:§3.2', check: claim_terms_present, any_of_terms: ['phát thải', 'khí nhà kính', 'knk', 'co2', 'tco2e', 'ghg', 'greenhouse', 'emission']}
+    conditions:
+      - {id: has_scope, description: 'Có Scope hoặc ranh giới tổ chức', source_clause: 'CL-MD-01:§3.2', check: claim_attribute_present, attribute: scope}
+
+  - rule_id: KTMD_003
+    title: Tuyên bố "đã được kiểm toán / xác nhận / đảm bảo" phải có báo cáo đảm bảo độc lập nêu mức độ đảm bảo
+    source_document: CL-MD-01
+    source_clauses: ['CL-MD-01:§4.1', 'CL-MD-01:§4.2']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-07-01'
+    effective_to: null
+    severity: violation
+    on_fail: raise_priority
+    machine_executable: full
+    reviewed_by: 'Phòng Kiểm soát chất lượng (giả lập)'
+    when:
+      - {id: assurance_claim, description: 'Câu nói số liệu đã được kiểm toán, xác nhận, thẩm định hoặc đảm bảo', source_clause: 'CL-MD-01:§4.1', check: claim_terms_present, any_of_terms: ['được kiểm toán', 'được xác nhận', 'được đảm bảo', 'được thẩm định', 'đảm bảo độc lập', 'kiểm toán độc lập', 'xác minh độc lập', 'assured', 'verified', 'assurance', 'verification']}
+    conditions:
+      - {id: independent_report, description: 'Có báo cáo của bên độc lập trong hồ sơ', source_clause: 'CL-MD-01:§4.1', check: evidence_independent}
+      - {id: assurance_level, description: 'Báo cáo nêu mức độ đảm bảo hạn chế hoặc hợp lý', source_clause: 'CL-MD-01:§4.1', check: terms_present, any_of_terms: ['đảm bảo hạn chế', 'đảm bảo hợp lý', 'limited assurance', 'reasonable assurance']}
+
+  - rule_id: KTMD_004
+    title: Số liệu phát thải tuyệt đối phải nêu phương pháp và ranh giới bao phủ ít nhất 80% hoạt động
+    source_document: CL-MD-01
+    source_clauses: ['CL-MD-01:§3.3']
+    claim_types: []          # dự kiến: emissions_reduction
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-07-01'
+    effective_to: null
+    severity: warning
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Kiểm soát chất lượng (giả lập)'
+    when:
+      - {id: quantified, description: 'Câu có giá trị số', source_clause: 'CL-MD-01:§3.3', check: claim_attribute_present, attribute: value}
+      - {id: ghg_figure, description: 'Giá trị là số liệu phát thải', source_clause: 'CL-MD-01:§3.3', check: claim_terms_present, any_of_terms: ['tco2e', 'tấn co2', 'phát thải', 'emission', 'khí nhà kính']}
+    conditions:
+      - {id: methodology_stated, description: 'Bằng chứng nêu phương pháp tính', source_clause: 'CL-MD-01:§3.3', check: terms_present, any_of_terms: ['ghg protocol', 'iso 14064', 'hệ số phát thải', 'emission factor', 'phương pháp tính']}
+      - {id: boundary_coverage, description: 'Tỷ lệ bao phủ ranh giới báo cáo (theo công suất, sản lượng hoặc doanh thu) >= 80%', source_clause: 'CL-MD-01:§3.3', check: numeric_threshold, numeric_field: boundary_coverage_pct, operator: '>=', threshold: 80}
+
+  - rule_id: KTMD_005
+    title: Tuyên bố tuyệt đối cần thủ tục bổ sung do kiểm toán viên thiết kế
+    source_document: CL-MD-01
+    source_clauses: ['CL-MD-01:§5.1']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2026-07-01'
+    effective_to: null
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: none
+    reviewed_by: 'Phòng Kiểm soát chất lượng (giả lập)'
+    when:
+      - {id: absolute_wording, description: 'Câu dùng từ ngữ tuyệt đối', source_clause: 'CL-MD-01:§5.1', check: claim_terms_present, any_of_terms: ['100%', 'toàn bộ', 'tất cả', 'không có sự cố', 'không xảy ra sự cố', 'all of']}
+    conditions:
+      - {id: extra_procedures, description: 'KTV đã thiết kế và thực hiện thủ tục bổ sung', source_clause: 'CL-MD-01:§5.1', check: manual}
+
+  - rule_id: KTMD_006
+    title: (Hết hiệu lực) Chấp nhận số liệu khí nhà kính theo kiểm kê nội bộ của khách hàng
+    source_document: CL-MD-01
+    source_clauses: ['CL-MD-01:§7.2']
+    claim_types: []
+    legal_issue: org_policy
+    applies_to_sectors: []
+    effective_from: '2025-01-01'
+    effective_to: '2026-06-30'
+    severity: info
+    on_fail: flag_for_review
+    machine_executable: full
+    reviewed_by: 'Phòng Kiểm soát chất lượng (giả lập)'
+    when:
+      - {id: ghg_claim, description: 'Câu nói về phát thải khí nhà kính', source_clause: 'CL-MD-01:§7.2', check: claim_terms_present, any_of_terms: ['phát thải', 'khí nhà kính', 'knk', 'co2', 'tco2e', 'ghg', 'greenhouse', 'emission']}
+    conditions:
+      - {id: internal_inventory_accepted, description: 'Số liệu lấy từ kiểm kê nội bộ của khách hàng', source_clause: 'CL-MD-01:§7.2', check: terms_present, any_of_terms: ['kiểm kê nội bộ', 'tự kiểm kê', 'internal inventory']}

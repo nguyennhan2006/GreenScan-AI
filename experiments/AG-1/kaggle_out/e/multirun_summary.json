@@ -1,0 +1,16 @@
+[
+ {
+  "tag": "q3-8b",
+  "repo": "Qwen/Qwen3-8B",
+  "cand_index": 0,
+  "ok": true,
+  "sec": 509
+ },
+ {
+  "tag": "q3-14b-awq",
+  "repo": "Qwen/Qwen3-14B-AWQ",
+  "cand_index": 0,
+  "ok": true,
+  "sec": 436
+ }
+]

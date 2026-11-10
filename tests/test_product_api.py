@@ -106,6 +106,37 @@ def test_the_working_paper_is_vietnamese_and_carries_the_review_trail(client):
     assert client.get("/v1/runs/0123456789abcdef/workpaper").status_code == 404
 
 
+def test_a_review_carries_the_rules_of_its_run_and_a_rule_override_stays_out_of_model_labels(client):
+    created = client.post("/v1/analyze/text", json={"documents": [CLAIM, EVIDENCE]}).json()
+    run_id = created["run_id"]
+    claim_id = created["result"]["claims"][0]["claim_id"]
+    manifest = created["result"]["manifest"]
+
+    missing = client.post("/v1/reviews", json={
+        "run_id": run_id, "claim_id": claim_id, "reviewer": "Thảo", "decision": "OVERRIDE",
+        "reviewer_status": "UNSUPPORTED",
+    })
+    assert missing.status_code == 400 and "override_reason" in missing.json()["detail"]
+
+    # A client cannot claim other rules than the run used: rule_context is not an input.
+    record = client.post("/v1/reviews", json={
+        "run_id": run_id, "claim_id": claim_id, "reviewer": "Thảo", "decision": "OVERRIDE",
+        "reviewer_status": "UNSUPPORTED", "override_reason": "RULE_NOT_APPLICABLE", "rule_ref": "VN_X_001",
+        "rule_context": {"rule_pack_version": "forged"},
+    }).json()
+    assert record["rule_context"]["rule_pack_version"] == manifest["rule_pack_version"]
+    assert record["rule_context"]["config_hash"] == manifest["config_hash"]
+
+    gold = client.get("/v1/reviews-export/gold").json()
+    assert gold["records"][0]["label_route"] == "rule"
+    assert gold["stats"]["rule_mismatch_rate"] == 1.0
+    [group] = client.get("/v1/reviews-export/rule-feedback").json()["groups"]
+    assert group["rule_ref"] == "VN_X_001" and group["cases"][0]["claim_id"] == claim_id
+
+    html = client.get(f"/v1/runs/{run_id}/workpaper").text
+    assert "quy tắc không áp dụng cho trường hợp này" in html and "VN_X_001" in html
+
+
 def test_a_local_model_is_not_configured_unless_someone_names_one(monkeypatch):
     """The old default pointed at port 8000 -- GreenScan's own API."""
     from quantum_gw.settings import load_gateway_settings

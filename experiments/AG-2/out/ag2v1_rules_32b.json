@@ -1,0 +1,99 @@
+{
+ "paths": [
+  "rules",
+  "ir32"
+ ],
+ "n_cal": 388,
+ "n_test": 162,
+ "buckets_cal": {
+  "C/C/0": "1/1",
+  "C/C/1": "2/2",
+  "N/C/1": "82/82 keep",
+  "N/S/1": "46/48 keep",
+  "S/S/1": "10/10"
+ },
+ "cal": {
+  "rules": {
+   "n": 388,
+   "coverage": 0.059,
+   "precision": 0.652,
+   "false_S": 8,
+   "false_C": 0
+  },
+  "union": {
+   "n": 388,
+   "coverage": 0.389,
+   "precision": 0.947,
+   "false_S": 8,
+   "false_C": 0,
+   "coverage_gain_ci95": [
+    0.279,
+    0.415
+   ]
+  },
+  "union_noloneS": {
+   "n": 388,
+   "coverage": 0.369,
+   "precision": 0.986,
+   "false_S": 2,
+   "false_C": 0,
+   "coverage_gain_ci95": [
+    0.255,
+    0.399
+   ]
+  },
+  "bucket": {
+   "n": 388,
+   "coverage": 0.335,
+   "precision": 0.985,
+   "false_S": 2,
+   "false_C": 0,
+   "coverage_gain_ci95": [
+    0.217,
+    0.375
+   ]
+  }
+ },
+ "test": {
+  "rules": {
+   "n": 162,
+   "coverage": 0.006,
+   "precision": 1.0,
+   "false_S": 0,
+   "false_C": 0
+  },
+  "union": {
+   "n": 162,
+   "coverage": 0.235,
+   "precision": 0.974,
+   "false_S": 1,
+   "false_C": 0,
+   "coverage_gain_ci95": [
+    0.143,
+    0.322
+   ]
+  },
+  "union_noloneS": {
+   "n": 162,
+   "coverage": 0.228,
+   "precision": 0.973,
+   "false_S": 1,
+   "false_C": 0,
+   "coverage_gain_ci95": [
+    0.135,
+    0.317
+   ]
+  },
+  "bucket": {
+   "n": 162,
+   "coverage": 0.228,
+   "precision": 0.973,
+   "false_S": 1,
+   "false_C": 0,
+   "coverage_gain_ci95": [
+    0.135,
+    0.317
+   ]
+  }
+ }
+}

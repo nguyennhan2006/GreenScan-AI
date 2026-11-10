@@ -267,7 +267,7 @@ _MEDIA = {
 @router.get("/v1/studio/{run_id}/doc/{doc_id}/export")
 def studio_export(run_id: str, doc_id: str, format: str = "docx_tracked", user: str = ""):  # noqa: A002
     if format not in _MEDIA:
-        raise HTTPException(status_code=400, detail=f"format phải là một trong {sorted(_MEDIA)}")
+        raise HTTPException(status_code=400, detail=f"định dạng phải là một trong {sorted(_MEDIA)}")
     store, result, doc, record, paras, base_text = _doc(run_id, doc_id)
     data = StudioSession(store._dir(run_id), doc_id).load(base_text, doc["name"])
     base_lines = [p["text"] for p in paras]

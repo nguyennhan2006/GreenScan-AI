@@ -106,7 +106,7 @@ def check_source(
         if text_file.is_file():
             parsed = len(parse_document(doc.id, text_file.read_text(encoding="utf-8")))
     cond["clause_parse_valid"] = parsed > 0
-    why["clause_parse_valid"] = f"{parsed} clause(s) parsed; need at least one addressable Điều."
+    why["clause_parse_valid"] = f"{parsed} điều khoản đọc được; cần ít nhất một Điều có số hiệu để dẫn chiếu."
 
     cond["effective_date_known"] = doc.effective_from is not None
     why["effective_date_known"] = "effective_from missing — cannot decide what was in force."

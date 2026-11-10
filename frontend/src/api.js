@@ -94,6 +94,10 @@ export function exportUrl(runId, format) {
   return `${base()}/v1/runs/${encodeURIComponent(runId)}/export?format=${format}`
 }
 
+export async function orgPacks() {
+  return handle(await fetch(`${base()}/v1/org-packs`))
+}
+
 export async function legalCorpus() {
   return handle(await fetch(`${base()}/v1/legal/corpus`))
 }

@@ -15,7 +15,6 @@ editable.
 from __future__ import annotations
 
 import re
-import unicodedata
 from pathlib import Path
 
 import fitz
@@ -23,7 +22,10 @@ import fitz
 from quantum_gw.domain.models import AnalysisResult
 from quantum_gw.parsers.office import docx_paragraphs, html_text
 from quantum_gw.storage.documents import DocumentStore
-from quantum_gw.utils.text import join_wrapped_lines, normalize_text
+
+# `fold` lives in utils.text so the legal layer can use it without the PDF stack;
+# studio.suggest and the tests still import it from this module.
+from quantum_gw.utils.text import fold, join_wrapped_lines, normalize_text
 
 UNDER_REVIEW = "under_review"
 EVIDENCE = "evidence"
@@ -36,15 +38,6 @@ STATUS_LABELS = {
     "INSUFFICIENT_EVIDENCE": "Chưa đủ bằng chứng",
 }
 INDEPENDENT_SOURCES = {"legal", "external", "standard"}
-
-
-def fold(text: str) -> str:
-    """Accent-free lower case with the same length as the input, so offsets carry over."""
-    out = []
-    for char in text:
-        base = unicodedata.normalize("NFD", char)[0]
-        out.append("d" if base in "đĐ" else base.lower())
-    return "".join(out)
 
 
 def _one_line(text: str) -> str:

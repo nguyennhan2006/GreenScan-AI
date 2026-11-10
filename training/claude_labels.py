@@ -40,6 +40,7 @@ usage:
   python training/claude_labels.py [--round r1|r2] sample [--n 500] [--lots 1] [--batches 10 | --batch-size 80]
   python training/claude_labels.py --round r2 validate --batch b07 --file out/A_b07.jsonl
   python training/claude_labels.py [--round r2] merge [--batch b07]
+  python training/claude_labels.py audit-in --parts 2      (r1: blind audit input, added 16/10)
   python training/claude_labels.py [--round r2] finalize
   python training/claude_labels.py publish
   python training/claude_labels.py [--round r1|r2|all] stats
@@ -392,6 +393,23 @@ def merge(args) -> int:
     return 1 if missing or problems else 0
 
 
+def audit_in(args) -> int:
+    """r1 was adjudicated without a blind audit (13/10). Write its review rows, blind and shuffled, as
+    audit/r1a_in.jsonl, r1b_in.jsonl, … (one per auditor); never overwrites."""
+    b = base("r1")
+    rows = _pool("r1")
+    audit = [_blind(rows[x["id"]]) for x in _read(b / "review.jsonl")]
+    random.Random(args.seed).shuffle(audit)
+    for k in range(args.parts):
+        path = b / "audit" / f"r1{'abcdefgh'[k]}_in.jsonl"
+        if path.exists():
+            print(f"{path.relative_to(ROOT)} exists; not rewritten")
+            continue
+        _write(path, audit[k::args.parts])
+        print(f"{len(audit[k::args.parts])} rows -> {path.relative_to(ROOT)}")
+    return 0
+
+
 # ----------------------------------------------------------------------------- finalize / publish
 def finalize(args) -> int:
     b = base(args.round)
@@ -400,12 +418,17 @@ def finalize(args) -> int:
     if args.round == "r1":
         decided = {x["id"]: x for x in _read(b / "adjudication.jsonl")}
         review = {x["id"]: x for x in _read(b / "review.jsonl")}
-        audit = {}
+        # r1 got its blind audit on 16/10 (audit-in): audit/r1a_out.jsonl, r1b_out.jsonl, …
+        audit = {x["id"]: x for f in sorted((b / "audit").glob("r1*_out.jsonl")) for x in _read(f)}
     else:
         decided = {x["id"]: x for f in sorted((b / "adj").glob("b*.jsonl")) for x in _read(f)}
         review = {x["id"]: x for f in sorted((b / "review").glob("b*.jsonl")) for x in _read(f)}
         audit = {x["id"]: x for f in sorted((b / "audit").glob("b*_out.jsonl")) for x in _read(f)}
+    # cross-check (16/10): agreed rows another model family disagreed with, re-read blind by a third
+    # Claude reader (training/llm_t1.py recheck-in). A re-read that differs makes it 2–2: contested.
+    recheck = {x["id"]: x for f in sorted((DIR / "crosscheck").glob("recheck_*_out.jsonl")) for x in _read(f)}
     bad = [f"decision {x['id']}: {e}" for x in decided.values() for e in check(x)]
+    bad += [f"recheck {x['id']}: {e}" for x in recheck.values() for e in check(x)]
     bad += [f"audit {x['id']}: {e}" for x in audit.values() for e in check(x)]
     open_ = sorted(set(review) - set(decided))
     # blind audit was run on b01 only once the user asked to save tokens (13/10); --audit-optional lets
@@ -432,6 +455,8 @@ def finalize(args) -> int:
                 source = "contested"
         elif a["label"] == bb["label"]:
             final, source = a, "agree"
+            if i in recheck and recheck[i]["label"] != a["label"]:
+                source = "contested"
         else:
             continue
         keep = {k: final.get(k) for k in FIELDS}
@@ -441,6 +466,7 @@ def finalize(args) -> int:
                     "reporting_year": r.get("reporting_year"), "lot": r.get("lot"), **keep,
                     "pass_a": a["label"], "pass_b": bb["label"], "decided_by": source,
                     "passes_agreeing": agree, "audit_label": audit[i]["label"] if i in audit else None,
+                    "recheck_label": recheck[i]["label"] if i in recheck else None,
                     "round": args.round, "model": MODEL, "codebook": book if args.round != "r1" else
                     "CODEBOOK.md sha 49e1a64986b1",
                     "gemma_label": r.get("gemma_label")})
@@ -529,6 +555,9 @@ def main() -> int:
     m.add_argument("--batch", help="bNN: merge one batch (r2+)")
     m.add_argument("--spot", type=float, default=0.10, help="share of agreed rows re-read anyway")
     m.add_argument("--seed", type=int, default=13)
+    a = sub.add_parser("audit-in")
+    a.add_argument("--parts", type=int, default=2)
+    a.add_argument("--seed", type=int, default=13)
     f = sub.add_parser("finalize")
     f.add_argument("--force", action="store_true")
     f.add_argument("--audit-optional", action="store_true", help="r2+: batches without a blind audit may finalize")
@@ -537,7 +566,7 @@ def main() -> int:
     args = ap.parse_args()
     if args.cmd == "validate" and not (args.batch or args.expect):
         ap.error("validate needs --batch or --expect")
-    return {"sample": sample, "validate": validate, "merge": merge, "finalize": finalize,
+    return {"sample": sample, "validate": validate, "merge": merge, "audit-in": audit_in, "finalize": finalize,
             "publish": publish, "stats": stats}[args.cmd](args)
 
 

@@ -1,0 +1,49 @@
+[
+ {
+  "tag": "q3-8b",
+  "tp": 2,
+  "max_len": 4096,
+  "cands": [
+   {
+    "repo": "Qwen/Qwen3-8B"
+   },
+   {
+    "repo": "Qwen/Qwen3-8B",
+    "backend": "hf"
+   }
+  ]
+ },
+ {
+  "tag": "q3-14b-awq",
+  "tp": 2,
+  "max_len": 4096,
+  "cands": [
+   {
+    "repo": "Qwen/Qwen3-14B-AWQ"
+   },
+   {
+    "repo": "Qwen/Qwen3-14B-AWQ",
+    "backend": "hf"
+   }
+  ]
+ },
+ {
+  "tag": "gemma3-12b",
+  "tp": 2,
+  "max_len": 4096,
+  "cands": [
+   {
+    "repo": "unsloth/gemma-3-12b-it",
+    "kw": {
+     "limit_mm_per_prompt": {
+      "image": 0
+     }
+    }
+   },
+   {
+    "repo": "unsloth/gemma-3-12b-it",
+    "backend": "hf"
+   }
+  ]
+ }
+]
