@@ -15,6 +15,7 @@ site, so the server does it and hands the bytes back as an ordinary upload.
 from __future__ import annotations
 
 import ipaddress
+import json
 import re
 import socket
 import urllib.parse
@@ -234,21 +235,47 @@ SAMPLE_SETS = [
 ]
 
 
+def _seed_documents() -> dict[str, Path]:
+    """File name -> PDF shipped with the seeded demo run (deploy/seed/documents)."""
+    from quantum_gw.storage.seed import seed_dir
+
+    source = seed_dir()
+    index = source / "documents" / "index.jsonl" if source else None
+    if index is None or not index.is_file():
+        return {}
+    out = {}
+    for line in index.read_text(encoding="utf-8").splitlines():
+        if line.strip():
+            row = json.loads(line)
+            path = source / "documents" / row["path"]
+            if path.is_file():
+                out[row["name"]] = path
+    return out
+
+
+def _sample_path(entry: dict, root: Path, seeded: dict[str, Path]) -> Path | None:
+    # A source checkout has the PDFs under data/ only if someone put them there (they are
+    # not in git); a GitHub download or the Windows portable build finds them in the seed.
+    path = root / entry["path"]
+    if path.is_file():
+        return path
+    return seeded.get(Path(entry["path"]).name)
+
+
 def sample_sets(root: str | Path = ".") -> list[dict]:
-    """Sample sets whose files exist here (the PDFs are not in git)."""
-    root = Path(root)
+    """Sample sets whose files exist here (data/ or the seeded demo documents)."""
+    root, seeded = Path(root), _seed_documents()
     out = []
     for sample in SAMPLE_SETS:
-        files = [f for f in sample["files"] if (root / f["path"]).is_file()]
-        if len(files) == len(sample["files"]):
-            out.append({**sample, "files": [{**f, "name": Path(f["path"]).name,
-                                             "bytes": (root / f["path"]).stat().st_size} for f in files]})
+        paths = [_sample_path(f, root, seeded) for f in sample["files"]]
+        if all(paths):
+            out.append({**sample, "files": [{**f, "name": Path(f["path"]).name, "bytes": p.stat().st_size}
+                                            for f, p in zip(sample["files"], paths)]})
     return out
 
 
 def sample_file(sample_id: str, index: int, root: str | Path = ".") -> Path | None:
     for sample in SAMPLE_SETS:
         if sample["id"] == sample_id and 0 <= index < len(sample["files"]):
-            path = Path(root) / sample["files"][index]["path"]
-            return path if path.is_file() else None
+            return _sample_path(sample["files"][index], Path(root), _seed_documents())
     return None

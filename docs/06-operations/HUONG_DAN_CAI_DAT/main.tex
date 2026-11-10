@@ -1,0 +1,582 @@
+% =====================================================================
+% GreenScan AI — Hướng dẫn cài đặt và sử dụng cho người không chuyên IT,
+% kèm cách đóng gói giao khách hàng.
+% Biên dịch:  xelatex main.tex  (chạy 2 lần để mục lục ổn định)
+% Ảnh trong img/ chụp thật ngày 10/11/2026 trên bản tải từ GitHub (xem Phụ lục A).
+% =====================================================================
+\documentclass[12pt,a4paper,oneside]{report}
+\usepackage[a4paper,left=2.6cm,right=2.2cm,top=2.4cm,bottom=2.4cm,headsep=0.8cm,footskip=1cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\newfontfamily\headfont{Calibri}
+\setmonofont{Consolas}[Scale=0.92]
+\usepackage[table]{xcolor}
+\usepackage{graphicx,tabularx,array,booktabs,enumitem,fancyhdr,needspace,xltabular}
+\usepackage[section]{placeins}
+\usepackage{caption,titlesec,tocloft}
+\usepackage{fancyvrb}
+\usepackage[hidelinks]{hyperref}
+\urlstyle{tt}
+\def\UrlBreaks{\do\/\do\_\do\-\do\.}
+
+\newcommand{\tacgia}{Nguyễn Chơn Nhân}
+\newcommand{\tensp}{GreenScan AI}
+\newcommand{\repo}{https://github.com/nguyennhan2006/GreenScan-AI}
+% số đo gói chạy ngay (Phần 5), điền sau khi đóng gói và chạy thử
+\newcommand{\GOISIZE}{313 MB (tệp ZIP), 581 MB sau giải nén}
+\newcommand{\GOITEST}{Giải nén vào thư mục có dấu và dấu cách (\emph{khach hang\textbackslash Màn hình nền}), nhấp đúp \tep{GreenScan.bat}: lần đầu sẵn sàng sau 65 giây, lần sau 30 giây. Chạy trọn bộ mẫu Hòa Phát qua giao diện: 156 tuyên bố, kết quả trùng phiên mẫu (153 ủng hộ một phần, 2 ủng hộ, 1 chưa đủ bằng chứng).}
+
+% ---------- màu (giống báo cáo tổng hợp) ----------
+\definecolor{gsteal}{HTML}{086778}
+\definecolor{ink}{HTML}{1F2D33}
+\definecolor{muted}{HTML}{5E6E72}
+\definecolor{boxbg}{HTML}{EDF5F3}
+\definecolor{warnbg}{HTML}{FBF4E6}
+\definecolor{gold}{HTML}{B07A22}
+\definecolor{redbox}{HTML}{E11D48}
+\definecolor{codebg}{HTML}{F4F6F7}
+
+\linespread{1.25}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\hyphenpenalty=10000 \exhyphenpenalty=10000 \emergencystretch=3em \tolerance=2000
+\setlist{nosep,leftmargin=1.6em,topsep=3pt,itemsep=2pt}
+\renewcommand{\arraystretch}{1.3}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\thd}[1]{\textcolor{white}{\bfseries #1}}
+\newcommand{\hdr}{\rowcolor{gsteal}}
+\newcommand{\bangchu}{\small\linespread{1.1}\selectfont}
+\newcommand{\tep}[1]{\nolinkurl{#1}}
+% nút / chữ trên màn hình
+\newcommand{\nut}[1]{{\setlength{\fboxsep}{1.6pt}\colorbox{boxbg}{\headfont\small #1}}}
+\newcommand{\phim}[1]{{\setlength{\fboxsep}{1.2pt}\fbox{\headfont\footnotesize #1}}}
+
+\renewcommand{\chaptername}{Phần}
+\renewcommand{\contentsname}{Mục lục}
+\renewcommand{\figurename}{Hình}
+\renewcommand{\tablename}{Bảng}
+\renewcommand{\appendixname}{Phụ lục}
+
+\titleformat{\chapter}[display]{\headfont\color{gsteal}}
+  {\fontsize{13}{16}\selectfont\MakeUppercase{\chaptertitlename}\ \thechapter}{3pt}
+  {\fontsize{21}{26}\selectfont\bfseries\color{ink}}[\vspace{3pt}{\color{gsteal}\titlerule[1.1pt]}]
+\titlespacing*{\chapter}{0pt}{-10pt}{14pt}
+\titleformat{\section}{\headfont\fontsize{14.5}{18}\selectfont\bfseries\color{gsteal}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\headfont\fontsize{12.5}{15}\selectfont\bfseries\color{ink}}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{14pt}{5pt}
+\titlespacing*{\subsection}{0pt}{10pt}{3pt}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{1}
+\renewcommand{\cfttoctitlefont}{\headfont\fontsize{21}{26}\selectfont\bfseries\color{ink}}
+\renewcommand{\cftchapfont}{\bfseries}
+\renewcommand{\cftchappagefont}{\bfseries}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftchappresnum}{Phần }
+\renewcommand{\cftchapaftersnum}{.}
+\setlength{\cftchapnumwidth}{4.6em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{gsteal}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[L]{\small\color{muted}\nouppercase{\leftmark}}
+\fancyhead[R]{\small\color{muted}\tensp{} · Hướng dẫn cài đặt}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptertitlename\ \thechapter. #1}{}}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\renewcommand{\headrule}{}\fancyfoot[C]{\small\thepage}}
+
+\captionsetup{font=small,labelfont={bf,color=gsteal},labelsep=period,skip=5pt,justification=raggedright,singlelinecheck=false}
+
+% ---------- hộp ----------
+\newsavebox{\hopybox}
+\newenvironment{hopy}[1]
+ {\setlength{\fboxsep}{8pt}\def\hopytitle{#1}%
+  \begin{lrbox}{\hopybox}\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}%
+  \linespread{1.18}\selectfont{\headfont\bfseries\color{gsteal}\hopytitle}\par\smallskip}
+ {\end{minipage}\end{lrbox}\par\medskip\noindent\fcolorbox{gsteal}{boxbg}{\usebox{\hopybox}}\par\medskip}
+\newenvironment{luuy}[1]
+ {\setlength{\fboxsep}{8pt}\def\luuytitle{#1}%
+  \begin{lrbox}{\hopybox}\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}%
+  \linespread{1.18}\selectfont{\headfont\bfseries\color{gold}\luuytitle}\par\smallskip}
+ {\end{minipage}\end{lrbox}\par\medskip\noindent\fcolorbox{gold}{warnbg}{\usebox{\hopybox}}\par\medskip}
+
+% bước làm: nhãn "Bước n" đậm màu
+\newcounter{buoc}
+\newcommand{\buoc}[1]{\stepcounter{buoc}\needspace{6\baselineskip}\section{Bước \thebuoc. #1}}
+
+% hình
+\newcommand{\hinh}[3][\linewidth]{\begin{figure}[!htbp]\centering
+  \fcolorbox{muted!40}{white}{\includegraphics[width=\dimexpr#1-2\fboxsep-2\fboxrule\relax]{img/#2}}\caption{#3}\end{figure}}
+
+% lệnh gõ
+\DefineVerbatimEnvironment{lenh}{Verbatim}{fontsize=\small,frame=single,framesep=6pt,rulecolor=\color{muted!50},formatcom=\color{ink}}
+
+\begin{document}
+
+% ===================================================================== BÌA
+\begin{titlepage}
+\newgeometry{left=2.4cm,right=2.4cm,top=3cm,bottom=2.4cm}
+\centering
+{\headfont\color{gsteal}\fontsize{13}{16}\selectfont TÀI LIỆU HƯỚNG DẪN · \tensp\par}
+\vspace{2.2cm}
+{\headfont\bfseries\color{ink}\fontsize{28}{34}\selectfont Cài đặt và dùng thử GreenScan\par}
+\vspace{0.4cm}
+{\headfont\color{ink}\fontsize{16}{21}\selectfont Từ GitHub tới màn hình đầu tiên, cho người không chuyên IT\par}
+\vspace{0.3cm}
+{\headfont\color{muted}\fontsize{13}{17}\selectfont kèm cách đóng gói để khách hàng tải về và dùng ngay\par}
+\vspace{1.4cm}
+{\color{gsteal}\rule{0.55\linewidth}{1.1pt}\par}
+\vspace{1.2cm}
+\begin{minipage}{0.82\linewidth}\raggedright\linespread{1.3}\selectfont
+\textbf{Dành cho}\\
+\textbf{Phần 1--4}: thành viên đội hoặc người dùng mới, không cần biết lập trình. Làm theo từng bước, có ảnh chụp thật của từng màn hình.\\[4pt]
+\textbf{Phần 5}: người phụ trách giao sản phẩm (đóng gói bản chạy ngay cho Windows, đưa lên GitHub Releases, hoặc chạy trên máy chủ VPS).\\[10pt]
+\textbf{Thời gian}: khoảng 30 phút cho lần đầu (phần lớn là chờ tải và cài). Những lần sau mở GreenScan mất khoảng 30 giây.\\[10pt]
+\textbf{Đã chạy thử}: ngày 10/11/2026, tải mã nguồn từ GitHub về một thư mục mới và làm đúng các bước trong tài liệu này trên Windows 11 (số đo ở Phụ lục A).
+\end{minipage}
+\vfill
+{\large Biên soạn: \tacgia\par}
+\vspace{4pt}
+{\color{muted}Bản ngày 10/11/2026\par}
+\restoregeometry
+\end{titlepage}
+
+\begingroup\linespread{1.0}\selectfont\setlength{\cftbeforechapskip}{4pt}
+\tableofcontents
+\endgroup
+\clearpage
+
+% ===================================================================== PHẦN 1
+\chapter{Trước khi bắt đầu}
+
+\section{Bạn sẽ làm được gì}
+Sau khi làm xong Phần 2 và Phần 3, máy tính của bạn chạy được GreenScan: một trang web mở trong trình duyệt tại địa chỉ \url{http://localhost:8000}, nơi bạn tải báo cáo của doanh nghiệp lên, để máy tìm bằng chứng cho từng tuyên bố môi trường, rồi soát và xuất giấy làm việc tiếng Việt. Mọi thứ chạy trên máy của bạn. Ở chế độ mặc định, tài liệu không được gửi ra ngoài và không cần khoá API nào.
+
+\section{Chọn đường đi}
+Có ba cách để có GreenScan trên máy. Bảng~\ref{tab:duong} giúp chọn nhanh.
+
+\begin{table}[!htbp]\centering\bangchu
+\caption{Ba cách dùng GreenScan}\label{tab:duong}
+\begin{tabularx}{\linewidth}{L{2.6cm}YYL{2.3cm}}
+\hdr \thd{Cách} & \thd{Hợp với ai} & \thd{Phải làm gì} & \thd{Xem} \\
+\textbf{A. Tải mã nguồn từ GitHub} & Thành viên đội, người muốn luôn có bản mới nhất & Cài Python và Node.js một lần, tải ZIP, nhấp đúp một tệp & Phần 2, 3 \\
+\rowcolor{boxbg}\textbf{B. Gói chạy ngay cho Windows} & Khách hàng, người không muốn cài gì & Tải một tệp ZIP, giải nén, nhấp đúp & Mục~\ref{sec:goi} \\
+\textbf{C. Mở một đường link} & Giám khảo, khách dùng thử & Chỉ cần trình duyệt (đội phải dựng máy chủ trước) & Mục~\ref{sec:vps} \\
+\end{tabularx}
+\end{table}
+
+Nếu đội đã phát hành gói chạy ngay (cách B), người mới nên dùng cách B và bỏ qua các bước cài Python, Node.js. Tài liệu này mô tả kỹ cách A, vì đó là cách dùng mã nguồn mới nhất trên GitHub.
+
+\section{Cần chuẩn bị}
+\begin{itemize}
+\item Máy tính \textbf{Windows 10 hoặc Windows 11, bản 64-bit}. Máy thử là laptop Windows 11, chip i7 thế hệ 13, không có card đồ hoạ rời.
+\item \textbf{RAM 8 GB} trở lên. Một lượt phân tích báo cáo khoảng 260 trang dùng tối đa khoảng 1,3 GB RAM.
+\item \textbf{Ổ đĩa trống khoảng 2 GB}: tệp ZIP 255 MB, thư mục sau giải nén 423 MB, cộng phần cài thêm của Python và giao diện.
+\item \textbf{Mạng Internet} trong lần cài đầu. Từ lần sau, GreenScan chạy không cần mạng.
+\item \textbf{Quyền cài phần mềm} trên máy. Máy công ty bị khoá quyền thì nhờ bộ phận IT cài giúp Python và Node.js (Bước 1, 2), các bước còn lại bạn tự làm được.
+\end{itemize}
+
+\begin{hopy}{Quy ước trong tài liệu}
+\begin{itemize}
+\item \textbf{Khung đỏ} trên ảnh là chỗ cần bấm hoặc cần nhìn. Số tròn đỏ là thứ tự bấm.
+\item Chữ trên nút được viết như thế này: \nut{Download ZIP}. Màn hình Windows và GitHub phần lớn là tiếng Anh. Khi Windows của bạn là tiếng Việt, tài liệu ghi thêm chữ tiếng Việt trong ngoặc.
+\item \textbf{Cửa sổ đen} là cửa sổ dòng lệnh của Windows. GreenScan dùng nó để chạy ngầm; bạn chỉ cần mở và để yên, không phải gõ gì.
+\end{itemize}
+\end{hopy}
+
+% ===================================================================== PHẦN 2
+\chapter{Cài đặt từ GitHub, từng bước}
+\setcounter{buoc}{0}
+
+Phần này làm \textbf{một lần duy nhất} trên mỗi máy. Thứ tự: cài hai phần mềm nền (Python, Node.js), tải mã nguồn, giải nén, rồi nhấp đúp để GreenScan tự cài phần còn lại.
+
+\buoc{Cài Python 3.14}
+Python là ngôn ngữ mà phần xử lý của GreenScan được viết bằng. Bạn chỉ cần cài, không cần học.
+
+\begin{enumerate}
+\item Mở trình duyệt, vào \url{https://www.python.org/downloads/windows/}.
+\item Ở cột \textbf{Stable Releases}, tìm dòng đầu tiên bắt đầu bằng \textbf{Python 3.14} (lúc soạn là \emph{Python 3.14.10}). Ngay dưới dòng đó, bấm \nut{Windows installer (64-bit)} (Hình~\ref{fig:pyorg}). Trình duyệt tải về tệp \tep{python-3.14.10-amd64.exe} (khoảng 30 MB).
+\item Mở tệp vừa tải (thường nằm trong thư mục \emph{Downloads}/\emph{Tải xuống}). Cửa sổ cài đặt hiện ra như Hình~\ref{fig:pybocai}.
+\item \textbf{Tick vào ô \nut{Add python.exe to PATH}} ở cuối cửa sổ (số 1). Đây là thao tác quan trọng nhất của cả tài liệu: thiếu nó, GreenScan không tìm thấy Python.
+\item Bấm \nut{Install Now} (số 2). Windows hỏi \emph{``Do you want to allow this app to make changes\ldots''} (Bạn có muốn cho phép ứng dụng này thay đổi\ldots) thì bấm \nut{Yes} (Có).
+\item Chờ khoảng 1--2 phút tới khi hiện \emph{Setup was successful}, bấm \nut{Close}.
+\end{enumerate}
+
+\hinh{b1_python_org.png}{Trang python.org/downloads/windows: chọn bản 3.14, bấm ``Windows installer (64-bit)''.\label{fig:pyorg}}
+
+\hinh[0.78\linewidth]{b1_python_bo_cai.png}{Cửa sổ cài Python. (1) Tick ``Add python.exe to PATH''. (2) Bấm ``Install Now''. Ảnh chụp bộ cài 3.15.2 vì máy thử đã có sẵn 3.14; bộ cài 3.14 của bạn có cùng bố cục, chỉ khác số phiên bản.\label{fig:pybocai}}
+
+\begin{luuy}{Vì sao chọn 3.14, không lấy nút vàng to ở trang chủ python.org?}
+Nút lớn ở trang chủ python.org hiện đưa bản 3.15 qua \emph{Python install manager}. GreenScan đã chạy thử đầy đủ trên Python 3.14. Bản 3.15 mới phát hành tháng 10/2026, một số thư viện có thể chưa có bản dựng sẵn cho nó. Chọn đúng bản 3.14 theo hướng dẫn trên là chắc chắn nhất. Python 3.11, 3.12 hay 3.13 có sẵn trên máy cũng dùng được.
+\end{luuy}
+
+\buoc{Cài Node.js}
+Node.js chỉ dùng \textbf{một lần}, để dựng giao diện web của GreenScan trong lần chạy đầu.
+
+\begin{enumerate}
+\item Vào \url{https://nodejs.org/en/download}. Kéo xuống dòng \emph{Or get a prebuilt Node.js for Windows running a x64 architecture}, bấm \nut{Windows Installer (.msi)} (Hình~\ref{fig:node}). Tệp tải về có tên dạng \tep{node-v26.13.0-x64.msi}.
+\item Mở tệp vừa tải. Bộ cài có nhiều trang, làm lần lượt:
+  \begin{itemize}
+  \item Trang chào: bấm \nut{Next}.
+  \item Trang giấy phép: tick \nut{I accept the terms in the License Agreement}, bấm \nut{Next}.
+  \item Trang chọn thư mục và trang chọn thành phần: giữ nguyên, bấm \nut{Next}.
+  \item Trang \textbf{Tools for Native Modules}: \textbf{để trống ô} \emph{Automatically install the necessary tools\ldots}, bấm \nut{Next}. Tick ô này sẽ cài thêm vài GB công cụ lập trình mà GreenScan không cần.
+  \item Bấm \nut{Install}, chọn \nut{Yes} (Có) khi Windows hỏi quyền, chờ xong rồi bấm \nut{Finish}.
+  \end{itemize}
+\end{enumerate}
+
+\hinh{b2_nodejs.png}{Trang tải Node.js: bấm ``Windows Installer (.msi)''. Phần mã lệnh phía trên dành cho lập trình viên, bỏ qua.\label{fig:node}}
+
+\begin{hopy}{Tự kiểm tra (không bắt buộc)}
+Muốn chắc đã cài đúng: bấm phím \phim{Windows}, gõ \texttt{cmd}, nhấn \phim{Enter}. Trong cửa sổ đen, gõ \texttt{python --version} rồi \phim{Enter}, sau đó \texttt{node --version} rồi \phim{Enter}. Thấy hai dòng dạng \texttt{Python 3.14.10} và \texttt{v26.13.0} là đúng. Báo \emph{``is not recognized''} thì xem dòng 1 và 2 của Bảng~\ref{tab:loi}.
+\end{hopy}
+
+\buoc{Tải mã nguồn từ GitHub}
+GitHub là nơi đội lưu mã nguồn GreenScan. Kho này để công khai, bạn \textbf{không cần tài khoản} GitHub.
+
+\begin{enumerate}
+\item Vào \url{https://github.com/nguyennhan2006/GreenScan-AI}.
+\item Bấm nút xanh lá \nut{<> Code}, rồi bấm \nut{Download ZIP} ở cuối khung vừa mở (Hình~\ref{fig:github}).
+\item Trình duyệt tải về tệp \tep{GreenScan-AI-main.zip}, khoảng \textbf{255 MB}. Trên máy thử mất 3 phút 41 giây; mạng chậm có thể lâu hơn.
+\end{enumerate}
+
+\hinh{b3_github_zip.png}{Trang GreenScan-AI trên GitHub: bấm ``Code'', rồi ``Download ZIP''. Bỏ qua các mục Clone, GitHub Desktop.\label{fig:github}}
+
+\buoc{Giải nén}
+Tệp ZIP là một ``hộp nén''. Phải lấy các tệp ra khỏi hộp thì mới chạy được.
+
+\begin{enumerate}
+\item Mở thư mục \emph{Downloads} (\emph{Tải xuống}), \textbf{bấm chuột phải} vào \tep{GreenScan-AI-main.zip}, chọn \nut{Extract All\ldots} (\nut{Giải nén tất cả\ldots}).
+\item Đổi nơi giải nén sang một thư mục dễ tìm, ví dụ \texttt{C:\textbackslash Users\textbackslash <tên bạn>\textbackslash Documents}, bấm \nut{Extract} (\nut{Giải nén}). Có gần 2.000 tệp nên việc này có thể mất vài phút.
+\item Mở thư mục \textbf{GreenScan-AI-main} vừa tạo. Trong đó có tệp \textbf{GreenScan}, cột \emph{Type} (\emph{Loại}) ghi \emph{Windows Batch File}. Cài đặt mặc định của Windows ẩn đuôi tệp, nên bạn sẽ thấy tên \emph{GreenScan} chứ không phải \emph{GreenScan.bat}. Kéo xuống dưới các thư mục mới thấy tệp này.
+\end{enumerate}
+
+\begin{luuy}{Ba lỗi hay gặp ở bước này}
+\begin{itemize}
+\item \textbf{Nhấp đúp vào tệp ZIP rồi chạy luôn ở trong đó.} Windows cho xem bên trong ZIP như một thư mục, nhưng chạy từ đó sẽ lỗi. Phải \emph{Extract All} trước.
+\item \textbf{Giải nén vào thư mục OneDrive đang đồng bộ.} OneDrive sẽ cố tải lên hàng nghìn tệp cài đặt, làm máy chậm. Nên chọn \emph{Documents} trên máy hoặc ổ \tep{D:}.
+\item \textbf{Giải nén hai lần lồng nhau}, thành \texttt{GreenScan-AI-main\textbackslash GreenScan-AI-main}. Không sao: cứ mở tới thư mục chứa tệp \emph{GreenScan} rồi làm tiếp.
+\end{itemize}
+Đường dẫn có dấu tiếng Việt hoặc dấu cách vẫn chạy được: lần thử đã giải nén vào một thư mục tên ``Tải về''.
+\end{luuy}
+
+\buoc{Nhấp đúp GreenScan để chạy lần đầu}
+\begin{enumerate}
+\item \textbf{Nhấp đúp} tệp \textbf{GreenScan}.
+\item Nếu Windows hiện khung xanh \emph{``Windows protected your PC''} (\emph{Windows đã bảo vệ PC của bạn}): bấm dòng chữ \nut{More info} (\nut{Thông tin thêm}), rồi bấm \nut{Run anyway} (\nut{Vẫn chạy}). Cảnh báo này hiện với mọi tệp tải từ Internet chưa có chữ ký số, không phải virus.
+\item Một cửa sổ đen mở ra và tự chạy ba bước, đánh số \texttt{[1/3]}, \texttt{[2/3]}, \texttt{[3/3]} (Hình~\ref{fig:con1}--\ref{fig:con3}). \textbf{Không gõ gì, không đóng cửa sổ.}
+\end{enumerate}
+
+\begin{table}[!htbp]\centering\bangchu
+\caption{Ba bước của lần chạy đầu}\label{tab:babuoc}
+\begin{tabularx}{\linewidth}{L{1.3cm}YL{3.6cm}}
+\hdr \thd{Dòng} & \thd{Máy đang làm gì} & \thd{Thời gian} \\
+\texttt{[1/3]} & Tạo môi trường Python riêng cho GreenScan (thư mục \tep{.venv}) và tải khoảng 40 thư viện. Màn hình chạy rất nhiều chữ. & Phần lâu nhất, vài phút tuỳ mạng \\
+\rowcolor{boxbg}\texttt{[2/3]} & Dựng giao diện web bằng Node.js (thư mục \texttt{frontend\textbackslash dist}). & Dưới 1 phút \\
+\texttt{[3/3]} & Khởi động GreenScan và cài sẵn \textbf{phiên mẫu Hòa Phát} để bạn xem thử ngay. Trình duyệt tự mở. & Vài giây \\
+\end{tabularx}
+\end{table}
+
+Trên máy thử, cả ba bước xong sau \textbf{2 phút 46 giây}. Máy thử đã có sẵn thư viện tải từ trước nên nhanh hơn. Trên máy mới hoàn toàn, nên dự trù \textbf{5--15 phút} tuỳ mạng.
+
+\hinh{b5_con_1.png}{Lúc bắt đầu: dòng \texttt{[1/3]} báo đang tạo môi trường Python, chỉ làm lần đầu.\label{fig:con1}}
+
+\hinh{b5_con_2.png}{Bước \texttt{[2/3]}: dựng giao diện. Dòng ``4 vulnerabilities\ldots npm audit fix'' là thông báo cho lập trình viên, \textbf{không phải lỗi}, bỏ qua.\label{fig:con2}}
+
+\hinh{b5_con_3.png}{Bước \texttt{[3/3]}: GreenScan đã sẵn sàng. Hai khung đỏ là hai dòng cần thấy: ``GreenScan đang chạy tại http://localhost:8000/'' và ``[phiên mẫu] đã cài 1 phiên, 2 tài liệu vào kho''.\label{fig:con3}}
+
+\begin{hopy}{Chữ vàng, chữ ``warning'', ``deprecated'' có sao không?}
+Không sao. Trong lúc cài, màn hình hiện nhiều cảnh báo dành cho lập trình viên (ví dụ \emph{BuildBackendWarning}, \emph{The `fitz' API is deprecated}). Chỉ khi cửa sổ dừng lại với dòng \textbf{``Cai dat that bai''}, \textbf{``Khong tim thay Python''} hoặc \textbf{``Khong tim thay Node.js''} thì mới là lỗi; xem Bảng~\ref{tab:loi}.
+\end{hopy}
+
+\begin{luuy}{Giữ cửa sổ đen mở trong lúc dùng}
+Cửa sổ đen chính là ``máy chạy'' của GreenScan. Đóng nó là tắt GreenScan, trang web sẽ báo không kết nối được. Có thể thu nhỏ cửa sổ xuống thanh tác vụ.
+\end{luuy}
+
+\buoc{Màn hình đầu tiên}
+Khoảng hai giây sau dòng \texttt{[3/3]}, trình duyệt tự mở trang \url{http://localhost:8000}. Nếu không thấy, tự mở Chrome, Edge hoặc Cốc Cốc và gõ đúng địa chỉ đó.
+
+\begin{enumerate}
+\item Gõ tên của bạn vào ô \emph{Tên người xem xét}, bấm \nut{Bắt đầu phiên làm việc} (Hình~\ref{fig:batdau}). Tên này được ghi vào các quyết định soát của bạn. Không có mật khẩu.
+\item Lần đầu vào, GreenScan mở trang \textbf{Hướng dẫn cho người mới}: bảy bước, khoảng 10 phút, dùng bộ mẫu Hòa Phát. Bấm \nut{Mở bước 1 · Tải tài liệu} (Hình~\ref{fig:huongdan}) rồi làm tiếp theo Phần 3.
+\end{enumerate}
+
+\hinh{b6_bat_dau.png}{Màn hình bắt đầu: nhập tên, bấm ``Bắt đầu phiên làm việc''.\label{fig:batdau}}
+
+\hinh{b6_huong_dan.png}{Trang Hướng dẫn cho người mới, hiện tự động ở lần đầu. Có thể mở lại bất cứ lúc nào từ thanh bên trái.\label{fig:huongdan}}
+
+% ===================================================================== PHẦN 3
+\chapter{Dùng thử GreenScan trong 10 phút}
+
+Phần này đi theo đúng trang Hướng dẫn trong ứng dụng, với bộ mẫu Hòa Phát: báo cáo phát triển bền vững 2025 (cần kiểm) và báo cáo thường niên 2024 (đối chiếu). Thanh bên trái của GreenScan có bốn bước \textbf{Tải tài liệu → Soát theo hàng đợi → Sửa báo cáo → Giấy làm việc}.
+
+\section{Tải tài liệu và chạy phân tích}
+\begin{enumerate}
+\item Ở trang \textbf{Tải tài liệu}, bấm nút \nut{Mẫu HPG} (có hình ngôi sao) ở góc phải (Hình~\ref{fig:taitailieu}). Nút này nạp sẵn hai báo cáo của Hòa Phát, bạn không cần tìm tệp.
+\item Hai tệp hiện ra trong danh sách (Hình~\ref{fig:danapmau}). Mỗi tệp có vai trò: \textbf{Cần kiểm} là báo cáo có các tuyên bố cần soát, \textbf{Đối chiếu} là tài liệu dùng để tìm bằng chứng. Bộ mẫu đã chọn sẵn đúng vai trò.
+\item Bấm \nut{Bắt đầu phân tích} ở cuối trang. Máy đọc khoảng 260 trang và tìm bằng chứng; trên máy thử mất khoảng 2 phút (Hình~\ref{fig:dangphantich}). Xong thì tự chuyển sang hàng đợi soát.
+\end{enumerate}
+
+\hinh{c1_tai_tai_lieu.png}{Trang Tải tài liệu. Khung đỏ: nút ``Mẫu HPG'' nạp bộ mẫu. Với tài liệu của bạn, kéo thả tệp PDF vào ô có nét đứt ở giữa.\label{fig:taitailieu}}
+
+\hinh[0.9\linewidth]{c1_da_nap_mau.png}{Đã nạp bộ mẫu: báo cáo bền vững là ``Cần kiểm'', báo cáo thường niên là ``Đối chiếu''. Dòng chữ đỏ báo vài trang là ảnh quét mà máy không có OCR: đây là thông tin, không phải lỗi; các trang đó được bỏ qua. Bấm ``Bắt đầu phân tích'' (khung đỏ, cuối trang).\label{fig:danapmau}}
+
+\hinh{c1_dang_phan_tich.png}{Đang phân tích: các bước được đánh dấu lần lượt. Có thể để đó làm việc khác.\label{fig:dangphantich}}
+
+\begin{hopy}{Phân tích tài liệu của bạn}
+Làm như trên nhưng thay vì bấm ``Mẫu HPG'', kéo thả tệp vào ô nét đứt (PDF, DOCX, HTML, TXT), điền tên doanh nghiệp, đặt vai trò cho từng tệp: một tệp \textbf{Cần kiểm} và ít nhất một tệp \textbf{Đối chiếu}. Ở chế độ mặc định (ngoại tuyến), tài liệu không rời máy của bạn.
+\end{hopy}
+
+\section{Soát theo hàng đợi}
+GreenScan không bắt bạn đọc hết hơn 150 tuyên bố. Trang \textbf{Soát theo hàng đợi} (Hình~\ref{fig:hangdoi}) xếp sẵn những mục nên mở trước, mỗi mục kèm lý do. Các ô số ở trên cho biết có bao nhiêu mục cần soát, đã soát bao nhiêu, và tỷ lệ phủ của lượt soát. Bấm \nut{Mở} ở cuối một dòng để xem mục đó.
+
+\hinh{c2_hang_doi.png}{Hàng đợi soát của bộ mẫu: các mục nên mở trước, kèm nhãn lý do (``Ưu tiên mở trước'', ``Số liệu'', \ldots).\label{fig:hangdoi}}
+
+\section{Xem một tuyên bố và bằng chứng gốc}
+Trang chi tiết (Hình~\ref{fig:chitiet}) hiện câu tuyên bố trích từ báo cáo, kết luận của máy, và các tab: thuộc tính, bằng chứng, kiểm tra số liệu, pháp lý, rủi ro, xét duyệt. Ở tab \textbf{Bằng chứng}, bấm \nut{Mở nguồn} để xem đúng trang PDF gốc, đoạn trích được tô vàng (Hình~\ref{fig:nguongoc}). Đây là điều quan trọng nhất của GreenScan: mọi kết luận đều mở ra được tới trang gốc để người soát tự kiểm.
+
+\hinh{c3_chi_tiet.png}{Chi tiết một tuyên bố: câu trích ở trên, kết luận và các tab ở dưới.\label{fig:chitiet}}
+
+\hinh{c3_nguon_goc.png}{Xem nguồn gốc: ảnh trang PDF gốc, đoạn bằng chứng được tô sáng, bên phải là thông tin tài liệu.\label{fig:nguongoc}}
+
+\section{Ghi quyết định của người soát}
+Ở tab \textbf{Xét duyệt} (Hình~\ref{fig:xetduyet}), ghi lý do vào ô \emph{Lý do quyết định}, rồi chọn một nút: \nut{Xác nhận gợi ý của máy}, chọn kết luận khác, \nut{Chưa kết luận} hoặc \nut{Yêu cầu thêm bằng chứng}. Quyết định được lưu kèm tên bạn và thời điểm; mục đó chuyển sang tab \emph{Đã xem} của hàng đợi.
+
+\hinh{c4_xet_duyet.png}{Tab Xét duyệt: thanh điểm rủi ro ở trên, ô lý do và các nút quyết định ở dưới.\label{fig:xetduyet}}
+
+\section{Xuất giấy làm việc}
+Bấm \textbf{Giấy làm việc} ở thanh bên trái. Bấm \nut{Mở giấy làm việc} để xem bản tiếng Việt trong trình duyệt, hoặc \nut{In / Lưu PDF} để in hay lưu thành tệp PDF (trong hộp thoại in, chọn máy in \emph{Microsoft Print to PDF} hoặc \emph{Lưu dưới dạng PDF}) (Hình~\ref{fig:xuat}, \ref{fig:giaylamviec}).
+
+\hinh{c5_xuat.png}{Trang Giấy làm việc: hai nút ``Mở giấy làm việc'' và ``In / Lưu PDF''.\label{fig:xuat}}
+
+\hinh[0.85\linewidth]{c5_giay_lam_viec.png}{Đầu trang giấy làm việc: phạm vi tài liệu, mã sha256 của từng tệp, thủ tục đã thực hiện, hàng đợi soát và kết quả.\label{fig:giaylamviec}}
+
+\section{Mở lại phiên cũ}
+Mỗi lượt phân tích được lưu thành một \emph{phiên}. Trang \textbf{Lịch sử phân tích} ở thanh bên (Hình~\ref{fig:lichsu}) liệt kê các phiên; bấm \nut{Mở} để quay lại mà không phải chạy lại. Ngay từ lần đầu đã có sẵn phiên mẫu \emph{Hòa Phát (HPG) -- BC phát triển bền vững 2025 + BC thường niên 2024} với 156 tuyên bố, kể cả khi bạn chưa chạy phân tích nào.
+
+\hinh{c6_lich_su.png}{Lịch sử phân tích: phiên mẫu cài sẵn (dưới) và phiên vừa chạy (trên).\label{fig:lichsu}}
+
+\section{Tắt GreenScan và mở lại lần sau}
+\begin{itemize}
+\item \textbf{Tắt}: đóng cửa sổ đen (bấm dấu \textsf{X} ở góc), hoặc bấm vào cửa sổ đó rồi nhấn \phim{Ctrl}+\phim{C}.
+\item \textbf{Mở lại}: nhấp đúp tệp \emph{GreenScan} như Bước 5. Lần này không cài lại gì, chỉ hiện dòng \texttt{[3/3]}; trên máy thử, trang web sẵn sàng sau khoảng \textbf{20--30 giây} (Hình~\ref{fig:lansau}).
+\item \textbf{Dữ liệu của bạn} (phiên, tài liệu đã tải, quyết định soát) nằm trong thư mục \tep{.quantum} cạnh tệp \emph{GreenScan}. Xoá thư mục GreenScan-AI-main là mất hết; muốn giữ thì sao lưu thư mục \tep{.quantum}.
+\end{itemize}
+
+\hinh{c7_lan_sau.png}{Những lần sau: chỉ còn bước \texttt{[3/3]}, không cài lại.\label{fig:lansau}}
+
+\section{Cập nhật lên bản mới}
+Khi đội báo có bản mới trên GitHub: làm lại Bước 3 và 4, giải nén ra \textbf{thư mục mới}. Muốn giữ các phiên cũ thì chép thư mục \tep{.quantum} từ thư mục cũ sang thư mục mới, rồi nhấp đúp \emph{GreenScan} ở thư mục mới. Lần chạy đầu của bản mới lại có ba bước \texttt{[1/3]}--\texttt{[3/3]}, nhưng nhanh hơn vì Python và Node.js đã có sẵn.
+
+% ===================================================================== PHẦN 4
+\chapter{Khi gặp sự cố}
+
+Bảng~\ref{tab:loi} liệt kê các tình huống hay gặp, theo thứ tự xuất hiện trong lúc cài.
+
+\begingroup\bangchu
+\begin{xltabular}{\linewidth}{L{0.5cm}L{4.3cm}Y}
+\caption{Dấu hiệu và cách xử lý}\label{tab:loi}\\
+\hdr \thd{\#} & \thd{Bạn thấy gì} & \thd{Cách xử lý} \\
+\endfirsthead
+\hdr \thd{\#} & \thd{Bạn thấy gì} & \thd{Cách xử lý} \\
+\endhead
+1 & Cửa sổ đen báo \textbf{``Khong tim thay Python''}, hoặc \texttt{python --version} báo \emph{is not recognized} & Chưa cài Python, hoặc quên tick \emph{Add python.exe to PATH}. Mở lại bộ cài Python, chọn \nut{Uninstall}, rồi cài lại theo Bước 1 nhớ tick ô đó. Đóng mọi cửa sổ đen rồi nhấp đúp \emph{GreenScan} lại. \\
+\rowcolor{boxbg}2 & \textbf{``Khong tim thay Node.js''} & Làm Bước 2, rồi nhấp đúp \emph{GreenScan} lại. \\
+3 & \textbf{``Cai dat that bai''}, phía trên có chữ \emph{ConnectionError}, \emph{timed out} hoặc \emph{Read timed out} & Mạng chập chờn hoặc bị chặn trong lúc tải thư viện. Kiểm mạng (thử mạng khác nếu đang ở mạng công ty). Sau đó \textbf{xoá thư mục} \tep{.venv} trong GreenScan-AI-main, rồi nhấp đúp \emph{GreenScan} lại. Nếu không xoá, lần sau GreenScan tưởng đã cài xong và sẽ báo lỗi thiếu thư viện. \\
+\rowcolor{boxbg}4 & \textbf{``Cai dat that bai''} ở bước \texttt{[2/3]} (có chữ \emph{npm ERR!}) & Thường do mạng. Nhấp đúp lại; bước \texttt{[2/3]} tự làm lại. Vẫn lỗi thì xoá thư mục \texttt{frontend\textbackslash node\_modules} rồi thử lại. \\
+5 & Cửa sổ đen hiện lên rồi \textbf{tắt ngay} & Thường do đang chạy từ bên trong tệp ZIP chưa giải nén. Làm lại Bước 4 (Extract All). \\
+\rowcolor{boxbg}6 & \textbf{Hai cửa sổ đen GreenScan} cùng mở (nhấp đúp hai lần); trang web lúc thấy phiên này lúc không & Windows cho cả hai cùng chạy ở cổng 8000, trang web nối lúc vào bản này lúc vào bản kia. Đóng hết các cửa sổ đen GreenScan, rồi nhấp đúp lại \textbf{một} lần. \\
+7 & Cửa sổ báo sẵn sàng nhưng \textbf{trình duyệt không tự mở} & Tự mở trình duyệt, gõ \url{http://localhost:8000}. \\
+\rowcolor{boxbg}8 & Trang web \textbf{trắng} hoặc giao diện cũ sau khi cập nhật & Nhấn \phim{Ctrl}+\phim{F5} để tải lại trang. \\
+9 & Trang web báo \textbf{không kết nối được} (\emph{This site can't be reached}) & Cửa sổ đen đã bị đóng. Nhấp đúp \emph{GreenScan} lại. \\
+\rowcolor{boxbg}10 & Khung xanh \textbf{``Windows protected your PC''} & Bấm \nut{More info}, rồi \nut{Run anyway}. \\
+11 & Phần mềm diệt virus báo hoặc chặn & Cho phép (thêm ngoại lệ) thư mục GreenScan-AI-main. Mã nguồn công khai trên GitHub. \\
+\rowcolor{boxbg}12 & Khi tải tài liệu, dòng đỏ báo \textbf{trang là ảnh quét, máy không có OCR} & Không phải lỗi. GreenScan bỏ qua các trang ảnh đó. Cần đọc cả trang scan thì phải cài thêm Tesseract OCR có gói tiếng Việt (nhờ người hỗ trợ kỹ thuật; xem mục OCR trong tệp \tep{.env.example}). \\
+13 & Máy chậm hoặc đứng khi phân tích & Đóng bớt ứng dụng khác. Một lượt phân tích dùng tối đa khoảng 1,3 GB RAM; máy 4 GB RAM sẽ rất chậm. \\
+\end{xltabular}
+\endgroup
+
+\begin{hopy}{Khi cần nhờ người khác giúp}
+Chụp màn hình \textbf{phần cuối cửa sổ đen} (phím \phim{Windows}+\phim{Shift}+\phim{S}, kéo chọn vùng, rồi dán vào tin nhắn) và gửi cho người hỗ trợ, kèm câu ``đang ở bước mấy''. Cửa sổ đen thường ghi rõ nguyên nhân ở mấy dòng cuối.
+\end{hopy}
+
+% ===================================================================== PHẦN 5
+\chapter{Đóng gói để khách hàng tải về và dùng ngay}
+
+Phần này dành cho người giao sản phẩm. Cách A ở Phần 2 hợp với thành viên đội, nhưng bắt khách hàng cài Python và Node.js là quá nhiều. Có hai cách để khách chỉ việc tải về rồi dùng, hoặc chỉ việc mở link.
+
+\section{So sánh ba cách giao sản phẩm}
+\begin{table}[!htbp]\centering\bangchu
+\caption{Ba cách giao GreenScan cho khách hàng}\label{tab:giao}
+\begin{tabularx}{\linewidth}{L{2.7cm}YYY}
+\hdr \thd{} & \thd{Gói chạy ngay cho Windows} & \thd{Link web (cloud hoặc VPS)} & \thd{Ảnh Docker} \\
+Khách phải làm & Tải 1 tệp ZIP, giải nén, nhấp đúp & Mở link, nhập mật khẩu & Bộ phận IT của khách chạy một lệnh \\
+\rowcolor{boxbg}Tài liệu của khách & \textbf{Không rời máy khách} & Gửi lên máy chủ của đội & Ở máy chủ của khách \\
+Chi phí của đội & Không (GitHub Releases miễn phí) & 0đ (Hugging Face) tới vài trăm nghìn đồng/tháng (VPS) & Không \\
+\rowcolor{boxbg}Hợp với & Khách có tài liệu mật: ngân hàng, công ty kiểm toán & Giám khảo, khách dùng thử nhanh & Khách lớn có đội IT \\
+Tình trạng ngày 10/11/2026 & \textbf{Đã đóng gói và chạy thử} (mục~\ref{sec:goi}) & Hướng dẫn có sẵn trong \tep{deploy/}; lần soạn này chưa dựng thử ảnh Docker & Dùng chung Dockerfile với link web \\
+\end{tabularx}
+\end{table}
+
+\begin{hopy}{Khuyến nghị}
+Làm \textbf{cả hai} cách đầu: link web để giám khảo và khách mở thử ngay, gói chạy ngay để khách có tài liệu mật dùng lâu dài trên máy của họ. Hai cách dùng chung một mã nguồn, không phải viết thêm gì.
+\end{hopy}
+
+\section{Gói chạy ngay cho Windows}\label{sec:goi}
+Gói là một tệp ZIP chứa sẵn mọi thứ: một bản Python thu gọn (bản \emph{embeddable} chính thức của python.org), các thư viện đã cài, giao diện đã dựng, cấu hình, dữ liệu pháp lý và phiên mẫu Hòa Phát. Khách \textbf{không cần cài Python, Node.js hay Git}, không cần mạng sau khi tải.
+
+\subsection{Tạo gói (trên máy của đội, một lệnh)}
+Cần một máy Windows có Python 3.14 và Node.js (máy đã làm xong Phần 2 là đủ). Mở cửa sổ dòng lệnh trong thư mục mã nguồn và chạy:
+\begin{lenh}
+py -3.14 tools/build_windows_portable.py
+\end{lenh}
+Công cụ tự tải bản Python thu gọn, cài thư viện, chép mã nguồn, dữ liệu, giao diện, kiểm thử rằng gói nạp được ứng dụng, rồi nén thành \tep{build/portable/GreenScan-Windows-x64.zip}. Gói chỉ chứa những tệp có trên GitHub (cộng giao diện đã dựng), nên dữ liệu riêng chưa đưa lên git trên máy đóng gói, tệp \tep{.env} hay khoá API không bao giờ lọt vào gói. Trên máy thử, cả quá trình mất khoảng 6 phút (thư viện đã có trong bộ đệm), phần lớn là bước nén.
+
+\begin{luuy}{Thử trên một máy khác trước khi gửi khách}
+Gói đã chạy trọn một lượt phân tích trên máy thử (Bảng~\ref{tab:goi}), nhưng máy đó vốn đã cài Python. Bản Python trong gói không dùng tới Python của máy, nên kết quả này đáng tin. Dù vậy, trước lần phát hành đầu, nên mượn một máy Windows chưa từng cài Python hay Node.js, làm đúng ba bước ở mục~\ref{sec:khach} và mở bộ mẫu Hòa Phát.
+\end{luuy}
+
+\begin{table}[!htbp]\centering\bangchu
+\caption{Gói chạy ngay, đo ngày 10/11/2026}\label{tab:goi}
+\begin{tabularx}{\linewidth}{L{5cm}Y}
+\hdr \thd{Chỉ số} & \thd{Giá trị} \\
+Tên tệp & \tep{GreenScan-Windows-x64.zip} \\
+\rowcolor{boxbg}Dung lượng & \GOISIZE \\
+Bên trong & Python 3.14.10 thu gọn và thư viện; mã nguồn \tep{src/}; \tep{configs/}; \tep{data/} (trừ kho crawl dùng cho huấn luyện); phiên mẫu \tep{deploy/seed}; giao diện \tep{frontend/dist}; tệp chạy \tep{GreenScan.bat}; hướng dẫn ngắn \tep{HUONG_DAN.txt} \\
+\rowcolor{boxbg}Chạy thử & \GOITEST \\
+Không có trong gói & OCR cho trang scan (Tesseract); mô hình chạy cục bộ trên GPU \\
+\end{tabularx}
+\end{table}
+
+\subsection{Đưa gói lên GitHub Releases}
+GitHub Releases cho tải tệp tới 2 GB, miễn phí với kho công khai. Làm trên trang web, không cần dòng lệnh:
+\begin{enumerate}
+\item Đăng nhập GitHub bằng tài khoản chủ kho, mở \url{https://github.com/nguyennhan2006/GreenScan-AI}.
+\item Ở cột bên phải, bấm \nut{Releases}, rồi \nut{Draft a new release} (có giao diện ghi \nut{Create a new release}).
+\item Bấm \nut{Choose a tag}, gõ số phiên bản, ví dụ \texttt{v1.0.0}, chọn \emph{Create new tag}. Ô \emph{Release title} điền ``GreenScan 1.0.0 cho Windows''. Ô mô tả dán ba bước dùng ở mục~\ref{sec:khach}.
+\item Kéo tệp \tep{GreenScan-Windows-x64.zip} thả vào ô \emph{Attach binaries by dropping them here}. Chờ thanh tải lên chạy hết.
+\item Bấm \nut{Publish release}.
+\end{enumerate}
+Từ đó, đường link sau luôn trỏ tới gói của bản phát hành mới nhất, có thể in lên tài liệu giới thiệu hay gửi qua email:
+\begin{lenh}
+https://github.com/nguyennhan2006/GreenScan-AI/releases/latest/
+  download/GreenScan-Windows-x64.zip
+\end{lenh}
+(viết liền một dòng, không có dấu cách ở chỗ xuống dòng)
+Lần sau có bản mới: chạy lại lệnh tạo gói, tạo release mới với tag lớn hơn (\texttt{v1.0.1}\ldots), đính kèm tệp cùng tên. Đường link trên tự trỏ sang bản mới.
+
+\subsection{Khách hàng dùng như thế nào}\label{sec:khach}
+\begin{hopy}{Ba bước gửi cho khách}
+\begin{enumerate}
+\item Tải \tep{GreenScan-Windows-x64.zip} từ đường link.
+\item Bấm chuột phải vào tệp, chọn \emph{Extract All\ldots} (\emph{Giải nén tất cả\ldots}), giải nén vào Documents hoặc Desktop.
+\item Mở thư mục \textbf{GreenScan}, nhấp đúp \textbf{GreenScan}. Nếu Windows hiện ``Windows protected your PC'', bấm \emph{More info} rồi \emph{Run anyway}. Trình duyệt tự mở GreenScan sau khoảng 10--30 giây. Giữ cửa sổ đen mở trong khi dùng.
+\end{enumerate}
+\end{hopy}
+Cửa sổ đen của gói chỉ có một bước, không cài gì (Hình~\ref{fig:goicon}). Trang đầu tiên khách thấy giống hệt Hình~\ref{fig:batdau}, và các bước dùng giống Phần 3.
+
+\hinh{d1_goi_console.png}{Cửa sổ đen khi khách nhấp đúp \texttt{GreenScan.bat} của gói chạy ngay: không có bước cài đặt, GreenScan khởi động ngay.\label{fig:goicon}}
+ Mọi tài liệu khách tải lên nằm trong thư mục \texttt{GreenScan\textbackslash .quantum} trên máy khách.
+
+\subsection{Giới hạn hiện tại và bước tiếp theo}
+\begin{itemize}
+\item \textbf{Chỉ chạy trên Windows 64-bit.} Khách dùng macOS thì đưa link web, hoặc dùng cách A với \tep{start.sh}.
+\item \textbf{Chưa có chữ ký số}, nên Windows hiện cảnh báo ``Windows protected your PC''. Muốn bỏ cảnh báo này cần mua chứng thư ký mã (code signing certificate) cho tổ chức và ký tệp chạy.
+\item \textbf{Chưa có bộ cài kiểu Setup.exe} (biểu tượng trên Desktop, gỡ trong \emph{Settings → Apps}). Có thể làm sau bằng Inno Setup (miễn phí) bọc chính thư mục GreenScan của gói này.
+\item \textbf{Không có OCR} cho trang scan (xem dòng 12 của Bảng~\ref{tab:loi}).
+\end{itemize}
+
+\section{Link web trên VPS hoặc cloud}\label{sec:vps}
+Cách này khách không cài gì: đội chạy GreenScan trên một máy chủ và gửi link kèm mật khẩu. Tài liệu đầy đủ, gồm bảng kiểm trước khi gửi link, nằm ở \tep{deploy/HUONG_DAN_TRIEN_KHAI.md} trong mã nguồn. Tóm tắt:
+
+\subsection{Cách nhanh nhất: Hugging Face Spaces (miễn phí)}
+Tạo một Space loại \emph{Docker}, đẩy mã nguồn lên, đặt mật khẩu demo trong mục \emph{Settings → Variables and secrets} (biến \texttt{QUANTUM\_DEMO\_USERS}). Gói miễn phí có 2 vCPU và 16 GB RAM, đủ cho chế độ ngoại tuyến. Nhược điểm: Space \textbf{ngủ khi không ai truy cập} và mất các phiên khách tự chạy mỗi lần khởi động lại (phiên mẫu được cài lại tự động). Hợp cho buổi demo, không hợp để khách dùng lâu dài.
+
+\subsection{Ổn định hơn: thuê VPS}
+\begin{enumerate}
+\item Thuê một VPS Ubuntu 22.04 hoặc 24.04 ở nhà cung cấp trong nước hoặc quốc tế. Cấu hình gợi ý: 2 vCPU, \textbf{4 GB RAM} (8 GB nếu nhiều người dùng cùng lúc), 40 GB ổ đĩa. Nhà cung cấp gửi địa chỉ IP và mật khẩu đăng nhập.
+\item Đăng nhập VPS (từ Windows: mở cửa sổ dòng lệnh, gõ \texttt{ssh root@<địa chỉ IP>}), rồi chạy lần lượt:
+\begin{lenh}
+curl -fsSL https://get.docker.com | sh
+git clone https://github.com/nguyennhan2006/GreenScan-AI.git
+cd GreenScan-AI
+docker build -t greenscan .
+docker run -d --restart unless-stopped -p 8000:8000 \
+  -e QUANTUM_DEMO_USERS='khach:<mat-khau-manh>' \
+  -v greenscan-data:/app/.quantum --name greenscan greenscan
+\end{lenh}
+Dòng đầu cài Docker. Lệnh \texttt{docker build} dựng ảnh có cả giao diện (lần đầu khoảng 10 phút). Lệnh \texttt{docker run} chạy GreenScan nền, tự bật lại khi máy chủ khởi động lại, đặt mật khẩu cho tài khoản \texttt{khach}, và giữ dữ liệu trong ổ \texttt{greenscan-data}.
+\item Mở \texttt{http://<địa chỉ IP>:8000}. Trình duyệt hỏi tên và mật khẩu; nhập đúng thì vào giao diện tiếng Việt.
+\item Nên có tên miền và HTTPS: trỏ tên miền về IP của VPS, cài Caddy, và ghi vào tệp \tep{/etc/caddy/Caddyfile}:
+\begin{lenh}
+greenscan.ten-mien-cua-doi.vn {
+    reverse_proxy localhost:8000
+}
+\end{lenh}
+Caddy tự xin chứng chỉ HTTPS miễn phí. Khi đó đổi \texttt{-p 8000:8000} thành \texttt{-p 127.0.0.1:8000:8000} để chỉ mở cổng qua HTTPS.
+\end{enumerate}
+
+\begin{luuy}{Trước khi gửi link cho khách}
+\begin{itemize}
+\item Mở \texttt{<link>/health}: phải trả \texttt{200} mà không hỏi mật khẩu. Mở \texttt{<link>/}: phải hỏi mật khẩu, nhập sai bị từ chối.
+\item \textbf{Không} đưa tệp \tep{.env} hay khoá API lên máy chủ. Chế độ mặc định là ngoại tuyến, không cần khoá nào.
+\item Nói rõ với khách: ở cách này, tài liệu họ tải lên nằm trên máy chủ của đội. Tài liệu mật thì dùng gói chạy ngay.
+\end{itemize}
+\end{luuy}
+
+\section{Ảnh Docker cho bộ phận IT của khách}
+Khách có đội IT có thể chạy chính các lệnh \texttt{docker build} và \texttt{docker run} ở trên trên máy chủ nội bộ của họ, tài liệu không ra khỏi mạng của khách. Muốn họ khỏi phải dựng ảnh, đội có thể đẩy sẵn ảnh lên GitHub Container Registry (\texttt{ghcr.io}); việc này chưa làm.
+
+% ===================================================================== PHỤ LỤC
+\appendix
+\chapter{Nhật ký chạy thử ngày 10/11/2026}
+Các số trong tài liệu đo trên một máy, một lần, theo đúng các bước của Phần 2 và 3: tải ZIP mới từ GitHub, giải nén vào một thư mục chưa có gì (tên có dấu ``Tải về''), nhấp đúp \emph{GreenScan}. Ảnh màn hình chụp trong chính lượt đó.
+
+\begin{table}[!htbp]\centering\bangchu
+\caption{Môi trường và số đo}\label{tab:nhatky}
+\begin{tabularx}{\linewidth}{L{6cm}Y}
+\hdr \thd{Mục} & \thd{Giá trị} \\
+Máy & Windows 11 Home 64-bit, laptop chip i7 thế hệ 13, không GPU rời \\
+\rowcolor{boxbg}Python, Node.js trên máy & Python 3.14.0, Node.js 24.11.0 \\
+Bản mã nguồn & GitHub, nhánh \texttt{main}, ngày 10/11/2026 \\
+\rowcolor{boxbg}Tệp ZIP tải từ GitHub & 255 MB; 1.916 tệp; 423 MB sau giải nén \\
+Thời gian tải ZIP & 3 phút 41 giây \\
+\rowcolor{boxbg}Lần chạy đầu (\texttt{[1/3]} tới sẵn sàng) & 166 giây; máy đã có bộ đệm thư viện từ trước nên nhanh hơn máy mới \\
+Những lần sau & Cổng 8000 mở sau 21 giây, trang sẵn sàng khoảng 30 giây \\
+\rowcolor{boxbg}Kiểm giao diện & 73 màn hình chụp tự động trên bản cài mới, gồm một lượt phân tích bộ mẫu Hòa Phát đầy đủ; không bước nào lỗi \\
+Phiên mẫu cài sẵn & 1 phiên Hòa Phát, 156 tuyên bố, 2 tài liệu \\
+\rowcolor{boxbg}Gói chạy ngay: dung lượng & 313 MB nén, 581 MB giải nén; giải nén mất 10 giây \\
+Gói chạy ngay: khởi động & Lần đầu 65 giây, lần sau 30 giây \\
+\rowcolor{boxbg}Gói chạy ngay: phân tích bộ mẫu & Chạy trọn qua giao diện; 156 tuyên bố, kết quả trùng phiên mẫu \\
+\end{tabularx}
+\end{table}
+
+\begin{hopy}{Hai chỗ đã sửa trong lúc chạy thử}
+\begin{itemize}
+\item Trang Hướng dẫn trong ứng dụng bảo bấm nút nạp bộ mẫu, nhưng trên bản tải từ GitHub nút này không hiện, vì hai PDF của Hòa Phát không nằm trong \tep{data/}. Đã sửa \tep{src/quantum_gw/intake.py} để lấy hai PDF đó từ phiên mẫu \tep{deploy/seed}, nơi chúng vốn có sẵn.
+\item Thêm công cụ \tep{tools/build_windows_portable.py} để tạo gói chạy ngay ở mục~\ref{sec:goi}.
+\end{itemize}
+\end{hopy}
+
+\chapter{Giải thích thuật ngữ}
+\begin{table}[!htbp]\centering\bangchu
+\begin{tabularx}{\linewidth}{L{3.6cm}Y}
+\hdr \thd{Từ} & \thd{Nghĩa trong tài liệu này} \\
+GitHub & Trang web lưu mã nguồn. Kho GreenScan để công khai, ai cũng tải được. \\
+\rowcolor{boxbg}ZIP & Tệp nén chứa nhiều tệp khác. Phải giải nén trước khi dùng. \\
+Python & Ngôn ngữ lập trình mà phần xử lý của GreenScan dùng. Cài một lần. \\
+\rowcolor{boxbg}Node.js & Công cụ dựng giao diện web. Chỉ dùng một lần trong lần chạy đầu. \\
+PATH & Danh sách nơi Windows tìm chương trình. Tick ``Add python.exe to PATH'' để Windows tìm thấy Python. \\
+\rowcolor{boxbg}Cửa sổ đen & Cửa sổ dòng lệnh (Command Prompt). GreenScan chạy trong đó. \\
+localhost:8000 & Địa chỉ của trang web chạy ngay trên máy bạn. Không đi qua Internet. \\
+\rowcolor{boxbg}Phiên & Một lượt phân tích một bộ tài liệu, được lưu lại để mở sau. \\
+Cần kiểm, Đối chiếu & Vai trò của tài liệu: báo cáo chứa tuyên bố cần soát, và tài liệu dùng làm bằng chứng. \\
+\rowcolor{boxbg}OCR & Đọc chữ từ ảnh chụp hoặc bản scan. Không có sẵn trong bản cài mặc định. \\
+VPS & Máy chủ thuê theo tháng, chạy suốt ngày đêm, có địa chỉ trên Internet. \\
+\rowcolor{boxbg}Docker & Cách đóng gói phần mềm để chạy giống hệt nhau trên mọi máy chủ. \\
+GitHub Releases & Mục trên GitHub để phát hành tệp cho người dùng tải về. \\
+\end{tabularx}
+\end{table}
+
+\end{document}
