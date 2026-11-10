@@ -32,6 +32,11 @@ if not exist ".env" if exist ".env.example" copy ".env.example" ".env" >nul
 
 echo [3/3] Khoi dong GreenScan tai http://localhost:8000 ...
 ".venv\Scripts\python.exe" -m quantum_gw.cli app
+if errorlevel 1 (
+  echo.
+  echo GreenScan da dung. Neu co loi o tren, chup man hinh cua so nay gui nguoi ho tro.
+  pause
+)
 goto end
 
 :nopython

@@ -3,6 +3,7 @@
 ## Bắt đầu nhanh (GreenScan AI)
 
 **Windows:** nhấp đúp `GreenScan.bat`. Lần đầu tự cài (cần Python 3.11+ và Node.js 20+, mất vài phút), sau đó trình duyệt mở `http://localhost:8000`.
+**Người không chuyên IT:** làm theo [hướng dẫn có ảnh chụp từng bước](docs/06-operations/HUONG_DAN_CAI_DAT/main.pdf) (cài Python, Node.js, tải ZIP, chạy, dùng thử, xử lý sự cố). **Giao cho khách hàng:** `py -3.14 tools/build_windows_portable.py` tạo gói ZIP chạy ngay trên Windows, không cần cài Python hay Node.js (Phần 5 của hướng dẫn).
 **macOS / Linux:** `sh start.sh`. **Docker:** `docker compose up --build` rồi mở `http://localhost:8000` (image đa tầng có cả giao diện — viết 06/10, chưa build thử).
 
 Quy trình trên giao diện: **① Tải tài liệu** (báo cáo cần kiểm + tài liệu đối chiếu) → **② Soát theo hàng đợi** (các mục nên mở trước, kèm lý do) → **③ Giấy làm việc** (tiếng Việt, in hoặc lưu PDF).
