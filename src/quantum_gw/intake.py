@@ -222,8 +222,22 @@ def fetch_url(url: str, opener=None) -> tuple[bytes, str]:
 
 SAMPLE_SETS = [
     {
+        "id": "minhhoa",
+        "label": "Công ty Minh Họa: báo cáo bền vững 2024 (bộ mẫu nhỏ)",
+        "title": "Công ty Minh Họa (bộ mẫu nhỏ)",
+        "note": "3 tệp ngắn, 5 tuyên bố. Xong trong vài giây.",
+        "company": "",
+        "files": [
+            {"path": "data/sample/company_esg_2024.txt", "role": "claim_source", "source_type": "internal"},
+            {"path": "data/sample/financial_2024.txt", "role": "evidence", "source_type": "financial"},
+            {"path": "data/sample/legal_notice_2024.txt", "role": "evidence", "source_type": "legal"},
+        ],
+    },
+    {
         "id": "hpg",
         "label": "Hòa Phát (HPG): BCPTBV 2025 + BCTN 2024",
+        "title": "Hòa Phát (báo cáo thật)",
+        "note": "2 báo cáo đã công bố, 264 trang. Khoảng 3 phút.",
         "company": "Hòa Phát",
         "files": [
             {"path": "data/real_cases/sources/originals/HPG_Sustainability_Report_2025.pdf",

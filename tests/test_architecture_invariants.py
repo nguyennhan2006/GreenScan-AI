@@ -263,6 +263,25 @@ def test_prohibited_shortcuts_are_absent_from_the_source():
         assert not offenders, f"{why}; found in {offenders}"
 
 
+def test_background_knowledge_is_never_evidence(settings):
+    """D-2026-11-14-02: the domain knowledge base explains; it never feeds verification, retrieval or the agents.
+
+    Structural: only mcp_tools.py (the domain_lookup tool) may import quantum_gw.knowledge or name data/domain_kb.
+    Behavioural: a pipeline run carries no trace of the base.
+    """
+    kb_dir = SRC / "knowledge"
+    allowed = {SRC / "mcp_tools.py"}
+    pattern = re.compile(r"quantum_gw\.knowledge|from \.+knowledge|domain_kb")
+    offenders = [str(p) for p, text in _sources().items()
+                 if kb_dir not in p.parents and p not in allowed and pattern.search(text)]
+    assert not offenders, f"only the domain_lookup tool may read the knowledge base; found in {offenders}"
+
+    result = _run(settings, "Năm 2024, phát thải khí nhà kính Scope 1 của Tập đoàn giảm 30% so với năm gốc 2019.",
+                  "Kiểm kê: phát thải Scope 1 năm 2024 là 70.000 tấn CO2e, năm 2019 là 100.000 tấn CO2e.")
+    dumped = result.model_dump_json()
+    assert "tri_thuc_nen" not in dumped and "domain_kb" not in dumped
+
+
 def _status(result) -> VerificationStatus:
     assert result.verifications, "no claim was extracted"
     return result.verifications[0].status

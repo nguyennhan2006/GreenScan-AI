@@ -127,7 +127,10 @@ _UNITS = [
     (r"co2\s*(?:e|eq)?\s*\)?\s*tan", "tco2e"),  # GRI table header order: "(CO2e) Tấn 22.540.603"
     (r"co2\s*(?:e|eq)?", "tco2e"),
     (r"gwh", "gwh"), (r"mwh", "mwh"), (r"kwh", "kwh"), (r"gj", "gj"), (r"mj", "mj"), (r"tj", "tj"),
-    (r"m3|m³|met khoi", "m3"), (r"tan|tonnes?|tons?", "tan"), (r"kg", "kg"), (r"ha", "ha"),
+    (r"mwp", "mwp"), (r"kwp", "kwp"), (r"mw", "mw"), (r"kw", "kw"),
+    (r"m3|m³|met khoi", "m3"), (r"km2|km²", "km2"), (r"m2|m²|met vuong", "m2"),
+    (r"tan|tonnes?|tons?", "tan"), (r"kg", "kg"), (r"ha|hecta|hectares?", "ha"),
+    (r"cay", "cay"),
     (r"vnd|dong|usd|eur", "currency"), (r"%|phan tram|percent", "%"),
 ]
 _UNIT_RE = re.compile(

@@ -1,0 +1,1 @@
+{"train_rows": 2043, "removed_overlap": 12, "models": {"e5-small": {"seconds": 157}, "e5-base": {"seconds": 315}}}

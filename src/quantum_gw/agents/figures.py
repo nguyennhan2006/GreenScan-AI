@@ -36,6 +36,7 @@ import yaml
 
 from quantum_gw.domain.models import DisclosedFigure, EvidenceChunk, FigureCheck
 from quantum_gw.storage.audit import AuditLogger
+from quantum_gw.utils import vn_format as vn
 from quantum_gw.utils.text import (
     YEAR_RE,
     emission_scopes,
@@ -103,6 +104,8 @@ def is_total_label(label: str) -> bool:
     if _TOTAL_RE.match(text):
         return True
     return text == normalize_for_match(text) and bool(_TOTAL_ASCII_RE.match(text))
+
+_SPLIT_TERMS = {"phát thải", "khí thải", "chất thải", "nước thải", "tiêu thụ", "năng lượng", "tái tạo", "nhà kính"}
 
 # A label sits immediately before its figure on the same line of the table.
 # Keeping the label short is what stops a whole sentence being read as one.
@@ -178,7 +181,10 @@ class DisclosedFigureAgent:
             page_unit = _page_unit(page_chunks)
             page_period = _page_period(page_chunks)
             for chunk in page_chunks:
-                figures.extend(self._from_chunk(chunk, page, page_unit, page_period))
+                if (chunk.metadata or {}).get("table"):
+                    figures.extend(self._from_table(chunk, page))
+                else:
+                    figures.extend(self._from_chunk(chunk, page, page_unit, page_period))
 
         deduped = _dedupe(figures)
         self.audit.write(
@@ -244,6 +250,48 @@ class DisclosedFigureAgent:
                 )
         return figures
 
+    def _from_table(self, chunk: EvidenceChunk, page: int | None) -> list[DisclosedFigure]:
+        """Every cell of a laid-out table that has a value and a unit (page-regions-v1, parsers/layout.py).
+
+        The row label, the column header, the unit and the period were read from the table's own geometry,
+        so a cell needs no pattern to be understood: "Số tiền còn lại chưa được phân bổ | Giá trị (tỷ VND): 51"
+        is 51 billion VND, and "7,085" under "(Nghìn tấn)" is 7,085,000 t.
+        """
+        table = chunk.metadata["table"]
+        caption = table.get("caption") or ""
+        figures: list[DisclosedFigure] = []
+        for row_index, row in enumerate(table.get("rows") or []):
+            row_label = normalize_text(row.get("label") or "")
+            raw = row_label + " | " + " | ".join(c.get("text") or "" for c in row.get("cells") or [])
+            for cell in row.get("cells") or []:
+                value, unit = cell.get("value"), cell.get("unit")
+                if value is None or not unit:
+                    continue
+                header = normalize_text(cell.get("header") or "")
+                label = row_label or header or caption
+                if header and row_label and header.lower() not in row_label.lower() and len(header) <= 60:
+                    label = f"{row_label} · {header}"
+                label = label[:160]
+                figures.append(
+                    DisclosedFigure(
+                        figure_id=stable_id(chunk.chunk_id, str(row_index), label, str(value), unit),
+                        label=label,
+                        value=value,
+                        unit=unit,
+                        period=cell.get("period") or table.get("period"),
+                        scopes=sorted(emission_scopes(row_label)),
+                        is_total=is_total_label(row_label),
+                        metric=(self._metric_of(row_label) or self._metric_of(header) or self._metric_of(caption)
+                                or _UNIT_METRIC.get(unit.lower())),
+                        source_doc_id=chunk.doc_id,
+                        source_chunk_id=chunk.chunk_id,
+                        source_name=chunk.source_name,
+                        source_page=page,
+                        raw_line=raw[:200],
+                    )
+                )
+        return figures
+
     def _trim_label(self, raw: str) -> str | None:
         """The row label is the tail of the text before the figure, not the whole line.
 
@@ -261,6 +309,10 @@ class DisclosedFigureAgent:
                 continue  # the label would start inside "cả nước" and read as water
             candidate = " ".join(words[-size:]).strip(" .·-–—|:")
             if candidate and self._is_indicator_label(candidate):
+                # The seven-word tail can start in the middle of a two-word term: "(phát) thải Scope 1 và
+                # Scope 2 là". Take the head word back so the label reads as written.
+                if size < len(words) and f"{words[-size - 1]} {words[-size]}".lower() in _SPLIT_TERMS:
+                    candidate = f"{words[-size - 1]} {candidate}"
                 return candidate
         return None
 
@@ -318,7 +370,7 @@ def cross_foot(figures: list[DisclosedFigure]) -> list[FigureCheck]:
         summed = sum(f.value for f in chosen)
         difference = summed - total.value
         tolerance = _rounding_tolerance(total.value, len(chosen))
-        calculation = " + ".join(f"{f.value:,.0f}" for f in chosen) + f" = {summed:,.0f}"
+        calculation = " + ".join(vn.number(f.value) for f in chosen) + f" = {vn.number(summed)}"
         consistent = abs(difference) <= tolerance
         checks.append(
             FigureCheck(
@@ -326,16 +378,16 @@ def cross_foot(figures: list[DisclosedFigure]) -> list[FigureCheck]:
                 kind="cross_foot",
                 status="CONSISTENT" if consistent else "INCONSISTENT",
                 figure_ids=[f.figure_id for f in chosen] + [total.figure_id],
-                calculation=f"{calculation}; công bố {total.value:,.0f} {unit}",
+                calculation=f"{calculation}; công bố {vn.number(total.value)} {vn.unit(unit)}",
                 difference=round(difference, 4),
                 tolerance=tolerance,
                 note=(
                     f"Cộng lại các thành phần (phạm vi {'+'.join(str(s) for s in sorted(covered))}) "
-                    f"trên trang {page}: "
+                    + (f"trên trang {page}: " if page is not None else ": ")
                     + (
-                        f"khớp với số công bố trong sai số làm tròn ({difference:+,.0f} {unit})."
+                        f"khớp với số công bố trong sai số làm tròn ({vn.signed(round(difference))} {vn.unit(unit)})."
                         if consistent
-                        else f"lệch {difference:+,.0f} {unit} so với số công bố — cần người xem."
+                        else f"lệch {vn.signed(round(difference))} {vn.unit(unit)} so với số công bố — cần người xem."
                     )
                 ),
             )
@@ -369,7 +421,7 @@ def corroborate(figures: list[DisclosedFigure]) -> list[FigureCheck]:
                 kind="cross_document",
                 status="CONSISTENT" if agrees else "INCONSISTENT",
                 figure_ids=[f.figure_id for f in group],
-                calculation=f"{low:,.0f} vs {high:,.0f} {unit}",
+                calculation=f"{vn.number(low)} so với {vn.number(high)} {vn.unit(unit)}",
                 difference=round(high - low, 4),
                 tolerance=tolerance,
                 note=(
@@ -379,6 +431,200 @@ def corroborate(figures: list[DisclosedFigure]) -> list[FigureCheck]:
                 ),
             )
         )
+    return checks
+
+
+_SHARE_RE = re.compile(r"tỷ trọng|tỉ trọng|cơ cấu|chiếm|phân bổ")
+
+# A table row label this long is a paragraph that a ruled frame happened to enclose, not a row label.
+_MAX_TABLE_LABEL = 120
+
+
+def keep_material(figures: list[DisclosedFigure], checks: list[FigureCheck]) -> list[DisclosedFigure]:
+    """Table figures a reviewer should see: those that name an indicator, or that a procedure used.
+
+    A laid-out annual report has hundreds of cells in units (a financial statement, a list of subsidiaries
+    with their charter capital); without this the queue filled with "PHẦN 7 BCTC HỢP NHẤT … Marcegaglia".
+    Figures read from prose keep the rules they always had.
+    """
+    used = {fid for check in checks for fid in check.figure_ids}
+    kept = []
+    for f in figures:
+        from_table = " | " in (f.raw_line or "")
+        if from_table and f.figure_id not in used:
+            if f.metric is None or len(f.label.split(" · ")[0]) > _MAX_TABLE_LABEL:
+                continue
+        kept.append(f)
+    return kept
+
+
+def table_checks(figures: list[DisclosedFigure], done: list[FigureCheck] | None = None) -> list[FigureCheck]:
+    """Arithmetic a reader does on a laid-out table without being told (page-regions-v1).
+
+        table_sum   one row of a table equals the sum of the others in the same unit
+                    (Hòa Phát p.50: 6.982 + 103 = 7.085 nghìn tấn)
+        page_sum    the rows of one table add up to a figure printed in another table of the page
+                    (Techcombank p.8: 399 + 51 = 450 tỷ VND, allocated + unallocated = issued)
+        ratio       a printed percentage equals its row's value over a figure of the same unit on the page
+                    (399 / 450 = 88,7 % against 89 % printed; Hòa Phát p.39: 23.369.500 / 23.474.480 = 99,55 %)
+
+    Agreement is reported. A disagreement is reported only against the table's own total row, the one
+    place where the company has said what the parts should add up to. A total that `cross_foot` already
+    checked is not checked twice.
+    """
+    checked = {fid for check in done or [] for fid in check.figure_ids}
+    table_figures = [f for f in figures if f.raw_line and " | " in f.raw_line]
+    by_table: dict[str, list[DisclosedFigure]] = defaultdict(list)
+    for f in table_figures:
+        by_table[f.source_chunk_id].append(f)
+    by_page: dict[tuple[str, int | None], list[DisclosedFigure]] = defaultdict(list)
+    for f in table_figures:
+        by_page[(f.source_doc_id, f.source_page)].append(f)
+    checks: list[FigureCheck] = []
+    seen: set[str] = set()
+
+    def add(kind, status, members, calculation, note, difference=0.0, tolerance=0.0):
+        check_id = stable_id(kind, *sorted(f.figure_id for f in members))
+        if check_id in seen:
+            return
+        seen.add(check_id)
+        checks.append(FigureCheck(check_id=check_id, kind=kind, status=status,
+                                  figure_ids=[f.figure_id for f in members], calculation=calculation,
+                                  difference=round(difference, 4), tolerance=tolerance, note=note))
+
+    def plus(parts):
+        return " + ".join(vn.number(f.value) for f in parts)
+
+    def arith(parts, summed, other, unit, said):
+        """The sum as the page prints it: 4.994 + 41.334 = 46.328 triệu lít, not 4.994.000.000 + ..."""
+        values = [f.value for f in parts] + [summed, other]
+        for factor, word in ((1e9, "tỷ"), (1e6, "triệu"), (1e3, "nghìn")):
+            scaled = [v / factor for v in values]
+            if all(abs(x - round(x)) < 1e-6 for x in scaled) and min(abs(v) for v in values if v) >= factor:
+                terms = " + ".join(vn.number(round(x)) for x in scaled[:-2])
+                return (f"{terms} = {vn.number(round(scaled[-2]))}; {said} {vn.number(round(scaled[-1]))} "
+                        f"{word} {vn.unit(unit)}")
+        return f"{plus(parts)} = {vn.number(summed)}; {said} {vn.number(other)} {vn.unit(unit)}"
+
+    # table_sum
+    sums_by_table: dict[str, list[tuple[str, float, list[DisclosedFigure]]]] = defaultdict(list)
+    for chunk_id, group in by_table.items():
+        # One column of one table: the same unit under the same header ("PHÁT SINH" and "TÁI SỬ DỤNG" are
+        # both in tonnes and must not be added together).
+        units: dict[tuple[str, str], list[DisclosedFigure]] = defaultdict(list)
+        for f in group:
+            if f.unit != "%":
+                header = f.label.split(" · ", 1)[1] if " · " in f.label else ""
+                units[(f.unit, header)].append(f)
+        for (unit, _header), members in units.items():
+            parts_all = [f for f in members if not f.is_total]
+            if len(parts_all) >= 2:
+                sums_by_table[chunk_id].append((unit, sum(f.value for f in parts_all), parts_all))
+            if len(members) < 3:
+                continue
+            matched = False
+            for total in sorted(members, key=lambda f: (not f.is_total, -f.value)):
+                parts = [f for f in members if f is not total and not f.is_total]
+                if len(parts) < 2 or total.figure_id in checked:
+                    continue
+                summed = sum(f.value for f in parts)
+                tolerance = _rounding_tolerance(total.value, len(parts))
+                if abs(summed - total.value) <= tolerance:
+                    matched = True
+                    add("table_sum", "CONSISTENT", parts + [total],
+                        arith(parts, summed, total.value, unit, "công bố"),
+                        f"Các dòng của bảng trang {total.source_page} cộng lại bằng dòng “{total.label[:60]}”.",
+                        summed - total.value, tolerance)
+                    break
+            explicit = [f for f in members if f.is_total and f.figure_id not in checked]
+            if not matched and explicit:
+                total = max(explicit, key=lambda f: f.value)
+                parts = [f for f in members if not f.is_total]
+                if len(parts) >= 2:
+                    summed = sum(f.value for f in parts)
+                    tolerance = _rounding_tolerance(total.value, len(parts))
+                    add("table_sum", "INCONSISTENT", parts + [total],
+                        arith(parts, summed, total.value, unit, "công bố"),
+                        f"Bảng trang {total.source_page}: các dòng không cộng ra dòng tổng "
+                        f"(lệch {vn.signed(round(summed - total.value))} {vn.unit(unit)}) — cần người xem, "
+                        "có thể bảng có dòng con.",
+                        summed - total.value, tolerance)
+
+    # table_sum on a share column: the parts of a "Tỷ trọng" column add up to its printed total row
+    # (Hòa Phát p.39: 99,55 + 0,39 + 0,01 + 0,04 + 0,01 = 100 %). Agreement only: shares are rounded
+    # to the printed decimals, so a small gap is not a finding.
+    for chunk_id, group in by_table.items():
+        shares: dict[str, list[DisclosedFigure]] = defaultdict(list)
+        for f in group:
+            if f.unit == "%":
+                shares[f.label.split(" · ", 1)[1] if " · " in f.label else ""].append(f)
+        for members in shares.values():
+            totals = [f for f in members if f.is_total and f.figure_id not in checked]
+            parts = [f for f in members if not f.is_total]
+            if not totals or len(parts) < 2:
+                continue
+            total = max(totals, key=lambda f: f.value)
+            summed = sum(f.value for f in parts)
+            if abs(summed - total.value) <= 0.01 * len(parts) + 0.05:
+                add("table_sum", "CONSISTENT", parts + [total],
+                    " + ".join(vn.number(f.value, 2) for f in parts)
+                    + f" = {vn.number(summed, 2)} %; công bố {vn.number(total.value, 2)} %",
+                    f"Các tỷ trọng của bảng trang {total.source_page} cộng lại bằng dòng “{total.label[:60]}”.",
+                    summed - total.value, 0.01 * len(parts) + 0.05)
+
+    # page_sum
+    for chunk_id, sums in sums_by_table.items():
+        for unit, summed, parts in sums:
+            key = (parts[0].source_doc_id, parts[0].source_page)
+            for other in by_page[key]:
+                if other.source_chunk_id == chunk_id or other.unit != unit:
+                    continue
+                tolerance = _rounding_tolerance(other.value, len(parts))
+                if abs(summed - other.value) <= tolerance:
+                    add("page_sum", "CONSISTENT", parts + [other],
+                        arith(parts, summed, other.value, unit, "bảng khác ghi"),
+                        f"Trang {other.source_page}: các dòng của một bảng cộng lại bằng “{other.label[:60]}” "
+                        "ở bảng khác cùng trang.",
+                        summed - other.value, tolerance)
+                    break
+
+    # ratio
+    for f in table_figures:
+        if f.unit != "%" or f.value <= 0:
+            continue
+        row = [g for g in by_table[f.source_chunk_id] if g.raw_line == f.raw_line and g.unit != "%"]
+        if len(row) != 1:
+            continue
+        part = row[0]
+        text = repr(float(f.value))
+        decimals = len(text.split(".")[1].rstrip("0")) if "." in text else 0
+        tol = 0.5 * 10 ** -decimals + 1e-9
+        candidates = [g for g in by_page[(f.source_doc_id, f.source_page)]
+                      if g.unit == part.unit and g.value > part.value > 0 and g.figure_id != part.figure_id
+                      # the denominator is a printed total: against any number on the page a small percentage
+                      # matches by chance (Hòa Phát p.41: 230,74 / 193.078 ≈ 0,1 %, the steel row, not the total)
+                      and g.is_total]
+        candidates.sort(key=lambda g: (g.source_chunk_id != part.source_chunk_id, not g.is_total))
+        hit = next((g for g in candidates if abs(part.value / g.value * 100 - f.value) <= tol), None)
+        if hit:
+            share = part.value / hit.value * 100
+            add("ratio", "CONSISTENT", [part, hit, f],
+                f"{vn.number(part.value)} / {vn.number(hit.value)} = {vn.number(share, 2)} %; "
+                f"công bố {vn.number(f.value, decimals)} %",
+                f"Tỷ lệ in ở dòng “{part.label[:50]}” khớp với giá trị chia cho “{hit.label[:50]}”.")
+            continue
+        own_total = next((g for g in candidates if g.is_total and g.source_chunk_id == part.source_chunk_id), None)
+        # A percentage column is not always a share of the total: Hòa Phát p.51 prints a reuse rate
+        # ("TÁI SỬ DỤNG 99 %") beside each sector's tonnage. Disagreement is only a finding when the column
+        # says it is a share.
+        if own_total and _SHARE_RE.search(f.label.split(" · ")[-1].lower()):
+            share = part.value / own_total.value * 100
+            add("ratio", "INCONSISTENT", [part, own_total, f],
+                f"{vn.number(part.value)} / {vn.number(own_total.value)} = {vn.number(share, 2)} %; "
+                f"công bố {vn.number(f.value, decimals)} %",
+                f"Tỷ lệ in ở dòng “{part.label[:50]}” không khớp với giá trị chia cho dòng tổng của bảng "
+                "— cần người xem.",
+                share - f.value, tol)
     return checks
 
 

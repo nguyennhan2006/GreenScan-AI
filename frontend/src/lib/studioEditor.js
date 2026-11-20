@@ -160,7 +160,7 @@ export function lintFromClaims(state, handlers) {
 
 // ---------- theme ----------
 
-const FONT = '"Inter Variable", ui-sans-serif, system-ui, "Segoe UI", Arial, sans-serif'
+const FONT = '"Roboto Variable", "Roboto", "Segoe UI", system-ui, Arial, sans-serif'
 const theme = EditorView.theme({
   '&': { height: '100%', backgroundColor: '#fff', color: '#1e293b' },
   '&.cm-focused': { outline: 'none' },
@@ -177,10 +177,10 @@ const theme = EditorView.theme({
   '.cm-gutter-lint': { width: '22px' },
   '.cm-gutter-lint .cm-gutterElement': { padding: '2px 0 0' },
   '.cm-activeLine': { backgroundColor: 'transparent' },
-  '.cm-activeLineGutter': { backgroundColor: 'transparent', color: '#0f3d2e', fontWeight: '600' },
+  '.cm-activeLineGutter': { backgroundColor: 'transparent', color: '#047857', fontWeight: '600' },
   '.cm-selectionBackground': { backgroundColor: '#d1fae5 !important' },
   '&.cm-focused .cm-selectionBackground': { backgroundColor: '#bbf7d0 !important' },
-  '.cm-cursor': { borderLeftColor: '#0f3d2e', borderLeftWidth: '2px' },
+  '.cm-cursor': { borderLeftColor: '#047857', borderLeftWidth: '2px' },
   // Claims read as highlighted passages, tinted by severity, rather than wavy underlines.
   '.cm-lintRange': { backgroundImage: 'none !important', borderRadius: '3px', paddingBottom: '1px', transition: 'background-color .15s' },
   '.cm-lintRange-error': { backgroundColor: 'rgba(254, 205, 202, .55)', boxShadow: 'inset 0 -2px 0 rgba(220, 38, 38, .55)' },
@@ -201,8 +201,8 @@ const theme = EditorView.theme({
   '.cm-tooltip-lint': { maxWidth: '460px' },
   '.cm-diagnostic': { padding: '12px 14px', borderLeftWidth: '0' },
   '.cm-diagnostic-error, .cm-diagnostic-warning, .cm-diagnostic-info': { borderLeft: 'none' },
-  '.cm-diagnosticAction': { backgroundColor: '#0f3d2e', borderRadius: '7px', padding: '4px 10px', marginTop: '10px', marginRight: '6px', fontSize: '12px', fontWeight: '600' },
-  '.cm-diagnosticAction:hover': { backgroundColor: '#14533e' },
+  '.cm-diagnosticAction': { backgroundColor: '#047857', borderRadius: '7px', padding: '4px 10px', marginTop: '10px', marginRight: '6px', fontSize: '12px', fontWeight: '600' },
+  '.cm-diagnosticAction:hover': { backgroundColor: '#065f46' },
   '.cm-diagnosticSource': { display: 'none' },
 })
 

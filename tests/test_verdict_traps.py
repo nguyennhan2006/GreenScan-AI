@@ -113,7 +113,7 @@ def test_cross_metric_figures_do_not_contradict(settings):
         settings,
         "Tỷ lệ năng lượng tái tạo đạt 50% tổng tiêu thụ điện năm 2024.",
         "Phát thải khí nhà kính năm 2024 tăng 12% so với 2023. Năng lượng tái tạo chiếm 50% điện tiêu thụ.",
-        SourceType.FINANCIAL,
+        SourceType.EXTERNAL,  # independent source: since 15/11/2026 only these may make a claim SUPPORTED
     )
     assert _statuses(result) == [VerificationStatus.SUPPORTED]
 
@@ -203,7 +203,8 @@ def test_numbers_are_compared_within_the_claims_metric(settings):
     )
     assert _statuses(result) == [VerificationStatus.CONTRADICTED]
     reasons = " ".join(e.relation_reason for v in result.verifications for e in v.evidence)
-    assert "8.0" in reasons and "12.0" not in reasons
+    # Figures print the Vietnamese way (utils/vn_format.py): 8, not 8.0.
+    assert "tài liệu 8 (" in reasons and "tài liệu 12" not in reasons
 
 
 def test_vague_claim_is_not_partially_supported_by_similarity(settings):

@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from quantum_gw.domain.models import AnalysisResult
+from quantum_gw.labels_vi import DISCLAIMER_VI
 from quantum_gw.legal.org_pack import NOTICE_VI, OUTCOME_VI, PACK_STATUS_VI, flagged
 
 
@@ -74,6 +75,8 @@ class ReportingAgent:
     def _markdown(self, result: AnalysisResult) -> str:
         lines = [
             "# Greenwashing-risk evidence pack",
+            "",
+            f"> **{DISCLAIMER_VI}**",
             "",
             f"- Run ID: `{result.run_id}`",
             f"- Pipeline: `{result.manifest.pipeline_version}`",

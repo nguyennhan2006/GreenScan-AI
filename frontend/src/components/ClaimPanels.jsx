@@ -1,5 +1,5 @@
 import { Chip } from './badges.jsx'
-import { ATTRIBUTES, PENALTIES, RISK_COMPONENT_LABELS } from '../lib/claims.js'
+import { PENALTIES, RISK_COMPONENT_LABELS } from '../lib/claims.js'
 import { formatDate } from '../lib/format.js'
 import { labelOf } from '../lib/labels'
 
@@ -17,13 +17,13 @@ function Box({ label, value, tone = 'slate' }) {
   }
   return (
     <div className={`min-w-28 rounded-lg border px-3 py-2 ${tones[tone]}`}>
-      <p className="text-[11px] text-slate-500">{label}</p>
+      <p className="text-xs text-slate-500">{label}</p>
       <p className="font-mono text-sm font-semibold">{value}</p>
     </div>
   )
 }
 
-const fmt = (n) => (typeof n === 'number' ? (Number.isInteger(n) ? String(n) : n.toFixed(2)) : '—')
+const fmt = (n) => (typeof n === 'number' ? n.toLocaleString('vi-VN', { maximumFractionDigits: 2 }) : '—')
 
 export function NumericCheckCard({ computed }) {
   const pair = computed?.closest_pair
@@ -51,12 +51,12 @@ export function NumericCheckCard({ computed }) {
         <span className="text-slate-400">→</span>
         <Box label="Tài liệu" value={fmt(pair.evidence)} tone={tone} />
         <span className="text-slate-400">→</span>
-        <Box label="Sai số tương đối" value={err == null ? '—' : `${(err * 100).toFixed(1)}%`} tone={tone} />
+        <Box label="Sai số tương đối" value={err == null ? '—' : `${(err * 100).toLocaleString('vi-VN', { maximumFractionDigits: 1 })}%`} tone={tone} />
         <Chip tone={tone === 'slate' ? 'slate' : tone}>
           {computed.matched ? 'khớp trong dung sai' : computed.contradiction ? 'lệch đáng kể' : 'chưa kết luận'}
         </Chip>
       </div>
-      <p className="mt-2 text-[11px] text-slate-500">
+      <p className="mt-2 text-xs text-slate-500">
         nguồn: {pair.citation} · phương pháp: <code className="font-mono">{computed.calculation_method}</code>
         {computed.tolerance_used != null && <> · dung sai: <code className="font-mono">{Math.round(computed.tolerance_used * 100)}%</code></>}
         {computed.claim_scopes && <> · ranh giới: <code className="font-mono">Scope {computed.claim_scopes}</code></>}
@@ -102,7 +102,7 @@ export function LegalPanel({ legal, gate }) {
         <p className="font-semibold text-slate-900">{findingLabel}</p>
         {legal.notes && <p className="mt-1 text-xs text-slate-700">{legal.notes}</p>}
         {legal.legal_finding === 'INSUFFICIENT_EVIDENCE' && (
-          <p className="mt-1 text-[11px] text-slate-600">Đây là khoảng trống dữ liệu (chưa có điều kiện kiểm được hoặc chưa trích được văn bản), không phải nhận định về doanh nghiệp.</p>
+          <p className="mt-1 text-xs text-slate-600">Đây là khoảng trống dữ liệu (chưa có điều kiện kiểm được hoặc chưa trích được văn bản), không phải nhận định về doanh nghiệp.</p>
         )}
       </div>
 
@@ -159,7 +159,7 @@ export function RiskBreakdown({ risk }) {
   if (!risk) return null
   const byName = new Map(risk.components.map((c) => [c.name, c]))
   const groups = [
-    { title: '5 thuộc tính bắt buộc', names: ATTRIBUTES.flatMap((a) => a.components) },
+    { title: 'Thông tin của tuyên bố và bằng chứng', names: ['specificity', 'quantitative_evidence', 'baseline', 'period', 'scope_boundary', 'evidence_support', 'independent_assurance'] },
     { title: 'Tín hiệu cần lưu ý', names: PENALTIES.map((p) => p.key) },
   ]
   const maxWidth = Math.max(...risk.components.map((c) => c.max_score))
@@ -187,8 +187,8 @@ export function RiskBreakdown({ risk }) {
           </ul>
         </div>
       ))}
-      <p className="text-[11px] text-slate-500">
-        Tổng <span className="font-mono">{risk.risk_score}/100</span> · mức <span className="font-mono">{labelOf('severity', risk.severity)}</span> · thang chấm <span className="font-mono">{rubricLabel(risk.rubric_version)}</span>
+      <p className="text-xs text-slate-500">
+        Mức <span className="font-mono">{labelOf('severity', risk.severity)}</span> · thang chấm <span className="font-mono">{rubricLabel(risk.rubric_version)}</span>
         {risk.requires_human_review && ' · cần người xem xét'} — điểm chỉ dùng để sắp thứ tự ưu tiên, không phải kết luận.
       </p>
     </div>

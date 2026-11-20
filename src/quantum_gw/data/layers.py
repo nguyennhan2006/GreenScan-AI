@@ -240,7 +240,7 @@ class NumericFactFields(BaseModel):
     variant: list[str] = Field(default_factory=list)
     scopes: list[int] = Field(default_factory=list)
     is_target: bool = False
-    policy_id: str = Field(default="comparison-policy-v2", description="the eligibility rule that read these")
+    policy_id: str = Field(default="comparison-policy-v3", description="the eligibility rule that read these")
 
 
 class ExtractRecord(_Record):

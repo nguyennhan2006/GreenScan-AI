@@ -22,6 +22,7 @@ is always marked for human review.
 
 from __future__ import annotations
 
+import os
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -63,6 +64,14 @@ class StanceSignal:
     # For a model's stance: what the rules alone would have said about the same
     # passage, so the verifier can tell whether the model changed the verdict.
     fallback: StanceSignal | None = None
+    # The model reported text addressed to it inside the claim or the passage
+    # (verification/llm_judge.py); its stance is then not used.
+    injection: bool = False
+    # For a numeric stance: the values it rests on, so a value OCR was unsure
+    # of can be traced to the verdict it would decide (agents/verifier.py).
+    figures: tuple[float, ...] = ()
+    # A numeric verdict withheld because one of those values was misread-prone.
+    doubtful: bool = False
 
 
 def _has_diacritics(text: str) -> bool:
@@ -143,7 +152,10 @@ class StanceLexicon:
     có sự cố" is a positive statement that happens to contain "không có".
     """
 
-    def __init__(self, path: str | Path = "configs/stance_cues.yaml"):
+    def __init__(self, path: str | Path | None = None):
+        # QUANTUM_STANCE_CUES lets the rule miner (feedback/miner.py) measure a
+        # patched cue file without touching the reviewed one.
+        path = path or os.environ.get("QUANTUM_STANCE_CUES") or "configs/stance_cues.yaml"
         resolved = Path(path)
         if not resolved.exists():
             resolved = Path(__file__).resolve().parents[3] / str(path)

@@ -1,0 +1,820 @@
+# Kho tri thức nền GreenScan, v1 (14/11/2026)
+#
+# Đây là TRI THỨC NỀN để giải thích cho người dùng, KHÔNG phải bằng chứng của doanh nghiệp.
+# Không module kiểm chứng / truy xuất / tác tử nào được đọc tệp này (tests/test_architecture_invariants.py).
+# Vụ việc và văn bản pháp lý không chép ở đây: loader nạp thẳng từ data/real_cases/cases/*/case.json
+# và configs/legal/LEGAL_SOURCE_REGISTRY.yaml để chỉ có một nguồn.
+#
+# Trường của một mục (xem data/domain_kb/README.md):
+#   id, kind (concept | signal | formula | pattern), title, summary            bắt buộc
+#   claim_good   claim chuẩn: câu nêu đủ thuộc tính, kiểm được
+#   claim_weak   cùng ý nhưng thiếu thuộc tính / có dấu hiệu rủi ro
+#   attributes   thuộc tính bắt buộc phải có trong claim
+#   evidence     bằng chứng cần tìm và tìm ở đâu
+#   signals      id các mục dấu hiệu liên quan
+#   method       cách tính / cách kiểm (lời)
+#   code         hàm thật trong code làm phép tính đó ("module:hàm"), kiểm thử bắt hàm phải tồn tại
+#   check        ví dụ số kiểm được: biểu thức số học + kết quả mong đợi (kiểm thử tính lại)
+#   system       sản phẩm hiện làm gì với loại này
+#   codes        mã của hệ thống liên quan (lý do so sánh, kết luận) để tra theo mã
+#   keywords     từ khoá tra cứu (Việt + Anh)
+#   related      id mục liên quan
+#   sources      nguồn [NGOÀI] hoặc [KIẾN THỨC NỀN]; người duyệt kiểm lại trước khi đổi review_status
+
+defaults:
+  labeler: claude-opus-5-5
+  review_status: pending_human_review
+  created: "2026-11-14"
+
+entries:
+
+# ============================================================== KHÁI NIỆM
+- id: C-GHG-SCOPES
+  kind: concept
+  title: Phạm vi phát thải 1, 2, 3
+  summary: >-
+    Phạm vi 1 là phát thải trực tiếp từ nguồn doanh nghiệp sở hữu hoặc kiểm soát (lò, xe, quá trình).
+    Phạm vi 2 là phát thải gián tiếp từ điện, hơi, nhiệt mua về. Phạm vi 3 là phát thải gián tiếp khác
+    trong chuỗi giá trị, chia 15 hạng mục (hàng hoá mua vào, vận chuyển, sử dụng sản phẩm đã bán...).
+    ISO 14064-1:2018 chia thành 6 loại thay cho 3 phạm vi nhưng ý tương ứng.
+  attributes: [phạm vi phát thải]
+  method: >-
+    Hai con số chỉ so được khi cùng phạm vi. "Phạm vi 1+2" không so với "phạm vi 1". Tổng phạm vi
+    1+2(+3) phải bằng tổng các thành phần đã công bố.
+  code: ["quantum_gw.verification.numeric_facts:eligibility", "quantum_gw.verification.irlib:comparable"]
+  system: Khác phạm vi khi cả hai bên đều nêu rõ thì hệ thống không so (different_scope), không bao giờ kết luận mâu thuẫn.
+  codes: [different_scope]
+  keywords: [scope 1, scope 2, scope 3, phạm vi 1, phạm vi 2, phạm vi 3, phát thải trực tiếp, gián tiếp, chuỗi giá trị, value chain, iso 14064]
+  related: [C-SCOPE2-METHODS, F-SCOPE-SUM, SIG-SCOPE-OMISSION]
+  sources:
+    - "[NGOÀI] GHG Protocol Corporate Accounting and Reporting Standard, bản sửa đổi 2004, chương 4"
+    - "[NGOÀI] GHG Protocol Corporate Value Chain (Scope 3) Standard, 2011"
+    - "[NGOÀI] ISO 14064-1:2018"
+
+- id: C-SCOPE2-METHODS
+  kind: concept
+  title: Phạm vi 2 theo vị trí và theo thị trường
+  summary: >-
+    Theo vị trí (location-based) dùng hệ số phát thải trung bình của lưới điện nơi tiêu thụ. Theo thị
+    trường (market-based) dùng hệ số của hợp đồng doanh nghiệp chọn mua: chứng chỉ năng lượng tái tạo
+    (REC, I-REC), hợp đồng mua bán điện trực tiếp (PPA). Hướng dẫn Phạm vi 2 của GHG Protocol yêu cầu
+    báo cáo cả hai. Mua chứng chỉ chỉ giảm số theo thị trường, không giảm số theo vị trí.
+  method: Không cộng hay so số theo vị trí với số theo thị trường. Claim "giảm phát thải nhờ điện xanh" phải nói rõ cách tính nào.
+  system: Hai cách tính là hai biến thể của cùng chỉ số; khác biến thể thì không so (different_variant).
+  codes: [different_variant]
+  keywords: [location-based, market-based, theo vị trí, theo thị trường, rec, i-rec, ppa, chứng chỉ năng lượng tái tạo, hệ số lưới điện, grid emission factor]
+  related: [C-GHG-SCOPES, C-OFFSET-VS-REC, P-RE-SHARE]
+  sources:
+    - "[NGOÀI] GHG Protocol Scope 2 Guidance, 2015"
+
+- id: C-ORG-BOUNDARY
+  kind: concept
+  title: Ranh giới tổ chức (tập đoàn, công ty mẹ, nhà máy)
+  summary: >-
+    Ranh giới tổ chức quyết định số liệu của những đơn vị nào được gộp vào: theo tỷ lệ vốn góp, theo
+    kiểm soát tài chính, hoặc theo kiểm soát hoạt động. Cùng một chỉ số có thể khác hàng chục lần giữa
+    toàn tập đoàn và một nhà máy. Báo cáo phải nói rõ cách gộp và danh sách đơn vị.
+  attributes: [ranh giới tổ chức]
+  evidence: ["Mục 'phạm vi báo cáo' / 'giới thiệu báo cáo' liệt kê đơn vị được gộp", "Thuyết minh phương pháp kiểm kê"]
+  method: Hai con số chỉ so được khi cùng ranh giới. Chênh lệch từ 20 lần trở lên khi một bên không nêu ranh giới, hoặc từ 100 lần trở lên trong mọi trường hợp, thường là do khác ranh giới; cần người xem.
+  code: ["quantum_gw.verification.numeric_facts:eligibility"]
+  check:
+    - {expr: "23474480 / 90846", expect: 258.4, tol: 0.1, note: "phát thải tập đoàn so với một nhà máy: gấp khoảng 258 lần, vượt ngưỡng 100"}
+  system: Khác ranh giới thì không so (different_boundary); chênh lệch lớn bất thường thì chuyển người (magnitude_gap).
+  codes: [different_boundary, magnitude_gap]
+  keywords: [ranh giới, boundary, tập đoàn, hợp nhất, công ty mẹ, công ty con, nhà máy, cơ sở, equity share, operational control, financial control, kiểm soát hoạt động]
+  related: [SIG-BOUNDARY-CHERRY]
+  sources:
+    - "[NGOÀI] GHG Protocol Corporate Standard, chương 3"
+    - "[ĐÃ THỰC NGHIỆM] Lượt chạy nền Hòa Phát 22/09/2026: 5/8 kết luận mâu thuẫn sai do so khác ranh giới / cơ sở đo (docstring numeric_facts.py)"
+
+- id: C-BASE-YEAR
+  kind: concept
+  title: Năm gốc và tính lại năm gốc
+  summary: >-
+    Năm gốc là mốc để đo mức giảm. Khi cơ cấu doanh nghiệp đổi đáng kể (sáp nhập, mua lại, thoái vốn,
+    thuê ngoài) hoặc đổi phương pháp tính, GHG Protocol yêu cầu tính lại số năm gốc theo ngưỡng trọng
+    yếu doanh nghiệp tự đặt, và công bố lý do. Không có năm gốc thì "giảm X%" không kiểm được.
+  attributes: [năm gốc, kỳ]
+  method: Mức giảm luôn tính so với số năm gốc cùng ranh giới, cùng phương pháp. Nếu năm gốc đã tính lại, dùng số đã tính lại.
+  system: 'Thiếu năm gốc là một trong năm thuộc tính bắt buộc; claim_attributes báo "còn thiếu: năm gốc".'
+  keywords: [năm gốc, base year, baseline, tính lại năm gốc, recalculation, năm cơ sở]
+  related: [SIG-NO-BASELINE, SIG-BASE-YEAR-SHIFT, F-PCT-CHANGE]
+  sources:
+    - "[NGOÀI] GHG Protocol Corporate Standard, chương 5"
+
+- id: C-ABS-VS-INTENSITY
+  kind: concept
+  title: Số tuyệt đối, cường độ, tỷ trọng, mức thay đổi
+  summary: >-
+    Cùng là "%" nhưng có thể là bốn thứ khác nhau: số tuyệt đối (tCO2e), cường độ (tCO2e trên một tấn
+    sản phẩm hoặc trên một tỷ đồng doanh thu), tỷ trọng (phần của một tổng) và mức thay đổi (so với kỳ
+    trước hay năm gốc). Đây là "cơ sở đo" của con số.
+  method: Chỉ so hai con số cùng cơ sở đo. Cường độ giảm không có nghĩa là tổng phát thải giảm.
+  code: ["quantum_gw.verification.numeric_facts:eligibility"]
+  system: Khác cơ sở đo thì không so (different_basis).
+  codes: [different_basis]
+  keywords: [cường độ, intensity, tuyệt đối, absolute, tỷ trọng, share, mức thay đổi, cơ sở đo, basis]
+  related: [F-INTENSITY, SIG-INTENSITY-MASK, F-SHARE]
+  sources:
+    - "[NGOÀI] GRI 305: Emissions 2016, công bố 305-4 (cường độ) và 305-5 (mức giảm)"
+
+- id: C-TARGET-VS-ACTUAL
+  kind: concept
+  title: Mục tiêu và số thực hiện
+  summary: >-
+    Mục tiêu ("giảm 30% đến 2030") là cam kết cho tương lai; số thực hiện là kết quả đã đo của một kỳ.
+    Một mục tiêu không bao giờ chứng minh một kết quả. Claim mục tiêu cần năm đích, năm gốc, phạm vi và
+    lộ trình; claim thực hiện cần số đo của kỳ.
+  method: Mục tiêu so với mục tiêu, thực hiện so với thực hiện. Muốn đánh giá tiến độ thì tính phần đã đạt (F-TARGET-PACE).
+  code: ["quantum_gw.verification.numeric_facts:eligibility"]
+  system: Một bên là mục tiêu, một bên là thực hiện thì hệ thống không kết luận, chuyển người (target_vs_actual).
+  codes: [target_vs_actual]
+  keywords: [mục tiêu, target, cam kết, commitment, thực hiện, actual, lộ trình, roadmap]
+  related: [SIG-TARGET-AS-ACHIEVEMENT, F-TARGET-PACE, P-NETZERO-TARGET]
+  sources:
+    - "[KIẾN THỨC NỀN] docs/00-project/ARCHITECTURE_INVARIANTS.md, bất biến 4–6"
+
+- id: C-NETZERO-VS-NEUTRAL
+  kind: concept
+  title: Net zero và trung hoà carbon
+  summary: >-
+    Net zero theo SBTi nghĩa là giảm sâu phát thải trên cả chuỗi giá trị (với đa số ngành là ít nhất 90%
+    so với năm gốc) và chỉ trung hoà phần còn lại bằng loại bỏ carbon, thường vào năm 2050. Trung hoà
+    carbon (ISO 14068-1:2023) cho phép bù bằng tín chỉ sau khi đã đo và giảm, nhưng phải công bố lượng
+    bù, loại tín chỉ và kế hoạch giảm. Hai khái niệm không thay thế nhau.
+  keywords: [net zero, phát thải ròng bằng 0, trung hoà carbon, carbon neutral, sbti, iso 14068, loại bỏ carbon, removal]
+  related: [P-NETZERO-TARGET, P-CARBON-NEUTRAL, SIG-OFFSET-NEUTRAL]
+  sources:
+    - "[NGOÀI] SBTi Corporate Net-Zero Standard"
+    - "[NGOÀI] ISO 14068-1:2023 Carbon neutrality"
+
+- id: C-OFFSET-VS-REC
+  kind: concept
+  title: Tín chỉ carbon và chứng chỉ năng lượng tái tạo
+  summary: >-
+    Tín chỉ carbon (offset) là một tấn CO2e được giảm hoặc loại bỏ ở nơi khác; GHG Protocol yêu cầu báo
+    cáo riêng, không trừ vào kiểm kê phạm vi 1, 2, 3. Chứng chỉ năng lượng tái tạo (REC, I-REC) chứng
+    nhận một MWh điện tái tạo và chỉ ảnh hưởng phạm vi 2 theo thị trường. Cần xem mã đăng ký, năm phát
+    hành (vintage) và chứng nhận đã huỷ (retirement).
+  evidence: ["Chứng nhận huỷ tín chỉ / chứng chỉ có số sê-ri", "Tên chương trình đăng ký (Verra, Gold Standard, I-REC...)", "Bảng phát thải gộp và bảng tín chỉ tách riêng"]
+  keywords: [tín chỉ carbon, offset, carbon credit, rec, i-rec, chứng chỉ năng lượng tái tạo, vintage, retirement, huỷ tín chỉ, bù trừ]
+  related: [C-SCOPE2-METHODS, SIG-OFFSET-NEUTRAL, P-CARBON-NEUTRAL]
+  sources:
+    - "[NGOÀI] GHG Protocol Corporate Standard, chương 8 và 9"
+    - "[NGOÀI] GHG Protocol Scope 2 Guidance, 2015"
+
+- id: C-ASSURANCE-LEVELS
+  kind: concept
+  title: Đảm bảo hạn chế và đảm bảo hợp lý
+  summary: >-
+    Tờ đảm bảo độc lập có hai mức. Đảm bảo hạn chế (limited) kết luận dạng phủ định: "không có điều gì
+    khiến chúng tôi cho rằng...". Đảm bảo hợp lý (reasonable) kết luận dạng khẳng định: "trên các khía
+    cạnh trọng yếu, được trình bày trung thực...". Chuẩn mực thường gặp: ISSA 5000, ISAE 3000 (sửa đổi),
+    ISAE 3410 cho khí nhà kính. Đảm bảo chỉ phủ các chỉ số và kỳ ghi trong tờ đảm bảo.
+  evidence: ["Tờ đảm bảo: mức đảm bảo, chuẩn mực, danh sách chỉ số được đảm bảo, kỳ, tên đơn vị đảm bảo"]
+  code: ["quantum_gw.mcp_tools:review_assurance"]
+  system: Công cụ review_assurance khớp mẫu câu kết luận trong configs/issa5000_conclusion_patterns.yaml.
+  keywords: [đảm bảo độc lập, assurance, limited assurance, reasonable assurance, đảm bảo hạn chế, đảm bảo hợp lý, issa 5000, isae 3000, isae 3410, kiểm toán độc lập]
+  related: [P-ASSURANCE-CLAIM, SIG-NO-ASSURANCE]
+  sources:
+    - "[NGOÀI] IAASB ISSA 5000 General Requirements for Sustainability Assurance Engagements"
+    - "[NGOÀI] ISAE 3000 (Revised), ISAE 3410"
+
+- id: C-GREEN-BOND
+  kind: concept
+  title: Trái phiếu xanh và sử dụng vốn
+  summary: >-
+    Trái phiếu xanh là trái phiếu mà tiền thu được chỉ dùng cho dự án có lợi ích môi trường. Nguyên tắc
+    Trái phiếu Xanh của ICMA có bốn cấu phần: sử dụng vốn, quy trình đánh giá và chọn dự án, quản lý tiền
+    thu được, báo cáo; khuyến nghị có đánh giá độc lập. Ở Việt Nam, dự án xanh đối chiếu với danh mục phân
+    loại xanh (QĐ 21/2025/QĐ-TTg).
+  evidence: ["Khung trái phiếu xanh", "Ý kiến bên thứ hai (SPO)", "Báo cáo phân bổ vốn và báo cáo tác động", "Xác nhận dự án thuộc danh mục phân loại xanh"]
+  keywords: [trái phiếu xanh, green bond, sử dụng vốn, use of proceeds, icma, spo, phân bổ vốn, allocation report, danh mục phân loại xanh, taxonomy]
+  related: [P-GREEN-FINANCE, LEGAL-QD21-2025-QD-TTg]
+  sources:
+    - "[NGOÀI] ICMA Green Bond Principles, 2021 (cập nhật phụ lục 2022)"
+    - "[NGOÀI] QĐ 21/2025/QĐ-TTg (xem mục pháp lý cùng mã)"
+
+- id: C-GHG-INVENTORY-VN
+  kind: concept
+  title: Kiểm kê khí nhà kính bắt buộc ở Việt Nam
+  summary: >-
+    Nghị định 06/2022/NĐ-CP quy định giảm nhẹ phát thải khí nhà kính; cơ sở thuộc danh mục do Thủ tướng
+    ban hành (hiện là QĐ 13/2024/QĐ-TTg) phải kiểm kê khí nhà kính. Nghị định 06 đã được sửa bởi
+    NĐ 119/2025 và NĐ 83/2026. Kỳ kiểm kê, hạn nộp và mẫu báo cáo phải đọc từ văn bản còn hiệu lực trong
+    sổ đăng ký pháp lý, không lấy từ trí nhớ.
+  method: Một claim "đã kiểm kê khí nhà kính theo quy định" cần tên văn bản, năm kiểm kê, và có thể đối chiếu danh mục cơ sở.
+  system: Lớp pháp lý chỉ áp quy tắc khi văn bản còn hiệu lực ở ngày xét (legal/corpus.py); quy tắc pháp lý hiện mới là bản nháp.
+  keywords: [kiểm kê khí nhà kính, ghg inventory, nghị định 06, 06/2022, quyết định 13/2024, danh mục cơ sở phát thải, 119/2025, 83/2026]
+  related: [LEGAL-ND06-2022-ND-CP, LEGAL-QD13-2024-QD-TTg]
+  sources:
+    - "[NGOÀI] configs/legal/LEGAL_SOURCE_REGISTRY.yaml (ND06-2022-ND-CP, QD13-2024-QD-TTg, ND119-2025-ND-CP, ND83-2026-ND-CP)"
+
+- id: C-VERDICTS
+  kind: concept
+  title: Năm loại kết luận của GreenScan
+  summary: >-
+    SUPPORTED (bằng chứng ủng hộ), PARTIALLY_SUPPORTED (chỉ ủng hộ một phần), CONTRADICTED (bằng chứng so
+    được và mâu thuẫn), INSUFFICIENT_EVIDENCE (chưa đủ bằng chứng), UNVERIFIABLE (claim không kiểm được,
+    ví dụ quá chung chung). Kết luận là cho từng tuyên bố, không bao giờ cho cả doanh nghiệp. Chưa đủ bằng
+    chứng khác với mâu thuẫn.
+  system: Kết luận do luật và phép so số tất định quyết định; LLM chỉ đọc và giải thích.
+  codes: [SUPPORTED, PARTIALLY_SUPPORTED, CONTRADICTED, INSUFFICIENT_EVIDENCE, UNVERIFIABLE]
+  keywords: [kết luận, verdict, supported, contradicted, insufficient evidence, unverifiable, partially supported, ủng hộ, mâu thuẫn, chưa đủ bằng chứng]
+  related: [C-TARGET-VS-ACTUAL]
+  sources:
+    - "[KIẾN THỨC NỀN] docs/00-project/ARCHITECTURE_INVARIANTS.md, bất biến 1 và 6"
+
+# ============================================================== DẤU HIỆU
+- id: SIG-VAGUE
+  kind: signal
+  title: Từ ngữ chung chung, không đo được
+  summary: >-
+    "Thân thiện môi trường", "xanh hơn", "bền vững", "hướng tới tương lai xanh" mà không nêu cơ chế, độ
+    lớn, phạm vi và thời gian. Toà Amsterdam (vụ KLM 2024) coi các câu chung chung kiểu này là gây hiểu
+    lầm. Từ 27/09/2026, Chỉ thị EU 2024/825 cấm tuyên bố môi trường chung chung không chứng minh được hiệu
+    quả vượt trội.
+  claim_weak: Chúng tôi cam kết mạnh mẽ vì một tương lai xanh hơn.
+  claim_good: Năm 2024, tỷ lệ điện mặt trời tự sản xuất đạt 12% tổng điện tiêu thụ của nhà máy A (3.600/30.000 MWh).
+  method: Kiểm xem câu có đủ năm thuộc tính (chỉ số, giá trị, kỳ, năm gốc nếu là thay đổi, phạm vi) không.
+  code: ["quantum_gw.mcp_tools:claim_attributes"]
+  system: Từ khoá trong configs/taxonomy.yaml (risk_patterns.vague_terms); claim thiếu thuộc tính thường thành UNVERIFIABLE hoặc INSUFFICIENT_EVIDENCE.
+  keywords: [chung chung, mơ hồ, vague, thân thiện môi trường, eco-friendly, xanh hơn, bền vững, greener, sustainable future, generic claim]
+  related: [CASE-KLM-2024, P-ECO-PRODUCT]
+  sources:
+    - "[NGOÀI] Directive (EU) 2024/825 (Empowering Consumers for the Green Transition)"
+    - "[NGOÀI] UK CMA Green Claims Code, 2021"
+    - "[NGOÀI] TerraChoice, The Sins of Greenwashing (vagueness), 2010"
+
+- id: SIG-NO-BASELINE
+  kind: signal
+  title: Phần trăm giảm không có năm gốc hoặc kỳ
+  summary: '"Giảm 30% phát thải" mà không nói so với năm nào, kỳ nào, phạm vi nào thì không kiểm được và dễ chọn mốc có lợi.'
+  claim_weak: Chúng tôi đã giảm 30% phát thải.
+  claim_good: Năm 2024 tổng phát thải phạm vi 1+2 của Tập đoàn giảm 30% so với năm gốc 2019.
+  system: claim_attributes báo thiếu năm gốc / kỳ.
+  keywords: [không có năm gốc, thiếu năm gốc, missing baseline, giảm bao nhiêu phần trăm, so với năm nào]
+  related: [C-BASE-YEAR, F-PCT-CHANGE]
+  sources:
+    - "[NGOÀI] GHG Protocol Corporate Standard, chương 5 và 11"
+
+- id: SIG-INTENSITY-MASK
+  kind: signal
+  title: Cường độ giảm che tổng phát thải tăng
+  summary: >-
+    Doanh nghiệp nêu "cường độ phát thải giảm 10%" trong khi sản lượng tăng mạnh, nên tổng phát thải
+    tuyệt đối vẫn tăng. Câu không sai nhưng dễ khiến người đọc hiểu là phát thải giảm.
+  evidence: ["Bảng phát thải tuyệt đối cùng kỳ, cùng ranh giới", "Sản lượng / doanh thu dùng làm mẫu số"]
+  method: Tổng mới / tổng cũ = (1 + thay đổi cường độ) × (1 + thay đổi sản lượng). Xem F-INTENSITY.
+  check:
+    - {expr: "(1 - 0.10) * (1 + 0.24) - 1", expect: 0.116, tol: 0.0005, note: "cường độ −10%, sản lượng +24% → tổng +11,6%"}
+  keywords: [cường độ giảm, tổng tăng, intensity, absolute increase, sản lượng tăng, che giấu]
+  related: [C-ABS-VS-INTENSITY, F-INTENSITY, P-GHG-INTENSITY]
+  sources:
+    - "[NGOÀI] GRI 305: Emissions 2016 (305-4, 305-5)"
+
+- id: SIG-BOUNDARY-CHERRY
+  kind: signal
+  title: Số của một phần trình bày như của cả tập đoàn
+  summary: Thành tích của một nhà máy, một dự án hay một sản phẩm được viết như kết quả chung của doanh nghiệp, hoặc ngược lại.
+  evidence: ["Mục phạm vi báo cáo", "Bảng số liệu theo từng đơn vị"]
+  system: different_boundary, magnitude_gap.
+  codes: [different_boundary, magnitude_gap]
+  keywords: [chọn lọc, cherry picking, một nhà máy, dự án thí điểm, toàn tập đoàn, ranh giới, boundary]
+  related: [C-ORG-BOUNDARY]
+  sources:
+    - "[NGOÀI] UK CMA Green Claims Code, 2021 (không bỏ sót thông tin quan trọng)"
+
+- id: SIG-TARGET-AS-ACHIEVEMENT
+  kind: signal
+  title: Mục tiêu viết như đã đạt, cam kết không có lộ trình
+  summary: >-
+    "Doanh nghiệp net zero" khi mới có mục tiêu 2050; cam kết dài hạn không có mục tiêu trung hạn, kế
+    hoạch đầu tư hay số đo tiến độ hằng năm.
+  evidence: ["Mục tiêu trung hạn (ví dụ 2030)", "Kế hoạch đầu tư / lộ trình", "Số thực hiện từng năm so với đường mục tiêu"]
+  codes: [target_vs_actual]
+  keywords: [mục tiêu như đã đạt, cam kết suông, không lộ trình, net zero 2050, mục tiêu trung hạn, interim target]
+  related: [C-TARGET-VS-ACTUAL, F-TARGET-PACE, P-NETZERO-TARGET]
+  sources:
+    - "[NGOÀI] SBTi Corporate Net-Zero Standard (mục tiêu ngắn hạn bắt buộc)"
+
+- id: SIG-OFFSET-NEUTRAL
+  kind: signal
+  title: Trung hoà carbon chủ yếu nhờ tín chỉ
+  summary: >-
+    Sản phẩm, sự kiện hay doanh nghiệp "trung hoà carbon" nhưng không nêu lượng phát thải, lượng tự giảm,
+    lượng bù bằng tín chỉ và loại tín chỉ. Chỉ thị EU 2024/825 cấm tuyên bố sản phẩm có tác động trung hoà
+    / giảm nhờ bù trừ. Toà Amsterdam (KLM) cho rằng trồng rừng và SAF đã được trình bày quá tích cực.
+  evidence: ["Lượng phát thải đã đo", "Lượng giảm thực", "Tín chỉ: chương trình, vintage, chứng nhận huỷ"]
+  keywords: [trung hoà carbon, carbon neutral, bù trừ, offset, tín chỉ, trồng rừng bù, climate neutral]
+  related: [C-OFFSET-VS-REC, C-NETZERO-VS-NEUTRAL, CASE-KLM-2024]
+  sources:
+    - "[NGOÀI] Directive (EU) 2024/825"
+    - "[NGOÀI] ISO 14068-1:2023"
+
+- id: SIG-SCOPE-OMISSION
+  kind: signal
+  title: Bỏ sót phạm vi phát thải trọng yếu
+  summary: >-
+    Chỉ báo phạm vi 1, hoặc mục tiêu net zero chỉ cho phạm vi 1+2 trong khi phạm vi 3 chiếm phần lớn
+    (thường gặp ở bán lẻ, thực phẩm, tài chính). Claim không ghi phạm vi nào thì không biết đang nói về gì.
+  attributes: [phạm vi phát thải]
+  codes: [different_scope]
+  keywords: [bỏ sót phạm vi 3, scope 3 omission, chỉ phạm vi 1, phạm vi không rõ]
+  related: [C-GHG-SCOPES]
+  sources:
+    - "[NGOÀI] GHG Protocol Corporate Value Chain (Scope 3) Standard, 2011"
+
+- id: SIG-OMISSION
+  kind: signal
+  title: Giấu thông tin bất lợi trọng yếu
+  summary: >-
+    Nêu một mặt tốt và bỏ qua thông tin xấu quan trọng khiến người đọc hiểu sai. Vụ Keurig Dr Pepper (SEC
+    2024): báo cáo thường niên nói thử nghiệm xác nhận viên K-Cup tái chế được nhưng bỏ qua phản hồi tiêu
+    cực của hai đơn vị tái chế lớn.
+  keywords: [giấu thông tin, omission, bỏ sót, thông tin bất lợi, hidden trade-off, đánh đổi ẩn]
+  related: [CASE-KDP-2024, P-RECYCLABLE-PRODUCT]
+  sources:
+    - "[NGOÀI] SEC order Keurig Dr Pepper, 10/09/2024 (data/real_cases/cases/KDP-2024)"
+    - "[NGOÀI] TerraChoice, The Sins of Greenwashing (hidden trade-off), 2010"
+
+- id: SIG-POLICY-NOT-PRACTICE
+  kind: signal
+  title: Chính sách viết như đã thực hiện toàn bộ
+  summary: >-
+    "Mọi khoản đầu tư đều được đánh giá ESG" trong khi chỉ có chính sách, thiếu kiểm soát và số liệu bao
+    phủ. Vụ BNY Mellon 2022: 67/185 khoản đầu tư của một quỹ không có điểm đánh giá, gần 25% tài sản ròng.
+    Vụ DWS 2023: thiếu kiểm soát để xác minh việc thực hiện chính sách tích hợp ESG.
+  evidence: ["Tỷ lệ bao phủ thực tế (số khoản được đánh giá / tổng)", "Kiểm soát, giám sát, hồ sơ thực hiện"]
+  check:
+    - {expr: "67 / 185", expect: 0.362, tol: 0.001, note: "tỷ lệ khoản đầu tư không có điểm ESG trong một quỹ (BNY 2022)"}
+  keywords: [chính sách, thực hiện, policy vs practice, tích hợp esg, esg integration, bao phủ, coverage, kiểm soát]
+  related: [CASE-BNY-2022, CASE-DWS-2023, P-ESG-INTEGRATION]
+  sources:
+    - "[NGOÀI] SEC orders BNY Mellon 2022 và DWS 2023 (data/real_cases/cases)"
+
+- id: SIG-NO-ASSURANCE
+  kind: signal
+  title: Số liệu trọng yếu không được đảm bảo, hoặc trình bày quá mức đảm bảo
+  summary: >-
+    Số phát thải được dùng làm thông điệp chính nhưng không có đảm bảo độc lập; hoặc tờ đảm bảo hạn chế
+    được trình bày như "đã kiểm toán"; hoặc đảm bảo chỉ phủ phạm vi 1+2 mà claim nói cả chuỗi giá trị.
+  evidence: ["Tờ đảm bảo: mức, chuẩn mực, chỉ số và kỳ được đảm bảo"]
+  code: ["quantum_gw.mcp_tools:review_assurance"]
+  keywords: [không đảm bảo, no assurance, đã kiểm toán, đảm bảo hạn chế, phạm vi đảm bảo]
+  related: [C-ASSURANCE-LEVELS, P-ASSURANCE-CLAIM]
+  sources:
+    - "[NGOÀI] IAASB ISSA 5000"
+
+- id: SIG-UNIT-PERIOD-MISMATCH
+  kind: signal
+  title: Lệch đơn vị, bội số hoặc kỳ giữa các phần của báo cáo
+  summary: >-
+    Cùng chỉ số nhưng phần tóm tắt ghi "nghìn tấn", bảng ghi "tấn"; năm tài chính khác năm dương lịch;
+    số năm trước bị sửa mà không giải thích. Dấu thập phân kiểu Việt (23,5) và kiểu Anh (23.5) dễ đọc nhầm.
+  method: Quy về đơn vị gốc rồi mới so (F-UNIT-CONVERSION); khác chiều đơn vị thì không so.
+  code: ["quantum_gw.verification.irlib:unit_dimension", "quantum_gw.verification.irlib:parse_number"]
+  codes: [different_unit]
+  keywords: [đơn vị, unit, nghìn tấn, triệu, bội số, kỳ báo cáo, năm tài chính, dấu thập phân]
+  related: [F-UNIT-CONVERSION, F-TOLERANCE]
+  sources:
+    - "[KIẾN THỨC NỀN] Lỗi gộp 'cộng'/'công' và dấu thập phân đã sửa trong tiền xử lý (báo cáo vòng 2, mục 2.2)"
+
+- id: SIG-IRRELEVANT
+  kind: signal
+  title: Khoe điều bắt buộc hoặc không liên quan
+  summary: >-
+    "Tuân thủ 100% quy chuẩn xả thải" hay "không dùng CFC" là nghĩa vụ pháp luật, không phải thành tích
+    vượt trội. Chỉ thị EU 2024/825 cấm trình bày yêu cầu bắt buộc như đặc điểm riêng của sản phẩm.
+  keywords: [tuân thủ pháp luật, bắt buộc, irrelevant, không liên quan, quy chuẩn, cfc]
+  related: [P-COMPLIANCE]
+  sources:
+    - "[NGOÀI] TerraChoice, The Sins of Greenwashing (irrelevance), 2010"
+    - "[NGOÀI] Directive (EU) 2024/825"
+
+- id: SIG-BASE-YEAR-SHIFT
+  kind: signal
+  title: Đổi năm gốc hoặc tính lại năm gốc không giải thích
+  summary: Năm gốc ở báo cáo năm nay khác năm trước, hoặc số năm gốc đổi mà không nêu lý do (sáp nhập, thoái vốn, đổi phương pháp), khiến mức giảm trông lớn hơn.
+  evidence: ["So số năm gốc giữa các báo cáo liên tiếp", "Thuyết minh tính lại năm gốc"]
+  keywords: [đổi năm gốc, tính lại năm gốc, base year recalculation, baseline shift]
+  related: [C-BASE-YEAR]
+  sources:
+    - "[NGOÀI] GHG Protocol Corporate Standard, chương 5"
+
+- id: SIG-RECYCLABLE-TECHNICAL
+  kind: signal
+  title: "\"Có thể tái chế\" về kỹ thuật nhưng thực tế không được thu gom"
+  summary: >-
+    Vật liệu tách được về kỹ thuật không có nghĩa là hệ thống thu gom, phân loại địa phương nhận và tái chế
+    được về thương mại. Vụ Keurig Dr Pepper 2024 là ví dụ.
+  keywords: [có thể tái chế, recyclable, tái chế được, thu gom, curbside, technically recyclable]
+  related: [CASE-KDP-2024, P-RECYCLABLE-PRODUCT, F-RECYCLING-RATE]
+  sources:
+    - "[NGOÀI] SEC order Keurig Dr Pepper, 2024"
+
+# ============================================================== CÁCH TÍNH
+- id: F-PCT-CHANGE
+  kind: formula
+  title: Phần trăm thay đổi và điểm phần trăm
+  summary: >-
+    Thay đổi % = (giá trị kỳ này − giá trị năm gốc) / giá trị năm gốc × 100. Âm là giảm. Khi cả hai số đã
+    là tỷ lệ % thì chênh lệch tính bằng điểm phần trăm: tỷ trọng tái tạo từ 10% lên 15% là tăng 5 điểm %,
+    tức tăng 50%.
+  check:
+    - {expr: "(70000 - 100000) / 100000 * 100", expect: -30.0, tol: 0.001, note: "100.000 → 70.000 tCO2e: giảm 30%"}
+    - {expr: "(15 - 10) / 10 * 100", expect: 50.0, tol: 0.001, note: "10% → 15%: +5 điểm %, tức +50%"}
+  keywords: [phần trăm thay đổi, percent change, điểm phần trăm, percentage point, giảm bao nhiêu, tăng bao nhiêu]
+  related: [C-BASE-YEAR, SIG-NO-BASELINE]
+  sources:
+    - "[KIẾN THỨC NỀN] số học"
+
+- id: F-INTENSITY
+  kind: formula
+  title: Cường độ phát thải và liên hệ với tổng
+  summary: >-
+    Cường độ = tổng phát thải / đại lượng hoạt động (tấn sản phẩm, MWh, tỷ đồng doanh thu). Vì tổng =
+    cường độ × hoạt động, nên tổng mới / tổng cũ = (1 + thay đổi cường độ) × (1 + thay đổi hoạt động).
+    Mẫu số phải cùng ranh giới và cùng kỳ với tử số.
+  check:
+    - {expr: "(1 - 0.10) * (1 + 0.24) - 1", expect: 0.116, tol: 0.0005, note: "cường độ −10%, sản lượng +24% → tổng +11,6%"}
+    - {expr: "1900000 / 1000000", expect: 1.9, tol: 0.0001, note: "1,9 triệu tCO2e / 1 triệu tấn sản phẩm = 1,9 tCO2e/tấn"}
+  code: ["quantum_gw.verification.irlib:unit_dimension"]
+  system: Đơn vị cường độ giữ mẫu số ('ghg_t/tấn thép'); khác mẫu số thì khác đơn vị, không so.
+  keywords: [cường độ, intensity, trên một tấn, per tonne, mẫu số, sản lượng, doanh thu]
+  related: [C-ABS-VS-INTENSITY, SIG-INTENSITY-MASK]
+  sources:
+    - "[NGOÀI] GRI 305: Emissions 2016, công bố 305-4"
+
+- id: F-TARGET-PACE
+  kind: formula
+  title: Tốc độ giảm cần thiết và tiến độ so với mục tiêu
+  summary: >-
+    Giảm R sau n năm thì tốc độ giảm kép mỗi năm r = 1 − (1 − R)^(1/n). Tiến độ đã đạt = (E_gốc − E_nay)
+    / (E_gốc − E_đích). Dùng để hỏi "với tốc độ hiện tại có đạt mục tiêu không", không dùng để ra kết luận.
+  check:
+    - {expr: "1 - (1 - 0.30) ** (1 / 10)", expect: 0.0350, tol: 0.0001, note: "giảm 30% trong 10 năm → khoảng 3,5%/năm"}
+    - {expr: "(100000 - 88000) / (100000 - 70000)", expect: 0.4, tol: 0.0001, note: "đã giảm 12.000 trên 30.000 cần giảm → đạt 40% chặng"}
+  keywords: [tốc độ giảm, annual reduction rate, tiến độ mục tiêu, progress to target, lộ trình, cagr]
+  related: [C-TARGET-VS-ACTUAL, SIG-TARGET-AS-ACHIEVEMENT, P-NETZERO-TARGET]
+  sources:
+    - "[KIẾN THỨC NỀN] số học"
+
+- id: F-SHARE
+  kind: formula
+  title: Tỷ trọng (năng lượng tái tạo, tái chế...)
+  summary: >-
+    Tỷ trọng = phần / tổng × 100, phần và tổng cùng đơn vị, cùng kỳ, cùng ranh giới. Các thành phần cộng lại
+    phải bằng tổng. Tỷ trọng điện tái tạo khác tỷ trọng năng lượng tái tạo trong tổng năng lượng (gồm cả
+    nhiên liệu).
+  check:
+    - {expr: "3600 / 30000 * 100", expect: 12.0, tol: 0.001, note: "3.600 MWh điện mặt trời / 30.000 MWh điện = 12%"}
+  keywords: [tỷ trọng, share, tỷ lệ năng lượng tái tạo, renewable share, phần trăm của tổng]
+  related: [P-RE-SHARE, C-ABS-VS-INTENSITY]
+  sources:
+    - "[KIẾN THỨC NỀN] số học"
+
+- id: F-UNIT-CONVERSION
+  kind: formula
+  title: Quy đổi đơn vị và bội số
+  summary: >-
+    Quy mọi số về đơn vị gốc trước khi so: 1 nghìn tấn CO2 = 1.000 tCO2; 1 MWh = 1.000 kWh = 3,6 GJ; 1 toe
+    = 11.630 kWh; 1 TJ ≈ 277.778 kWh; 1.000 lít = 1 m3. Bội số "nghìn", "triệu", "tỷ" nhân vào giá trị;
+    "tỷ lệ" không phải bội số. Số "22.540.603" là hai mươi hai triệu; "23,5" là hai mươi ba phẩy năm.
+  check:
+    - {expr: "1000 * 3.6 / 1000", expect: 3.6, tol: 0.0001, note: "1 MWh = 1.000 kWh × 3,6 MJ/kWh = 3,6 GJ"}
+    - {expr: "41.868e9 / 3.6e6", expect: 11630.0, tol: 0.5, note: "1 toe = 41,868 GJ = 11.630 kWh"}
+  code: ["quantum_gw.verification.irlib:unit_dimension", "quantum_gw.verification.irlib:parse_number"]
+  system: irlib._UNITS là bảng quy đổi hệ thống dùng; khác chiều đơn vị (khối lượng với năng lượng) thì không so.
+  codes: [different_unit]
+  keywords: [quy đổi đơn vị, unit conversion, tco2e, mwh, gj, toe, tj, nghìn, triệu, tỷ, dấu thập phân]
+  related: [SIG-UNIT-PERIOD-MISMATCH, F-TOLERANCE]
+  sources:
+    - "[NGOÀI] IEA, định nghĩa toe = 41,868 GJ"
+
+- id: F-TOLERANCE
+  kind: formula
+  title: Dung sai khi so hai con số
+  summary: >-
+    Hệ thống coi hai số là khớp khi chênh lệch không vượt tổng nửa chữ số cuối mà mỗi bên đã viết. "23,5
+    triệu" có dung sai 0,05 triệu = 50.000; "23.474.480" có dung sai 0,5. Nhờ vậy số làm tròn trong phần
+    tóm tắt không bị coi là mâu thuẫn với số chi tiết trong bảng.
+  check:
+    - {expr: "abs(23.5e6 - 23474480)", expect: 25520.0, tol: 0.5, note: "chênh lệch"}
+    - {expr: "0.05e6 + 0.5", expect: 50000.5, tol: 0.001, note: "dung sai; 25.520 ≤ 50.000,5 → khớp"}
+  code: ["quantum_gw.verification.irlib:parse_number", "quantum_gw.verification.irlib:compare"]
+  system: compare trả "|a − b| = ...; dung sai ..." trong lý do kết luận.
+  keywords: [dung sai, tolerance, làm tròn, rounding, khớp số, chênh lệch]
+  related: [F-UNIT-CONVERSION, F-COMPARABILITY]
+  sources:
+    - "[KIẾN THỨC NỀN] src/quantum_gw/verification/irlib.py"
+
+- id: F-COMPARABILITY
+  kind: formula
+  title: Điều kiện để hai con số được đem so
+  summary: >-
+    Trước mọi phép trừ, hệ thống kiểm theo thứ tự: cùng đơn vị, cùng cơ sở đo, cùng ranh giới, cùng công
+    nghệ, cùng biến thể chỉ số, cùng phạm vi phát thải, cùng là mục tiêu hoặc cùng là thực hiện, và không
+    chênh nhau quá lớn (từ 20 lần khi thiếu thông tin ranh giới / cơ sở đo, từ 100 lần trong mọi trường
+    hợp). Thông tin "chưa rõ" không tự chặn; chỉ khác biệt đã biết ở cả hai bên mới chặn.
+  code: ["quantum_gw.verification.numeric_facts:eligibility", "quantum_gw.verification.irlib:comparable"]
+  system: Một chiều khác nhau thì kết quả là không so được, không bao giờ là mâu thuẫn (bất biến 4).
+  codes: [different_unit, different_basis, different_boundary, different_technology, different_variant, different_scope, target_vs_actual, magnitude_gap]
+  keywords: [so được, comparable, không so được, not comparable, điều kiện so sánh, chính sách so sánh, comparison policy]
+  related: [C-ORG-BOUNDARY, C-ABS-VS-INTENSITY, C-TARGET-VS-ACTUAL, C-GHG-SCOPES, F-TOLERANCE]
+  sources:
+    - "[KIẾN THỨC NỀN] comparison-policy-v2, src/quantum_gw/verification/numeric_facts.py"
+
+- id: F-SCOPE-SUM
+  kind: formula
+  title: Cộng các phạm vi phát thải
+  summary: >-
+    Tổng phạm vi 1+2 = phạm vi 1 + phạm vi 2 (chọn một cách tính phạm vi 2, ghi rõ theo vị trí hay theo thị
+    trường). Không cộng tín chỉ bù trừ vào kiểm kê. Nếu báo cáo ghi tổng khác tổng thành phần quá dung sai
+    làm tròn thì đó là điểm cần hỏi.
+  check:
+    - {expr: "60000 + 10000", expect: 70000.0, tol: 0.5, note: "phạm vi 1 60.000 + phạm vi 2 10.000 = tổng 70.000 tCO2e (số minh hoạ)"}
+  keywords: [cộng phạm vi, tổng phát thải, scope sum, phạm vi 1 cộng 2]
+  related: [C-GHG-SCOPES, C-SCOPE2-METHODS]
+  sources:
+    - "[NGOÀI] GHG Protocol Corporate Standard, chương 9"
+
+- id: F-RECYCLING-RATE
+  kind: formula
+  title: Tỷ lệ tái chế, tái sử dụng chất thải
+  summary: >-
+    Tỷ lệ tái chế = khối lượng được tái chế hoặc tái sử dụng / khối lượng chất thải phát sinh × 100. "Thu
+    gom" hay "chuyển giao cho đơn vị xử lý" chưa phải là tái chế. Chất thải nguy hại tính riêng. GRI 306
+    tách chất thải phát sinh, chuyển hướng khỏi tiêu huỷ và đưa đi tiêu huỷ.
+  check:
+    - {expr: "8200 / 10000 * 100", expect: 82.0, tol: 0.001, note: "8.200 tấn tái chế / 10.000 tấn phát sinh = 82%"}
+  keywords: [tỷ lệ tái chế, recycling rate, tái sử dụng, chất thải phát sinh, chuyển hướng, diverted from disposal, chất thải nguy hại]
+  related: [P-WASTE-RECYCLING, SIG-RECYCLABLE-TECHNICAL]
+  sources:
+    - "[NGOÀI] GRI 306: Waste 2020 (306-3, 306-4, 306-5)"
+
+- id: F-WATER
+  kind: formula
+  title: Nước khai thác, xả và tiêu thụ
+  summary: >-
+    GRI 303 tách ba số: nước khai thác (withdrawal), nước xả (discharge) và nước tiêu thụ = khai thác − xả
+    (cộng thay đổi lượng trữ nếu đáng kể). "Giảm sử dụng nước" phải nói là số nào; tuần hoàn tái sử dụng
+    làm giảm khai thác nhưng không phải là nước tiêu thụ.
+  check:
+    - {expr: "1200000 - 950000", expect: 250000.0, tol: 0.5, note: "khai thác 1,2 triệu m3, xả 0,95 triệu m3 → tiêu thụ 250.000 m3"}
+  keywords: [nước khai thác, nước tiêu thụ, water withdrawal, water consumption, nước xả, discharge, tuần hoàn nước]
+  related: [P-WATER]
+  sources:
+    - "[NGOÀI] GRI 303: Water and Effluents 2018 (303-3, 303-4, 303-5)"
+
+# ============================================================== CLAIM CHUẨN
+- id: P-GHG-ABS-REDUCTION
+  kind: pattern
+  title: "Tuyên bố chuẩn: giảm tổng phát thải khí nhà kính"
+  summary: Claim giảm phát thải tuyệt đối kiểm được khi nêu đủ chỉ số, giá trị, kỳ, năm gốc, phạm vi và ranh giới.
+  claim_good: Năm 2024, tổng phát thải phạm vi 1 và 2 (theo vị trí) của Tập đoàn là 70.000 tCO2e, giảm 30% so với năm gốc 2019 (100.000 tCO2e).
+  claim_weak: Chúng tôi đã giảm mạnh lượng phát thải carbon.
+  attributes: [chỉ số, giá trị, kỳ, năm gốc, phạm vi phát thải, ranh giới tổ chức]
+  evidence: ["Bảng kiểm kê khí nhà kính theo năm (năm gốc và kỳ này), cùng ranh giới", "Phương pháp và hệ số phát thải", "Tờ đảm bảo độc lập nếu có"]
+  signals: [SIG-NO-BASELINE, SIG-BOUNDARY-CHERRY, SIG-SCOPE-OMISSION, SIG-BASE-YEAR-SHIFT, SIG-NO-ASSURANCE]
+  method: Tính lại % giảm từ hai số trong bảng (F-PCT-CHANGE), kiểm cộng phạm vi (F-SCOPE-SUM), so với claim trong dung sai (F-TOLERANCE).
+  check:
+    - {expr: "(70000 - 100000) / 100000 * 100", expect: -30.0, tol: 0.001}
+  system: Luật so số đối chiếu giá trị và mức thay đổi; thiếu năm gốc → claim_attributes báo thiếu.
+  keywords: [giảm phát thải, emission reduction, tổng phát thải, khí nhà kính, ghg, tco2e]
+  related: [F-PCT-CHANGE, F-SCOPE-SUM, C-BASE-YEAR]
+  sources:
+    - "[NGOÀI] GRI 305-5; GHG Protocol Corporate Standard, chương 5 và 9"
+
+- id: P-GHG-INTENSITY
+  kind: pattern
+  title: "Tuyên bố chuẩn: cường độ phát thải"
+  summary: Claim cường độ phải nêu mẫu số, kỳ, phạm vi, và nên kèm tổng phát thải tuyệt đối để người đọc không hiểu nhầm.
+  claim_good: Cường độ phát thải phạm vi 1+2 năm 2024 là 1,90 tCO2e/tấn thép thô, giảm 4% so với 2023; tổng phát thải cùng kỳ tăng 7% do sản lượng tăng 11%.
+  claim_weak: Cường độ carbon của chúng tôi giảm liên tục.
+  attributes: [chỉ số, giá trị, mẫu số, kỳ, phạm vi phát thải]
+  evidence: ["Tổng phát thải và sản lượng cùng kỳ, cùng ranh giới", "Định nghĩa sản lượng (thép thô, thép thành phẩm...)"]
+  signals: [SIG-INTENSITY-MASK]
+  method: Tính lại cường độ = tổng / sản lượng; kiểm (1 + Δcường độ)(1 + Δsản lượng) − 1 = Δtổng.
+  check:
+    - {expr: "(1 - 0.04) * (1 + 0.11) - 1", expect: 0.0656, tol: 0.0005, note: "khớp với 'tổng tăng khoảng 7%'"}
+  code: ["quantum_gw.verification.irlib:unit_dimension"]
+  keywords: [cường độ phát thải, emission intensity, tco2e trên tấn, per tonne, thép]
+  related: [F-INTENSITY, C-ABS-VS-INTENSITY]
+  sources:
+    - "[NGOÀI] GRI 305-4"
+
+- id: P-NETZERO-TARGET
+  kind: pattern
+  title: "Tuyên bố chuẩn: mục tiêu net zero"
+  summary: Mục tiêu net zero đáng tin khi có năm đích, phạm vi, năm gốc, mục tiêu trung hạn, lộ trình và tiến độ hằng năm.
+  claim_good: Tập đoàn đặt mục tiêu phát thải ròng bằng 0 cho phạm vi 1, 2 và 3 vào năm 2050, với mục tiêu trung hạn giảm 42% phát thải phạm vi 1+2 vào 2030 so với năm gốc 2022.
+  claim_weak: Chúng tôi hướng tới net zero.
+  attributes: [năm đích, phạm vi phát thải, năm gốc, mục tiêu trung hạn]
+  evidence: ["Lộ trình giảm phát thải và kế hoạch đầu tư", "Số thực hiện từng năm so với đường mục tiêu", "Xác nhận mục tiêu bởi bên thứ ba (ví dụ SBTi) nếu claim nói có"]
+  signals: [SIG-TARGET-AS-ACHIEVEMENT, SIG-OFFSET-NEUTRAL, SIG-SCOPE-OMISSION]
+  method: Tính tốc độ giảm cần thiết và tiến độ đã đạt (F-TARGET-PACE).
+  check:
+    - {expr: "1 - (1 - 0.42) ** (1 / 8)", expect: 0.0658, tol: 0.0005, note: "giảm 42% trong 8 năm (2022→2030) → khoảng 6,6%/năm"}
+  codes: [target_vs_actual]
+  keywords: [net zero, phát thải ròng bằng 0, mục tiêu 2050, mục tiêu trung hạn, sbti, lộ trình]
+  related: [C-NETZERO-VS-NEUTRAL, C-TARGET-VS-ACTUAL, F-TARGET-PACE]
+  sources:
+    - "[NGOÀI] SBTi Corporate Net-Zero Standard"
+
+- id: P-CARBON-NEUTRAL
+  kind: pattern
+  title: "Tuyên bố chuẩn: trung hoà carbon cho sản phẩm hoặc hoạt động"
+  summary: Claim trung hoà carbon phải tách lượng đo được, lượng tự giảm và lượng bù, và nêu loại tín chỉ.
+  claim_good: Sự kiện X năm 2024 phát thải 1.200 tCO2e (phạm vi 1, 2 và đi lại của khách); 300 tCO2e được giảm nhờ điện mặt trời tại chỗ; 900 tCO2e còn lại được bù bằng tín chỉ Gold Standard vintage 2023, đã huỷ (số sê-ri trong phụ lục).
+  claim_weak: Sản phẩm của chúng tôi trung hoà carbon.
+  attributes: [đối tượng, kỳ, lượng phát thải, lượng giảm, lượng bù, loại tín chỉ]
+  evidence: ["Kiểm kê dấu chân carbon của đối tượng", "Chứng nhận huỷ tín chỉ", "Chuẩn áp dụng (ví dụ ISO 14068-1)"]
+  signals: [SIG-OFFSET-NEUTRAL, SIG-VAGUE]
+  check:
+    - {expr: "1200 - 300", expect: 900.0, tol: 0.001, note: "lượng phải bù = phát thải − lượng tự giảm"}
+  keywords: [trung hoà carbon, carbon neutral, bù trừ, tín chỉ, dấu chân carbon, carbon footprint]
+  related: [C-NETZERO-VS-NEUTRAL, C-OFFSET-VS-REC]
+  sources:
+    - "[NGOÀI] ISO 14068-1:2023; Directive (EU) 2024/825"
+
+- id: P-RE-SHARE
+  kind: pattern
+  title: "Tuyên bố chuẩn: tỷ trọng năng lượng tái tạo"
+  summary: Nêu tử số, mẫu số, kỳ, ranh giới và nguồn tái tạo (tự sản xuất, PPA, chứng chỉ).
+  claim_good: Năm 2024, điện tái tạo chiếm 12% tổng điện tiêu thụ của nhà máy A (3.600/30.000 MWh), gồm 2.400 MWh điện mặt trời mái nhà tự sản xuất và 1.200 MWh I-REC đã huỷ.
+  claim_weak: Chúng tôi sử dụng năng lượng sạch.
+  attributes: [chỉ số, giá trị, tử số, mẫu số, kỳ, ranh giới tổ chức, nguồn]
+  evidence: ["Số điện tiêu thụ theo hoá đơn / công tơ", "Sản lượng điện mặt trời tự sản xuất", "Chứng nhận huỷ I-REC hoặc hợp đồng PPA"]
+  signals: [SIG-BOUNDARY-CHERRY, SIG-VAGUE]
+  method: Tỷ trọng = phần / tổng (F-SHARE); các nguồn cộng lại bằng tử số.
+  check:
+    - {expr: "2400 + 1200", expect: 3600.0, tol: 0.001}
+    - {expr: "3600 / 30000 * 100", expect: 12.0, tol: 0.001}
+  keywords: [năng lượng tái tạo, renewable energy, điện mặt trời, tỷ trọng tái tạo, i-rec, ppa, điện xanh]
+  related: [F-SHARE, C-SCOPE2-METHODS, C-OFFSET-VS-REC]
+  sources:
+    - "[NGOÀI] GHG Protocol Scope 2 Guidance, 2015"
+
+- id: P-ENERGY-SAVING
+  kind: pattern
+  title: "Tuyên bố chuẩn: tiết kiệm năng lượng"
+  summary: Lượng tiết kiệm là so với mức tiêu thụ cơ sở đã điều chỉnh theo sản lượng; cần nêu biện pháp, kỳ và phương pháp đo.
+  claim_good: Dự án thu hồi nhiệt thải tại nhà máy B tiết kiệm 5.400 MWh điện năm 2024 so với mức cơ sở 2022 đã điều chỉnh theo sản lượng, đo theo phương pháp IPMVP lựa chọn B.
+  claim_weak: Chúng tôi tiết kiệm năng lượng hiệu quả.
+  attributes: [biện pháp, giá trị, đơn vị, kỳ, mức cơ sở, ranh giới]
+  evidence: ["Số tiêu thụ trước và sau", "Báo cáo đo lường và kiểm chứng (M&V)", "Báo cáo kiểm toán năng lượng"]
+  signals: [SIG-VAGUE, SIG-BOUNDARY-CHERRY]
+  keywords: [tiết kiệm năng lượng, energy saving, hiệu quả năng lượng, energy efficiency, ipmvp, kiểm toán năng lượng]
+  related: [F-UNIT-CONVERSION]
+  sources:
+    - "[NGOÀI] EVO, International Performance Measurement and Verification Protocol (IPMVP)"
+
+- id: P-WATER
+  kind: pattern
+  title: "Tuyên bố chuẩn: giảm sử dụng nước"
+  summary: Nói rõ là nước khai thác, nước tiêu thụ hay cường độ nước; nêu kỳ, ranh giới.
+  claim_good: Năm 2024, lượng nước khai thác trên một tấn sản phẩm của các nhà máy trong nước giảm 12% so với 2023 (từ 4,25 xuống 3,74 m3/tấn).
+  claim_weak: Chúng tôi sử dụng nước tiết kiệm.
+  attributes: [chỉ số, giá trị, đơn vị, kỳ, ranh giới]
+  evidence: ["Bảng nước khai thác / xả / tiêu thụ theo năm", "Sản lượng cùng kỳ"]
+  signals: [SIG-INTENSITY-MASK, SIG-VAGUE]
+  check:
+    - {expr: "(3.74 - 4.25) / 4.25 * 100", expect: -12.0, tol: 0.05}
+  keywords: [nước, water, nước khai thác, tiêu thụ nước, cường độ nước, tiết kiệm nước]
+  related: [F-WATER, F-INTENSITY]
+  sources:
+    - "[NGOÀI] GRI 303: Water and Effluents 2018"
+
+- id: P-WASTE-RECYCLING
+  kind: pattern
+  title: "Tuyên bố chuẩn: tái chế, tái sử dụng chất thải"
+  summary: Nêu loại chất thải, khối lượng phát sinh, khối lượng tái chế, kỳ; tách chất thải nguy hại.
+  claim_good: Năm 2024, 82% chất thải rắn công nghiệp thông thường của nhà máy C được tái chế hoặc tái sử dụng (8.200/10.000 tấn); chất thải nguy hại 120 tấn được chuyển giao cho đơn vị có giấy phép xử lý.
+  claim_weak: Chúng tôi tái chế phần lớn chất thải.
+  attributes: [loại chất thải, khối lượng phát sinh, khối lượng tái chế, kỳ, ranh giới]
+  evidence: ["Sổ theo dõi chất thải / biên bản chuyển giao", "Giấy phép của đơn vị tái chế, xử lý"]
+  signals: [SIG-RECYCLABLE-TECHNICAL, SIG-VAGUE]
+  check:
+    - {expr: "8200 / 10000 * 100", expect: 82.0, tol: 0.001}
+  keywords: [tái chế, recycling, chất thải, waste, tái sử dụng, chất thải nguy hại, hazardous waste]
+  related: [F-RECYCLING-RATE]
+  sources:
+    - "[NGOÀI] GRI 306: Waste 2020"
+
+- id: P-RECYCLABLE-PRODUCT
+  kind: pattern
+  title: "Tuyên bố chuẩn: sản phẩm, bao bì có thể tái chế"
+  summary: Phải nói tái chế được ở đâu, bởi hệ thống nào, và tỷ lệ thực tế được thu hồi; không giấu phản hồi bất lợi của bên tái chế.
+  claim_good: 100% bao bì PET của dòng sản phẩm D có thể tái chế qua hệ thống thu gom của đối tác E tại Hà Nội và TP.HCM; năm 2024 thu hồi được 35% lượng bao bì đưa ra thị trường.
+  claim_weak: Bao bì của chúng tôi 100% có thể tái chế.
+  attributes: [sản phẩm, vật liệu, khu vực, hệ thống thu gom, tỷ lệ thu hồi thực tế]
+  evidence: ["Xác nhận của đơn vị thu gom, tái chế", "Số liệu thu hồi thực tế", "Trách nhiệm mở rộng của nhà sản xuất (EPR) đã thực hiện"]
+  signals: [SIG-RECYCLABLE-TECHNICAL, SIG-OMISSION]
+  keywords: [có thể tái chế, recyclable, bao bì, packaging, thu hồi, epr]
+  related: [CASE-KDP-2024, F-RECYCLING-RATE]
+  sources:
+    - "[NGOÀI] SEC order Keurig Dr Pepper, 2024; UK CMA Green Claims Code, 2021"
+
+- id: P-ECO-PRODUCT
+  kind: pattern
+  title: "Tuyên bố chuẩn: sản phẩm \"thân thiện môi trường\""
+  summary: Thay nhãn chung chung bằng thuộc tính đo được trên vòng đời, hoặc nhãn sinh thái được cấp bởi bên thứ ba có tên và số chứng nhận.
+  claim_good: Sơn F đạt Nhãn Xanh Việt Nam (số chứng nhận ..., hiệu lực đến 2027) và có hàm lượng VOC dưới 30 g/L.
+  claim_weak: Sản phẩm thân thiện với môi trường.
+  attributes: [thuộc tính môi trường, giá trị, chứng nhận / chuẩn đo]
+  evidence: ["Chứng nhận nhãn sinh thái còn hiệu lực", "Kết quả thử nghiệm hoặc đánh giá vòng đời (LCA)"]
+  signals: [SIG-VAGUE, SIG-IRRELEVANT]
+  keywords: [thân thiện môi trường, eco-friendly, nhãn sinh thái, nhãn xanh việt nam, ecolabel, vòng đời, lca]
+  related: [SIG-VAGUE, CASE-KLM-2024]
+  sources:
+    - "[NGOÀI] Directive (EU) 2024/825; UK CMA Green Claims Code, 2021"
+    - "[NGOÀI] Luật Bảo vệ môi trường 2020 (nhãn sinh thái Việt Nam)"
+
+- id: P-ISO14001
+  kind: pattern
+  title: "Tuyên bố chuẩn: chứng nhận ISO 14001"
+  summary: ISO 14001 chứng nhận hệ thống quản lý môi trường, không chứng nhận kết quả môi trường. Claim cần phạm vi chứng nhận và hiệu lực.
+  claim_good: 6/8 nhà máy trong nước được chứng nhận ISO 14001:2015 bởi tổ chức G, hiệu lực đến 2026; hai nhà máy mới đang trong quá trình đánh giá.
+  claim_weak: Chúng tôi đạt chuẩn quốc tế về môi trường.
+  attributes: [chuẩn, phạm vi chứng nhận, tổ chức chứng nhận, hiệu lực]
+  evidence: ["Giấy chứng nhận: số, phạm vi địa điểm, ngày hết hạn"]
+  signals: [SIG-BOUNDARY-CHERRY, SIG-IRRELEVANT]
+  keywords: [iso 14001, hệ thống quản lý môi trường, ems, chứng nhận, certification]
+  related: [P-ASSURANCE-CLAIM]
+  sources:
+    - "[NGOÀI] ISO 14001:2015"
+
+- id: P-GREEN-FINANCE
+  kind: pattern
+  title: "Tuyên bố chuẩn: trái phiếu xanh, tín dụng xanh"
+  summary: Nêu số tiền, công cụ, danh mục dự án, tỷ lệ đã phân bổ, tác động đo được và đánh giá độc lập.
+  claim_good: Năm 2024 phát hành 1.000 tỷ đồng trái phiếu xanh theo khung trái phiếu xanh có ý kiến bên thứ hai của H; đã phân bổ 800 tỷ (80%) cho hai dự án điện mặt trời thuộc danh mục phân loại xanh, ước tính tránh 45.000 tCO2e/năm.
+  claim_weak: Chúng tôi tiên phong tài chính xanh.
+  attributes: [công cụ, số tiền, dự án, tỷ lệ phân bổ, tác động, đánh giá độc lập]
+  evidence: ["Khung trái phiếu xanh và SPO", "Báo cáo phân bổ và tác động", "Đối chiếu dự án với QĐ 21/2025/QĐ-TTg"]
+  signals: [SIG-VAGUE, SIG-POLICY-NOT-PRACTICE]
+  check:
+    - {expr: "800 / 1000 * 100", expect: 80.0, tol: 0.001}
+  keywords: [trái phiếu xanh, green bond, tín dụng xanh, green loan, phân bổ vốn, danh mục phân loại xanh]
+  related: [C-GREEN-BOND, LEGAL-QD21-2025-QD-TTg, LEGAL-TT17-2022-TT-NHNN]
+  sources:
+    - "[NGOÀI] ICMA Green Bond Principles; QĐ 21/2025/QĐ-TTg; TT 17/2022/TT-NHNN"
+
+- id: P-ESG-INTEGRATION
+  kind: pattern
+  title: "Tuyên bố chuẩn: đánh giá rủi ro môi trường / tích hợp ESG"
+  summary: Claim về quy trình phải có số bao phủ thực tế và kiểm soát, không chỉ có chính sách.
+  claim_good: Năm 2024, 96% dư nợ (theo giá trị) của các khoản vay mới thuộc ngành rủi ro môi trường cao đã được đánh giá rủi ro môi trường theo Thông tư 17/2022/TT-NHNN; 4% còn lại đang bổ sung hồ sơ.
+  claim_weak: Mọi quyết định cấp tín dụng của chúng tôi đều tích hợp yếu tố môi trường.
+  attributes: [quy trình, tỷ lệ bao phủ, kỳ, phạm vi danh mục]
+  evidence: ["Số khoản / giá trị đã đánh giá trên tổng", "Kiểm soát nội bộ, kiểm toán nội bộ về quy trình"]
+  signals: [SIG-POLICY-NOT-PRACTICE]
+  keywords: [tích hợp esg, esg integration, đánh giá rủi ro môi trường, quản lý rủi ro môi trường, tín dụng, thông tư 17]
+  related: [CASE-BNY-2022, CASE-DWS-2023, LEGAL-TT17-2022-TT-NHNN]
+  sources:
+    - "[NGOÀI] TT 17/2022/TT-NHNN; SEC orders BNY Mellon 2022, DWS 2023"
+
+- id: P-TREES
+  kind: pattern
+  title: "Tuyên bố chuẩn: trồng cây, phục hồi rừng"
+  summary: Nêu số cây hoặc diện tích, địa điểm, năm, tỷ lệ sống; trồng cây không tự động là bù phát thải.
+  claim_good: Năm 2024 trồng 12.000 cây keo và lim trên 10 ha rừng phòng hộ tại tỉnh K, tỷ lệ sống sau 12 tháng 85% theo biên bản nghiệm thu của Ban quản lý rừng.
+  claim_weak: Chúng tôi trồng hàng nghìn cây xanh để bảo vệ hành tinh.
+  attributes: [số cây / diện tích, địa điểm, kỳ, tỷ lệ sống]
+  evidence: ["Biên bản nghiệm thu", "Bản đồ / toạ độ", "Không quy đổi sang tCO2e nếu không có phương pháp được công nhận"]
+  signals: [SIG-OFFSET-NEUTRAL, SIG-VAGUE]
+  keywords: [trồng cây, trees, trồng rừng, reforestation, diện tích xanh, tỷ lệ sống]
+  related: [SIG-OFFSET-NEUTRAL, CASE-KLM-2024]
+  sources:
+    - "[NGOÀI] Phán quyết Toà Amsterdam vụ KLM, 20/03/2024 (data/real_cases/cases/KLM-2024)"
+
+- id: P-ASSURANCE-CLAIM
+  kind: pattern
+  title: "Tuyên bố chuẩn: số liệu đã được đảm bảo độc lập"
+  summary: Nêu đơn vị đảm bảo, mức đảm bảo, chuẩn mực, chỉ số và kỳ được đảm bảo.
+  claim_good: Số liệu phát thải phạm vi 1 và 2 năm 2024 được đảm bảo hạn chế bởi công ty L theo ISAE 3410 (xem tờ đảm bảo trang 120).
+  claim_weak: Báo cáo đã được kiểm toán độc lập.
+  attributes: [đơn vị đảm bảo, mức đảm bảo, chuẩn mực, chỉ số, kỳ]
+  evidence: ["Tờ đảm bảo đầy đủ"]
+  signals: [SIG-NO-ASSURANCE]
+  code: ["quantum_gw.mcp_tools:review_assurance"]
+  keywords: [đảm bảo độc lập, assurance, kiểm toán độc lập, isae 3410, issa 5000, tờ đảm bảo]
+  related: [C-ASSURANCE-LEVELS]
+  sources:
+    - "[NGOÀI] IAASB ISSA 5000; ISAE 3410"
+
+- id: P-COMPLIANCE
+  kind: pattern
+  title: "Tuyên bố chuẩn: tuân thủ quy chuẩn môi trường"
+  summary: Tuân thủ là nghĩa vụ; claim nên nêu quy chuẩn, chỉ tiêu, kết quả quan trắc và các vi phạm (nếu có) trong kỳ.
+  claim_good: Năm 2024, 4/4 đợt quan trắc nước thải tại nhà máy M đạt QCVN 40:2011/BTNMT cột A; không có quyết định xử phạt vi phạm hành chính về môi trường trong năm.
+  claim_weak: Chúng tôi tuân thủ 100% pháp luật môi trường.
+  attributes: [quy chuẩn, chỉ tiêu, kỳ, kết quả quan trắc, vi phạm]
+  evidence: ["Báo cáo quan trắc định kỳ", "Tra cứu quyết định xử phạt của cơ quan quản lý"]
+  signals: [SIG-IRRELEVANT, SIG-OMISSION]
+  keywords: [tuân thủ, compliance, quy chuẩn, qcvn, quan trắc, xử phạt, nước thải]
+  related: [SIG-IRRELEVANT, LEGAL-LUAT-BVMT-2020]
+  sources:
+    - "[NGOÀI] Luật Bảo vệ môi trường 2020; QCVN 40:2011/BTNMT"

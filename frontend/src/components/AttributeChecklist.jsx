@@ -14,6 +14,7 @@ const STATE = {
   present: { dot: 'bg-emerald-500', ring: 'ring-emerald-500/30', text: 'text-slate-900', label: 'Có', pill: 'bg-emerald-50 text-emerald-700 ring-emerald-200' },
   partial: { dot: 'bg-amber-500', ring: 'ring-amber-500/30', text: 'text-slate-900', label: 'Một phần', pill: 'bg-amber-50 text-amber-800 ring-amber-200' },
   missing: { dot: 'bg-red-500', ring: 'ring-red-500/30', text: 'text-red-900', label: 'Thiếu', pill: 'bg-red-50 text-red-700 ring-red-200' },
+  not_applicable: { dot: 'bg-slate-200', ring: 'ring-slate-200/30', text: 'text-slate-500', label: 'Không áp dụng', pill: 'bg-slate-50 text-slate-500 ring-slate-200' },
   unknown: { dot: 'bg-slate-300', ring: 'ring-slate-300/30', text: 'text-slate-500', label: 'Chưa đánh giá', pill: 'bg-slate-100 text-slate-500 ring-slate-200' },
 }
 
@@ -41,7 +42,7 @@ export default function AttributeChecklist({ attributes, penalties, variant = 'l
       <div className="flex items-baseline justify-between">
         <h3 className="text-sm font-semibold text-slate-900">Thuộc tính bắt buộc</h3>
         <span className="text-xs text-slate-500">
-          {attributes.filter((a) => a.state === 'present').length}/{attributes.length} đủ
+          {attributes.filter((a) => a.state === 'present').length}/{attributes.filter((a) => a.state !== 'not_applicable').length} đủ
         </span>
       </div>
 
@@ -61,7 +62,7 @@ export default function AttributeChecklist({ attributes, penalties, variant = 'l
                   <span className={`ml-auto rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ${s.pill}`}>{s.label}</span>
                 </div>
                 <p className="mt-0.5 text-xs text-slate-500">{a.hint}</p>
-                {showFix && a.state !== 'present' && (a.action || a.fix) && (
+                {showFix && a.state === 'missing' && (a.action || a.fix) && (
                   <p className="mt-1 rounded bg-emerald-50 px-2 py-1 text-xs leading-relaxed text-emerald-900">
                     <b>Việc cần làm:</b> {a.action || a.fix}
                   </p>

@@ -1,0 +1,98 @@
+# ISSA_Conclusion_Patterns: mẫu câu kết luận của báo cáo đảm bảo (việc 13–14, 11/11/2026).
+#
+# Nguồn: 12 báo cáo minh hoạ của IAASB (data/standards/iaasb/README.md):
+#   IR-A … IR-H  = Sustainability Assurance Illustrative Reports, 11/2025 (sha256 815cd95a…)
+#   APP3-1 … 4   = ISSA 5000, Phụ lục 3 (sha256 5dc1df4d…)
+# Mỗi mẫu có `pattern` (biểu thức chính quy, không phân biệt hoa thường, khoảng trắng đã gộp;
+# chịu được chân trang chen giữa câu khi ngắt trang, ví dụ “nothing has come ISSA 5000 Page 215 of 230 to our attention”)
+# và `pattern_span` (câu nguyên văn trong báo cáo nguồn). tests/test_issa5000_patterns.py
+# kiểm mỗi mẫu khớp câu của chính nó và không khớp câu của loại khác.
+# Mẫu tiếng Việt (status: draft) là bản dịch đề xuất, CHƯA đối chiếu tờ xác nhận thật
+# của Việt Nam (việc 47); không dùng để kết luận trước khi kiểm.
+#
+# conclusion_type: unmodified | qualified | adverse | disclaimer
+# assurance_level: limited | reasonable
+version: issa5000-conclusion-patterns-v0.1
+
+headings:
+  - {id: H-LA, assurance_level: limited, pattern: '\blimited assurance conclusion\b'}
+  - {id: H-RA, assurance_level: reasonable, pattern: '\breasonable assurance opinion\b'}
+  - {id: H-MOD, conclusion_type: modified, pattern: '\b(qualified|adverse|disclaimer of)\s+(limited assurance |reasonable assurance )?(conclusion|opinion)\b'}
+
+patterns:
+  - pattern_id: LA-UNMOD-EN
+    conclusion_type: unmodified
+    assurance_level: limited
+    language: en
+    status: verified_on_source
+    source_id: [IR-A, IR-C, IR-D, IR-E, APP3-2, APP3-3]
+    pattern: 'nothing has come\b.{0,60}?to (our|the practitioner.s) attention that causes us to believe that .{0,250}?\b(is|are) not (fairly presented|prepared)\b.{0,40}?in all\b.{0,60}?material respects'
+    pattern_span: "Based on the procedures we have performed and the evidence we have obtained, nothing has come to our attention that causes us to believe that the accompanying Sustainability Report is not fairly presented, in all material respects, in accordance with IFRS Sustainability Disclosure Standards as issued by the International Sustainability Standards Board."
+    extra_spans:   # IR-C: plural subject
+      - "Based on the procedures we have performed and the evidence we have obtained, nothing has come to our attention that causes us to believe that the accompanying Selected Sustainability Disclosures are not prepared, in all material respects, in accordance with Article X of XYZ Law of Jurisdiction A."
+    not_if: ['except for']
+
+  - pattern_id: RA-UNMOD-EN
+    conclusion_type: unmodified
+    assurance_level: reasonable
+    language: en
+    status: verified_on_source
+    source_id: [IR-B, IR-E, APP3-1, APP3-3]
+    pattern: '\bin our opinion, (?!except\b).{0,250}?\b(is|are) (fairly presented|prepared)\b,? in all\b.{0,60}?material respects'
+    pattern_span: "In our opinion, the accompanying Sustainability Report is fairly presented, in all material respects, in accordance with IFRS Sustainability Disclosure Standards as issued by the International Sustainability Standards Board."
+    extra_spans:   # IR-E: plural subject
+      - "In our opinion, the Climate-related Disclosures are fairly presented, in all material respects, in accordance with IFRS Sustainability Disclosure Standards issued by the International Sustainability Standards Board."
+
+  - pattern_id: LA-QUAL-EN
+    conclusion_type: qualified
+    assurance_level: limited
+    language: en
+    status: verified_on_source
+    source_id: [APP3-4]
+    pattern: 'except for the (possible )?effects? of the matters? described in the basis for qualified conclusion.{0,200}?nothing has come\b'
+    pattern_span: "Based on the procedures we have performed and the evidence we have obtained, except for the possible effect of the matter described in the Basis for Qualified Conclusion section of our report, nothing has come to our attention that causes us to believe that the accompanying Sustainability Information is not prepared, in all material respects, in accordance with XYZ Law of Jurisdiction X."
+
+  - pattern_id: RA-QUAL-EN
+    conclusion_type: qualified
+    assurance_level: reasonable
+    language: en
+    status: verified_on_source
+    source_id: [IR-F]
+    pattern: '\bin our opinion, except for the (possible )?effects? of the matters? described in the basis for qualified opinion'
+    pattern_span: "In our opinion, except for the possible effect of the matter described in the Basis for Qualified Opinion section of our report, the accompanying Sustainability Report is fairly presented, in all material respects, in accordance with IFRS Sustainability Disclosure Standards as issued by the International Sustainability Standards Board."
+
+  - pattern_id: DISCLAIMER-EN
+    conclusion_type: disclaimer
+    assurance_level: limited
+    language: en
+    status: verified_on_source
+    source_id: [IR-G]
+    pattern: '\b(we do not express a conclusion|we do not express an opinion|have not been able to obtain sufficient appropriate evidence to form a (conclusion|opinion))\b'
+    pattern_span: "Because of the significance of the matter(s) described in the Basis for Disclaimer of Conclusion section of our report, we have not been able to obtain sufficient appropriate evidence to form a conclusion on the accompanying Sustainability Report. Accordingly, we do not express a conclusion on the Sustainability Report."
+
+  - pattern_id: ADVERSE-EN
+    conclusion_type: adverse
+    assurance_level: limited
+    language: en
+    status: verified_on_source
+    source_id: [IR-H]
+    pattern: 'because of the significance of the matters?(\(s\))? described in the basis for adverse (conclusion|opinion).{0,200}?\b(is|are) not (fairly presented|prepared)\b'
+    pattern_span: "Because of the significance of the matter(s) described in the Basis for Adverse Conclusion section of our report, the accompanying Sustainability Report is not prepared in accordance with XYZ Law of Jurisdiction X."
+
+  # Bản dịch đề xuất; cần đối chiếu tờ xác nhận thật (việc 47) trước khi dùng.
+  - pattern_id: LA-UNMOD-VI
+    conclusion_type: unmodified
+    assurance_level: limited
+    language: vi
+    status: draft
+    source_id: []
+    pattern: '(không có (vấn đề|điều) gì|chúng tôi không nhận thấy (vấn đề|điều) gì).{0,80}?(khiến|làm) chúng tôi cho rằng'
+    pattern_span: "Dựa trên các thủ tục đã thực hiện và bằng chứng thu thập được, chúng tôi không nhận thấy vấn đề gì khiến chúng tôi cho rằng Báo cáo phát triển bền vững không được lập, trên các khía cạnh trọng yếu, phù hợp với tiêu chí áp dụng."
+  - pattern_id: RA-UNMOD-VI
+    conclusion_type: unmodified
+    assurance_level: reasonable
+    language: vi
+    status: draft
+    source_id: []
+    pattern: 'theo ý kiến của chúng tôi, (?!ngoại trừ).{0,200}?trên các khía cạnh trọng yếu'
+    pattern_span: "Theo ý kiến của chúng tôi, Báo cáo phát triển bền vững đã được trình bày trung thực và hợp lý, trên các khía cạnh trọng yếu, phù hợp với tiêu chí áp dụng."

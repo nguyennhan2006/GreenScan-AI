@@ -25,6 +25,7 @@ from __future__ import annotations
 import hashlib
 import os
 import uuid
+from collections import Counter
 from dataclasses import asdict, dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
@@ -86,6 +87,53 @@ _REASON_ROUTE = {
 }
 
 
+# Who the reviewer is, as far as labels are concerned (feedback-loop-v1,
+# docs/03-architecture/FEEDBACK_LOOP.md). A label written by the company under
+# review is kept in the audit trail but never trains or scores anything: letting
+# the checked party teach the checker is how a checker learns to agree.
+REVIEWED_COMPANY = "reviewed_company"
+REVIEWER_ROLES = ("auditor", "bank", "internal_audit", "regulator", "greenscan", REVIEWED_COMPANY, "other")
+
+# Where the machine went wrong, read from the pointer label (the passage the
+# reviewer says decided the case), not asked of the reviewer:
+# * retrieval: the deciding passage was not among the evidence the system had;
+# * reading:   it was there and the system still drew the wrong conclusion;
+# * rule:      the reviewer blamed a rule (RULE_REASONS);
+# * none:      a confirmation, nothing went wrong.
+STAGE_RETRIEVAL = "retrieval"
+STAGE_READING = "reading"
+STAGE_RULE = "rule"
+STAGE_NONE = "none"
+STAGE_UNKNOWN = "unknown"
+ERROR_STAGES = (STAGE_RETRIEVAL, STAGE_READING, STAGE_RULE, STAGE_NONE, STAGE_UNKNOWN)
+
+# How much passage text a decision keeps. The preview alone (280 characters) is
+# too short to re-run a verification on, which is what GS-Feedback does.
+SNAPSHOT_TEXT_CHARS = 4000
+
+
+def classify_stage(decision: str, override_reason: str | None, decisive_chunk_ids: list[str],
+                   decisive_quote: str, evidence_snapshot: list[dict]) -> str:
+    """The stage a finalized decision blames, from the pointer label first and the reason second."""
+    if decision == CONFIRM:
+        return STAGE_NONE
+    if decision != OVERRIDE:
+        return ""
+    if override_reason in RULE_REASONS:
+        return STAGE_RULE
+    shown = {e.get("chunk_id") for e in evidence_snapshot if e.get("chunk_id")}
+    if decisive_chunk_ids:
+        return STAGE_READING if any(c in shown for c in decisive_chunk_ids) else STAGE_RETRIEVAL
+    if decisive_quote.strip():
+        # The reviewer quoted a passage instead of pointing at one the system showed.
+        return STAGE_RETRIEVAL
+    if override_reason == EVIDENCE_MISSED:
+        return STAGE_RETRIEVAL
+    if override_reason == MODEL_MISREAD:
+        return STAGE_READING
+    return STAGE_UNKNOWN
+
+
 def label_route(record: dict) -> str:
     """Where a finalized decision's label may go (ROUTE_*)."""
     if record.get("decision") == CONFIRM:
@@ -123,6 +171,15 @@ class ReviewRecord:
     # by the server: rule pack, org packs, prompt and pipeline versions. A label
     # means something only under the rules it was given against.
     rule_context: dict[str, Any] = field(default_factory=dict)
+    # Pointer label: the passage(s) that decided the case for the reviewer, by
+    # chunk id, or quoted when the system never showed it. `error_stage` is
+    # derived from them by the server (classify_stage), never sent by a client.
+    decisive_chunk_ids: list[str] = field(default_factory=list)
+    decisive_quote: str = ""
+    error_stage: str = ""
+    # Who decided, for label hygiene (REVIEWER_ROLES) and per-organisation memory.
+    reviewer_role: str = ""
+    reviewer_org: str = ""
 
     def to_json(self) -> dict:
         return asdict(self)
@@ -136,16 +193,21 @@ def snapshot_evidence(evidence: list[dict] | None) -> list[dict]:
     passage behind a label has changed, instead of silently relabelling it.
     """
     out = []
-    for item in evidence or []:
+    for rank, item in enumerate(evidence or [], start=1):
         text = item.get("text") or ""
         out.append({
+            "rank": rank,
             "chunk_id": item.get("chunk_id"),
             "doc_id": item.get("doc_id"),
             "source_name": item.get("source_name"),
+            "source_type": item.get("source_type"),
             "page": item.get("page"),
             "relation": item.get("relation"),
+            "score": item.get("score"),
             "text_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
             "text_preview": text[:280],
+            # Enough to re-run the verification on what the reviewer saw (GS-Feedback).
+            "text": text[:SNAPSHOT_TEXT_CHARS],
         })
     return out
 
@@ -174,6 +236,10 @@ class ReviewStore:
         override_reason: str | None = None,
         rule_ref: str = "",
         rule_context: dict | None = None,
+        decisive_chunk_ids: list[str] | None = None,
+        decisive_quote: str = "",
+        reviewer_role: str = "",
+        reviewer_org: str = "",
     ) -> ReviewRecord:
         decision = (decision or "").strip().upper()
         reviewer = (reviewer or "").strip()
@@ -194,6 +260,13 @@ class ReviewStore:
             raise ReviewError("override_reason applies to OVERRIDE only")
         if override_reason in RULE_REASONS and not rule_ref:
             raise ReviewError("a rule reason requires rule_ref: feedback that names no rule cannot reach one")
+        reviewer_role = (reviewer_role or "").strip().lower()
+        if reviewer_role and reviewer_role not in REVIEWER_ROLES:
+            raise ReviewError(f"Unknown reviewer_role {reviewer_role!r}; expected one of {REVIEWER_ROLES}")
+        decisive_chunk_ids = [str(c).strip() for c in (decisive_chunk_ids or []) if str(c).strip()]
+        decisive_quote = (decisive_quote or "").strip()[:SNAPSHOT_TEXT_CHARS]
+        if (decisive_chunk_ids or decisive_quote) and decision not in GOLD_DECISIONS:
+            raise ReviewError("a pointer label (decisive passage) applies to CONFIRM or OVERRIDE only")
 
         previous = self.state_of(run_id, claim_id)
         if decision == REOPEN and previous != FINALIZED:
@@ -201,6 +274,7 @@ class ReviewStore:
         if decision in {CONFIRM, OVERRIDE} and previous == FINALIZED:
             raise ReviewError("Claim is already FINALIZED; REOPEN before deciding again")
 
+        snapshot = snapshot_evidence(evidence)
         record = ReviewRecord(
             decision_id=uuid.uuid4().hex[:16],
             run_id=run_id,
@@ -214,11 +288,16 @@ class ReviewStore:
             ai_status=ai_status,
             ai_risk_score=ai_risk_score,
             reviewer_status=reviewer_status,
-            evidence_snapshot=snapshot_evidence(evidence),
+            evidence_snapshot=snapshot,
             claim_snapshot=claim or {},
             override_reason=override_reason,
             rule_ref=rule_ref if override_reason in RULE_REASONS else "",
             rule_context=dict(rule_context or {}),
+            decisive_chunk_ids=decisive_chunk_ids,
+            decisive_quote=decisive_quote,
+            error_stage=classify_stage(decision, override_reason, decisive_chunk_ids, decisive_quote, snapshot),
+            reviewer_role=reviewer_role,
+            reviewer_org=(reviewer_org or "").strip(),
         )
         self._append(record)
         return record
@@ -287,6 +366,18 @@ class ReviewStore:
                 "rule_ref": r.get("rule_ref", ""),
                 "label_route": label_route(r),
                 "rule_context": r.get("rule_context", {}),
+                "claim": r.get("claim_snapshot") or {},
+                "decisive_chunk_ids": r.get("decisive_chunk_ids") or [],
+                "decisive_quote": r.get("decisive_quote") or "",
+                "error_stage": r.get("error_stage") or classify_stage(
+                    r["decision"], r.get("override_reason"), r.get("decisive_chunk_ids") or [],
+                    r.get("decisive_quote") or "", r.get("evidence_snapshot") or []),
+                "reviewer_role": r.get("reviewer_role") or "",
+                "reviewer_org": r.get("reviewer_org") or "",
+                # May this label train or score a model at all? Model route only, and
+                # never a label from the company under review. QA disagreements are
+                # removed later (feedback/hygiene.py), because they need the QA file.
+                "train_eligible": label_route(r) == ROUTE_MODEL and r.get("reviewer_role") != REVIEWED_COMPANY,
             })
         return out
 
@@ -294,6 +385,10 @@ class ReviewStore:
         """Gold labels that may train or score a model: confirmations, and
         overrides where the model misread. Never a rule mismatch."""
         return [g for g in self.gold_records() if g["label_route"] == ROUTE_MODEL]
+
+    def pointer_labels(self) -> list[dict]:
+        """Gold labels that also say which passage decided the case: the richest labels the store holds."""
+        return [g for g in self.gold_records() if g["decisive_chunk_ids"] or g["decisive_quote"]]
 
     def rule_feedback(self) -> list[dict]:
         """Overrides that say a rule does not fit, grouped by rule.
@@ -350,4 +445,8 @@ class ReviewStore:
             # known cause: the model misread, or the rule did not fit.
             "model_error_rate": round(model_wrong / judged, 4) if judged else None,
             "rule_mismatch_rate": round(by_route.get(ROUTE_RULE, 0) / judged, 4) if judged else None,
+            # Where the model went wrong, from pointer labels and reasons (classify_stage).
+            "gold_by_stage": dict(Counter(g["error_stage"] for g in gold)),
+            "pointer_labels": sum(1 for g in gold if g["decisive_chunk_ids"] or g["decisive_quote"]),
+            "train_eligible": sum(1 for g in gold if g["train_eligible"]),
         }

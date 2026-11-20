@@ -1,0 +1,35 @@
+[api] s5: 120 rows, 0 done, stance-v3@openai/gpt-oss-120b
+[api] s5 10/120
+[api] s5 20/120
+[api] s5 30/120
+[api] s5 40/120
+[api] s5 50/120
+[api] s5 60/120
+[api] s5 70/120
+[api] s5 80/120
+[api] s5 90/120
+[api] s5 100/120
+[api] s5 110/120
+[api] s5 120/120
+[api] s5 done
+[api] s2: 60 rows, 0 done, attr-v1@openai/gpt-oss-120b
+[api] s2 10/60
+[api] s2 20/60
+[api] s2 30/60
+[api] s2 40/60
+[api] s2 50/60
+[api] s2 60/60
+[api] s2 done
+[api] s6: 40 rows, 0 done, explain-v1@openai/gpt-oss-120b
+[api] 429, wait 5s ({"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m682knwtetj9gqvzynd6rj9h`)
+[api] s6 10/40
+[api] s6 20/40
+[api] s6 30/40
+[api] s6 40/40
+[api] s6 done
+[api] s6: 40 rows, 0 done, explain-v2@openai/gpt-oss-120b
+[api] s6 10/40
+[api] s6 20/40
+[api] s6 30/40
+[api] s6 40/40
+[api] s6 done

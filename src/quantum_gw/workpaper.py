@@ -16,20 +16,22 @@ is bundled because the browser already has a better one.
 
 from __future__ import annotations
 
+import base64
 from collections import Counter
+from functools import lru_cache
+from pathlib import Path
 from datetime import UTC, datetime
 from html import escape
 
 from quantum_gw.domain.models import AnalysisResult
+from quantum_gw.labels_vi import DISCLAIMER_VI, VERDICT
 from quantum_gw.legal.org_pack import NOTICE_VI, OUTCOME_VI, PACK_STATUS_VI, flagged, rule_counts
+from quantum_gw.utils import vn_format as vn
 
-STATUS_VI = {
-    "SUPPORTED": "Được ủng hộ",
-    "PARTIALLY_SUPPORTED": "Ủng hộ một phần",
-    "UNSUPPORTED": "Chưa được chứng minh trong kho đã kiểm",
-    "CONTRADICTED": "Mâu thuẫn với nguồn",
-    "INSUFFICIENT_EVIDENCE": "Chưa đủ bằng chứng",
-}
+# One set of verdict labels for every screen and paper (labels_vi.VERDICT).
+STATUS_VI = VERDICT
+SEVERITY_VI = {"low": "mức thấp", "medium": "mức trung bình", "high": "mức cao", "critical": "mức rất cao",
+               "info": "thông tin", "warning": "cần xem", "error": "nghiêm trọng"}
 RELATION_VI = {"SUPPORTS": "ủng hộ", "CONTRADICTS": "mâu thuẫn", "PARTIAL": "một phần", "CONTEXT": "bối cảnh"}
 DECISION_VI = {
     "CONFIRM": "Xác nhận gợi ý của máy",
@@ -59,7 +61,8 @@ def _decision_text(record: dict) -> str:
         text += f", quy tắc {record['rule_ref']})" if record.get("rule_ref") else ")"
     return text
 ROLE_VI = {"claim_source": "Nguồn tuyên bố", "evidence": "Chứng cứ", "reference": "Tham chiếu"}
-CHECK_VI = {"cross_foot": "Cộng lại bảng", "cross_document": "Đối chiếu giữa tài liệu"}
+CHECK_VI = {"cross_foot": "Cộng lại bảng", "cross_document": "Đối chiếu giữa tài liệu",
+            "table_sum": "Cộng lại bảng", "page_sum": "Cộng chéo giữa các bảng", "ratio": "Kiểm tỷ lệ"}
 # The quality gates in the reviewer's language; G7's detail is generated per run
 # and kept as the pipeline wrote it.
 GATE_VI = {
@@ -74,10 +77,36 @@ GATE_VI = {
     "G7": ("Đối chiếu pháp lý", None),
 }
 
+
+_FONT_DIR = Path(__file__).parent / "assets" / "fonts"
+_FONT_FILES = (
+    ("roboto-latin-wght-normal.woff2",
+     "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,"
+     "U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD"),
+    ("roboto-vietnamese-wght-normal.woff2",
+     "U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,"
+     "U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB"),
+)
+
+
+@lru_cache(maxsize=1)
+def _font_face() -> str:
+    """Roboto (Latin + tiếng Việt, giấy phép OFL) nhúng thẳng vào trang: giấy làm việc là một tệp HTML
+    gửi đi được, nên chữ tiếng Việt phải đọc giống nhau trên mọi máy, kể cả máy không cài Roboto."""
+    rules = []
+    for name, unicode_range in _FONT_FILES:
+        path = _FONT_DIR / name
+        if path.is_file():
+            data = base64.b64encode(path.read_bytes()).decode("ascii")
+            rules.append("@font-face { font-family: 'Roboto'; font-style: normal; font-weight: 100 900; "
+                         f"font-display: swap; src: url(data:font/woff2;base64,{data}) format('woff2'); "
+                         f"unicode-range: {unicode_range}; }}")
+    return "\n".join(rules)
+
 _CSS = """
 @page { size: A4; margin: 16mm 14mm; }
 * { box-sizing: border-box; }
-body { font-family: "Segoe UI", "Noto Sans", Arial, sans-serif; color: #1f2933; font-size: 10.5pt;
+body { font-family: "Roboto", "Segoe UI", "Noto Sans", Arial, sans-serif; color: #1f2933; font-size: 10.5pt;
        line-height: 1.45; margin: 0 auto; max-width: 900px; padding: 24px; background: #fff; }
 h1 { font-size: 17pt; margin: 0 0 2px; color: #0f3d2e; }
 h2 { font-size: 12.5pt; margin: 22px 0 6px; padding-bottom: 3px; border-bottom: 1.5px solid #0f3d2e; color: #0f3d2e; }
@@ -126,7 +155,7 @@ def render_workpaper(
     legal = {item.get("claim_id"): item for item in result.legal_checks}
     queue = sorted((p for p in result.priorities if p.get("in_queue")), key=lambda p: p.get("rank", 0))
     manifest = result.manifest
-    created = manifest.created_at.astimezone(UTC).strftime("%d/%m/%Y %H:%M UTC")
+    created = f"{vn.vn_time(manifest.created_at)} (giờ Việt Nam)"
     entity = ", ".join(result.entity) or "(chưa xác định — điền tay)"
     statuses = Counter(v.status.value for v in result.verifications)
     reviewers = sorted({d.get("reviewer", "") for d in decisions if d.get("reviewer")})
@@ -134,10 +163,11 @@ def render_workpaper(
     out: list[str] = [
         "<!doctype html><html lang='vi'><head><meta charset='utf-8'>",
         f"<title>Giấy làm việc — {_e(label or result.run_id)}</title>",
-        f"<style>{_CSS}</style></head><body>",
+        f"<style>{_font_face()}\n{_CSS}</style></head><body>",
         "<div class='toolbar'><button onclick='window.print()'>In / Lưu PDF</button> "
         "<span class='muted'>Chọn “Lưu dưới dạng PDF” trong hộp thoại in.</span></div>",
         "<h1>GIẤY LÀM VIỆC — Sàng lọc tuyên bố môi trường</h1>",
+        f"<p class='warn'><b>{_e(DISCLAIMER_VI)}</b></p>",
         f"<p class='muted'>GreenScan · phiên <code>{_e(result.run_id)}</code> · lập lúc {_e(created)}</p>",
         "<table class='meta'>",
         f"<tr><td>Đơn vị được xem xét</td><td><b>{_e(entity)}</b></td></tr>",
@@ -176,7 +206,7 @@ def render_workpaper(
                    "kết luận của mô hình không tự đứng một mình và luôn chuyển người xác nhận.</li>")
     else:
         out.append("<li>Không gọi mô hình ngôn ngữ trong phiên này (chế độ ngoại tuyến).</li>")
-    out.append(f"<li>Thực hiện {len(result.figure_checks)} thủ tục trên số liệu công bố (cộng lại bảng, đối chiếu giữa tài liệu).</li>")
+    out.append(f"<li>Thực hiện {len(result.figure_checks)} thủ tục trên số liệu công bố (cộng lại bảng, cộng chéo giữa các bảng, kiểm tỷ lệ, đối chiếu giữa tài liệu).</li>")
     out.append("<li>Đối chiếu văn bản pháp lý theo ngày hiệu lực; xếp thứ tự soát theo chính sách ưu tiên.</li></ul>")
     out.append("<table class='meta'>"
                f"<tr><td>Phiên bản quy trình · cấu hình</td><td><code>{_e(manifest.pipeline_version)}</code> · "
@@ -193,6 +223,15 @@ def render_workpaper(
                "(trọng yếu, liên quan pháp lý, khoảng trống bằng chứng, bất thường so với kỳ trước).</p>")
     for item in queue:
         out.append(_queue_item(item, verifications, claims, figures, legal, latest))
+
+    sample = [p for p in result.priorities if p.get("audit_sample")]
+    if sample:
+        out.append(f"<h2>Mẫu kiểm ngẫu nhiên ngoài hàng đợi ({len(sample)} mục)</h2>")
+        out.append("<p class='muted'>Các tuyên bố này nằm ngoài hàng đợi và được rút ngẫu nhiên (tất định theo mã tuyên bố, chạy lại cho cùng mẫu). "
+                   "Người soát đọc chúng để ước lượng hàng đợi bỏ sót bao nhiêu: nếu đọc n mẫu mà không thấy mục nào "
+                   "lẽ ra phải soát, tỉ lệ bỏ sót có cận trên khoảng 3/n. Gộp mẫu của nhiều phiên để có n đủ lớn.</p>")
+        for item in sample:
+            out.append(_queue_item(item, verifications, claims, figures, legal, latest))
 
     # 4. figure procedures
     if result.figure_checks:
@@ -242,7 +281,7 @@ def render_workpaper(
 
     out.append("<div class='sign'><div><b>Người thực hiện</b><br><span class='muted'>Họ tên, chữ ký, ngày</span></div>"
                "<div><b>Người soát xét</b><br><span class='muted'>Họ tên, chữ ký, ngày</span></div></div>")
-    out.append(f"<p class='muted' style='margin-top:14px'>In lúc {_e(datetime.now(UTC).strftime('%d/%m/%Y %H:%M UTC'))}. "
+    out.append(f"<p class='muted' style='margin-top:14px'>In lúc {_e(vn.vn_time(datetime.now(UTC)))} (giờ Việt Nam). "
                "Tái lập: chạy lại cùng tài liệu (mã băm ở mục 1) với cùng cấu hình cho cùng kết quả.</p>")
     if auto_print:
         out.append("<script>window.addEventListener('load', () => setTimeout(() => window.print(), 300))</script>")
@@ -280,12 +319,12 @@ def _org_section(result: AnalysisResult, claims: dict) -> str:
         text = (claim.text[:140] + ("…" if len(claim.text) > 140 else "")) if claim else finding.get("claim_id")
         page = f" <span class='muted'>(tr. {_e(claim.source_page)})</span>" if claim and claim.source_page is not None else ""
         parts.append(f"<tr><td>“{_e(text)}”{page}</td><td><code>{_e(finding.get('rule_id'))}</code> {_e(finding.get('title'))}</td>"
-                     f"<td>{_e(OUTCOME_VI.get(finding.get('outcome'), finding.get('outcome')))} · {_e(finding.get('severity'))}</td>"
+                     f"<td>{_e(OUTCOME_VI.get(finding.get('outcome'), finding.get('outcome')))} · {_e(SEVERITY_VI.get(str(finding.get('severity')).lower(), finding.get('severity')))}</td>"
                      f"<td>{_e(', '.join(finding.get('source_clauses') or []) or finding.get('source_document'))}</td>"
                      f"<td>{_e(finding.get('reason'))}</td></tr>")
     parts.append("</table>")
     if len(items) > ORG_ROWS:
-        parts.append(f"<p class='muted'>Còn {len(items) - ORG_ROWS} phát hiện nữa trong tệp kết quả đầy đủ (result.json).</p>")
+        parts.append(f"<p class='muted'>Còn {len(items) - ORG_ROWS} phát hiện nữa trong tệp kết quả đầy đủ (tải ở trang Xuất kết quả).</p>")
     return "".join(parts)
 
 
@@ -296,7 +335,7 @@ def _queue_item(item, verifications, claims, figures, legal, latest) -> str:
     if item.get("item_type") == "figure":
         figure = figures.get(item.get("item_id"))
         where = f"{_e(figure.source_name)} · tr. {_e(figure.source_page)}" if figure else ""
-        body = (f"<div class='quote'>{_e(figure.label) if figure else ''}: <b>{figure.value:,.2f} {_e(figure.unit)}</b>"
+        body = (f"<div class='quote'>{_e(figure.label) if figure else ''}: <b>{vn.figure(figure.value)} {_e(vn.unit(figure.unit))}</b>"
                 f"{(' · kỳ ' + _e(figure.period)) if figure and figure.period else ''}</div>") if figure else ""
         return (f"<div class='item'><p><b>#{rank}</b> <span class='tag'>Số liệu công bố</span> "
                 f"<span class='muted'>ưu tiên {score:.0f} · {where}</span></p>{body}"
@@ -315,6 +354,8 @@ def _queue_item(item, verifications, claims, figures, legal, latest) -> str:
         f"<div class='quote'>“{_e(claim.text)}”</div>",
         f"<p><b>Kết quả sàng lọc:</b> {_e(status)}. {_e(verification.rationale)}</p>",
     ]
+    if verification.assessment:
+        parts.append(f"<p class='muted'>{_e(verification.assessment.get('summary_vi', ''))}</p>")
     if verification.requires_llm_review:
         parts.append("<p class='muted'>Có phần do mô hình ngôn ngữ đề xuất — cần người xác nhận.</p>")
     evidence = [e for e in verification.evidence if e.relation in {"SUPPORTS", "CONTRADICTS", "PARTIAL"}][:3]

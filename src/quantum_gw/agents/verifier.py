@@ -8,8 +8,12 @@ import yaml
 
 from quantum_gw.domain.enums import VerificationStatus
 from quantum_gw.domain.models import Claim, RetrievedEvidence, VerificationResult
+from quantum_gw.parsers.ocr import matches_value
 from quantum_gw.settings import VerificationSettings
 from quantum_gw.storage.audit import AuditLogger
+from quantum_gw.utils import vn_format as vn
+from quantum_gw.utils.security import contains_prompt_injection, scan_injection
+from quantum_gw.utils.security import describe as describe_injection
 from quantum_gw.utils.text import (
     YEAR_RE,
     content_bigrams,
@@ -30,6 +34,8 @@ from quantum_gw.verification.numeric_facts import (
 from quantum_gw.verification.numeric_facts import (
     POLICY_ID as ELIGIBILITY_POLICY,
 )
+from quantum_gw.verification.absolute import absolute_conflict, allocated_share
+from quantum_gw.verification.assessment import assess
 from quantum_gw.verification.stance import (
     CONTEXT,
     CONTRADICTS,
@@ -40,10 +46,15 @@ from quantum_gw.verification.stance import (
     qualitative_stance,
 )
 
-
 # The company speaking about itself: its own report, its own financial
 # statements. A refutation cue here is prose, not a finding (contradiction guard).
 SELF_SOURCES = frozenset({"internal", "financial"})
+# Types given by claim-typing-v2 when no claim_type matched (configs/taxonomy.yaml v4).
+FALLBACK_CLAIM_TYPES = frozenset({"resource_use", "metric_disclosure", "environmental_compliance", "greening"})
+
+# internal-inconsistency-v1: where a report keeps its data (folded text), and words that say a figure was restated.
+_DATA_PAGE_RE = re.compile(r"\b(gri\s*3\d\d|bang so lieu|chi so moi truong|phu luc|bang \d+|du lieu moi truong)")
+_RESTATED_RE = re.compile(r"\b(dieu chinh|trinh bay lai|restat\w*)")
 
 class _RecordingJudge:
     """Stands in for the model during the dry pass: notes the question, answers nothing."""
@@ -54,6 +65,12 @@ class _RecordingJudge:
     def judge(self, claim_text: str, evidence_text: str) -> None:
         self.asked.append((claim_text, evidence_text))
         return None
+
+
+# Sources the company did not write. A company's annual or financial report, its GHG
+# inventory and its monitoring data are its own account, however carefully kept.
+# Studio reads the same set (studio/document.py).
+INDEPENDENT_SOURCE_TYPES = frozenset({"legal", "external", "standard"})
 
 
 class _NullAudit:
@@ -87,11 +104,13 @@ class VerificationAgent:
         lexicon: StanceLexicon | None = None,
         llm_judge=None,
         taxonomy_path: str = "configs/taxonomy.yaml",
+        ir_reader=None,
     ):
         self.settings = settings
         self.audit = audit
         self.lexicon = lexicon or StanceLexicon()
         self._llm_judge = llm_judge
+        self._ir_reader = ir_reader
         self.taxonomy = _load_taxonomy(taxonomy_path)
         # Set by the orchestrator once per run (agents/corpus.py). None means
         # unknown, which is treated as insufficient: absence may only become
@@ -108,6 +127,17 @@ class VerificationAgent:
                 cache_dir=self.settings.llm_cache_dir, workers=self.settings.llm_workers
             )
         return self._llm_judge
+
+    @property
+    def ir_reader(self):
+        """The IR reader of QUANTUM_VERIFY=dual (S4 of llm_stages_v1); None when off or no provider serves `ir_reading`."""
+        if self._ir_reader is None and self.settings.verify_mode == "dual":
+            from quantum_gw.providers.router import ModelGateway
+            from quantum_gw.verification.ir_reader import IRReader
+
+            provider = ModelGateway().resolve("ir_reading")
+            self._ir_reader = IRReader(provider, self.settings.llm_cache_dir) if provider is not None else False
+        return self._ir_reader or None
 
     def prefetch_llm(self, work: list[tuple[Claim, list[RetrievedEvidence]]]) -> dict | None:
         """Ask the model about every pair this run will escalate, concurrently, up front.
@@ -131,9 +161,21 @@ class VerificationAgent:
     def run(self, claim: Claim, evidence: list[RetrievedEvidence]) -> VerificationResult:
         warnings: list[str] = []
         clean_evidence = []
+        # A sentence addressed to the grader is a finding, not a claim to weigh:
+        # it is never shown to a model (see _stance) and goes to a person.
+        planted = scan_injection(claim.text)
+        if planted:
+            warnings.append(
+                "Câu tuyên bố chứa lời nhắn tới hệ thống chấm tự động ("
+                f"{describe_injection(planted)}); không đưa cho mô hình ngôn ngữ, cần người soát xét."
+            )
         for item in evidence:
             if item.suspicious_instruction:
-                warnings.append(f"Excluded suspicious document instruction: {item.citation}")
+                warnings.append(
+                    f"Đã loại một đoạn bằng chứng chứa lời nhắn tới hệ thống chấm tự động: {item.citation}"
+                    if self.settings.injection_policy == "exclude" else
+                    f"Đoạn bằng chứng chứa lời nhắn tới hệ thống chấm tự động, giữ lại nhưng không đưa cho mô hình: {item.citation}"
+                )
                 if self.settings.injection_policy == "exclude":
                     continue
             clean_evidence.append(item)
@@ -144,7 +186,9 @@ class VerificationAgent:
                 status=VerificationStatus.INSUFFICIENT_EVIDENCE,
                 rationale="No admissible evidence passed the retrieval threshold.",
                 evidence=[],
-                warnings=warnings,
+                warnings=warnings + _reading_warnings(claim, []),
+                suspected_injection=bool(planted) or any(i.suspicious_instruction for i in evidence),
+                doubtful_reading=bool(claim.doubtful_numbers),
             )
             self._audit(result)
             return result
@@ -152,13 +196,26 @@ class VerificationAgent:
         numeric = self._numeric_comparison(claim, clean_evidence)
 
         by_rules: dict[int, StanceSignal] = {}
+        model_saw_injection = []
+        misread = []
         for item in clean_evidence:
             signal = self._stance(claim, item)
+            if signal.doubtful:
+                misread.append(item.citation)
             if signal.method == "llm" and signal.fallback is not None:
                 by_rules[id(item)] = signal.fallback
+            if signal.injection:
+                model_saw_injection.append(item.citation)
             item.relation = signal.relation
             item.relation_reason = signal.reason
             item.relation_method = signal.method
+        if model_saw_injection:
+            warnings.append(
+                "Mô hình ngôn ngữ báo đoạn văn chứa lời nhắn tới máy chấm; lập trường của đoạn đó không được dùng: "
+                + "; ".join(model_saw_injection[:3])
+            )
+
+        warnings += _reading_warnings(claim, misread)
 
         status, rationale = self._status(claim, clean_evidence, numeric)
         # A model's reading needs a human only where it matters: where it changed
@@ -174,6 +231,28 @@ class VerificationAgent:
                 "Kết luận này phụ thuộc vào lập trường do mô hình ngôn ngữ đề xuất; cần người xác nhận."
             )
 
+        flags = []
+        if any(i.relation_method == "internal" for i in clean_evidence):
+            flags.append("internal_inconsistency")
+        if (status == VerificationStatus.PARTIALLY_SUPPORTED and rationale.startswith("Bằng chứng không thống nhất")):
+            flags.append("conflicting_evidence")
+        if any(
+            (i.relation_method == "absolute" and i.score >= self.settings.partial_support_score)
+            or (i.relation_method == "numeric" and i.relation in (CONTRADICTS, PARTIAL)
+                and "nghĩa là 100% vốn" in (i.relation_reason or ""))
+            for i in clean_evidence
+        ):
+            flags.append("absolute_claim_conflict")
+        if flags:
+            warnings.append(
+                "Cần người soát: "
+                + "; ".join({"internal_inconsistency": "không nhất quán nội bộ (lời văn ≠ bảng số liệu cùng tài liệu)",
+                             "conflicting_evidence": "các đoạn bằng chứng nêu số khác nhau cho cùng chỉ số",
+                             "absolute_claim_conflict": "tuyên bố tuyệt đối nhưng bằng chứng cho thấy chỉ một phần"}[f]
+                            for f in flags)
+                + "."
+            )
+
         result = VerificationResult(
             claim=claim,
             status=status,
@@ -181,10 +260,57 @@ class VerificationAgent:
             evidence=clean_evidence,
             computed_values=numeric,
             warnings=warnings,
+            review_flags=flags,
+            assessment=assess(claim, clean_evidence, status.value),
             requires_llm_review=escalated,
+            suspected_injection=bool(planted or model_saw_injection)
+            or any(i.suspicious_instruction for i in evidence),
+            doubtful_reading=bool(claim.doubtful_numbers or misread),
         )
         self._audit(result)
         return result
+
+    def dual_note(self, result: VerificationResult) -> bool:
+        """S4: attach the IR reader's reading to a verified claim (called for queued claims, amendment 17h05)."""
+        notes = self._dual_reading(result.claim, result.evidence)
+        if not notes:
+            return False
+        result.assist["ir"] = notes
+        if any(n["dual"] != n["rules"] and n["dual"] in ("S", "C") for n in notes):
+            result.warnings.append(
+                "Bộ đọc số liệu (mô hình ngôn ngữ) đề xuất một kết luận khác luật cho số liệu của tuyên bố; "
+                "chỉ để người soát xem, không đổi kết luận."
+            )
+        return True
+
+    def _dual_reading(self, claim: Claim, evidence: list[RetrievedEvidence]) -> list[dict]:
+        """S4: the IR reader's S / C / N per passage beside the rules', combined by AG-2 union_noloneS.
+
+        Only claims that write a figure, only passage sentences that write one (at most three, those about the
+        claim's metric first). A reviewer note: it never touches a relation, the status or the review flag.
+        """
+        reader = self.ir_reader
+        if reader is None or not re.search(r"\d", claim.text):
+            return []
+        from quantum_gw.verification.ir_reader import dual
+
+        notes = []
+        for item in evidence:
+            if item.suspicious_instruction:
+                continue
+            sentences = [x for x in self._metric_sentences(claim, item.text) if re.search(r"\d", x)]
+            sentences += [x for x in (split_sentences(item.text) or []) if re.search(r"\d", x) and x not in sentences]
+            if not sentences:
+                continue
+            try:
+                ir, why = reader.label(claim.text, " ".join(sentences[:3]))
+            except Exception:  # noqa: BLE001 - a reader outage leaves the rules alone
+                continue
+            rules = ("S" if item.relation == SUPPORTS and item.relation_method != "llm" else
+                     "C" if item.relation == CONTRADICTS and item.relation_method != "llm" else "N")
+            notes.append({"citation": item.citation, "rules": rules, "ir": ir, "dual": dual(rules, ir),
+                          "why": why[:3], "reader": getattr(reader, "model", "?")})
+        return notes
 
     # ---------- status ----------
 
@@ -221,6 +347,21 @@ class VerificationAgent:
             if item.relation == CONTRADICTS and (decisive_model or item.relation_method != "llm")
         ]
 
+        # figure-consistency-v1: a passage from another document matches the claim's figure exactly while
+        # another passage disagrees with a different figure (GS-Bench ba-N14: "3,18 tỷ kWh" for two plants
+        # in one sentence, "788 triệu kWh" for one plant in the next). The evidence disagrees with itself;
+        # a reviewer decides which figure is about the claim.
+        if contradicting and self.settings.figure_consistency_check and all(
+            i.relation_method == "numeric" for i in contradicting
+        ):
+            agreeing = self._agreeing_figure(claim, evidence)
+            if agreeing is not None:
+                return (
+                    VerificationStatus.PARTIALLY_SUPPORTED,
+                    f"Bằng chứng không thống nhất: {agreeing.relation_reason.rstrip('.')} ({agreeing.citation}); "
+                    f"nhưng {contradicting[0].relation_reason[0].lower()}{contradicting[0].relation_reason[1:].rstrip('.')} "
+                    f"({contradicting[0].citation}). Cần người xem đoạn nào nói về đúng đối tượng của tuyên bố.",
+                )
         if contradicting:
             reason = contradicting[0].relation_reason
             return (
@@ -248,6 +389,22 @@ class VerificationAgent:
                 "Bằng chứng cùng chỉ số nêu xu hướng ngược với tuyên bố nhưng không có "
                 "số liệu để đối chiếu; cần người xem xét.",
             )
+        # The two review flags (internal-inconsistency-v1 in flag mode, stance-cues-v3):
+        # they cap the status at PARTIALLY_SUPPORTED, whatever another passage confirms.
+        flagged = [
+            item for item in evidence
+            if item.relation == PARTIAL and (
+                item.relation_method == "internal"
+                or (item.relation_method == "absolute" and item.score >= self.settings.partial_support_score)
+                # absolute-share-v1 computed a share below 100% but above the contradiction line: say so
+                or (item.relation_method == "numeric" and "nghĩa là 100% vốn" in (item.relation_reason or ""))
+            )
+        ]
+        if flagged:
+            return (
+                VerificationStatus.PARTIALLY_SUPPORTED,
+                f"{flagged[0].relation_reason} ({flagged[0].citation})",
+            )
 
         # SUPPORTED needs a passage from a document other than the one the
         # claim was taken from. A report's highlights page restating its own
@@ -264,6 +421,14 @@ class VerificationAgent:
         # The passage that supports the claim must itself clear the retrieval
         # floor; the best-ranked passage may be a different, merely similar one.
         external = [e for e in external if e.score >= self.settings.partial_support_score]
+        # Support guard (flag, off by default): the company's other documents restating a
+        # claim show its reports agree, not that the claim is true. All 5 SUPPORTED verdicts
+        # on GS-Eval v2 (05/11) were wrong; see independent_support_v1.
+        echo = None
+        if self.settings.support_requires_independent_source:
+            own = [e for e in external if e.source_type.value not in INDEPENDENT_SOURCE_TYPES]
+            external = [e for e in external if e.source_type.value in INDEPENDENT_SOURCE_TYPES]
+            echo = self._confirming(claim, own, decisive_model)
         # A figure that agrees is support on its own. A cue phrase ("chứng
         # nhận", "xác nhận") is not: 3 of 3 Hòa Phát SUPPORTED verdicts on
         # 2026-09-22 rested on one such word in the annual report (ISSUES N4).
@@ -292,6 +457,14 @@ class VerificationAgent:
                     f"Thuộc tính khớp: {', '.join(sorted(matched))}.",
                 )
             weak.append(", ".join(sorted(matched)) or "không")
+        if echo is not None:
+            return (
+                VerificationStatus.PARTIALLY_SUPPORTED,
+                "Chỉ tài liệu khác của chính doanh nghiệp xác nhận tuyên bố: "
+                f"{echo.relation_reason.rstrip('.')}. Chưa có nguồn độc lập (văn bản pháp luật, "
+                "nguồn bên ngoài doanh nghiệp, chuẩn mực) nói như vậy; các báo cáo của cùng một "
+                "doanh nghiệp khớp nhau chưa phải là kiểm chứng, cần người xem.",
+            )
         if weak:
             return (
                 VerificationStatus.PARTIALLY_SUPPORTED,
@@ -354,6 +527,15 @@ class VerificationAgent:
             "Bằng chứng hiện có quá yếu để ủng hộ hay bác bỏ tuyên bố." + self._corpus_note(),
         )
 
+    @staticmethod
+    def _agreeing_figure(claim: Claim, evidence: list[RetrievedEvidence]):
+        """A numeric match from a document other than the claim's own, or None."""
+        return next((
+            i for i in evidence
+            if i.relation == SUPPORTS and i.relation_method == "numeric"
+            and not (claim.source_doc_id and i.doc_id == claim.source_doc_id)
+        ), None)
+
     def _corpus_note(self) -> str:
         corpus = self.corpus
         if corpus is None:
@@ -390,6 +572,25 @@ class VerificationAgent:
             "(not supported in provided corpus).",
         )
 
+    def _confirming(self, claim: Claim, items: list[RetrievedEvidence], decisive_model: bool):
+        """The passage that would make the claim SUPPORTED, by the rule `_status` applies.
+
+        A figure that agrees, else a cue sentence naming the claim's metric and every
+        period and scope it states. Used by the support guard to say what the company's
+        own documents confirm when no independent source does.
+        """
+        for item in items:
+            if item.relation_method == "numeric":
+                return item
+        for item in items:
+            if item.relation_method == "llm" and not decisive_model:
+                continue
+            matched, stated = self._attributes_matched(claim, item.text)
+            required = {"metric"} | (stated & {"period", "scopes"})
+            if required <= matched and len(matched) >= self.settings.support_min_attributes:
+                return item
+        return None
+
     # ---------- per-passage stance ----------
 
     def _stance(self, claim: Claim, item: RetrievedEvidence) -> StanceSignal:
@@ -409,6 +610,10 @@ class VerificationAgent:
             # paper trays against 14 t of PET liners (19 of 20 false numeric
             # CONTRADICTED, GS-Eval v2). The figures stay visible to the reviewer.
             if guarded and same_document and numeric.relation == CONTRADICTS:
+                if self.settings.internal_inconsistency in ("flag", "contradict"):
+                    internal = self._internal_inconsistency(claim, item, numeric)
+                    if internal is not None:
+                        return internal
                 return StanceSignal(
                     relation=CONTEXT,
                     reason=(
@@ -417,6 +622,8 @@ class VerificationAgent:
                     ),
                     method="numeric",
                 )
+            # Still arithmetic's answer, withheld when a compared number is one OCR misread.
+            numeric = self._unless_misread(claim, item, numeric)
             return numeric
 
         overlap = self._metric_overlap(claim, [item])
@@ -444,6 +651,26 @@ class VerificationAgent:
             and (same_document or item.source_type.value in SELF_SOURCES)
         ):
             cue = None
+        # A compliance claim ("0 trường hợp vi phạm", "0 sự cố môi trường") restated by a passage that
+        # names the same violations: the word "vi phạm" is the topic, not a finding (GS-Bench S0, 15/11).
+        if (cue is not None and cue.relation == CONTRADICTS and not cue.authoritative
+                and claim.claim_type == "environmental_compliance"):
+            cue = None
+        # An absolute claim ("toàn bộ", "100%") and a sentence about it that says
+        # only part is done ("chưa phân bổ", "giai đoạn 1"): a reviewer's flag, never a
+        # contradiction, since a phrase is weaker than the arithmetic above (stance-cues-v3).
+        if self.settings.absolute_conflict_cues and (cue is None or cue.relation != CONTRADICTS):
+            conflict = absolute_conflict(claim.text, item.text, content_bigrams(claim.text), content_bigrams)
+            if conflict is not None:
+                return StanceSignal(
+                    relation=PARTIAL,
+                    reason=(
+                        f"Tuyên bố dùng từ tuyệt đối “{conflict['absolute']}” nhưng đoạn này nói "
+                        f"“{conflict['partial']}”: “{conflict['sentence']}”. Cần người soát xem phần còn lại."
+                    ),
+                    method="absolute",
+                    cues=[conflict["absolute"], conflict["partial"]],
+                )
         if cue is not None:
             # A quantified claim is confirmed by its figure, not by a phrase. An
             # assurance statement that "reviewed the GHG management system"
@@ -479,12 +706,50 @@ class VerificationAgent:
             )
 
         judge = self.llm_judge
-        if judge is not None and overlap >= self.settings.llm_stance_min_overlap:
+        # Text that addresses the grader never reaches a model, whichever side it is on.
+        shielded = item.suspicious_instruction or contains_prompt_injection(claim.text)
+        if judge is not None and not shielded and overlap >= self.settings.llm_stance_min_overlap:
             verdict = judge.judge(claim.text, item.text)
             if verdict is not None:
                 verdict.fallback = by_rules
+                if verdict.injection:
+                    # The model noticed an instruction the patterns missed: keep
+                    # the rules' reading and say so; nothing it said is used.
+                    by_rules.injection = True
+                    return by_rules
                 return verdict
         return by_rules
+
+    def _unless_misread(self, claim: Claim, item: RetrievedEvidence, signal: StanceSignal) -> StanceSignal:
+        """A figure comparison resting on a number OCR was unsure of decides nothing.
+
+        Tesseract reads "30" as "80" and says how sure it is (parsers/ocr.py;
+        the thresholds come from docs/decisions/0005-ocr-confidence.md). An
+        agreement or a disagreement computed from such a number would be a
+        verdict about the scanner, so it goes to a person as PARTIAL with the
+        number named. A doubtful number counts, on either side, when it is one
+        of the values compared (a "1,2" before "triệu" is 1.2 million); a claim
+        with a doubtful figure the comparison did not use is still flagged for
+        review, by `run`, but this comparison stands.
+        """
+        if signal.relation not in (SUPPORTS, CONTRADICTS) or not signal.figures:
+            return signal
+        shaky = list(dict.fromkeys(
+            token for token in [*claim.doubtful_numbers, *item.doubtful_numbers]
+            if matches_value(token, signal.figures)
+        ))
+        if not shaky:
+            return signal
+        return StanceSignal(
+            relation=PARTIAL,
+            reason=(
+                f"{signal.reason.rstrip('.')}; nhưng số {', '.join(shaky[:4])} do máy đọc ảnh chữ (OCR) đọc "
+                "với độ tin cậy thấp, cần đối chiếu trang gốc trước khi kết luận."
+            ),
+            method="numeric",
+            figures=signal.figures,
+            doubtful=True,
+        )
 
     def _numeric_relation(self, claim: Claim, item: RetrievedEvidence) -> StanceSignal | None:
         """Stance from comparable figures, or None when there is no pair to compare.
@@ -505,6 +770,14 @@ class VerificationAgent:
         if continuity is not None:
             return continuity
 
+        # "Hoàn toàn / toàn bộ / 100%" about green-bond proceeds is a claim that the
+        # share used is 100%; with a total and a used amount in the passage that share
+        # can be computed (absolute-share-v1, case A2).
+        if self.settings.absolute_share_check:
+            share = self._absolute_share(claim, item)
+            if share is not None:
+                return share
+
         claim_facts = _claim_facts(claim.text)
         if not claim_facts:
             return None
@@ -521,9 +794,10 @@ class VerificationAgent:
         best = None        # (error, claim_fact, evidence_fact, sentence)
         ambiguous = None   # (error, claim_fact, evidence_fact, reason)
         blocked = None     # (reason, claim_fact, evidence_fact)
+        per_fact: dict[int, tuple] = {}   # claim fact index -> its own closest comparable (error, evidence_fact)
         for sentence in self._metric_sentences(claim, item.text):
             for evidence_fact in facts_in(sentence):
-                for claim_fact in claim_facts:
+                for index, claim_fact in enumerate(claim_facts):
                     verdict, reason = eligibility(claim_fact, evidence_fact)
                     if verdict == NOT_COMPARABLE:
                         if reason != "different_unit" and blocked is None:
@@ -534,6 +808,8 @@ class VerificationAgent:
                         if ambiguous is None or error < ambiguous[0]:
                             ambiguous = (error, claim_fact, evidence_fact, reason)
                         continue
+                    if index not in per_fact or error < per_fact[index][0]:
+                        per_fact[index] = (error, evidence_fact)
                     if best is None or error < best[0]:
                         best = (error, claim_fact, evidence_fact, sentence)
         if best is None:
@@ -542,7 +818,7 @@ class VerificationAgent:
                 return StanceSignal(
                     relation=PARTIAL,
                     reason=(
-                        f"Số liệu {c_fact.value} (tuyên bố) và {e_fact.value} (tài liệu) không so sánh "
+                        f"Số liệu {vn.figure(c_fact.value)} (tuyên bố) và {vn.figure(e_fact.value)} (tài liệu) không so sánh "
                         f"được tự động: {describe(reason)}."
                     ),
                     method="numeric",
@@ -552,7 +828,7 @@ class VerificationAgent:
                 return StanceSignal(
                     relation=CONTEXT,
                     reason=(
-                        f"Có số liệu cùng đơn vị ({c_fact.value} vs {e_fact.value}) nhưng {describe(reason)}, "
+                        f"Có số liệu cùng đơn vị ({vn.figure(c_fact.value)} so với {vn.figure(e_fact.value)}) nhưng {describe(reason)}, "
                         "nên không phải mâu thuẫn."
                     ),
                     method="numeric",
@@ -564,21 +840,95 @@ class VerificationAgent:
         other_period = _dated_to_other_year(sentence, claim)
         tolerance = self._tolerance(claim_q, evidence_q)
         if error <= tolerance:
+            # GS-Mutation v1 (14/11): "giảm 12,8%" rewritten as "tăng 12,8%" stayed SUPPORTED in
+            # 5 of 5 cases, because the figure still matched. The same figure going the other way
+            # is a contradiction, not a match.
+            reversed_word = _reversed_in(claim, sentence, e_value) if self.settings.figure_consistency_check else None
+            other_base = _other_baseline(claim, sentence) if self.settings.figure_consistency_check else None
+            if other_base and not reversed_word:
+                # Same change, different base year: "giảm 39% so với 2017" against "giảm 39% so với 2020".
+                return StanceSignal(
+                    relation=PARTIAL,
+                    reason=(
+                        f"Số liệu khớp ({vn.figure(c_value)} ≈ {vn.figure(e_value)}) nhưng năm gốc khác: tuyên bố so với "
+                        f"{claim.baseline}, tài liệu so với {other_base}; cần người xem."
+                    ),
+                    method="numeric",
+                )
+            if reversed_word:
+                return StanceSignal(
+                    relation=CONTRADICTS,
+                    reason=(
+                        f"Số liệu khớp ({vn.figure(c_value)} ≈ {vn.figure(e_value)}) nhưng ngược hướng: tuyên bố nói "
+                        f"“{'giảm' if claim.direction == 'decrease' else 'tăng'}”, tài liệu nói “{reversed_word}”."
+                    ),
+                    method="numeric",
+                    figures=(c_value, e_value),
+                )
+            # A claim with two figures where one matches and the other is far off is not
+            # supported by the one that matches (GS-Mutation v1 M1: 58.4 Mt "chiếm 99,55%"
+            # against 23.4 Mt "chiếm 99,55%" was SUPPORTED). A reviewer's case, not a verdict.
+            off = [] if not self.settings.figure_consistency_check else [(err, e) for i, (err, e) in per_fact.items()
+                   if claim_facts[i] is not c_fact and err >= self.settings.numeric_contradiction_error
+                   and claim_facts[i].value != c_value]
+            if off:
+                err, e_other = min(off, key=lambda x: x[0])
+                return StanceSignal(
+                    relation=PARTIAL,
+                    reason=(
+                        f"Một số khớp ({vn.figure(c_value)} ≈ {vn.figure(e_value)}) nhưng số khác của tuyên bố lệch xa "
+                        f"số cùng loại trong tài liệu ({vn.figure(e_other.value)}); cần người xem."
+                    ),
+                    method="numeric",
+                )
             if other_period:
                 return StanceSignal(
                     relation=PARTIAL,
                     reason=(
-                        f"Số liệu khớp ({c_value} ≈ {e_value}) nhưng câu bằng chứng thuộc kỳ "
+                        f"Số liệu khớp ({vn.figure(c_value)} ≈ {vn.figure(e_value)}) nhưng câu bằng chứng thuộc kỳ "
                         f"{other_period}, không phải kỳ {claim.period} của tuyên bố."
                     ),
                     method="numeric",
                 )
             return StanceSignal(
                 relation=SUPPORTS,
-                reason=f"Số liệu khớp: {c_value} ≈ {e_value} (dung sai ±{tolerance * 100:.2g}% theo độ chính xác công bố).",
+                reason=f"Số liệu khớp: {vn.figure(c_value)} ≈ {vn.figure(e_value)} (dung sai ±{vn.figure(round(tolerance * 100, 2))}% theo độ chính xác công bố).",
                 method="numeric",
+                figures=(c_value, e_value),
             )
         if error >= self.settings.numeric_contradiction_error:
+            # Holdout v1 (PAN 2020, 15/11/2026): both CONTRADICTED were wrong. "Power consumption of compressor
+            # reduces by 40%" met "consumption via online sales grew 25%" -- the claim names no metric the
+            # taxonomy knows, so every sentence was compared; and an investment of VND 483 million met a
+            # sponsorship of VND 700 million. Without the claim's metric, or for money in a claim that is not
+            # about green finance, a gap goes to a reviewer.
+            unanchored = not claim.metric and not (content_bigrams(claim.text) & content_bigrams(sentence))
+            if self.settings.figure_consistency_check and (
+                unanchored or (c_fact.unit == "currency" and claim.claim_type != "green_finance")
+            ):
+                return StanceSignal(
+                    relation=PARTIAL,
+                    reason=(
+                        f"Số liệu lệch ({vn.figure(c_value)} so với {vn.figure(e_value)}) nhưng "
+                        + ("chưa xác định được chỉ số của tuyên bố" if unanchored
+                           else "đây là khoản tiền, không phải chỉ số môi trường của tuyên bố")
+                        + ", nên không kết luận mâu thuẫn; cần người xem."
+                    ),
+                    method="numeric",
+                )
+            ratio = max(abs(c_value), abs(e_value)) / max(min(abs(c_value), abs(e_value)), 1e-9)
+            if (claim.claim_type in FALLBACK_CLAIM_TYPES and ratio >= 3.0
+                    and "unknown" in (c_fact.boundary, e_fact.boundary)):
+                # claim-typing-v2: the type was inferred, the figures are 3x+ apart and the boundary is
+                # unread on one side -- more often two different objects than a misstatement.
+                return StanceSignal(
+                    relation=PARTIAL,
+                    reason=(
+                        f"Số liệu lệch lớn ({vn.figure(c_value)} so với {vn.figure(e_value)}) nhưng chưa xác định được "
+                        "hai số có cùng ranh giới; có thể là hai đối tượng khác nhau, cần người xem."
+                    ),
+                    method="numeric",
+                )
             if other_period:
                 return StanceSignal(
                     relation=CONTEXT,
@@ -588,10 +938,11 @@ class VerificationAgent:
             return StanceSignal(
                 relation=CONTRADICTS,
                 reason=(
-                    f"Số liệu lệch: tuyên bố {c_value}, tài liệu {e_value} "
+                    f"Số liệu lệch: tuyên bố {vn.figure(c_value)}, tài liệu {vn.figure(e_value)} "
                     f"(cùng {_same_dimensions(c_fact, e_fact)})."
                 ),
                 method="numeric",
+                figures=(c_value, e_value),
             )
         # Between the published precision and a material difference: the
         # figures are about the same thing and do not agree. Arithmetic has
@@ -599,10 +950,64 @@ class VerificationAgent:
         return StanceSignal(
             relation=PARTIAL,
             reason=(
-                f"Số liệu gần nhưng lệch ngoài dung sai công bố: tuyên bố {c_value}, "
-                f"tài liệu {e_value} (dung sai ±{tolerance * 100:.2g}%)."
+                f"Số liệu gần nhưng lệch ngoài dung sai công bố: tuyên bố {vn.figure(c_value)}, "
+                f"tài liệu {vn.figure(e_value)} (dung sai ±{vn.figure(round(tolerance * 100, 2))}%)."
             ),
             method="numeric",
+        )
+
+    def _absolute_share(self, claim: Claim, item: RetrievedEvidence) -> StanceSignal | None:
+        """Share of a green instrument's proceeds used, against the 100% an absolute claim asserts."""
+        found = allocated_share(claim.text, item.text)
+        if found is None:
+            return None
+        share = found["share_pct"]
+        gap = (100.0 - share) / 100.0
+        head = (
+            f"Tuyên bố “{found['absolute']}” nghĩa là 100% vốn {found['instrument']}; "
+            f"tính từ đoạn này: {found['formula']}"
+        )
+        if gap <= 0.005:
+            relation, tail = SUPPORTS, ", khớp với tuyên bố."
+        elif gap >= self.settings.numeric_contradiction_error:
+            relation, tail = CONTRADICTS, f", thấp hơn 100% là {vn.figure(round(gap * 100, 1))} điểm phần trăm."
+        else:
+            relation, tail = PARTIAL, ", chưa phải toàn bộ nhưng độ lệch dưới ngưỡng mâu thuẫn; cần người xem."
+        return StanceSignal(relation=relation, reason=head + tail, method="numeric", figures=(100.0, share))
+
+    def _internal_inconsistency(self, claim: Claim, item: RetrievedEvidence, numeric: StanceSignal) -> StanceSignal | None:
+        """A figure in the claim's prose against the same report's data table (internal-inconsistency-v1).
+
+        The contradiction guard stays the default: two numbers in one report are
+        usually about two things. A same-document disagreement is let through only
+        when the passage is a data table or data page, the figures are comparable
+        under comparison-policy-v3 (now also by segment), the passage is dated to
+        the claim's period (and its base year for a change), no figure is an OCR
+        doubt, and nothing near it says the figure was restated. Anything less and
+        the old behaviour holds.
+        """
+        if claim.source_chunk_id and item.chunk_id == claim.source_chunk_id:
+            return None
+        folded = normalize_for_match(item.text)
+        if not (item.is_table or _DATA_PAGE_RE.search(folded)):
+            return None
+        if _RESTATED_RE.search(folded):
+            return None
+        if not claim.period or str(claim.period) not in item.text:
+            return None
+        if claim.direction and claim.baseline and str(claim.baseline) not in item.text:
+            return None
+        if self._unless_misread(claim, item, numeric).relation != CONTRADICTS:
+            return None
+        relation = CONTRADICTS if self.settings.internal_inconsistency == "contradict" else PARTIAL
+        return StanceSignal(
+            relation=relation,
+            reason=(
+                f"Không nhất quán nội bộ: {numeric.reason.rstrip('.')}; lời văn và bảng số liệu trong cùng "
+                "tài liệu không khớp, cần người soát đặt hai dòng cạnh nhau."
+            ),
+            method="internal",
+            figures=numeric.figures,
         )
 
     def _continuity_gap(self, claim: Claim, item: RetrievedEvidence) -> StanceSignal | None:
@@ -689,7 +1094,7 @@ class VerificationAgent:
         claimed_signed = -claimed.value if claim.direction == "decrease" else claimed.value
         unit = base.unit
         calculation = (
-            f"({current.value:,.4g} − {base.value:,.4g}) / {base.value:,.4g} = {relative:+.4g}%"
+            f"({vn.figure(current.value)} − {vn.figure(base.value)}) / {vn.figure(base.value)} = {vn.signed(round(relative, 2))}%"
         )
         tolerance = max(0.5, _half_digit(claimed.value))
 
@@ -703,8 +1108,8 @@ class VerificationAgent:
             return StanceSignal(
                 relation=PARTIAL,
                 reason=(
-                    f"Hai giá trị đều là tỷ lệ: chênh {points:+.4g} điểm phần trăm, "
-                    f"tương đương {relative:+.4g}% tương đối. Tuyên bố nêu {claimed_signed:+.4g}% — "
+                    f"Hai giá trị đều là tỷ lệ: chênh {vn.signed(round(points, 2))} điểm phần trăm, "
+                    f"tương đương {vn.signed(round(relative, 2))}% tương đối. Tuyên bố nêu {vn.signed(claimed_signed)}% — "
                     + ("khớp một trong hai cách đọc; cần người xác nhận cách đo."
                        if matches else "không khớp cách đọc nào; cần người xem.")
                 ),
@@ -716,10 +1121,11 @@ class VerificationAgent:
             return StanceSignal(
                 relation=SUPPORTS,
                 reason=(
-                    f"Tính lại từ số liệu: {calculation} {unit}, khớp mức {claimed_signed:+.4g}% "
-                    f"của tuyên bố (dung sai ±{tolerance:.2g} điểm phần trăm)."
+                    f"Tính lại từ số liệu: {calculation} {unit}, khớp mức {vn.signed(claimed_signed)}% "
+                    f"của tuyên bố (dung sai ±{vn.figure(round(tolerance, 2))} điểm phần trăm)."
                 ),
                 method="numeric",
+                figures=(claimed.value, base.value, current.value),
             )
         material = max(tolerance, self.settings.numeric_contradiction_error * abs(claimed_signed))
         if abs(difference) >= material:
@@ -727,15 +1133,16 @@ class VerificationAgent:
                 relation=CONTRADICTS,
                 reason=(
                     f"Tính lại từ số liệu: {calculation} {unit}, trong khi tuyên bố nêu "
-                    f"{claimed_signed:+.4g}% — lệch {difference:+.4g} điểm phần trăm."
+                    f"{vn.signed(claimed_signed)}% — lệch {vn.signed(round(difference, 2))} điểm phần trăm."
                 ),
                 method="numeric",
+                figures=(claimed.value, base.value, current.value),
             )
         return StanceSignal(
             relation=PARTIAL,
             reason=(
                 f"Tính lại từ số liệu: {calculation} {unit}, gần nhưng chưa khớp mức "
-                f"{claimed_signed:+.4g}% của tuyên bố."
+                f"{vn.signed(claimed_signed)}% của tuyên bố."
             ),
             method="numeric",
         )
@@ -749,8 +1156,12 @@ class VerificationAgent:
         "100%" is not matched by anything from 50 upwards. There is no global
         percentage any more: "12%" tolerates 11.5–12.5, "12,0%" only 11.95–12.05.
         """
-        c_value, _, c_half = claim
-        _, _, e_half = evidence
+        c_value, c_unit, c_half = claim
+        _, e_unit, e_half = evidence
+        # "100%" means all of it, not a figure rounded to the hundred (GS-Mutation v1.1 M5: "tự chủ 100%"
+        # matched 98% under the 10% cap). The same for 0%. Only the published unit digit is tolerated.
+        if self.settings.figure_consistency_check and c_unit == "%" and abs(c_value) in (0.0, 100.0):
+            c_half = e_half = 0.5
         absolute = min(max(c_half, e_half), self.settings.numeric_relative_tolerance * abs(c_value))
         return absolute / max(abs(c_value), 1e-9)
 
@@ -859,7 +1270,7 @@ class VerificationAgent:
             stated.add("metric")
             if sentences and any(term in folded for term in self._metric_terms(claim)):
                 matched.add("metric")
-        if claim.period:
+        if claim.period and claim.period_source != "report_year":
             stated.add("period")
             if claim.period in YEAR_RE.findall(joined):
                 matched.add("period")
@@ -973,12 +1384,50 @@ def _load_taxonomy(path: str) -> dict:
 
 def _dated_to_other_year(sentence: str, claim: Claim) -> str | None:
     """The year the sentence is about, when it is not the claim's period or baseline."""
-    if not claim.period:
+    if not claim.period or claim.period_source == "report_year":
         return None
     years = set(YEAR_RE.findall(sentence))
     if not years or claim.period in years or (claim.baseline and claim.baseline in years):
         return None
     return "/".join(sorted(years))
+
+
+_BASE_YEAR_RE = re.compile(r"so (?:voi|với) (?:nam |năm |cung ky nam |cùng kỳ năm )?((?:19|20)\d\d)")
+
+
+def _other_baseline(claim: Claim, sentence: str) -> str | None:
+    """The base year the sentence compares with, when the claim names a different one."""
+    if not claim.baseline:
+        return None
+    years = {m.group(1) for m in _BASE_YEAR_RE.finditer(sentence.lower())}
+    return sorted(years)[0] if years and claim.baseline not in years else None
+
+
+def _reversed_in(claim: Claim, sentence: str, value: float | None = None) -> str | None:
+    """The trend word governing the matched figure when it is the opposite of the claim's.
+
+    First the nearest trend word in the 50 characters before the figure ("…, mức tiêu thụ gas giảm
+    tương ứng là 39%" while production "tăng 20%" earlier in the sentence, GS-Bench C3); else the
+    sentence's only trend word, as before.
+    """
+    if claim.direction not in ("decrease", "increase"):
+        return None
+    low = sentence.lower()
+    if value is not None:
+        at = _position_of(sentence, value)
+        if at is not None:
+            left = low[max(0, at - 50):at]
+            words = [(m.start(), "decrease", m.group(0)) for m in _DECREASE_RE.finditer(left)]
+            words += [(m.start(), "increase", m.group(0)) for m in _INCREASE_RE.finditer(left)]
+            if words:
+                _, kind, word = max(words)
+                return word if kind != claim.direction else None
+    decrease, increase = _DECREASE_RE.search(low), _INCREASE_RE.search(low)
+    if claim.direction == "increase" and decrease and not increase:
+        return decrease.group(0)
+    if claim.direction == "decrease" and increase and not decrease:
+        return increase.group(0)
+    return None
 
 
 def _scopes(scopes) -> str:
@@ -1005,7 +1454,11 @@ _ATTRIBUTE_LABELS = {
 
 
 def missing_attributes(claim: Claim) -> list[str]:
-    """Which of the five mandatory attributes the claim itself does not state."""
+    """Which of the five mandatory attributes the claim itself does not state.
+
+    The one definition: frontend/src/lib/claims.js `attributeStates` mirrors it for
+    the queue tag and the attribute card, and Studio names its result.
+    """
     missing = []
     if not claim.metric:
         missing.append("metric")
@@ -1101,3 +1554,20 @@ def _same_dimensions(a: NumericFact, b: NumericFact) -> str:
     if a.technology:
         parts.append(f"công nghệ {a.technology}")
     return ", ".join(parts) or "đơn vị"
+
+
+def _reading_warnings(claim: Claim, misread: list[str]) -> list[str]:
+    """What a reviewer is told about numbers OCR was unsure of, on the claim's side and the evidence's."""
+    out = []
+    if claim.doubtful_numbers:
+        sure = f" (trang đọc với độ tin cậy trung bình {claim.ocr_confidence:.0f}/100)" if claim.ocr_confidence else ""
+        out.append(
+            f"Tuyên bố lấy từ trang quét{sure}; số {', '.join(claim.doubtful_numbers[:4])} được đọc với độ tin cậy "
+            "thấp, cần đối chiếu trang gốc."
+        )
+    if misread:
+        out.append(
+            "Không dùng so khớp số liệu ở đoạn sau vì có số do máy đọc ảnh chữ (OCR) đọc chưa chắc: "
+            + "; ".join(misread[:3])
+        )
+    return out

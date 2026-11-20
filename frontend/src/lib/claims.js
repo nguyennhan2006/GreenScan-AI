@@ -8,58 +8,73 @@ import { labelOf } from './labels'
  */
 
 /**
- * The five mandatory attributes — the design-system primitive.
+ * The five attributes a claim must state: chỉ số, giá trị, kỳ, năm gốc, phạm vi.
  *
- * `assertion` names the audit assertion each one tests (ISA 315 vocabulary), so an
- * auditor reads the checklist in terms they already use.
+ * One definition for the queue tag, the attribute card, the filters and the
+ * summary line, the same one the report gives (KHAI_NIEM_CAN_NAM.md) and the
+ * backend checks (agents/verifier.py `missing_attributes`). The card used to be
+ * built from risk-score components while the summary line used the claim's own
+ * fields, so one claim read "thiếu 1/5" in the queue, "2/5" on its card and
+ * "thiếu số liệu, kỳ, năm gốc" in its summary (seen in the demo video, 09/11).
  *
- * Each maps to scorer components (risk-rubric-v2). `components` lists every
- * component that must be satisfied; the attribute is only "present" when all
- * of them are, so Evidence/Methodology cannot pass on retrieval alone while
- * lacking any independent source.
+ * Năm gốc is required only of a claim that states a change or a target (scoring
+ * v3); for any other claim it is "không áp dụng", never "thiếu".
+ *
+ * `assertion` names the audit assertion each one serves (ISA 315 vocabulary).
+ * Evidence and methodology are not an attribute of the claim: they are what the
+ * verdict and the evidence tab report.
  */
 export const ATTRIBUTES = [
   {
-    key: 'specific_metric',
-    label: 'Chỉ số cụ thể',
-    assertion: 'phân loại · chính xác',
-    components: ['specificity', 'quantitative_evidence'],
-    hint: 'Một chỉ số xác định kèm giá trị và đơn vị, không phải mô tả chung.',
-    fix: 'Nêu rõ chỉ số, con số và đơn vị đo.',
+    key: 'metric',
+    label: 'Chỉ số',
+    assertion: 'phân loại',
+    hint: 'Tuyên bố nói về chỉ số nào: phát thải, điện tái tạo, nước, chất thải…',
+    fix: 'Nêu rõ chỉ số đang nói tới.',
   },
   {
-    key: 'baseline',
-    label: 'Năm gốc',
-    assertion: 'chính xác (so sánh)',
-    components: ['baseline'],
-    hint: 'Mốc so sánh cho mọi tuyên bố tăng/giảm.',
-    fix: 'Bổ sung năm gốc: “giảm 30% so với 2019”.',
+    key: 'values',
+    label: 'Giá trị',
+    assertion: 'chính xác',
+    hint: 'Con số kèm đơn vị đo, không phải mô tả chung chung.',
+    fix: 'Nêu con số và đơn vị đo.',
   },
   {
     key: 'period',
     label: 'Kỳ báo cáo',
     assertion: 'đúng kỳ',
-    components: ['period'],
-    hint: 'Số liệu thuộc kỳ nào.',
+    hint: 'Số liệu thuộc năm hoặc kỳ nào.',
     fix: 'Ghi rõ năm hoặc kỳ báo cáo của số liệu.',
   },
   {
-    key: 'scope_boundary',
-    label: 'Phạm vi / ranh giới',
+    key: 'baseline',
+    label: 'Năm gốc',
+    assertion: 'chính xác (so sánh)',
+    hint: 'Mốc để so sánh; chỉ bắt buộc khi tuyên bố nói tăng, giảm hoặc đặt mục tiêu.',
+    fix: 'Bổ sung năm gốc: “giảm 30% so với 2019”.',
+  },
+  {
+    key: 'scope',
+    label: 'Phạm vi',
     assertion: 'đầy đủ',
-    components: ['scope_boundary'],
     hint: 'Một nhà máy, công ty mẹ hay toàn tập đoàn; với phát thải là phạm vi 1, 2, 3.',
     fix: 'Nêu phạm vi pháp nhân/cơ sở, hoặc phạm vi phát thải.',
   },
-  {
-    key: 'evidence_methodology',
-    label: 'Bằng chứng & phương pháp',
-    assertion: 'căn cứ kiểm chứng',
-    components: ['evidence_support', 'independent_assurance'],
-    hint: 'Có nguồn đối chiếu và phương pháp tính kiểm chứng được.',
-    fix: 'Dẫn bảng số liệu, phương pháp tính hoặc báo cáo đảm bảo độc lập.',
-  },
 ]
+
+const EMISSION_SCOPE = /(phạm vi|scope)\s*[123]/i
+
+/** Mirror of agents/verifier.py `missing_attributes`: 'present' | 'missing' | 'not_applicable' per attribute. */
+export function attributeStates(claim) {
+  const changeOrTarget = Boolean(claim.direction || claim.is_future_commitment)
+  return {
+    metric: claim.metric ? 'present' : 'missing',
+    values: claim.values?.length ? 'present' : 'missing',
+    period: claim.period ? 'present' : 'missing',
+    baseline: !changeOrTarget ? 'not_applicable' : claim.baseline ? 'present' : 'missing',
+    scope: claim.scope || EMISSION_SCOPE.test(claim.text || '') ? 'present' : 'missing',
+  }
+}
 
 /** Penalties are signals, not mandatory attributes — kept visually separate. */
 export const PENALTIES = [
@@ -109,49 +124,21 @@ export function actionFor(attributeKey, claim, evidence = []) {
   const value = claim.values?.[0]
 
   switch (attributeKey) {
-    case 'specific_metric':
+    case 'metric':
       return value == null
-        ? `Nêu con số và đơn vị cho ${metric} (ví dụ: 12.400 tấn CO2 tương đương), thay vì mô tả định tính.`
+        ? 'Nêu rõ chỉ số đang nói tới: phát thải, điện tái tạo, nước, chất thải…'
         : `Gắn ${value}${unit ? ` ${unit}` : ''} với một chỉ số có tên rõ ràng.`
+    case 'values':
+      return `Nêu con số và đơn vị cho ${metric} (ví dụ: 12.400 tấn CO2 tương đương), thay vì mô tả định tính.`
     case 'baseline':
       return `Nêu năm gốc để so sánh — “giảm so với năm nào?” (${period}).`
     case 'period':
       return `Xác định kỳ mà ${metric} áp dụng (năm tài chính hay năm dương lịch).`
-    case 'scope_boundary':
+    case 'scope':
       return 'Nêu phạm vi: công ty mẹ, toàn tập đoàn, nhà máy cụ thể, dòng sản phẩm, hay phạm vi phát thải 1 (trực tiếp), 2 (năng lượng mua vào), 3 (chuỗi giá trị).'
-    case 'evidence_methodology': {
-      const parts = [`cùng chỉ số (${metric})`]
-      if (claim.period) parts.push(`cùng kỳ (${claim.period})`)
-      if (claim.scope) parts.push(`cùng phạm vi (${labelOf('scope', claim.scope)})`)
-      const near = evidence.filter((e) => e.relation === 'PARTIAL').length
-      const tail = near
-        ? ` Hiện có ${near} đoạn liên quan nhưng chưa khớp đủ ba điều kiện.`
-        : ' Hiện chưa truy xuất được đoạn nào đủ gần.'
-      return `Cần bằng chứng ${parts.join(' + ')}, kèm phương pháp tính.${tail}`
-    }
     default:
       return 'Bổ sung thông tin còn thiếu cho thuộc tính này.'
   }
-}
-
-function componentMap(risk) {
-  const out = new Map()
-  for (const c of risk?.components || []) out.set(c.name, c)
-  return out
-}
-
-/** 'present' | 'partial' | 'missing' | 'unknown' across all backing components. */
-function attributeState(components, keys) {
-  const present = keys.map((k) => components.get(k)).filter(Boolean)
-  if (!present.length) return { state: 'unknown', detail: '' }
-  // Not scored (claim-quality-v1): a 0 here means "not checked", not "satisfied".
-  if (present.every((c) => c.status === 'not_applicable')) return { state: 'unknown', detail: present[0].reason }
-  // Components are penalties: 0 = attribute satisfied, max = absent.
-  const ratios = present.map((c) => (c.max_score ? c.score / c.max_score : 0))
-  const detail = present.map((c) => c.reason).join(' ')
-  if (ratios.every((r) => r === 0)) return { state: 'present', detail }
-  if (ratios.every((r) => r >= 0.99)) return { state: 'missing', detail }
-  return { state: 'partial', detail }
 }
 
 export function buildRows(analysis) {
@@ -159,17 +146,20 @@ export function buildRows(analysis) {
   const risks = new Map((analysis.risks || []).map((r) => [r.claim_id, r]))
   return (analysis.verifications || []).map((v) => {
     const risk = risks.get(v.claim.claim_id)
-    const components = componentMap(risk)
     const evidence = v.evidence || []
-    const attributes = ATTRIBUTES.map((a) => {
-      const s = attributeState(components, a.components)
-      return { ...a, ...s, action: s.state === 'present' ? null : actionFor(a.key, v.claim, evidence) }
-    })
+    const states = attributeStates(v.claim)
+    // risk-score components by name, for the penalty flags below (the attribute states above read the claim itself)
+    const components = new Map((risk?.components || []).map((c) => [c.name, c]))
+    const attributes = ATTRIBUTES.map((a) => ({
+      ...a, state: states[a.key], action: states[a.key] === 'missing' ? actionFor(a.key, v.claim, evidence) : null,
+    }))
     return {
       id: v.claim.claim_id,
       claim: v.claim,
       status: v.status,
       rationale: v.rationale,
+      assessment: v.assessment || null,
+      assist: v.assist || {},   // llm_stages_v1: model explanation / dual-reader notes, shown beside the rules, never instead
       computed: v.computed_values || null,
       warnings: v.warnings || [],
       requiresLlmReview: Boolean(v.requires_llm_review),
@@ -186,8 +176,13 @@ export function buildRows(analysis) {
       }),
       missing: attributes.filter((a) => a.state === 'missing'),
       isAbstain: ABSTAIN_STATUSES.has(v.status),
-      flagged: evidence.some((e) => e.suspicious_instruction),
+      // suspected_injection also covers passages the verifier dropped, which are not in `evidence`.
+      flagged: Boolean(v.suspected_injection) || evidence.some((e) => e.suspicious_instruction),
       suspect: v.claim.quality_flag || null,
+      // A number on a scanned page that OCR was unsure of (verifier _unless_misread).
+      misread: Boolean(v.doubtful_reading),
+      doubtfulNumbers: v.claim.doubtful_numbers || [],
+      ocrConfidence: v.claim.ocr_confidence ?? null,
       requiresReview: risk?.requires_human_review ?? false,
     }
   })

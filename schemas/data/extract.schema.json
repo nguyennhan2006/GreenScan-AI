@@ -86,7 +86,7 @@
           "type": "boolean"
         },
         "policy_id": {
-          "default": "comparison-policy-v2",
+          "default": "comparison-policy-v3",
           "description": "the eligibility rule that read these",
           "title": "Policy Id",
           "type": "string"

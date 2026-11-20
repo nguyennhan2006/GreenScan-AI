@@ -56,15 +56,15 @@
 ## 3. Gợi ý sửa (D-EDIT)
 - n = 200; tuyên bố xanh 151, cần sửa 135.
 - Nhận ra câu cần sửa: {'tp': 135, 'fp': 16, 'fn': 0, 'precision': 0.894, 'recall': 1.0, 'f1': 0.944}.
-- Gợi ý của hệ thống: 527 ({'add_scope': 194, 'evidence_ref': 200, 'placeholder': 117, 'soften': 16}); trên câu không phải tuyên bố xanh: 130; thêm số mới: 0.
-- Macro-F1 mã vấn đề: 0.359. Vấn đề nằm ngoài từ vựng của hệ thống: {'VAGUE_TERM': 35, 'NO_FIGURE': 34, 'UNVERIFIED_LABEL_OR_CERT': 17, 'MISSING_SCOPE': 13, 'ABSOLUTE_CLAIM': 10, 'OTHER': 5, 'HIDDEN_TRADEOFF': 3, 'MISSING_PERIOD': 2, 'IRRELEVANT_CLAIM': 1}.
+- Gợi ý của hệ thống: 456 ({'add_scope': 194, 'evidence_ref': 200, 'placeholder': 46, 'soften': 16}); trên câu không phải tuyên bố xanh: 114; thêm số mới: 0.
+- Macro-F1 mã vấn đề: 0.337. Vấn đề nằm ngoài từ vựng của hệ thống: {'NO_FIGURE': 65, 'VAGUE_TERM': 35, 'UNVERIFIED_LABEL_OR_CERT': 17, 'MISSING_SCOPE': 13, 'ABSOLUTE_CLAIM': 10, 'OTHER': 5, 'HIDDEN_TRADEOFF': 3, 'MISSING_PERIOD': 2, 'IRRELEVANT_CLAIM': 1}.
 
 | Mã vấn đề | P | R | F1 | tp/fp/fn |
 |---|---|---|---|---|
 | MISSING_PERIOD | 0.35 | 0.953 | 0.512 | 41/76/2 |
 | MISSING_BASELINE | 0.139 | 1.0 | 0.244 | 11/68/0 |
 | MISSING_SCOPE | 0.275 | 0.683 | 0.392 | 28/74/13 |
-| NO_FIGURE | 0.564 | 0.477 | 0.517 | 31/24/34 |
+| NO_FIGURE | None | 0.0 | None | 0/0/65 |
 | VAGUE_TERM | 0.676 | 0.397 | 0.5 | 23/11/35 |
 | ABSOLUTE_CLAIM | 0.0 | 0.0 | 0.0 | 0/4/10 |
 | OFFSET_NEUTRALITY | 0.2 | 1.0 | 0.333 | 1/4/0 |

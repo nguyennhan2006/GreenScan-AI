@@ -13,7 +13,9 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 ACTORS = {"user", "ai-rule", "ai-llm", "system"}
-ACTIONS = {"accept", "reject", "edit", "ignore", "save", "restore", "rework"}
+# "note" records the reason for a paragraph edited by hand (`paragraph_key`),
+# for the change report (studio/report.py); it changes no text.
+ACTIONS = {"accept", "reject", "edit", "ignore", "save", "restore", "rework", "note"}
 
 
 def _now() -> str:
@@ -31,7 +33,13 @@ class StudioSession:
 
     def load(self, base_text: str, name: str = "") -> dict:
         if self.path.is_file():
-            return json.loads(self.path.read_text(encoding="utf-8"))
+            data = json.loads(self.path.read_text(encoding="utf-8"))
+            # The reading of the original can improve (OCR of scanned pages, hidden
+            # text left out: 11/11/2026). A session nobody edited yet simply moves
+            # to the new reading; one with edits keeps its text and `save` refuses.
+            if data.get("base_sha256") != sha(base_text) and sha(data.get("text", "")) == data.get("base_sha256"):
+                data.update(base_sha256=sha(base_text), text=base_text)
+            return data
         return {
             "doc_id": self.doc_id, "name": name, "base_sha256": sha(base_text),
             "text": base_text, "doc_class": "B", "versions": [], "log": [], "created_at": _now(),
@@ -53,9 +61,11 @@ class StudioSession:
             action = entry.get("action", "edit")
             if actor not in ACTORS or action not in ACTIONS:
                 raise ValueError(f"Mục nhật ký không hợp lệ: {actor}/{action}")
+            if action == "note" and not (entry.get("paragraph_key") and (entry.get("reason") or "").strip()):
+                raise ValueError("Ghi lý do cần đoạn và nội dung lý do.")
             clean = {k: entry.get(k) for k in (
                 "actor", "action", "claim_id", "suggestion_id", "rule_code", "kind", "before", "after",
-                "reason", "user", "client_ts", "source",
+                "reason", "user", "client_ts", "source", "paragraph_key",
             ) if entry.get(k) is not None}
             clean["ts"] = _now()
             clean["seq"] = len(data["log"]) + 1
@@ -84,6 +94,7 @@ class StudioSession:
             text = match["text"]
         data["text"] = text
         data["log"].append({"actor": "user", "action": "restore", "reason": f"Khôi phục phiên bản {version}"
-                            if version else "Khôi phục văn bản gốc", "ts": _now(), "seq": len(data["log"]) + 1})
+                            if version else "Khôi phục văn bản gốc", "version": version, "ts": _now(),
+                            "seq": len(data["log"]) + 1})
         self._write(data)
         return data

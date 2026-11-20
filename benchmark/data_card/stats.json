@@ -1,0 +1,357 @@
+{
+ "GS-Bench v1 (kết luận)": {
+  "n": 453,
+  "label": {
+   "classes": 3,
+   "n": 449,
+   "min_class": "S",
+   "min_n": 111,
+   "imbalance_ratio": 1.8,
+   "pielou_J": 0.972,
+   "unbalanced": false,
+   "counts": {
+    "N": 200,
+    "C": 138,
+    "S": 111
+   }
+  },
+  "company": {
+   "largest": "bvh",
+   "share": 0.256,
+   "groups": 9
+  },
+  "sector": {
+   "largest": "dược",
+   "share": 0.32,
+   "groups": 7
+  },
+  "source": "ca dựng + câu thật, nhãn Claude/đội",
+  "path": "benchmark/gs_bench_v1/gs_bench_v1.jsonl"
+ },
+ "GS-Bench ngoài mẫu v1.2": {
+  "n": 162,
+  "label": {
+   "classes": 3,
+   "n": 162,
+   "min_class": "S",
+   "min_n": 38,
+   "imbalance_ratio": 1.82,
+   "pielou_J": 0.974,
+   "unbalanced": false,
+   "counts": {
+    "N": 69,
+    "C": 55,
+    "S": 38
+   }
+  },
+  "company": {
+   "largest": "tra",
+   "share": 0.296,
+   "groups": 9
+  },
+  "source": "câu thật doanh nghiệp mới",
+  "path": "benchmark/gs_bench_v1/gs_heldout_v12.jsonl"
+ },
+ "GS-Bench ngoài mẫu v1.3": {
+  "n": 87,
+  "label": {
+   "classes": 3,
+   "n": 87,
+   "min_class": "S",
+   "min_n": 19,
+   "imbalance_ratio": 2.11,
+   "pielou_J": 0.96,
+   "unbalanced": true,
+   "counts": {
+    "N": 40,
+    "C": 28,
+    "S": 19
+   }
+  },
+  "company": {
+   "largest": "tra",
+   "share": 0.414,
+   "groups": 7
+  },
+  "source": "câu thật doanh nghiệp mới",
+  "path": "benchmark/gs_bench_v1/gs_bench_v13_heldout.jsonl"
+ },
+ "D-EXPLAIN": {
+  "n": 200,
+  "label": {
+   "classes": 5,
+   "n": 200,
+   "min_class": "CONTRADICTED",
+   "min_n": 4,
+   "imbalance_ratio": 16.75,
+   "pielou_J": 0.869,
+   "unbalanced": true,
+   "counts": {
+    "NOT_A_CLAIM": 67,
+    "PARTIALLY_SUPPORTED": 60,
+    "INSUFFICIENT_EVIDENCE": 44,
+    "SUPPORTED": 25,
+    "CONTRADICTED": 4
+   }
+  },
+  "review": {
+   "pending_human_review": 200
+  },
+  "source": "câu thật, nhãn Claude",
+  "path": "benchmark/gs_eval_v2/explain/labels"
+ },
+ "D-EDIT (mã vấn đề)": {
+  "n": 200,
+  "label": {
+   "classes": 12,
+   "n": 296,
+   "min_class": "OFFSET_NEUTRALITY",
+   "min_n": 1,
+   "imbalance_ratio": 67.0,
+   "pielou_J": 0.816,
+   "unbalanced": true,
+   "counts": {
+    "NO_FIGURE": 67,
+    "VAGUE_TERM": 61,
+    "MISSING_PERIOD": 43,
+    "MISSING_SCOPE": 41,
+    "NO_EVIDENCE_REF": 36,
+    "UNVERIFIED_LABEL_OR_CERT": 17,
+    "MISSING_BASELINE": 11,
+    "ABSOLUTE_CLAIM": 10,
+    "OTHER": 5,
+    "HIDDEN_TRADEOFF": 3,
+    "OFFSET_NEUTRALITY": 1,
+    "IRRELEVANT_CLAIM": 1
+   }
+  },
+  "needs_edit": {
+   "true": 135,
+   "false": 65
+  },
+  "source": "câu thật, nhãn Claude",
+  "path": "benchmark/gs_eval_v2/edit/labels"
+ },
+ "D-EXPLAIN + bù 11/11": {
+  "n": 285,
+  "label": {
+   "classes": 5,
+   "n": 285,
+   "min_class": "INSUFFICIENT_EVIDENCE",
+   "min_n": 44,
+   "imbalance_ratio": 1.52,
+   "pielou_J": 0.994,
+   "unbalanced": false,
+   "counts": {
+    "NOT_A_CLAIM": 67,
+    "PARTIALLY_SUPPORTED": 60,
+    "SUPPORTED": 60,
+    "CONTRADICTED": 54,
+    "INSUFFICIENT_EVIDENCE": 44
+   }
+  },
+  "source": "D-EXPLAIN + 85 ca C/S từ GS-Bench v1",
+  "path": "benchmark/gs_issue/data/supp_explain.jsonl"
+ },
+ "D-SCORE": {
+  "n": 200,
+  "adjudicated": 122,
+  "label": {
+   "classes": 3,
+   "n": 200,
+   "min_class": "high",
+   "min_n": 7,
+   "imbalance_ratio": 19.71,
+   "pielou_J": 0.663,
+   "unbalanced": true,
+   "counts": {
+    "low": 138,
+    "medium": 55,
+    "high": 7
+   }
+  },
+  "source": "câu thật, hai lượt Claude + phân xử",
+  "path": "benchmark/gs_eval_v2/score"
+ },
+ "D-RULES (org pack)": {
+  "n": 237,
+  "label": {
+   "classes": 4,
+   "n": 237,
+   "min_class": "NOT_APPLICABLE",
+   "min_n": 48,
+   "imbalance_ratio": 1.5,
+   "pielou_J": 0.992,
+   "unbalanced": false,
+   "counts": {
+    "VIOLATION": 72,
+    "COMPLIANT": 60,
+    "NEEDS_REVIEW": 57,
+    "NOT_APPLICABLE": 48
+   }
+  },
+  "case_type": {
+   "classes": 8,
+   "n": 237,
+   "min_class": "expired_rule",
+   "min_n": 6,
+   "imbalance_ratio": 23.33,
+   "pielou_J": 0.664,
+   "unbalanced": true,
+   "counts": {
+    "normal": 140,
+    "edge": 39,
+    "other_sector": 13,
+    "override_attempt": 11,
+    "injection": 11,
+    "draft_rule": 11,
+    "expired_rule": 6,
+    "conflict_with_law": 6
+   }
+  },
+  "org": {
+   "largest": "nang_luong_gio_long",
+   "share": 0.097,
+   "groups": 14
+  },
+  "source": "ca dựng",
+  "path": "benchmark/gs_eval_v2/rules"
+ },
+ "Kho câu thật pool A": {
+  "n": 1589,
+  "company": {
+   "largest": "HPG",
+   "share": 0.405,
+   "groups": 12
+  },
+  "company_counts": {
+   "HPG": 643,
+   "PAN": 281,
+   "CTD": 210,
+   "SAB": 205,
+   "DHG": 90,
+   "TRA": 80,
+   "PNJ": 67,
+   "KLM": 8,
+   "TUYEN": 2,
+   "BNY": 1,
+   "KDP": 1,
+   "DWS": 1
+  },
+  "source": "GreenScan trích từ báo cáo thật",
+  "path": "benchmark/gs_eval_v2/inputs/pool_a.jsonl"
+ },
+ "GS-Issue lớp A (mới)": {
+  "n": 740,
+  "label": {
+   "classes": 15,
+   "n": 680,
+   "min_class": "MISSING_PERIOD",
+   "min_n": 40,
+   "imbalance_ratio": 3.0,
+   "pielou_J": 0.975,
+   "unbalanced": false,
+   "counts": {
+    "CLEAN": 120,
+    "MISSING_PERIOD": 40,
+    "MISSING_BASELINE": 40,
+    "MISSING_SCOPE": 40,
+    "NO_FIGURE": 40,
+    "VAGUE_TERM": 40,
+    "ABSOLUTE_CLAIM": 40,
+    "OFFSET_NEUTRALITY": 40,
+    "FUTURE_AS_ACHIEVED": 40,
+    "UNVERIFIED_LABEL_OR_CERT": 40,
+    "NO_EVIDENCE_REF": 40,
+    "HIDDEN_TRADEOFF": 40,
+    "IRRELEVANT_CLAIM": 40,
+    "INTENSITY_VS_ABSOLUTE": 40,
+    "ENTITY_SCOPE_AMBIGUOUS": 40
+   }
+  },
+  "split": {
+   "A-single": 560,
+   "A-clean": 120,
+   "A-multi": 60
+  },
+  "sector": {
+   "largest": "hóa chất",
+   "share": 0.119,
+   "groups": 10
+  },
+  "source": "đột biến có đáp án, doanh nghiệp hư cấu",
+  "path": "benchmark/gs_issue/data/layer_a.jsonl"
+ },
+ "GS-Issue lớp B (nhãn bạc)": {
+  "n": 1079,
+  "label": {
+   "classes": 15,
+   "n": 1564,
+   "min_class": "ENTITY_SCOPE_AMBIGUOUS",
+   "min_n": 1,
+   "imbalance_ratio": 713.0,
+   "pielou_J": 0.618,
+   "unbalanced": true,
+   "counts": {
+    "VAGUE_TERM": 713,
+    "NO_FIGURE": 353,
+    "MISSING_SCOPE": 181,
+    "CLEAN": 91,
+    "MISSING_PERIOD": 50,
+    "UNVERIFIED_LABEL_OR_CERT": 48,
+    "FUTURE_AS_ACHIEVED": 40,
+    "ABSOLUTE_CLAIM": 28,
+    "NO_EVIDENCE_REF": 28,
+    "INTENSITY_VS_ABSOLUTE": 14,
+    "MISSING_BASELINE": 6,
+    "OFFSET_NEUTRALITY": 5,
+    "IRRELEVANT_CLAIM": 4,
+    "HIDDEN_TRADEOFF": 2,
+    "ENTITY_SCOPE_AMBIGUOUS": 1
+   }
+  },
+  "company": {
+   "largest": "HPG",
+   "share": 0.411,
+   "groups": 11
+  },
+  "source": "câu thật, 14B và 32B cùng gán",
+  "path": "benchmark/gs_issue/data/layer_b_silver.jsonl"
+ },
+ "GS-Issue lớp B cân bằng": {
+  "n": 269,
+  "label": {
+   "classes": 15,
+   "n": 444,
+   "min_class": "ENTITY_SCOPE_AMBIGUOUS",
+   "min_n": 1,
+   "imbalance_ratio": 80.0,
+   "pielou_J": 0.87,
+   "unbalanced": true,
+   "counts": {
+    "CLEAN": 80,
+    "VAGUE_TERM": 63,
+    "NO_FIGURE": 47,
+    "MISSING_SCOPE": 45,
+    "UNVERIFIED_LABEL_OR_CERT": 41,
+    "FUTURE_AS_ACHIEVED": 40,
+    "MISSING_PERIOD": 40,
+    "NO_EVIDENCE_REF": 28,
+    "ABSOLUTE_CLAIM": 28,
+    "INTENSITY_VS_ABSOLUTE": 14,
+    "MISSING_BASELINE": 6,
+    "OFFSET_NEUTRALITY": 5,
+    "IRRELEVANT_CLAIM": 4,
+    "HIDDEN_TRADEOFF": 2,
+    "ENTITY_SCOPE_AMBIGUOUS": 1
+   }
+  },
+  "company": {
+   "largest": "HPG",
+   "share": 0.372,
+   "groups": 10
+  },
+  "source": "chọn từ nhãn bạc, trần mỗi mã",
+  "path": "benchmark/gs_issue/data/layer_b_balanced.jsonl"
+ }
+}

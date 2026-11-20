@@ -1,0 +1,44 @@
+# Giả định chi phí cho bảng so sánh phương án (tools/bao_cao_mo_hinh/chi_phi.py). Sửa số ở đây rồi chạy lại script.
+# Mỗi số ghi nguồn: [ĐÃ ĐO] = đo trong repo; [NGOÀI] = trang so giá, tra 13/11/2026; [GIẢ ĐỊNH] = ước tính của nhóm.
+version: chi-phi-v1
+date: "2026-11-13"
+usd_vnd: 26000                      # [GIẢ ĐỊNH] tỉ giá làm tròn
+
+gpu_usd_per_hour:                   # [NGOÀI] giá thuê theo nhu cầu trên vast.ai, dao động theo chủ máy (gpuperhour.com, computeprices.com, gpu-cost.pages.dev, 10/2026)
+  a100_80gb: {low: 0.73, mid: 1.00, high: 1.29}
+  rtx_4090_24gb: {low: 0.25, mid: 0.40, high: 0.53}
+  l4_24gb: {low: 0.20, mid: 0.33, high: 0.40}
+  kaggle_t4: {low: 0, mid: 0, high: 0}   # 30 giờ GPU / tuần / tài khoản, miễn phí
+
+api_usd_per_mtok:                   # [NGOÀI] USD / 1 triệu token
+  groq_gpt_oss_120b: {in: 0.15, out: 0.60}     # morphllm.com/groq-pricing, 10/2026; Groq chỉ dùng cho tài liệu công khai
+  fpt_gemma_4_31b: {in: 0.15, out: 0.45}       # training/README.md mục 2
+
+laptop: {watts: 28, vnd_per_kwh: 3000}          # [GIẢ ĐỊNH] i7-1355U khi tải; giá điện bậc cao
+
+report:                              # một bộ hồ sơ như HPG BCPTBV 2025 + BCTN 2024
+  rules_seconds: 104                 # [ĐÃ ĐO] measurement_decisions.yaml llm_stages_v1 amendment (laptop)
+  stance_texts: 149                  # [ĐÃ ĐO] số đoạn đọc kép khi đọc mọi tuyên bố có số (amendment s4_scope)
+  stance_texts_queue: 16             # [ĐÃ ĐO] chỉ tuyên bố trong hàng soát
+  explain_items: 8                   # [ĐÃ ĐO] tuyên bố trong hàng soát HPG
+  tokens_stance: {in: 900, out: 60}  # [GIẢ ĐỊNH] prompt stance-v3 + một đoạn
+  tokens_explain: {in: 1300, out: 180}
+
+seconds_per_text:                    # thời gian đọc một đoạn / viết một lời giải thích
+  laptop_ollama_4b_stance: 33.7      # [ĐÃ ĐO] LLM_STAGES_2026-11.md, Qwen3-4B Q4 trên laptop
+  laptop_ollama_4b_explain: 81       # [ĐÃ ĐO] như trên
+  laptop_cpu_mdeberta_stance: 0.633  # [ĐÃ ĐO] train_stance_enc.py trên CPU Kaggle 4 luồng, L ≤ 384 (mô hình này chưa qua cổng)
+  kaggle_t4_vllm: 1.7                # [ĐÃ ĐO] amendment s4_projection (T4, vLLM)
+  a100_vllm_gptoss: 0.4              # [GIẢ ĐỊNH] A100 80 GB, gpt-oss-120b, có gộp lô; đo lại bằng tools/selfhost_check.py
+  rtx4090_vllm_14b: 0.6              # [GIẢ ĐỊNH] Qwen3-14B-AWQ
+  groq_api: 1.5                      # [ĐÃ ĐO] amendment: Groq ~1-2 s/lời gọi
+
+usage:                               # [GIẢ ĐỊNH] một đơn vị kiểm toán vừa
+  reports_per_month: 200
+  server_hours_per_day: 8            # máy thuê bật trong giờ làm việc
+  work_days_per_month: 22
+  spinup_minutes: 12                 # bật máy + nạp mô hình khi thuê theo lượt
+
+training_gpu_hours:                  # giờ GPU để huấn luyện toàn bộ (offline_training_v1)
+  kaggle_t4: 6.0                     # [GIẢ ĐỊNH] cập nhật theo docs/RUNS.md khi các lượt xong
+  a100: 3.5                          # [GIẢ ĐỊNH] 10_train.sh + 20_eval.sh

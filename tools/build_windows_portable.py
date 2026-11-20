@@ -38,6 +38,21 @@ DEFAULT_PYTHON = "3.14.10"
 GIT_PATHS = ["src/quantum_gw", "configs", "data", "deploy/seed", ".env.example", "LICENSE"]
 SKIP_PREFIXES = ("data/crawl/",)  # kho crawl cho huấn luyện, không dùng khi chạy
 
+# GreenScan.bat gọi tệp này trước khi mở ứng dụng. Explorer giải nén vài nghìn tệp mất vài phút;
+# nhấp đúp khi chưa giải nén xong thì Python báo lỗi khó hiểu (ModuleNotFoundError). Tệp này đối
+# chiếu với danh sách tệp của gói (python/MANIFEST.txt) và báo bằng lời thường.
+CHECK = '''"""Kiem goi da giai nen du tep chua. GreenScan.bat goi truoc khi mo ung dung."""
+import sys
+from pathlib import Path
+
+root = Path(__file__).resolve().parents[1]
+names = [n for n in (root / "python" / "MANIFEST.txt").read_text(encoding="utf-8").splitlines() if n]
+missing = [n for n in names if not (root / n).is_file()]
+if missing:
+    print(f"Thieu {len(missing)}/{len(names)} tep, vi du: {missing[0]}")
+    sys.exit(1)
+'''
+
 LAUNCHER = r"""@echo off
 rem GreenScan - ban chay ngay cho Windows. Nhap dup de mo; dong cua so nay de tat.
 rem Khong can cai Python hay Node.js. Trinh duyet tu mo http://localhost:8000
@@ -46,6 +61,9 @@ set PYTHONUTF8=1
 set PYTHONIOENCODING=utf-8
 cd /d "%~dp0"
 if not exist "python\python.exe" goto broken
+if not exist "python\kiem_tra_goi.py" goto broken
+"python\python.exe" "python\kiem_tra_goi.py"
+if errorlevel 1 goto broken
 if not exist ".env" if exist ".env.example" copy ".env.example" ".env" >nul
 echo Dang khoi dong GreenScan tai http://localhost:8000 ...
 echo Lan dau mo mat khoang 1 phut, nhung lan sau khoang 30 giay.
@@ -58,7 +76,10 @@ if errorlevel 1 (
 )
 goto end
 :broken
-echo Thieu thu muc python\ - hay giai nen TOAN BO tep .zip roi nhap dup lai GreenScan.bat.
+echo.
+echo Goi GreenScan chua giai nen du tep.
+echo - Neu cua so giai nen van dang chay: doi no dong han roi nhap dup lai GreenScan.bat.
+echo - Neu khong: xoa thu muc GreenScan nay, giai nen lai TOAN BO tep .zip va doi den khi xong.
 pause
 :end
 endlocal
@@ -68,7 +89,8 @@ README = """GREENSCAN - BẢN CHẠY NGAY CHO WINDOWS
 =====================================
 
 1. Giải nén toàn bộ tệp .zip vào một thư mục bạn có quyền ghi, ví dụ Documents hoặc Desktop
-   (không giải nén vào C:\\Program Files).
+   (không giải nén vào C:\\Program Files). Đợi đến khi cửa sổ giải nén đóng hẳn (có thể mất
+   vài phút) rồi mới làm bước 2.
 2. Mở thư mục GreenScan, nhấp đúp GreenScan.bat.
    Nếu Windows hiện "Windows protected your PC" (Windows đã bảo vệ máy tính của bạn):
    bấm "More info" (Thông tin thêm) rồi "Run anyway" (Vẫn chạy).
@@ -154,6 +176,12 @@ def main() -> None:
     subprocess.run([sys.executable, "-m", "pip", "install", "--disable-pip-version-check", "--no-compile",
                     "--target", str(site), *deps], check=True)
     shutil.rmtree(site / "bin", ignore_errors=True)  # lệnh chạy trỏ về Python của máy đóng gói
+    # Thư mục tests của scipy, sklearn, numpy... chỉ dùng khi kiểm chính thư viện: bỏ đi để gói
+    # bớt khoảng 1.700 tệp, giải nén nhanh hơn.
+    tests = [d for d in site.rglob("tests") if d.is_dir()]
+    for d in tests:
+        shutil.rmtree(d, ignore_errors=True)
+    log(f"bỏ {len(tests)} thư mục tests của thư viện")
 
     # 3. Mã nguồn, cấu hình, dữ liệu, phiên mẫu (tệp git theo dõi), giao diện đã dựng
     build_ui()
@@ -168,6 +196,7 @@ def main() -> None:
     shutil.copytree(ROOT / "frontend/dist", stage / "frontend/dist")
     (stage / "GreenScan.bat").write_text(LAUNCHER.replace("\n", "\r\n"), encoding="ascii")
     (stage / "HUONG_DAN.txt").write_text(README.replace("\n", "\r\n"), encoding="utf-8-sig")
+    (pydir / "kiem_tra_goi.py").write_text(CHECK, encoding="utf-8")
 
     # 4. Kiểm nhanh: Python nhúng nạp được ứng dụng
     check = subprocess.run([str(pydir / "python.exe"), "-c",
@@ -181,7 +210,13 @@ def main() -> None:
     archive = out / f"{args.name}.zip"
     if archive.exists():
         archive.unlink()
-    files = [p for p in stage.rglob("*") if p.is_file()]
+    # Danh sách tệp cho kiem_tra_goi.py (bỏ __pycache__: thiếu thì Python tự tạo lại).
+    launcher = stage / "GreenScan.bat"
+    listed = [p.relative_to(stage).as_posix() for p in stage.rglob("*")
+              if p.is_file() and "__pycache__" not in p.parts]
+    (pydir / "MANIFEST.txt").write_text("\n".join(listed) + "\n", encoding="utf-8")
+    # GreenScan.bat nằm cuối tệp ZIP: giải nén lần lượt thì nó hiện ra sau cùng.
+    files = sorted((p for p in stage.rglob("*") if p.is_file()), key=lambda p: p == launcher)
     log(f"nén {len(files)} tệp")
     with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED, compresslevel=6) as z:
         for p in files:

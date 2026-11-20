@@ -1,0 +1,21 @@
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+[mut:v2] 907 cases to run, 0 cached
+[mut:v2] 50/907
+[mut:v2] 100/907
+[mut:v2] 150/907
+[mut:v2] 200/907
+[mut:v2] 250/907
+[mut:v2] 300/907
+[mut:v2] 350/907
+[mut:v2] 400/907
+[mut:v2] 450/907
+[mut:v2] 500/907
+[mut:v2] 550/907
+[mut:v2] 600/907
+[mut:v2] 650/907
+[mut:v2] 700/907
+[mut:v2] 750/907
+[mut:v2] 800/907
+[mut:v2] 850/907
+[mut:v2] 900/907
+[mut:v2] done

@@ -1,0 +1,125 @@
+{
+  "schema": "stance-registry-v1",
+  "models": [
+    {
+      "model_id": "hl-thuyet-minh",
+      "path": "models/stance/hl-thuyet-minh",
+      "kind": "hashed-linear-v1",
+      "registered_at": "2026-11-14T09:43:53.835186+00:00",
+      "trained_by": "An (kỹ sư dữ liệu)",
+      "data": {
+        "pairs": 824,
+        "sha256": "f46e96e52ad4c095190b37bcf3accf22d5f13f13ea5b0c13c9ed7282bd1dded7",
+        "by_provenance": {
+          "human_pointer": 3,
+          "claude": 821
+        },
+        "by_relation": {
+          "CONTRADICTS": 3,
+          "CONTEXT": 633,
+          "PARTIAL": 125,
+          "SUPPORTS": 63
+        },
+        "by_split": {
+          "holdout": 133,
+          "train": 691
+        },
+        "groups": 12
+      },
+      "weights_sha256": "63df9ed29a7c91e32a3a5374092052c834a032e1018e254b2187d01d7e15d78b",
+      "champion": {
+        "pairs": 133,
+        "answered": 133,
+        "abstained": 0,
+        "accuracy": 0.2707,
+        "macro_f1": 0.3451,
+        "false_contradicts": 0,
+        "false_supports": 6,
+        "overclaimed_support": 7,
+        "per_relation": {
+          "CONTEXT": {
+            "precision": 0.8462,
+            "recall": 0.1429,
+            "f1": 0.2444,
+            "gold": 77,
+            "predicted": 13
+          },
+          "CONTRADICTS": {
+            "precision": 1.0,
+            "recall": 0.6667,
+            "f1": 0.8,
+            "gold": 3,
+            "predicted": 2
+          },
+          "PARTIAL": {
+            "precision": 0.219,
+            "recall": 0.7188,
+            "f1": 0.3358,
+            "gold": 32,
+            "predicted": 105
+          },
+          "SUPPORTS": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold": 21,
+            "predicted": 13
+          }
+        }
+      },
+      "challenger": {
+        "pairs": 133,
+        "answered": 133,
+        "abstained": 0,
+        "accuracy": 0.5789,
+        "macro_f1": 0.1833,
+        "false_contradicts": 0,
+        "false_supports": 0,
+        "overclaimed_support": 0,
+        "per_relation": {
+          "CONTEXT": {
+            "precision": 0.5789,
+            "recall": 1.0,
+            "f1": 0.7333,
+            "gold": 77,
+            "predicted": 133
+          },
+          "CONTRADICTS": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold": 3,
+            "predicted": 0
+          },
+          "PARTIAL": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold": 32,
+            "predicted": 0
+          },
+          "SUPPORTS": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "gold": 21,
+            "predicted": 0
+          }
+        }
+      },
+      "gate": {
+        "passed": false,
+        "reasons": [
+          "đạt: 133 cặp giữ lại được chấm (cần ≥ 30)",
+          "KHÔNG đạt: macro-F1 0.183 so với nhà vô địch 0.345",
+          "đạt: CONTRADICTS sai 0 so với 0",
+          "đạt: SUPPORTS sai 0 so với 6"
+        ]
+      },
+      "status": "candidate",
+      "approved_by": "",
+      "approved_at": "",
+      "note": ""
+    }
+  ]
+}

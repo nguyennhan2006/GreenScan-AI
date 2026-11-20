@@ -1,0 +1,99 @@
+[{"stream_name":"stderr","time":5.889502655,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":5.889552288,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":6.710106112,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.710134253,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.710139881,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.710143766,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.280876959,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.280903217,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.280908058,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.2809118680000005,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":8.348463489,"data":"[boot] nb_stance_nli | python 3.13.16 | start 2026-11-13 03:54:25\n"}
+,{"stream_name":"stdout","time":8.349397827,"data":"[cell] setup\n"}
+,{"stream_name":"stdout","time":8.382486808,"data":"name, memory.total [MiB], driver_version\n"}
+,{"stream_name":"stdout","time":8.382891764,"data":"Tesla T4, 15360 MiB, 580.178.04\n"}
+,{"stream_name":"stdout","time":8.384175409000001,"data":"Tesla T4, 15360 MiB, 580.178.04\n"}
+,{"stream_name":"stdout","time":13.912158402,"data":"torch 2.11.0+cu130 cuda True 2\n"}
+,{"stream_name":"stdout","time":16.151010104,"data":"openpyxl                              3.1.5\n"}
+,{"stream_name":"stdout","time":16.15208773,"data":"pandas                                2.3.3\n"}
+,{"stream_name":"stdout","time":16.153017048,"data":"torch                                 2.11.0+cu130\n"}
+,{"stream_name":"stdout","time":16.153746419,"data":"transformers                          5.20.2\n"}
+,{"stream_name":"stdout","time":16.171057233,"data":"[cell] write code files\n"}
+,{"stream_name":"stdout","time":16.172004529,"data":"wrote common.py 4961\n"}
+,{"stream_name":"stdout","time":16.172767219,"data":"wrote train_stance_enc.py 11065\n"}
+,{"stream_name":"stdout","time":16.184007534,"data":"[cell] run 1: python -u train_stance_enc.py --nli-head --max-len 256 --nam\n"}
+,{"stream_name":"stdout","time":17.760956282,"data":"[cell] stance data\n"}
+,{"stream_name":"stdout","time":18.087480787,"data":"[stance] 815 labelled pairs · {'neutral': 628, 'entailment': 187} · companies 11\n"}
+,{"stream_name":"stdout","time":18.088529902,"data":"[cell] stance cv\n"}
+,{"stream_name":"stdout","time":38.019485152,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":51.810294753,"data":"\n"}
+,{"stream_name":"stdout","time":51.88214759,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":51.883025513,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2674.27it/s]\n"}
+,{"stream_name":"stdout","time":54.101291099,"data":"/kaggle/working/train_stance_enc.py:75: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate\n"}
+,{"stream_name":"stdout","time":54.105392889,"data":"  sch.step()\n"}
+,{"stream_name":"stdout","time":71.261888851,"data":"[stance] fold0 epoch 1 loss 0.7987\n"}
+,{"stream_name":"stdout","time":88.791945262,"data":"[stance] fold0 epoch 2 loss 0.4273\n"}
+,{"stream_name":"stdout","time":106.503997484,"data":"[stance] fold0 epoch 3 loss 0.2440\n"}
+,{"stream_name":"stdout","time":124.465441347,"data":"[stance] fold0 epoch 4 loss 0.1403\n"}
+,{"stream_name":"stdout","time":131.072724099,"data":"\n"}
+,{"stream_name":"stdout","time":131.156822614,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":131.158322324,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2392.72it/s]\n"}
+,{"stream_name":"stdout","time":150.858074954,"data":"[stance] fold1 epoch 1 loss 0.8329\n"}
+,{"stream_name":"stdout","time":169.797273046,"data":"[stance] fold1 epoch 2 loss 0.4330\n"}
+,{"stream_name":"stdout","time":188.674052181,"data":"[stance] fold1 epoch 3 loss 0.2349\n"}
+,{"stream_name":"stdout","time":207.551681273,"data":"[stance] fold1 epoch 4 loss 0.1371\n"}
+,{"stream_name":"stdout","time":212.917813082,"data":"\n"}
+,{"stream_name":"stdout","time":212.993899634,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":212.994885401,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2630.96it/s]\n"}
+,{"stream_name":"stdout","time":232.831973674,"data":"[stance] fold2 epoch 1 loss 0.8216\n"}
+,{"stream_name":"stdout","time":252.133348598,"data":"[stance] fold2 epoch 2 loss 0.4414\n"}
+,{"stream_name":"stdout","time":271.378498458,"data":"[stance] fold2 epoch 3 loss 0.2608\n"}
+,{"stream_name":"stdout","time":290.559453474,"data":"[stance] fold2 epoch 4 loss 0.1524\n"}
+,{"stream_name":"stdout","time":295.824745687,"data":"\n"}
+,{"stream_name":"stdout","time":295.899411877,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":295.900491616,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2683.39it/s]\n"}
+,{"stream_name":"stdout","time":313.86381777,"data":"[stance] fold3 epoch 1 loss 0.8111\n"}
+,{"stream_name":"stdout","time":331.424222578,"data":"[stance] fold3 epoch 2 loss 0.4505\n"}
+,{"stream_name":"stdout","time":348.918985994,"data":"[stance] fold3 epoch 3 loss 0.2694\n"}
+,{"stream_name":"stdout","time":366.378783087,"data":"[stance] fold3 epoch 4 loss 0.1335\n"}
+,{"stream_name":"stdout","time":372.800792821,"data":"\n"}
+,{"stream_name":"stdout","time":372.874999248,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":372.875788716,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2701.60it/s]\n"}
+,{"stream_name":"stdout","time":392.349470203,"data":"[stance] fold4 epoch 1 loss 0.7965\n"}
+,{"stream_name":"stdout","time":411.421281594,"data":"[stance] fold4 epoch 2 loss 0.4640\n"}
+,{"stream_name":"stdout","time":430.440114377,"data":"[stance] fold4 epoch 3 loss 0.2481\n"}
+,{"stream_name":"stdout","time":449.446127965,"data":"[stance] fold4 epoch 4 loss 0.1262\n"}
+,{"stream_name":"stdout","time":453.671686212,"data":"[stance] CV macro-F1 0.5234 (T=3.0) · baselines {'rules': 0.4088, 'nli-mdeberta': 0.5874}\n"}
+,{"stream_name":"stdout","time":453.672903302,"data":"[cell] stance final + S5\n"}
+,{"stream_name":"stdout","time":455.616348842,"data":"\n"}
+,{"stream_name":"stdout","time":455.694683707,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":455.695648003,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2594.62it/s]\n"}
+,{"stream_name":"stdout","time":479.226461686,"data":"[stance] final epoch 1 loss 0.7668\n"}
+,{"stream_name":"stdout","time":502.413936991,"data":"[stance] final epoch 2 loss 0.4620\n"}
+,{"stream_name":"stdout","time":525.508085236,"data":"[stance] final epoch 3 loss 0.2493\n"}
+,{"stream_name":"stdout","time":548.549580536,"data":"[stance] final epoch 4 loss 0.1306\n"}
+,{"stream_name":"stdout","time":548.736217184,"data":"\n"}
+,{"stream_name":"stdout","time":549.859861596,"data":"Writing model shards:   0%|          | 0/1 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":549.860967356,"data":"Writing model shards: 100%|██████████| 1/1 [00:01\u003c00:00,  1.12s/it]\n"}
+,{"stream_name":"stdout","time":549.862086623,"data":"Writing model shards: 100%|██████████| 1/1 [00:01\u003c00:00,  1.12s/it]\n"}
+,{"stream_name":"stdout","time":558.547837132,"data":"[stance] S5 model 0.5796 [0.5026, 0.6188] false C 0 · rules 0.5578 false C 0\n"}
+,{"stream_name":"stdout","time":558.549308645,"data":"[cell] stance cpu latency\n"}
+,{"stream_name":"stdout","time":582.336053929,"data":"/kaggle/working/train_stance_enc.py:215: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10. \n"}
+,{"stream_name":"stdout","time":582.340862111,"data":"For migrations of users: \n"}
+,{"stream_name":"stdout","time":582.342348249,"data":"1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead \n"}
+,{"stream_name":"stdout","time":582.346744176,"data":"2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e) \n"}
+,{"stream_name":"stdout","time":582.348058042,"data":"3. pt2e quantization has been migrated to torchao (https://github.com/pytorch/ao/tree/main/torchao/quantization/pt2e) \n"}
+,{"stream_name":"stdout","time":582.35246563,"data":"see https://github.com/pytorch/ao/issues/2259 for more details\n"}
+,{"stream_name":"stdout","time":582.353877863,"data":"  q = torch.quantization.quantize_dynamic(cpu, {torch.nn.Linear}, dtype=torch.qint8)\n"}
+,{"stream_name":"stdout","time":626.674893641,"data":"[stance] cpu 461.4 ms/pair · DONE\n"}
+,{"stream_name":"stdout","time":629.899753216,"data":"[cell] done\n"}
+,{"stream_name":"stdout","time":629.900538446,"data":"ALL CELLS OK\n"}
+,{"stream_name":"stderr","time":632.651302053,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":632.651332441,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":632.795820886,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":632.795847692,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":633.50268553,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":633.583193207,"data":"[NbConvertApp] Writing 28307 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":635.97307092,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":636.437086789,"data":"[NbConvertApp] Writing 323275 bytes to __results__.html\n"}
+]

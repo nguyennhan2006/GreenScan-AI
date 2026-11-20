@@ -1,0 +1,388 @@
+{
+ "n_verifications": 1766,
+ "n_runs": 147,
+ "stored_vs_pre": 15,
+ "configs": {
+  "pre": {
+   "verdicts": {
+    "PARTIALLY_SUPPORTED": 1573,
+    "INSUFFICIENT_EVIDENCE": 146,
+    "SUPPORTED": 21,
+    "CONTRADICTED": 26
+   },
+   "flags": {},
+   "hpg_seed": {
+    "verdicts": {
+     "PARTIALLY_SUPPORTED": 155,
+     "INSUFFICIENT_EVIDENCE": 1
+    },
+    "flags": {}
+   },
+   "changed_vs_pre": 0,
+   "changes": [],
+   "gs_eval_v2_explain": {
+    "n_system_decisive": 4,
+    "precision_vs_reference": 0.75,
+    "false_supported": 0,
+    "false_supported_ref_breakdown": {},
+    "verdicts": {
+     "INSUFFICIENT_EVIDENCE": 48,
+     "PARTIALLY_SUPPORTED": 94,
+     "CONTRADICTED": 4
+    },
+    "n_rows": 146,
+    "false_contradicted": 1
+   }
+  },
+  "base": {
+   "verdicts": {
+    "PARTIALLY_SUPPORTED": 1574,
+    "INSUFFICIENT_EVIDENCE": 146,
+    "SUPPORTED": 18,
+    "CONTRADICTED": 28
+   },
+   "flags": {},
+   "hpg_seed": {
+    "verdicts": {
+     "PARTIALLY_SUPPORTED": 155,
+     "INSUFFICIENT_EVIDENCE": 1
+    },
+    "flags": {}
+   },
+   "changed_vs_pre": 3,
+   "changes": [
+    {
+     "run": "578ceb398bd841b3",
+     "from": "SUPPORTED",
+     "to": "PARTIALLY_SUPPORTED",
+     "flags": [],
+     "text": "Chương trình Tết trồng cây đặt mục tiêu trồng 100.000 cây xanh đạt 70.000 cây xanh vào năm 2026.",
+     "reason": "Bằng chứng liên quan nhưng chưa đủ để xác minh. Tuyên bố thiếu: chỉ số cụ thể, năm gốc để so sánh, phạm vi / ranh giới."
+    },
+    {
+     "run": "3790bcfb284d4bb4",
+     "from": "SUPPORTED",
+     "to": "CONTRADICTED",
+     "flags": [],
+     "text": "Năm 2023, cường độ phát thải khí nhà kính trên mỗi clinker của Công ty Cổ phần Xi măng Đồng Lâm giảm 5,5% so với năm gốc 2020, qua đó cắt giảm tổng lượng phát thải của Xi măng Đồng Lâm (Báo cáo phát t",
+     "reason": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu khớp (5,5 ≈ 6) nhưng ngược hướng: tuyên bố nói “giảm”, tài liệu nói “tăng”."
+    },
+    {
+     "run": "93e2013dfcc44fa1",
+     "from": "SUPPORTED",
+     "to": "CONTRADICTED",
+     "flags": [],
+     "text": "Năm 2023, cường độ phát thải khí nhà kính trên mỗi clinker của Công ty Cổ phần Xi măng Đồng Lâm giảm 5,5% so với năm gốc 2020 (Báo cáo phát triển bền vững, trang 31).",
+     "reason": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu khớp (5,5 ≈ 6) nhưng ngược hướng: tuyên bố nói “giảm”, tài liệu nói “tăng”."
+    }
+   ],
+   "gs_eval_v2_explain": {
+    "n_system_decisive": 4,
+    "precision_vs_reference": 0.75,
+    "false_supported": 0,
+    "false_supported_ref_breakdown": {},
+    "verdicts": {
+     "INSUFFICIENT_EVIDENCE": 48,
+     "PARTIALLY_SUPPORTED": 94,
+     "CONTRADICTED": 4
+    },
+    "n_rows": 146,
+    "false_contradicted": 1
+   }
+  },
+  "share": {
+   "verdicts": {
+    "PARTIALLY_SUPPORTED": 1573,
+    "INSUFFICIENT_EVIDENCE": 146,
+    "SUPPORTED": 18,
+    "CONTRADICTED": 29
+   },
+   "flags": {
+    "absolute_claim_conflict": 1
+   },
+   "hpg_seed": {
+    "verdicts": {
+     "PARTIALLY_SUPPORTED": 155,
+     "INSUFFICIENT_EVIDENCE": 1
+    },
+    "flags": {}
+   },
+   "changed_vs_pre": 4,
+   "changes": [
+    {
+     "run": "578ceb398bd841b3",
+     "from": "SUPPORTED",
+     "to": "PARTIALLY_SUPPORTED",
+     "flags": [],
+     "text": "Chương trình Tết trồng cây đặt mục tiêu trồng 100.000 cây xanh đạt 70.000 cây xanh vào năm 2026.",
+     "reason": "Bằng chứng liên quan nhưng chưa đủ để xác minh. Tuyên bố thiếu: chỉ số cụ thể, năm gốc để so sánh, phạm vi / ranh giới."
+    },
+    {
+     "run": "592cf71152634707",
+     "from": "PARTIALLY_SUPPORTED",
+     "to": "CONTRADICTED",
+     "flags": [
+      "absolute_claim_conflict"
+     ],
+     "text": "Nguồn vốn từ trái phiếu xanh được sử dụng hoàn toàn cho các dự án đủ điều kiện xanh.",
+     "reason": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Tuyên bố “hoàn toàn” nghĩa là 100% vốn trái phiếu xanh; tính từ đoạn này: 320 tỷ đồng đã sử dụng / 500 tỷ đồng = 64%, thấp hơn 100% là 36 điểm phần trăm."
+    },
+    {
+     "run": "3790bcfb284d4bb4",
+     "from": "SUPPORTED",
+     "to": "CONTRADICTED",
+     "flags": [],
+     "text": "Năm 2023, cường độ phát thải khí nhà kính trên mỗi clinker của Công ty Cổ phần Xi măng Đồng Lâm giảm 5,5% so với năm gốc 2020, qua đó cắt giảm tổng lượng phát thải của Xi măng Đồng Lâm (Báo cáo phát t",
+     "reason": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu khớp (5,5 ≈ 6) nhưng ngược hướng: tuyên bố nói “giảm”, tài liệu nói “tăng”."
+    },
+    {
+     "run": "93e2013dfcc44fa1",
+     "from": "SUPPORTED",
+     "to": "CONTRADICTED",
+     "flags": [],
+     "text": "Năm 2023, cường độ phát thải khí nhà kính trên mỗi clinker của Công ty Cổ phần Xi măng Đồng Lâm giảm 5,5% so với năm gốc 2020 (Báo cáo phát triển bền vững, trang 31).",
+     "reason": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu khớp (5,5 ≈ 6) nhưng ngược hướng: tuyên bố nói “giảm”, tài liệu nói “tăng”."
+    }
+   ],
+   "gs_eval_v2_explain": {
+    "n_system_decisive": 4,
+    "precision_vs_reference": 0.75,
+    "false_supported": 0,
+    "false_supported_ref_breakdown": {},
+    "verdicts": {
+     "INSUFFICIENT_EVIDENCE": 48,
+     "PARTIALLY_SUPPORTED": 94,
+     "CONTRADICTED": 4
+    },
+    "n_rows": 146,
+    "false_contradicted": 1
+   }
+  },
+  "conflict": {
+   "verdicts": {
+    "PARTIALLY_SUPPORTED": 1573,
+    "INSUFFICIENT_EVIDENCE": 146,
+    "SUPPORTED": 18,
+    "CONTRADICTED": 29
+   },
+   "flags": {
+    "absolute_claim_conflict": 1
+   },
+   "hpg_seed": {
+    "verdicts": {
+     "PARTIALLY_SUPPORTED": 155,
+     "INSUFFICIENT_EVIDENCE": 1
+    },
+    "flags": {}
+   },
+   "changed_vs_pre": 4,
+   "changes": [
+    {
+     "run": "578ceb398bd841b3",
+     "from": "SUPPORTED",
+     "to": "PARTIALLY_SUPPORTED",
+     "flags": [],
+     "text": "Chương trình Tết trồng cây đặt mục tiêu trồng 100.000 cây xanh đạt 70.000 cây xanh vào năm 2026.",
+     "reason": "Bằng chứng liên quan nhưng chưa đủ để xác minh. Tuyên bố thiếu: chỉ số cụ thể, năm gốc để so sánh, phạm vi / ranh giới."
+    },
+    {
+     "run": "592cf71152634707",
+     "from": "PARTIALLY_SUPPORTED",
+     "to": "CONTRADICTED",
+     "flags": [
+      "absolute_claim_conflict"
+     ],
+     "text": "Nguồn vốn từ trái phiếu xanh được sử dụng hoàn toàn cho các dự án đủ điều kiện xanh.",
+     "reason": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Tuyên bố “hoàn toàn” nghĩa là 100% vốn trái phiếu xanh; tính từ đoạn này: 320 tỷ đồng đã sử dụng / 500 tỷ đồng = 64%, thấp hơn 100% là 36 điểm phần trăm."
+    },
+    {
+     "run": "3790bcfb284d4bb4",
+     "from": "SUPPORTED",
+     "to": "CONTRADICTED",
+     "flags": [],
+     "text": "Năm 2023, cường độ phát thải khí nhà kính trên mỗi clinker của Công ty Cổ phần Xi măng Đồng Lâm giảm 5,5% so với năm gốc 2020, qua đó cắt giảm tổng lượng phát thải của Xi măng Đồng Lâm (Báo cáo phát t",
+     "reason": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu khớp (5,5 ≈ 6) nhưng ngược hướng: tuyên bố nói “giảm”, tài liệu nói “tăng”."
+    },
+    {
+     "run": "93e2013dfcc44fa1",
+     "from": "SUPPORTED",
+     "to": "CONTRADICTED",
+     "flags": [],
+     "text": "Năm 2023, cường độ phát thải khí nhà kính trên mỗi clinker của Công ty Cổ phần Xi măng Đồng Lâm giảm 5,5% so với năm gốc 2020 (Báo cáo phát triển bền vững, trang 31).",
+     "reason": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu khớp (5,5 ≈ 6) nhưng ngược hướng: tuyên bố nói “giảm”, tài liệu nói “tăng”."
+    }
+   ],
+   "gs_eval_v2_explain": {
+    "n_system_decisive": 4,
+    "precision_vs_reference": 0.75,
+    "false_supported": 0,
+    "false_supported_ref_breakdown": {},
+    "verdicts": {
+     "INSUFFICIENT_EVIDENCE": 48,
+     "PARTIALLY_SUPPORTED": 94,
+     "CONTRADICTED": 4
+    },
+    "n_rows": 146,
+    "false_contradicted": 1
+   }
+  },
+  "internal": {
+   "verdicts": {
+    "PARTIALLY_SUPPORTED": 1573,
+    "INSUFFICIENT_EVIDENCE": 146,
+    "SUPPORTED": 18,
+    "CONTRADICTED": 29
+   },
+   "flags": {
+    "absolute_claim_conflict": 1,
+    "internal_inconsistency": 1
+   },
+   "hpg_seed": {
+    "verdicts": {
+     "PARTIALLY_SUPPORTED": 155,
+     "INSUFFICIENT_EVIDENCE": 1
+    },
+    "flags": {}
+   },
+   "changed_vs_pre": 5,
+   "changes": [
+    {
+     "run": "578ceb398bd841b3",
+     "from": "SUPPORTED",
+     "to": "PARTIALLY_SUPPORTED",
+     "flags": [],
+     "text": "Chương trình Tết trồng cây đặt mục tiêu trồng 100.000 cây xanh đạt 70.000 cây xanh vào năm 2026.",
+     "reason": "Bằng chứng liên quan nhưng chưa đủ để xác minh. Tuyên bố thiếu: chỉ số cụ thể, năm gốc để so sánh, phạm vi / ranh giới."
+    },
+    {
+     "run": "592cf71152634707",
+     "from": "PARTIALLY_SUPPORTED",
+     "to": "CONTRADICTED",
+     "flags": [
+      "absolute_claim_conflict"
+     ],
+     "text": "Nguồn vốn từ trái phiếu xanh được sử dụng hoàn toàn cho các dự án đủ điều kiện xanh.",
+     "reason": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Tuyên bố “hoàn toàn” nghĩa là 100% vốn trái phiếu xanh; tính từ đoạn này: 320 tỷ đồng đã sử dụng / 500 tỷ đồng = 64%, thấp hơn 100% là 36 điểm phần trăm."
+    },
+    {
+     "run": "3790bcfb284d4bb4",
+     "from": "SUPPORTED",
+     "to": "CONTRADICTED",
+     "flags": [],
+     "text": "Năm 2023, cường độ phát thải khí nhà kính trên mỗi clinker của Công ty Cổ phần Xi măng Đồng Lâm giảm 5,5% so với năm gốc 2020, qua đó cắt giảm tổng lượng phát thải của Xi măng Đồng Lâm (Báo cáo phát t",
+     "reason": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu khớp (5,5 ≈ 6) nhưng ngược hướng: tuyên bố nói “giảm”, tài liệu nói “tăng”."
+    },
+    {
+     "run": "93e2013dfcc44fa1",
+     "from": "SUPPORTED",
+     "to": "CONTRADICTED",
+     "flags": [],
+     "text": "Năm 2023, cường độ phát thải khí nhà kính trên mỗi clinker của Công ty Cổ phần Xi măng Đồng Lâm giảm 5,5% so với năm gốc 2020 (Báo cáo phát triển bền vững, trang 31).",
+     "reason": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu khớp (5,5 ≈ 6) nhưng ngược hướng: tuyên bố nói “giảm”, tài liệu nói “tăng”."
+    },
+    {
+     "run": "ad49987c07d74214",
+     "from": "PARTIALLY_SUPPORTED",
+     "to": "PARTIALLY_SUPPORTED",
+     "flags": [
+      "internal_inconsistency"
+     ],
+     "text": "(Compared to 2023) Contributing to the UN SDGs: 1 Malt + Barley 3.26% At SABECO, customer health and safety are our top priorities.",
+     "reason": "Không nhất quán nội bộ: Số liệu lệch: tuyên bố 3,26, tài liệu 9 (cùng mức thay đổi); lời văn và bảng số liệu trong cùng tài liệu không khớp, cần người soát đặt hai dòng cạnh nhau. (5baad98cb3adb5dc958152ae258a42fc365ca0959a8d09199152148e36113b5f.pdf (page 26, block 2))"
+    }
+   ],
+   "gs_eval_v2_explain": {
+    "n_system_decisive": 4,
+    "precision_vs_reference": 0.75,
+    "false_supported": 0,
+    "false_supported_ref_breakdown": {},
+    "verdicts": {
+     "INSUFFICIENT_EVIDENCE": 48,
+     "PARTIALLY_SUPPORTED": 94,
+     "CONTRADICTED": 4
+    },
+    "n_rows": 146,
+    "false_contradicted": 1
+   }
+  },
+  "contradict": {
+   "verdicts": {
+    "PARTIALLY_SUPPORTED": 1572,
+    "INSUFFICIENT_EVIDENCE": 146,
+    "SUPPORTED": 18,
+    "CONTRADICTED": 30
+   },
+   "flags": {
+    "absolute_claim_conflict": 1,
+    "internal_inconsistency": 1
+   },
+   "hpg_seed": {
+    "verdicts": {
+     "PARTIALLY_SUPPORTED": 155,
+     "INSUFFICIENT_EVIDENCE": 1
+    },
+    "flags": {}
+   },
+   "changed_vs_pre": 5,
+   "changes": [
+    {
+     "run": "578ceb398bd841b3",
+     "from": "SUPPORTED",
+     "to": "PARTIALLY_SUPPORTED",
+     "flags": [],
+     "text": "Chương trình Tết trồng cây đặt mục tiêu trồng 100.000 cây xanh đạt 70.000 cây xanh vào năm 2026.",
+     "reason": "Bằng chứng liên quan nhưng chưa đủ để xác minh. Tuyên bố thiếu: chỉ số cụ thể, năm gốc để so sánh, phạm vi / ranh giới."
+    },
+    {
+     "run": "592cf71152634707",
+     "from": "PARTIALLY_SUPPORTED",
+     "to": "CONTRADICTED",
+     "flags": [
+      "absolute_claim_conflict"
+     ],
+     "text": "Nguồn vốn từ trái phiếu xanh được sử dụng hoàn toàn cho các dự án đủ điều kiện xanh.",
+     "reason": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Tuyên bố “hoàn toàn” nghĩa là 100% vốn trái phiếu xanh; tính từ đoạn này: 320 tỷ đồng đã sử dụng / 500 tỷ đồng = 64%, thấp hơn 100% là 36 điểm phần trăm."
+    },
+    {
+     "run": "3790bcfb284d4bb4",
+     "from": "SUPPORTED",
+     "to": "CONTRADICTED",
+     "flags": [],
+     "text": "Năm 2023, cường độ phát thải khí nhà kính trên mỗi clinker của Công ty Cổ phần Xi măng Đồng Lâm giảm 5,5% so với năm gốc 2020, qua đó cắt giảm tổng lượng phát thải của Xi măng Đồng Lâm (Báo cáo phát t",
+     "reason": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu khớp (5,5 ≈ 6) nhưng ngược hướng: tuyên bố nói “giảm”, tài liệu nói “tăng”."
+    },
+    {
+     "run": "93e2013dfcc44fa1",
+     "from": "SUPPORTED",
+     "to": "CONTRADICTED",
+     "flags": [],
+     "text": "Năm 2023, cường độ phát thải khí nhà kính trên mỗi clinker của Công ty Cổ phần Xi măng Đồng Lâm giảm 5,5% so với năm gốc 2020 (Báo cáo phát triển bền vững, trang 31).",
+     "reason": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Số liệu khớp (5,5 ≈ 6) nhưng ngược hướng: tuyên bố nói “giảm”, tài liệu nói “tăng”."
+    },
+    {
+     "run": "ad49987c07d74214",
+     "from": "PARTIALLY_SUPPORTED",
+     "to": "CONTRADICTED",
+     "flags": [
+      "internal_inconsistency"
+     ],
+     "text": "(Compared to 2023) Contributing to the UN SDGs: 1 Malt + Barley 3.26% At SABECO, customer health and safety are our top priorities.",
+     "reason": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Không nhất quán nội bộ: Số liệu lệch: tuyên bố 3,26, tài liệu 9 (cùng mức thay đổi); lời văn và bảng số liệu trong cùng tài liệu không khớp, cần người soát đặt hai dòng cạnh nhau."
+    }
+   ],
+   "gs_eval_v2_explain": {
+    "n_system_decisive": 5,
+    "precision_vs_reference": 0.6,
+    "false_supported": 0,
+    "false_supported_ref_breakdown": {},
+    "verdicts": {
+     "INSUFFICIENT_EVIDENCE": 48,
+     "PARTIALLY_SUPPORTED": 93,
+     "CONTRADICTED": 5
+    },
+    "n_rows": 146,
+    "false_contradicted": 2
+   }
+  }
+ }
+}

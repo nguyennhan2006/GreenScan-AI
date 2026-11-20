@@ -1,6 +1,8 @@
 # Trạng thái chuẩn bị Chung kết (cập nhật 05/11/2026)
 
 > **09/11/2026:** theo thông báo nộp sản phẩm Vòng 2 của BTC, hạn nộp là 20/11/2026 và Vòng 2 (Bán kết) diễn ra 28–29/11/2026. Ngày “10/11” trong thư mục này là lịch cũ. Trạng thái nộp bài: [../11-vong-2-nop-bai/TRANG_THAI_NOP_BAI.md](../11-vong-2-nop-bai/TRANG_THAI_NOP_BAI.md).
+>
+> **11/11/2026:** định hướng "cẩn trọng nhưng hữu ích", gồm hai điều phải chứng minh và cách đo mức bỏ sót của hàng đợi (chờ duyệt): [../00-project/DINH_HUONG_CAN_TRONG_VA_HUU_ICH_2026-11-11.md](../00-project/DINH_HUONG_CAN_TRONG_VA_HUU_ICH_2026-11-11.md).
 
 Yêu cầu của Nhân (04/11):
 - đọc tài liệu và paper để lường trước câu hỏi;

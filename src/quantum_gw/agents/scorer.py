@@ -1,5 +1,4 @@
 from __future__ import annotations
-from ..labels_vi import SCOPE, VERDICT, vi
 
 from pathlib import Path
 
@@ -10,6 +9,8 @@ from quantum_gw.domain.enums import Severity, VerificationStatus
 from quantum_gw.domain.models import RiskAssessment, RiskComponent, VerificationResult
 from quantum_gw.settings import ReviewSettings
 from quantum_gw.storage.audit import AuditLogger
+
+from ..labels_vi import SCOPE, VERDICT, vi
 
 
 class RiskScoringAgent:
@@ -113,7 +114,7 @@ class RiskScoringAgent:
         # score 47 and sit in MEDIUM; it must still be looked at.
         requires_review = severity in {Severity.HIGH, Severity.CRITICAL} or (
             legal_conflict and self.review.require_human_for_legal_conflict
-        ) or verification.requires_llm_review or contradiction_strength != "none"
+        ) or verification.requires_llm_review or verification.suspected_injection or verification.doubtful_reading or contradiction_strength != "none"
         assessment = RiskAssessment(
             claim_id=claim.claim_id,
             risk_score=risk_score,
@@ -147,7 +148,8 @@ class RiskScoringAgent:
             contradiction_strength=contradiction_strength,
             materiality="unknown",
             severity_cap_reason=reason,
-            requires_human_review=verification.requires_llm_review or contradiction_strength != "none",
+            requires_human_review=verification.requires_llm_review or verification.suspected_injection or verification.doubtful_reading
+            or contradiction_strength != "none",
             rubric_version=self.version,
         )
         self.audit.write("risk_scored", assessment.model_dump(mode="json"))

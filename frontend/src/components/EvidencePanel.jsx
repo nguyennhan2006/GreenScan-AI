@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { labelOf } from '../lib/labels.js'
 import { RELATIONS, locationOf } from '../lib/claims.js'
 
 /** Contradictions first — they change the conclusion, so they must not be scrolled to. */
@@ -28,16 +30,21 @@ function AbstainNotice() {
   )
 }
 
-export default function EvidencePanel({ evidence, onJumpToSource }) {
+export default function EvidencePanel({ evidence, onJumpToSource, compact = false }) {
+  const [showAll, setShowAll] = useState(false)
   if (!evidence.length) return <AbstainNotice />
 
   const sorted = [...evidence].sort(
     (a, b) => (ORDER[a.relation] ?? 9) - (ORDER[b.relation] ?? 9),
   )
+  // Compact view: the passages that carry a reading; when none does, the two closest ones.
+  const deciding = sorted.filter((e) => e.relation && e.relation !== 'CONTEXT')
+  const shown = !compact || showAll ? sorted : (deciding.length ? deciding : sorted.slice(0, 2))
+  const folded = sorted.length - shown.length
 
   return (
     <div className="space-y-2.5">
-      {sorted.map((e, i) => (
+      {shown.map((e, i) => (
         <article
           key={e.chunk_id || i}
           className={`rounded-lg border bg-white p-3 ${
@@ -78,12 +85,17 @@ export default function EvidencePanel({ evidence, onJumpToSource }) {
           </p>
 
           {/* Retrieval scores explain ordering, not truth — smallest type on the card. */}
-          <p className="mt-1.5 text-[11px] text-slate-400">
-            nguồn {e.source_type} · khớp từ khóa {Math.round((e.lexical_score || 0) * 100)}% ·
-            ngữ nghĩa {Math.round((e.semantic_score || 0) * 100)}%
+          <p className="mt-1.5 text-xs text-slate-400">
+            nguồn: {labelOf('source_type', e.source_type)}
+            {!compact && <> · khớp từ khóa {Math.round((e.lexical_score || 0) * 100)}% · ngữ nghĩa {Math.round((e.semantic_score || 0) * 100)}%</>}
           </p>
         </article>
       ))}
+      {compact && folded > 0 && (
+        <button type="button" onClick={() => setShowAll(true)} className="text-xs font-semibold text-emerald-800 hover:underline" data-testid="more-evidence">
+          Xem thêm {folded} đoạn chỉ liên quan
+        </button>
+      )}
     </div>
   )
 }

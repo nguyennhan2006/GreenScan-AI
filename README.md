@@ -14,6 +14,12 @@ Quy trình trên giao diện: **① Tải tài liệu** (báo cáo cần kiểm 
 | `cloud` | thêm khoá FPT AI Marketplace; mô hình chỉ đọc các cặp luật không quyết được | Có — chỉ dùng cho tài liệu công khai |
 | `gpu` | máy chủ có GPU chạy vLLM | Không |
 
+**Bật mô hình ngay trên giao diện** (không cần sửa `.env`): trang *Cài đặt* hoặc *Tải tài liệu* có công tắc ba nấc — chỉ luật · mô hình chạy trên máy này (cần [Ollama](https://ollama.com) và `ollama pull qwen3:4b-instruct-2507-q4_K_M`; tài liệu không rời máy) · mô hình trên đám mây (cần khoá trong `.env`; chỉ dùng cho tài liệu đã công bố). Nút *Thử mô hình* gọi một lượt thật và báo số giây. Mô hình không tự kết luận “ủng hộ” hay “mâu thuẫn”. Chi tiết: [docs/03-architecture/MO_HINH_BAT_TAT_VA_LOC_BANG_2026-11-16.md](docs/03-architecture/MO_HINH_BAT_TAT_VA_LOC_BANG_2026-11-16.md).
+
+**Bản chạy ngay cho Windows** (không cần cài Python hay thư viện): `tools/build_portable.py` dựng một thư mục gồm Python nhúng, thư viện, giao diện đã dựng, bộ đọc ảnh quét, các phiên mẫu và bộ nhớ đệm của mô hình. Người dùng giải nén rồi bấm đúp `CHAY_GREENSCAN.bat`; `CAI_MO_HINH_TREN_MAY.bat` tự cài Ollama và tải mô hình khi cần. Gói không chứa khoá nào.
+
+**Người mới bắt đầu từ đâu:** ở đầu mỗi trang của quy trình có dòng “Việc tiếp theo” kèm một nút. Trang *Tải tài liệu* có hai bộ mẫu: “Công ty Minh Họa” (3 tệp, xong trong vài giây) và “Hòa Phát” (báo cáo thật, khoảng 3 phút). Chi tiết: [docs/03-architecture/GIAO_DIEN_GON_VA_THU_MAY_2026-11-17.md](docs/03-architecture/GIAO_DIEN_GON_VA_THU_MAY_2026-11-17.md).
+
 Chi tiết: [docs/04-data-ai/MODEL_ROUTING_AND_HARDWARE.md](docs/04-data-ai/MODEL_ROUTING_AND_HARDWARE.md) · Kho tri thức: [docs/08-knowledge/](docs/08-knowledge/README.md) · Trạng thái dự án: [docs/00-project/AUDIT_2026-10-06.md](docs/00-project/AUDIT_2026-10-06.md)
 
 ---

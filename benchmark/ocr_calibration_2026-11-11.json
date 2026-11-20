@@ -1,0 +1,643 @@
+{
+ "measured": "2026-11-11",
+ "pages": 60,
+ "files": 52,
+ "seconds": 187,
+ "settings": {
+  "languages": "vie+eng",
+  "dpi": 220,
+  "psm": 6
+ },
+ "word_accuracy_by_confidence": {
+  "0-50": {
+   "correct": 259,
+   "total": 3328,
+   "accuracy": 0.0778
+  },
+  "50-70": {
+   "correct": 240,
+   "total": 1479,
+   "accuracy": 0.1623
+  },
+  "70-80": {
+   "correct": 273,
+   "total": 891,
+   "accuracy": 0.3064
+  },
+  "80-90": {
+   "correct": 813,
+   "total": 1633,
+   "accuracy": 0.4979
+  },
+  "90-95": {
+   "correct": 3669,
+   "total": 4758,
+   "accuracy": 0.7711
+  },
+  "95-100": {
+   "correct": 20462,
+   "total": 22376,
+   "accuracy": 0.9145
+  }
+ },
+ "number_accuracy_by_confidence": {
+  "0-50": {
+   "correct": 60,
+   "total": 514,
+   "accuracy": 0.1167
+  },
+  "50-70": {
+   "correct": 66,
+   "total": 354,
+   "accuracy": 0.1864
+  },
+  "70-80": {
+   "correct": 43,
+   "total": 202,
+   "accuracy": 0.2129
+  },
+  "80-90": {
+   "correct": 159,
+   "total": 332,
+   "accuracy": 0.4789
+  },
+  "90-95": {
+   "correct": 489,
+   "total": 591,
+   "accuracy": 0.8274
+  },
+  "95-100": {
+   "correct": 995,
+   "total": 1092,
+   "accuracy": 0.9112
+  }
+ },
+ "page_accuracy_by_mean_confidence": {
+  "0-50": {
+   "pages": 2,
+   "mean_accuracy": 0.0971
+  },
+  "50-70": {
+   "pages": 2,
+   "mean_accuracy": 0.1348
+  },
+  "70-80": {
+   "pages": 3,
+   "mean_accuracy": 0.5505
+  },
+  "80-90": {
+   "pages": 25,
+   "mean_accuracy": 0.7422
+  },
+  "90-95": {
+   "pages": 25,
+   "mean_accuracy": 0.8366
+  },
+  "95-100": {
+   "pages": 3,
+   "mean_accuracy": 0.9745
+  }
+ },
+ "pages_detail": [
+  {
+   "file": "e3e2845663887021f295095c06a11fc49e73a5cf",
+   "page": 1,
+   "mean_conf": 95.31846748644988,
+   "word_accuracy": 0.9923,
+   "words": 260,
+   "number_recall": 0.8462,
+   "low_conf_share": 0.010948905109489052
+  },
+  {
+   "file": "2035fdc39ce8985122a930228e030b1a3815d24f",
+   "page": 88,
+   "mean_conf": 85.90740307306274,
+   "word_accuracy": 0.7508,
+   "words": 895,
+   "number_recall": 0.6481,
+   "low_conf_share": 0.09904153354632587
+  },
+  {
+   "file": "042659641a9401c27d4fab357fe5d869719a4e49",
+   "page": 3,
+   "mean_conf": 81.14198483268483,
+   "word_accuracy": 0.6996,
+   "words": 283,
+   "number_recall": 0.4535,
+   "low_conf_share": 0.27906976744186046
+  },
+  {
+   "file": "d269012c273ca8de1bec5719cadd53d601daeb2f",
+   "page": 127,
+   "mean_conf": 89.40880261662726,
+   "word_accuracy": 0.8753,
+   "words": 409,
+   "number_recall": 0.7385,
+   "low_conf_share": 0.0891566265060241
+  },
+  {
+   "file": "bb6bbe3f5d96941d64a28735a19d8ce8828a5453",
+   "page": 23,
+   "mean_conf": 93.04542811714572,
+   "word_accuracy": 0.9507,
+   "words": 1015,
+   "number_recall": 0.9091,
+   "low_conf_share": 0.07756232686980609
+  },
+  {
+   "file": "c937487e56ec8bb5d8c3265e591fbd1d32a32443",
+   "page": 46,
+   "mean_conf": 93.0428519655629,
+   "word_accuracy": 0.9135,
+   "words": 393,
+   "number_recall": 0.9032,
+   "low_conf_share": 0.0688836104513064
+  },
+  {
+   "file": "80cec2bb585e4bb9bf125e20553796bb12ff17f1",
+   "page": 99,
+   "mean_conf": 87.4702750876923,
+   "word_accuracy": 0.7907,
+   "words": 535,
+   "number_recall": 0.5119,
+   "low_conf_share": 0.10178571428571428
+  },
+  {
+   "file": "71e5cb5f126e4372929c4532b3b1ca2d6473211a",
+   "page": 34,
+   "mean_conf": 92.31004889726381,
+   "word_accuracy": 0.8943,
+   "words": 681,
+   "number_recall": 1.0,
+   "low_conf_share": 0.12141882673942701
+  },
+  {
+   "file": "d8d93b7fcd00949d54e549cfcb022bc42f31bc3c",
+   "page": 1,
+   "mean_conf": 92.96898871484889,
+   "word_accuracy": 0.8065,
+   "words": 429,
+   "number_recall": 0.9375,
+   "low_conf_share": 0.036281179138321996
+  },
+  {
+   "file": "3bcfe7abbe29c49bc754ff80658db6f24a823799",
+   "page": 27,
+   "mean_conf": 85.75757714995524,
+   "word_accuracy": 0.6551,
+   "words": 606,
+   "number_recall": 0.5,
+   "low_conf_share": 0.14871016691957512
+  },
+  {
+   "file": "9d0b182045ae9b9527b71975f844a971d31798e7",
+   "page": 38,
+   "mean_conf": 92.87873939433811,
+   "word_accuracy": 0.913,
+   "words": 724,
+   "number_recall": 0.6136,
+   "low_conf_share": 0.06711409395973154
+  },
+  {
+   "file": "3a834bf068c3f53e75881bf90a8040540be91db3",
+   "page": 54,
+   "mean_conf": 90.46688154547098,
+   "word_accuracy": 0.7985,
+   "words": 1598,
+   "number_recall": 0.9174,
+   "low_conf_share": 0.1360741169658367
+  },
+  {
+   "file": "f512e030499eed082d13a0638eeb4e5b420bf5c4",
+   "page": 20,
+   "mean_conf": 84.81140290315052,
+   "word_accuracy": 0.4158,
+   "words": 202,
+   "number_recall": 0.1905,
+   "low_conf_share": 0.2191780821917808
+  },
+  {
+   "file": "0ff212c8265ac9cddbbd67de9439011e3340d14e",
+   "page": 20,
+   "mean_conf": 88.57563933784488,
+   "word_accuracy": 0.7868,
+   "words": 530,
+   "number_recall": 0.4074,
+   "low_conf_share": 0.130298273155416
+  },
+  {
+   "file": "bb056e7f91e94296f57422551d33906aad424e70",
+   "page": 14,
+   "mean_conf": 94.37343701796408,
+   "word_accuracy": 0.8756,
+   "words": 225,
+   "number_recall": 0.9231,
+   "low_conf_share": 0.041666666666666664
+  },
+  {
+   "file": "3a834bf068c3f53e75881bf90a8040540be91db3",
+   "page": 18,
+   "mean_conf": 82.42004316545189,
+   "word_accuracy": 0.6938,
+   "words": 356,
+   "number_recall": 0.6842,
+   "low_conf_share": 0.2099737532808399
+  },
+  {
+   "file": "3e5257ef2314c646db1e62b820bddfdf7373ed0f",
+   "page": 18,
+   "mean_conf": 84.96335973519949,
+   "word_accuracy": 0.8172,
+   "words": 558,
+   "number_recall": 0.8644,
+   "low_conf_share": 0.23127035830618892
+  },
+  {
+   "file": "4bb04e4fc30cc5bd2d024da9d35985c6a7e4efe6",
+   "page": 43,
+   "mean_conf": 94.50381688462943,
+   "word_accuracy": 0.9814,
+   "words": 537,
+   "number_recall": 1.0,
+   "low_conf_share": 0.023853211009174313
+  },
+  {
+   "file": "e87e76e96b3010e19cab571f07ab3f55608b83c2",
+   "page": 84,
+   "mean_conf": 91.67301406719893,
+   "word_accuracy": 0.9417,
+   "words": 223,
+   "number_recall": 0.8776,
+   "low_conf_share": 0.07916666666666666
+  },
+  {
+   "file": "9c549f10bc0aa7139efae7b5e91fd25303059ef6",
+   "page": 7,
+   "mean_conf": 95.9233422752,
+   "word_accuracy": 0.9846,
+   "words": 518,
+   "number_recall": 1.0,
+   "low_conf_share": 0.0057251908396946565
+  },
+  {
+   "file": "5a6493f7b7c76f53ac2815b959e5386f07292cb5",
+   "page": 6,
+   "mean_conf": 34.746480125596186,
+   "word_accuracy": 0.1487,
+   "words": 195,
+   "number_recall": 0.0945,
+   "low_conf_share": 0.68
+  },
+  {
+   "file": "155007fda80fbf9fb8f1b5ddf9cf106b724252c2",
+   "page": 30,
+   "mean_conf": 90.5042303485023,
+   "word_accuracy": 0.6293,
+   "words": 499,
+   "number_recall": 0.5385,
+   "low_conf_share": 0.1
+  },
+  {
+   "file": "e816b43c78b8cfd45a5c2172b5a1e12c7e59fb24",
+   "page": 68,
+   "mean_conf": 91.88558308805031,
+   "word_accuracy": 0.8617,
+   "words": 839,
+   "number_recall": 0.8667,
+   "low_conf_share": 0.08400460299194476
+  },
+  {
+   "file": "6edc96201c59658fcf9085efc3e3f189af5b1d90",
+   "page": 4,
+   "mean_conf": 93.51763094388932,
+   "word_accuracy": 0.9882,
+   "words": 255,
+   "number_recall": 1.0,
+   "low_conf_share": 0.010869565217391304
+  },
+  {
+   "file": "de11632af293c8b6029f107ba1a3974e706fc05b",
+   "page": 2,
+   "mean_conf": 78.73259898117648,
+   "word_accuracy": 0.3333,
+   "words": 171,
+   "number_recall": 0.0263,
+   "low_conf_share": 0.19889502762430938
+  },
+  {
+   "file": "06eddf5bafca5792f83502975e471b07813a403d",
+   "page": 17,
+   "mean_conf": 89.03051420351576,
+   "word_accuracy": 0.8287,
+   "words": 1524,
+   "number_recall": 0.8571,
+   "low_conf_share": 0.16522277227722773
+  },
+  {
+   "file": "3e5257ef2314c646db1e62b820bddfdf7373ed0f",
+   "page": 39,
+   "mean_conf": 87.25512094419642,
+   "word_accuracy": 0.7628,
+   "words": 645,
+   "number_recall": 0.9322,
+   "low_conf_share": 0.2550607287449393
+  },
+  {
+   "file": "90da9a635f95b47d72357232f4c1bd0dc2419023",
+   "page": 80,
+   "mean_conf": 94.2730676943177,
+   "word_accuracy": 0.9828,
+   "words": 408,
+   "number_recall": 0.9341,
+   "low_conf_share": 0.026004728132387706
+  },
+  {
+   "file": "a093a66f1c5c63aed0873c39afefa980a2be2310",
+   "page": 23,
+   "mean_conf": 87.37245869753576,
+   "word_accuracy": 0.5438,
+   "words": 548,
+   "number_recall": 1.0,
+   "low_conf_share": 0.24880382775119617
+  },
+  {
+   "file": "992b1ae040341de117036537036524f7c53c073a",
+   "page": 110,
+   "mean_conf": 66.824724524498,
+   "word_accuracy": 0.2211,
+   "words": 692,
+   "number_recall": 0.352,
+   "low_conf_share": 0.5711135611907387
+  },
+  {
+   "file": "701d7c9ddce8991228c01f4befc975d0e8bd31cb",
+   "page": 56,
+   "mean_conf": 90.22107772177667,
+   "word_accuracy": 0.8484,
+   "words": 620,
+   "number_recall": 0.7727,
+   "low_conf_share": 0.20839363241678727
+  },
+  {
+   "file": "63418ef4dd2cd9ff0e4e18764dbe5932604679e8",
+   "page": 2,
+   "mean_conf": 88.64168460108958,
+   "word_accuracy": 0.8387,
+   "words": 372,
+   "number_recall": 0.9683,
+   "low_conf_share": 0.047619047619047616
+  },
+  {
+   "file": "6a7170ffe7de7d941a0a2c40d6489a444cdb54d4",
+   "page": 45,
+   "mean_conf": 90.06240398666326,
+   "word_accuracy": 0.8274,
+   "words": 701,
+   "number_recall": 0.9444,
+   "low_conf_share": 0.2120051085568327
+  },
+  {
+   "file": "3bcfe7abbe29c49bc754ff80658db6f24a823799",
+   "page": 62,
+   "mean_conf": 89.40874848090336,
+   "word_accuracy": 0.8216,
+   "words": 813,
+   "number_recall": 0.9286,
+   "low_conf_share": 0.13837209302325582
+  },
+  {
+   "file": "c36bc23239e1810e6b1346603feb0dc953524fa3",
+   "page": 107,
+   "mean_conf": 93.1400512918455,
+   "word_accuracy": 0.9938,
+   "words": 161,
+   "number_recall": 0.9853,
+   "low_conf_share": 0.0
+  },
+  {
+   "file": "b3944ca84cb6eaf4811a3b9f5c537a7685f85adb",
+   "page": 23,
+   "mean_conf": 86.06505821935056,
+   "word_accuracy": 0.781,
+   "words": 347,
+   "number_recall": 0.6154,
+   "low_conf_share": 0.2534562211981567
+  },
+  {
+   "file": "9d0b182045ae9b9527b71975f844a971d31798e7",
+   "page": 18,
+   "mean_conf": 85.95066678795109,
+   "word_accuracy": 0.7516,
+   "words": 922,
+   "number_recall": 0.8571,
+   "low_conf_share": 0.21734985700667303
+  },
+  {
+   "file": "a1770787e25987bed280903d83f32fd6377f3d2c",
+   "page": 1,
+   "mean_conf": 92.14394226090117,
+   "word_accuracy": 0.4777,
+   "words": 291,
+   "number_recall": 0.1379,
+   "low_conf_share": 0.038338658146964855
+  },
+  {
+   "file": "d269012c273ca8de1bec5719cadd53d601daeb2f",
+   "page": 106,
+   "mean_conf": 94.21905143901638,
+   "word_accuracy": 0.9163,
+   "words": 502,
+   "number_recall": 0.8462,
+   "low_conf_share": 0.036893203883495145
+  },
+  {
+   "file": "a84504ae15ce399a6c8b80969c53d9cc08666b2f",
+   "page": 1,
+   "mean_conf": 92.95620416783973,
+   "word_accuracy": 0.7597,
+   "words": 516,
+   "number_recall": 0.9298,
+   "low_conf_share": 0.06801470588235294
+  },
+  {
+   "file": "a6172fdc55eaf0825b5f6121c13eb8494544d0e3",
+   "page": 75,
+   "mean_conf": 41.47177390697674,
+   "word_accuracy": 0.0455,
+   "words": 44,
+   "number_recall": 0.0,
+   "low_conf_share": 0.7857142857142857
+  },
+  {
+   "file": "33288cc338fb99851edc72334753bff12a547027",
+   "page": 1,
+   "mean_conf": 77.44018054356847,
+   "word_accuracy": 0.8211,
+   "words": 246,
+   "number_recall": 0.1765,
+   "low_conf_share": 0.22813688212927757
+  },
+  {
+   "file": "da72e17d30cb9e4a71abbc430c8ee9194b895931",
+   "page": 28,
+   "mean_conf": 87.6386837519685,
+   "word_accuracy": 0.8405,
+   "words": 746,
+   "number_recall": 0.8,
+   "low_conf_share": 0.199764982373678
+  },
+  {
+   "file": "829bd7cca793353b06eeb9d387024708622043c2",
+   "page": 40,
+   "mean_conf": 84.0749586069869,
+   "word_accuracy": 0.7225,
+   "words": 573,
+   "number_recall": 0.8444,
+   "low_conf_share": 0.3194444444444444
+  },
+  {
+   "file": "0b79c8ada81855026bc2bfb567cbf3c165cae6c4",
+   "page": 16,
+   "mean_conf": 88.98918409714004,
+   "word_accuracy": 0.8667,
+   "words": 405,
+   "number_recall": 0.7647,
+   "low_conf_share": 0.1493212669683258
+  },
+  {
+   "file": "b6ae3ed02a59527a6e21fe9d5a755bf5c48591ab",
+   "page": 233,
+   "mean_conf": 86.20871530517242,
+   "word_accuracy": 0.7771,
+   "words": 332,
+   "number_recall": 0.8171,
+   "low_conf_share": 0.17119565217391305
+  },
+  {
+   "file": "584d28da0cd417d9dc9384597f047c4ac422abd2",
+   "page": 16,
+   "mean_conf": 94.71662251163328,
+   "word_accuracy": 0.9562,
+   "words": 1232,
+   "number_recall": 0.9,
+   "low_conf_share": 0.029552715654952075
+  },
+  {
+   "file": "e816b43c78b8cfd45a5c2172b5a1e12c7e59fb24",
+   "page": 44,
+   "mean_conf": 90.10040169493725,
+   "word_accuracy": 0.8006,
+   "words": 647,
+   "number_recall": 0.6571,
+   "low_conf_share": 0.14326647564469913
+  },
+  {
+   "file": "138e91dfd95a83b0ef776d8f5b498ef589ba0442",
+   "page": 65,
+   "mean_conf": 91.61649983716595,
+   "word_accuracy": 0.8742,
+   "words": 302,
+   "number_recall": 0.8333,
+   "low_conf_share": 0.13312693498452013
+  },
+  {
+   "file": "a0a643c05235cb29f092e7d0fddf21885ab3409c",
+   "page": 14,
+   "mean_conf": 92.44972360683121,
+   "word_accuracy": 0.2966,
+   "words": 1133,
+   "number_recall": 0.6667,
+   "low_conf_share": 0.09367296631059983
+  },
+  {
+   "file": "2035fdc39ce8985122a930228e030b1a3815d24f",
+   "page": 60,
+   "mean_conf": 89.43392175440283,
+   "word_accuracy": 0.818,
+   "words": 857,
+   "number_recall": 0.8,
+   "low_conf_share": 0.1540948275862069
+  },
+  {
+   "file": "8a247ce7aab65f1d41800f91f4803ac34c4f292e",
+   "page": 40,
+   "mean_conf": 95.64828645975379,
+   "word_accuracy": 0.9467,
+   "words": 582,
+   "number_recall": 1.0,
+   "low_conf_share": 0.016891891891891893
+  },
+  {
+   "file": "2bc51ebce9c09f14abfc045bd9d6cc9554c258cd",
+   "page": 51,
+   "mean_conf": 87.15910327749577,
+   "word_accuracy": 0.8889,
+   "words": 396,
+   "number_recall": 0.8596,
+   "low_conf_share": 0.10273972602739725
+  },
+  {
+   "file": "b02b33f67d7a8b53466b4f3bb976ad6a69de0976",
+   "page": 76,
+   "mean_conf": 56.339763744059745,
+   "word_accuracy": 0.0485,
+   "words": 1339,
+   "number_recall": 0.1134,
+   "low_conf_share": 0.6076352067868505
+  },
+  {
+   "file": "2bc51ebce9c09f14abfc045bd9d6cc9554c258cd",
+   "page": 11,
+   "mean_conf": 82.78014533918297,
+   "word_accuracy": 0.6682,
+   "words": 847,
+   "number_recall": 1.0,
+   "low_conf_share": 0.1849894291754757
+  },
+  {
+   "file": "8ed91e0b19b0ec628f77d20befbbca6ef06f620d",
+   "page": 2,
+   "mean_conf": 88.43497673012551,
+   "word_accuracy": 0.5028,
+   "words": 177,
+   "number_recall": 0.1154,
+   "low_conf_share": 0.11290322580645161
+  },
+  {
+   "file": "3ea6cc5eab6e2026e19000952d0398c1953550c8",
+   "page": 8,
+   "mean_conf": 83.36174999879952,
+   "word_accuracy": 0.6578,
+   "words": 225,
+   "number_recall": 0.7398,
+   "low_conf_share": 0.24714828897338403
+  },
+  {
+   "file": "11abcdc4dcbb70b3a609b1517504ea508c9af75a",
+   "page": 56,
+   "mean_conf": 90.34644141824367,
+   "word_accuracy": 0.8252,
+   "words": 1327,
+   "number_recall": 0.75,
+   "low_conf_share": 0.11908177905308465
+  },
+  {
+   "file": "c2eb88a2a7bd71ba5fd5dead16d9e99f53b588b5",
+   "page": 24,
+   "mean_conf": 91.91202148795811,
+   "word_accuracy": 0.8025,
+   "words": 395,
+   "number_recall": 0.8571,
+   "low_conf_share": 0.1159090909090909
+  },
+  {
+   "file": "c96265ecc5cfe3d99a191da9deee5aa4ab3a6cea",
+   "page": 97,
+   "mean_conf": 77.17413161099854,
+   "word_accuracy": 0.497,
+   "words": 662,
+   "number_recall": 0.9579,
+   "low_conf_share": 0.48058252427184467
+  }
+ ]
+}

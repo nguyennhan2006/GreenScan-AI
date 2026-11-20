@@ -1,0 +1,43 @@
+{
+ "sentences": 1011,
+ "figures_read": 203,
+ "figures_kept": 77,
+ "rejected_by_reader_b": {
+  "A không chắc": 103,
+  "thực hiện / mục tiêu không khớp từ báo hiệu": 11,
+  "cường độ không khớp đơn vị có '/'": 9,
+  "bội số không khớp câu": 2,
+  "không đọc được số": 1
+ },
+ "cases_total": 453,
+ "B-a": 51,
+ "B-b": 402,
+ "B-b_by_label": {
+  "S": 95,
+  "C": 123,
+  "N": 184
+ },
+ "B-b_by_family": {
+  "S0 restate": 77,
+  "S1 rounded": 18,
+  "C1 value": 77,
+  "C2 magnitude": 33,
+  "N2 status": 77,
+  "N5 basis": 33,
+  "N6 metric": 42,
+  "C3 direction": 13,
+  "N1 period": 20,
+  "N4 boundary": 10,
+  "N3 scope": 2
+ },
+ "B-b_by_company": {
+  "tra": 57,
+  "pnj": 28,
+  "bvh": 116,
+  "dhg": 88,
+  "vnm": 52,
+  "ctd": 35,
+  "pow": 26
+ },
+ "irlib_vs_family_mismatches": 0
+}

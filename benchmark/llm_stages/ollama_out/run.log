@@ -1,0 +1,20 @@
+[ollama] s6: 40 rows, 0 done, explain-s2@qwen3:4b-instruct-2507-q4_K_M
+[ollama] s6 10/40 82.0 s/row
+[ollama] s6 20/40 81.1 s/row
+[ollama] s6 30/40 82.3 s/row
+[ollama] s6 40/40 81.0 s/row
+[ollama] s6 done 3241 s
+[ollama] s5: 120 rows, 0 done, stance-s1f@qwen3:4b-instruct-2507-q4_K_M
+[ollama] s5 10/120 35.3 s/row
+[ollama] s5 20/120 32.6 s/row
+[ollama] s5 30/120 30.8 s/row
+[ollama] s5 40/120 32.3 s/row
+[ollama] s5 50/120 33.2 s/row
+[ollama] s5 60/120 32.8 s/row
+[ollama] s5 70/120 33.5 s/row
+[ollama] s5 80/120 33.2 s/row
+[ollama] s5 90/120 32.8 s/row
+[ollama] s5 100/120 33.7 s/row
+[ollama] s5 110/120 33.7 s/row
+[ollama] s5 120/120 33.7 s/row
+[ollama] s5 done 4050 s

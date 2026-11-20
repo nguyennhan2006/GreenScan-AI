@@ -1,0 +1,326 @@
+[{"stream_name":"stderr","time":7.417551057,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.417617531,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":8.384808341,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.384840337,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.384845329000001,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.384849017,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.977374162,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.977404495,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.977410114,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.977414361,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":10.133934638,"data":"[boot] nb_t1_v2 | python 3.13.16 | start 2026-11-13 03:49:42\n"}
+,{"stream_name":"stdout","time":10.134759694,"data":"[cell] setup\n"}
+,{"stream_name":"stdout","time":10.166910041,"data":"name, memory.total [MiB], driver_version\n"}
+,{"stream_name":"stdout","time":10.16779095,"data":"Tesla T4, 15360 MiB, 580.178.04\n"}
+,{"stream_name":"stdout","time":10.168578396,"data":"Tesla T4, 15360 MiB, 580.178.04\n"}
+,{"stream_name":"stdout","time":17.509416869,"data":"torch 2.11.0+cu130 cuda True 2\n"}
+,{"stream_name":"stdout","time":20.222604703,"data":"openpyxl                              3.1.5\n"}
+,{"stream_name":"stdout","time":20.223674454,"data":"pandas                                2.3.3\n"}
+,{"stream_name":"stdout","time":20.224489403,"data":"torch                                 2.11.0+cu130\n"}
+,{"stream_name":"stdout","time":20.225420668,"data":"transformers                          5.20.2\n"}
+,{"stream_name":"stdout","time":20.240820814,"data":"[cell] write code files\n"}
+,{"stream_name":"stdout","time":20.24163926,"data":"wrote common.py 4961\n"}
+,{"stream_name":"stdout","time":20.24256087,"data":"wrote train_t1.py 8655\n"}
+,{"stream_name":"stdout","time":20.251920584,"data":"[cell] run 1: python -u train_t1.py --models e5-small,e5-base --losses wce\n"}
+,{"stream_name":"stdout","time":21.875865867999998,"data":"[cell] t1 data\n"}
+,{"stream_name":"stdout","time":22.171258935,"data":"[t1] train 2055 -\u003e 2043 after GS-Eval overlap; labels {'NOT_CLAIM': 1297, 'VAGUE': 154, 'QUALITATIVE_CLAIM': 435, 'QUANTIFIED_CLAIM': 157}; q13 relabelled 164, changed 31\n"}
+,{"stream_name":"stdout","time":22.171955834,"data":"[cell] t1 cv e5-small-wce\n"}
+,{"stream_name":"stdout","time":45.954637167,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":58.40021638,"data":"\n"}
+,{"stream_name":"stdout","time":58.47323316,"data":"Loading weights:   0%|          | 0/199 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":58.474015733,"data":"Loading weights: 100%|██████████| 199/199 [00:00\u003c00:00, 2678.93it/s]\n"}
+,{"stream_name":"stdout","time":58.497404193,"data":"[transformers] \u001b[1mBertForSequenceClassification LOAD REPORT\u001b[0m from: intfloat/multilingual-e5-small\n"}
+,{"stream_name":"stdout","time":58.498414606,"data":"Key               | Status  | \n"}
+,{"stream_name":"stdout","time":58.499335394,"data":"------------------+---------+-\n"}
+,{"stream_name":"stdout","time":58.501174537,"data":"classifier.weight | MISSING | \n"}
+,{"stream_name":"stdout","time":58.501258093,"data":"classifier.bias   | MISSING | \n"}
+,{"stream_name":"stdout","time":58.502198387,"data":"\n"}
+,{"stream_name":"stdout","time":58.502840966,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":58.50368285,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":70.713547937,"data":"[t1] e5-small-wce-fold0 epoch 1 loss 1.3071\n"}
+,{"stream_name":"stdout","time":79.996475297,"data":"[t1] e5-small-wce-fold0 epoch 2 loss 0.9945\n"}
+,{"stream_name":"stdout","time":89.316869966,"data":"[t1] e5-small-wce-fold0 epoch 3 loss 0.7330\n"}
+,{"stream_name":"stdout","time":98.564569949,"data":"[t1] e5-small-wce-fold0 epoch 4 loss 0.5741\n"}
+,{"stream_name":"stdout","time":107.76205995,"data":"[t1] e5-small-wce-fold0 epoch 5 loss 0.4766\n"}
+,{"stream_name":"stdout","time":116.944164487,"data":"[t1] e5-small-wce-fold0 epoch 6 loss 0.4209\n"}
+,{"stream_name":"stdout","time":120.780413543,"data":"\n"}
+,{"stream_name":"stdout","time":120.849452883,"data":"Loading weights:   0%|          | 0/199 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":120.85018632,"data":"Loading weights: 100%|██████████| 199/199 [00:00\u003c00:00, 2712.88it/s]\n"}
+,{"stream_name":"stdout","time":120.854804371,"data":"[transformers] \u001b[1mBertForSequenceClassification LOAD REPORT\u001b[0m from: intfloat/multilingual-e5-small\n"}
+,{"stream_name":"stdout","time":120.856299531,"data":"Key               | Status  | \n"}
+,{"stream_name":"stdout","time":120.856631132,"data":"------------------+---------+-\n"}
+,{"stream_name":"stdout","time":120.857597028,"data":"classifier.weight | MISSING | \n"}
+,{"stream_name":"stdout","time":120.858618701,"data":"classifier.bias   | MISSING | \n"}
+,{"stream_name":"stdout","time":120.85982926,"data":"\n"}
+,{"stream_name":"stdout","time":120.860918033,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":120.862109612,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":130.173558613,"data":"[t1] e5-small-wce-fold1 epoch 1 loss 1.3094\n"}
+,{"stream_name":"stdout","time":139.305143284,"data":"[t1] e5-small-wce-fold1 epoch 2 loss 0.9529\n"}
+,{"stream_name":"stdout","time":148.503815011,"data":"[t1] e5-small-wce-fold1 epoch 3 loss 0.7533\n"}
+,{"stream_name":"stdout","time":157.611395729,"data":"[t1] e5-small-wce-fold1 epoch 4 loss 0.5815\n"}
+,{"stream_name":"stdout","time":166.7384596,"data":"[t1] e5-small-wce-fold1 epoch 5 loss 0.4684\n"}
+,{"stream_name":"stdout","time":175.825888346,"data":"[t1] e5-small-wce-fold1 epoch 6 loss 0.4139\n"}
+,{"stream_name":"stdout","time":179.822406614,"data":"\n"}
+,{"stream_name":"stdout","time":179.894776433,"data":"Loading weights:   0%|          | 0/199 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":179.895625567,"data":"Loading weights: 100%|██████████| 199/199 [00:00\u003c00:00, 2724.46it/s]\n"}
+,{"stream_name":"stdout","time":179.901747275,"data":"[transformers] \u001b[1mBertForSequenceClassification LOAD REPORT\u001b[0m from: intfloat/multilingual-e5-small\n"}
+,{"stream_name":"stdout","time":179.901764988,"data":"Key               | Status  | \n"}
+,{"stream_name":"stdout","time":179.902172248,"data":"------------------+---------+-\n"}
+,{"stream_name":"stdout","time":179.90326915,"data":"classifier.weight | MISSING | \n"}
+,{"stream_name":"stdout","time":179.904441904,"data":"classifier.bias   | MISSING | \n"}
+,{"stream_name":"stdout","time":179.905551273,"data":"\n"}
+,{"stream_name":"stdout","time":179.906629461,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":179.907799759,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":188.931179845,"data":"[t1] e5-small-wce-fold2 epoch 1 loss 1.3074\n"}
+,{"stream_name":"stdout","time":197.764594127,"data":"[t1] e5-small-wce-fold2 epoch 2 loss 0.9503\n"}
+,{"stream_name":"stdout","time":206.605830863,"data":"[t1] e5-small-wce-fold2 epoch 3 loss 0.7135\n"}
+,{"stream_name":"stdout","time":215.486153999,"data":"[t1] e5-small-wce-fold2 epoch 4 loss 0.5658\n"}
+,{"stream_name":"stdout","time":224.386610563,"data":"[t1] e5-small-wce-fold2 epoch 5 loss 0.4595\n"}
+,{"stream_name":"stdout","time":233.277625408,"data":"[t1] e5-small-wce-fold2 epoch 6 loss 0.4119\n"}
+,{"stream_name":"stdout","time":237.384801653,"data":"\n"}
+,{"stream_name":"stdout","time":237.455934351,"data":"Loading weights:   0%|          | 0/199 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":237.456721744,"data":"Loading weights: 100%|██████████| 199/199 [00:00\u003c00:00, 2777.81it/s]\n"}
+,{"stream_name":"stdout","time":237.462159018,"data":"[transformers] \u001b[1mBertForSequenceClassification LOAD REPORT\u001b[0m from: intfloat/multilingual-e5-small\n"}
+,{"stream_name":"stdout","time":237.462723142,"data":"Key               | Status  | \n"}
+,{"stream_name":"stdout","time":237.463625155,"data":"------------------+---------+-\n"}
+,{"stream_name":"stdout","time":237.464685584,"data":"classifier.weight | MISSING | \n"}
+,{"stream_name":"stdout","time":237.465435528,"data":"classifier.bias   | MISSING | \n"}
+,{"stream_name":"stdout","time":237.466165981,"data":"\n"}
+,{"stream_name":"stdout","time":237.466855692,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":237.467635189,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":246.398502878,"data":"[t1] e5-small-wce-fold3 epoch 1 loss 1.3201\n"}
+,{"stream_name":"stdout","time":255.118354564,"data":"[t1] e5-small-wce-fold3 epoch 2 loss 0.9519\n"}
+,{"stream_name":"stdout","time":263.869144018,"data":"[t1] e5-small-wce-fold3 epoch 3 loss 0.6950\n"}
+,{"stream_name":"stdout","time":272.611209237,"data":"[t1] e5-small-wce-fold3 epoch 4 loss 0.5491\n"}
+,{"stream_name":"stdout","time":281.339139747,"data":"[t1] e5-small-wce-fold3 epoch 5 loss 0.4480\n"}
+,{"stream_name":"stdout","time":290.043454545,"data":"[t1] e5-small-wce-fold3 epoch 6 loss 0.4060\n"}
+,{"stream_name":"stdout","time":294.200426821,"data":"\n"}
+,{"stream_name":"stdout","time":294.271803364,"data":"Loading weights:   0%|          | 0/199 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":294.272602422,"data":"Loading weights: 100%|██████████| 199/199 [00:00\u003c00:00, 2763.80it/s]\n"}
+,{"stream_name":"stdout","time":294.277372222,"data":"[transformers] \u001b[1mBertForSequenceClassification LOAD REPORT\u001b[0m from: intfloat/multilingual-e5-small\n"}
+,{"stream_name":"stdout","time":294.27834353,"data":"Key               | Status  | \n"}
+,{"stream_name":"stdout","time":294.279118616,"data":"------------------+---------+-\n"}
+,{"stream_name":"stdout","time":294.280021981,"data":"classifier.weight | MISSING | \n"}
+,{"stream_name":"stdout","time":294.281193943,"data":"classifier.bias   | MISSING | \n"}
+,{"stream_name":"stdout","time":294.282275942,"data":"\n"}
+,{"stream_name":"stdout","time":294.283359012,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":294.284461714,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":303.331773869,"data":"[t1] e5-small-wce-fold4 epoch 1 loss 1.3104\n"}
+,{"stream_name":"stdout","time":312.140870873,"data":"[t1] e5-small-wce-fold4 epoch 2 loss 1.0128\n"}
+,{"stream_name":"stdout","time":320.950606993,"data":"[t1] e5-small-wce-fold4 epoch 3 loss 0.7770\n"}
+,{"stream_name":"stdout","time":329.80045805,"data":"[t1] e5-small-wce-fold4 epoch 4 loss 0.6679\n"}
+,{"stream_name":"stdout","time":338.624244666,"data":"[t1] e5-small-wce-fold4 epoch 5 loss 0.5699\n"}
+,{"stream_name":"stdout","time":347.418900232,"data":"[t1] e5-small-wce-fold4 epoch 6 loss 0.5018\n"}
+,{"stream_name":"stdout","time":348.874059667,"data":"[cell] t1 final e5-small-wce\n"}
+,{"stream_name":"stdout","time":351.607919993,"data":"\n"}
+,{"stream_name":"stdout","time":351.645775768,"data":"Loading weights:   0%|          | 0/199 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":351.647602533,"data":"Loading weights: 100%|██████████| 199/199 [00:00\u003c00:00, 3970.46it/s]\n"}
+,{"stream_name":"stdout","time":351.652824325,"data":"[transformers] \u001b[1mBertForSequenceClassification LOAD REPORT\u001b[0m from: intfloat/multilingual-e5-small\n"}
+,{"stream_name":"stdout","time":351.65417694,"data":"Key               | Status  | \n"}
+,{"stream_name":"stdout","time":351.655311907,"data":"------------------+---------+-\n"}
+,{"stream_name":"stdout","time":351.656496697,"data":"classifier.weight | MISSING | \n"}
+,{"stream_name":"stdout","time":351.657404007,"data":"classifier.bias   | MISSING | \n"}
+,{"stream_name":"stdout","time":351.65848188,"data":"\n"}
+,{"stream_name":"stdout","time":351.659437101,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":351.660433039,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":362.997588551,"data":"[t1] e5-small-wce-final-s13 epoch 1 loss 1.2654\n"}
+,{"stream_name":"stdout","time":374.10750905,"data":"[t1] e5-small-wce-final-s13 epoch 2 loss 0.8739\n"}
+,{"stream_name":"stdout","time":385.283606073,"data":"[t1] e5-small-wce-final-s13 epoch 3 loss 0.6674\n"}
+,{"stream_name":"stdout","time":396.463271487,"data":"[t1] e5-small-wce-final-s13 epoch 4 loss 0.5229\n"}
+,{"stream_name":"stdout","time":407.615409739,"data":"[t1] e5-small-wce-final-s13 epoch 5 loss 0.4229\n"}
+,{"stream_name":"stdout","time":418.700207565,"data":"[t1] e5-small-wce-final-s13 epoch 6 loss 0.3776\n"}
+,{"stream_name":"stdout","time":419.357180438,"data":"\n"}
+,{"stream_name":"stdout","time":419.877553021,"data":"Writing model shards:   0%|          | 0/1 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":419.878451228,"data":"Writing model shards: 100%|██████████| 1/1 [00:00\u003c00:00,  1.92it/s]\n"}
+,{"stream_name":"stdout","time":419.879156389,"data":"Writing model shards: 100%|██████████| 1/1 [00:00\u003c00:00,  1.92it/s]\n"}
+,{"stream_name":"stdout","time":426.12424554,"data":"\n"}
+,{"stream_name":"stdout","time":426.193133555,"data":"Loading weights:   0%|          | 0/199 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":426.193935231,"data":"Loading weights: 100%|██████████| 199/199 [00:00\u003c00:00, 2854.22it/s]\n"}
+,{"stream_name":"stdout","time":426.19891364,"data":"[transformers] \u001b[1mBertForSequenceClassification LOAD REPORT\u001b[0m from: intfloat/multilingual-e5-small\n"}
+,{"stream_name":"stdout","time":426.199824007,"data":"Key               | Status  | \n"}
+,{"stream_name":"stdout","time":426.200912829,"data":"------------------+---------+-\n"}
+,{"stream_name":"stdout","time":426.201846211,"data":"classifier.weight | MISSING | \n"}
+,{"stream_name":"stdout","time":426.202817354,"data":"classifier.bias   | MISSING | \n"}
+,{"stream_name":"stdout","time":426.203609534,"data":"\n"}
+,{"stream_name":"stdout","time":426.204383489,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":426.205169713,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":437.532380553,"data":"[t1] e5-small-wce-final-s29 epoch 1 loss 1.2689\n"}
+,{"stream_name":"stdout","time":448.651522993,"data":"[t1] e5-small-wce-final-s29 epoch 2 loss 0.8865\n"}
+,{"stream_name":"stdout","time":459.892226395,"data":"[t1] e5-small-wce-final-s29 epoch 3 loss 0.6550\n"}
+,{"stream_name":"stdout","time":471.138667047,"data":"[t1] e5-small-wce-final-s29 epoch 4 loss 0.5132\n"}
+,{"stream_name":"stdout","time":482.329108056,"data":"[t1] e5-small-wce-final-s29 epoch 5 loss 0.4218\n"}
+,{"stream_name":"stdout","time":493.444133172,"data":"[t1] e5-small-wce-final-s29 epoch 6 loss 0.3705\n"}
+,{"stream_name":"stdout","time":494.168640777,"data":"[t1] e5-small-wce: CV macro-F1 0.7225 claim recall 0.8727 · gate@0.5 {'not_claim_caught': 25, 'not_claim_total': 44, 'true_claims_flagged': 22, 'true_claims_total': 102} · 472.0 s\n"}
+,{"stream_name":"stdout","time":494.169457089,"data":"[cell] t1 cv e5-base-wce\n"}
+,{"stream_name":"stdout","time":504.783156845,"data":"\n"}
+,{"stream_name":"stdout","time":504.860761072,"data":"Loading weights:   0%|          | 0/197 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":504.861644297,"data":"Loading weights: 100%|██████████| 197/197 [00:00\u003c00:00, 2527.93it/s]\n"}
+,{"stream_name":"stdout","time":504.86987662,"data":"[transformers] \u001b[1mXLMRobertaForSequenceClassification LOAD REPORT\u001b[0m from: intfloat/multilingual-e5-base\n"}
+,{"stream_name":"stdout","time":504.870807077,"data":"Key                        | Status     | \n"}
+,{"stream_name":"stdout","time":504.871833239,"data":"---------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":504.873028193,"data":"pooler.dense.bias          | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":504.87403853,"data":"pooler.dense.weight        | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":504.875020875,"data":"classifier.out_proj.weight | MISSING    | \n"}
+,{"stream_name":"stdout","time":504.8759093,"data":"classifier.out_proj.bias   | MISSING    | \n"}
+,{"stream_name":"stdout","time":504.876739776,"data":"classifier.dense.weight    | MISSING    | \n"}
+,{"stream_name":"stdout","time":504.877544987,"data":"classifier.dense.bias      | MISSING    | \n"}
+,{"stream_name":"stdout","time":504.878401573,"data":"\n"}
+,{"stream_name":"stdout","time":504.879113184,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":504.879868568,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":504.88067274,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":525.551392779,"data":"[t1] e5-base-wce-fold0 epoch 1 loss 1.2042\n"}
+,{"stream_name":"stdout","time":546.48282596,"data":"[t1] e5-base-wce-fold0 epoch 2 loss 0.7333\n"}
+,{"stream_name":"stdout","time":567.215114565,"data":"[t1] e5-base-wce-fold0 epoch 3 loss 0.5218\n"}
+,{"stream_name":"stdout","time":587.549037513,"data":"[t1] e5-base-wce-fold0 epoch 4 loss 0.4015\n"}
+,{"stream_name":"stdout","time":607.8438851,"data":"[t1] e5-base-wce-fold0 epoch 5 loss 0.3488\n"}
+,{"stream_name":"stdout","time":628.324634253,"data":"[t1] e5-base-wce-fold0 epoch 6 loss 0.3240\n"}
+,{"stream_name":"stdout","time":634.118735162,"data":"\n"}
+,{"stream_name":"stdout","time":634.191919481,"data":"Loading weights:   0%|          | 0/197 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":634.192913011,"data":"Loading weights: 100%|██████████| 197/197 [00:00\u003c00:00, 2667.91it/s]\n"}
+,{"stream_name":"stdout","time":634.200991751,"data":"[transformers] \u001b[1mXLMRobertaForSequenceClassification LOAD REPORT\u001b[0m from: intfloat/multilingual-e5-base\n"}
+,{"stream_name":"stdout","time":634.201903495,"data":"Key                        | Status     | \n"}
+,{"stream_name":"stdout","time":634.202820296,"data":"---------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":634.20387465,"data":"pooler.dense.bias          | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":634.204968926,"data":"pooler.dense.weight        | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":634.206216367,"data":"classifier.out_proj.weight | MISSING    | \n"}
+,{"stream_name":"stdout","time":634.207331173,"data":"classifier.out_proj.bias   | MISSING    | \n"}
+,{"stream_name":"stdout","time":634.208475366,"data":"classifier.dense.weight    | MISSING    | \n"}
+,{"stream_name":"stdout","time":634.20958201,"data":"classifier.dense.bias      | MISSING    | \n"}
+,{"stream_name":"stdout","time":634.210730278,"data":"\n"}
+,{"stream_name":"stdout","time":634.211886132,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":634.2130151,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":634.214176765,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":654.632353855,"data":"[t1] e5-base-wce-fold1 epoch 1 loss 1.2326\n"}
+,{"stream_name":"stdout","time":674.90001907,"data":"[t1] e5-base-wce-fold1 epoch 2 loss 0.7619\n"}
+,{"stream_name":"stdout","time":695.094712809,"data":"[t1] e5-base-wce-fold1 epoch 3 loss 0.5266\n"}
+,{"stream_name":"stdout","time":715.089541391,"data":"[t1] e5-base-wce-fold1 epoch 4 loss 0.3810\n"}
+,{"stream_name":"stdout","time":735.23900433,"data":"[t1] e5-base-wce-fold1 epoch 5 loss 0.3202\n"}
+,{"stream_name":"stdout","time":755.453565316,"data":"[t1] e5-base-wce-fold1 epoch 6 loss 0.3061\n"}
+,{"stream_name":"stdout","time":761.514249213,"data":"\n"}
+,{"stream_name":"stdout","time":761.58917101,"data":"Loading weights:   0%|          | 0/197 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":761.591708796,"data":"Loading weights: 100%|██████████| 197/197 [00:00\u003c00:00, 2631.73it/s]\n"}
+,{"stream_name":"stdout","time":761.601841924,"data":"[transformers] \u001b[1mXLMRobertaForSequenceClassification LOAD REPORT\u001b[0m from: intfloat/multilingual-e5-base\n"}
+,{"stream_name":"stdout","time":761.604023143,"data":"Key                        | Status     | \n"}
+,{"stream_name":"stdout","time":761.605058619,"data":"---------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":761.605804234,"data":"pooler.dense.bias          | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":761.606794581,"data":"pooler.dense.weight        | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":761.608034254,"data":"classifier.out_proj.weight | MISSING    | \n"}
+,{"stream_name":"stdout","time":761.609330783,"data":"classifier.out_proj.bias   | MISSING    | \n"}
+,{"stream_name":"stdout","time":761.611464692,"data":"classifier.dense.weight    | MISSING    | \n"}
+,{"stream_name":"stdout","time":761.6124981,"data":"classifier.dense.bias      | MISSING    | \n"}
+,{"stream_name":"stdout","time":761.61343102,"data":"\n"}
+,{"stream_name":"stdout","time":761.615146145,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":761.617353494,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":761.617901587,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":781.520521112,"data":"[t1] e5-base-wce-fold2 epoch 1 loss 1.2123\n"}
+,{"stream_name":"stdout","time":801.294016242,"data":"[t1] e5-base-wce-fold2 epoch 2 loss 0.7512\n"}
+,{"stream_name":"stdout","time":820.991066089,"data":"[t1] e5-base-wce-fold2 epoch 3 loss 0.5246\n"}
+,{"stream_name":"stdout","time":840.736737351,"data":"[t1] e5-base-wce-fold2 epoch 4 loss 0.4081\n"}
+,{"stream_name":"stdout","time":860.460367007,"data":"[t1] e5-base-wce-fold2 epoch 5 loss 0.3359\n"}
+,{"stream_name":"stdout","time":880.073941571,"data":"[t1] e5-base-wce-fold2 epoch 6 loss 0.3177\n"}
+,{"stream_name":"stdout","time":886.233987715,"data":"\n"}
+,{"stream_name":"stdout","time":886.303811809,"data":"Loading weights:   0%|          | 0/197 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":886.304594466,"data":"Loading weights: 100%|██████████| 197/197 [00:00\u003c00:00, 2798.76it/s]\n"}
+,{"stream_name":"stdout","time":886.312612402,"data":"[transformers] \u001b[1mXLMRobertaForSequenceClassification LOAD REPORT\u001b[0m from: intfloat/multilingual-e5-base\n"}
+,{"stream_name":"stdout","time":886.314047152,"data":"Key                        | Status     | \n"}
+,{"stream_name":"stdout","time":886.314633912,"data":"---------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":886.315568658,"data":"pooler.dense.bias          | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":886.316722932,"data":"pooler.dense.weight        | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":886.317693147,"data":"classifier.out_proj.weight | MISSING    | \n"}
+,{"stream_name":"stdout","time":886.318578171,"data":"classifier.out_proj.bias   | MISSING    | \n"}
+,{"stream_name":"stdout","time":886.319722329,"data":"classifier.dense.weight    | MISSING    | \n"}
+,{"stream_name":"stdout","time":886.320836388,"data":"classifier.dense.bias      | MISSING    | \n"}
+,{"stream_name":"stdout","time":886.321979463,"data":"\n"}
+,{"stream_name":"stdout","time":886.323072222,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":886.324215802,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":886.32533422,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":905.925078745,"data":"[t1] e5-base-wce-fold3 epoch 1 loss 1.2357\n"}
+,{"stream_name":"stdout","time":925.047200561,"data":"[t1] e5-base-wce-fold3 epoch 2 loss 0.7496\n"}
+,{"stream_name":"stdout","time":944.253635205,"data":"[t1] e5-base-wce-fold3 epoch 3 loss 0.5159\n"}
+,{"stream_name":"stdout","time":963.328603793,"data":"[t1] e5-base-wce-fold3 epoch 4 loss 0.3830\n"}
+,{"stream_name":"stdout","time":982.64355459,"data":"[t1] e5-base-wce-fold3 epoch 5 loss 0.3328\n"}
+,{"stream_name":"stdout","time":1001.957188692,"data":"[t1] e5-base-wce-fold3 epoch 6 loss 0.3141\n"}
+,{"stream_name":"stdout","time":1008.468114963,"data":"\n"}
+,{"stream_name":"stdout","time":1008.538245089,"data":"Loading weights:   0%|          | 0/197 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":1008.539070056,"data":"Loading weights: 100%|██████████| 197/197 [00:00\u003c00:00, 2792.16it/s]\n"}
+,{"stream_name":"stdout","time":1008.547732693,"data":"[transformers] \u001b[1mXLMRobertaForSequenceClassification LOAD REPORT\u001b[0m from: intfloat/multilingual-e5-base\n"}
+,{"stream_name":"stdout","time":1008.548612735,"data":"Key                        | Status     | \n"}
+,{"stream_name":"stdout","time":1008.549603705,"data":"---------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":1008.550742781,"data":"pooler.dense.bias          | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1008.551683465,"data":"pooler.dense.weight        | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1008.5526441,"data":"classifier.out_proj.weight | MISSING    | \n"}
+,{"stream_name":"stdout","time":1008.553626256,"data":"classifier.out_proj.bias   | MISSING    | \n"}
+,{"stream_name":"stdout","time":1008.554738738,"data":"classifier.dense.weight    | MISSING    | \n"}
+,{"stream_name":"stdout","time":1008.555582879,"data":"classifier.dense.bias      | MISSING    | \n"}
+,{"stream_name":"stdout","time":1008.556385944,"data":"\n"}
+,{"stream_name":"stdout","time":1008.557082617,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":1008.557806231,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":1008.558609204,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":1028.542054499,"data":"[t1] e5-base-wce-fold4 epoch 1 loss 1.2148\n"}
+,{"stream_name":"stdout","time":1048.074259346,"data":"[t1] e5-base-wce-fold4 epoch 2 loss 0.7690\n"}
+,{"stream_name":"stdout","time":1067.818705041,"data":"[t1] e5-base-wce-fold4 epoch 3 loss 0.5470\n"}
+,{"stream_name":"stdout","time":1087.448712305,"data":"[t1] e5-base-wce-fold4 epoch 4 loss 0.4266\n"}
+,{"stream_name":"stdout","time":1107.04197028,"data":"[t1] e5-base-wce-fold4 epoch 5 loss 0.3604\n"}
+,{"stream_name":"stdout","time":1126.625409959,"data":"[t1] e5-base-wce-fold4 epoch 6 loss 0.3392\n"}
+,{"stream_name":"stdout","time":1130.592292218,"data":"[cell] t1 final e5-base-wce\n"}
+,{"stream_name":"stdout","time":1133.333453834,"data":"\n"}
+,{"stream_name":"stdout","time":1133.408502195,"data":"Loading weights:   0%|          | 0/197 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":1133.409377485,"data":"Loading weights: 100%|██████████| 197/197 [00:00\u003c00:00, 2606.79it/s]\n"}
+,{"stream_name":"stdout","time":1133.418319286,"data":"[transformers] \u001b[1mXLMRobertaForSequenceClassification LOAD REPORT\u001b[0m from: intfloat/multilingual-e5-base\n"}
+,{"stream_name":"stdout","time":1133.419131774,"data":"Key                        | Status     | \n"}
+,{"stream_name":"stdout","time":1133.420054388,"data":"---------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":1133.421239396,"data":"pooler.dense.bias          | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1133.422206296,"data":"pooler.dense.weight        | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1133.423458779,"data":"classifier.out_proj.weight | MISSING    | \n"}
+,{"stream_name":"stdout","time":1133.42469803,"data":"classifier.out_proj.bias   | MISSING    | \n"}
+,{"stream_name":"stdout","time":1133.425909449,"data":"classifier.dense.weight    | MISSING    | \n"}
+,{"stream_name":"stdout","time":1133.426998854,"data":"classifier.dense.bias      | MISSING    | \n"}
+,{"stream_name":"stdout","time":1133.428210239,"data":"\n"}
+,{"stream_name":"stdout","time":1133.429364736,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":1133.430579294,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":1133.431795064,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":1158.625208294,"data":"[t1] e5-base-wce-final-s13 epoch 1 loss 1.1595\n"}
+,{"stream_name":"stdout","time":1183.405498179,"data":"[t1] e5-base-wce-final-s13 epoch 2 loss 0.6772\n"}
+,{"stream_name":"stdout","time":1208.24339741,"data":"[t1] e5-base-wce-final-s13 epoch 3 loss 0.4879\n"}
+,{"stream_name":"stdout","time":1233.104461592,"data":"[t1] e5-base-wce-final-s13 epoch 4 loss 0.3786\n"}
+,{"stream_name":"stdout","time":1257.888450529,"data":"[t1] e5-base-wce-final-s13 epoch 5 loss 0.3250\n"}
+,{"stream_name":"stdout","time":1282.609666185,"data":"[t1] e5-base-wce-final-s13 epoch 6 loss 0.3115\n"}
+,{"stream_name":"stdout","time":1284.138849847,"data":"\n"}
+,{"stream_name":"stdout","time":1285.373412663,"data":"Writing model shards:   0%|          | 0/1 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":1285.374467491,"data":"Writing model shards: 100%|██████████| 1/1 [00:01\u003c00:00,  1.23s/it]\n"}
+,{"stream_name":"stdout","time":1285.375217339,"data":"Writing model shards: 100%|██████████| 1/1 [00:01\u003c00:00,  1.23s/it]\n"}
+,{"stream_name":"stdout","time":1297.03395212,"data":"\n"}
+,{"stream_name":"stdout","time":1297.0880075,"data":"Loading weights:   0%|          | 0/197 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":1297.088768212,"data":"Loading weights: 100%|██████████| 197/197 [00:00\u003c00:00, 2738.44it/s]\n"}
+,{"stream_name":"stdout","time":1297.097219174,"data":"[transformers] \u001b[1mXLMRobertaForSequenceClassification LOAD REPORT\u001b[0m from: intfloat/multilingual-e5-base\n"}
+,{"stream_name":"stdout","time":1297.097868479,"data":"Key                        | Status     | \n"}
+,{"stream_name":"stdout","time":1297.098897203,"data":"---------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":1297.100248673,"data":"pooler.dense.bias          | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1297.100817524,"data":"pooler.dense.weight        | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1297.101723133,"data":"classifier.out_proj.weight | MISSING    | \n"}
+,{"stream_name":"stdout","time":1297.102742332,"data":"classifier.out_proj.bias   | MISSING    | \n"}
+,{"stream_name":"stdout","time":1297.103774724,"data":"classifier.dense.weight    | MISSING    | \n"}
+,{"stream_name":"stdout","time":1297.104584186,"data":"classifier.dense.bias      | MISSING    | \n"}
+,{"stream_name":"stdout","time":1297.105403277,"data":"\n"}
+,{"stream_name":"stdout","time":1297.106154273,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":1297.10688044,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":1297.107664902,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":1322.266909622,"data":"[t1] e5-base-wce-final-s29 epoch 1 loss 1.1261\n"}
+,{"stream_name":"stdout","time":1347.432478007,"data":"[t1] e5-base-wce-final-s29 epoch 2 loss 0.6816\n"}
+,{"stream_name":"stdout","time":1372.110929504,"data":"[t1] e5-base-wce-final-s29 epoch 3 loss 0.4753\n"}
+,{"stream_name":"stdout","time":1396.766122781,"data":"[t1] e5-base-wce-final-s29 epoch 4 loss 0.3742\n"}
+,{"stream_name":"stdout","time":1421.635260678,"data":"[t1] e5-base-wce-final-s29 epoch 5 loss 0.3257\n"}
+,{"stream_name":"stdout","time":1446.546671446,"data":"[t1] e5-base-wce-final-s29 epoch 6 loss 0.3124\n"}
+,{"stream_name":"stdout","time":1448.131335985,"data":"[t1] e5-base-wce: CV macro-F1 0.7376 claim recall 0.8968 · gate@0.5 {'not_claim_caught': 27, 'not_claim_total': 44, 'true_claims_flagged': 24, 'true_claims_total': 102} · 954.0 s\n"}
+,{"stream_name":"stdout","time":1448.132131111,"data":"[t1] DONE\n"}
+,{"stream_name":"stdout","time":1452.73382568,"data":"[cell] done\n"}
+,{"stream_name":"stdout","time":1452.734841213,"data":"ALL CELLS OK\n"}
+,{"stream_name":"stderr","time":1455.581322251,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1455.581355186,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1455.752040566,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1455.752065462,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1456.530607585,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1456.634346206,"data":"[NbConvertApp] Writing 38847 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1459.071062493,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1459.573271834,"data":"[NbConvertApp] Writing 330172 bytes to __results__.html\n"}
+]

@@ -1,3 +1,4 @@
+import { ATTRIBUTES } from '../lib/claims.js'
 import { useMemo, useState } from 'react'
 import { Link } from '../lib/router.jsx'
 import { PriorityBadge, STATUS_LABELS, STATUS_ORDER, StatusBadge, WorkflowPill } from '../components/badges.jsx'
@@ -56,16 +57,16 @@ export default function ClaimsPage({ runId, rows, summary, reviewStates = {}, in
             type="button"
             onClick={() => { setFilter(key); setPage(1) }}
             className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
-              filter === key ? 'border-[#0F3D2E] bg-[#0F3D2E] text-white' : 'border-slate-300 bg-white text-slate-700 hover:bg-slate-50'
+              filter === key ? 'border-[#047857] bg-[#047857] text-white' : 'border-slate-300 bg-white text-slate-700 hover:bg-slate-50'
             }`}
           >
             {label} <span className="tabular-nums opacity-70">({count(key)})</span>
           </button>
         ))}
-        {filter === 'attribute' && <span className="self-center text-xs text-slate-500">Thiếu thuộc tính: <b>{arg}</b></span>}
+        {filter === 'attribute' && <span className="self-center text-xs text-slate-500">Thiếu thuộc tính: <b>{ATTRIBUTES.find((a) => a.key === arg)?.label || arg}</b></span>}
       </div>
 
-      <div className="rounded-xl border border-slate-200 bg-white">
+      <div className="rounded-2xl border border-slate-200/70 bg-white shadow-sm">
         <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 p-3">
           <input
             value={q}
@@ -99,7 +100,7 @@ export default function ClaimsPage({ runId, rows, summary, reviewStates = {}, in
                     <Link to={`/runs/${runId}/claims/${r.id}`} className="line-clamp-2 font-medium text-slate-900 hover:text-emerald-800 hover:underline">
                       {r.claim.text}
                     </Link>
-                    <p className="mt-0.5 text-[11px] text-slate-500">
+                    <p className="mt-0.5 text-xs text-slate-500">
                       {r.claim.source_name}{r.claim.source_page ? ` · tr. ${r.claim.source_page}` : ''}
                       {r.contradicting.length > 0 && <span className="ml-2 text-red-700">{r.contradicting.length} đoạn mâu thuẫn</span>}
                       {r.evidence.length === 0 && <span className="ml-2 text-sky-700">chưa có đoạn nào</span>}

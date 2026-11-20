@@ -54,7 +54,7 @@ export default function LegalLibraryPage() {
         <span title={data.registry_file}>· lớp pháp lý: {data.enabled ? 'bật' : 'tắt'} · chế độ {labelOf('check_mode', data.check_mode)}</span>
       </div>
 
-      <div className="rounded-xl border border-slate-200 bg-white">
+      <div className="rounded-2xl border border-slate-200/70 bg-white shadow-sm">
         <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 p-3">
           <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Tìm số hiệu hoặc tên văn bản…" className="min-w-64 flex-1 rounded-lg border border-slate-300 px-3 py-1.5 text-sm" />
           <select value={issue} onChange={(e) => setIssue(e.target.value)} className="rounded-lg border border-slate-300 px-2 py-1.5 text-sm">
@@ -78,7 +78,7 @@ export default function LegalLibraryPage() {
                   {(d.legal_issues || []).map((i) => <Chip key={i}>{labelOf('legal_issue', i)}</Chip>)}
                   {(d.relations?.amends || []).length > 0 && <Chip tone="amber">sửa đổi {d.relations.amends.join(', ')}</Chip>}
                 </p>
-                {!d.usable && d.text_acquisition_note && <p className="mt-1 text-[11px] text-slate-500">{d.text_acquisition_note}</p>}
+                {!d.usable && d.text_acquisition_note && <p className="mt-1 text-xs text-slate-500">{d.text_acquisition_note}</p>}
               </div>
               <div className="text-right text-xs">
                 <p className="text-slate-500">Hiệu lực <span className="font-mono text-slate-800">{formatDate(d.effective_from)}</span>{d.effective_to ? ` → ${formatDate(d.effective_to)}` : ''}</p>
@@ -93,7 +93,7 @@ export default function LegalLibraryPage() {
         </ul>
       </div>
       <OrgPackLibrary />
-      <p className="text-[11px] text-slate-500">Thư viện chỉ liệt kê văn bản và trạng thái trích xuất; việc “văn bản nào áp dụng cho tuyên bố nào” nằm ở panel Bối cảnh pháp lý của từng tuyên bố, chọn theo ngày hiệu lực.</p>
+      <p className="text-xs text-slate-500">Thư viện chỉ liệt kê văn bản và trạng thái trích xuất; việc “văn bản nào áp dụng cho tuyên bố nào” nằm ở panel Bối cảnh pháp lý của từng tuyên bố, chọn theo ngày hiệu lực.</p>
     </div>
   )
 }

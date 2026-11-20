@@ -87,6 +87,7 @@ class HybridRetriever:
                 semantic_score=round(s_score, 6),
                 citation=chunk.citation,
                 suspicious_instruction=contains_prompt_injection(chunk.text),
+                doubtful_numbers=list((chunk.metadata or {}).get("ocr_doubtful_numbers") or []),
                 # Carried through so the evidence card can say "page 45, table"
                 # rather than just "page 45" -- a figure quoted from a table is
                 # stronger evidence than the same figure in prose.

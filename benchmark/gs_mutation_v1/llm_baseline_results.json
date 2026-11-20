@@ -1,0 +1,63 @@
+{
+ "model": "openai/gpt-oss-120b",
+ "date": "2026-11-14",
+ "report": {
+  "M0": {
+   "n": 75,
+   "pass": 74,
+   "ci95": [
+    0.928,
+    0.998
+   ],
+   "same_answer_twice": 70,
+   "answers": {
+    "SUPPORTED": 67,
+    "PARTIALLY_SUPPORTED": 6,
+    "INSUFFICIENT_EVIDENCE": 1,
+    "CONTRADICTED": 1
+   }
+  },
+  "M1": {
+   "n": 72,
+   "pass": 47,
+   "ci95": [
+    0.538,
+    0.752
+   ],
+   "same_answer_twice": 52,
+   "answers": {
+    "CONTRADICTED": 47,
+    "INSUFFICIENT_EVIDENCE": 4,
+    "UNSUPPORTED": 7,
+    "SUPPORTED": 2,
+    "PARTIALLY_SUPPORTED": 12
+   }
+  },
+  "M2": {
+   "n": 16,
+   "pass": 13,
+   "ci95": [
+    0.57,
+    0.934
+   ],
+   "same_answer_twice": 16,
+   "answers": {
+    "CONTRADICTED": 13,
+    "SUPPORTED": 3
+   }
+  },
+  "M5": {
+   "n": 20,
+   "pass": 20,
+   "ci95": [
+    0.839,
+    1.0
+   ],
+   "same_answer_twice": 15,
+   "answers": {
+    "CONTRADICTED": 15,
+    "PARTIALLY_SUPPORTED": 5
+   }
+  }
+ }
+}

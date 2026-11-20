@@ -1,0 +1,27 @@
+{
+  "run_id": "53c8fabb29684ef5",
+  "created_at": "2026-11-11T11:27:25.622475Z",
+  "pipeline_version": "pipeline-v1",
+  "config_hash": "71d82086d67eac3c44edd374fb8975e82cbd40497cf539c876acb186dea3aa7d",
+  "input_hashes": {
+    "0:DWS-CLAIM-001.txt": "4e39d85620a889eeb92ca4b232ea91fbaba7b783044d618d7986e4b7a916028d",
+    "1:DWS-EV-001.txt": "b168b85209f08f78eb2a0f1677c75b5e761616447a6d00223e0a56011101cf36",
+    "2:DWS-EV-002.txt": "4c39938769010e82d9f8042b3c24492d0089a1fe91a8a925455ada4cf870e726"
+  },
+  "deterministic_seed": 0,
+  "corpus_version": "run-inputs",
+  "rule_pack_version": "configs/legal/rule_pack_vn_green_v0.1.yaml",
+  "prompt_version": "stance-s1f@local:qwen3:4b-instruct-2507-q4_K_M",
+  "plan": [
+    "validate_inputs",
+    "parse_and_ocr_documents",
+    "extract_green_claims",
+    "build_hybrid_retrieval_index",
+    "retrieve_evidence_per_claim",
+    "verify_claim_evidence_pairs",
+    "check_applicable_law",
+    "score_greenwashing_risk",
+    "apply_quality_gates",
+    "write_evidence_pack"
+  ]
+}

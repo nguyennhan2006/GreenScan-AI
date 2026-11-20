@@ -1,0 +1,18 @@
+{
+  "trained_at": "2026-11-14T09:43:34.905758+00:00",
+  "train_pairs": 691,
+  "c": 4.0,
+  "train_relations": {
+    "CONTEXT": 556,
+    "SUPPORTS": 42,
+    "PARTIAL": 93
+  },
+  "kind": "hashed-linear-v1",
+  "labels": [
+    "CONTEXT",
+    "PARTIAL",
+    "SUPPORTS"
+  ],
+  "dim": 262144,
+  "weights_sha256": "63df9ed29a7c91e32a3a5374092052c834a032e1018e254b2187d01d7e15d78b"
+}

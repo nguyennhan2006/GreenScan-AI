@@ -1,0 +1,335 @@
+{
+ "sheet": "Trang tính3",
+ "cot_anh": "I",
+ "tieu_de_cot_anh": "Minh chứng (ảnh)",
+ "dong": [
+  {
+   "row": 2,
+   "stt": 1,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Đã làm trong GreenScan: nhận PDF có lớp chữ và PDF quét (OCR Tesseract tiếng Việt + Anh); nhận thêm DOCX, HTML, TXT. Trang dùng phông cũ TCVN3/VNI bị lỗi mã cũng được đọc lại bằng OCR. Từ 11/11, mỗi trang OCR có độ tin cậy (việc 50).",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-01.png\")"
+  },
+  {
+   "row": 4,
+   "stt": 3,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Thảo đã có thành phẩm “GreenScan - Phan Thanh Thảo - Báo cáo đảm bảo độc lập & đối chứng AI” (tệp không nằm trong repo: Thảo bổ sung ảnh minh chứng). Lưu ý: việc 47 (phân loại chuẩn của tờ xác nhận) vẫn chưa làm.",
+   "anh": "Cần Thảo bổ sung ảnh thành phẩm"
+  },
+  {
+   "row": 5,
+   "stt": 4,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong theo bảng. GreenScan cũng ghi mã băm của mọi tệp đầu vào vào bản kê mỗi lượt chạy (cổng G6).",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-04.png\")"
+  },
+  {
+   "row": 6,
+   "stt": 5,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong: bản PDF chính thức (231 trang) tải từ trang xuất bản của iaasb.org, kèm bản Cơ sở kết luận. Mã băm SHA-256 ghi ở data/standards/iaasb/README.md.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-05.png\")"
+  },
+  {
+   "row": 7,
+   "stt": 6,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong: 8 báo cáo A–H (11/2025). A–E không sửa đổi; F ngoại trừ, G từ chối đưa ra kết luận, H trái ngược.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-06.png\")"
+  },
+  {
+   "row": 8,
+   "stt": 7,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong: FAQ về trọng yếu (25/6/2026) và tài liệu “hướng dẫn thực hiện” là ISSA 5000 Implementation Guide của IAASB.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-07.png\")"
+  },
+  {
+   "row": 11,
+   "stt": 48,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong: 4 báo cáo ở Phụ lục 3 nằm trong bản ISSA 5000 đã tải; cùng 8 mẫu 11/2025 là 12 mẫu.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-48.png\")"
+  },
+  {
+   "row": 12,
+   "stt": 64,
+   "trang_thai_cu": "Chưa bắt đầu",
+   "trang_thai": "Chưa bắt đầu",
+   "tien_do": "Chưa làm. Đây là cách duy nhất để tăng kết luận dứt khoát một cách trung thực khi bật việc 54. Nối với việc 47 và 48.",
+   "anh": ""
+  },
+  {
+   "row": 13,
+   "stt": 8,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Đã chốt và đang dùng: PyMuPDF đọc chữ và kiểm chữ ẩn, pdfplumber đọc bảng, Tesseract chỉ chạy cho trang quét hoặc trang lỗi phông.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-08.png\")"
+  },
+  {
+   "row": 14,
+   "stt": 9,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong: mỗi đoạn giữ số trang và thứ tự khối, mỗi tuyên bố giữ trang nguồn, trích dẫn dạng 'tệp (tr. N)'; cổng G1 và G4 kiểm việc này ở mỗi lượt chạy.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-09.png\")"
+  },
+  {
+   "row": 15,
+   "stt": 10,
+   "trang_thai_cu": "Đang thực hiện",
+   "trang_thai": "Đang thực hiện",
+   "tien_do": "Một phần: đã loại chữ ẩn (cổng G8), phát hiện trang lỗi mã do phông cũ, đánh dấu câu bị dính chữ dàn trang (mục lục, tiêu đề bảng) để không vào hàng đợi. Còn: bỏ đầu trang, chân trang và số trang lặp lại trước khi tách đoạn.\n[11/11 chiều] Thêm quy tắc lọc câu dính chữ dàn trang (claim-quality v1.1): câu rác “HÒA PHÁT trò nền tảng…” rời hàng đợi Hòa Phát; đo trên 1.276 câu bắt 3 câu, cả 3 là rác. Header/footer lặp lại vẫn chưa được loại ở bộ đọc.",
+   "anh": ""
+  },
+  {
+   "row": 16,
+   "stt": 11,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong: tách theo đoạn văn; mỗi đoạn phân tích gồm vài câu và không vượt qua chỗ ngắt đoạn. Studio tách đoạn theo cùng cách.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-11.png\")"
+  },
+  {
+   "row": 17,
+   "stt": 12,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong: trích đoạn 190 (a)–(l) và 191 của ISSA 5000 thành 16 yếu tố, mỗi yếu tố có điều khoản, điều kiện áp dụng (luôn, có giới hạn, hợp lý, sửa đổi, niêm yết, nếu áp dụng), tiêu đề tiếng Anh bắt buộc và cách kiểm bằng tiếng Việt. Bài kiểm tests/test_issa5000_patterns.py. Chưa có người soát.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-12.png\")"
+  },
+  {
+   "row": 18,
+   "stt": 13,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong: 6 mẫu câu tiếng Anh (không sửa đổi có giới hạn / hợp lý, ngoại trừ có giới hạn / hợp lý, từ chối, trái ngược) lấy nguyên văn từ 12 báo cáo, chịu được chân trang chen giữa câu khi ngắt trang; 2 mẫu tiếng Việt là bản dịch đề xuất, chưa đối chiếu tờ xác nhận thật (việc 47).",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-13.png\")"
+  },
+  {
+   "row": 19,
+   "stt": 14,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong, lưu dạng YAML có phiên bản thay cho bảng cơ sở dữ liệu: pattern_id, source_id, pattern, pattern_span, language, conclusion_type, assurance_level, status. Bài kiểm: mỗi mẫu khớp câu của chính nó và không khớp câu loại khác.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-14.png\")"
+  },
+  {
+   "row": 20,
+   "stt": 49,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong 11/11: chữ vô hình, chữ cùng màu nền, chữ cỡ dưới 2 pt bị loại trước khi phân tích; câu nhắn tới máy chấm không được đưa cho mô hình ngôn ngữ, lượt chạy chờ người soát (cổng G8).",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-49.png\")"
+  },
+  {
+   "row": 21,
+   "stt": 50,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong 11/11: đo trên 60 trang của 52 tệp VN30, số đọc với độ tin cậy dưới 90 chỉ đúng tối đa 48%. Số như vậy không được chốt 'khớp' hay 'lệch' mà chuyển người soát; cổng G9 báo trang đọc bằng OCR, trang yếu và trang chưa đọc được.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-50.png\")"
+  },
+  {
+   "row": 24,
+   "stt": 56,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong 11/11: quy tắc claim-quality v1.1, đã đăng ký trước. Bắt 3/1.276 câu, cả 3 là rác; không câu nào trong mẫu có nhãn GS-Eval v2 bị ảnh hưởng. Lượt Hòa Phát mới: kết luận giữ 153 / 2 / 1, hàng đợi 8 mục, không còn câu rác.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-56.png\")"
+  },
+  {
+   "row": 28,
+   "stt": 18,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Đã có theo cách khác: bộ đọc số liệu kèm đơn vị (ví dụ %, tấn CO2e, quy về cùng đơn vị) xác định câu có số hay không. Tuyên bố bị đánh dấu mơ hồ khi có từ mơ hồ mà không có số.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-18.png\")"
+  },
+  {
+   "row": 37,
+   "stt": 27,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong: mỗi phát hiện có trang, câu gốc, đoạn bằng chứng kèm trích dẫn và lý do bằng tiếng Việt; hàng đợi ưu tiên sắp theo mức rủi ro.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-27.png\")"
+  },
+  {
+   "row": 38,
+   "stt": 28,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong: 12 báo cáo nằm trong hai tệp PDF ở data/standards/iaasb/ (không phải /data/issa_samples/): 8 trong bộ minh hoạ 11/2025, 4 ở Phụ lục 3 của ISSA 5000.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-28.png\")"
+  },
+  {
+   "row": 39,
+   "stt": 29,
+   "trang_thai_cu": "Đang thực hiện",
+   "trang_thai": "Đang thực hiện",
+   "tien_do": "Chưa làm. Nếu được, hai người gán nhãn độc lập rồi đối chiếu.\n[11/11 tối] Đã lập nhãn conclusion_type, assurance_level, scope_coverage cho 12 mẫu, lấy từ tiêu đề IAASB đặt cho từng báo cáo (không phải xét đoán). Còn: hai người soát độc lập rồi đổi reviewed_by_humans thành true.",
+   "anh": ""
+  },
+  {
+   "row": 40,
+   "stt": 30,
+   "trang_thai_cu": "Đang thực hiện",
+   "trang_thai": "Đang thực hiện",
+   "tien_do": "Chưa làm. 12 mẫu chỉ đủ để chạy thử, chưa đủ để báo độ chính xác (xem việc 53).\n[11/11 tối] Bộ mẫu câu (quy tắc, không dùng AI) nhận đúng loại kết luận và mức đảm bảo của 12/12 báo cáo; E và báo cáo 3 là hợp đồng kết hợp nên ra cả hai mức. Đây là kết quả trên chính các mẫu đã dùng để soạn mẫu câu, chưa phải độ chính xác. Còn: thử mô hình ngôn ngữ trên 12 mẫu.",
+   "anh": ""
+  },
+  {
+   "row": 41,
+   "stt": 54,
+   "trang_thai_cu": "Đang thực hiện",
+   "trang_thai": "Đang thực hiện",
+   "tien_do": "Đã làm sau cờ support_requires_independent_source (mặc định tắt), đã đăng ký trước. Phát lại 1.276/1.276 kết luận đã lưu; GS-Eval v2: “Được ủng hộ” sai 5 → 0, kết luận dứt khoát 9 → 4, độ chính xác 0,333 → 0,75; GS-Bench 453/453 không đổi. Còn: việc 55.",
+   "anh": ""
+  },
+  {
+   "row": 45,
+   "stt": 34,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong: đúng nguyên văn câu lưu ý, một chỗ định nghĩa, ở đầu trang web (mọi màn hình), giấy làm việc, báo cáo chỉnh sửa của Studio (HTML, PDF, DOCX), gói bằng chứng .md và bảng CSV. Bài kiểm buộc giao diện và máy chủ trùng từng chữ.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-34.png\")"
+  },
+  {
+   "row": 46,
+   "stt": 35,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong: bảng hàng đợi xuất CSV (UTF-8 có BOM, mở thẳng bằng Excel), hàng đầu là câu lưu ý; cột: thứ tự, trong hàng đợi, loại mục, câu gốc, tệp, trang, kết luận, điểm ưu tiên, lý do, đánh dấu không phải tuyên bố. Bản HTML là giấy làm việc.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-35.png\")"
+  },
+  {
+   "row": 47,
+   "stt": 36,
+   "trang_thai_cu": "Chưa bắt đầu",
+   "trang_thai": "Chưa bắt đầu",
+   "tien_do": "Chưa làm; cần xong việc 12 trước.\n[11/11 tối] Đã gỡ chặn: việc 12 xong (configs/issa5000_report_elements.yaml). Còn: viết bộ kiểm yếu tố trên tờ xác nhận.",
+   "anh": ""
+  },
+  {
+   "row": 48,
+   "stt": 37,
+   "trang_thai_cu": "Chưa bắt đầu",
+   "trang_thai": "Chưa bắt đầu",
+   "tien_do": "Chưa làm; cần xong việc 13 và 14 trước. Làm được bằng quy tắc cố định: so lời doanh nghiệp (ví dụ 'được xác minh toàn bộ') với mức đảm bảo ghi trong tờ xác nhận.\n[11/11 tối] Đã gỡ chặn: việc 13–14 xong (configs/issa5000_conclusion_patterns.yaml cho mức đảm bảo). Còn: mẫu câu lời doanh nghiệp tự nói “được xác minh”.",
+   "anh": ""
+  },
+  {
+   "row": 50,
+   "stt": 57,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong 11/11: không còn số, giờ, mã kiểu tiếng Anh trong chữ máy viết (lượt Hòa Phát mới); Studio và hàng đợi cùng tên kết luận; năm gốc ghi “Không áp dụng” khi câu không nói tăng, giảm, mục tiêu. Hướng dẫn có khung Máy làm / Bạn làm, câu hỏi hay gặp.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-57.png\")"
+  },
+  {
+   "row": 51,
+   "stt": 39,
+   "trang_thai_cu": "Đang thực hiện",
+   "trang_thai": "Đang thực hiện",
+   "tien_do": "Hạ tầng chạy và bộ đo GS-Eval v2 đã có; đã chạy thử trên báo cáo VN30 (ví dụ HPG). Chưa chạy trên đúng danh sách 5–10 báo cáo của việc 2.\n[12/11] Đã chạy hệ mới nhất có AI trên Hòa Phát (Kaggle T4, Qwen3-4B Q4, cùng tệp mô hình của sản phẩm): 713 cặp luật bỏ ngỏ do mô hình đọc, bộ đọc kép 13 đoạn, 8 lời giải thích cho 8 mục hàng đợi; 0 kết luận “được ủng hộ” hay “mâu thuẫn” mới. Còn: chạy trên các báo cáo mẫu khác.",
+   "anh": ""
+  },
+  {
+   "row": 53,
+   "stt": 41,
+   "trang_thai_cu": "Đang thực hiện",
+   "trang_thai": "Đang thực hiện",
+   "tien_do": "Đã đo cho phép so số: mâu thuẫn giữa hai số trong cùng tài liệu báo sai 19/20 nên đã chặn. Chưa đo cho cờ 1–5 và D6–D8 (việc 53).\n[11/11 chiều] Đo “Được ủng hộ” sai: 5/5 trên GS-Eval v2 đều sai, do tài liệu khác của chính doanh nghiệp nhắc lại câu. Cờ nguồn độc lập (việc 54) đưa về 0; độ chính xác kết luận dứt khoát 0,333 → 0,75 (nhãn bạc).",
+   "anh": ""
+  },
+  {
+   "row": 56,
+   "stt": 55,
+   "trang_thai_cu": "Chưa bắt đầu",
+   "trang_thai": "Chưa bắt đầu",
+   "tien_do": "Chưa làm. Khoảng 40 phút CPU; lệnh trong khối independent_support_v1. Sao lưu inputs/system_outputs_current.jsonl và results/eval_results.json trước (phiên GS-Issue đang đọc).",
+   "anh": ""
+  },
+  {
+   "row": 57,
+   "stt": 58,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong 11/11: chạy được trong vài giây, ghi benchmark/weakness_check_<ngày>.json. Lần chạy 11/11: 7 đạt, 8 chưa đạt, 2 chỉ để biết. Danh sách và người phụ trách: docs/10-chung-ket-2026-11/DIEM_YEU_2026-11-11.md.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-58.png\")"
+  },
+  {
+   "row": 58,
+   "stt": 59,
+   "trang_thai_cu": "Chưa bắt đầu",
+   "trang_thai": "Chưa bắt đầu",
+   "tien_do": "Chưa làm: T1 0/79 cả ba người; cặp 0/88. Cần kappa ≥ 0,70 và ít nhất 60 cặp mới được nói về độ chính xác.",
+   "anh": ""
+  },
+  {
+   "row": 59,
+   "stt": 60,
+   "trang_thai_cu": "Chưa bắt đầu",
+   "trang_thai": "Chưa bắt đầu",
+   "tien_do": "Chưa làm. Bản đăng ký nháp queue_usefulness_v1 và cách lấy mẫu ngoài hàng đợi: DINH_HUONG_CAN_TRONG_VA_HUU_ICH_2026-11-11.md mục 2.2–2.3.",
+   "anh": ""
+  },
+  {
+   "row": 60,
+   "stt": 61,
+   "trang_thai_cu": "Chưa bắt đầu",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "[12/11] Xong: từng tầng AI đo so với luật (khối llm_stages_v1, nhãn Claude): chấm quan hệ (S5) và lời giải thích (S6) qua cổng; thuộc tính (S2) và mô hình lọc câu (S1) không qua nên tắt. Hòa Phát hai nhánh trên cùng máy T4: chỉ luật 159,9 s, có AI 678,4 s (gấp 4,24); 8 tuyên bố mơ hồ hạ về “chưa đủ bằng chứng”; evaluate-real giống nhau 4/4. Cờ AI vẫn mặc định tắt trong sản phẩm.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-61.png\")"
+  },
+  {
+   "row": 61,
+   "stt": 43,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong: một trang gồm đầu vào (vai trò, loại nguồn, định dạng), đầu ra, năm loại kết luận, cổng G8 và G9, giới hạn.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-43.png\")"
+  },
+  {
+   "row": 62,
+   "stt": 44,
+   "trang_thai_cu": "Chưa bắt đầu",
+   "trang_thai": "Chưa bắt đầu",
+   "tien_do": "Chưa làm cho cờ đỏ. Có kịch bản demo vòng bán kết để dựa vào (docs/07-presentation/ban-ket-2026-10-25/03_KICH_BAN_PROTOTYPE_DEMO.md); cần cờ 1–5 trước.\n[11/11 chiều] Kịch bản demo nên mở mục số 1 hàng đợi Hòa Phát (câu “tự chủ điện năng”, trang 7); hàng đợi lượt mới có 8 mục. Video cũ cần quay lại (việc 63).",
+   "anh": ""
+  },
+  {
+   "row": 63,
+   "stt": 45,
+   "trang_thai_cu": "Ðã hoàn thành",
+   "trang_thai": "Ðã hoàn thành",
+   "tien_do": "Xong: ghi ở hướng dẫn 1 trang và trong ứng dụng: chưa đối chiếu hoá đơn, chứng từ; chưa đọc báo cáo kiểm toán tài chính đính kèm; D6–D8 chưa có trong sản phẩm; chưa so dữ liệu ngành; chưa so giữa các năm; chưa xác định nghĩa vụ pháp lý cụ thể; chưa đối chiếu số OCR bằng mô hình thị giác.",
+   "anh": "=IMAGE(\"https://raw.githubusercontent.com/nguyennhan2006/GreenScan-AI/minh-chung/docs/00-project/minh-chung/viec-45.png\")"
+  },
+  {
+   "row": 64,
+   "stt": 62,
+   "trang_thai_cu": "Chưa bắt đầu",
+   "trang_thai": "Chưa bắt đầu",
+   "tien_do": "Chưa làm: công cụ kiểm thấy 13 dòng “9/172” chưa giải thích trong các tệp .md. Lượt 11/11 có hàng đợi 8/172.",
+   "anh": ""
+  },
+  {
+   "row": 65,
+   "stt": 63,
+   "trang_thai_cu": "Chưa bắt đầu",
+   "trang_thai": "Chưa bắt đầu",
+   "tien_do": "Chưa làm.",
+   "anh": ""
+  }
+ ]
+}

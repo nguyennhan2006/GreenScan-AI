@@ -120,14 +120,14 @@ def test_disclosed_figures_are_extracted_from_indicator_rows(settings):
 
 
 def test_cross_foot_reperforms_the_companys_own_addition(settings):
-    """22,540,603 + 933,876 = 23,474,479 against a disclosed 23,474,480."""
+    """22.540.603 + 933.876 = 23.474.479 against a disclosed 23.474.480."""
     result = _table_run(settings)
     checks = [c for c in result.figure_checks if c.kind == "cross_foot"]
     assert checks, "a table with two scope rows and a total must be cross-footed"
     check = checks[0]
     assert check.status == "CONSISTENT"      # one tonne apart: rounding, not an error
     assert check.difference == -1.0
-    assert "23,474,479" in check.calculation
+    assert "23.474.479" in check.calculation  # Vietnamese separators (utils/vn_format.py)
 
 
 def test_a_total_that_does_not_add_up_is_inconsistent(settings):

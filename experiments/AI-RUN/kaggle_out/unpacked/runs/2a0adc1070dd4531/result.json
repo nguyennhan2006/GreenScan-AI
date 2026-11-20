@@ -1,0 +1,427 @@
+{
+  "schema_version": "analysis-result-v2",
+  "run_id": "2a0adc1070dd4531",
+  "manifest": {
+    "run_id": "2a0adc1070dd4531",
+    "created_at": "2026-11-11T11:27:20.802368Z",
+    "pipeline_version": "pipeline-v1",
+    "config_hash": "2e84a0333c7a16f802f946660779714e4a36b1f43ba5f61cdfbb543b20a7eb15",
+    "input_hashes": {
+      "0:DWS-CLAIM-001.txt": "4e39d85620a889eeb92ca4b232ea91fbaba7b783044d618d7986e4b7a916028d",
+      "1:DWS-EV-001.txt": "b168b85209f08f78eb2a0f1677c75b5e761616447a6d00223e0a56011101cf36",
+      "2:DWS-EV-002.txt": "4c39938769010e82d9f8042b3c24492d0089a1fe91a8a925455ada4cf870e726"
+    },
+    "deterministic_seed": 0,
+    "corpus_version": "run-inputs",
+    "rule_pack_version": "configs/legal/rule_pack_vn_green_v0.1.yaml",
+    "prompt_version": "",
+    "plan": [
+      "validate_inputs",
+      "parse_and_ocr_documents",
+      "extract_green_claims",
+      "build_hybrid_retrieval_index",
+      "retrieve_evidence_per_claim",
+      "verify_claim_evidence_pairs",
+      "check_applicable_law",
+      "score_greenwashing_risk",
+      "apply_quality_gates",
+      "write_evidence_pack"
+    ]
+  },
+  "claims": [
+    {
+      "claim_id": "e4473d240f16ca3d",
+      "text": "ESG was integrated across investment teams and the ESG Engine was used to make portfolio decisions.",
+      "claim_type": "esg_process_integration",
+      "source_chunk_id": "89872a5ae65c702e",
+      "source_doc_id": "e0b9f97e48ee5c46",
+      "source_name": "DWS-CLAIM-001.txt",
+      "source_page": null,
+      "metric": null,
+      "direction": null,
+      "values": [],
+      "units": [],
+      "period": null,
+      "baseline": null,
+      "scope": "group_consolidated",
+      "is_future_commitment": true,
+      "is_vague": false,
+      "vague_terms_matched": [],
+      "language": "en",
+      "confidence": 0.6,
+      "quality_flag": null
+    }
+  ],
+  "verifications": [
+    {
+      "claim": {
+        "claim_id": "e4473d240f16ca3d",
+        "text": "ESG was integrated across investment teams and the ESG Engine was used to make portfolio decisions.",
+        "claim_type": "esg_process_integration",
+        "source_chunk_id": "89872a5ae65c702e",
+        "source_doc_id": "e0b9f97e48ee5c46",
+        "source_name": "DWS-CLAIM-001.txt",
+        "source_page": null,
+        "metric": null,
+        "direction": null,
+        "values": [],
+        "units": [],
+        "period": null,
+        "baseline": null,
+        "scope": "group_consolidated",
+        "is_future_commitment": true,
+        "is_vague": false,
+        "vague_terms_matched": [],
+        "language": "en",
+        "confidence": 0.6,
+        "quality_flag": null
+      },
+      "status": "CONTRADICTED",
+      "rationale": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Bằng chứng phủ định tuyên bố (nguồn có thẩm quyền): “lacked”.",
+      "evidence": [
+        {
+          "chunk_id": "161d2c74a2c67619",
+          "doc_id": "cc06b74006a0464f",
+          "source_name": "DWS-EV-002.txt",
+          "source_type": "legal",
+          "text": "The order states DWS lacked formalized controls to verify use of the ESG Engine and documentation of material ESG factors.",
+          "page": null,
+          "score": 0.29858,
+          "lexical_score": 0.311231,
+          "semantic_score": 0.160896,
+          "citation": "DWS-EV-002.txt (block 1)",
+          "suspicious_instruction": false,
+          "is_table": false,
+          "below_threshold": false,
+          "source_qualifiers": [
+            "case_status: SEC_SETTLEMENT_WITHOUT_ADMISSION_OR_DENIAL",
+            "legal_caution: Use the SEC order for the adjudicated claim; treat 2023 report as post-remediation control.",
+            "jurisdiction: US / Germany",
+            "training_eligibility: silver_until_2020_report_archived"
+          ],
+          "relation": "CONTRADICTS",
+          "relation_reason": "Bằng chứng phủ định tuyên bố (nguồn có thẩm quyền): “lacked”.",
+          "relation_method": "qualitative_cue"
+        },
+        {
+          "chunk_id": "76f4a233684b847e",
+          "doc_id": "99b6dc467e449e7a",
+          "source_name": "DWS-EV-001.txt",
+          "source_type": "legal",
+          "text": "The SEC order found inconsistent documented compliance and inadequate implementation of ESG integration policy requirements.",
+          "page": null,
+          "score": 0.189801,
+          "lexical_score": 0.123573,
+          "semantic_score": 0.148524,
+          "citation": "DWS-EV-001.txt (block 1)",
+          "suspicious_instruction": false,
+          "is_table": false,
+          "below_threshold": false,
+          "source_qualifiers": [
+            "case_status: SEC_SETTLEMENT_WITHOUT_ADMISSION_OR_DENIAL",
+            "legal_caution: Use the SEC order for the adjudicated claim; treat 2023 report as post-remediation control.",
+            "jurisdiction: US / Germany",
+            "training_eligibility: silver_until_2020_report_archived"
+          ],
+          "relation": "CONTRADICTS",
+          "relation_reason": "Bằng chứng phủ định tuyên bố (nguồn có thẩm quyền): “inadequate”, “inconsistent”.",
+          "relation_method": "qualitative_cue"
+        }
+      ],
+      "computed_values": {
+        "claim_numbers": [],
+        "claim_facts": [],
+        "claim_scopes": null,
+        "evidence_numbers": [],
+        "pairs_considered": [],
+        "skipped_not_comparable": [],
+        "matched": false,
+        "contradiction": false,
+        "closest_pair": null,
+        "tolerance_used": null,
+        "policy_id": "precision-v1",
+        "eligibility_policy": "comparison-policy-v2",
+        "contradiction_error_threshold": 0.35,
+        "calculation_method": "deterministic-relative-error"
+      },
+      "warnings": [],
+      "requires_llm_review": false,
+      "verification_tool_version": "verifier-v2"
+    }
+  ],
+  "risks": [
+    {
+      "claim_id": "e4473d240f16ca3d",
+      "risk_score": 62.0,
+      "severity": "HIGH",
+      "components": [
+        {
+          "name": "specificity",
+          "score": 6.0,
+          "max_score": 12.0,
+          "reason": "Mức cụ thể của tuyên bố và chỉ số xác định được.",
+          "status": "computed"
+        },
+        {
+          "name": "quantitative_evidence",
+          "score": 12.0,
+          "max_score": 12.0,
+          "reason": "Tuyên bố có giá trị định lượng hay không.",
+          "status": "computed"
+        },
+        {
+          "name": "baseline",
+          "score": 0.0,
+          "max_score": 8.0,
+          "reason": "Không nêu mức thay đổi có số liệu hay mục tiêu tăng/giảm nên không cần năm gốc.",
+          "status": "computed"
+        },
+        {
+          "name": "period",
+          "score": 8.0,
+          "max_score": 8.0,
+          "reason": "Kỳ báo cáo hoặc kỳ mục tiêu của số liệu.",
+          "status": "computed"
+        },
+        {
+          "name": "scope_boundary",
+          "score": 0.0,
+          "max_score": 8.0,
+          "reason": "Phạm vi áp dụng: toàn tập đoàn (hợp nhất).",
+          "status": "computed"
+        },
+        {
+          "name": "evidence_support",
+          "score": 18.0,
+          "max_score": 18.0,
+          "reason": "Kết quả kiểm chứng: Mâu thuẫn với nguồn.",
+          "status": "computed"
+        },
+        {
+          "name": "independent_assurance",
+          "score": 0.0,
+          "max_score": 8.0,
+          "reason": "Có nguồn độc lập, văn bản pháp lý hoặc chuẩn mực hay không.",
+          "status": "computed"
+        },
+        {
+          "name": "contradiction",
+          "score": 18.0,
+          "max_score": 18.0,
+          "reason": "Điểm cộng thêm khi nguồn mâu thuẫn trực tiếp.",
+          "status": "computed"
+        },
+        {
+          "name": "vague_or_exaggerated_language",
+          "score": 0.0,
+          "max_score": 8.0,
+          "reason": "Không thấy ngôn ngữ mơ hồ hoặc quảng bá.",
+          "status": "computed"
+        }
+      ],
+      "evidence_strength": "moderate",
+      "contradiction_strength": "authoritative_cue",
+      "materiality": "unknown",
+      "severity_cap_reason": null,
+      "requires_human_review": true,
+      "rubric_version": "risk-rubric-v3"
+    }
+  ],
+  "priorities": [
+    {
+      "item_type": "claim",
+      "item_id": "e4473d240f16ca3d",
+      "claim_id": "e4473d240f16ca3d",
+      "text": "ESG was integrated across investment teams and the ESG Engine was used to make portfolio decisions.",
+      "priority_score": 48.34,
+      "rank": 1,
+      "in_queue": true,
+      "components": [
+        {
+          "name": "materiality",
+          "score": 5.84,
+          "max_score": 40.0,
+          "reason": "Trọng yếu: nhóm chưa xác định chỉ số (trọng số 0,45); không nêu số liệu; không rõ vị trí trong tài liệu; không nêu chủ thể là doanh nghiệp và không có số liệu (câu giải thích hoặc nối ý câu trước) nên hạ bậc.",
+          "status": "computed"
+        },
+        {
+          "name": "obligation",
+          "score": 17.5,
+          "max_score": 25.0,
+          "reason": "Pháp lý: có văn bản đang hiệu lực cùng chủ đề (96/2020/TT-BTC); chưa có quy tắc xác định nghĩa vụ cụ thể.",
+          "status": "computed"
+        },
+        {
+          "name": "evidence_gap",
+          "score": 25.0,
+          "max_score": 25.0,
+          "reason": "Khoảng trống bằng chứng: kết quả “mâu thuẫn với nguồn”, thiếu 4/5 thuộc tính.",
+          "status": "computed"
+        },
+        {
+          "name": "anomaly",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Bất thường so với kỳ trước: **chưa tính** — thủ tục so sánh chéo kỳ chưa có, đây không phải kết luận 'không có bất thường'.",
+          "status": "not_computed"
+        }
+      ],
+      "max_available": 90.0,
+      "not_computed": [
+        "anomaly"
+      ],
+      "reasons": [
+        "Pháp lý: có văn bản đang hiệu lực cùng chủ đề (96/2020/TT-BTC); chưa có quy tắc xác định nghĩa vụ cụ thể.",
+        "Khoảng trống bằng chứng: kết quả “mâu thuẫn với nguồn”, thiếu 4/5 thuộc tính."
+      ],
+      "policy_version": "priority-v1.1"
+    }
+  ],
+  "disclosed_figures": [],
+  "figure_checks": [],
+  "scope_note": "Toàn bộ 1 mục (tuyên bố và số liệu công bố) đều nằm trong hàng đợi soát của lượt này (chính sách `priority-v1.1`).",
+  "entity": [],
+  "legal_checks": [
+    {
+      "legal_check_id": "LC-ace331b342",
+      "claim_id": "e4473d240f16ca3d",
+      "issue": "disclosure",
+      "check_mode": "current_policy_alignment",
+      "as_of_date": "2026-11-11",
+      "applicable_sources": [
+        {
+          "document": "96/2020/TT-BTC",
+          "id": "TT96-2020-TT-BTC",
+          "title": "Hướng dẫn công bố thông tin trên thị trường chứng khoán",
+          "effective_from": "2021-01-01",
+          "source_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=201902",
+          "role": "base"
+        }
+      ],
+      "blocked_sources": [],
+      "conditions": [],
+      "legal_finding": "INSUFFICIENT_EVIDENCE",
+      "legal_risk": "MEDIUM",
+      "rule_pack_version": "vn-green-v0.1-draft",
+      "rules_applied": [],
+      "rules_relevant": [],
+      "not_applicable_rules": [],
+      "requires_human_review": true,
+      "notes": "Có văn bản áp dụng nhưng bộ quy tắc pháp lý (phiên bản vn-green-v0.1-draft) chưa có quy tắc nào cho loại tuyên bố «Lồng ghép môi trường – xã hội – quản trị vào quy trình», vấn đề «Công bố thông tin». Quy tắc phải do người soạn và duyệt, không sinh tự động lúc chạy.",
+      "source_qualifiers": [
+        "case_status: SEC_SETTLEMENT_WITHOUT_ADMISSION_OR_DENIAL",
+        "legal_caution: Use the SEC order for the adjudicated claim; treat 2023 report as post-remediation control.",
+        "jurisdiction: US / Germany",
+        "training_eligibility: silver_until_2020_report_archived"
+      ]
+    }
+  ],
+  "corpus": {
+    "documents": 3,
+    "chunks": 3,
+    "by_role": {
+      "claim_source": 1,
+      "evidence": 2
+    },
+    "by_source_type": {
+      "internal": 1,
+      "legal": 2
+    },
+    "years": [],
+    "has_claim_source": true,
+    "has_comparison": false,
+    "has_independent": true,
+    "coverage": 0.5,
+    "sufficient_for_absence": false,
+    "missing": [
+      "Tài liệu đối chiếu khác (BCTN/BCTC/kiểm kê)",
+      "Tài liệu thuộc kỳ của tuyên bố"
+    ],
+    "version": "corpus-profile-v1"
+  },
+  "quality_gates": [
+    {
+      "gate_id": "G0",
+      "name": "Dữ liệu đầu vào",
+      "passed": true,
+      "status": "PASS",
+      "details": "Mọi đoạn đã tách phải giữ nguồn gốc (tệp, vị trí)."
+    },
+    {
+      "gate_id": "G1",
+      "name": "Trích xuất đúng nguồn",
+      "passed": true,
+      "status": "PASS",
+      "details": "Mỗi tuyên bố giữ đoạn nguồn và vị trí trong tài liệu."
+    },
+    {
+      "gate_id": "G2",
+      "name": "Bằng chứng hợp lệ",
+      "passed": true,
+      "status": "PASS",
+      "details": "Mỗi tuyên bố có bằng chứng hợp lệ hoặc được ghi rõ là chưa đủ bằng chứng."
+    },
+    {
+      "gate_id": "G3",
+      "name": "Kiểm chứng bằng mã cố định",
+      "passed": true,
+      "status": "PASS",
+      "details": "Phép so sánh số liệu do mã cố định thực hiện, không do mô hình ngôn ngữ."
+    },
+    {
+      "gate_id": "G4",
+      "name": "Trích dẫn đầy đủ",
+      "passed": true,
+      "status": "PASS",
+      "details": "Mỗi bằng chứng quyết định đều có vị trí trong tài liệu."
+    },
+    {
+      "gate_id": "G5",
+      "name": "Soát rủi ro",
+      "passed": false,
+      "status": "PENDING_HUMAN_REVIEW",
+      "details": "Mục rủi ro cao, rất cao hoặc có xung đột pháp lý cần người soát duyệt."
+    },
+    {
+      "gate_id": "G6",
+      "name": "Tái lập được",
+      "passed": true,
+      "status": "PASS",
+      "details": "Bản kê lượt chạy ghi cấu hình, mã băm tệp đầu vào, hạt giống ngẫu nhiên và kế hoạch."
+    },
+    {
+      "gate_id": "G7",
+      "name": "Legal check",
+      "passed": true,
+      "status": "PASS",
+      "details": "1 tuyên bố đã đối chiếu với kho văn bản pháp lý đã đăng ký. 1 tuyên bố chưa kết luận được."
+    },
+    {
+      "gate_id": "G8",
+      "name": "Toàn vẹn tài liệu",
+      "passed": true,
+      "status": "PASS",
+      "details": "Không thấy chữ ẩn hay câu nhắn tới hệ thống chấm tự động trong tài liệu đầu vào."
+    },
+    {
+      "gate_id": "G9",
+      "name": "Chất lượng đọc tài liệu",
+      "passed": true,
+      "status": "PASS",
+      "details": "Mọi trang có lớp chữ gốc đọc được; không trang nào phải đọc bằng OCR."
+    }
+  ],
+  "summary": {
+    "total_documents": 3,
+    "total_chunks": 3,
+    "total_claims": 1,
+    "status_counts": {
+      "CONTRADICTED": 1
+    },
+    "severity_counts": {
+      "HIGH": 1
+    },
+    "release_status": "PENDING_HUMAN_REVIEW"
+  },
+  "output_directory": "/kaggle/working/runs/2a0adc1070dd4531"
+}

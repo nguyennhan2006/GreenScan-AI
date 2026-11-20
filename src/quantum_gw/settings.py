@@ -79,6 +79,10 @@ PROFILES: dict[str, dict[str, str]] = {
     # (8000 is GreenScan's own API), with local BGE-M3 and reranker on CUDA.
     "gpu": {
         "QUANTUM_LLM_STANCE": "on_ambiguous",
+        # llm_stages_v1 gate s6 met by Qwen3-4B / 32B (configs/measurement_decisions.yaml): an explanation beside
+        # the rules rationale for the review queue. Not in offline (81 s per claim on the laptop) nor in cloud
+        # (Groq is allowed for public documents only, and the profile cannot tell).
+        "QUANTUM_ASSIST_EXPLAIN": "queue",
         "LLM_PROVIDER": "local",
         "LLM_FALLBACK_ORDER": "local,fpt",
         "LOCAL_LLM_PROVIDER": "openai_compatible",
@@ -88,7 +92,24 @@ PROFILES: dict[str, dict[str, str]] = {
         "RERANKER_PROVIDER": "local",
         "LOCAL_RERANKER_DEVICE": "cuda",
     },
+    # Phương án 2 (13/11/2026): GreenScan stays on the laptop; a rented GPU (vast.ai A100,
+    # deploy/vastai_a100/30_serve.sh) serves the reader through vLLM's OpenAI API. Retrieval stays local (lite), so
+    # only claim/evidence text of the review path leaves the machine. Point it with QUANTUM_SELFHOST_URL
+    # (http://<ip>:8001/v1), QUANTUM_SELFHOST_KEY (the server's --api-key) and QUANTUM_SELFHOST_MODEL (its
+    # --served-model-name). Same reader flags as "gpu"; the offline profile is untouched.
+    "selfhost": {
+        "QUANTUM_LLM_STANCE": "on_ambiguous",
+        "QUANTUM_ASSIST_EXPLAIN": "queue",
+        "LLM_PROVIDER": "local",
+        "LLM_FALLBACK_ORDER": "local",
+        "LOCAL_LLM_PROVIDER": "openai_compatible",
+        "EMBEDDING_PROVIDER": "lite",
+        "RERANKER_PROVIDER": "none",
+    },
 }
+SELFHOST_ENV = {"QUANTUM_SELFHOST_URL": "LOCAL_LLM_BASE_URL", "QUANTUM_SELFHOST_KEY": "LOCAL_LLM_API_KEY",
+                "QUANTUM_SELFHOST_MODEL": "LOCAL_LLM_MODEL"}
+SELFHOST_DEFAULT_MODEL = "openai/gpt-oss-120b"
 
 
 def apply_profile(name: str | None = None) -> str:
@@ -100,6 +121,13 @@ def apply_profile(name: str | None = None) -> str:
         raise ValueError(f"QUANTUM_PROFILE must be one of {sorted(PROFILES)}, not {profile!r}")
     for key, value in PROFILES[profile].items():
         os.environ.setdefault(key, value)
+    if profile == "selfhost":
+        for src, dst in SELFHOST_ENV.items():
+            if os.environ.get(src):
+                os.environ.setdefault(dst, os.environ[src])
+        os.environ.setdefault("LOCAL_LLM_MODEL", SELFHOST_DEFAULT_MODEL)
+        if not os.environ.get("LOCAL_LLM_BASE_URL"):
+            raise ValueError("QUANTUM_PROFILE=selfhost needs QUANTUM_SELFHOST_URL (e.g. http://<vast-ip>:8001/v1)")
     return profile
 
 
@@ -115,6 +143,14 @@ class IntakeSettings(BaseModel):
     max_sentences_per_chunk: int = 3
     min_native_text_chars: int = 40
     extract_tables: bool = True
+    # table-shape-v1 (16/11/2026): pdfplumber reports the frame of an infographic page as a one-cell "table"
+    # and reads it line by line across columns ("...theo tiêu 90%"). Keep a table only when at least two rows
+    # have two filled cells and no cell runs over a dozen lines. Env QUANTUM_TABLE_SHAPE_FILTER=off.
+    table_shape_filter: bool = True
+    # page-regions-v1 (17/11/2026): read each PDF page as typed regions (parsers/layout.py): prose in column
+    # order, ruled and unruled tables as rows with caption, column headers, unit and period, on the text layer
+    # and on a scan alike. Env QUANTUM_LAYOUT_REGIONS=off restores block order and pdfplumber tables.
+    layout_regions: bool = True
     ocr_enabled: bool = True
     ocr_languages: str = "vie+eng"
     tesseract_command: str = "tesseract"
@@ -128,6 +164,16 @@ class ClaimSettings(BaseModel):
     # (layout glue, a standard's title, a quoted decree). Marking only: verdicts
     # unchanged, the sentence leaves the queue and the risk score.
     flag_suspect_non_claims: bool = True
+    # claim-precision-v1 (15/11/2026): a generic sustainability sentence needs an environmental word
+    # (môi trường, phát thải, năng lượng, nước, chất thải, xanh...) to be a claim. Env QUANTUM_REQUIRE_ENV_ANCHOR.
+    require_environment_anchor: bool = True
+    # S1 of llm_stages_v1: folder of a fine-tuned T1 claim detector (training/kaggle/s1_final.py). When set,
+    # a sentence it reads as NOT_CLAIM is marked like claim-quality does (mark, never remove). Env QUANTUM_CLAIM_MODEL.
+    claim_model_dir: str = ""
+    claim_model_threshold: float = 0.5
+    # claim-typing-v2 (15/11/2026): when no claim_type matches, try fallback_claim_types (resource use)
+    # then metric_disclosure (known metric + a figure that is not a year). Env QUANTUM_CLAIM_FALLBACK.
+    fallback_types: bool = True
 
 
 class RetrievalSettings(BaseModel):
@@ -213,6 +259,39 @@ class VerificationSettings(BaseModel):
     # statements. True restores the earlier behaviour.
     # Env QUANTUM_SELF_EVIDENCE_CAN_CONTRADICT.
     self_evidence_can_contradict: bool = False
+    # Support guard (11/11/2026, independent_support_v1 in configs/measurement_decisions.yaml).
+    # False (default, behaviour of GS-Eval v2): a confirming passage from any document other
+    # than the claim's own makes it SUPPORTED, including the company's annual report restating
+    # its sustainability report. True: only a legal, external or standard source can; the
+    # company's own echo stays PARTIALLY_SUPPORTED and says so. Off until the registered
+    # GS-Bench and GS-Eval v2 reruns are read. Env QUANTUM_SUPPORT_REQUIRES_INDEPENDENT_SOURCE.
+    # 15/11/2026: on by default (expert review + replay: GS-Eval v2 precision 0.33 -> 0.75, false SUPPORTED 5 -> 0).
+    support_requires_independent_source: bool = True
+    # Kế hoạch theo stage, 14/11/2026 (docs/03-architecture/ABSOLUTE_AND_INTERNAL.md).
+    #   absolute_share_check   absolute-share-v1: "hoàn toàn / toàn bộ / 100%" about green-bond proceeds is
+    #                          checked against used / total computed from one passage.     QUANTUM_ABSOLUTE_SHARE
+    #   absolute_conflict_cues stance-cues-v3: an absolute claim against a sentence saying "chưa phân bổ /
+    #                          một phần / giai đoạn 1" -> PARTIALLY_SUPPORTED + review flag.  QUANTUM_ABSOLUTE_CONFLICT
+    #   internal_inconsistency internal-inconsistency-v1: off | flag | contradict. A same-document figure in a
+    #                          data table may disagree with the prose under strict conditions; "flag" makes it
+    #                          PARTIALLY_SUPPORTED + review flag, "contradict" CONTRADICTED. QUANTUM_INTERNAL_INCONSISTENCY
+    #   figure_consistency_check  figure-consistency-v1 (GS-Mutation v1): a matched figure going the other way
+    #                          (giảm vs tăng) contradicts; a claim whose second figure is far off is PARTIAL. QUANTUM_FIGURE_CONSISTENCY
+    figure_consistency_check: bool = True
+    absolute_share_check: bool = True
+    absolute_conflict_cues: bool = True
+    internal_inconsistency: str = "off"
+    # Language-model stages (registration llm_stages_v1, 11/11/2026). Each is off until its gate in
+    # configs/measurement_decisions.yaml is read; none may set a verdict (src/quantum_gw/assist/).
+    #   verify_mode    "rules" | "dual": the IR reader (verification/ir_reader.py) reads the figures of
+    #                  claims with a number and their passages; its S / C / N is a reviewer note.   QUANTUM_VERIFY
+    #   assist_attributes  fill period / baseline / scope a claim writes but the rules missed, from
+    #                  verbatim spans only.                                                QUANTUM_ASSIST_ATTRIBUTES
+    #   assist_explain "off" | "queue" | "all": a plain-language explanation beside the rules
+    #                  rationale, rejected when it adds a number.                          QUANTUM_ASSIST_EXPLAIN
+    verify_mode: str = "rules"
+    assist_attributes: bool = False
+    assist_explain: str = "off"
 
 
 class LegalSettings(BaseModel):
@@ -237,6 +316,42 @@ class ReviewSettings(BaseModel):
     # missing-attribute penalties add up to (ISSUES N5, D-2026-09-22-03).
     # Lift only when the bands are calibrated on the gold set.
     severity_cap_without_contradiction: str = "medium"
+    # audit-sample-v1 (15/11/2026): claims outside the queue drawn at random each run for a person to read,
+    # to estimate what the queue misses. 0 turns it off. The queue itself is unchanged.
+    audit_sample_size: int = 5
+
+
+class FeedbackSettings(BaseModel):
+    """feedback-loop-v1 (docs/03-architecture/FEEDBACK_LOOP.md): what past reviewer decisions may do to a run.
+
+    Nothing here changes a verdict, a risk score or a release status. Precedents
+    are shown next to a verdict; the queue may only gain items, never lose one;
+    a trained model runs in shadow (logged, never shown as a verdict) unless it
+    has passed the promotion gate and is switched on by name. Left at these
+    defaults the block is not dumped, so the config hash is what it was before.
+    """
+
+    # Show similar claims a person already decided (feedback/precedents.py).
+    # Env QUANTUM_FEEDBACK_PRECEDENTS=off turns it off.
+    precedents: bool = True
+    precedent_min_similarity: float = 0.55
+    # A claim this close to one where a person overrode the machine joins the review queue.
+    precedent_raise_similarity: float = 0.75
+    precedent_raise_queue: bool = True
+    # Whose labels this deployment may see: labels with no organisation, labels
+    # promoted to the core memory, and this organisation's own. Env QUANTUM_FEEDBACK_ORG.
+    org_id: str = ""
+    # Extra review-queue places for the items a label would teach most (feedback/active.py).
+    # 0 = off: no learning value is computed. Env QUANTUM_ACTIVE_LEARNING_SLOTS.
+    active_learning_slots: int = 0
+    # Past pointer labels shown to the stance model as examples (S5). 0 = off. Env QUANTUM_STANCE_EXAMPLES.
+    stance_examples: int = 0
+    # A challenger stance model run beside the rules and only logged. Env QUANTUM_SHADOW_MODEL.
+    shadow_model: str = ""
+    # A promoted stance model answering the pairs the rules escalate, in place of
+    # the LLM. Refused unless the model registry lists it as promoted. Env QUANTUM_LOCAL_STANCE_MODEL.
+    local_stance_model: str = ""
+    model_registry: str = "models/stance/registry.json"
 
 
 class GatewaySettings(BaseModel):
@@ -245,6 +360,9 @@ class GatewaySettings(BaseModel):
     Every field with a key may stay empty: the application must start and the
     deterministic pipeline must run with all cloud keys blank.
     """
+
+    # QUANTUM_PROFILE at load time. "offline": the router tries local providers only (providers/router.py).
+    profile: str = ""
 
     provider: str = "local"
     fallback_order: list[str] = Field(
@@ -291,6 +409,7 @@ def load_gateway_settings() -> GatewaySettings:
         if item.strip()
     ]
     return GatewaySettings(
+        profile=env("QUANTUM_PROFILE", "").strip().lower(),
         provider=env("LLM_PROVIDER", "local"),
         fallback_order=fallback,
         routing_file=env("LLM_ROUTING_FILE", "configs/routing.yaml"),
@@ -339,6 +458,8 @@ class AppSettings(BaseModel):
     corpus_version: str = "run-inputs"
     review: ReviewSettings = Field(default_factory=ReviewSettings)
     legal: LegalSettings = Field(default_factory=LegalSettings)
+    feedback: FeedbackSettings = Field(default_factory=FeedbackSettings,
+                                       exclude_if=lambda value: value == FeedbackSettings())
     raw: dict[str, Any] = Field(default_factory=dict, exclude=True)
 
     def stable_hash(self) -> str:
@@ -360,6 +481,12 @@ def load_settings(path: str | None = None) -> AppSettings:
     settings = AppSettings.model_validate(raw)
     settings.raw = raw
     settings.runs_dir = os.getenv("QUANTUM_RUNS_DIR", settings.runs_dir)
+    settings.intake.table_shape_filter = os.getenv(
+        "QUANTUM_TABLE_SHAPE_FILTER", str(settings.intake.table_shape_filter)
+    ).lower() in {"1", "true", "yes", "on"}
+    settings.intake.layout_regions = os.getenv(
+        "QUANTUM_LAYOUT_REGIONS", str(settings.intake.layout_regions)
+    ).lower() in {"1", "true", "yes", "on"}
     settings.intake.ocr_enabled = os.getenv(
         "QUANTUM_OCR_ENABLED", str(settings.intake.ocr_enabled)
     ).lower() in {"1", "true", "yes"}
@@ -405,11 +532,68 @@ def load_settings(path: str | None = None) -> AppSettings:
     guard = os.getenv("QUANTUM_SELF_EVIDENCE_CAN_CONTRADICT")
     if guard is not None and guard.strip():
         settings.verification.self_evidence_can_contradict = guard.strip().lower() in {"1", "true", "yes", "on"}
+    independent = os.getenv("QUANTUM_SUPPORT_REQUIRES_INDEPENDENT_SOURCE")
+    if independent is not None and independent.strip():
+        settings.verification.support_requires_independent_source = (
+            independent.strip().lower() in {"1", "true", "yes", "on"})
+    anchor = os.getenv("QUANTUM_REQUIRE_ENV_ANCHOR")
+    if anchor is not None and anchor.strip():
+        settings.claim_extraction.require_environment_anchor = anchor.strip().lower() in {"1", "true", "yes", "on"}
+    fallback = os.getenv("QUANTUM_CLAIM_FALLBACK")
+    if fallback is not None and fallback.strip():
+        settings.claim_extraction.fallback_types = fallback.strip().lower() in {"1", "true", "yes", "on"}
+    for env, attr in (("QUANTUM_ABSOLUTE_SHARE", "absolute_share_check"),
+                      ("QUANTUM_FIGURE_CONSISTENCY", "figure_consistency_check"),
+                      ("QUANTUM_ABSOLUTE_CONFLICT", "absolute_conflict_cues")):
+        value = os.getenv(env)
+        if value is not None and value.strip():
+            setattr(settings.verification, attr, value.strip().lower() in {"1", "true", "yes", "on"})
+    internal = os.getenv("QUANTUM_INTERNAL_INCONSISTENCY", settings.verification.internal_inconsistency).strip().lower()
+    if internal not in {"off", "flag", "contradict"}:
+        raise ValueError(f"QUANTUM_INTERNAL_INCONSISTENCY must be off, flag or contradict, not {internal!r}")
+    settings.verification.internal_inconsistency = internal
+    verify = os.getenv("QUANTUM_VERIFY", settings.verification.verify_mode).strip().lower() or "rules"
+    if verify not in {"rules", "dual"}:
+        raise ValueError(f"QUANTUM_VERIFY must be rules or dual, not {verify!r}")
+    settings.verification.verify_mode = verify
+    attrs = os.getenv("QUANTUM_ASSIST_ATTRIBUTES")
+    if attrs is not None and attrs.strip():
+        settings.verification.assist_attributes = attrs.strip().lower() in {"1", "true", "yes", "on"}
+    explain = os.getenv("QUANTUM_ASSIST_EXPLAIN", settings.verification.assist_explain).strip().lower() or "off"
+    if explain not in {"off", "queue", "all"}:
+        raise ValueError(f"QUANTUM_ASSIST_EXPLAIN must be off, queue or all, not {explain!r}")
+    settings.verification.assist_explain = explain
     flag = os.getenv("QUANTUM_FLAG_SUSPECT_NON_CLAIMS")
     if flag is not None and flag.strip():
         settings.claim_extraction.flag_suspect_non_claims = flag.strip().lower() in {"1", "true", "yes", "on"}
+    settings.claim_extraction.claim_model_dir = os.getenv(
+        "QUANTUM_CLAIM_MODEL", settings.claim_extraction.claim_model_dir).strip()
     # Pack folders or pack.yaml files, separated by "," or ";". Set but empty = off.
     org_packs = os.getenv("QUANTUM_ORG_PACKS")
     if org_packs is not None:
         settings.legal.org_packs = [p.strip() for p in re.split(r"[,;]", org_packs) if p.strip()]
+    _feedback_env(settings.feedback)
     return settings
+
+
+def _feedback_env(feedback: FeedbackSettings) -> None:
+    """QUANTUM_FEEDBACK_* and friends (feedback-loop-v1). Unset keeps the config value."""
+    on = {"1", "true", "yes", "on"}
+    value = os.getenv("QUANTUM_FEEDBACK_PRECEDENTS")
+    if value is not None and value.strip():
+        feedback.precedents = value.strip().lower() in on
+    value = os.getenv("QUANTUM_FEEDBACK_ORG")
+    if value is not None:
+        feedback.org_id = value.strip()
+    for env, name in (("QUANTUM_ACTIVE_LEARNING_SLOTS", "active_learning_slots"),
+                      ("QUANTUM_STANCE_EXAMPLES", "stance_examples")):
+        value = os.getenv(env)
+        if value is not None and value.strip():
+            try:
+                setattr(feedback, name, max(0, int(value)))
+            except ValueError as exc:
+                raise ValueError(f"{env} must be a whole number, not {value!r}") from exc
+    for env, name in (("QUANTUM_SHADOW_MODEL", "shadow_model"), ("QUANTUM_LOCAL_STANCE_MODEL", "local_stance_model")):
+        value = os.getenv(env)
+        if value is not None:
+            setattr(feedback, name, value.strip())

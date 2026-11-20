@@ -1,0 +1,230 @@
+{
+  "ngay": "11/11/2026 11:14",
+  "luot_hpg": "d1d8e3e9ae65491f",
+  "luot_hpg_tao_luc": "2026-11-11T04:07:34.480109Z",
+  "ket_qua": [
+    {
+      "nhom": "A",
+      "ma": "A1",
+      "ten": "Từ tiếng Anh / mã nội bộ mới trong chữ giao diện",
+      "gia_tri": 0,
+      "muc_tieu": 0,
+      "dat": true,
+      "cach_xem_1_phut": "python tools/check_ui_language.py",
+      "chi_tiet": {
+        "chua_duyet": [],
+        "da_duyet_giu_lai": 102
+      }
+    },
+    {
+      "nhom": "A",
+      "ma": "A2",
+      "ten": "Số, giờ, mã kiểu Anh trong chữ máy viết (lượt d1d8e3e9ae65491f)",
+      "gia_tri": 0,
+      "muc_tieu": 0,
+      "dat": true,
+      "cach_xem_1_phut": "Mở một tuyên bố có số liệu, đọc dòng lý do và khung “Thủ tục trên số liệu công bố”",
+      "chi_tiet": {
+        "theo_loai": {},
+        "vi_du": []
+      }
+    },
+    {
+      "nhom": "A",
+      "ma": "A3",
+      "ten": "Mã còn in giờ UTC cho người đọc",
+      "gia_tri": 0,
+      "muc_tieu": 0,
+      "dat": true,
+      "cach_xem_1_phut": "Giấy làm việc: dòng “In lúc …” phải ghi giờ Việt Nam",
+      "chi_tiet": []
+    },
+    {
+      "nhom": "A",
+      "ma": "A4",
+      "ten": "Tên kết luận giống nhau ở hàng đợi, trang tuyên bố, Studio, giấy làm việc",
+      "gia_tri": "giống",
+      "muc_tieu": "giống",
+      "dat": true,
+      "cach_xem_1_phut": "Mở cùng một tuyên bố ở hàng đợi và ở Studio: tên kết luận phải trùng",
+      "chi_tiet": null
+    },
+    {
+      "nhom": "A",
+      "ma": "A5",
+      "ten": "Năm thuộc tính: một định nghĩa cho thẻ thuộc tính, nhãn hàng đợi và máy chủ",
+      "gia_tri": "giống",
+      "muc_tieu": "giống",
+      "dat": true,
+      "cach_xem_1_phut": "Mục số 1 hàng đợi HPG: nhãn “thiếu 3/5 thuộc tính” phải khớp thẻ “Thuộc tính bắt buộc”",
+      "chi_tiet": null
+    },
+    {
+      "nhom": "B",
+      "ma": "B1",
+      "ten": "“Được ủng hộ” chỉ dựa trên tài liệu của chính doanh nghiệp (lượt HPG)",
+      "gia_tri": 2,
+      "muc_tieu": 0,
+      "dat": false,
+      "cach_xem_1_phut": "Mở một tuyên bố “Được ủng hộ”, thẻ Bằng chứng, dòng “nguồn”",
+      "chi_tiet": {
+        "co_nguon_doc_lap_dang_bat": false,
+        "vi_du": [
+          "Hoàn thành kiểm kê khí nhà kính theo tiêu 90%",
+          "Thực hiện kiểm kê khí nhà kính theo tiêu chuẩn ISO 14064-1:2018 và báo cáo đầy đủ theo quy định Hợp "
+        ]
+      }
+    },
+    {
+      "nhom": "B",
+      "ma": "B2",
+      "ten": "Phân bố kết luận trên HPG (chỉ để biết, không chấm doanh nghiệp)",
+      "gia_tri": {
+        "ung_ho_mot_phan": "153/156",
+        "dut_khoat": "2/156",
+        "theo_loai": {
+          "PARTIALLY_SUPPORTED": 153,
+          "SUPPORTED": 2,
+          "INSUFFICIENT_EVIDENCE": 1
+        }
+      },
+      "muc_tieu": "giải thích được trong hướng dẫn (mục Câu hỏi hay gặp)",
+      "dat": null,
+      "cach_xem_1_phut": "Trang Hướng dẫn → “Vì sao gần như mọi câu đều là Ủng hộ một phần?”",
+      "chi_tiet": null
+    },
+    {
+      "nhom": "B",
+      "ma": "B3",
+      "ten": "GS-Eval v2: “Được ủng hộ” sai trên 146 câu có nhãn",
+      "gia_tri": {
+        "hien_tai": 5,
+        "khi_bat_co": 0
+      },
+      "muc_tieu": 0,
+      "dat": false,
+      "cach_xem_1_phut": "benchmark/gs_eval_v2/results/EVAL_REPORT.md, mục kết luận dứt khoát",
+      "chi_tiet": {
+        "do_chinh_xac_ket_luan_dut_khoat": {
+          "hien_tai": 0.333,
+          "khi_bat_co": 0.75
+        },
+        "luu_y": "nhãn tham chiếu do Claude gán (bạc), chưa phải nhãn người"
+      }
+    },
+    {
+      "nhom": "C",
+      "ma": "C1",
+      "ten": "Câu không phải tuyên bố trong 8 mục đầu hàng đợi HPG",
+      "gia_tri": 0,
+      "muc_tieu": 0,
+      "dat": true,
+      "cach_xem_1_phut": "Mở hàng đợi HPG, đọc mục số 1",
+      "chi_tiet": {
+        "muc_1": "Đến nay, cả hai khu liên hợp lớn nhất của Tập đoàn tại Dung Quất và Hải Dương đều có mức độ tự chủ điện năng rất cao, gó",
+        "nghi_ngo": []
+      }
+    },
+    {
+      "nhom": "C",
+      "ma": "C2",
+      "ten": "Hàng đợi đã được chuyên gia kiểm (Precision@9, mục bị bỏ sót)",
+      "gia_tri": "chưa đo",
+      "muc_tieu": "có số đo",
+      "dat": false,
+      "cach_xem_1_phut": "docs/10-chung-ket-2026-11: đăng ký queue_usefulness_v1",
+      "chi_tiet": []
+    },
+    {
+      "nhom": "D",
+      "ma": "D1",
+      "ten": "Cặp tuyên bố–bằng chứng có nhãn người",
+      "gia_tri": "0/88",
+      "muc_tieu": "≥ 60 (mức tối thiểu để nói về độ chính xác)",
+      "dat": false,
+      "cach_xem_1_phut": "data/gold/sessions/*.jsonl, trường labels.labeler",
+      "chi_tiet": null
+    },
+    {
+      "nhom": "D",
+      "ma": "D2",
+      "ten": "Gói gán nhãn T1 (79 câu, ba người gán độc lập)",
+      "gia_tri": {
+        "nhan": "0/79",
+        "quynh": "0/79",
+        "thao": "0/79"
+      },
+      "muc_tieu": "đủ 3 gói, kappa ≥ 0,70",
+      "dat": false,
+      "cach_xem_1_phut": "training/data/gold_t1/packs/T1_<tên>_lo1.xlsx, cột “nhan”",
+      "chi_tiet": null
+    },
+    {
+      "nhom": "E",
+      "ma": "E1",
+      "ten": "AI trong luồng mặc định",
+      "gia_tri": {
+        "llm_stance": "off",
+        "QUANTUM_VERIFY": "(chưa đặt)"
+      },
+      "muc_tieu": "nói rõ AI làm gì và đo được AI giúp gì",
+      "dat": null,
+      "cach_xem_1_phut": "Cài đặt → Mô hình ngôn ngữ; trang Hướng dẫn → “Tài liệu có bị gửi ra ngoài không?”",
+      "chi_tiet": null
+    },
+    {
+      "nhom": "E",
+      "ma": "E2",
+      "ten": "Số đo bật / tắt AI trên cùng bộ (ablation)",
+      "gia_tri": "chưa có",
+      "muc_tieu": "có số đo",
+      "dat": false,
+      "cach_xem_1_phut": "benchmark/**/*ablation*",
+      "chi_tiet": []
+    },
+    {
+      "nhom": "F",
+      "ma": "F1",
+      "ten": "Truy xuất bằng chứng: Recall@5, MRR",
+      "gia_tri": "chưa đo",
+      "muc_tieu": "có số đo",
+      "dat": false,
+      "cach_xem_1_phut": "tools/measure_all.py (cần nhãn người ở D1)",
+      "chi_tiet": []
+    },
+    {
+      "nhom": "G",
+      "ma": "G1",
+      "ten": "Chỗ trống chưa điền trong báo cáo ([URL], TODO, ???)",
+      "gia_tri": 0,
+      "muc_tieu": 0,
+      "dat": true,
+      "cach_xem_1_phut": "Tìm “[URL]” trong bản báo cáo",
+      "chi_tiet": []
+    },
+    {
+      "nhom": "G",
+      "ma": "G2",
+      "ten": "“9/172” không ghi rõ 172 = 156 tuyên bố + 16 số liệu công bố (người đọc thấy lệch với “156”)",
+      "gia_tri": 13,
+      "muc_tieu": 0,
+      "dat": false,
+      "cach_xem_1_phut": "Tìm “172” trong bản báo cáo",
+      "chi_tiet": [
+        "docs\\10-chung-ket-2026-11\\NGAN_HANG_CAU_HOI_P1.md:29: **Trả lời (≈50 s):** *Vấn đề:* Vòng 1 đặt bài toán kiểm chứng từng tuyên bố, truy vết tới ",
+        "docs\\10-chung-ket-2026-11\\NGAN_HANG_CAU_HOI_P1.md:44: **Trả lời (≈45 s):** *Vấn đề:* kết luận giống nhau thì không giúp ai quyết định; chúng em ",
+        "docs\\10-chung-ket-2026-11\\NGAN_HANG_CAU_HOI_P1.md:364: - Hòa Phát 156 tuyên bố: 153 PARTIALLY_SUPPORTED, 2 SUPPORTED, 1 INSUFFICIENT; hàng đợi 9/",
+        "docs\\10-chung-ket-2026-11\\NGAN_HANG_CAU_HOI_P2.md:42: | N15 | HPG (lượt 22/10): 156 tuyên bố = 153 PARTIAL / 2 SUPPORTED / 1 INSUFFICIENT; hàng ",
+        "docs\\10-chung-ket-2026-11\\NGAN_HANG_CAU_HOI_P2.md:261: **Vặn tiếp:** \"Sao không chuyển hết sang người?\" → hàng đợi `priority-v1.1` chỉ xếp thứ tự",
+        "docs\\10-chung-ket-2026-11\\NGAN_HANG_CAU_HOI_P2.md:293: **Trả lời.** Vấn đề: hệ chỉ dám kết luận một phần nhỏ nên có vẻ vô dụng. Nguyên lý: trong ",
+        "docs\\10-chung-ket-2026-11\\NGAN_HANG_CAU_HOI_P2.md:299: **Trả lời.** Vấn đề: kết luận phẳng làm người dùng thấy hệ vô ích. Nguyên lý: nguyên nhân ",
+        "docs\\10-chung-ket-2026-11\\NGAN_HANG_CAU_HOI_P2.md:424: - HPG 156 tuyên bố 153/2/1; hàng đợi 9/172; 780/780 nội bộ; 0/156 pháp lý; gói `vn-green-v"
+      ]
+    }
+  ],
+  "tom_tat": {
+    "dat": 7,
+    "chua_dat": 8,
+    "chi_de_biet": 2
+  }
+}

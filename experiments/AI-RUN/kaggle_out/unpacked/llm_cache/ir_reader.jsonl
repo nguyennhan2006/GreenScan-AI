@@ -1,0 +1,16 @@
+{"key": "b2c0060ee7e5ae56679fa60597d8e3ced94d643d", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": []}"}
+{"key": "683cdbe7a738d012f833d3cb3f3fa3887d5b586f", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": []}"}
+{"key": "846e7c7ef2bf1443779baf39c86f1b86c32c55f2", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": []}"}
+{"key": "c99f737215ec25365eec47552f59e409d5414a54", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": []}"}
+{"key": "a86b43cee374715523a54d6fc325fa1fe92159ab", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": []}"}
+{"key": "1e88487d4203c0b70ab9d4af6bfe98b4228fa433", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": []}"}
+{"key": "ce720100c3550e443abe29a38b6463919e1dff7b", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": []}"}
+{"key": "346f32ce15ca2e5d89872394d36a0d035c66299d", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": [{\"metric\": \"ghg_emissions\", \"metric_text\": \"chiếm tỷ trọng vượt trội trên 99% tổng lượng phát thải toàn tập đoàn\", \"value_text\": \"99%\", \"multiplier_text\": \"\", \"unit_text\": \"%\", \"value_kind\": \"share\", \"change_direction\": null, \"baseline_year\": null, \"period\": null, \"status\": \"actual\", \"scope\": null, \"boundary\": \"unspecified\"}]}"}
+{"key": "048ebc63ede2568265dea29639fc4d9a7740a11e", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": [{\"metric\": \"ghg_emissions\", \"metric_text\": \"tổng lượng phát thải khí nhà kính\", \"value_text\": \"tổng lượng phát thải khí nhà kính\", \"multiplier_text\": \"\", \"unit_text\": \"tCO2e\", \"value_kind\": \"absolute\", \"change_direction\": null, \"baseline_year\": null, \"period\": 2025, \"status\": \"actual\", \"scope\": null, \"boundary\": \"unspecified\"}]}"}
+{"key": "eb5757b3c96153d8fbfe50de241d6929e58123b5", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": []}"}
+{"key": "decee6ae4a77130332fb017dba7318014808c641", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": []}"}
+{"key": "fc03781c64999e516e664703a03c8d52d3751ee1", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": []}"}
+{"key": "b4ebb3742d6ac055109d58b40ec98b64653208bc", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": []}"}
+{"key": "99bddf20712f7cc3e18cb6e92a9d1055cb0ca61b", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": []}"}
+{"key": "62777645b6272eea2fb07227d96598ad633701a0", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": []}"}
+{"key": "9c713ef8ef3f13a6e78a711a66eb0acc9c6dcaf8", "model": "qwen3:4b-instruct-2507-q4_K_M", "raw": "{\"figures\": [{\"metric\": \"waste_generated\",\"metric_text\":\"tỷ lệ phối phế cùng gang lỏng\",\"value_text\":\"16%\",\"multiplier_text\":\"\",\"unit_text\":\"%\",\"value_kind\":\"share\",\"change_direction\":\"increase\",\"baseline_year\":2023,\"period\":2025,\"status\":\"actual\",\"scope\":null,\"boundary\":\"facility\"}]}"}

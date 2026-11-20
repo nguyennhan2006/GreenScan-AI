@@ -1,4 +1,6 @@
 const BASE = import.meta.env.VITE_API_URL || '/api'
+import { STATIC, installStaticApi, staticUrls } from './staticApi.js'
+installStaticApi(BASE)
 
 async function handle(response) {
   if (!response.ok) {
@@ -45,12 +47,14 @@ const base = () => BASE
 
 /** Direct link to the stored original. `#page=N` is honoured by browser PDF viewers. */
 export function documentUrl(docId, page) {
+  if (STATIC) return staticUrls.document(docId, page)
   const anchor = page ? `#page=${page}` : ''
   return `${base()}/v1/documents/${encodeURIComponent(docId)}${anchor}`
 }
 
 /** Server-rendered page image with `snippet` highlighted. */
 export function documentPageUrl(docId, page, snippet, zoom = 2) {
+  if (STATIC) return staticUrls.page(docId, page)
   const params = new URLSearchParams({ q: (snippet || '').slice(0, 400), zoom: String(zoom) })
   return `${base()}/v1/documents/${encodeURIComponent(docId)}/page/${page}?${params}`
 }
@@ -91,6 +95,7 @@ export async function setRunLabel(runId, label) {
 
 /** Download link for one evidence-pack artifact: json | md | manifest | audit. */
 export function exportUrl(runId, format) {
+  if (STATIC) return staticUrls.exportFile(runId, format)
   return `${base()}/v1/runs/${encodeURIComponent(runId)}/export?format=${format}`
 }
 
@@ -109,21 +114,87 @@ export async function exportGold() {
 // ---------- background analyses (progress instead of one long request) ----------
 
 /** Start an analysis of uploaded files; resolves with the job status at once. */
-export async function startAnalysisFiles(files, roles, sourceTypes, label = '', company = '') {
+export async function startAnalysisFiles(files, roles, sourceTypes, label = '', company = '', orgPacks = []) {
   const form = new FormData()
   for (const file of files) form.append('files', file)
   form.append('roles', roles.join(','))
   form.append('source_types', sourceTypes.join(','))
   form.append('label', label)
   form.append('company', company)
+  // Uploaded org packs chosen for this run: "org_id" (latest approved) or "org_id@version".
+  form.append('org_packs', orgPacks.join(','))
   return handle(await fetch(`${base()}/v1/jobs/analyze/files`, { method: 'POST', body: form }))
 }
 
-export async function startAnalysisText(documents, label = '', company = '') {
+export async function startAnalysisText(documents, label = '', company = '', orgPacks = []) {
   return handle(await fetch(`${base()}/v1/jobs/analyze/text`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ documents, label, company }),
+    body: JSON.stringify({ documents, label, company, org_packs: orgPacks }),
+  }))
+}
+
+// ---------- org packs sent over the API (org-pack-v1) ----------
+
+/** Upload a zip of a pack folder, or pack.yaml with its documents. Always stored as a draft. */
+export async function uploadOrgPack(files, uploadedBy, note = '') {
+  const form = new FormData()
+  for (const file of files) form.append('files', file)
+  form.append('uploaded_by', uploadedBy)
+  form.append('note', note)
+  return handle(await fetch(`${base()}/v1/org-packs/upload`, { method: 'POST', body: form }))
+}
+
+async function orgPackDecision(orgId, version, action, by, comment = '') {
+  return handle(await fetch(`${base()}/v1/org-packs/${encodeURIComponent(orgId)}/${encodeURIComponent(version)}/${action}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ by, comment }),
+  }))
+}
+export const approveOrgPack = (orgId, version, by, comment) => orgPackDecision(orgId, version, 'approve', by, comment)
+export const retireOrgPack = (orgId, version, by, comment) => orgPackDecision(orgId, version, 'retire', by, comment)
+
+export async function previewOrgPack(pack, text, sector = '') {
+  return handle(await fetch(`${base()}/v1/org-packs/preview`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ pack, text, sector }),
+  }))
+}
+
+/** Draft a pack from a policy text; stored as a draft that someone else must approve. */
+export async function draftOrgPack({ orgId, orgName, uploadedBy, orgType = 'other', policyText = '', useLlm = false }) {
+  const form = new FormData()
+  form.append('org_id', orgId)
+  form.append('org_name', orgName)
+  form.append('uploaded_by', uploadedBy)
+  form.append('org_type', orgType)
+  form.append('use_llm', useLlm ? 'true' : 'false')
+  form.append('policy_text', policyText)
+  return handle(await fetch(`${base()}/v1/org-packs/draft`, { method: 'POST', body: form }))
+}
+
+// ---------- feedback loop (docs/03-architecture/FEEDBACK_LOOP.md) ----------
+
+export async function feedbackSummary() {
+  return handle(await fetch(`${base()}/v1/feedback/summary`))
+}
+
+export async function feedbackProposals() {
+  return handle(await fetch(`${base()}/v1/feedback/proposals`))
+}
+
+export async function secondReviewSample(rate = 0.1) {
+  return handle(await fetch(`${base()}/v1/feedback/second-review-sample?rate=${rate}`))
+}
+
+/** kind: second_review | adjudication | core_promotion */
+export async function submitQA(payload) {
+  return handle(await fetch(`${base()}/v1/feedback/qa`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
   }))
 }
 
@@ -136,8 +207,21 @@ export async function runtimeInfo() {
   return handle(await fetch(`${base()}/v1/runtime`))
 }
 
+/** Turn the language-model stages on or off for the next runs: 'rules' | 'local' | 'cloud'. Returns the new runtime. */
+export async function setModelMode(mode) {
+  return handle(await fetch(`${base()}/v1/runtime/model-mode`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mode }),
+  }))
+}
+
+/** One short live call to the model that is switched on. */
+export async function testModel() {
+  return handle(await fetch(`${base()}/v1/runtime/model-test`, { method: 'POST' }))
+}
+
 /** The Vietnamese working paper; `print` opens the browser's print dialog. */
 export function workpaperUrl(runId, print = false) {
+  if (STATIC) return staticUrls.workpaper(runId)
   return `${base()}/v1/runs/${encodeURIComponent(runId)}/workpaper${print ? '?print=true' : ''}`
 }
 

@@ -1,0 +1,46 @@
+{
+ "systems": {
+  "rules": {
+   "n": 345,
+   "n_out": 135,
+   "n_in": 210,
+   "oos_recall": 0.6593,
+   "oos_recall_ci95": [
+    0.5852,
+    0.7407
+   ],
+   "false_refusal": 0.1762,
+   "false_refusal_ci95": [
+    0.1176,
+    0.2314
+   ],
+   "decision_accuracy": 0.7159,
+   "unparsed": 0,
+   "oos_missed_by_category": {
+    "investment_advice": 4,
+    "legal_or_fraud_verdict": 4,
+    "write_or_embellish_claims": 8,
+    "non_environmental": 8,
+    "personal_data": 2,
+    "prompt_injection": 4,
+    "coding_or_it": 5,
+    "general_chat_or_creative": 5,
+    "other_domain": 6
+   },
+   "task_f1": {
+    "verify_claim": 0.7191,
+    "extract_claims": 0.6102,
+    "check_attributes": 0.764,
+    "explain_verdict": 0.7037,
+    "find_evidence": 0.4267,
+    "review_assurance": 0.6667,
+    "assess_report_risk": 0.8
+   },
+   "task_macro_f1": 0.6701,
+   "task_micro_f1": 0.6786,
+   "slot_claim_exact": 0.7523,
+   "slot_company_exact": 0.6181,
+   "slot_year_exact": 0.8857
+  }
+ }
+}

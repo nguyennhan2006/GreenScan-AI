@@ -3,6 +3,7 @@ import {
   analyzeText, checkHealth, getRun, listReviews, runtimeInfo, setRunLabel, submitReview,
 } from './api.js'
 import { navigate, useHashRoute } from './lib/router.jsx'
+import { STATIC } from './staticApi.js'
 import { buildRows, summarise } from './lib/claims.js'
 import { buildQueue } from './lib/queue.js'
 import Shell from './components/Shell.jsx'
@@ -14,6 +15,7 @@ import QueuePage from './pages/QueuePage.jsx'
 import ExportPage from './pages/ExportPage.jsx'
 import HistoryPage from './pages/HistoryPage.jsx'
 import LegalLibraryPage from './pages/LegalLibraryPage.jsx'
+import FeedbackPage from './pages/FeedbackPage.jsx'
 import GuidePage from './pages/GuidePage.jsx'
 import SettingsPage from './pages/SettingsPage.jsx'
 
@@ -21,6 +23,8 @@ import SettingsPage from './pages/SettingsPage.jsx'
 const StudioPage = lazy(() => import('./pages/StudioPage.jsx'))
 
 const REVIEWER_KEY = 'greenscan.reviewer'
+// Where a reviewer lands: step 1 on an installed copy; the prepared sessions on the web demo, which cannot analyse.
+const HOME = STATIC ? '/runs' : '/new'
 
 export default function App() {
   const route = useHashRoute()
@@ -98,6 +102,8 @@ export default function App() {
   // Claim ids in the order the queue presents them: "next" on a claim opened
   // from the queue moves down the queue, not down the document.
   const queueOrder = useMemo(() => queue.items.filter((i) => i.item_type === 'claim').map((i) => i.item_id), [queue])
+  // The claims the queue asks the reviewer to decide, in queue order (the rest can be read but need no decision).
+  const queuedClaimIds = useMemo(() => queue.queued.filter((i) => i.item_type === 'claim').map((i) => i.item_id), [queue])
 
   const saveReviewer = (name, remember = true) => {
     setReviewer(name)
@@ -153,14 +159,14 @@ export default function App() {
     return run(() => analyzeText(documents), runLabel ? `${runLabel} (sửa)` : 'Chạy lại sau khi sửa tuyên bố')
   }
 
-  const handleDecide = async (row, { decision, comment, reviewer_status, override_reason, rule_ref }) => {
+  const handleDecide = async (row, { decision, comment, reviewer_status, override_reason, rule_ref, decisive_chunk_ids = [], decisive_quote = '', reviewer_role = '' }) => {
     if (!runId || !reviewer.trim()) return
     setReviewBusy(true)
     setError(null)
     try {
       await submitReview({
         run_id: runId, claim_id: row.id, reviewer: reviewer.trim(), decision, comment, reviewer_status,
-        override_reason, rule_ref,
+        override_reason, rule_ref, decisive_chunk_ids, decisive_quote, reviewer_role,
         ai_status: row.status, ai_risk_score: row.score, evidence: row.evidence, claim: row.claim,
       })
       await refreshReviews(runId)
@@ -173,13 +179,15 @@ export default function App() {
 
   // ---------- routing ----------
 
+  // A new reviewer lands on step 1; the line "Việc tiếp theo" on each page replaces the tour that used to open first
+  // (the tour is still in the sidebar: Hướng dẫn cho người mới).
   if (!reviewer || seg0 === 'start') {
-    return <StartPage reviewer={reviewer} onStart={(name, remember) => { saveReviewer(name, remember); let seen = true; try { seen = !!localStorage.getItem('gs.guide.seen') } catch { /* không đọc được */ } navigate(route.segments.length && seg0 !== 'start' ? route.path : (seen ? '/new' : '/guide')) }} />
+    return <StartPage reviewer={reviewer} onStart={(name, remember) => { saveReviewer(name, remember); navigate(route.segments.length && seg0 !== 'start' ? route.path : HOME) }} />
   }
   if (!seg0) {
     // StartPage vừa điều hướng (vd. tới /guide lần đầu) nhưng route trong state chưa kịp cập nhật:
     // chỉ chuyển về /new khi đường dẫn thật cũng đang trống, để không ghi đè điều hướng đó.
-    if (!window.location.hash.replace(/^#\/?/, '')) navigate('/new', { replace: true })
+    if (!window.location.hash.replace(/^#\/?/, '')) navigate(HOME, { replace: true })
     return null
   }
 
@@ -192,7 +200,7 @@ export default function App() {
     )
   }
 
-  const openInQueue = queue.queued.filter((i) => i.item_type !== 'claim' || reviewStates[i.item_id] !== 'FINALIZED').length
+  const openInQueue = queue.queued.filter((i) => i.item_type === 'claim' && reviewStates[i.item_id] !== 'FINALIZED').length
   const badges = { queue: openInQueue }
 
   let active = seg0
@@ -212,7 +220,7 @@ export default function App() {
     active = 'new'
     title = 'Tải tài liệu'
     subtitle = 'Chọn báo cáo cần kiểm và tài liệu đối chiếu, rồi chạy'
-    body = <NewAnalysisPage onDone={handleDone} runtime={runtime} />
+    body = <NewAnalysisPage onDone={handleDone} runtime={runtime} onRuntime={setRuntime} />
   } else if (seg0 === 'runs' && !seg1) {
     active = 'runs'
     title = 'Lịch sử phân tích'
@@ -264,6 +272,8 @@ export default function App() {
           index={idx}
           legal={legalById.get(seg3)}
           orgFindings={analysis.result.org_findings == null ? null : (analysis.result.org_findings.find((g) => g.claim_id === seg3)?.findings || [])}
+          precedents={analysis.result.precedents?.[seg3] || []}
+          priority={(analysis.result.priorities || []).find((p) => p.item_id === seg3) || null}
           gates={analysis.result.quality_gates}
           suggestion={suggestionsById.get(seg3)}
           reviewStates={reviewStates}
@@ -276,6 +286,7 @@ export default function App() {
           loading={loading}
           initialTab={route.query.get('tab') || null}
           order={fromQueue ? queueOrder : null}
+          queuedIds={queuedClaimIds}
         />
       )
     })
@@ -296,11 +307,16 @@ export default function App() {
     title = 'Thư viện pháp lý'
     subtitle = 'Văn bản đã đăng ký cho lớp kiểm tra pháp lý'
     body = <LegalLibraryPage />
+  } else if (seg0 === 'feedback') {
+    active = 'feedback'
+    title = 'Học từ phản hồi'
+    subtitle = 'Nhãn của người soát thành bài kiểm, tiền lệ, đề xuất sửa luật và dữ liệu huấn luyện'
+    body = <FeedbackPage reviewer={reviewer} />
   } else if (seg0 === 'settings') {
     active = 'settings'
     title = 'Cài đặt'
     subtitle = 'Chỉ những gì hệ thống thực sự có'
-    body = <SettingsPage reviewer={reviewer} onReviewerChange={(n) => saveReviewer(n)} onForget={() => { saveReviewer(''); navigate('/start') }} />
+    body = <SettingsPage onRuntime={setRuntime} reviewer={reviewer} onReviewerChange={(n) => saveReviewer(n)} onForget={() => { saveReviewer(''); navigate('/start') }} />
   } else {
     title = 'Không tìm thấy trang'
     body = <p className="text-sm text-slate-500">Đường dẫn không hợp lệ.</p>

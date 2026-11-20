@@ -1,0 +1,18 @@
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+{
+  "total_documents": 2,
+  "total_chunks": 2656,
+  "total_claims": 156,
+  "status_counts": {
+    "PARTIALLY_SUPPORTED": 153,
+    "SUPPORTED": 2,
+    "INSUFFICIENT_EVIDENCE": 1
+  },
+  "severity_counts": {
+    "MEDIUM": 150,
+    "LOW": 6
+  },
+  "release_status": "PENDING_HUMAN_REVIEW"
+}
+Evidence pack: .quantum\runs\c68c9cff4841463a/evidence_pack.md
+elapsed_s 191

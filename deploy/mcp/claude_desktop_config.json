@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "greenscan": {
+      "command": "D:\Sinh viên CNhan\AI quantum\docs\greenscan-ai\GreenScan-AI\.venv\Scripts\python.exe",
+      "args": ["-X", "utf8", "-m", "quantum_gw.mcp_server"],
+      "env": {"QUANTUM_PROFILE": "offline", "PYTHONIOENCODING": "utf-8"}
+    }
+  }
+}

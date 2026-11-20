@@ -175,6 +175,10 @@ def test_dense_retrieval_is_switched_on_only_past_both_registered_bars(ma):
 # --- returned workbooks --------------------------------------------------------
 
 def test_the_hpg_queue_and_the_timing_study_come_back_as_numbers(tmp_path, monkeypatch):
+    # The hand-labelling pack is built from a stored HPG run (25/09) that lives in the working copy's
+    # .quantum/runs, which the submitted source zip does not carry: there is nothing to rebuild from.
+    if not (ROOT / ".quantum" / "runs" / "185480a0c8b747c4" / "result.json").is_file():
+        pytest.skip("phiên Hòa Phát 25/09 (185480a0c8b747c4) không có trong bản sao này")
     sys.path.insert(0, str(ROOT / "tools"))
     lp = _load("labeling_pack")
     packs = _load("make_handoff_packs")

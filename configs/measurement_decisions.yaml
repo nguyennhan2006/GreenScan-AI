@@ -316,3 +316,251 @@ claim_quality_v1_and_risk_rubric_v3:
     verdicts: "verdict_on_claims, decisive, edit, rules sections identical to 05/11 -> no verdict change, holds"
     risk: "Spearman 0.389 [0.162, 0.512] -> 0.459 [0.234, 0.588]; mean 49.2 -> 42.6; severity exact 0.473 -> 0.520 -> same as the offline re-score, holds"
     files: "benchmark/gs_eval_v2/results/eval_results.json (05/11 copy: eval_results_guard05nov.json)"
+
+gs_issue_v1:
+  registered: "2026-11-11 09:45"   # before any system (rules or model) read a GS-Issue case
+  worth_check:
+    failure: "D-EDIT (05/11): issue-code macro-F1 0.359; five codes have <= 11 labelled cases and three (FUTURE_AS_ACHIEVED, INTENSITY_VS_ABSOLUTE, ENTITY_SCOPE_AMBIGUOUS) have 0, so 'finds loopholes' cannot be measured per code; fix accuracy is only edit-kind overlap with Claude's edits"
+    decision: "(1) which detector / fixer goes behind a flag in Studio: rules alone, rules + Qwen3-4B (the product reader size), or a larger reader; (2) what GreenScan may say about finding issues and proposing correct fixes"
+    cost: "12 Kaggle notebooks (T4 x2), about 6-9 GPU hours in all; CPU for the rules"
+  data:
+    layer_a: "benchmark/gs_issue/data/layer_a.jsonl, gen_cases.py seed 20261111: 560 single-issue (14 codes x 40), 120 clean (60 change claims + 10 contrast per evidence-dependent code), 60 two-issue; fictional companies; exact code, planted span, reference fix, fix oracle (taxonomy.oracle)"
+    layer_b: "benchmark/gs_issue/data/layer_b_all.jsonl: 1437 real sentences of pool A not in D-EDIT; silver label = Qwen3-14B-AWQ and Qwen3-32B-AWQ agree on the code; human review later"
+    d_edit: "the 200 D-EDIT items, Claude labels (pending human review), as before"
+  systems: "rules = studio.suggest via gs_eval_v2/evaluate.product_suggestions (code state of 2026-11-11, uncommitted work of another session included); q3-4b, q3-8b, q3-14b-awq, q3-32b-awq = benchmark/gs_issue/kaggle/issue_worker.py, one prompt; hybrid = rules U q3-4b with the no-new-number guard applied to model edits"
+  metrics: "per code P/R/F1 with Wilson 95 %; macro-F1 strict and by family; clean false-alarm rate; needs-edit balanced accuracy; fix: resolves (oracle), keeps numbers, invents numbers, correct = resolves and keeps and invents none; per code; bootstrap by sector (layer A) / company (B, D-EDIT)"
+  predictions_layer_a:
+    rules: "macro-F1 strict <= 0.40; recall 0 on HIDDEN_TRADEOFF, INTENSITY_VS_ABSOLUTE, ENTITY_SCOPE_AMBIGUOUS, FUTURE_AS_ACHIEVED, IRRELEVANT_CLAIM (outside its vocabulary); invented numbers 0"
+    q3_4b: "macro-F1 strict >= rules + 0.10; clean false-alarm rate >= 0.20; invents a number in >= 1 % of fixes"
+    q3_32b: "the highest macro-F1 of the five systems; fix correct >= 0.60 on single-issue cases"
+    hybrid: "macro-F1 >= max(rules, q3_4b) - 0.02, invented numbers 0 (guard), clean false-alarm rate <= q3_4b's"
+  say_if: "a system's per-code recall lower bound >= 0.70 on a code -> 'finds <code> on controlled cases'; fix correct lower bound >= 0.70 -> 'proposes a correct fix'. Layer A numbers are controlled cases and are said so; layer B / D-EDIT numbers are silver / Claude labels until a human reviews them"
+  falsified_if: "q3_4b macro-F1 < rules + 0.10 -> the 4B reader does not go behind a flag for issue finding; hybrid invents a number -> guard is broken, fix before anything else"
+  result:   # scored 2026-11-11 by benchmark/gs_issue/ingest.sh -> results/score_issue.json, SCORE_ISSUE.md (make_figs skipped: matplotlib not installed)
+    layer_a_macro_f1: "rules 0.272 [0.255, 0.285]; q3-4b 0.439 [0.408, 0.470]; q3-8b 0.474; q3-14b-awq 0.530; q3-32b-awq 0.618 [0.599, 0.633]; hybrid 0.491 [0.466, 0.511] (CI by sector bootstrap)"
+    clean_false_alarm: "rules 1.0, q3-4b 0.75, q3-8b 1.0, q3-14b 0.917, q3-32b 0.833, hybrid 1.0"
+    fix_correct_single: "rules 0.529 (best), q3-32b 0.47, q3-4b 0.166; model edits that write a new number are removed by the guard (+guard rows)"
+    d_edit: "needs-edit: q3-4b 0.244 vs rules 0.261"
+    layer_b: "q3-4b 0.20, q3-8b 0.357, rules 0.127 (silver, Claude labels)"
+    verdicts:
+      rules: "HELD (0.272 <= 0.40)"
+      q3_4b: "HELD (0.439 >= 0.372; clean false-alarm 0.75 >= 0.20)"
+      q3_32b: "HALF: highest macro-F1 HELD; fix correct 0.47 < 0.60 FALSIFIED"
+      hybrid: "HALF: macro-F1 0.491 >= 0.419 HELD; clean false-alarm 1.0 > q3-4b 0.75 FALSIFIED"
+      falsified_if: "not met: the 4B reader passes rules + 0.10 on layer A"
+    say: "on controlled cases a model finds more issue types than the rules (best 32B 0.618 vs 0.272) but the rules still propose the most correct fixes; no model goes behind a flag for fixes"
+
+independent_support_v1:
+  registered: "2026-11-11 15:00"   # AFTER the offline replay below was computed (known_before); BEFORE the GS-Bench rerun and the end-to-end GS-Eval v2 refresh with the flag on
+  worth_check:
+    failure: "GS-Eval v2 (05/11): all 5 SUPPORTED verdicts on the 146 labelled sentences are wrong (reference: 2 NOT_A_CLAIM, 3 PARTIALLY_SUPPORTED); decisive precision 0.333. Each rests on another document of the same company restating the sentence (annual report vs sustainability report)"
+    decision: "whether verification.support_requires_independent_source goes on by default for the Vong 2 submission (20/11)"
+    cost: "CPU only: replay (seconds), GS-Bench v1 453 cases (about 1 min), GS-Eval v2 end-to-end refresh (about 30-40 min)"
+  rule: "SUPPORTED needs a confirming passage (a figure that agrees, or a cue sentence naming the metric and every stated period and scope) whose source_type is legal, external or standard (verifier.INDEPENDENT_SOURCE_TYPES, the set Studio already used). A confirming passage only from the company's own documents (internal, financial, environmental) gives PARTIALLY_SUPPORTED with the reason 'Chỉ tài liệu khác của chính doanh nghiệp xác nhận tuyên bố ...'. Passage stances, CONTRADICTED and every other branch are unchanged"
+  known_before:   # benchmark/gs_eval_v2/replay_support_guard.py -> results/replay_support_guard.json
+    replay_consistency: "the replay with the flag off reproduces 1276/1276 stored verdicts (runs created from 2026-11-09)"
+    explain_146: "decisive 9 -> 4; precision vs reference 0.333 -> 0.75; false SUPPORTED 5 -> 0; SUPPORTED 5 -> 0, PARTIALLY_SUPPORTED 89 -> 94; CONTRADICTED 4 unchanged"
+    pool: "8 verdicts change, all SUPPORTED -> PARTIALLY_SUPPORTED on an internal echo (HPG annual + sustainability report 5, Coteccons 3). 16 SUPPORTED kept, all on pasted evidence declared external in demo/test runs of fictional companies. No real-company run of GS-Eval v2 has a legal/external/standard document, so real-company SUPPORTED becomes 0"
+  predictions:
+    gs_bench_v1: "453/453 labels identical to experiments/AG-0/out/rules_2026-11-09_cq1.jsonl (GS-Bench evidence is declared external, so the guard never fires)"
+    gs_eval_v2_end_to_end: "the verdict section equals the replay: decisive 4, precision 0.75, false SUPPORTED 0; no other verdict changes"
+    tests: "full suite passes (tests/test_independent_support.py covers the rule)"
+  falsified_if: "any GS-Bench label changes, or the end-to-end refresh differs from the replay -> the replay is not the product; find why before the flag goes on"
+  cost_to_say: "with the flag on GreenScan says 'Được ủng hộ' only when a source the company did not write agrees. The decisive rate falls (9/146 -> 4/146). That is the honest number until independent documents (assurance statements, regulator data, legal texts) are in the corpus"
+  result_2026_11_11_gs_bench:   # experiments/AG-0/out/rules_2026-11-11_support_guard.jsonl
+    gs_bench_v1: "453/453 labels identical to rules_2026-11-09_cq1.jsonl with the flag on -> holds"
+    tests: "tests/test_independent_support.py 6 passed; full suite: see DIEM_YEU_2026-11-11.md"
+    pending: "gs_eval_v2_end_to_end (not run: it rewrites inputs/system_outputs_current.jsonl and results/eval_results.json, which another session reads today); the flag stays off until it is read"
+  caveat: "independence is the source type declared at upload (role column); a company document declared 'external' passes the guard"
+  commands: |
+    replay:   .venv/Scripts/python.exe benchmark/gs_eval_v2/replay_support_guard.py
+    gs_bench: QUANTUM_SUPPORT_REQUIRES_INDEPENDENT_SOURCE=1 GS_RULES_OUT=experiments/AG-0/out/rules_2026-11-11_support_guard.jsonl .venv/Scripts/python.exe -I experiments/AG-0/run_rules.py
+    gs_eval:  QUANTUM_SUPPORT_REQUIRES_INDEPENDENT_SOURCE=1 .venv/Scripts/python.exe benchmark/gs_eval_v2/run_refresh_cq1.py, then run_extra_cq1.py (same flag); GS_CURRENT_FROM=<start of those runs> refresh_system_outputs.py; evaluate.py
+
+claim_quality_v1_1:
+  registered: "2026-11-11 15:30"   # after the development read below (in-sample); BEFORE the HPG end-to-end run with the rule
+  worth_check:
+    failure: "HPG queue #1 (runs of 09/11 and 11/11 04:01Z): 'HÒA PHÁT trò nền tảng …' -- the reader set the running title between 'đóng vai' and 'trò'; the sentence is not a claim and is the first thing a judge opens"
+    decision: "whether starts_with_glued_heading joins suspect_reason (layout_glue) for the submission"
+    cost: "CPU only, one HPG run (about 3 min)"
+  rule: "two or more all-caps words at the start, then a lowercase word that is not a predicate starter (đã, đang, cam, giảm, tăng, …) -> layout_glue (mark, never remove: verdict kept, out of queue and risk score, as v1)"
+  development_numbers:   # scratch read of all claims of runs created from 2026-10-22
+    pool_unique_claims_1276: "fires on 3, all glue read by hand: 'MÔI TRƯỜNG nhóm thép …' (HPG p9), 'HÒA PHÁT trò nền tảng …' (HPG p20), 'KEY PROJECTS equivalent in 2023 …' (p25); 0 true claims"
+    gs_eval_v2_items: "0 labelled explain/score items fire, so no GS-Eval v2 number can move"
+  predictions:
+    verdicts: "no verdict changes (GS-Bench 453/453 identical; flag does not touch the verifier)"
+    queue_hpg: "'HÒA PHÁT trò …' leaves the 9-item queue; no flagged or glued sentence in the queue; flagged on HPG <= 10 % of claims"
+  falsified_if: "a true claim among the sentences it marks on any company -> drop the rule or tighten the predicate list"
+  result_2026_11_11_hpg:   # run d1d8e3e9ae65491f (offline, HPG SR + AR)
+    queue_hpg: "'HÒA PHÁT trò …' flagged layout_glue and out of the queue; queue #1 is the 'tự chủ điện năng' claim (p7); 0 flagged or glued sentences in the queue -> holds. The queue has 8 items, not 9: _queue_size counts items above a score threshold, so a removed item is not replaced"
+    verdicts: "153 P / 2 S / 1 I, same as 09/11 -> holds; GS-Bench 453/453 identical (rules_2026-11-11_support_guard.jsonl, run with this rule in place) -> holds"
+    flagged_hpg: "3/156 (layout_glue: 'MÔI TRƯỜNG nhóm thép …', 'VIỆT NAM (VSA) …', 'HÒA PHÁT trò …') <= 10 % -> holds"
+
+llm_stages_v1:
+  registered: "2026-11-11 16:45"   # BEFORE any model read the S2 / S5 / S6 sets; rules baselines below were computed first (known_before)
+  why: "user decision 11/11: this session measures every stage and integrates language models where they add to the rules; each stage gets its own prompt (per model family) or its own training"
+  plan: C:/Users/ASUS/.claude/plans/bubbly-gliding-bubble.md (summary in docs/04-data-ai/LLM_STAGES_2026-11.md)
+  labels: "GS-Eval v2 explain, Claude two passes + adjudication, pending human review: every number is silver"
+  sets: "benchmark/llm_stages/build_sets.py -> data/s5_pairs.jsonl (391 pairs of 133 claims: S 137 / C 7 / O 247), s2_attrs.jsonl (200 sentences, 133 claims), s6_explain.jsonl (142 items the current code extracts)"
+  prompts: "src/quantum_gw/assist/prompts.py: stance-v3 / attr-v1 / explain-v1 for the large family (gpt-oss-120b, Qwen3-32B, GLM-5.2), stance-s1 / attr-s1 / explain-s1 for the small family (Qwen3-4B / 8B); one prompt per family, no tuning on these sets after this registration"
+  readers:
+    small: "Qwen3-4B-Instruct-2507 and Qwen3-8B, vLLM bf16 on Kaggle T4 (the offline product runs the 4B as Q4 GGUF via Ollama: parity 0.963 on G, agentic_ag2_product)"
+    large: "Qwen3-32B-AWQ on Kaggle for every set; Groq openai/gpt-oss-120b (the cloud product reader) on a fixed subset, because the free tier allows 8,000 tokens per minute: s5 first 120 pairs by id, s2 first 60, s6 first 40"
+  known_before:   # benchmark/llm_stages/score.py <stage> rules=-
+    s5_rules: "macro-F1(S,O) 0.397 [0.359, 0.420]; S precision 0.333 recall 0.007; false C 0 / 391; C found 6/7"
+    s2_rules: "missing-attribute F1 macro 0.578 [0.557, 0.600]: metric 0.0, value 0.94, period 0.949, baseline 0.947, scope 0.053 (n 102 claims still extracted)"
+    s6_rules: "must-mention proxy 0.015 [0, 0.029]; 0 new numbers; 36.4 words"
+    s4_laptop: "Qwen3-4B Q4 on the i7-1355U, warm: 24-26 s per sentence (5 tokens/s out, num_ctx 2048, 2.6 GB RAM free)"
+    s1_t1: "e5-base CV macro-F1 0.726 [0.690, 0.764] vs rules 0.355 on 1,217 T1 sentences (benchmark/t1_kaggle/report_v3.json); 6 of the 200 GS-Eval sentences are in the T1 training set (16 by 60-char prefix), 6 GS-Eval companies are T1 companies"
+  predictions:
+    s5_stance:
+      q3-32b-awq: "macro-F1(S,O) >= rules + 0.15 (>= 0.55), CI low > 0.42; false C <= 4 / 391"
+      gpt-oss-120b_subset: "same direction as 32B on the 120 pairs; false C <= 2 / 120"
+      q3-4b: "macro-F1(S,O) > rules (CI low > 0.40); false C <= 8 / 391"
+      q3-8b: "between 4B and 32B"
+    s2_attributes:
+      q3-32b-awq: "missing-F1 macro >= 0.70 (metric and scope >= 0.40 each); non-verbatim spans are dropped by code, reported as a count"
+      q3-4b: "missing-F1 macro >= 0.62"
+      not_a_claim: "is_claim false catches >= 30 / 67 non-claims with <= 10 / 133 true claims flagged (32B)"
+    s6_explain:
+      q3-32b-awq: "must-mention proxy >= 0.15; 0 explanations kept with a new number (code drops them); <= 5 unparsed"
+      q3-4b: "must-mention proxy >= 0.08; new numbers caught by code"
+    s4_dual_reader:
+      laptop: "HPG runtime ratio with QUANTUM_VERIFY=dual and the local 4B > 2.0 -> laptop part of gate ag2_dual_path_to_product FAILS (only the claims with a figure are read, still > 100 sentences at ~25 s)"
+      traps_invariants: "17/17 green traps and the invariant tests pass with dual on (the reader can only add a reviewer note)"
+    s1_claim_model:
+      e5: "trained on T1 minus the 16 overlapping sentences: flags >= 22 / 44 NOT_A_CLAIM among the extracted GS-Eval sentences, <= 6 / 102 true claims flagged"
+  gates:   # a stage goes behind its flag in the product only when
+    s5: "macro-F1 CI low > rules point (0.397) AND false C per 100 <= rules + 1; llm_stance_decisive stays false"
+    s2: "missing-F1 macro CI low > 0.578 AND every kept span verbatim (by code)"
+    s6: "must-mention proxy CI low > 0.015 AND 0 kept explanations with a new number; shown beside the rules rationale, never replacing it"
+    s4: "ag2_dual_path_to_product, unchanged"
+    s1: "mark only (claim-quality), never remove; true claims flagged <= 6 / 102"
+  falsified_if: "a stage model below its rules baseline on the primary metric -> the stage keeps rules only and the slide says so"
+  amendment_2026-11-11_17h05:   # BEFORE any dual run of the product; counts below come from the stored HPG run d1d8e3e9ae65491f
+    s4_scope: "the dual reader reads the claims of the review queue only (after prioritisation), not every claim: on HPG 149 texts for all 49 claims with a figure vs 16 texts for the 3 queued claims with a figure. Base HPG runtime 104 s"
+    s4_projection: "laptop 25 s/text: all = +62 min, queue = +6.7 min (ratio ~4.8, FAILS <= 2.0); T4 1.7 s/text: queue = +27 s (ratio ~1.3, passes); Groq ~1-2 s/call: queue passes"
+    s4_prediction: "offline laptop: runtime part of ag2_dual_path_to_product fails -> dual stays off in the offline profile; gpu / cloud profiles: runtime part passes with queue scope"
+  results:   # filled as each reader returns; silver labels throughout
+    s1_claim_model:   # benchmark/llm_stages/kaggle_out/s1/out (Kaggle anhkieeu/gs-llm-stages-s1-train, T1 minus 12 overlapping sentences)
+      at_0.5: "e5-small: NOT_A_CLAIM caught 28/44 (recall CI [0.513, 0.756]), true claims flagged 26/102; e5-base: 31/44 caught, 27/102 flagged. Rules claim-quality on the same sentences: 11/44, 1/102"
+      sweep_post_hoc: "no threshold meets <= 6/102: e5-small 0.95 -> 16/44 caught, 11/102 flagged; e5-base 0.95 -> 25/44, 19/102 (exploratory, not a registered threshold)"
+      verdict: "catch part HELD (28 >= 22), safety part FALSIFIED (26 > 6). Gate s1 not met -> QUANTUM_CLAIM_MODEL stays empty; rules claim-quality only"
+      why_likely: "T1 labels 'claim' more narrowly than GS-Eval: the model flags table-like sentences with a figure that GS-Eval counts as claims (to read before any retraining)"
+    s5_stance:
+      gpt-oss-120b_subset: "n 120 (first by id): macro-F1(S,O) 0.688 [0.659, 0.730] vs rules 0.404 [0.352, 0.422] on the same pairs; S precision 0.727 recall 0.432; false C 2/120 (1.67 per 100) vs rules 0; C found 2/2"
+      false_c_read: "both false C are numbers compared by the model inside a broken table row (0.03 % vs 4.5 % renewable share; 10 % vs 2.9 % shells reused): arithmetic the product leaves to code"
+      verdict_gpt-oss-120b: "prediction HELD (false C 2 <= 2). Gate s5 FALSIFIED on its safety part: 1.67 per 100 > rules 0 + 1. Usefulness part passes (CI low 0.659 > 0.397)"
+    s2_attributes:
+      gpt-oss-120b_subset: "n 60 sentences (39 the model calls claims): missing-F1 macro 0.594 [0.555, 0.624] vs rules 0.594 [0.533, 0.642] on the same sentences; baseline 1.0 vs 0.955, period 0.925 vs 0.964, scope 0.108 vs 0.143; 10 non-verbatim spans dropped by code; is_claim false: 17 right, 16 true claims flagged"
+      verdict_gpt-oss-120b: "no gain over rules; gate s2 FALSIFIED (CI low 0.555 < 0.578)"
+    s4_dual_reader:
+      traps_invariants: "HELD: tests/test_verdict_traps.py + test_architecture_invariants.py + test_llm_stages.py, 72 passed with QUANTUM_VERIFY=dual, QUANTUM_ASSIST_EXPLAIN=queue, QUANTUM_ASSIST_ATTRIBUTES=1"
+    s6_explain:
+      guard_fix_17h15: "AFTER reading the v1 gpt-oss output, BEFORE any quality read: the number guard counted page numbers and file names the prompt itself shows as new numbers (40/40 blocked). Fixed in assist/stages.py and score.py: a passage's source name and page count as sources. must-mention proxy does not use the guard, so it is unaffected"
+      gpt-oss-120b_v1_subset: "n 40: must-mention proxy 0.215 [0.151, 0.261] vs rules 0.008 [0, 0.022] on the same items; 2/40 with a number nobody wrote (a cut file id '072', '5 năm'), dropped by code; 126.6 words vs 38.1"
+      ui_language_17h20: "v1 text names attributes in English (metric, baseline) and copies hashed file ids, against the Vietnamese-only UI rule -> explain-v2 / explain-s2: attribute names given in Vietnamese, no file ids. Re-run on the same 40 (gpt-oss) because the change is wording for the UI, not a tuning to the metric"
+      gpt-oss-120b_v2_subset: "explain-v2, same 40: must-mention proxy 0.356 [0.240, 0.466]; 2/40 with a new number (dropped by code); English field names outside quotes 1/40 (v1 37/40); hashed file ids 5/40 (v1 33/40), replaced by 'tài liệu' in code (assist/stages.FILE_ID); 155.5 words"
+      kaggle_full_set_explain-v1_s1: "n 142: q3-4b 0.140 [0.114, 0.172], 0 new numbers; q3-8b 0.016 [0.006, 0.028], 1 new number, 1 empty; q3-32b-awq 0.210 [0.186, 0.234], 0 new numbers; rules 0.015 [0, 0.029]. English field names: 4B 81/142, 32B 26/142 (the reason for explain-v2 / s2)"
+      verdicts: "q3-32b HELD (0.210 >= 0.15), q3-4b HELD (0.140 >= 0.08), q3-8b below its family's 4B (not predicted). Gate s6 MET by q3-4b, q3-32b and gpt-oss (CI low > 0.015, 0 kept with a new number); NOT met by q3-8b"
+    s5_stance_kaggle:   # benchmark/llm_stages/kaggle_out/gs-llm-stages-{small,large}, stance-s1 / stance-v3 (unfenced), bf16 / AWQ vLLM
+      full_set: "n 391: rules 0.397 [0.359, 0.420], false C 0; q3-4b 0.605 [0.561, 0.649], S P/R 0.613/0.336, false C 3 (0.77/100), C found 3/7; q3-8b 0.617 [0.597, 0.627], false C 0, C found 3/7; q3-32b-awq 0.575 [0.509, 0.616], false C 2 (0.51/100), C found 4/7 (rules 6/7)"
+      verdicts: "q3-32b HELD (0.575 >= 0.55, CI low 0.509 > 0.42, false C 2 <= 4); q3-4b HELD (CI low 0.561 > 0.40, false C 3 <= 8). Gate s5 MET by q3-4b, q3-8b and q3-32b; NOT met by gpt-oss-120b (false C 1.67/100 on its 120)"
+      caveat: "the models find fewer of the 7 true contradictions than the rules (3-4 vs 6): the stance model only reaches pairs the rules leave undecided, so the rules' C stay; the product prompt is the fenced variant (stance-s1f) on Q4 -> parity read on the laptop (benchmark/llm_stages/run_ollama.py, ollama_out/)"
+    s2_attributes_kaggle:
+      full_set: "missing-F1 macro: rules 0.578 [0.557, 0.600]; q3-4b 0.566; q3-8b 0.573; q3-32b-awq 0.570 [0.551, 0.587]; non-verbatim spans dropped 13 / 156 / 23; is_claim=false flags 25-63 right but 76-114 true claims flagged"
+      verdicts: "q3-32b FALSIFIED (0.570 < 0.70), q3-4b FALSIFIED (0.566 < 0.62), not_a_claim FALSIFIED (76 > 10). Gate s2 NOT met by any reader -> QUANTUM_ASSIST_ATTRIBUTES stays off; falsified_if applies: rules only, the slide says so"
+    s4_runtime:
+      laptop: "HPG end-to-end, offline profile, same day: base 191 s (run c68c9cff4841463a; the reader did not run, see bug) vs dual 537 s (run 119b8ad6df2f4fd5): ratio 2.81 > 2.0 -> runtime part FAILS as predicted. 8 queued claims, 3 with a figure read, 13 passages; 0 statuses and 0 risk scores changed; the reader agreed N on 12, said N where rules said S on 1 (no warning: dual keeps the rules' S only when not alone)"
+      bug_found: "OllamaProvider had no bind_model: routing.yaml's per-task model (qwen3:4b) was ignored and .env's local model used; and .env sets LOCAL_LLM_PROVIDER=openai_compatible with no URL, so no local model is configured in the shipped demo. Fixed in providers/ollama.py (+ test); the measurement run sets LOCAL_LLM_PROVIDER=ollama in its environment only"
+      verdict: "gate ag2_dual_path_to_product: traps / invariants pass, runtime fails on the laptop -> QUANTUM_VERIFY stays rules in the offline profile; gpu / cloud runtime is a projection, not measured"
+    product_parity:   # the product's own prompts on the product's own runtime: laptop Ollama qwen3:4b-instruct-2507-q4_K_M, num_ctx 4096, json, T 0 (benchmark/llm_stages/run_ollama.py -> ollama_out/); scored with score.py --on= on the same ids
+      s5_stance_s1f: "120 pairs (the gpt-oss subset): rules macro-F1(S,O) 0.404, Kaggle 4B bf16 stance-s1 0.630 (false C 0), laptop 4B Q4 stance-s1f 0.683 [0.597, 0.822] with false C 2 (1.67 / 100, C found 1/2). 33.7 s per pair"
+      s5_verdict: "usefulness part passes; safety part FAILS on the product configuration (1.67 > rules 0 + 1), like gpt-oss on the same 120. The bf16 pass does not carry over to Q4 + fence -> QUANTUM_LLM_STANCE stays off in every profile until a reader passes on the product configuration; ~700 pairs per HPG run at 34 s is ~6.6 h on the laptop anyway"
+      s6_explain_s2: "40 items: rules 0.008, Kaggle 4B bf16 explain-s1 0.140 [0.049, 0.24], laptop 4B Q4 explain-s2 0.079 [0.044, 0.138]; 1 raw output with a new number (dropped by the guard, 0 kept); 0 English field names; 13 / 40 raw outputs copy a hashed file name, all replaced by 'tài liệu' in stages.py before display. 81 s per item"
+      s6_verdict: "gate s6 MET on the product configuration (CI low 0.044 > 0.015, 0 kept with a new number), at about half the bf16 score. Runtime: queue only (8 HPG claims) ~11 min on the laptop -> off by default in the offline profile, QUANTUM_ASSIST_EXPLAIN=queue allowed as an opt-in; on in the gpu / cloud profiles"
+    s4_runtime_gpu_kaggle:   # experiments/AI-RUN (Kaggle diuquinh/gs-ai-run-hpg, T4, Ollama qwen3:4b-instruct-2507-q4_K_M), 11/11 18:10-18:28
+      result: "HPG same machine: rules 159.9 s (run 759eaa3583dd4d78) vs S5 on_ambiguous + S4 dual + S6 queue 678.4 s (run ad323c772d064015): ratio 4.24 > 2.0 -> amendment_2026-11-11_17h05.s4_prediction (gpu passes) FALSIFIED for this stage mix; S5 reads all 713 undecided pairs, not only the queue (739 Ollama calls)"
+      effect: "8 vague claims PARTIALLY_SUPPORTED -> INSUFFICIENT_EVIDENCE (model said the similar passages do not support them), 8 risk scores changed, 0 new SUPPORTED or CONTRADICTED; dual 13 passages (12 N->N, 1 S->N); 8 explanations kept for the 8 queued claims"
+      evaluate_real: "identical in both arms: status 4/4, stance 1.0, risk band 0.25"
+      product: "flags stay default off (D-2026-10-16-01); the AI run is a stored, labelled run the UI reopens, with its LLM cache in .quantum/llm_cache_kaggle_ai_run"
+
+offline_training_v1:
+  registered: "2026-11-13 09:05"   # before any model below was trained or scored; Q13 relabel and pair labels known, no model output
+  why: "user decision 13/11: train every model of the fully offline product on Kaggle (phương án 1) and ready a self-hosted A100 on vast.ai (phương án 2); one bundle deploy/vastai_a100 (tools/build_gpu_bundle.py) serves both"
+  labels: "silver throughout: T1 = Claude codebook v1.1 + Q13 v1.2 relabel (31 of 164 table rows become claims, training/data/claude/q13); pairs = Claude passes A/B + adjudication (CAP v1.0), the user reviews them later. lift_guard stays closed on these labels (model_selection_v2 lift_guard: never on Claude labels)"
+  t1_claim_detector:
+    candidates: "e5-small, e5-base × loss ce (11/11 recipe) | wce (class-weighted CE ∝ 1/sqrt(freq) + label smoothing 0.05); out-of-company 5-fold CV + fit on all, 2 seeds"
+    prediction: "Q13 v1.2 lowers true claims flagged at 0.5 below 26/102 for e5-small, but gate s1 (<= 6/102 with >= 22/44 caught) still FAILS: most of the 26 are not table rows"
+    gate: "llm_stages_v1 s1, unchanged"
+  stance_encoder:
+    model: "MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7 fine-tuned, 4 relations (SUPPORTS / PARTIAL / CONTRADICTS / CONTEXT), class-weighted CE, temperature scaling on out-of-fold logits"
+    metrics: "pairs: out-of-company 5-fold macro-F1 (4 relations), precision CONTRADICTS / SUPPORTS; S5 (391, external): macro-F1(S,O) with PARTIAL counted as S, false C per 100; CPU ms per pair"
+    prediction: "pairs CV macro-F1 > zero-shot nli-mdeberta on the same pairs; S5 macro-F1(S,O) >= 0.45 (rules 0.397) with false C <= rules + 1 per 100"
+    gate: "offline stance behind a new flag, default off: S5 macro-F1(S,O) CI low > 0.397 AND false C per 100 <= rules + 1 AND <= 300 ms per pair on the i7-1355U"
+  reranker:
+    model: "Alibaba-NLP/gte-multilingual-reranker-base fine-tuned, listwise softmax CE (1 positive relevance 2 vs up to 7 negatives)"
+    metrics: "within the labelled pool, per claim, out-of-company 5-fold: nDCG@5, MRR@5, recall@5 against the lite order and the zero-shot reranker"
+    prediction: "Δ nDCG@5 vs lite >= +0.05 with CI low > 0"
+    gate: "model_selection_v2 keep_reranker_if (Δ nDCG@5 lower bound > 0) AND laptop time ratio <= 2.0"
+  explanation_4b:
+    teacher: "Qwen3-32B-AWQ (vLLM, T4 × 2), prompt explain-v2, greedy; answers kept only if parsed, 12-140 words, no new number"
+    student: "Qwen3-4B-Instruct-2507 + LoRA r 16 (token CE on the answer only), prompt explain-s2; merged and exported to GGUF Q4_K_M for Ollama"
+    prediction: "S6 must-mention proxy of the student >= base 4B + 0.05 on the same run, 0 explanations with a new number kept"
+    gate: "replaces the base 4B in profiles that use S6 when the student is higher on the point estimate, has 0 kept new numbers, and its Q4 GGUF on the laptop stays within 0.03 of the Kaggle score"
+  results:   # silver labels throughout; explanation of every failed gate: docs/04-data-ai/GIAI_THICH_TRUOT_2026-11-13.md
+    t1_claim_detector:   # phanththui/gs-off-t1-q13, 13/11 10:3x
+      cv_macro_f1: "e5-small ce 0.584 · e5-small wce 0.720 · e5-base ce 0.743 · e5-base wce 0.732 (out-of-company 5-fold)"
+      s1_gate_at_0.5: "caught / flagged: small-ce 25/23 · small-wce 26/21 · base-ce 30/25 · base-wce 27/24 (11/11: 28/26, 31/27)"
+      best_low_fpr: "small-wce @0.9 11/44 caught, 7/102 flagged; base-wce @0.9 15/44, 8/102; no threshold of any run meets 22/44 with <= 6/102"
+      verdict: "prediction HELD (fewer flagged than 26, gate still fails). Gate s1 FALSIFIED again: binormal d' median 0.89 (AUC 0.74) vs 1.565 needed (AUC 0.87); QUANTUM_CLAIM_MODEL stays empty"
+      cpu_ms_per_sentence: "e5-small 34-37, e5-base 105-106 (Kaggle CPU, 4 threads)"
+    stance_encoder:   # quynhnhu82/gs-off-pairs-v2 (stance part completed, reranker part crashed, notebook deleted)
+      pairs_cv: "macro-F1 0.350 [0.319, 0.380] vs zero-shot NLI 0.356, rules 0.260; Cohen kappa 0.03; lift SUPPORTS 1.51, PARTIAL 1.06"
+      s5: "macro-F1(S,O) 0.536 [0.499, 0.566], false C 0; rules on the same mapping (PARTIAL = S) 0.558 [0.430, 0.613], false C 0"
+      cpu_ms_per_pair: 632.6
+      verdict: "gate NOT met: latency 633 > 300 ms; the 0.397 bar was the rules under llm_stages' mapping, like-for-like the model is below the rules. Not used. Cause: the NLI head was re-initialised (4 classes), kappa ~0"
+    explanation_teacher:   # nngocnh/gs-off-explain-teacher
+      teacher_32b: "996 prompts -> 939 kept (50 length, 6 new number, 1 unparsed); 3142 s, 56.7 tokens/s on T4 x 2"
+      s6_teacher_32b: "must-mention proxy 0.214 [0.182, 0.249], 3 with a new number before the code guard, 116.8 words"
+  amendment_2026-11-13_11h00:   # before any reranker result was seen
+    reranker: "gte-multilingual-reranker-base crashed twice inside its remote code (CUDA device-side assert); replaced by BAAI/bge-reranker-v2-m3 (standard XLM-R, the product's FPT reranker), MAX_LEN 384, gradient checkpointing. Metrics and gate unchanged"
+    stance_encoder_nli_head:   # phanththui/gs-off-stance-nli-head (S+P -> entailment, CONTEXT -> neutral, max_len 256)
+      pairs_cv: "2-class macro-F1 0.523 [0.478, 0.571] vs the same checkpoint zero-shot 0.587, rules 0.409; kappa 0.05; temperature 3.0"
+      s5: "macro-F1(S,O) 0.580 [0.503, 0.619] vs rules 0.558 [0.430, 0.613]; false C 0"
+      cpu_ms_per_pair: "fp32 461 · dynamic int8 420 (argmax agrees with fp32 on 75%)"
+      verdict: "gate NOT met (latency 461 > 300; S5 gain over rules inside the interval). Fine-tuning overfits (train loss 0.25, below zero-shot out of fold). Next: zero-shot + linear probe (gs-off-stance-nli-probe, pushed 11:08 before any of its result)"
+    label_facts: "SUPPORTS 63 of which 42 lap_lai (repeats); 78 CONTEXT pairs are supportive text demoted by R3/R7 (eta 0.29 on the supportive region)"
+
+prompt_router_v1:
+  registered: "2026-11-13 11:40"   # before the router data exists in full and before any router model is trained
+  why: "D-2026-11-13-01: a small model maps a user request to {in_scope, oos_category, tasks, slots}; out of scope -> warning and stop"
+  labels: "Claude-written requests (training/data/claude/router): train 840 in + 540 out, companies A; test 210 in + 135 out, companies B (disjoint), written blind to train; train rows within Jaccard 0.6 of a test row are dropped. Silver: the team reviews the test set"
+  models:
+    rules: "assist/scope_guard.rules_route (baseline, also the product's floor)"
+    gate: "multilingual-e5-small, 8 sigmoid outputs (out + 7 tasks), BCE; stop if P(out) >= tau or max task prob < tau_task, taus chosen on dev for OOS recall >= 0.98"
+    planner: "Qwen3-0.6B + LoRA (token CE on the JSON answer); JSON parsed and validated by code"
+  metrics: "OOS recall (primary safety: out-of-scope requests that get through), false refusal of in-scope requests, need_info accuracy, task micro/macro-F1, slot exact match (claim, company, year), JSON validity; company-cluster bootstrap on test"
+  predictions:
+    gate: "OOS recall >= 0.97 with false refusal <= 0.05"
+    planner: "task macro-F1 >= 0.85, claim slot exact match >= 0.80, JSON valid >= 0.99"
+    combined: "rules OR gate OR planner says out -> OOS recall >= 0.99, false refusal <= 0.10"
+  gate_for_use: "MCP / harness use a model only if its OOS recall CI low >= 0.95 on test and false refusal <= 0.10; the product flag QUANTUM_PROMPT_ROUTER stays default off (D-2026-10-16-01)"
+  known_before:   # tools/router_rules_baseline.py on the test set, 13/11 ~11:50, before any router model was trained
+    rules: "OOS recall 0.659 [0.585, 0.741] (46/135 out-of-scope requests get through: write/embellish 8, non-environmental 8, other domain 6, coding 5, creative 5, investment 4, legal 4, injection 4, personal 2); false refusal 0.176; decision accuracy 0.716; task macro-F1 0.670; claim slot exact 0.752"
+  note_2026-11-13_11h45: "D-2026-11-13-03: PA2 (rented A100 / external vLLM) rejected for lack of funds; every model above is judged for the offline laptop (PA1) only"
+
+claim_quality_v1_2:
+  registered: "2026-11-17 23:30"   # rules written from the HPG queue of run d4cf4018876947ca (page-regions-v1), then checked once on the labelled sets below
+  worth_check:
+    failure: "after page-regions-v1 the HPG queue (12 claims) still held 4 non-claims a judge opens first: a GRI table row (p104), headings read in a row (p99), a cut sentence (p11), a bullet list read as one sentence (p33)"
+    decision: "whether list_glue / unit-before-number / repeated heading / fragment join suspect_reason for the Vong 2 submission (mark, never remove)"
+    cost: "CPU only; one HPG run"
+  rule: "bullet glyph between items -> list_glue; a unit in front of its number twice (Tấn 933.876) or the same six words again restarting like a heading with no punctuation in between -> layout_glue; no closing punctuation, no digit, last word hanging on và/hoặc -> fragment"
+  check_numbers:
+    gs_eval_v2_200: "non-claims flagged 14/67 -> 17/67; true claims flagged 1/133 -> 1/133 (a first version of the repeat rule flagged 2 more true claims and was tightened)"
+    gs_claims_v1_150: "non-claims flagged 11/92 -> 11/92; true claims flagged 6/58 -> 6/58 (LLM labels)"
+    pool_runs_since_15_11_293: "12 new fires, all read by hand as glue, lists or fragments; the 4 HPG queue items above among them"
+  predictions:
+    verdicts: "no verdict changes (the flag does not touch the verifier): GS-Bench 453/453 identical"
+    queue_hpg: "the 4 items leave the queue; the wastewater claim stays in it"

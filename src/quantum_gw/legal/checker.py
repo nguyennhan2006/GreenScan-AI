@@ -55,6 +55,12 @@ CLAIM_TYPE_TO_ISSUE = {
     # DWS-2023 were charged under.
     "esg_process_integration": "disclosure",
     "generic_sustainability": "green_taxonomy",
+    # claim-typing-v2 fallbacks (15/11/2026): use of water/energy is an environmental-protection matter;
+    # a bare disclosed figure is a disclosure question.
+    "resource_use": "environmental_protection",
+    "metric_disclosure": "disclosure",
+    "environmental_compliance": "environmental_protection",
+    "greening": "environmental_protection",
     # Referenced by rule-pack claim_types filters.
     "green_project": "green_taxonomy",
     "green_taxonomy_eligibility": "green_taxonomy",

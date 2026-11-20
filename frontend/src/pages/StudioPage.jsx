@@ -1,13 +1,15 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { STATIC, staticUrls } from '../staticApi.js'
 import { studioDoc, studioExportUrl, studioRestore, studioRun, studioSave } from '../api.js'
 import { Link } from '../lib/router.jsx'
+import { onward } from '../lib/flow.js'
 import {
   claimsField, createEditor, flash, gotoPage, lintFromClaims, loadClaims, pageAtTop, reveal, searchText, setClaims,
   setZoom, suggestionChange,
 } from '../lib/studioEditor.js'
 import { DocIcon, FormatBadge, Icon } from '../components/icons.jsx'
 import { Leaf } from '../components/Shell.jsx'
-import { labelOf } from '../lib/labels'
+import { labelOf, vnDecimal } from '../lib/labels'
 
 /**
  * GreenScan Studio: the report under review, linted by the analysis, edited like code.
@@ -37,13 +39,18 @@ const SOURCE_TYPE = {
   legal: 'Văn bản pháp luật', external: 'Bên thứ ba', standard: 'Tiêu chuẩn',
 }
 const ACTOR = { user: 'Người', 'ai-rule': 'máy · quy tắc', 'ai-llm': 'AI · LLM', system: 'Hệ thống' }
-const ACTION = { accept: 'Chấp nhận', reject: 'Từ chối', edit: 'Sửa tay', ignore: 'Bỏ qua', save: 'Lưu phiên bản', restore: 'Khôi phục', rework: 'Sửa lại đề xuất' }
-const ACTION_TONE = { accept: 'text-emerald-700', reject: 'text-red-700', ignore: 'text-slate-500', rework: 'text-emerald-700', edit: 'text-slate-700' }
+const ACTION = { accept: 'Chấp nhận', reject: 'Từ chối', edit: 'Sửa tay', ignore: 'Bỏ qua', save: 'Lưu phiên bản', restore: 'Khôi phục', rework: 'Sửa lại đề xuất', note: 'Ghi lý do' }
+const ACTION_TONE = { accept: 'text-emerald-700', reject: 'text-red-700', ignore: 'text-slate-500', rework: 'text-emerald-700', edit: 'text-slate-700', note: 'text-sky-700' }
 const IGNORE_REASONS = ['Không phải tuyên bố môi trường', 'Đã có bằng chứng ở phần khác', 'Ngoài phạm vi soát xét', 'Câu bị cắt hoặc ghép sai']
+// A PDF (scanned or not) cannot be rebuilt from its extracted text, so what goes back to the
+// company is the change report: each edited paragraph, its page in the original, and why.
+// The fourth field limits an export to one kind of source file.
 const EXPORTS = [
-  ['docx_tracked', 'DOCX có đánh dấu sửa đổi', 'Mở bằng Word: thấy từng chỗ gạch bỏ / chèn, ai sửa, lúc nào.'],
-  ['docx_clean', 'DOCX bản sạch', 'Mọi thay đổi đã áp dụng, không còn dấu sửa.'],
-  ['pdf', 'PDF bản sạch + phụ lục', 'Dựng lại từ văn bản đã sửa; kèm phụ lục rà soát.'],
+  ['change_pdf', 'Báo cáo chỉnh sửa (PDF)', 'Từng đoạn đã sửa: trang trong tệp gốc, đoạn gốc, đoạn đề xuất, lý do và căn cứ. Gửi doanh nghiệp để sửa trên tệp nguồn.'],
+  ['change_docx', 'Báo cáo chỉnh sửa (bản Word)', 'Cùng nội dung, mở bằng Word để ghi chú thêm hoặc chỉnh câu chữ.'],
+  ['change_html', 'Báo cáo chỉnh sửa (trang web)', 'Xem nhanh trên trình duyệt, in ra PDF được.'],
+  ['docx_tracked', 'Tệp gốc có đánh dấu sửa đổi', 'Chỉ khi tệp gốc là DOCX: sửa trên chính tệp, giữ định dạng; thấy từng chỗ gạch bỏ / chèn, ai sửa, lúc nào.', 'docx'],
+  ['docx_clean', 'Tệp gốc bản sạch', 'Chỉ khi tệp gốc là DOCX: mọi thay đổi đã áp dụng, không còn dấu sửa.', 'docx'],
   ['review_html', 'Báo cáo rà soát GreenScan', 'Phát hiện, quyết định, bằng chứng, căn cứ, nhật ký. In ra PDF được.'],
   ['audit_json', 'Nhật ký thao tác (tệp dữ liệu .json)', 'Mọi thao tác kèm mã băm của bản gốc và bản cuối.'],
 ]
@@ -53,21 +60,21 @@ const TOUR = [
   ['explorer', 'Tài liệu và vấn đề phát hiện', 'Bên trái là các tài liệu của phiên. Báo cáo cần kiểm sửa được; tài liệu bằng chứng có ổ khóa, chỉ đọc. Danh sách vấn đề nhóm các tuyên bố theo mức độ.'],
   ['editor', 'Báo cáo như mã nguồn', 'Tuyên bố được tô màu: đỏ là nghiêm trọng, vàng là cần xem, xanh là thông tin. Di chuột vào để xem kết luận và bằng chứng. F8 / Shift+F8 để sang mục kế tiếp / trước đó. Thanh trên cùng: nhảy trang, phóng to, tìm chữ.'],
   ['inspector', 'Đề xuất sửa hiện như đánh dấu sửa đổi', 'Ctrl+. mở đề xuất. Phần đỏ gạch bỏ, phần xanh chèn thêm. Ctrl+Enter chấp nhận, Esc từ chối. Máy không bao giờ thêm số liệu: chỉ để chỗ trống “[bổ sung: …]”. Tab Bằng chứng mở thẳng trang gốc của nguồn.'],
-  ['bottom', 'Nhật ký và xuất bản', 'Mọi thao tác được ghi lại: ai, lúc nào, quy tắc nào. Ctrl+S lưu phiên bản. Xuất DOCX có đánh dấu sửa đổi, PDF, và báo cáo rà soát.'],
+  ['bottom', 'Nhật ký và xuất bản', 'Mọi thao tác được ghi lại: ai, lúc nào, quy tắc nào. Ctrl+S lưu phiên bản. Xuất Báo cáo chỉnh sửa (từng đoạn đã sửa kèm trang gốc và lý do) và báo cáo rà soát; đoạn sửa tay cần ghi lý do ở thẻ “Xuất báo cáo”.'],
 ]
 
-const pageUrl = (doc, page, q, zoom) => `${API}/v1/documents/${doc}/page/${page}?q=${encodeURIComponent((q || '').slice(0, 80))}${zoom ? `&zoom=${zoom}` : ''}`
+const pageUrl = (doc, page, q, zoom) => STATIC ? staticUrls.page(doc, page) : `${API}/v1/documents/${doc}/page/${page}?q=${encodeURIComponent((q || '').slice(0, 80))}${zoom ? `&zoom=${zoom}` : ''}`
 const initials = (name) => (name || '?').trim().split(/\s+/).map((w) => w[0]).slice(-2).join('').toUpperCase()
 const pct = (x) => (x == null ? '—' : `${Math.round(x * 100)}%`)
 
 function Btn({ onClick, title, children, tone = 'default', disabled, className = '', size = 'sm' }) {
   const tones = {
     default: 'border border-slate-300 bg-white text-slate-700 shadow-xs hover:border-emerald-600 hover:bg-emerald-50 hover:text-emerald-900',
-    primary: 'border border-[#0F3D2E] bg-[#0F3D2E] text-white shadow-sm hover:bg-[#14533e]',
+    primary: 'border border-[#047857] bg-[#047857] text-white shadow-sm hover:bg-[#065f46]',
     danger: 'border border-red-300 bg-white text-red-700 hover:border-red-400 hover:bg-red-50',
     ghost: 'border border-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900',
   }
-  const sizes = { xs: 'gap-1 px-2 py-1 text-[11px]', sm: 'gap-1.5 px-3 py-1.5 text-xs', md: 'gap-1.5 px-4 py-2 text-[13px]' }
+  const sizes = { xs: 'gap-1 px-2 py-1 text-xs', sm: 'gap-1.5 px-3 py-1.5 text-xs', md: 'gap-1.5 px-4 py-2 text-[13px]' }
   return (
     <button type="button" title={title} disabled={disabled} onClick={onClick}
       className={`inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-lg font-semibold transition disabled:cursor-not-allowed disabled:opacity-40 ${sizes[size]} ${tones[tone]} ${className}`}>
@@ -92,7 +99,7 @@ function Card({ children, className = '' }) {
 function SectionTitle({ children, right, className = '' }) {
   return (
     <div className={`flex items-center justify-between gap-2 ${className}`}>
-      <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-slate-500">{children}</p>
+      <p className="text-xs font-bold uppercase tracking-[0.08em] text-slate-500">{children}</p>
       {right}
     </div>
   )
@@ -143,7 +150,7 @@ function Problems({ claims, visible, unanchored, filter, setFilter, selectedId, 
         {visible.length === 0 && <p className="px-4 py-6 text-center text-xs text-slate-400">Không có mục nào khớp bộ lọc.</p>}
         {groups.map(([sev, list]) => list.length > 0 && (
           <div key={sev}>
-            <p className={`sticky top-0 z-10 bg-white/95 px-4 pb-1.5 pt-3 text-[11px] font-bold uppercase tracking-[0.08em] backdrop-blur ${SEV[sev].head}`}>{SEV[sev].label} · {list.length}</p>
+            <p className={`sticky top-0 z-10 bg-white/95 px-4 pb-1.5 pt-3 text-xs font-bold uppercase tracking-[0.08em] backdrop-blur ${SEV[sev].head}`}>{SEV[sev].label} · {list.length}</p>
             {list.map((c) => {
               const on = selectedId === c.id
               return (
@@ -198,7 +205,7 @@ function Inspector({ claim, docId, tab, setTab, focused, setFocused, onAccept, o
         <div className="m-4 rounded-xl border border-dashed border-slate-300 bg-slate-50/60 p-5 text-center">
           <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-emerald-50 text-emerald-700"><Icon name="file" className="h-5 w-5" /></span>
           <p className="mt-3 text-sm font-semibold text-slate-800">Chưa chọn tuyên bố</p>
-          <p className="mt-1 text-[13px] leading-relaxed text-slate-500">Đặt con trỏ vào một câu được tô màu, bấm một dòng trong danh sách vấn đề, hoặc nhấn <kbd className="rounded border border-slate-300 bg-white px-1.5 font-mono text-[11px]">F8</kbd>.</p>
+          <p className="mt-1 text-[13px] leading-relaxed text-slate-500">Đặt con trỏ vào một câu được tô màu, bấm một dòng trong danh sách vấn đề, hoặc nhấn <kbd className="rounded border border-slate-300 bg-white px-1.5 font-mono text-xs">F8</kbd>.</p>
           {nav.total > 0 && <Btn tone="primary" className="mt-4" onClick={nav.first}>Mở mục đầu tiên <Icon name="arrowRight" className="h-3.5 w-3.5" /></Btn>}
         </div>
       </div>
@@ -210,11 +217,11 @@ function Inspector({ claim, docId, tab, setTab, focused, setFocused, onAccept, o
       {header}
       <div className="px-4 pb-3 pt-2">
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide ring-1 ${SEV[claim.severity].chip}`}>
+          <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide ring-1 ${SEV[claim.severity].chip}`}>
             <span className={`h-1.5 w-1.5 rounded-full ${SEV[claim.severity].dot}`} />{SEV[claim.severity].label}
           </span>
-          {claim.in_queue && <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-800 ring-1 ring-emerald-200" title={claim.priority_reasons.join('\n')}>Hàng đợi #{claim.priority_rank}</span>}
-          {claim.resolved && <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold text-slate-600"><Icon name="check" className="h-3 w-3" strokeWidth={3} />đã xử lý</span>}
+          {claim.in_queue && <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-800 ring-1 ring-emerald-200" title={claim.priority_reasons.join('\n')}>Hàng đợi #{claim.priority_rank}</span>}
+          {claim.resolved && <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600"><Icon name="check" className="h-3 w-3" strokeWidth={3} />đã xử lý</span>}
         </div>
         <h2 className="mt-2 text-lg font-bold leading-snug tracking-tight text-slate-900">{claim.status_label}</h2>
         <p className="mt-1 text-[13px] leading-relaxed text-slate-600">{claim.message}</p>
@@ -245,8 +252,7 @@ function Inspector({ claim, docId, tab, setTab, focused, setFocused, onAccept, o
               <div key={s.suggestion_id} onMouseEnter={() => setFocused(i)}
                 className={`rounded-xl border bg-white p-3.5 transition ${focused === i ? 'border-emerald-500 shadow-md shadow-emerald-900/5 ring-1 ring-emerald-100' : 'border-slate-200 hover:border-emerald-300'}`}>
                 <div className="flex items-start justify-between gap-2">
-                  <span className="text-sm font-semibold text-slate-900">{s.title}</span>
-                  <span className="shrink-0 rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-[10.5px] font-medium text-slate-600" title="Mã quy tắc sinh đề xuất">{s.rule_code}</span>
+                  <span className="text-sm font-semibold text-slate-900" title={s.rule_code ? `Mã quy tắc sinh đề xuất: ${s.rule_code}` : undefined}>{s.title}</span>
                 </div>
                 <div className="mt-2.5 rounded-lg border border-slate-100 bg-slate-50 px-3 py-2.5 text-[13px]"><Segments segments={s.segments} /></div>
                 <p className="mt-2.5 text-slate-700"><b className="font-semibold text-slate-900">Lý do:</b> {s.reason}</p>
@@ -281,7 +287,7 @@ function Inspector({ claim, docId, tab, setTab, focused, setFocused, onAccept, o
                 </div>
               ) : (
                 <button type="button" onClick={() => setIgnoring(true)} title="Đánh dấu đã xử lý mà không sửa văn bản; phải ghi lý do"
-                  className="flex w-full items-center justify-between rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-[13px] font-semibold text-slate-600 transition hover:border-slate-300 hover:text-slate-900">
+                  className="flex w-full items-center justify-between rounded-2xl border border-slate-200/70 bg-white shadow-sm px-3.5 py-2.5 text-[13px] font-semibold text-slate-600 transition hover:border-slate-300 hover:text-slate-900">
                   Bỏ qua kèm lý do…<Icon name="chevronDown" className="h-4 w-4 text-slate-400" />
                 </button>
               )
@@ -296,15 +302,15 @@ function Inspector({ claim, docId, tab, setTab, focused, setFocused, onAccept, o
             {claim.evidence.map((e, i) => {
               const rel = RELATION[e.relation] || [e.relation || '—', 'bg-slate-100 text-slate-600 ring-slate-200']
               return (
-                <div key={i} className="rounded-xl border border-slate-200 bg-white p-3.5 transition hover:border-emerald-300">
+                <div key={i} className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-3.5 transition hover:border-emerald-300">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-bold ring-1 ${rel[1]}`}>{rel[0]}</span>
+                    <span className={`rounded-full px-2.5 py-0.5 text-xs font-bold ring-1 ${rel[1]}`}>{rel[0]}</span>
                     <span className="min-w-0 truncate text-xs font-medium text-slate-700">{e.source_name} · tr. {e.page ?? '—'}</span>
                   </div>
                   {e.relation_reason && <p className="mt-2 text-xs font-medium text-slate-600">{e.relation_reason}</p>}
                   <p className="mt-1.5 line-clamp-4 leading-relaxed text-slate-800">{e.text}</p>
                   <div className="mt-2.5 flex items-center justify-between gap-2">
-                    <span className="text-[11px] text-slate-400">
+                    <span className="text-xs text-slate-400">
                       <span className={e.independent ? 'text-emerald-700' : 'text-amber-700'}>{e.independent ? 'nguồn độc lập' : 'cùng doanh nghiệp'}</span>
                       {e.lexical_score != null && ` · từ khóa ${pct(e.lexical_score)} · ngữ nghĩa ${pct(e.semantic_score)}`}
                     </span>
@@ -316,7 +322,7 @@ function Inspector({ claim, docId, tab, setTab, focused, setFocused, onAccept, o
           </>
         ))}
         {tab === 'attrs' && (
-          <div className="rounded-xl border border-slate-200 bg-white p-3.5">
+          <div className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-3.5">
             <p className="text-xs font-semibold text-slate-500">Thuộc tính bắt buộc</p>
             <ul className="mt-2 divide-y divide-slate-100">
               {['chỉ số', 'số liệu', 'kỳ', 'năm gốc', 'phạm vi'].map((a) => {
@@ -324,7 +330,7 @@ function Inspector({ claim, docId, tab, setTab, focused, setFocused, onAccept, o
                 return (
                   <li key={a} className="flex items-center justify-between py-2">
                     <span className="flex items-center gap-2 capitalize text-slate-800"><span className={`h-2 w-2 rounded-full ${miss ? 'bg-red-500' : 'bg-emerald-500'}`} />{a}</span>
-                    <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${miss ? 'bg-red-50 text-red-700' : 'bg-emerald-50 text-emerald-700'}`}>{miss ? 'Thiếu' : 'Có'}</span>
+                    <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${miss ? 'bg-red-50 text-red-700' : 'bg-emerald-50 text-emerald-700'}`}>{miss ? 'Thiếu' : 'Có'}</span>
                   </li>
                 )
               })}
@@ -339,19 +345,19 @@ function Inspector({ claim, docId, tab, setTab, focused, setFocused, onAccept, o
         )}
         {tab === 'legal' && (!claim.legal ? <p className="rounded-lg border border-slate-200 bg-white p-4 text-center text-slate-500">Không có kết quả pháp lý.</p> : (
           <div className="space-y-2.5">
-            <div className="rounded-xl border border-slate-200 bg-white p-3.5">
+            <div className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-3.5">
               <p className="text-slate-800"><b className="font-semibold">Kết luận:</b> {labelOf('legal_finding', claim.legal.finding)} · rủi ro {labelOf('severity', String(claim.legal.risk || '').toUpperCase())}</p>
               <p className="mt-1 text-xs text-slate-500">Bộ quy tắc <code className="rounded bg-slate-100 px-1 font-mono">{claim.legal.rule_pack}</code></p>
             </div>
             {claim.legal.rules_applied.length === 0 && <p className="rounded-xl border border-sky-200 bg-sky-50 p-3 text-xs leading-relaxed text-sky-900">Chưa có quy tắc pháp lý nào áp dụng cho loại tuyên bố này; căn cứ dưới đây chỉ là văn bản cùng chủ đề — khoảng trống dữ liệu, không phải nhận định về doanh nghiệp.</p>}
             {claim.legal.sources.map((s, i) => (
-              <div key={i} className="rounded-xl border border-slate-200 bg-white p-3">
+              <div key={i} className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-3">
                 <a href={s.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-mono text-[13px] font-semibold text-slate-900 hover:text-emerald-800 hover:underline">{s.document}<Icon name="external" className="h-3 w-3" /></a>
                 <p className="mt-0.5 text-slate-600">{s.title}</p>
-                <p className={`mt-1 text-[11px] font-medium ${s.verified ? 'text-emerald-700' : 'text-amber-700'}`}>{s.verification_label} · hiệu lực {s.effective_from || '—'}</p>
+                <p className={`mt-1 text-xs font-medium ${s.verified ? 'text-emerald-700' : 'text-amber-700'}`}>{s.verification_label} · hiệu lực {s.effective_from || '—'}</p>
               </div>
             ))}
-            {claim.legal.notes && <p className="px-1 text-[11px] text-slate-500">{claim.legal.notes}</p>}
+            {claim.legal.notes && <p className="px-1 text-xs text-slate-500">{claim.legal.notes}</p>}
           </div>
         ))}
       </div>
@@ -406,7 +412,7 @@ function EvidenceModal({ items, index, setIndex, onClose, documents }) {
     ['Vị trí', block ? `khối văn bản ${block}${e.is_table ? ' · bảng' : ''}` : '—'],
     ['Loại nguồn', `${SOURCE_TYPE[e.source_type] || e.source_type || '—'}${e.independent ? ' · độc lập' : ''}`],
     ['Quan hệ', rel[0]],
-    ['Điểm truy xuất', e.score != null ? e.score.toFixed(2) : '—'],
+    ['Điểm truy xuất', e.score != null ? vnDecimal(e.score) : '—'],
     ['Từ khóa / ngữ nghĩa', e.lexical_score != null ? `${pct(e.lexical_score)} / ${pct(e.semantic_score)}` : '—'],
     ['sha256', doc?.sha256 ? `${doc.sha256.slice(0, 4)}…${doc.sha256.slice(-4)}` : '—'],
   ]
@@ -445,7 +451,7 @@ function EvidenceModal({ items, index, setIndex, onClose, documents }) {
               ))}
             </dl>
             {e.relation_reason && <p className="mt-4 rounded-xl bg-slate-50 p-3.5 text-[13px] leading-relaxed text-slate-700 ring-1 ring-slate-200">{e.relation_reason}</p>}
-            <p className="mt-5 text-[11px] font-bold uppercase tracking-[0.08em] text-slate-500">Đoạn trích</p>
+            <p className="mt-5 text-xs font-bold uppercase tracking-[0.08em] text-slate-500">Đoạn trích</p>
             <blockquote className="mt-2 border-l-[3px] border-amber-400 bg-amber-50/70 py-2.5 pl-3.5 pr-3 text-[13px] leading-relaxed text-slate-800">“{e.text}”</blockquote>
           </aside>
         </div>
@@ -455,6 +461,49 @@ function EvidenceModal({ items, index, setIndex, onClose, documents }) {
             : 'Phần được tô vàng là đoạn hệ thống trích dẫn. Nếu không thấy vùng tô, đoạn trích có thể trải qua nhiều khối bố cục hoặc trang là bản quét — mở PDF gốc để đối chiếu.'}
         </p>
       </div>
+    </div>
+  )
+}
+
+/** Paragraphs changed so far and the ones still without a reason: the change report lists both. */
+function ChangeReasons({ changes, summary, onNote }) {
+  const [drafts, setDrafts] = useState({})
+  const missing = changes.filter((c) => c.needs_reason)
+  const changedCount = summary?.changed || 0
+  const state = missing.length > 0 ? ` · ${missing.length} đoạn chưa ghi lý do` : changedCount > 0 ? ' · đoạn nào cũng đã có lý do' : ''
+  const send = (key) => {
+    const text = (drafts[key] || '').trim()
+    if (!text) return
+    onNote(key, text)
+    setDrafts((d) => ({ ...d, [key]: '' }))
+  }
+  return (
+    <div className="mb-3 rounded-2xl border border-slate-200/70 bg-white shadow-sm p-3">
+      <p className="text-[13px] font-semibold text-slate-900">
+        Báo cáo chỉnh sửa: {changedCount} đoạn đã sửa
+        <span className={missing.length > 0 ? 'text-amber-700' : 'text-emerald-700'}>{state}</span>
+      </p>
+      <p className="mt-0.5 text-xs leading-snug text-slate-500">Mỗi đoạn sửa cần lý do để doanh nghiệp hiểu vì sao phải đổi trên tệp gốc. Đề xuất của máy đã kèm lý do và căn cứ; đoạn bạn sửa tay thì ghi lý do ở đây.</p>
+      {missing.length > 0 && (
+        <ul className="mt-2 max-h-56 space-y-2 overflow-auto pr-1">
+          {missing.map((c) => (
+            <li key={c.key} className="rounded-lg border border-amber-200 bg-amber-50/60 p-2">
+              <p className="text-xs font-semibold text-amber-900">{c.kind_label} · {c.page ? `trang ${c.page}` : 'không rõ trang'}{c.ocr_note ? ` · ${c.ocr_note}` : ''}</p>
+              <p className="mt-0.5 line-clamp-2 text-xs text-slate-700" title={c.after || c.before}>{c.after || c.before}</p>
+              <div className="mt-1.5 flex gap-1.5">
+                <input value={drafts[c.key] || ''} onChange={(e) => setDrafts((d) => ({ ...d, [c.key]: e.target.value }))}
+                  onKeyDown={(e) => { if (e.key === 'Enter') send(c.key) }}
+                  placeholder="Vì sao sửa đoạn này?"
+                  className="min-w-0 flex-1 rounded-md border border-slate-300 bg-white px-2 py-1 text-xs focus:border-emerald-500 focus:outline-none" />
+                <button type="button" onClick={() => send(c.key)} disabled={!(drafts[c.key] || '').trim()}
+                  className="shrink-0 rounded-md bg-emerald-700 px-2.5 py-1 text-xs font-semibold text-white hover:bg-emerald-800 disabled:cursor-not-allowed disabled:bg-slate-300">
+                  Ghi lý do
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }
@@ -469,7 +518,7 @@ export default function StudioPage({ runId, reviewer }) {
   const [focused, setFocused] = useState(0)
   const [filter, setFilter] = useState({ q: '', sev: { error: true, warning: true, info: true }, resolved: false })
   const [bottom, setBottom] = useState('log')
-  const [bottomOpen, setBottomOpen] = useState(true)
+  const [bottomOpen, setBottomOpen] = useState(false)   // văn bản báo cáo cần chỗ trên màn hình 768 px; bấm một thẻ để mở
   const [saveState, setSaveState] = useState('saved')
   const [error, setError] = useState(null)
   const [toast, setToast] = useState(null)
@@ -631,6 +680,12 @@ export default function StudioPage({ runId, reviewer }) {
     schedule()
   }
 
+  // The reason for a paragraph edited by hand, for the change report (studio/report.py).
+  const addNote = (key, reason) => {
+    pending.current.push({ actor: 'user', action: 'note', paragraph_key: key, reason, user: reviewer })
+    save()
+  }
+
   const ignore = (claimId, reason) => {
     pending.current.push({ actor: 'user', action: 'ignore', claim_id: claimId, reason, user: reviewer })
     markLocal(claimId, null, true)
@@ -735,15 +790,26 @@ export default function StudioPage({ runId, reviewer }) {
   const tourOn = (key) => (tour >= 0 && TOUR[tour][0] === key ? 'gs-tour-target' : '')
   const doc = view?.doc
   const log = view?.log || []
-  const topBtn = 'inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-emerald-50 transition hover:bg-white/10'
+  const topBtn = 'inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg px-2.5 py-1.5 text-xs font-semibold text-emerald-50 transition hover:bg-white/10'
+  const NEXT = onward('studio', runId)
 
   return (
-    <div className="flex h-screen flex-col bg-[var(--color-canvas)] text-slate-900">
+    <div className="gs-studio flex h-[calc(100vh-var(--gs-banner-h,0px))] flex-col bg-canvas text-slate-900">
+      {/* Narrow screens: the three-pane editor does not fit a phone, so say so and keep the flow moving. */}
+      <div className="flex flex-1 flex-col items-center justify-center gap-4 p-6 text-center md:hidden" data-testid="studio-small">
+        <Leaf className="h-10 w-10 text-emerald-600" />
+        <p className="text-lg font-semibold text-slate-900">Bước 3 · Sửa báo cáo cần màn hình rộng</p>
+        <p className="max-w-sm text-sm leading-relaxed text-slate-600">
+          Trang này đặt văn bản báo cáo, danh sách câu cần xem và gợi ý sửa cạnh nhau, nên hãy mở trên máy tính. Trên điện thoại bạn có thể đi tiếp sang bước 4.
+        </p>
+        <Link to={NEXT.to} data-testid="studio-next-small" className="gs-halo rounded-xl bg-[#047857] px-4 py-2 text-sm font-semibold text-white">{NEXT.label}</Link>
+        <Link to={`/runs/${runId}`} className="text-sm font-medium text-slate-500 underline underline-offset-2">← Về hàng đợi</Link>
+      </div>
       {/* top bar */}
-      <header className="flex h-[52px] shrink-0 items-center gap-3 bg-[#0F3D2E] px-3 text-white shadow-[0_1px_0_rgba(0,0,0,.15)]">
+      <header className="flex h-[52px] shrink-0 items-center gap-3 bg-[#047857] px-3 text-white shadow-[0_1px_0_rgba(0,0,0,.15)]">
         <Link to={`/runs/${runId}`} className={topBtn} title="Về hàng đợi soát của phiên này"><Icon name="arrowLeft" className="h-4 w-4" />Hàng đợi</Link>
         <span className="h-6 w-px bg-white/15" />
-        <span className="flex items-center gap-2"><Leaf className="h-6 w-6 text-emerald-300" /><span className="text-[17px] font-bold tracking-tight">GreenScan · Sửa báo cáo</span></span>
+        <span className="flex shrink-0 items-center gap-2 whitespace-nowrap"><Leaf className="h-6 w-6 text-emerald-300" /><span className="text-[17px] font-bold tracking-tight"><span className="hidden 2xl:inline">GreenScan · </span>Bước 3 · Sửa báo cáo</span></span>
         <span className="min-w-0 truncate text-[13px] text-emerald-50/85" title={info?.label}>{info?.label || runId}</span>
         {doc && (
           <span className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${view.editable ? 'bg-emerald-400/20 text-emerald-200 ring-1 ring-emerald-300/40' : 'bg-white/10 text-white ring-1 ring-white/20'}`}
@@ -753,8 +819,13 @@ export default function StudioPage({ runId, reviewer }) {
           </span>
         )}
         <div className="ml-auto flex shrink-0 items-center gap-1.5">
+          {/* the step after this one (lib/flow.js); no pulsing here because people type on this page */}
+          <Link to={NEXT.to} data-testid="studio-next" title="Xong bước 3 thì sang bước 4: giấy làm việc của phiên này"
+            className="mr-1 inline-flex items-center gap-1 whitespace-nowrap rounded-lg bg-white px-2.5 py-1.5 text-xs font-semibold text-emerald-800 shadow-sm hover:bg-emerald-50">
+            {NEXT.label}
+          </Link>
           {view?.editable && (
-            <label className="flex items-center gap-2 text-xs text-emerald-50/80" title={'Lớp bảo mật quyết định có được gửi ca khó tới mô hình ngôn ngữ trên mạng hay không.\nA công khai: được (khi τ đã hiệu chỉnh và chế độ có mạng bật). B, C: không, chuyển người soát xét.'}>
+            <label className="flex items-center gap-2 whitespace-nowrap text-xs text-emerald-50/80" title={'Lớp bảo mật quyết định có được gửi ca khó tới mô hình ngôn ngữ trên mạng hay không.\nA công khai: được (khi τ đã hiệu chỉnh và chế độ có mạng bật). B, C: không, chuyển người soát xét.'}>
               Lớp
               <select value={view.doc_class} onChange={(e) => save({ docClass: e.target.value })}
                 className="rounded-lg border border-white/15 bg-white/10 px-2 py-1.5 text-xs font-semibold text-white hover:bg-white/15 focus:outline-none">
@@ -764,7 +835,7 @@ export default function StudioPage({ runId, reviewer }) {
           )}
           {view && (
             <span title={view.tau == null ? 'Ngưỡng τ chưa hiệu chỉnh: không ca nào được gửi tới mô hình ngôn ngữ.' : `τ = ${view.tau}`}
-              className="rounded-lg border border-white/15 bg-white/10 px-2.5 py-1.5 text-xs font-semibold">
+              className="hidden whitespace-nowrap rounded-lg border border-white/15 bg-white/10 px-2.5 py-1.5 text-xs font-semibold 2xl:inline-block">
               Mô hình ngôn ngữ: {view.tau == null ? 'tắt' : view.cloud ? 'dùng khi ca khó' : 'ngoại tuyến'}
             </span>
           )}
@@ -774,11 +845,11 @@ export default function StudioPage({ runId, reviewer }) {
           </span>
           {view?.editable && (
             <button type="button" onClick={() => latest.current.saveVersion()} title="Lưu một phiên bản có tên để khôi phục sau (Ctrl+S)"
-              className="rounded-lg border border-white/30 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-white/10">Lưu phiên bản</button>
+              className="whitespace-nowrap rounded-lg border border-white/30 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-white/10">Lưu phiên bản</button>
           )}
-          <button type="button" className={topBtn} onClick={() => setHelp(true)} title="Phím tắt"><Icon name="keyboard" className="h-4 w-4" />Phím tắt</button>
-          <button type="button" className={topBtn} onClick={() => setTour(0)} title="Xem lại hướng dẫn"><Icon name="help" className="h-4 w-4" />Hướng dẫn</button>
-          <span className="ml-1 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-300 text-xs font-bold text-[#0F3D2E] ring-2 ring-white/20" title={reviewer || 'Chưa có người soát xét'}>{initials(reviewer)}</span>
+          <button type="button" className={topBtn} onClick={() => setHelp(true)} title="Phím tắt"><Icon name="keyboard" className="h-4 w-4" /><span className="hidden 2xl:inline">Phím tắt</span></button>
+          <button type="button" className={topBtn} onClick={() => setTour(0)} title="Xem lại hướng dẫn"><Icon name="help" className="h-4 w-4" /><span className="hidden 2xl:inline">Hướng dẫn</span></button>
+          <span className="ml-1 flex h-8 w-8 items-center justify-center rounded-full bg-emerald-300 text-xs font-bold text-[#047857] ring-2 ring-white/20" title={reviewer || 'Chưa có người soát xét'}>{initials(reviewer)}</span>
         </div>
       </header>
 
@@ -801,7 +872,7 @@ export default function StudioPage({ runId, reviewer }) {
                         <DocIcon kind={d.kind} locked={d.role !== 'under_review'} />
                         <span className="min-w-0 flex-1">
                           <span className={`block truncate text-[13px] ${on ? 'font-semibold text-emerald-950' : 'font-medium text-slate-800'}`}>{d.name}</span>
-                          <span className="block text-[11px] text-slate-500">{d.role === 'under_review' ? `Đang rà soát${d.claims ? ` · ${d.claims} tuyên bố` : ''}` : 'Bằng chứng · chỉ đọc'}</span>
+                          <span className="block text-xs text-slate-500">{d.role === 'under_review' ? `Đang rà soát${d.claims ? ` · ${d.claims} tuyên bố` : ''}` : 'Bằng chứng · chỉ đọc'}</span>
                         </span>
                       </button>
                     </li>
@@ -873,7 +944,7 @@ export default function StudioPage({ runId, reviewer }) {
                         <tr key={e.seq} className="border-b border-slate-100 last:border-0 hover:bg-slate-50">
                           <td className="w-10 py-2 text-xs text-slate-400">#{e.seq}</td>
                           <td className="w-40 text-xs tabular-nums text-slate-500">{e.ts?.replace('T', ' ').slice(0, 19)}</td>
-                          <td className="w-48"><span className={`rounded-md px-2 py-0.5 text-[11px] font-semibold ${e.actor === 'user' ? 'bg-slate-100 text-slate-700' : 'bg-violet-50 text-violet-800 ring-1 ring-violet-100'}`}>{ACTOR[e.actor] || e.actor}{e.user ? ` · ${e.user}` : ''}</span></td>
+                          <td className="w-48"><span className={`rounded-md px-2 py-0.5 text-xs font-semibold ${e.actor === 'user' ? 'bg-slate-100 text-slate-700' : 'bg-violet-50 text-violet-800 ring-1 ring-violet-100'}`}>{ACTOR[e.actor] || e.actor}{e.user ? ` · ${e.user}` : ''}</span></td>
                           <td className={`w-28 font-semibold ${ACTION_TONE[e.action] || 'text-slate-800'}`}>{ACTION[e.action] || e.action}</td>
                           <td className="w-20">{e.rule_code && <span className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[10.5px] text-slate-600">{e.rule_code}</span>}</td>
                           <td className="max-w-0 truncate text-slate-600" title={[e.reason, e.after].filter(Boolean).join('\n')}>{e.reason || e.after}</td>
@@ -896,11 +967,16 @@ export default function StudioPage({ runId, reviewer }) {
                 )}
                 {bottom === 'export' && view && (
                   <>
+                    {view.editable && <ChangeReasons changes={view.changes || []} summary={view.change_summary} onNote={addNote} />}
                     <div className="grid grid-cols-[repeat(auto-fill,minmax(230px,1fr))] gap-2.5">
-                      {EXPORTS.map(([fmt, label, hint]) => (
-                        <a key={fmt} href={studioExportUrl(runId, docId, fmt, reviewer)} target={fmt === 'review_html' ? '_blank' : undefined} rel="noreferrer"
-                          onClick={() => latest.current.save?.()} title={hint}
-                          className="group flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3 transition hover:-translate-y-0.5 hover:border-emerald-500 hover:shadow-md">
+                      {EXPORTS.filter(([, , , only]) => !only || only === view.doc?.kind).map(([fmt, label, hint]) => (
+                        <a key={fmt} href={studioExportUrl(runId, docId, fmt, reviewer)} target={fmt.endsWith('html') ? '_blank' : undefined} rel="noreferrer"
+                          onClick={(e) => {
+                            const missing = view.change_summary?.needs_reason || 0
+                            if (fmt.startsWith('change_') && missing > 0 && !window.confirm(`Còn ${missing} đoạn đã sửa chưa ghi lý do; báo cáo sẽ ghi “Chưa ghi lý do” ở các đoạn đó.\nVẫn xuất?`)) { e.preventDefault(); return }
+                            latest.current.save?.()
+                          }} title={hint}
+                          className="group flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-white shadow-sm p-3 transition hover:-translate-y-0.5 hover:border-emerald-500 hover:shadow-md">
                           <FormatBadge format={fmt} />
                           <span className="min-w-0">
                             <span className="block text-[13px] font-semibold text-slate-900 group-hover:text-emerald-900">{label}</span>
@@ -946,7 +1022,7 @@ export default function StudioPage({ runId, reviewer }) {
           <div className="fixed inset-0 z-40 bg-slate-900/30" />
           <div className="fixed left-1/2 top-24 z-[42] w-[28rem] -translate-x-1/2 rounded-2xl bg-white p-5 shadow-2xl">
             <div className="flex items-center justify-between">
-              <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-emerald-700">Hướng dẫn {tour + 1}/{TOUR.length}</p>
+              <p className="text-xs font-bold uppercase tracking-[0.08em] text-emerald-700">Hướng dẫn {tour + 1}/{TOUR.length}</p>
               <div className="flex gap-1">{TOUR.map((_, i) => <span key={i} className={`h-1.5 w-5 rounded-full ${i <= tour ? 'bg-emerald-500' : 'bg-slate-200'}`} />)}</div>
             </div>
             <p className="mt-2 text-base font-bold text-slate-900">{TOUR[tour][1]}</p>

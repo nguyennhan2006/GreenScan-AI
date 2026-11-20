@@ -82,6 +82,9 @@ export function DocIcon({ kind = 'pdf', locked = false, className = '' }) {
 /** File-format badge for export cards. */
 export function FormatBadge({ format }) {
   const spec = {
+    change_pdf: ['PDF', 'bg-red-600'],
+    change_docx: ['W', 'bg-blue-600'],
+    change_html: [null, 'bg-emerald-600', 'chart'],
     docx_tracked: ['W', 'bg-blue-600'],
     docx_clean: ['W', 'bg-sky-500'],
     pdf: ['PDF', 'bg-red-600'],
@@ -94,7 +97,7 @@ export function FormatBadge({ format }) {
         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
           <rect x="4" y="12" width="4" height="8" rx="1" /><rect x="10" y="7" width="4" height="13" rx="1" /><rect x="16" y="3" width="4" height="17" rx="1" />
         </svg>
-      ) : <span className={`font-extrabold ${spec[0].length > 1 ? 'text-[11px]' : 'text-lg'}`}>{spec[0]}</span>}
+      ) : <span className={`font-extrabold ${spec[0].length > 1 ? 'text-xs' : 'text-lg'}`}>{spec[0]}</span>}
     </span>
   )
 }

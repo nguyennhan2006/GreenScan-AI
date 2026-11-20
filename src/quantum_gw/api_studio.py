@@ -24,12 +24,12 @@ from quantum_gw.settings import load_settings
 from quantum_gw.storage.documents import DocumentStore
 from quantum_gw.storage.runs import RunStore
 from quantum_gw.studio import escalation
+from quantum_gw.studio import report as change_report
 from quantum_gw.studio.document import UNDER_REVIEW, diagnostics, paragraphs, run_documents
 from quantum_gw.studio.export import (
     changes,
     docx_from_lines,
     docx_in_place,
-    pdf_from_lines,
     review_html,
 )
 from quantum_gw.studio.session import StudioSession, sha
@@ -101,7 +101,9 @@ def _paragraphs(path: Path) -> list[dict]:
     with _LOCK:
         if key in _PARAGRAPHS:
             return _PARAGRAPHS[key]
-    paras = paragraphs(path)
+    settings = load_settings()
+    # Read as the analysis read it: OCR for scanned pages (cached on disk), hidden text left out.
+    paras = paragraphs(path, settings.intake, Path(settings.runs_dir).parent / "ocr_cache")
     with _LOCK:
         if len(_PARAGRAPHS) > 16:
             _PARAGRAPHS.clear()
@@ -129,7 +131,7 @@ def _doc(run_id: str, doc_id: str):
 
 
 _CLOUD: dict[str, float | bool] = {}
-_UNANCHORED: dict[tuple[str, str, str], set[str]] = {}
+_BASE: dict[tuple[str, str, str], tuple[list[dict], set[str]]] = {}
 
 
 def _cloud_allowed() -> bool:
@@ -142,12 +144,28 @@ def _cloud_allowed() -> bool:
     return bool(_CLOUD["value"])
 
 
-def _unanchored(result, doc: dict, base_text: str) -> set[str]:
-    """Claims not found even in the original text; fixed per run and document, so computed once."""
+def _base_findings(result, doc: dict, base_text: str) -> tuple[list[dict], set[str]]:
+    """Findings located in the original text, and the claims not found even there.
+
+    Fixed per run and document, so computed once: the change report anchors each
+    edit to the findings of its original paragraph.
+    """
     key = (result.run_id, doc["doc_id"], sha(base_text))
-    if key not in _UNANCHORED:
-        _UNANCHORED[key] = {g["claim_id"] for g in diagnostics(result, doc, base_text)[1]}
-    return _UNANCHORED[key]
+    if key not in _BASE:
+        found, gone = diagnostics(result, doc, base_text)
+        _BASE[key] = (found, {g["claim_id"] for g in gone})
+    return _BASE[key]
+
+
+def _unanchored(result, doc: dict, base_text: str) -> set[str]:
+    return _base_findings(result, doc, base_text)[1]
+
+
+def _change_items(result, doc: dict, paras: list[dict], base_text: str, data: dict) -> list[dict]:
+    if doc["role"] != UNDER_REVIEW:
+        return []
+    return change_report.build(paras, data["text"].split("\n"), data["log"], data["versions"],
+                               _base_findings(result, doc, base_text)[0], KIND_LABELS)
 
 
 @router.get("/v1/studio/{run_id}")
@@ -189,9 +207,11 @@ def _view(result, doc: dict, paras: list[dict], base_text: str, data: dict) -> d
         d["resolution"] = last
         d["escalation"] = escalation.decide(d.get("confidence"), data.get("doc_class", "B"), tau, cloud)
     claims = {c.claim_id: c for c in result.claims}
+    items = _change_items(result, doc, paras, base_text, data)
     return {
         "doc": doc, "editable": editable,
-        "paragraphs": [{"page": p.get("page"), "index": p["index"]} for p in paras],
+        "paragraphs": [{"page": p.get("page"), "index": p["index"], **({"ocr": True} if p.get("ocr") else {})}
+                       for p in paras],
         "base_text": base_text, "text": text,
         "diagnostics": diags,
         "edited": [g for g in gone if g["claim_id"] not in unanchored_ids],
@@ -199,16 +219,32 @@ def _view(result, doc: dict, paras: list[dict], base_text: str, data: dict) -> d
                        for g in gone if g["claim_id"] in unanchored_ids],
         "log": data["log"], "versions": [{k: v for k, v in x.items() if k != "text"} for x in data["versions"]],
         "doc_class": data.get("doc_class", "B"), "tau": tau, "cloud": cloud,
-        "layout_note": _layout_note(doc["kind"]),
+        "layout_note": _layout_note(doc["kind"], any(p.get("ocr") for p in paras)),
+        # Each changed paragraph and whether its reason is recorded: what the
+        # export tab lists before the change report is written.
+        "changes": [_change_row(i) for i in items],
+        "change_summary": change_report.summary(items),
     }
 
 
-def _layout_note(kind: str) -> str:
+def _change_row(item: dict) -> dict:
+    row = {k: item[k] for k in ("n", "key", "kind_label", "page", "ocr", "before", "after", "needs_reason")}
+    row["ocr_note"] = change_report.ocr_note(item).removeprefix(" · ")
+    row["reasons"] = [r["action"] + (f" «{r['title']}»" if r["title"] else "") + (f": {r['text']}" if r["text"] else "")
+                      for r in item["reasons"]]
+    return row
+
+
+def _layout_note(kind: str, ocr: bool = False) -> str:
     if kind == "docx":
-        return "Bản DOCX xuất ra sửa trên chính tệp gốc: đoạn không đổi giữ nguyên định dạng."
+        return ("Tệp Word: bản Word xuất ra sửa trên chính tệp gốc, đoạn không đổi giữ nguyên định dạng. "
+                "Báo cáo chỉnh sửa liệt kê từng đoạn đã sửa kèm lý do.")
     if kind == "pdf":
-        return "PDF được sửa trên văn bản đã trích; bản xuất dựng lại từ văn bản và KHÔNG giữ bố cục gốc."
-    return "Văn bản thuần: bản xuất dựng lại từ văn bản."
+        return ("Tệp PDF" + (", có trang đọc bằng OCR" if ocr else "") + ": bố cục không dựng lại được từ văn bản "
+                "đã trích, nên GreenScan không xuất lại PDF mà xuất Báo cáo chỉnh sửa. Mỗi mục nêu trang trong tệp "
+                "gốc, đoạn gốc, đoạn đề xuất và lý do; doanh nghiệp áp các thay đổi vào tệp nguồn của mình."
+                + (" Chữ ở trang đọc bằng OCR có thể sai: đối chiếu trang gốc trước khi sửa." if ocr else ""))
+    return "Văn bản thuần: Báo cáo chỉnh sửa liệt kê từng đoạn đã sửa kèm lý do."
 
 
 @router.get("/v1/studio/{run_id}/doc/{doc_id}")
@@ -256,9 +292,11 @@ def studio_restore(run_id: str, doc_id: str, body: StudioRestore) -> dict:
 
 
 _MEDIA = {
+    "change_pdf": ("application/pdf", "-bao-cao-chinh-sua.pdf"),
+    "change_docx": ("application/vnd.openxmlformats-officedocument.wordprocessingml.document", "-bao-cao-chinh-sua.docx"),
+    "change_html": ("text/html; charset=utf-8", "-bao-cao-chinh-sua.html"),
     "docx_tracked": ("application/vnd.openxmlformats-officedocument.wordprocessingml.document", "-da-sua-tracked.docx"),
     "docx_clean": ("application/vnd.openxmlformats-officedocument.wordprocessingml.document", "-da-sua.docx"),
-    "pdf": ("application/pdf", "-da-sua.pdf"),
     "review_html": ("text/html; charset=utf-8", "-bao-cao-ra-soat.html"),
     "audit_json": ("application/json", "-vet-kiem-toan.json"),
 }
@@ -287,14 +325,19 @@ def studio_export(run_id: str, doc_id: str, format: str = "docx_tracked", user: 
         headers["X-Export-Notes"] = urllib.parse.quote(" ".join(notes))
         return Response(content=content, media_type=media, headers=headers)
     change_list = changes(base_lines, new_lines)
-    if format == "pdf":
+    view = _view(result, doc, paras, base_text, data)
+    exported_at = datetime.now(UTC).isoformat(timespec="seconds")
+    if format.startswith("change_"):
+        ctx = _report_context(result, doc, paras, base_text, data, view, run_id, exported_at, user)
+        if format == "change_html":
+            return HTMLResponse(change_report.render_html(ctx), headers=headers)
+        if format == "change_docx":
+            return Response(content=change_report.render_docx(ctx), media_type=media, headers=headers)
         try:
-            content = pdf_from_lines(new_lines, change_list, doc["name"], _layout_note(doc["kind"]))
+            content = change_report.render_pdf(ctx)
         except RuntimeError as exc:
             raise HTTPException(status_code=501, detail=str(exc)) from exc
         return Response(content=content, media_type=media, headers=headers)
-    view = _view(result, doc, paras, base_text, data)
-    exported_at = datetime.now(UTC).isoformat(timespec="seconds")
     if format == "review_html":
         page = review_html({
             "doc_name": doc["name"], "run_id": run_id, "exported_at": exported_at, "user": user,
@@ -315,3 +358,22 @@ def studio_export(run_id: str, doc_id: str, format: str = "docx_tracked", user: 
         "edited_away": view["edited"],
     }
     return Response(content=json.dumps(trail, ensure_ascii=False, indent=2), media_type=media, headers=headers)
+
+
+def _report_context(result, doc: dict, paras: list[dict], base_text: str, data: dict, view: dict,
+                    run_id: str, exported_at: str, user: str) -> dict:
+    """What studio/report.py renders: the changed paragraphs and the decisions around them."""
+    claims = {c.claim_id: c for c in result.claims}
+    kept = []
+    for entry in change_report.active_log(data["log"], data["versions"]):
+        claim = claims.get(entry.get("claim_id") or "")
+        if entry.get("action") == "ignore" and claim is not None:
+            kept.append({"page": claim.source_page, "text": claim.text, "reason": entry.get("reason") or ""})
+    return {
+        "doc_name": doc["name"], "run_id": run_id, "exported_at": exported_at, "user": user,
+        "layout_note": view["layout_note"],
+        "items": _change_items(result, doc, paras, base_text, data),
+        "kept": kept,
+        "open": {k: sum(1 for d in view["diagnostics"] if d["severity"] == k) for k in ("error", "warning", "info")},
+        "source_sha256": doc.get("sha256"), "base_sha256": sha(base_text), "final_sha256": sha(data["text"]),
+    }

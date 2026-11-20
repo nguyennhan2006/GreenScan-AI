@@ -104,7 +104,7 @@ export function Chip({ children, tone = 'slate', className = '' }) {
     violet: 'bg-violet-50 text-violet-800 border-violet-200',
   }
   return (
-    <span className={`inline-block whitespace-nowrap rounded-full border px-2 py-0.5 text-[11px] font-medium ${tones[tone] || tones.slate} ${className}`}>
+    <span className={`inline-block whitespace-nowrap rounded-full border px-2 py-0.5 text-xs font-medium ${tones[tone] || tones.slate} ${className}`}>
       {children}
     </span>
   )

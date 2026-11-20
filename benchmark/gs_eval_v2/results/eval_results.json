@@ -533,9 +533,9 @@
    "is_green_claim": 151,
    "needs_edit": 135,
    "issue_codes": {
+    "MISSING_PERIOD": 43,
     "MISSING_SCOPE": 41,
     "NO_EVIDENCE_REF": 35,
-    "MISSING_PERIOD": 43,
     "MISSING_BASELINE": 11,
     "NO_FIGURE": 65,
     "VAGUE_TERM": 58,
@@ -559,24 +559,23 @@
    }
   },
   "system": {
-   "suggestions_total": 527,
+   "suggestions_total": 456,
    "kinds": {
     "add_scope": 194,
     "evidence_ref": 200,
-    "placeholder": 117,
+    "placeholder": 46,
     "soften": 16
    },
    "rule_codes": {
     "SC-01": 194,
     "EV-02": 200,
-    "VG-02": 71,
     "VG-01": 46,
     "OC-04": 7,
     "OC-05": 3,
     "OC-01": 5,
     "OC-03": 1
    },
-   "suggestions_on_non_green_sentences": 130,
+   "suggestions_on_non_green_sentences": 114,
    "suggestions_introducing_new_numbers": 0
   },
   "needs_edit_detection_on_green_claims": {
@@ -613,12 +612,12 @@
     "f1": 0.392
    },
    "NO_FIGURE": {
-    "tp": 31,
-    "fp": 24,
-    "fn": 34,
-    "precision": 0.564,
-    "recall": 0.477,
-    "f1": 0.517
+    "tp": 0,
+    "fp": 0,
+    "fn": 65,
+    "precision": null,
+    "recall": 0.0,
+    "f1": null
    },
    "VAGUE_TERM": {
     "tp": 23,
@@ -653,7 +652,7 @@
     "f1": 0.376
    }
   },
-  "macro_f1_issue_codes": 0.359,
+  "macro_f1_issue_codes": 0.337,
   "edit_kinds_on_green_claims": {
    "add_scope": {
     "tp": 72,
@@ -664,12 +663,12 @@
     "f1": 0.655
    },
    "placeholder": {
-    "tp": 63,
-    "fp": 22,
-    "fn": 26,
-    "precision": 0.741,
-    "recall": 0.708,
-    "f1": 0.724
+    "tp": 24,
+    "fp": 6,
+    "fn": 65,
+    "precision": 0.8,
+    "recall": 0.27,
+    "f1": 0.403
    },
    "evidence_ref": {
     "tp": 52,
@@ -689,8 +688,8 @@
    }
   },
   "reference_issues_outside_product_vocabulary": {
+   "NO_FIGURE": 65,
    "VAGUE_TERM": 35,
-   "NO_FIGURE": 34,
    "UNVERIFIED_LABEL_OR_CERT": 17,
    "MISSING_SCOPE": 13,
    "ABSOLUTE_CLAIM": 10,
@@ -1125,43 +1124,43 @@
      "rejected": true,
      "vietnamese": true,
      "no_traceback": true,
-     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_mh2rkq4n\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - quy tắc `NHXD_001`, đi"
+     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_b1crwuyw\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - quy tắc `NHXD_001`, đi"
     },
     "E2": {
      "rejected": true,
      "vietnamese": true,
      "no_traceback": true,
-     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_mh2rkq4n\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - tệp không phải YAML UT"
+     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_b1crwuyw\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - tệp không phải YAML UT"
     },
     "E3": {
      "rejected": true,
      "vietnamese": true,
      "no_traceback": true,
-     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_mh2rkq4n\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - quy tắc `NHXD_001`: th"
+     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_b1crwuyw\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - quy tắc `NHXD_001`: th"
     },
     "E4": {
      "rejected": true,
      "vietnamese": true,
      "no_traceback": true,
-     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_mh2rkq4n\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - `org_id` chỉ gồm chữ t"
+     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_b1crwuyw\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - `org_id` chỉ gồm chữ t"
     },
     "E5": {
      "rejected": true,
      "vietnamese": true,
      "no_traceback": true,
-     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_mh2rkq4n\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - `precedence` phải là `"
+     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_b1crwuyw\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - `precedence` phải là `"
     },
     "E6": {
      "rejected": true,
      "vietnamese": true,
      "no_traceback": true,
-     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_mh2rkq4n\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - quy tắc `NHXD_001`: `o"
+     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_b1crwuyw\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - quy tắc `NHXD_001`: `o"
     },
     "E7": {
      "rejected": true,
      "vietnamese": true,
      "no_traceback": true,
-     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_mh2rkq4n\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - quy tắc `NHXD_001`: `e"
+     "message_head": "Org pack 'C:\\Users\\ASUS\\AppData\\Local\\Temp\\gs_badpack_b1crwuyw\\demo_ngan_hang_xanh\\pack.yaml' bị từ chối, không được áp dụng (1 lỗi):\n  - quy tắc `NHXD_001`: `e"
     },
     "E8": {
      "rejected": false,

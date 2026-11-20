@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { documentMeta, documentPageUrl, documentUrl } from '../api.js'
 import { RELATIONS } from '../lib/claims.js'
+import { labelOf, vnDecimal } from '../lib/labels.js'
 
 /**
  * The audit surface: the cited page, rendered from the stored original, with the
@@ -144,14 +145,14 @@ export default function SourceViewer({ evidence, onClose }) {
             <div className="flex justify-between gap-2"><dt className="text-slate-500">Tài liệu</dt><dd className="truncate text-right text-slate-900" title={evidence.source_name}>{evidence.source_name}</dd></div>
             <div className="flex justify-between gap-2"><dt className="text-slate-500">Trang</dt><dd className="font-mono">{evidence.page ?? '—'}</dd></div>
             <div className="flex justify-between gap-2"><dt className="text-slate-500">Vị trí</dt><dd className="font-mono">{evidence.is_table ? 'bảng' : 'khối văn bản'}</dd></div>
-            <div className="flex justify-between gap-2"><dt className="text-slate-500">Loại nguồn</dt><dd>{evidence.source_type}</dd></div>
-            <div className="flex justify-between gap-2"><dt className="text-slate-500">Lập trường</dt><dd>{rel.labelVi} · <span className="font-mono">{evidence.relation_method}</span></dd></div>
-            <div className="flex justify-between gap-2"><dt className="text-slate-500">Điểm truy xuất</dt><dd className="font-mono">{(evidence.score ?? 0).toFixed(2)}</dd></div>
+            <div className="flex justify-between gap-2"><dt className="text-slate-500">Loại nguồn</dt><dd>{labelOf('source_type', evidence.source_type)}</dd></div>
+            <div className="flex justify-between gap-2"><dt className="text-slate-500">Lập trường</dt><dd>{rel.labelVi} · {labelOf('relation_method', evidence.relation_method)}</dd></div>
+            <div className="flex justify-between gap-2"><dt className="text-slate-500">Điểm truy xuất</dt><dd className="font-mono">{vnDecimal(evidence.score ?? 0)}</dd></div>
             <div className="flex justify-between gap-2"><dt className="text-slate-500">Từ khoá / ngữ nghĩa</dt><dd className="font-mono">{Math.round((evidence.lexical_score || 0) * 100)}% / {Math.round((evidence.semantic_score || 0) * 100)}%</dd></div>
             {meta?.sha256 && <div className="flex justify-between gap-2"><dt className="text-slate-500">sha256</dt><dd className="font-mono" title={meta.sha256}>{meta.sha256.slice(0, 4)}…{meta.sha256.slice(-4)}</dd></div>}
           </dl>
           {evidence.relation_reason && <p className="mt-3 rounded-lg bg-slate-50 px-2.5 py-2 text-slate-700">{evidence.relation_reason}</p>}
-          <h5 className="mt-3 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Đoạn trích</h5>
+          <h5 className="mt-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Đoạn trích</h5>
           <blockquote className="mt-1 max-h-48 overflow-auto border-l-2 border-amber-400 bg-amber-50/60 py-1 pl-2 leading-relaxed text-slate-800">“{evidence.text}”</blockquote>
           {(evidence.source_qualifiers || []).length > 0 && (
             <ul className="mt-3 space-y-1">

@@ -10,8 +10,9 @@ DOCX in, DOCX out: unchanged paragraphs are copied byte for byte; a changed
 paragraph keeps its paragraph properties and the formatting of its first run
 (mixed formatting inside a changed paragraph is not kept -- the export notes
 say so). PDF or text in: a new DOCX, one paragraph per line, with page markers.
-PDF out is rebuilt from the edited text with an appendix of changes; the
-original layout is not kept, and the UI says that before export.
+PDF in: no PDF out. Extraction loses the layout and OCR only reads a page, so
+a PDF source gets the change report instead (studio/report.py): each edited
+paragraph with its page in the original, the edit and its reason.
 """
 
 from __future__ import annotations
@@ -345,54 +346,11 @@ def find_font() -> tuple[Path, str, str] | None:
     return None
 
 
-def pdf_from_lines(new: list[str], change_list: list[dict], title: str, note: str) -> bytes:
-    """Clean PDF rebuilt from the edited text, with an appendix listing every change."""
-    import fitz
-
-    font = find_font()
-    if font is None:
-        raise RuntimeError("Không tìm thấy phông chữ hỗ trợ tiếng Việt để dựng PDF; dùng bản DOCX hoặc in báo cáo HTML.")
-    directory, regular, bold = font
-    css = (f"@font-face {{font-family: vn; src: url({regular});}} "
-           f"@font-face {{font-family: vn; font-weight: bold; src: url({bold});}} "
-           "* {font-family: vn;} body {font-size: 10.5pt; line-height: 1.45;} "
-           "h1 {font-size: 15pt;} h2 {font-size: 12.5pt; margin-top: 14pt;} "
-           ".note {font-size: 8.5pt; color: #555;} del {color: #b42318;} ins {color: #067647;} "
-           "p.c {font-size: 9pt; margin: 2pt 0 6pt 0;}")
-    body = [f"<h1>{_esc(title)}</h1>", f"<p class='note'>{_esc(note)}</p>"]
-    body.extend(f"<p>{_esc(line)}</p>" for line in new if line.strip())
-    body.append(f"<h2>Phụ lục: {len(change_list)} thay đổi so với bản gốc</h2>")
-    for n, change in enumerate(change_list, start=1):
-        label = {"change": "Sửa", "delete": "Xóa", "insert": "Thêm"}[change["kind"]]
-        if change["ops"]:
-            rendered = "".join(
-                _esc(t) if op == "equal" else f"<del>{_esc(t)}</del>" if op == "del" else f"<ins>{_esc(t)}</ins>"
-                for op, t in change["ops"])
-        elif change["kind"] == "delete":
-            rendered = f"<del>{_esc(change['before'])}</del>"
-        else:
-            rendered = f"<ins>{_esc(change['after'])}</ins>"
-        body.append(f"<p class='c'><b>{n}. {label}</b> — {rendered}</p>")
-    story = fitz.Story(html="".join(body), user_css=css, archive=fitz.Archive(str(directory)))
-    buffer = io.BytesIO()
-    writer = fitz.DocumentWriter(buffer)
-    mediabox = fitz.paper_rect("a4")
-    where = mediabox + (56, 56, -56, -56)
-    more = True
-    while more:
-        device = writer.begin_page(mediabox)
-        more, _ = story.place(where)
-        story.draw(device)
-        writer.end_page()
-    writer.close()
-    return buffer.getvalue()
-
-
 # ---------- review report ----------
 
 _SEVERITY_LABEL = {"error": "Nghiêm trọng", "warning": "Cần xem", "info": "Thông tin"}
 _ACTION_LABEL = {"accept": "Chấp nhận", "reject": "Từ chối", "edit": "Sửa tay", "ignore": "Bỏ qua",
-                 "save": "Lưu phiên bản", "restore": "Khôi phục", "rework": "Sửa lại đề xuất"}
+                 "save": "Lưu phiên bản", "restore": "Khôi phục", "rework": "Sửa lại đề xuất", "note": "Ghi lý do"}
 _ACTOR_LABEL = {"user": "Người", "ai-rule": "Máy (quy tắc)", "ai-llm": "AI (LLM)", "system": "Hệ thống"}
 
 
@@ -448,7 +406,7 @@ tr.done td:first-child{{color:#067647;font-weight:600}}.m{{color:#475569;font-si
 <h2>3. Nhật ký thay đổi</h2>
 <table><tr><th>#</th><th>Thời điểm (UTC)</th><th>Ai</th><th>Việc</th><th>Quy tắc</th><th>Lý do</th></tr>{log_rows or '<tr><td colspan=6>Trống.</td></tr>'}</table>
 <h2>4. Giới hạn</h2><ul>
-<li>Đề xuất sinh từ mẫu quy tắc, chạy offline; không đề xuất nào được thêm số liệu không có trong câu gốc (kiểm bằng <code>assert_no_new_numbers</code>).</li>
+<li>Đề xuất sinh từ mẫu quy tắc, chạy offline; không đề xuất nào được thêm số liệu không có trong câu gốc (mỗi đề xuất được kiểm tự động trước khi hiện).</li>
 <li>Căn cứ pháp lý mang nhãn "Chưa có người xác minh" là căn cứ ứng viên, chưa phải kết luận pháp lý.</li>
 <li>{e(ctx.get('layout_note') or '')}</li>
 <li>Tài liệu bằng chứng (BCTC, văn bản pháp luật, dữ liệu bên thứ ba) chỉ được đọc, không bị sửa.</li></ul>

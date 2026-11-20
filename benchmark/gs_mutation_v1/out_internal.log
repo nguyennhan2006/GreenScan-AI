@@ -1,0 +1,7 @@
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+[mut:internal] 205 cases to run, 0 cached
+[mut:internal] 50/205
+[mut:internal] 100/205
+[mut:internal] 150/205
+[mut:internal] 200/205
+[mut:internal] done

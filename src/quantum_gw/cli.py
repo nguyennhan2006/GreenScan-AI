@@ -212,5 +212,11 @@ def run_app(
     uvicorn.run("quantum_gw.api:app", host=host, port=port)
 
 
+# Feedback loop and uploaded org packs (feedback-loop-v1, org-pack-v1).
+from quantum_gw.cli_feedback import register as _register_feedback  # noqa: E402
+
+_register_feedback(app)
+
+
 if __name__ == "__main__":
     app()

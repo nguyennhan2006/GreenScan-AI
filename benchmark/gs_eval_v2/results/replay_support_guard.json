@@ -1,0 +1,156 @@
+{
+  "what": "offline replay of VerificationAgent._status with support_requires_independent_source off/on",
+  "runs_from": "2026-11-09",
+  "independent_source_types": [
+    "external",
+    "legal",
+    "standard"
+  ],
+  "pool": {
+    "verifications": 1276,
+    "replay_off_reproduces_stored": 1276,
+    "mismatches": [],
+    "verdicts_off": {
+      "PARTIALLY_SUPPORTED": 1085,
+      "INSUFFICIENT_EVIDENCE": 144,
+      "SUPPORTED": 24,
+      "CONTRADICTED": 23
+    },
+    "verdicts_on": {
+      "PARTIALLY_SUPPORTED": 1093,
+      "INSUFFICIENT_EVIDENCE": 144,
+      "SUPPORTED": 16,
+      "CONTRADICTED": 23
+    },
+    "changed": 8,
+    "changes": [
+      {
+        "run": "21ac5b939eac497e",
+        "from": "SUPPORTED",
+        "to": "PARTIALLY_SUPPORTED",
+        "confirming_source": "internal",
+        "text": "Hoàn thành kiểm kê khí nhà kính theo tiêu 90%"
+      },
+      {
+        "run": "21ac5b939eac497e",
+        "from": "SUPPORTED",
+        "to": "PARTIALLY_SUPPORTED",
+        "confirming_source": "internal",
+        "text": "Thực hiện kiểm kê khí nhà kính theo tiêu chuẩn ISO 14064-1:2018 và báo cáo đầy đủ theo quy định Hợp tác và phối hợp với chính quyền địa phương."
+      },
+      {
+        "run": "21ac5b939eac497e",
+        "from": "SUPPORTED",
+        "to": "PARTIALLY_SUPPORTED",
+        "confirming_source": "internal",
+        "text": "Đến tháng 01/2025, BSI đã trao giấy kiểm tra, xác nhận, công bố khí nhà kính theo tiêu chuẩn ISO 14064-1:2018 cho các công ty thành viên của Tập đoàn Hòa Phát t"
+      },
+      {
+        "run": "21ac5b939eac497e",
+        "from": "SUPPORTED",
+        "to": "PARTIALLY_SUPPORTED",
+        "confirming_source": "internal",
+        "text": "Tổng công ty Gang thép Ngày 11/01/2025, BSI đã trao giấy kiểm tra, xác nhận, công bố khí nhà kính theo tiêu chuẩn ISO 14064-1:2018 cho các Công ty thành viên th"
+      },
+      {
+        "run": "21ac5b939eac497e",
+        "from": "SUPPORTED",
+        "to": "PARTIALLY_SUPPORTED",
+        "confirming_source": "internal",
+        "text": "“Tôi rất ấn tượng với quyết tâm của Ban lãnh đạo Tập đoàn tới các công ty thành viên trong việc tiên phong triển khai và đạt được kết quả tích cực về kiểm kê kh"
+      },
+      {
+        "run": "529d9785f2f14680",
+        "from": "SUPPORTED",
+        "to": "PARTIALLY_SUPPORTED",
+        "confirming_source": "internal",
+        "text": "Theo ước tính, ngành này tiêu thụ khoảng 40% tổng năng lượng toàn cầu, chịu trách nhiệm cho hơn 30% tổng lượng phát thải khí nhà kính và sử dụng một lượng lao đ"
+      },
+      {
+        "run": "529d9785f2f14680",
+        "from": "SUPPORTED",
+        "to": "PARTIALLY_SUPPORTED",
+        "confirming_source": "internal",
+        "text": "Có thể kể đến một số dự án điển hình cho sức cạnh tranh và vị thế của Coteccons từ năng lực đáp ứng các tiêu chuẩn quốc tế khắt khe về ESG như Nhà máy LEGO Viet"
+      },
+      {
+        "run": "529d9785f2f14680",
+        "from": "SUPPORTED",
+        "to": "PARTIALLY_SUPPORTED",
+        "confirming_source": "internal",
+        "text": "Theo ước tính, ngành này sử dụng khoảng 40% tổng năng lượng toàn cầu, chịu trách nhiệm cho hơn 30% tổng lượng phát thải khí nhà kính và sử dụng lượng lớn lực lư"
+      }
+    ]
+  },
+  "explain_labelled": {
+    "n_matched": 146,
+    "off": {
+      "n_system_decisive": 9,
+      "precision_vs_reference": 0.333,
+      "false_supported": 5,
+      "false_supported_ref_breakdown": {
+        "NOT_A_CLAIM": 2,
+        "PARTIALLY_SUPPORTED": 3
+      },
+      "verdicts": {
+        "INSUFFICIENT_EVIDENCE": 48,
+        "PARTIALLY_SUPPORTED": 89,
+        "CONTRADICTED": 4,
+        "SUPPORTED": 5
+      }
+    },
+    "on": {
+      "n_system_decisive": 4,
+      "precision_vs_reference": 0.75,
+      "false_supported": 0,
+      "false_supported_ref_breakdown": {},
+      "verdicts": {
+        "INSUFFICIENT_EVIDENCE": 48,
+        "PARTIALLY_SUPPORTED": 94,
+        "CONTRADICTED": 4
+      }
+    },
+    "supported_cases": [
+      {
+        "item_id": "A-517d52e4beef3d30",
+        "ref": "NOT_A_CLAIM",
+        "off": "SUPPORTED",
+        "on": "PARTIALLY_SUPPORTED",
+        "stored": "SUPPORTED",
+        "confirming_source": "internal"
+      },
+      {
+        "item_id": "A-7639eece2a85dc7f",
+        "ref": "PARTIALLY_SUPPORTED",
+        "off": "SUPPORTED",
+        "on": "PARTIALLY_SUPPORTED",
+        "stored": "SUPPORTED",
+        "confirming_source": "internal"
+      },
+      {
+        "item_id": "A-8e66afd106994238",
+        "ref": "PARTIALLY_SUPPORTED",
+        "off": "SUPPORTED",
+        "on": "PARTIALLY_SUPPORTED",
+        "stored": "SUPPORTED",
+        "confirming_source": "internal"
+      },
+      {
+        "item_id": "A-be02c03b9a7565d5",
+        "ref": "NOT_A_CLAIM",
+        "off": "SUPPORTED",
+        "on": "PARTIALLY_SUPPORTED",
+        "stored": "SUPPORTED",
+        "confirming_source": "internal"
+      },
+      {
+        "item_id": "A-d097d84cf51f72d2",
+        "ref": "PARTIALLY_SUPPORTED",
+        "off": "SUPPORTED",
+        "on": "PARTIALLY_SUPPORTED",
+        "stored": "SUPPORTED",
+        "confirming_source": "internal"
+      }
+    ]
+  }
+}

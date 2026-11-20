@@ -101,6 +101,25 @@ _OVERCLAIMS: list[tuple[str, str, str, str]] = [
 ]
 
 
+_FOUND = {"label": "Bằng chứng GreenScan tìm thấy trong tài liệu đã nạp", "verification": "Bằng chứng do GreenScan tìm thấy"}
+
+# The basis each rule cites, by code prefix (or full code): what the change
+# report prints next to an accepted suggestion, since the log keeps only the code.
+_RULE_BASIS = {
+    "OC": [_EU_GENERIC, _VN_CONSUMER],
+    "VG": [_RUBRIC],
+    "SC": [_RUBRIC, _GHG],
+    "EV-01": [_FOUND],
+    "EV-02": [_RUBRIC],
+}
+
+
+def basis_for(rule_code: str | None) -> list[dict]:
+    if not rule_code:
+        return []
+    return _RULE_BASIS.get(rule_code) or _RULE_BASIS.get(rule_code.split("-", 1)[0], [])
+
+
 def _span_by_fold(text: str, pattern: str) -> tuple[int, int] | None:
     match = re.search(pattern, fold(text))
     return (match.start(), match.end()) if match else None

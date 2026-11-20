@@ -1,0 +1,100 @@
+{
+ "twins": {
+  "pairs": 80,
+  "scored": 55,
+  "errors": 25,
+  "pair_order_up": 0.182,
+  "pair_order_ci": [
+   0.102,
+   0.303
+  ],
+  "ties": 0.782,
+  "severe_mutated_in_high_band": 0.622,
+  "per_code": {
+   "ABSOLUTE_CLAIM": {
+    "tie": 6,
+    "n": 6,
+    "verdict_changed": 0,
+    "mut_high": 4
+   },
+   "OFFSET_NEUTRALITY": {
+    "tie": 2,
+    "n": 7,
+    "verdict_changed": 0,
+    "mut_high": 7,
+    "up": 5
+   },
+   "FUTURE_AS_ACHIEVED": {
+    "tie": 5,
+    "n": 5,
+    "verdict_changed": 0,
+    "mut_high": 0
+   },
+   "INTENSITY_VS_ABSOLUTE": {
+    "tie": 10,
+    "n": 10,
+    "verdict_changed": 0,
+    "mut_high": 9
+   },
+   "HIDDEN_TRADEOFF": {
+    "tie": 8,
+    "n": 9,
+    "verdict_changed": 1,
+    "mut_high": 3,
+    "down": 1
+   },
+   "VAGUE_TERM": {
+    "tie": 9,
+    "n": 9,
+    "verdict_changed": 0
+   },
+   "MISSING_BASELINE": {
+    "up": 5,
+    "n": 5,
+    "verdict_changed": 0
+   },
+   "NO_EVIDENCE_REF": {
+    "down": 1,
+    "n": 4,
+    "verdict_changed": 0,
+    "tie": 3
+   }
+  },
+  "mean_priority": {
+   "clean": 52.4,
+   "mutated": 53.0
+  }
+ },
+ "explain_supp": {
+  "n": 85,
+  "confusion": {
+   "CONTRADICTED": {
+    "PARTIALLY_SUPPORTED": 23,
+    "null": 27
+   },
+   "SUPPORTED": {
+    "null": 23,
+    "SUPPORTED": 4,
+    "INSUFFICIENT_EVIDENCE": 1,
+    "PARTIALLY_SUPPORTED": 7
+   }
+  },
+  "recall": {
+   "CONTRADICTED": 0.0,
+   "SUPPORTED": 0.114
+  },
+  "recall_ci": {
+   "CONTRADICTED": [
+    0,
+    0.071
+   ],
+   "SUPPORTED": [
+    0.045,
+    0.26
+   ]
+  },
+  "C_explanation_cites_both_figures": 0.0,
+  "C_explanation_cites_any_figure": 0.0,
+  "decisive_wrong": 0
+ }
+}

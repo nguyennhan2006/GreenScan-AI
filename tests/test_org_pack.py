@@ -344,7 +344,16 @@ def test_verdict_invariance_with_and_without_packs(runs):
 
     assert dump(on.verifications) == dump(off.verifications)
     assert dump(on.risks) == dump(off.risks)
-    assert on.priorities == off.priorities
+    # Scores and ranks are untouched. Since 14/11/2026 an approved rule with
+    # on_fail raise_priority may add a queue place (feedback/queue.py), never remove one.
+    def strip(priority):
+        return {k: v for k, v in priority.items() if k not in ("in_queue", "raised_by")}
+
+    assert [strip(p) for p in on.priorities] == [strip(p) for p in off.priorities]
+    for with_pack, without in zip(on.priorities, off.priorities):
+        assert with_pack["in_queue"] or not without["in_queue"]
+        if with_pack["in_queue"] and not without["in_queue"]:
+            assert any(r.startswith("org_rule:") for r in with_pack.get("raised_by", []))
     assert on.summary.release_status == off.summary.release_status
     assert dump(on.quality_gates) == dump(off.quality_gates)
     assert ([{k: v for k, v in c.items() if k != "legal_check_id"} for c in on.legal_checks]

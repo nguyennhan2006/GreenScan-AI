@@ -451,6 +451,8 @@ def product_suggestions(item: dict, so: dict | None, extractor) -> list:
         c = C()
         c.metric, c.values, c.period, c.baseline, c.scope = a.get("metric"), a.get("values") or [], a.get("period"), a.get("baseline"), a.get("scope")
         c.direction, c.is_future_commitment = a.get("direction"), a.get("is_future_commitment")
+        # missing_attributes reads the sentence too since 15/11 (a scope named in the text counts as given).
+        c.text = text
         missing, vague, ctype, status = _missing_attributes(c), a.get("vague_terms_matched") or [], a.get("claim_type"), so["system_status"]
     else:  # pool B: no run exists; extract attributes with the product's rule-based extractor
         chunk = EvidenceChunk(chunk_id="eval", doc_id="eval", source_name="eval", role=DocumentRole.CLAIM_SOURCE,

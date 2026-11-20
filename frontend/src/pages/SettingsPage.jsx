@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { checkHealth, exportGold, gatewayHealth, runtimeInfo } from '../api.js'
 import { Chip } from '../components/badges.jsx'
+import ModelModeSwitch from '../components/ModelModeSwitch.jsx'
+import { setTipsHidden, useTipsHidden } from '../components/NextStep.jsx'
 
 /**
  * Settings, limited to what actually exists: the reviewer name kept on this
@@ -26,7 +28,7 @@ const PROFILES = [
   ['gpu', 'Máy chủ có GPU', 'Mô hình mở chạy trên máy chủ của đơn vị; dùng cho tài liệu mật.'],
 ]
 
-export default function SettingsPage({ reviewer, onReviewerChange, onForget }) {
+export default function SettingsPage({ reviewer, onReviewerChange, onForget, onRuntime }) {
   const [name, setName] = useState(reviewer || '')
   const [runtime, setRuntime] = useState(null)
   const [gateway, setGateway] = useState(null)
@@ -47,20 +49,31 @@ export default function SettingsPage({ reviewer, onReviewerChange, onForget }) {
   }, [])
 
   const providers = Object.entries(gateway?.providers || {})
+  const tipsOff = useTipsHidden()
 
   return (
     <div className="mx-auto max-w-4xl space-y-4">
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
+      <section className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-5">
         <h3 className="text-sm font-semibold text-slate-900">Người soát xét</h3>
         <p className="text-xs text-slate-500">Tên được ghi vào mọi quyết định và lên giấy làm việc. Lưu trên trình duyệt này.</p>
         <form onSubmit={(e) => { e.preventDefault(); onReviewerChange(name.trim()) }} className="mt-3 flex gap-2">
           <input value={name} onChange={(e) => setName(e.target.value)} className="flex-1 rounded-lg border border-slate-300 px-3 py-1.5 text-sm" />
-          <button type="submit" className="rounded-lg bg-[#0F3D2E] px-3 py-1.5 text-sm font-semibold text-white">Lưu</button>
+          <button type="submit" className="rounded-lg bg-[#047857] px-3 py-1.5 text-sm font-semibold text-white">Lưu</button>
           <button type="button" onClick={onForget} className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm text-slate-700">Quên tên</button>
         </form>
+        <label className="mt-3 flex items-center gap-2 text-xs text-slate-700">
+          <input type="checkbox" checked={!tipsOff} onChange={(e) => setTipsHidden(!e.target.checked)} data-testid="tips-toggle" />
+          Hiện dòng “Việc tiếp theo” ở đầu mỗi trang
+        </label>
       </section>
 
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
+      <section className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-5">
+        <h3 className="text-sm font-semibold text-slate-900">Mô hình ngôn ngữ</h3>
+        <p className="mb-3 text-xs text-slate-500">Bật hoặc tắt mô hình ngay tại đây, không cần khởi động lại. Bảng bên dưới cho thấy việc nào do luật làm, việc nào do mô hình làm.</p>
+        <ModelModeSwitch runtime={runtime} onRuntime={(r) => { setRuntime(r); onRuntime?.(r) }} />
+      </section>
+
+      <section className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-5">
         <div className="flex flex-wrap items-center gap-2">
           <h3 className="text-sm font-semibold text-slate-900">Chế độ chạy của máy chủ này</h3>
           {runtime && <Chip tone={runtime.sends_documents_out ? 'sky' : 'emerald'}>{runtime.label}</Chip>}
@@ -87,13 +100,13 @@ export default function SettingsPage({ reviewer, onReviewerChange, onForget }) {
                 </tr>
               </tbody>
             </table>
-            <p className="mt-2 text-[11px] text-slate-500">
+            <p className="mt-2 text-xs text-slate-500">
               Máy chủ: {runtime.hardware?.cpu_count ?? '?'} luồng CPU{runtime.hardware?.ram_gb ? ` · ${runtime.hardware.ram_gb} GB RAM` : ''} · hồ sơ <code className="font-mono">{runtime.profile}</code>
             </p>
           </>
         ) : <p className="mt-2 text-xs text-slate-500">Không đọc được chế độ chạy.</p>}
 
-        <h4 className="mt-4 text-xs font-semibold text-slate-700">Đổi chế độ</h4>
+        <h4 className="mt-4 text-xs font-semibold text-slate-700">Chế độ mặc định khi khởi động</h4>
         <p className="text-xs text-slate-500">Đặt một dòng trong tệp <code className="font-mono">.env</code> ở thư mục GreenScan rồi khởi động lại: <code className="font-mono">QUANTUM_PROFILE=offline</code> (hoặc <code className="font-mono">cloud</code>, <code className="font-mono">gpu</code>).</p>
         <ul className="mt-2 grid gap-2 sm:grid-cols-3">
           {PROFILES.map(([key, label, hint]) => (
@@ -105,7 +118,7 @@ export default function SettingsPage({ reviewer, onReviewerChange, onForget }) {
         </ul>
       </section>
 
-      <details className="rounded-xl border border-slate-200 bg-white p-5">
+      <details className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-5">
         <summary className="cursor-pointer text-sm font-semibold text-slate-900">Nhà cung cấp mô hình (cho người quản trị)</summary>
         <div className="mt-3 flex flex-wrap items-center gap-2">
           <p className="text-xs text-slate-500">Cấu hình qua <code className="font-mono">.env</code> và <code className="font-mono">configs/routing.yaml</code>; giao diện chỉ đọc.</p>
@@ -129,7 +142,7 @@ export default function SettingsPage({ reviewer, onReviewerChange, onForget }) {
         ) : <p className="mt-2 text-xs text-slate-500">Không đọc được trạng thái.</p>}
       </details>
 
-      <section className="rounded-xl border border-slate-200 bg-white p-5">
+      <section className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-5">
         <h3 className="text-sm font-semibold text-slate-900">Nhãn chuẩn từ quyết định người soát xét</h3>
         {gold ? (
           <dl className="mt-2 grid gap-1 text-xs sm:grid-cols-2">
@@ -142,7 +155,7 @@ export default function SettingsPage({ reviewer, onReviewerChange, onForget }) {
         ) : <p className="mt-2 text-xs text-slate-500">Chưa có quyết định nào.</p>}
       </section>
 
-      <section className="rounded-xl border border-slate-200 bg-white p-5 text-xs text-slate-600">
+      <section className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-5 text-xs text-slate-600">
         <h3 className="text-sm font-semibold text-slate-900">Hệ thống</h3>
         <p className="mt-2">Phiên bản máy chủ <span className="font-mono">{health?.version || '—'}</span> · thang chấm rủi ro phiên bản 2 · dạng dữ liệu <span className="font-mono">analysis-result-v2</span></p>
         <p className="mt-1">Lưu trữ: <code className="font-mono">.quantum/runs</code> (phiên), <code className="font-mono">.quantum/documents</code> (tệp gốc), <code className="font-mono">.quantum/reviews</code> (quyết định). Không tự xoá.</p>

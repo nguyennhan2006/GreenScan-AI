@@ -1,0 +1,99 @@
+# Yếu tố bắt buộc của báo cáo đảm bảo theo ISSA 5000, đoạn 190 (và 191).
+#
+# Nguồn: data/standards/iaasb/IAASB-International-Standard-on-Sustainability-Assurance-ISSA-5000.pdf
+# (sha256 5dc1df4d…), trang 54–58 của chuẩn mực. Trích 11/11/2026, chưa có người soát.
+# Dùng cho cờ D6 (báo cáo đảm bảo thiếu yếu tố, việc 36): chỉ kiểm yếu tố áp dụng với
+# loại hợp đồng (`applies`), không phạt yếu tố "nếu áp dụng" khi không có căn cứ.
+#
+# applies: always | limited | reasonable | modified | listed | if_applicable
+# heading: tiêu đề tiếng Anh mà chuẩn mực quy định nguyên văn (nếu có).
+version: issa5000-report-elements-v0.1
+source: {standard: "ISSA 5000", paragraph: "190-191", sha256: 5dc1df4dfc5ce7757d694f25c1689dc993b13901dcd1f0beb950e31bfd5d0cd1}
+
+elements:
+  - id: title
+    para: "190(a)"
+    applies: always
+    name_vi: Tiêu đề
+    check_vi: Tiêu đề nói rõ đây là báo cáo đảm bảo của người hành nghề độc lập, mức hợp lý, có giới hạn hoặc kết hợp.
+  - id: addressee
+    para: "190(b)"
+    applies: always
+    name_vi: Người nhận báo cáo
+    check_vi: Báo cáo gửi tới ai (cổ đông, hội đồng quản trị…).
+  - id: conclusion_first
+    para: "190(c)"
+    applies: always
+    heading: ["Limited Assurance Conclusion", "Reasonable Assurance Opinion"]
+    heading_prefix_if_modified: ["Qualified", "Adverse", "Disclaimer of"]
+    name_vi: Kết luận đặt ở phần đầu
+    check_vi: Phần đầu báo cáo là kết luận, tiêu đề cho biết loại kết luận; kết luận sửa đổi có chữ “Qualified/Adverse/Disclaimer of”.
+    sub:
+      - {id: entity, para: "190(c)(ii)", name_vi: Tên đơn vị được đảm bảo}
+      - {id: assurance_level, para: "190(c)(iii)", name_vi: Mức độ đảm bảo (hợp lý / có giới hạn / khác nhau cho từng phần)}
+      - {id: subject_information, para: "190(c)(iv)", name_vi: Thông tin bền vững được đảm bảo (phạm vi, chủ đề)}
+      - {id: period, para: "190(c)(v)", name_vi: Ngày hoặc kỳ của thông tin}
+      - {id: conclusion_form, para: "190(c)(vi)", name_vi: "Dạng kết luận: hợp lý là khẳng định (“In our opinion … is fairly presented/prepared”); có giới hạn là phủ định (“nothing has come to our attention …”)"}
+      - {id: criteria, para: "190(c)(vii)", name_vi: Tiêu chí áp dụng (khung báo cáo hoặc tiêu chí do đơn vị tự xây dựng và nơi công bố)}
+  - id: basis_for_conclusion
+    para: "190(d)"
+    applies: always
+    heading: ["Basis for Conclusion", "Basis for Opinion"]
+    name_vi: Cơ sở kết luận
+    check_vi: Nêu thực hiện theo ISSA 5000; tuân thủ yêu cầu độc lập và đạo đức (IESBA hoặc tương đương, nêu cơ quan xác định); công ty áp dụng ISQM 1 hoặc tương đương; bằng chứng đủ và thích hợp; nếu sửa đổi thì mô tả vấn đề.
+  - id: limited_assurance_statement
+    para: "190(d)(ii)"
+    applies: limited
+    name_vi: Câu nói rõ giới hạn của đảm bảo có giới hạn
+    check_vi: Thủ tục ít hơn đảm bảo hợp lý, nên mức đảm bảo thấp hơn đáng kể.
+  - id: modification_matter
+    para: "190(d)(viii)"
+    applies: modified
+    name_vi: Mô tả vấn đề dẫn tới kết luận sửa đổi
+  - id: other_information
+    para: "190(e)"
+    applies: if_applicable
+    heading: ["Other Information"]
+    name_vi: Thông tin khác
+  - id: responsibilities_for_information
+    para: "190(f)"
+    applies: always
+    heading: ["Responsibilities for the Sustainability Information"]
+    name_vi: Trách nhiệm của ban quản lý về thông tin bền vững
+    check_vi: Ban quản lý chịu trách nhiệm lập thông tin theo tiêu chí và về kiểm soát nội bộ; nêu người giám sát nếu khác.
+  - id: inherent_limitations
+    para: "190(g)"
+    applies: if_applicable
+    heading: ["Inherent Limitations in Preparing the Sustainability Information"]
+    name_vi: Hạn chế cố hữu
+    check_vi: Hạn chế đáng kể trong đo lường, kể cả với thông tin hướng tới tương lai.
+  - id: practitioner_responsibilities
+    para: "190(h)"
+    applies: always
+    heading: ["Practitioner's Responsibilities"]
+    name_vi: Trách nhiệm của người hành nghề
+    check_vi: Mục tiêu, khái niệm sai sót trọng yếu, xét đoán và hoài nghi nghề nghiệp, thủ tục đánh giá rủi ro, thủ tục đáp ứng, rủi ro gian lận.
+  - id: summary_of_work
+    para: "190(i)"
+    applies: limited
+    heading: ["Summary of Work Performed"]
+    name_vi: Tóm tắt công việc đã làm
+    check_vi: Mô tả nội dung, thời gian, phạm vi thủ tục đủ để người đọc hiểu mức đảm bảo có giới hạn đã đạt.
+  - id: signature
+    para: "190(j)"
+    applies: always
+    name_vi: Chữ ký người hành nghề
+  - id: location
+    para: "190(k)"
+    applies: always
+    name_vi: Nơi người phụ trách hợp đồng hành nghề
+  - id: report_date
+    para: "190(l)"
+    applies: always
+    name_vi: Ngày báo cáo
+    check_vi: Không sớm hơn ngày có đủ bằng chứng và ngày hoàn tất soát xét chất lượng (nếu bắt buộc).
+  - id: engagement_leader_name
+    para: "191"
+    applies: listed
+    name_vi: Tên người phụ trách hợp đồng (đơn vị niêm yết)
+    check_vi: Bắt buộc với đơn vị niêm yết, trừ trường hợp hiếm có nguy cơ an toàn cá nhân.

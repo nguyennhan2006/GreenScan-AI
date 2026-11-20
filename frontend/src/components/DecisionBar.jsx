@@ -36,17 +36,42 @@ function reasonNote(h) {
   const rule = h.rule_ref ? '; quy tắc ' + h.rule_ref : ''
   return ' (lý do: ' + reason + rule + ')'
 }
+// Vai trò người soát (storage/reviews.py REVIEWER_ROLES). Nhãn của chính doanh nghiệp bị soát
+// được lưu vào vết kiểm toán nhưng không bao giờ dùng để dạy hay chấm mô hình.
+const ROLES = [
+  { value: '', label: '— vai trò —' },
+  { value: 'auditor', label: 'Kiểm toán viên' },
+  { value: 'bank', label: 'Ngân hàng / tín dụng' },
+  { value: 'internal_audit', label: 'Kiểm toán nội bộ' },
+  { value: 'regulator', label: 'Cơ quan quản lý' },
+  { value: 'greenscan', label: 'Đội GreenScan' },
+  { value: 'reviewed_company', label: 'Doanh nghiệp bị soát' },
+  { value: 'other', label: 'Khác' },
+]
+function loadRole() {
+  try { return localStorage.getItem('gs.reviewer.role') || '' } catch { return '' }
+}
+function saveRole(value) {
+  try { localStorage.setItem('gs.reviewer.role', value) } catch { /* không lưu được thì thôi */ }
+}
+
 const DECISION_LABEL = {
   CONFIRM: 'Xác nhận', OVERRIDE: 'Ghi đè', ABSTAIN: 'Chưa kết luận',
   REQUEST_EVIDENCE: 'Yêu cầu thêm bằng chứng', REOPEN: 'Mở lại',
 }
 
-export default function DecisionBar({ state, history, reviewer, onReviewerChange, onDecide, busy, ruleOptions = [] }) {
+export default function DecisionBar({ state, history, reviewer, onReviewerChange, onDecide, busy, ruleOptions = [], evidence = [] }) {
   const [comment, setComment] = useState('')
+  // Nhãn chỉ chỗ: đoạn nào quyết định kết luận của người soát (feedback-loop-v1, tầng 0).
+  const [decisive, setDecisive] = useState([])
+  const [quote, setQuote] = useState('')
+  const [showPointer, setShowPointer] = useState(false)
+  const [role, setRole] = useState(loadRole)
   const [verdict, setVerdict] = useState('')
   const [reason, setReason] = useState('')
   const [ruleRef, setRuleRef] = useState('')
   const [showHistory, setShowHistory] = useState(false)
+  const [fixing, setFixing] = useState(false)
 
   const finalized = state === 'FINALIZED'
   const style = STATE_STYLE[state] || STATE_STYLE.AI_SUGGESTED
@@ -57,21 +82,28 @@ export default function DecisionBar({ state, history, reviewer, onReviewerChange
   const submit = (decision) => {
     if (!reviewer.trim()) return
     const override = decision === 'OVERRIDE'
+    const labelled = decision === 'CONFIRM' || override
     onDecide({
       decision,
       comment: comment.trim(),
       reviewer_status: override ? verdict : null,
       override_reason: override ? reason : null,
       rule_ref: override && ruleReason ? ruleRef.trim() : '',
+      decisive_chunk_ids: labelled ? decisive : [],
+      decisive_quote: labelled ? quote.trim() : '',
+      reviewer_role: role,
     })
+    setDecisive([])
+    setQuote('')
     setComment('')
     setVerdict('')
     setReason('')
     setRuleRef('')
+    setFixing(false)
   }
 
   return (
-    <section className="rounded-xl border border-slate-200 bg-white p-4">
+    <section className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-4">
       <div className="flex flex-wrap items-center gap-2">
         <h3 className="text-sm font-semibold text-slate-900">Quyết định của người xem xét</h3>
         <span className={`rounded-full border px-2.5 py-0.5 text-xs font-semibold ${style.className}`}>
@@ -119,6 +151,67 @@ export default function DecisionBar({ state, history, reviewer, onReviewerChange
         />
       </div>
 
+      <details className="mt-2 text-xs" data-testid="decision-more">
+        <summary className="cursor-pointer font-medium text-slate-600">Ghi thêm: vai trò của bạn, đoạn khiến bạn quyết định</summary>
+      <div className="mt-2 flex flex-wrap items-center gap-2">
+        <select
+          value={role}
+          onChange={(e) => { setRole(e.target.value); saveRole(e.target.value) }}
+          className="rounded-lg border border-slate-300 px-2 py-1 text-xs"
+          title="Nhãn của doanh nghiệp bị soát không bao giờ được dùng để dạy mô hình"
+        >
+          {ROLES.map((r) => <option key={r.value} value={r.value}>{r.label}</option>)}
+        </select>
+        {!finalized && (
+          <button
+            type="button"
+            onClick={() => setShowPointer((v) => !v)}
+            className="text-xs font-medium text-emerald-700 underline-offset-2 hover:underline"
+          >
+            {showPointer ? 'Ẩn đoạn quyết định' : `Chỉ đoạn quyết định${decisive.length || quote.trim() ? ` (${decisive.length + (quote.trim() ? 1 : 0)})` : ''}`}
+          </button>
+        )}
+      </div>
+
+      {showPointer && !finalized && (
+        <div className="mt-2 rounded-lg border border-emerald-200 bg-emerald-50/40 p-2.5 text-xs">
+          <p className="text-slate-600">
+            Đánh dấu đoạn khiến bạn kết luận như vậy. Hệ thống tự suy ra máy sai ở đâu: đoạn có trong danh sách mà máy vẫn
+            kết luận sai là lỗi <b>đọc</b>; đoạn không có trong danh sách là lỗi <b>tìm</b>. Một cú bấm biến nhãn “sai” thành “sai ở đâu”.
+          </p>
+          <ul className="mt-2 max-h-56 space-y-1 overflow-y-auto">
+            {evidence.map((e, i) => (
+              <li key={e.chunk_id || i}>
+                <label className="flex cursor-pointer gap-2 rounded px-1 py-0.5 hover:bg-white">
+                  <input
+                    type="checkbox"
+                    checked={decisive.includes(e.chunk_id)}
+                    onChange={(ev) => setDecisive((cur) => ev.target.checked ? [...cur, e.chunk_id] : cur.filter((c) => c !== e.chunk_id))}
+                  />
+                  <span className="text-slate-500">#{i + 1}</span>
+                  <span className="text-slate-800">{(e.text || '').slice(0, 160)}{(e.text || '').length > 160 ? '…' : ''}</span>
+                  <span className="ml-auto shrink-0 text-[11px] text-slate-400">{e.source_name}{e.page ? ` tr. ${e.page}` : ''}</span>
+                </label>
+              </li>
+            ))}
+            {evidence.length === 0 && <li className="text-slate-500">Máy không đưa ra đoạn bằng chứng nào cho tuyên bố này.</li>}
+          </ul>
+          <textarea
+            value={quote}
+            onChange={(e) => setQuote(e.target.value)}
+            rows={2}
+            placeholder="Đoạn quyết định không có trong danh sách? Dán trích dẫn (kèm nguồn, trang)."
+            className="mt-2 w-full rounded-lg border border-slate-300 px-2 py-1.5 text-xs"
+          />
+        </div>
+      )}
+        <p className="mt-2 text-slate-500">
+          Chỉ “Xác nhận” và “Ghi đè” trở thành nhãn chuẩn. “Chưa kết luận” và “Yêu cầu thêm bằng chứng” là
+          kết quả hợp lệ của quy trình nhưng không phải nhãn. Khi ghi đè vì quy tắc không hợp, nhãn chỉ chuyển cho
+          người giữ bộ quy tắc xem xét, không dùng để dạy mô hình.
+        </p>
+      </details>
+
       {!reviewer.trim() && (
         <p className="mt-1.5 text-xs text-amber-700">
           Cần tên người xem xét: một vết kiểm toán không có tác giả thì không phải vết kiểm toán.
@@ -145,12 +238,22 @@ export default function DecisionBar({ state, history, reviewer, onReviewerChange
             type="button"
             disabled={busy || !reviewer.trim()}
             onClick={() => submit('CONFIRM')}
-            className="rounded-lg bg-emerald-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-emerald-700 disabled:opacity-40"
+            className={`rounded-lg bg-emerald-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-emerald-700 disabled:opacity-40 ${finalized || busy || !reviewer.trim() ? '' : 'gs-halo'}`}
           >
             Xác nhận gợi ý của máy
           </button>
 
-          <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            onClick={() => setFixing((v) => !v)}
+            aria-expanded={fixing}
+            className={`rounded-lg border px-3 py-1.5 text-sm font-semibold ${fixing ? 'border-slate-700 bg-slate-100 text-slate-900' : 'border-slate-400 text-slate-800 hover:bg-slate-50'}`}
+          >
+            Máy sai, tôi sửa
+          </button>
+
+          {fixing && (
+          <div className="order-last flex basis-full flex-wrap items-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 p-2">
             <select
               value={verdict}
               onChange={(e) => setVerdict(e.target.value)}
@@ -192,6 +295,7 @@ export default function DecisionBar({ state, history, reviewer, onReviewerChange
               Ghi đè
             </button>
           </div>
+          )}
 
           <button
             type="button"
@@ -214,13 +318,6 @@ export default function DecisionBar({ state, history, reviewer, onReviewerChange
         </div>
       )}
 
-      <p className="mt-2 text-xs text-slate-500">
-        Chỉ “Xác nhận” và “Ghi đè” trở thành nhãn chuẩn. “Chưa kết luận” và “Yêu cầu thêm bằng chứng” là
-        kết quả hợp lệ của quy trình nhưng không phải nhãn — coi “chưa kết luận được” là một
-        phán quyết sẽ dạy sai cho mô hình sau này. Khi ghi đè vì quy tắc không hợp, nhãn chỉ chuyển cho
-        người giữ bộ quy tắc xem xét, không dùng để dạy mô hình, để một ngoại lệ của một doanh nghiệp không
-        thành thói quen sai cho mọi doanh nghiệp.
-      </p>
     </section>
   )
 }

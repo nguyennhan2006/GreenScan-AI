@@ -1,0 +1,2691 @@
+{
+ "case": "B",
+ "run_id": "fe38a4515c1148d5",
+ "seconds": 150.73,
+ "peak_working_set_mb": 864.3,
+ "steps": [
+  {
+   "step": "validate_inputs",
+   "index": 1,
+   "of": 10,
+   "detail": "2 tài liệu",
+   "t": 0.0
+  },
+  {
+   "step": "parse_and_ocr_documents",
+   "index": 2,
+   "of": 10,
+   "detail": "PDF lớn có thể mất 1–2 phút",
+   "t": 0.71
+  },
+  {
+   "step": "extract_green_claims",
+   "index": 3,
+   "of": 10,
+   "detail": "5023 đoạn văn",
+   "t": 77.84
+  },
+  {
+   "step": "build_hybrid_retrieval_index",
+   "index": 4,
+   "of": 10,
+   "detail": "186 tuyên bố",
+   "t": 78.63
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "1/186 tuyên bố",
+   "t": 80.6
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "2/186 tuyên bố",
+   "t": 81.01
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "3/186 tuyên bố",
+   "t": 81.25
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "4/186 tuyên bố",
+   "t": 81.75
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "5/186 tuyên bố",
+   "t": 82.09
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "6/186 tuyên bố",
+   "t": 82.53
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "7/186 tuyên bố",
+   "t": 82.69
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "8/186 tuyên bố",
+   "t": 82.95
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "9/186 tuyên bố",
+   "t": 83.19
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "10/186 tuyên bố",
+   "t": 83.49
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "11/186 tuyên bố",
+   "t": 83.93
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "12/186 tuyên bố",
+   "t": 84.31
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "13/186 tuyên bố",
+   "t": 84.69
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "14/186 tuyên bố",
+   "t": 84.96
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "15/186 tuyên bố",
+   "t": 85.13
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "16/186 tuyên bố",
+   "t": 85.35
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "17/186 tuyên bố",
+   "t": 85.56
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "18/186 tuyên bố",
+   "t": 85.95
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "19/186 tuyên bố",
+   "t": 86.14
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "20/186 tuyên bố",
+   "t": 86.43
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "21/186 tuyên bố",
+   "t": 86.71
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "22/186 tuyên bố",
+   "t": 86.89
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "23/186 tuyên bố",
+   "t": 87.19
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "24/186 tuyên bố",
+   "t": 87.4
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "25/186 tuyên bố",
+   "t": 87.65
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "26/186 tuyên bố",
+   "t": 87.82
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "27/186 tuyên bố",
+   "t": 88.12
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "28/186 tuyên bố",
+   "t": 88.38
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "29/186 tuyên bố",
+   "t": 88.7
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "30/186 tuyên bố",
+   "t": 88.88
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "31/186 tuyên bố",
+   "t": 89.08
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "32/186 tuyên bố",
+   "t": 89.48
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "33/186 tuyên bố",
+   "t": 89.63
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "34/186 tuyên bố",
+   "t": 89.81
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "35/186 tuyên bố",
+   "t": 90.05
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "36/186 tuyên bố",
+   "t": 90.39
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "37/186 tuyên bố",
+   "t": 90.73
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "38/186 tuyên bố",
+   "t": 91.08
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "39/186 tuyên bố",
+   "t": 91.32
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "40/186 tuyên bố",
+   "t": 91.59
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "41/186 tuyên bố",
+   "t": 92.0
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "42/186 tuyên bố",
+   "t": 92.34
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "43/186 tuyên bố",
+   "t": 92.59
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "44/186 tuyên bố",
+   "t": 92.96
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "45/186 tuyên bố",
+   "t": 93.28
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "46/186 tuyên bố",
+   "t": 93.65
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "47/186 tuyên bố",
+   "t": 93.86
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "48/186 tuyên bố",
+   "t": 94.16
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "49/186 tuyên bố",
+   "t": 94.53
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "50/186 tuyên bố",
+   "t": 94.77
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "51/186 tuyên bố",
+   "t": 95.09
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "52/186 tuyên bố",
+   "t": 95.52
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "53/186 tuyên bố",
+   "t": 95.7
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "54/186 tuyên bố",
+   "t": 96.57
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "55/186 tuyên bố",
+   "t": 96.79
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "56/186 tuyên bố",
+   "t": 97.7
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "57/186 tuyên bố",
+   "t": 98.16
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "58/186 tuyên bố",
+   "t": 98.5
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "59/186 tuyên bố",
+   "t": 98.79
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "60/186 tuyên bố",
+   "t": 99.21
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "61/186 tuyên bố",
+   "t": 99.58
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "62/186 tuyên bố",
+   "t": 99.85
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "63/186 tuyên bố",
+   "t": 100.1
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "64/186 tuyên bố",
+   "t": 100.29
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "65/186 tuyên bố",
+   "t": 100.52
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "66/186 tuyên bố",
+   "t": 100.74
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "67/186 tuyên bố",
+   "t": 100.92
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "68/186 tuyên bố",
+   "t": 101.24
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "69/186 tuyên bố",
+   "t": 101.55
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "70/186 tuyên bố",
+   "t": 101.98
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "71/186 tuyên bố",
+   "t": 102.38
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "72/186 tuyên bố",
+   "t": 102.68
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "73/186 tuyên bố",
+   "t": 102.98
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "74/186 tuyên bố",
+   "t": 103.43
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "75/186 tuyên bố",
+   "t": 103.74
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "76/186 tuyên bố",
+   "t": 104.11
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "77/186 tuyên bố",
+   "t": 104.5
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "78/186 tuyên bố",
+   "t": 105.03
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "79/186 tuyên bố",
+   "t": 105.41
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "80/186 tuyên bố",
+   "t": 105.85
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "81/186 tuyên bố",
+   "t": 106.25
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "82/186 tuyên bố",
+   "t": 106.66
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "83/186 tuyên bố",
+   "t": 107.05
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "84/186 tuyên bố",
+   "t": 107.23
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "85/186 tuyên bố",
+   "t": 107.44
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "86/186 tuyên bố",
+   "t": 107.76
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "87/186 tuyên bố",
+   "t": 107.96
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "88/186 tuyên bố",
+   "t": 108.22
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "89/186 tuyên bố",
+   "t": 108.43
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "90/186 tuyên bố",
+   "t": 108.66
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "91/186 tuyên bố",
+   "t": 108.99
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "92/186 tuyên bố",
+   "t": 109.23
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "93/186 tuyên bố",
+   "t": 109.57
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "94/186 tuyên bố",
+   "t": 109.86
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "95/186 tuyên bố",
+   "t": 110.18
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "96/186 tuyên bố",
+   "t": 110.39
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "97/186 tuyên bố",
+   "t": 110.7
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "98/186 tuyên bố",
+   "t": 110.97
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "99/186 tuyên bố",
+   "t": 111.22
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "100/186 tuyên bố",
+   "t": 111.45
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "101/186 tuyên bố",
+   "t": 111.68
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "102/186 tuyên bố",
+   "t": 111.89
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "103/186 tuyên bố",
+   "t": 112.1
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "104/186 tuyên bố",
+   "t": 112.26
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "105/186 tuyên bố",
+   "t": 112.51
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "106/186 tuyên bố",
+   "t": 112.74
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "107/186 tuyên bố",
+   "t": 112.99
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "108/186 tuyên bố",
+   "t": 113.23
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "109/186 tuyên bố",
+   "t": 113.51
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "110/186 tuyên bố",
+   "t": 113.72
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "111/186 tuyên bố",
+   "t": 114.0
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "112/186 tuyên bố",
+   "t": 114.13
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "113/186 tuyên bố",
+   "t": 114.44
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "114/186 tuyên bố",
+   "t": 114.9
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "115/186 tuyên bố",
+   "t": 115.28
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "116/186 tuyên bố",
+   "t": 115.87
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "117/186 tuyên bố",
+   "t": 116.17
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "118/186 tuyên bố",
+   "t": 116.44
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "119/186 tuyên bố",
+   "t": 116.7
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "120/186 tuyên bố",
+   "t": 116.91
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "121/186 tuyên bố",
+   "t": 117.1
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "122/186 tuyên bố",
+   "t": 117.29
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "123/186 tuyên bố",
+   "t": 117.46
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "124/186 tuyên bố",
+   "t": 117.8
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "125/186 tuyên bố",
+   "t": 117.98
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "126/186 tuyên bố",
+   "t": 118.15
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "127/186 tuyên bố",
+   "t": 118.48
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "128/186 tuyên bố",
+   "t": 118.64
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "129/186 tuyên bố",
+   "t": 118.78
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "130/186 tuyên bố",
+   "t": 118.99
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "131/186 tuyên bố",
+   "t": 119.2
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "132/186 tuyên bố",
+   "t": 119.38
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "133/186 tuyên bố",
+   "t": 119.61
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "134/186 tuyên bố",
+   "t": 119.89
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "135/186 tuyên bố",
+   "t": 120.22
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "136/186 tuyên bố",
+   "t": 120.46
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "137/186 tuyên bố",
+   "t": 120.73
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "138/186 tuyên bố",
+   "t": 121.03
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "139/186 tuyên bố",
+   "t": 121.18
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "140/186 tuyên bố",
+   "t": 121.28
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "141/186 tuyên bố",
+   "t": 121.52
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "142/186 tuyên bố",
+   "t": 121.72
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "143/186 tuyên bố",
+   "t": 121.95
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "144/186 tuyên bố",
+   "t": 122.2
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "145/186 tuyên bố",
+   "t": 122.46
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "146/186 tuyên bố",
+   "t": 122.61
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "147/186 tuyên bố",
+   "t": 122.86
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "148/186 tuyên bố",
+   "t": 123.18
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "149/186 tuyên bố",
+   "t": 123.46
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "150/186 tuyên bố",
+   "t": 123.67
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "151/186 tuyên bố",
+   "t": 124.04
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "152/186 tuyên bố",
+   "t": 124.3
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "153/186 tuyên bố",
+   "t": 124.51
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "154/186 tuyên bố",
+   "t": 124.77
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "155/186 tuyên bố",
+   "t": 125.02
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "156/186 tuyên bố",
+   "t": 125.13
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "157/186 tuyên bố",
+   "t": 125.25
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "158/186 tuyên bố",
+   "t": 125.49
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "159/186 tuyên bố",
+   "t": 125.73
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "160/186 tuyên bố",
+   "t": 126.03
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "161/186 tuyên bố",
+   "t": 126.28
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "162/186 tuyên bố",
+   "t": 126.48
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "163/186 tuyên bố",
+   "t": 126.79
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "164/186 tuyên bố",
+   "t": 126.98
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "165/186 tuyên bố",
+   "t": 127.21
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "166/186 tuyên bố",
+   "t": 127.56
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "167/186 tuyên bố",
+   "t": 127.9
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "168/186 tuyên bố",
+   "t": 128.13
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "169/186 tuyên bố",
+   "t": 128.32
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "170/186 tuyên bố",
+   "t": 128.54
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "171/186 tuyên bố",
+   "t": 128.84
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "172/186 tuyên bố",
+   "t": 129.08
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "173/186 tuyên bố",
+   "t": 129.36
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "174/186 tuyên bố",
+   "t": 129.56
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "175/186 tuyên bố",
+   "t": 129.71
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "176/186 tuyên bố",
+   "t": 130.11
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "177/186 tuyên bố",
+   "t": 130.44
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "178/186 tuyên bố",
+   "t": 130.65
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "179/186 tuyên bố",
+   "t": 130.79
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "180/186 tuyên bố",
+   "t": 131.03
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "181/186 tuyên bố",
+   "t": 132.21
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "182/186 tuyên bố",
+   "t": 132.48
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "183/186 tuyên bố",
+   "t": 132.8
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "184/186 tuyên bố",
+   "t": 133.17
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "185/186 tuyên bố",
+   "t": 133.36
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "186/186 tuyên bố",
+   "t": 133.63
+  },
+  {
+   "step": "verify_claim_evidence_pairs",
+   "index": 6,
+   "of": 10,
+   "detail": "luật và phép tính",
+   "t": 133.83
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "1/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 133.83
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "2/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.04
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "3/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.1
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "4/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.21
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "5/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.28
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "6/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.37
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "7/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.41
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "8/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.46
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "9/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.49
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "10/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.54
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "11/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.6
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "12/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.63
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "13/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.67
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "14/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.71
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "15/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.72
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "16/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.75
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "17/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.77
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "18/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.82
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "19/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.85
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "20/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.89
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "21/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.92
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "22/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 134.96
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "23/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.0
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "24/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.04
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "25/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.09
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "26/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.11
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "27/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.14
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "28/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.19
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "29/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.23
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "30/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.27
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "31/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.31
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "32/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.36
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "33/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.38
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "34/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.42
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "35/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.46
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "36/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.54
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "37/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.63
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "38/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.68
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "39/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.72
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "40/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.75
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "41/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.81
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "42/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.84
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "43/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.89
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "44/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.95
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "45/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 135.98
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "46/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 136.03
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "47/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 136.08
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "48/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 136.15
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "49/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 137.49
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "50/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 137.56
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "51/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 137.61
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "52/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 137.66
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "53/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 137.69
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "54/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 137.74
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "55/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 137.78
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "56/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 137.81
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "57/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 137.88
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "58/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 137.94
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "59/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 137.98
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "60/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 138.04
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "61/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 138.11
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "62/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 138.2
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "63/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 138.25
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "64/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 138.3
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "65/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 138.38
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "66/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 138.44
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "67/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 138.52
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "68/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 138.67
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "69/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 138.76
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "70/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 138.85
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "71/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 138.94
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "72/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 138.98
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "73/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 139.03
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "74/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 139.08
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "75/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 139.23
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "76/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 139.36
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "77/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 139.39
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "78/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 139.45
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "79/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 139.51
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "80/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 139.58
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "81/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 139.63
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "82/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 139.7
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "83/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 139.76
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "84/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 139.81
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "85/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 139.94
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "86/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 140.11
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "87/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 140.41
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "88/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 140.72
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "89/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 140.76
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "90/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 140.81
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "91/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 140.89
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "92/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 140.94
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "93/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 140.99
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "94/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.05
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "95/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.09
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "96/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.12
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "97/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.16
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "98/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.21
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "99/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.27
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "100/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.31
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "101/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.36
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "102/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.42
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "103/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.47
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "104/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.49
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "105/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.55
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "106/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.63
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "107/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.69
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "108/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.76
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "109/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.81
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "110/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.86
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "111/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.93
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "112/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 141.96
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "113/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 142.03
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "114/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 142.11
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "115/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 142.17
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "116/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 142.26
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "117/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 142.32
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "118/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 142.38
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "119/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 142.54
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "120/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 142.61
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "121/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 142.66
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "122/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 142.69
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "123/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 142.72
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "124/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 142.8
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "125/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 142.85
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "126/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 142.92
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "127/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.04
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "128/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.14
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "129/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.21
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "130/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.26
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "131/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.33
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "132/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.36
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "133/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.41
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "134/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.45
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "135/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.49
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "136/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.55
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "137/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.57
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "138/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.63
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "139/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.64
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "140/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.66
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "141/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.71
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "142/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.74
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "143/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.78
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "144/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.84
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "145/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.88
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "146/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.91
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "147/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.95
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "148/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 143.98
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "149/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.02
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "150/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.04
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "151/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.09
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "152/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.13
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "153/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.17
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "154/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.23
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "155/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.29
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "156/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.31
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "157/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.34
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "158/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.39
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "159/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.44
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "160/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.47
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "161/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.5
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "162/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.54
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "163/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.58
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "164/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.62
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "165/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.66
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "166/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.72
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "167/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.8
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "168/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.87
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "169/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.93
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "170/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 144.97
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "171/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.04
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "172/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.11
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "173/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.16
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "174/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.19
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "175/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.21
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "176/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.25
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "177/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.29
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "178/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.31
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "179/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.33
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "180/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.39
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "181/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.42
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "182/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.45
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "183/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.49
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "184/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.52
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "185/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.54
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "186/186 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 145.56
+  },
+  {
+   "step": "score_greenwashing_risk",
+   "index": 8,
+   "of": 10,
+   "detail": "số liệu công bố và hàng đợi soát",
+   "t": 145.6
+  },
+  {
+   "step": "apply_quality_gates",
+   "index": 9,
+   "of": 10,
+   "detail": "",
+   "t": 149.42
+  },
+  {
+   "step": "write_evidence_pack",
+   "index": 10,
+   "of": 10,
+   "detail": "",
+   "t": 149.43
+  }
+ ],
+ "summary": {
+  "total_documents": 2,
+  "total_chunks": 5023,
+  "total_claims": 186,
+  "status_counts": {
+   "PARTIALLY_SUPPORTED": 183,
+   "INSUFFICIENT_EVIDENCE": 3
+  },
+  "severity_counts": {
+   "MEDIUM": 170,
+   "LOW": 16
+  },
+  "release_status": "PENDING_HUMAN_REVIEW"
+ },
+ "profile": "offline",
+ "flags": {
+  "stance_llm": false,
+  "assist_explain": "off",
+  "assist_attributes": false,
+  "claim_model_dir": "",
+  "version": "pipeline-v1",
+  "config_hash": "5953b070a122f8ce771a352e7f3657138f432c99072b7e1df732110591f41311"
+ }
+}

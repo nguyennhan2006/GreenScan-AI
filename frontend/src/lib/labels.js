@@ -5,11 +5,36 @@
  * giao diện luôn gọi labelOf(loại, giá trị) trước khi hiển thị.
  */
 
+// Việc 34: trùng từng chữ với labels_vi.DISCLAIMER_VI (tests/test_disclaimer.py).
+export const DISCLAIMER = 'Kết quả này là tín hiệu rủi ro dựa trên thông tin công khai, hỗ trợ người hành nghề đảm bảo khoanh vùng kiểm tra — không thay thế thủ tục thu thập bằng chứng theo ISSA 5000. Không bị gắn cờ không có nghĩa là đã được xác nhận.'
+
 export const LABELS = {
+  // Where a passage comes from: the reviewer weighs a company's own document differently from an outside one.
+  source_type: {
+    internal: 'Tài liệu của chính doanh nghiệp',
+    financial: 'Báo cáo tài chính / thường niên',
+    environmental: 'Dữ liệu môi trường',
+    legal: 'Văn bản pháp luật',
+    external: 'Nguồn bên ngoài doanh nghiệp',
+    standard: 'Chuẩn mực, tiêu chuẩn',
+  },
+  // How the stance of a passage was reached (agents/verifier.py).
+  relation_method: {
+    numeric: 'so số liệu',
+    qualitative_cue: 'cụm từ xác nhận hoặc phủ định',
+    similarity: 'mức giống nội dung',
+    llm: 'mô hình ngôn ngữ đọc',
+    direction: 'xu hướng tăng / giảm',
+    disclosed_figure: 'số liệu công bố',
+  },
   claim_type: {
     emissions_reduction: 'Giảm phát thải',
     renewable_energy: 'Năng lượng tái tạo',
     resource_efficiency: 'Dùng tài nguyên hiệu quả',
+    resource_use: 'Sử dụng tài nguyên (nước, điện, nhiên liệu)',
+    metric_disclosure: 'Số liệu môi trường công bố',
+    environmental_compliance: 'Tuân thủ và quản lý môi trường',
+    greening: 'Cây xanh, rừng',
     waste_and_circularity: 'Chất thải và tuần hoàn',
     green_finance: 'Tài chính xanh',
     biodiversity: 'Đa dạng sinh học',

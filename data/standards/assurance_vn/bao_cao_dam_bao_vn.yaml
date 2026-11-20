@@ -1,0 +1,66 @@
+# Báo cáo PTBV Việt Nam có tờ đảm bảo của bên thứ ba: nguồn cho việc 3 (nhóm đối chứng), 47 (phân loại tờ xác nhận), 64 (tài liệu độc lập).
+#
+# Người gom: Lê Diễm Quỳnh, thư mục Drive "8 Báo cáo Đảm bảo mẫu" (1VsCqdlv7Ok0nBSkc29RgmoxnacDi12tb), tải lên 11/11/2026.
+# Kiểm 12/11/2026: đọc lớp chữ PDF (PyMuPDF), trích nguyên văn đơn vị, chuẩn, mức, phạm vi, kết luận. Chưa có người soát.
+# Tệp PDF để trên Drive, không đưa vào git (7–90 MB mỗi tệp); md5 dùng để đối chiếu bản tải về.
+version: assurance-vn-v0.1
+reviewed_by_humans: false
+reports:
+  - id: ACB-2023
+    doanh_nghiep: Ngân hàng TMCP Á Châu (ACB)
+    nam_bao_cao: 2023
+    tep_drive: {name: "ACB - Bao cao Kiểm toán phat trien ben vung 2023 (Không sửa đổi).pdf", id: 1S2l1-alulcgjyi7PT6mAXTI2p1xmt6zL, md5: 8b0ce54f0b0ab223c44185721df2429d, so_trang: 98}
+    loai_tep: Báo cáo PTBV 2023 đầy đủ, tờ đảm bảo ở trang PDF 7–10
+    don_vi_dam_bao: KPMG Việt Nam
+    chuan: ISAE 3000 ("Chuẩn mực Quốc tế về hợp đồng dịch vụ đảm bảo số 3000", tr. 9)
+    muc_dam_bao: có giới hạn
+    pham_vi: chỉ số PTBV được lựa chọn (bảng ở tr. 7–8; tiêu chí GRI 302-1, 303-3, 305-1, 305-2, 2-7, 401-1, 401-3, 404-1, 404-3, 405-1)
+    ket_luan: không sửa đổi, dạng phủ định ("không nhận thấy điều gì khiến chúng tôi cho rằng…", tr. 7)
+    doc_lap: true
+  - id: NVL-2021
+    doanh_nghiep: Tập đoàn Novaland
+    nam_bao_cao: 2021
+    tep_drive: {name: "Báo cáo Kiểm toán BCPTBV Novaland 2021 (Không sửa đổi).pdf", id: 1W8JODFQ8UvE3QY5nAbvtmBCGp8ApnGHC, md5: 582ad2ebc1daf66fcb341a74ac911c9c, so_trang: 60}
+    loai_tep: Báo cáo PTBV 2021, "Báo cáo Bảo đảm Độc lập - PwC" ở trang PDF 5–8 (cùng thư mục còn bản BCPTBV Novaland 2021.pdf, 27 MB)
+    don_vi_dam_bao: PwC Việt Nam
+    chuan: ISAE 3000 (Sửa đổi) (tr. 6)
+    muc_dam_bao: có giới hạn
+    pham_vi: chỉ số PTBV được lựa chọn
+    ket_luan: không sửa đổi (theo tên tệp Quỳnh đặt; cần trích câu kết luận nguyên văn)
+    doc_lap: true
+  - id: VPB-2025
+    doanh_nghiep: Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)
+    nam_bao_cao: 2025
+    tep_drive: {name: VIE-BCPTBV.pdf, id: 1ePsggyx3rr0DRY747jqH1wm5yVnZ5IFd, md5: dfbc0a1359f312139caa0f9f0460b566, so_trang: 87}
+    loai_tep: Báo cáo PTBV 2025, tờ đảm bảo ở trang PDF 6–8 (số 25-02-00693-26-1)
+    don_vi_dam_bao: KPMG Việt Nam
+    chuan: ISAE 3000 (sửa đổi) (tr. 6)
+    muc_dam_bao: có giới hạn
+    pham_vi: chỉ số PTBV được lựa chọn, năm kết thúc 31/12/2025
+    ket_luan: không sửa đổi; có đoạn nhấn mạnh ("Kết luận của chúng tôi không bị thay đổi do ảnh hưởng của vấn đề này", tr. 7)
+    doc_lap: true
+    ghi_chu: Mẫu câu "không bị thay đổi do ảnh hưởng của vấn đề này" chưa có trong configs/issa5000_conclusion_patterns.yaml.
+  - id: DCM-2025
+    doanh_nghiep: Công ty CP Phân bón Dầu khí Cà Mau (PVCFC, mã DCM)
+    nam_bao_cao: 2025
+    tep_drive: {name: PBCM_SR25_VN.pdf, id: 1UIrLcU_PCwtadnAc2-Wl7ZAF2qSY1w9C, md5: 8652d588865058f8cb3a219f7312d92b, so_trang: 165}
+    loai_tep: Báo cáo PTBV 2025; chỉ có trang tóm tắt của doanh nghiệp về đảm bảo (tr. 138), không kèm tờ đảm bảo của Deloitte
+    don_vi_dam_bao: Deloitte Việt Nam (theo lời doanh nghiệp, tr. 138)
+    chuan: chưa thấy trong tài liệu
+    muc_dam_bao: có giới hạn (theo lời doanh nghiệp)
+    pham_vi: GRI 302-1 năng lượng, 303-5 nước, 401-1, 405-1, phát thải phạm vi 1 …
+    ket_luan: chưa có tờ đảm bảo để đọc
+    doc_lap: chưa xác minh được
+    ghi_chu: Trang 140 là "Ý kiến đảm bảo có giới hạn của Ban Kiểm toán Nội bộ", không phải đảm bảo độc lập. Đây đúng là bẫy mà bảng của Thảo (tab 04, bước 4) đã cảnh báo.
+  - id: VNM-2022
+    doanh_nghiep: Vinamilk
+    nam_bao_cao: 2022
+    tep_drive: {name: "IMG_0311.PNG, IMG_0312.PNG (ảnh chụp trang 80)", id: "1mY3tXn4Vz3mSURnuaKT0vDzbo2DEj9Ff, 1VlD3ncEQGPH6qBQc6rNHn0exYl7j5KdS"}
+    loai_tep: ảnh chụp tờ "Independent limited assurance report", không có PDF
+    don_vi_dam_bao: PwC Việt Nam (dấu PwC trên ảnh)
+    chuan: ISAE 3000 (Revised)
+    muc_dam_bao: có giới hạn
+    pham_vi: 15 chỉ số được chọn (GRI 203-2, 302-1, 303-3/4/5, 305, 306-3/4/5, 403-8/9/10, FP6), chỉ năm 2022
+    ket_luan: chưa thấy trong ảnh
+    doc_lap: true
+    ghi_chu: Bảng của Thảo ghi VNM-2024 (trang 96–97); đây là bản 2022, khác năm.

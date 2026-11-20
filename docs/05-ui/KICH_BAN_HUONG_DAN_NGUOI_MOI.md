@@ -27,7 +27,7 @@ Mỗi bước gồm bốn phần: **Làm gì**, **Nhìn vào đâu**, **Hiểu t
 
 ### Bước 1. Tải bộ mẫu và bắt đầu (khoảng 3 phút, phần lớn là chờ máy chạy)
 
-- **Làm gì:** Cột trái → "1 Tải tài liệu". Bấm "Nạp bộ mẫu để thử", rồi bấm "Bắt đầu".
+- **Làm gì:** Cột trái → "1 Tải tài liệu". Bấm nút xanh "Mẫu HPG", rồi bấm "Bắt đầu phân tích".
 - **Nhìn vào đâu:**
   - hai tệp hiện ra, mỗi tệp có cột vai trò;
   - nhãn xanh "Ngoại tuyến — không gửi tài liệu ra ngoài".
@@ -52,11 +52,11 @@ Mỗi bước gồm bốn phần: **Làm gì**, **Nhìn vào đâu**, **Hiểu t
 
 ### Bước 3. Mở một tuyên bố (2 phút)
 
-- **Làm gì:** Bấm "Mở" ở mục số 2: "…mức độ tự chủ điện năng rất cao…", trang 7.
+- **Làm gì:** Bấm "Mở" ở mục số 1: "…mức độ tự chủ điện năng rất cao…", trang 7.
 - **Nhìn vào đâu:** nhãn kết luận ở trên cùng, rồi bảng "Thuộc tính bắt buộc".
 - **Hiểu thế nào:**
-  - Máy kiểm năm thuộc tính: chỉ số, năm gốc, kỳ báo cáo, phạm vi, bằng chứng và phương pháp.
-  - Câu này thiếu năm gốc và kỳ báo cáo; chỉ số chỉ là chữ "rất cao". Vì vậy kết luận là "Ủng hộ một phần".
+  - Máy kiểm năm thuộc tính: chỉ số, giá trị (con số và đơn vị), kỳ báo cáo, năm gốc, phạm vi. Năm gốc chỉ cần khi câu nói tăng, giảm hoặc đặt mục tiêu; còn lại ghi “Không áp dụng”. (Sửa 11/11/2026: bản cũ ghi “bằng chứng và phương pháp”, không khớp thẻ thuộc tính và báo cáo.)
+  - Câu này nói giảm phát thải nhưng không có con số, không nói năm nào và không có năm gốc để so (thiếu 3 trên 5). Bằng chứng chỉ khớp về chủ đề, nên kết luận là "Ủng hộ một phần".
   - Mỗi thuộc tính thiếu có dòng "Việc cần làm".
 - **Hỏi lại:** "Vì sao máy không nói câu này đúng?" (Đáp án: câu gốc không có số để so.)
 

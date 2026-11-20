@@ -19,6 +19,7 @@ from quantum_gw.domain.models import AnalysisResult, ClaimSuggestion, DocumentIn
 from quantum_gw.jobs import JobRunner
 from quantum_gw.parsers.ocr import TesseractOCR
 from quantum_gw.providers import ModelGateway
+from quantum_gw import model_mode
 from quantum_gw.settings import load_settings
 from quantum_gw.storage.documents import (
     DocumentStore,
@@ -129,6 +130,9 @@ class AnalyzeTextRequest(BaseModel):
     # the reporting entity's name (read into every document's metadata).
     label: str = ""
     company: str = ""
+    # Uploaded org packs for this run (legal/org_registry.resolve): "org_id" = its
+    # latest approved version, "org_id@version" = that stored version.
+    org_packs: list[str] = Field(default_factory=list)
 
 
 class AnalyzeResponse(BaseModel):
@@ -142,8 +146,28 @@ class AnalyzeResponse(BaseModel):
     label: str = ""
 
 
-def _analyze(documents: list[DocumentInput]) -> AnalyzeResponse:
-    result = OrchestratorAgent(load_settings()).run(documents)
+def _org_paths(selectors: list[str] | str | None) -> list[str]:
+    """Folders of the uploaded org packs a request chose; 400 when one is unknown or retired."""
+    from quantum_gw.legal.org_registry import resolve
+
+    if isinstance(selectors, str):
+        selectors = [s for s in selectors.replace(";", ",").split(",")]
+    try:
+        return resolve(selectors or [])
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+def _settings_for(org_paths: list[str] | None = None):
+    """The run's settings: QUANTUM_ORG_PACKS plus the packs this request chose."""
+    settings = load_settings()
+    if org_paths:
+        settings.legal.org_packs = list(dict.fromkeys([*settings.legal.org_packs, *org_paths]))
+    return settings
+
+
+def _analyze(documents: list[DocumentInput], org_paths: list[str] | None = None) -> AnalyzeResponse:
+    result = OrchestratorAgent(_settings_for(org_paths)).run(documents)
     return AnalyzeResponse(run_id=result.run_id, result=result, suggestions=SuggestionAgent().run(result))
 
 
@@ -184,9 +208,9 @@ def _with_company(documents: list[DocumentInput], company: str) -> list[Document
     return [d.model_copy(update={"metadata": {**d.metadata, "company": name}}) for d in documents]
 
 
-def _job(documents: list[DocumentInput], label: str):
+def _job(documents: list[DocumentInput], label: str, org_paths: list[str] | None = None):
     def work(progress) -> str:
-        result = OrchestratorAgent(load_settings()).run(documents, progress=progress)
+        result = OrchestratorAgent(_settings_for(org_paths)).run(documents, progress=progress)
         if label.strip():
             _run_store().set_label(result.run_id, label.strip())
         return result.run_id
@@ -244,9 +268,10 @@ def gateway_health(live: bool = False) -> dict:
 
 @app.post("/v1/analyze/text", response_model=AnalyzeResponse)
 def analyze_text(request: AnalyzeTextRequest) -> AnalyzeResponse:
+    org_paths = _org_paths(request.org_packs)
     try:
         docs = [DocumentInput(**item.model_dump()) for item in request.documents]
-        return _analyze(docs)
+        return _analyze(docs, org_paths)
     except Exception as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
 
@@ -256,12 +281,14 @@ async def analyze_files(
     files: list[UploadFile] = File(...),
     roles: str = Form("claim_source"),
     source_types: str = Form("internal"),
+    org_packs: str = Form(""),
 ) -> AnalyzeResponse:
+    org_paths = _org_paths(org_packs)
     try:
         documents = await _stored_uploads(files, roles, source_types)
         # The pipeline is CPU-bound and synchronous: run on the event loop it
         # froze every other request, /health included, for the whole analysis.
-        return await run_in_threadpool(_analyze, documents)
+        return await run_in_threadpool(_analyze, documents, org_paths)
     except HTTPException:
         raise
     except Exception as exc:
@@ -278,25 +305,29 @@ async def start_analysis_files(
     source_types: str = Form("internal"),
     label: str = Form(""),
     company: str = Form(""),
+    org_packs: str = Form(""),
 ) -> dict:
     """Start an analysis and return at once; poll `GET /v1/jobs/{job_id}`."""
+    org_paths = _org_paths(org_packs)
     try:
         documents = _with_company(await _stored_uploads(files, roles, source_types), company)
     except HTTPException:
         raise
     except Exception as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
-    job = JOBS.submit(_job(documents, label), label=label)
+    job = JOBS.submit(_job(documents, label, org_paths), label=label)
     return JOBS.status(job.job_id) or {}
 
 
 @app.post("/v1/jobs/analyze/text", status_code=202)
 def start_analysis_text(request: AnalyzeTextRequest) -> dict:
+    org_paths = _org_paths(request.org_packs)
     try:
         documents = [DocumentInput(**item.model_dump()) for item in request.documents]
     except Exception as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
-    job = JOBS.submit(_job(_with_company(documents, request.company), request.label), label=request.label)
+    job = JOBS.submit(_job(_with_company(documents, request.company), request.label, org_paths),
+                      label=request.label)
     return JOBS.status(job.job_id) or {}
 
 
@@ -354,6 +385,25 @@ def runtime() -> dict:
         {"task": "qualitative_stance", "label": "Đọc các cặp khó",
          "engine": "llm" if stance_on and route else "rules", "route": route, "detail": stance},
     ]
+    # llm_stages_v1: every stage that is on and has a route is listed, and any non-local route makes the run "cloud".
+    v = settings.verification
+    gateway = ModelGateway()
+    for on, task, label, detail in (
+        (v.verify_mode == "dual", "ir_reading", "Bộ đọc số liệu (tuyên bố trong hàng đợi)",
+         "Mô hình đọc số liệu thành cấu trúc; mã so sánh; chỉ là ghi chú cho người soát."),
+        (v.assist_attributes, "claim_normalization", "Điền thuộc tính tuyên bố",
+         "Mô hình chép nguyên văn kỳ, năm gốc, phạm vi mà luật bỏ sót; chuỗi không có trong câu bị loại."),
+        (v.assist_explain != "off", "claim_explanation", "Lời giải thích dễ hiểu",
+         "Mô hình viết lời giải thích cạnh lý do của luật; lời có con số mới bị loại."),
+    ):
+        if on:
+            stage_route = gateway.route(task)
+            route = route + stage_route
+            tasks.append({"task": task, "label": label, "engine": "llm" if stage_route else "rules",
+                          "route": stage_route, "detail": detail if stage_route else "Đã bật nhưng chưa có mô hình."})
+    if settings.claim_extraction.claim_model_dir:
+        tasks.append({"task": "claim_model", "label": "Lọc câu không phải tuyên bố", "engine": "local",
+                      "detail": "Bộ phân loại e5 chạy trên máy, chỉ đánh dấu."})
     cloud = any(not r.startswith("local:") for r in route) or "fpt" in {
         embedding.provider, settings.reranker.provider
     }
@@ -366,6 +416,11 @@ def runtime() -> dict:
         pass
     return {
         "profile": os.environ.get("QUANTUM_PROFILE", "") or "custom",
+        "model_mode": model_mode.current_mode(),
+        "model_modes": [
+            {"id": mode, "label": model_mode.LABELS[mode][0], "detail": model_mode.LABELS[mode][1], **state}
+            for mode, state in model_mode.availability().items()
+        ],
         "mode": "cloud" if cloud else "offline",
         "label": "Có dùng mô hình trên đám mây cho phần khó" if cloud else "Ngoại tuyến — không gửi tài liệu ra ngoài",
         "sends_documents_out": cloud,
@@ -377,6 +432,30 @@ def runtime() -> dict:
         },
         "hardware": hardware,
     }
+
+
+class ModelModeRequest(BaseModel):
+    mode: str
+
+
+@app.post("/v1/runtime/model-mode")
+def set_model_mode(request: ModelModeRequest) -> dict:
+    """Turn the language-model stages on or off for the runs started from now on (model-mode-v1).
+
+    A model never writes SUPPORTED or CONTRADICTED on its own; it adds a reading and an explanation, and a claim it
+    reads differently from the rules goes to a person.
+    """
+    try:
+        model_mode.set_mode(request.mode)
+    except ValueError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+    return runtime()
+
+
+@app.post("/v1/runtime/model-test")
+def test_model() -> dict:
+    """One short live call to the model that is switched on, with the time it took."""
+    return model_mode.test_call()
 
 
 @app.get("/v1/documents/{doc_id}")
@@ -452,6 +531,12 @@ class ReviewRequest(BaseModel):
     # rule reason, which rule.
     override_reason: str | None = None
     rule_ref: str = ""
+    # Pointer label (feedback-loop-v1): the passage(s) that decided the case, by
+    # chunk id, or quoted when the system did not show it; who the reviewer is.
+    decisive_chunk_ids: list[str] = Field(default_factory=list)
+    decisive_quote: str = ""
+    reviewer_role: str = ""
+    reviewer_org: str = ""
 
 
 def _rule_context(run_id: str) -> dict:
@@ -572,8 +657,19 @@ _EXPORTS = {
 @app.get("/v1/runs/{run_id}/export")
 def export_run(run_id: str, format: str = "json"):
     """One artifact of the evidence pack as a download. PDF is not produced yet."""
+    if format == "csv":
+        from quantum_gw.queue_csv import render_queue_csv
+
+        try:
+            result = _run_store().load(run_id)
+        except KeyError as exc:
+            raise HTTPException(status_code=404, detail="Run not found") from exc
+        return Response(
+            render_queue_csv(result), media_type="text/csv; charset=utf-8",
+            headers={"Content-Disposition": f'attachment; filename="greenscan-{run_id}-hang-doi.csv"'},
+        )
     if format not in _EXPORTS:
-        raise HTTPException(status_code=400, detail=f"format must be one of {sorted(_EXPORTS)}")
+        raise HTTPException(status_code=400, detail=f"format must be one of {sorted(_EXPORTS) + ['csv']}")
     name, media_type = _EXPORTS[format]
     try:
         path = _run_store().artifact(run_id, name)
@@ -668,11 +764,200 @@ def org_packs() -> dict:
         ]
         for pack in loaded.packs
     }
+    from quantum_gw.legal.org_registry import list_packs
+
     return {
         "enabled": bool(settings.legal.org_packs),
         "packs": [{**entry, "rules": rules.get(entry["org_id"], []) if entry["status"] != "rejected" else []}
                   for entry in loaded.entries],
+        # Packs sent over the API (org-pack-v1): draft until someone other than the
+        # uploader approves; a run uses one only when the request names it.
+        "uploaded": list_packs(),
     }
+
+
+@app.post("/v1/org-packs/upload")
+async def org_pack_upload(files: list[UploadFile] = File(...), uploaded_by: str = Form(...),
+                          note: str = Form("")) -> dict:
+    """A zip of a pack folder, or pack.yaml plus its documents. Stored as a draft, or refused with every reason."""
+    from quantum_gw.legal.org_registry import ingest
+
+    contents = [(f.filename or "pack.yaml", await f.read()) for f in files]
+    result = ingest(contents, uploaded_by, note)
+    if result["status"] in ("rejected", "duplicate"):
+        raise HTTPException(status_code=400, detail=result)
+    return result
+
+
+class OrgPackDecision(BaseModel):
+    by: str
+    comment: str = ""
+
+
+@app.post("/v1/org-packs/{org_id}/{version}/approve")
+def org_pack_approve(org_id: str, version: str, request: OrgPackDecision) -> dict:
+    """Four-eyes: the approver must not be the uploader. Re-validates the stored copy."""
+    from quantum_gw.legal.org_registry import approve
+
+    try:
+        return approve(org_id, version, request.by, request.comment)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+@app.post("/v1/org-packs/{org_id}/{version}/retire")
+def org_pack_retire(org_id: str, version: str, request: OrgPackDecision) -> dict:
+    from quantum_gw.legal.org_registry import retire
+
+    try:
+        return retire(org_id, version, request.by, request.comment)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+class OrgPackPreviewRequest(BaseModel):
+    pack: str  # "org_id@version" of an uploaded pack, or a folder configured in QUANTUM_ORG_PACKS
+    text: str
+    sector: str = ""
+
+
+@app.post("/v1/org-packs/preview")
+def org_pack_preview(request: OrgPackPreviewRequest) -> dict:
+    """Run one pack on one sentence, with no evidence (drafts are previewed as if approved)."""
+    from quantum_gw.legal.org_pack import OrgPackError, load_org_pack, preview_sentence
+
+    settings = load_settings()
+    if "@" in request.pack:
+        [path] = _org_paths([request.pack])
+    elif request.pack in settings.legal.org_packs:
+        path = request.pack
+    else:
+        raise HTTPException(status_code=400, detail="chọn pack dạng org_id@phiên_bản, hoặc một pack trong QUANTUM_ORG_PACKS")
+    try:
+        pack = load_org_pack(path)
+    except OrgPackError as exc:
+        raise HTTPException(status_code=400, detail={"errors": exc.problems}) from exc
+    return preview_sentence(pack, request.text, request.sector.strip() or None, settings)
+
+
+@app.post("/v1/org-packs/draft")
+async def org_pack_draft(
+    org_id: str = Form(...), org_name: str = Form(...), uploaded_by: str = Form(...),
+    org_type: str = Form("other"), use_llm: bool = Form(False),
+    policy_text: str = Form(""), policy_file: UploadFile | None = File(None),
+) -> dict:
+    """Draft a pack from a policy document and store it as a draft (never applied until approved)."""
+    import tempfile
+
+    from quantum_gw.legal.org_draft import draft, write
+    from quantum_gw.legal.org_registry import ingest
+
+    text = policy_text
+    if policy_file is not None:
+        raw = await policy_file.read()
+        try:
+            text = raw.decode("utf-8")
+        except UnicodeDecodeError as exc:
+            raise HTTPException(status_code=400, detail="tệp chính sách phải là văn bản UTF-8 (.md, .txt)") from exc
+    if not text.strip():
+        raise HTTPException(status_code=400, detail="cần văn bản chính sách (policy_text hoặc policy_file)")
+    drafted = await run_in_threadpool(draft, text, org_id.strip(), org_name.strip(), org_type, "internal_policy.md",
+                                      use_llm)
+    if drafted["errors"]:
+        return {"status": "invalid", **drafted}
+    with tempfile.TemporaryDirectory(prefix="org-draft-api-") as tmp:
+        folder = write(Path(tmp) / drafted["pack"]["org_id"], drafted["pack"], text)
+        files = [(f.name, f.read_bytes()) for f in folder.iterdir()]
+    stored = ingest(files, uploaded_by, note=f"soạn nháp tự động ({drafted['method']})")
+    return {**drafted, "stored": stored}
+
+
+# ---------- feedback loop (docs/03-architecture/FEEDBACK_LOOP.md) ----------
+
+
+@app.get("/v1/feedback/summary")
+def feedback_summary() -> dict:
+    """Labels by route and stage, QA agreement, the GS-Feedback ratchet and the model registry."""
+    from quantum_gw.feedback.bench import read_ratchet
+    from quantum_gw.feedback.hygiene import QAStore, agreement, clean_labels
+    from quantum_gw.feedback.registry import read as read_registry
+
+    store = ReviewStore()
+    gold = store.gold_records()
+    qa = QAStore(reviews=store).all()
+    settings = load_settings()
+    ratchet = read_ratchet()
+    return {
+        "stats": store.stats(),
+        "clean_labels": len(clean_labels(gold, qa)),
+        "agreement": agreement(gold, qa),
+        "ratchet": {"size": len(ratchet.get("passing", [])), "history": ratchet.get("history", [])[-5:]},
+        "models": [{k: m.get(k) for k in ("model_id", "kind", "status", "registered_at", "approved_by", "gate",
+                                          "challenger", "champion", "data")}
+                   for m in read_registry(settings.feedback.model_registry)["models"]],
+        "settings": settings.feedback.model_dump(),
+    }
+
+
+@app.get("/v1/feedback/precedents")
+def feedback_precedents(text: str, k: int = 3, min_similarity: float = 0.35) -> dict:
+    """Decided claims similar to `text`, visible to this deployment's organisation."""
+    from quantum_gw.feedback.precedents import PrecedentIndex
+
+    index = PrecedentIndex.from_store(org_id=load_settings().feedback.org_id)
+    return {"visible_labels": len(index),
+            "precedents": index.find({"text": text}, k=max(1, min(k, 10)), min_similarity=min_similarity)}
+
+
+@app.get("/v1/feedback/second-review-sample")
+def feedback_second_review_sample(rate: float = 0.10, seed: str = "") -> dict:
+    from quantum_gw.feedback.hygiene import sample_for_second_review
+
+    return {"sample": sample_for_second_review(ReviewStore().gold_records(), rate=min(max(rate, 0.0), 1.0), seed=seed)}
+
+
+class SecondReviewRequest(BaseModel):
+    run_id: str
+    claim_id: str
+    reviewer: str
+    status: str
+    comment: str = ""
+    kind: str = "second_review"  # second_review | adjudication | core_promotion
+
+
+@app.post("/v1/feedback/qa")
+def feedback_qa(request: SecondReviewRequest) -> dict:
+    """A blind second review, an adjudication, or a promotion of an organisation's label to the core memory."""
+    from quantum_gw.feedback.hygiene import QAStore
+    from quantum_gw.storage.reviews import ReviewError
+
+    store = ReviewStore()
+    qa = QAStore(reviews=store)
+    first = store.latest(request.run_id, request.claim_id)
+    if first is None or first.get("new_state") != "FINALIZED":
+        raise HTTPException(status_code=400, detail="chỉ áp dụng cho tuyên bố đã chốt")
+    try:
+        if request.kind == "second_review":
+            return qa.record_second(run_id=request.run_id, claim_id=request.claim_id, reviewer=request.reviewer,
+                                    status=request.status, first_reviewer=first["reviewer"], comment=request.comment)
+        if request.kind == "adjudication":
+            return qa.record_adjudication(run_id=request.run_id, claim_id=request.claim_id,
+                                          adjudicator=request.reviewer, status=request.status, comment=request.comment)
+        if request.kind == "core_promotion":
+            return qa.promote_to_core(run_id=request.run_id, claim_id=request.claim_id, approved_by=request.reviewer,
+                                      comment=request.comment)
+    except ReviewError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    raise HTTPException(status_code=400, detail="kind phải là second_review, adjudication hoặc core_promotion")
+
+
+@app.get("/v1/feedback/proposals")
+def feedback_proposals() -> dict:
+    """The rule miner's proposal sheet, computed now (not measured: measuring is the CLI's --measure)."""
+    from quantum_gw.feedback.miner import mine, render_sheet
+
+    proposals = mine()
+    return {"proposals": proposals, "markdown": render_sheet(proposals)}
 
 
 # Intake preview, URL fetch, demo samples and GreenScan Studio (api_studio.py).

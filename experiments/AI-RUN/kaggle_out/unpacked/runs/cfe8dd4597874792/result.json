@@ -1,0 +1,460 @@
+{
+  "schema_version": "analysis-result-v2",
+  "run_id": "cfe8dd4597874792",
+  "manifest": {
+    "run_id": "cfe8dd4597874792",
+    "created_at": "2026-11-11T11:27:27.968487Z",
+    "pipeline_version": "pipeline-v1",
+    "config_hash": "71d82086d67eac3c44edd374fb8975e82cbd40497cf539c876acb186dea3aa7d",
+    "input_hashes": {
+      "0:KDP-CLAIM-001.txt": "46475bfec5cd252f5f61c1f0902a951d47b7a13d01c7ff3937d1ec5eb87218e9",
+      "1:KDP-EV-001.txt": "10ea9eb87d2df686689f6c77d86a639698942c972ec97ab02e09ae085f11d8ec",
+      "2:KDP-EV-002.txt": "8c5308437ca681d98101c2d2706bdffdf41504522eb7dfa8e72f91e902b16160"
+    },
+    "deterministic_seed": 0,
+    "corpus_version": "run-inputs",
+    "rule_pack_version": "configs/legal/rule_pack_vn_green_v0.1.yaml",
+    "prompt_version": "stance-s1f@local:qwen3:4b-instruct-2507-q4_K_M",
+    "plan": [
+      "validate_inputs",
+      "parse_and_ocr_documents",
+      "extract_green_claims",
+      "build_hybrid_retrieval_index",
+      "retrieve_evidence_per_claim",
+      "verify_claim_evidence_pairs",
+      "check_applicable_law",
+      "score_greenwashing_risk",
+      "apply_quality_gates",
+      "write_evidence_pack"
+    ]
+  },
+  "claims": [
+    {
+      "claim_id": "649807f6b758955d",
+      "text": "Testing with municipal recycling facilities validated that K-Cup pods could be effectively recycled.",
+      "claim_type": "waste_and_circularity",
+      "source_chunk_id": "a41c2763dcb1a33c",
+      "source_doc_id": "75ed1f71b4f7ed4e",
+      "source_name": "KDP-CLAIM-001.txt",
+      "source_page": null,
+      "metric": "waste",
+      "direction": null,
+      "values": [],
+      "units": [],
+      "period": null,
+      "baseline": null,
+      "scope": null,
+      "is_future_commitment": false,
+      "is_vague": false,
+      "vague_terms_matched": [],
+      "language": "en",
+      "confidence": 0.6,
+      "quality_flag": null
+    }
+  ],
+  "verifications": [
+    {
+      "claim": {
+        "claim_id": "649807f6b758955d",
+        "text": "Testing with municipal recycling facilities validated that K-Cup pods could be effectively recycled.",
+        "claim_type": "waste_and_circularity",
+        "source_chunk_id": "a41c2763dcb1a33c",
+        "source_doc_id": "75ed1f71b4f7ed4e",
+        "source_name": "KDP-CLAIM-001.txt",
+        "source_page": null,
+        "metric": "waste",
+        "direction": null,
+        "values": [],
+        "units": [],
+        "period": null,
+        "baseline": null,
+        "scope": null,
+        "is_future_commitment": false,
+        "is_vague": false,
+        "vague_terms_matched": [],
+        "language": "en",
+        "confidence": 0.6,
+        "quality_flag": null
+      },
+      "status": "CONTRADICTED",
+      "rationale": "Bằng chứng đã truy xuất bác bỏ tuyên bố. Bằng chứng phủ định tuyên bố (nguồn có thẩm quyền): “did not”.",
+      "evidence": [
+        {
+          "chunk_id": "eae7529d0742e34b",
+          "doc_id": "b09a0296c86c3a3b",
+          "source_name": "KDP-EV-001.txt",
+          "source_type": "legal",
+          "text": "Two large recycling companies reported significant concerns about commercial feasibility and did not intend to accept the pods.",
+          "page": null,
+          "score": 0.193331,
+          "lexical_score": 0.130276,
+          "semantic_score": 0.148176,
+          "citation": "KDP-EV-001.txt (block 1)",
+          "suspicious_instruction": false,
+          "is_table": false,
+          "below_threshold": false,
+          "source_qualifiers": [
+            "case_status: SEC_SETTLEMENT_WITHOUT_ADMISSION_OR_DENIAL",
+            "legal_caution: Do not generalize this finding to every current K-Cup product or every jurisdiction.",
+            "jurisdiction: US",
+            "training_eligibility: gold_after_second_reviewer"
+          ],
+          "relation": "CONTRADICTS",
+          "relation_reason": "Bằng chứng phủ định tuyên bố (nguồn có thẩm quyền): “did not”.",
+          "relation_method": "qualitative_cue"
+        },
+        {
+          "chunk_id": "101e252730ec159e",
+          "doc_id": "568414391311b875",
+          "source_name": "KDP-EV-002.txt",
+          "source_type": "legal",
+          "text": "The SEC order found the 2019 and 2020 statements incomplete and inaccurate because the negative feedback was omitted.",
+          "page": null,
+          "score": 0.067582,
+          "lexical_score": 0.0,
+          "semantic_score": 0.02796,
+          "citation": "KDP-EV-002.txt (block 1)",
+          "suspicious_instruction": false,
+          "is_table": false,
+          "below_threshold": true,
+          "source_qualifiers": [
+            "case_status: SEC_SETTLEMENT_WITHOUT_ADMISSION_OR_DENIAL",
+            "legal_caution: Do not generalize this finding to every current K-Cup product or every jurisdiction.",
+            "jurisdiction: US",
+            "training_eligibility: gold_after_second_reviewer"
+          ],
+          "relation": "CONTRADICTS",
+          "relation_reason": "Bằng chứng phủ định tuyên bố (nguồn có thẩm quyền): “omitted”, “incomplete”, “inaccurate”.",
+          "relation_method": "qualitative_cue"
+        }
+      ],
+      "computed_values": {
+        "claim_numbers": [],
+        "claim_facts": [],
+        "claim_scopes": null,
+        "evidence_numbers": [],
+        "pairs_considered": [],
+        "skipped_not_comparable": [],
+        "matched": false,
+        "contradiction": false,
+        "closest_pair": null,
+        "tolerance_used": null,
+        "policy_id": "precision-v1",
+        "eligibility_policy": "comparison-policy-v2",
+        "contradiction_error_threshold": 0.35,
+        "calculation_method": "deterministic-relative-error"
+      },
+      "warnings": [],
+      "requires_llm_review": false,
+      "verification_tool_version": "verifier-v2",
+      "assist": {
+        "explanation": {
+          "text": "Kết luận bị mâu thuẫn vì bằng chứng cho thấy các công ty thu gom không chấp nhận K-Cup pod và thông tin về phản hồi tiêu cực bị bỏ sót, bác bỏ tuyên bố về khả năng tái chế. Thuộc tính thiếu gồm giá trị, kỳ báo cáo và phạm vi. Người soát nên mở trang None của tệp KDP-EV-001.txt và KDP-EV-002.txt để xem bằng chứng chi tiết.",
+          "next_action": "mở trang None của KDP-EV-001.txt và KDP-EV-002.txt",
+          "version": "explain-s2@qwen3:4b-instruct-2507-q4_K_M"
+        }
+      }
+    }
+  ],
+  "risks": [
+    {
+      "claim_id": "649807f6b758955d",
+      "risk_score": 65.0,
+      "severity": "HIGH",
+      "components": [
+        {
+          "name": "specificity",
+          "score": 1.0,
+          "max_score": 12.0,
+          "reason": "Mức cụ thể của tuyên bố và chỉ số xác định được.",
+          "status": "computed"
+        },
+        {
+          "name": "quantitative_evidence",
+          "score": 12.0,
+          "max_score": 12.0,
+          "reason": "Tuyên bố có giá trị định lượng hay không.",
+          "status": "computed"
+        },
+        {
+          "name": "baseline",
+          "score": 0.0,
+          "max_score": 8.0,
+          "reason": "Không nêu mức thay đổi có số liệu hay mục tiêu tăng/giảm nên không cần năm gốc.",
+          "status": "computed"
+        },
+        {
+          "name": "period",
+          "score": 8.0,
+          "max_score": 8.0,
+          "reason": "Kỳ báo cáo hoặc kỳ mục tiêu của số liệu.",
+          "status": "computed"
+        },
+        {
+          "name": "scope_boundary",
+          "score": 8.0,
+          "max_score": 8.0,
+          "reason": "Không nêu pháp nhân, cơ sở hay phạm vi phát thải.",
+          "status": "computed"
+        },
+        {
+          "name": "evidence_support",
+          "score": 18.0,
+          "max_score": 18.0,
+          "reason": "Kết quả kiểm chứng: Mâu thuẫn với nguồn.",
+          "status": "computed"
+        },
+        {
+          "name": "independent_assurance",
+          "score": 0.0,
+          "max_score": 8.0,
+          "reason": "Có nguồn độc lập, văn bản pháp lý hoặc chuẩn mực hay không.",
+          "status": "computed"
+        },
+        {
+          "name": "contradiction",
+          "score": 18.0,
+          "max_score": 18.0,
+          "reason": "Điểm cộng thêm khi nguồn mâu thuẫn trực tiếp.",
+          "status": "computed"
+        },
+        {
+          "name": "vague_or_exaggerated_language",
+          "score": 0.0,
+          "max_score": 8.0,
+          "reason": "Không thấy ngôn ngữ mơ hồ hoặc quảng bá.",
+          "status": "computed"
+        }
+      ],
+      "evidence_strength": "moderate",
+      "contradiction_strength": "authoritative_cue",
+      "materiality": "unknown",
+      "severity_cap_reason": null,
+      "requires_human_review": true,
+      "rubric_version": "risk-rubric-v3"
+    }
+  ],
+  "priorities": [
+    {
+      "item_type": "claim",
+      "item_id": "649807f6b758955d",
+      "claim_id": "649807f6b758955d",
+      "text": "Testing with municipal recycling facilities validated that K-Cup pods could be effectively recycled.",
+      "priority_score": 50.93,
+      "rank": 1,
+      "in_queue": true,
+      "components": [
+        {
+          "name": "materiality",
+          "score": 8.43,
+          "max_score": 40.0,
+          "reason": "Trọng yếu: nhóm chất thải (trọng số 0,65); không nêu số liệu; không rõ vị trí trong tài liệu; không nêu chủ thể là doanh nghiệp và không có số liệu (câu giải thích hoặc nối ý câu trước) nên hạ bậc.",
+          "status": "computed"
+        },
+        {
+          "name": "obligation",
+          "score": 17.5,
+          "max_score": 25.0,
+          "reason": "Pháp lý: có văn bản đang hiệu lực cùng chủ đề (48/2026/NĐ-CP, 05/2025/NĐ-CP); chưa có quy tắc xác định nghĩa vụ cụ thể.",
+          "status": "computed"
+        },
+        {
+          "name": "evidence_gap",
+          "score": 25.0,
+          "max_score": 25.0,
+          "reason": "Khoảng trống bằng chứng: kết quả “mâu thuẫn với nguồn”, thiếu 3/4 thuộc tính.",
+          "status": "computed"
+        },
+        {
+          "name": "anomaly",
+          "score": 0.0,
+          "max_score": 10.0,
+          "reason": "Bất thường so với kỳ trước: **chưa tính** — thủ tục so sánh chéo kỳ chưa có, đây không phải kết luận 'không có bất thường'.",
+          "status": "not_computed"
+        }
+      ],
+      "max_available": 90.0,
+      "not_computed": [
+        "anomaly"
+      ],
+      "reasons": [
+        "Pháp lý: có văn bản đang hiệu lực cùng chủ đề (48/2026/NĐ-CP, 05/2025/NĐ-CP); chưa có quy tắc xác định nghĩa vụ cụ thể.",
+        "Khoảng trống bằng chứng: kết quả “mâu thuẫn với nguồn”, thiếu 3/4 thuộc tính."
+      ],
+      "policy_version": "priority-v1.1"
+    }
+  ],
+  "disclosed_figures": [],
+  "figure_checks": [],
+  "scope_note": "Toàn bộ 1 mục (tuyên bố và số liệu công bố) đều nằm trong hàng đợi soát của lượt này (chính sách `priority-v1.1`).",
+  "entity": [],
+  "legal_checks": [
+    {
+      "legal_check_id": "LC-88b19c93ea",
+      "claim_id": "649807f6b758955d",
+      "issue": "environmental_protection",
+      "check_mode": "current_policy_alignment",
+      "as_of_date": "2026-11-11",
+      "applicable_sources": [
+        {
+          "document": "48/2026/NĐ-CP",
+          "id": "ND48-2026-ND-CP",
+          "title": "Sửa đổi, bổ sung một số điều của Nghị định 08/2022/NĐ-CP (đã sửa bởi 05/2025/NĐ-CP)",
+          "effective_from": "2026-01-29",
+          "source_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=216867",
+          "role": "base"
+        },
+        {
+          "document": "05/2025/NĐ-CP",
+          "id": "ND05-2025-ND-CP",
+          "title": "Sửa đổi, bổ sung một số điều của Nghị định 08/2022/NĐ-CP",
+          "effective_from": "2025-01-06",
+          "source_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=212284",
+          "role": "base"
+        },
+        {
+          "document": "08/2022/NĐ-CP",
+          "id": "ND08-2022-ND-CP",
+          "title": "Quy định chi tiết một số điều của Luật Bảo vệ môi trường",
+          "effective_from": "2022-01-10",
+          "source_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=205092",
+          "role": "base"
+        },
+        {
+          "document": "72/2020/QH14",
+          "id": "LUAT-BVMT-2020",
+          "title": "Luật Bảo vệ môi trường",
+          "effective_from": "2022-01-01",
+          "source_url": "https://vanban.chinhphu.vn/?pageid=27160&docid=202613",
+          "role": "base"
+        }
+      ],
+      "blocked_sources": [],
+      "conditions": [],
+      "legal_finding": "INSUFFICIENT_EVIDENCE",
+      "legal_risk": "MEDIUM",
+      "rule_pack_version": "vn-green-v0.1-draft",
+      "rules_applied": [],
+      "rules_relevant": [],
+      "not_applicable_rules": [],
+      "requires_human_review": true,
+      "notes": "Có văn bản áp dụng nhưng bộ quy tắc pháp lý (phiên bản vn-green-v0.1-draft) chưa có quy tắc nào cho loại tuyên bố «Chất thải và tuần hoàn», vấn đề «Bảo vệ môi trường». Quy tắc phải do người soạn và duyệt, không sinh tự động lúc chạy.",
+      "source_qualifiers": [
+        "case_status: SEC_SETTLEMENT_WITHOUT_ADMISSION_OR_DENIAL",
+        "legal_caution: Do not generalize this finding to every current K-Cup product or every jurisdiction.",
+        "jurisdiction: US",
+        "training_eligibility: gold_after_second_reviewer"
+      ]
+    }
+  ],
+  "corpus": {
+    "documents": 3,
+    "chunks": 3,
+    "by_role": {
+      "claim_source": 1,
+      "evidence": 2
+    },
+    "by_source_type": {
+      "internal": 1,
+      "legal": 2
+    },
+    "years": [
+      "2019",
+      "2020"
+    ],
+    "has_claim_source": true,
+    "has_comparison": false,
+    "has_independent": true,
+    "coverage": 0.75,
+    "sufficient_for_absence": false,
+    "missing": [
+      "Tài liệu đối chiếu khác (BCTN/BCTC/kiểm kê)"
+    ],
+    "version": "corpus-profile-v1"
+  },
+  "quality_gates": [
+    {
+      "gate_id": "G0",
+      "name": "Dữ liệu đầu vào",
+      "passed": true,
+      "status": "PASS",
+      "details": "Mọi đoạn đã tách phải giữ nguồn gốc (tệp, vị trí)."
+    },
+    {
+      "gate_id": "G1",
+      "name": "Trích xuất đúng nguồn",
+      "passed": true,
+      "status": "PASS",
+      "details": "Mỗi tuyên bố giữ đoạn nguồn và vị trí trong tài liệu."
+    },
+    {
+      "gate_id": "G2",
+      "name": "Bằng chứng hợp lệ",
+      "passed": true,
+      "status": "PASS",
+      "details": "Mỗi tuyên bố có bằng chứng hợp lệ hoặc được ghi rõ là chưa đủ bằng chứng."
+    },
+    {
+      "gate_id": "G3",
+      "name": "Kiểm chứng bằng mã cố định",
+      "passed": true,
+      "status": "PASS",
+      "details": "Phép so sánh số liệu do mã cố định thực hiện, không do mô hình ngôn ngữ."
+    },
+    {
+      "gate_id": "G4",
+      "name": "Trích dẫn đầy đủ",
+      "passed": true,
+      "status": "PASS",
+      "details": "Mỗi bằng chứng quyết định đều có vị trí trong tài liệu."
+    },
+    {
+      "gate_id": "G5",
+      "name": "Soát rủi ro",
+      "passed": false,
+      "status": "PENDING_HUMAN_REVIEW",
+      "details": "Mục rủi ro cao, rất cao hoặc có xung đột pháp lý cần người soát duyệt."
+    },
+    {
+      "gate_id": "G6",
+      "name": "Tái lập được",
+      "passed": true,
+      "status": "PASS",
+      "details": "Bản kê lượt chạy ghi cấu hình, mã băm tệp đầu vào, hạt giống ngẫu nhiên và kế hoạch."
+    },
+    {
+      "gate_id": "G7",
+      "name": "Legal check",
+      "passed": true,
+      "status": "PASS",
+      "details": "1 tuyên bố đã đối chiếu với kho văn bản pháp lý đã đăng ký. 1 tuyên bố chưa kết luận được."
+    },
+    {
+      "gate_id": "G8",
+      "name": "Toàn vẹn tài liệu",
+      "passed": true,
+      "status": "PASS",
+      "details": "Không thấy chữ ẩn hay câu nhắn tới hệ thống chấm tự động trong tài liệu đầu vào."
+    },
+    {
+      "gate_id": "G9",
+      "name": "Chất lượng đọc tài liệu",
+      "passed": true,
+      "status": "PASS",
+      "details": "Mọi trang có lớp chữ gốc đọc được; không trang nào phải đọc bằng OCR."
+    }
+  ],
+  "summary": {
+    "total_documents": 3,
+    "total_chunks": 3,
+    "total_claims": 1,
+    "status_counts": {
+      "CONTRADICTED": 1
+    },
+    "severity_counts": {
+      "HIGH": 1
+    },
+    "release_status": "PENDING_HUMAN_REVIEW"
+  },
+  "output_directory": "/kaggle/working/runs/cfe8dd4597874792"
+}

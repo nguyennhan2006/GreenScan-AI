@@ -1,0 +1,22 @@
+# Nhãn của 12 báo cáo đảm bảo minh hoạ (việc 29), lấy từ TIÊU ĐỀ do IAASB đặt cho từng báo cáo,
+# không phải xét đoán. Lập 11/11/2026; cần hai người soát độc lập trước khi dùng làm đáp án chính thức.
+#
+# conclusion_type: unmodified | qualified | adverse | disclaimer
+# assurance_level: limited | reasonable | combined (hợp lý cho một phần, có giới hạn cho phần còn lại)
+# scope_coverage: whole_report (cả báo cáo bền vững) | selected_disclosures (chỉ một số thông tin chọn lọc)
+# criteria: fair_presentation | compliance (theo tiêu đề; Phụ lục 3 không ghi thì để null)
+version: issa-samples-labels-v0.1
+reviewed_by_humans: false
+samples:
+  - {id: IR-A, file: IAASB-ISSA-5000-Sustainability-Assurance-Illustrative-Reports.pdf, conclusion_type: unmodified, assurance_level: limited, scope_coverage: whole_report, listed: false, criteria: fair_presentation}
+  - {id: IR-B, file: IAASB-ISSA-5000-Sustainability-Assurance-Illustrative-Reports.pdf, conclusion_type: unmodified, assurance_level: reasonable, scope_coverage: whole_report, listed: false, criteria: fair_presentation}
+  - {id: IR-C, file: IAASB-ISSA-5000-Sustainability-Assurance-Illustrative-Reports.pdf, conclusion_type: unmodified, assurance_level: limited, scope_coverage: selected_disclosures, listed: true, criteria: compliance}
+  - {id: IR-D, file: IAASB-ISSA-5000-Sustainability-Assurance-Illustrative-Reports.pdf, conclusion_type: unmodified, assurance_level: limited, scope_coverage: whole_report, listed: true, criteria: fair_presentation}
+  - {id: IR-E, file: IAASB-ISSA-5000-Sustainability-Assurance-Illustrative-Reports.pdf, conclusion_type: unmodified, assurance_level: combined, scope_coverage: whole_report, listed: true, criteria: fair_presentation, note: "hợp lý cho phần khí hậu, có giới hạn cho phần còn lại"}
+  - {id: IR-F, file: IAASB-ISSA-5000-Sustainability-Assurance-Illustrative-Reports.pdf, conclusion_type: qualified, assurance_level: reasonable, scope_coverage: whole_report, listed: false, criteria: fair_presentation}
+  - {id: IR-G, file: IAASB-ISSA-5000-Sustainability-Assurance-Illustrative-Reports.pdf, conclusion_type: disclaimer, assurance_level: limited, scope_coverage: whole_report, listed: true, criteria: compliance}
+  - {id: IR-H, file: IAASB-ISSA-5000-Sustainability-Assurance-Illustrative-Reports.pdf, conclusion_type: adverse, assurance_level: limited, scope_coverage: whole_report, listed: true, criteria: compliance}
+  - {id: APP3-1, file: IAASB-International-Standard-on-Sustainability-Assurance-ISSA-5000.pdf, conclusion_type: unmodified, assurance_level: reasonable, scope_coverage: whole_report, listed: true, criteria: null}
+  - {id: APP3-2, file: IAASB-International-Standard-on-Sustainability-Assurance-ISSA-5000.pdf, conclusion_type: unmodified, assurance_level: limited, scope_coverage: whole_report, listed: false, criteria: null}
+  - {id: APP3-3, file: IAASB-International-Standard-on-Sustainability-Assurance-ISSA-5000.pdf, conclusion_type: unmodified, assurance_level: combined, scope_coverage: selected_disclosures, listed: null, criteria: null}
+  - {id: APP3-4, file: IAASB-International-Standard-on-Sustainability-Assurance-ISSA-5000.pdf, conclusion_type: qualified, assurance_level: limited, scope_coverage: whole_report, listed: false, criteria: null}

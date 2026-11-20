@@ -14,13 +14,22 @@ editable.
 
 from __future__ import annotations
 
+import hashlib
+import json
 import re
 from pathlib import Path
 
 import fitz
 
+from quantum_gw.agents.verifier import INDEPENDENT_SOURCE_TYPES, missing_attributes
 from quantum_gw.domain.models import AnalysisResult
+from quantum_gw.labels_vi import VERDICT
+from quantum_gw.parsers.documents import GARBLED_PAGE
+from quantum_gw.parsers.integrity import visible_blocks
+from quantum_gw.parsers.ocr import TesseractOCR, contains_number
 from quantum_gw.parsers.office import docx_paragraphs, html_text
+from quantum_gw.parsers.text_quality import garbled_share
+from quantum_gw.settings import IntakeSettings
 from quantum_gw.storage.documents import DocumentStore
 
 # `fold` lives in utils.text so the legal layer can use it without the PDF stack;
@@ -30,14 +39,10 @@ from quantum_gw.utils.text import fold, join_wrapped_lines, normalize_text
 UNDER_REVIEW = "under_review"
 EVIDENCE = "evidence"
 
-STATUS_LABELS = {
-    "SUPPORTED": "Có bằng chứng xác nhận",
-    "PARTIALLY_SUPPORTED": "Khớp một phần",
-    "CONTRADICTED": "Mâu thuẫn với bằng chứng",
-    "UNSUPPORTED": "Không có bằng chứng",
-    "INSUFFICIENT_EVIDENCE": "Chưa đủ bằng chứng",
-}
-INDEPENDENT_SOURCES = {"legal", "external", "standard"}
+# The queue, the claim page and Studio name a verdict the same way (labels_vi.VERDICT):
+# "Ủng hộ một phần" in one place and "Khớp một phần" in another was seen in the demo video.
+STATUS_LABELS = VERDICT
+INDEPENDENT_SOURCES = INDEPENDENT_SOURCE_TYPES  # one definition with the verifier's support guard
 
 
 def _one_line(text: str) -> str:
@@ -45,21 +50,89 @@ def _one_line(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
-def paragraphs(path: str | Path) -> list[dict]:
-    """`{"text", "page", "index"}` per paragraph; texts never contain a newline."""
+def _ocr_reading(ocr: TesseractOCR, page: fitz.Page, digest: str, page_number: int,
+                 cache_dir: str | Path | None) -> dict:
+    """Tesseract's reading of one page and how sure it was, cached by file hash, page and languages.
+
+    `{"text", "ocr_confidence", "ocr_doubtful_numbers"}`, the same measures the
+    analysis records (parsers/ocr.py OcrReading.summary).
+    """
+    cache = None
+    if cache_dir is not None:
+        cache = Path(cache_dir) / f"{digest[:24]}_{page_number}_{ocr.languages.replace('+', '-')}.json"
+        if cache.is_file():
+            try:
+                return json.loads(cache.read_text(encoding="utf-8"))
+            except ValueError:
+                pass
+    reading = ocr.read_page(page)
+    out = {"text": reading.text, **reading.summary()} if reading.text.strip() else {"text": ""}
+    if cache is not None and out["text"]:
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        cache.write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
+    return out
+
+
+def _ocr_paragraphs(text: str) -> list[str]:
+    """OCR lines grouped into paragraphs: a blank line or a line ending a sentence closes one."""
+    out, current = [], []
+    for line in normalize_text(text).split("\n"):
+        if not line.strip():
+            if current:
+                out.append(_one_line("\n".join(current)))
+                current = []
+            continue
+        current.append(line)
+        if re.search(r"[.!?:;]\s*$", line):
+            out.append(_one_line("\n".join(current)))
+            current = []
+    if current:
+        out.append(_one_line("\n".join(current)))
+    return [p for p in out if p]
+
+
+def paragraphs(path: str | Path, intake: IntakeSettings | None = None, cache_dir: str | Path | None = None) -> list[dict]:
+    """`{"text", "page", "index"}` per paragraph, `"ocr": True` on a page read by OCR; texts never contain a newline.
+
+    A PDF is read the way the analysis read it (parsers/documents.py): text no
+    reader can see is left out, and with `intake` given, a page with too little
+    native text is read by OCR. Without that, every claim found on a scanned page
+    was "not located" here and could not be edited. OCR output is cached per
+    file and page under `cache_dir`, so a document is read by Tesseract once.
+    """
     path = Path(path)
     suffix = path.suffix.lower()
     out: list[dict] = []
     if suffix == ".pdf":
         pdf = fitz.open(path)
+        ocr = None
+        if intake is not None and intake.ocr_enabled:
+            ocr = TesseractOCR(intake.tesseract_command, intake.ocr_languages)
+        digest = None
         for page_number, page in enumerate(pdf, start=1):
-            blocks = sorted(page.get_text("blocks"), key=lambda b: (round(b[1], 1), round(b[0], 1)))
-            for block in blocks:
-                if block[6] != 0:  # image block
+            blocks, _hidden = visible_blocks(page)
+            texts = [_one_line(b[4]) for b in sorted(blocks, key=lambda b: (round(b[1], 1), round(b[0], 1)))
+                     if b[6] == 0]  # 1 = image block
+            texts = [t for t in texts if t]
+            native_text = "\n".join(normalize_text(b[4]) for b in blocks if b[6] == 0 and normalize_text(b[4]))
+            # The analysis' rule (parsers/documents.py): too little text, or a garbled
+            # legacy-font layer, and the page is read by OCR.
+            needs_ocr = len(native_text) < intake.min_native_text_chars if intake is not None else False
+            if intake is not None and not needs_ocr:
+                needs_ocr = garbled_share(native_text) >= GARBLED_PAGE
+            if ocr is not None and needs_ocr and ocr.available:
+                digest = digest or hashlib.sha256(path.read_bytes()).hexdigest()
+                reading = _ocr_reading(ocr, page, digest, page_number, cache_dir)
+                read = _ocr_paragraphs(reading["text"])
+                if read:
+                    for text in read:
+                        doubtful = [n for n in reading.get("ocr_doubtful_numbers", []) if contains_number(text, n)]
+                        out.append({"text": text, "page": page_number, "index": len(out), "ocr": True,
+                                    "ocr_confidence": reading.get("ocr_confidence"),
+                                    **({"doubtful_numbers": doubtful} if doubtful else {})})
                     continue
-                text = _one_line(block[4])
-                if text:
-                    out.append({"text": text, "page": page_number, "index": len(out)})
+            for text in texts:
+                out.append({"text": text, "page": page_number, "index": len(out)})
         pdf.close()
         return out
     if suffix == ".docx":
@@ -161,19 +234,14 @@ def _line_starts(lines: list[str]) -> list[int]:
 
 # ---------- diagnostics ----------
 
+_ATTRIBUTE_NAMES = (("metric", "chỉ số"), ("values", "giá trị"), ("period", "kỳ"), ("baseline", "năm gốc"),
+                    ("scope", "phạm vi"))
+
+
 def _missing_attributes(claim) -> list[str]:
-    missing = []
-    if not claim.metric:
-        missing.append("chỉ số")
-    if not claim.values:
-        missing.append("số liệu")
-    if not claim.period:
-        missing.append("kỳ")
-    if (claim.direction or claim.is_future_commitment) and not claim.baseline:
-        missing.append("năm gốc")
-    if not claim.scope:
-        missing.append("phạm vi")
-    return missing
+    """The verifier's definition (agents/verifier.py missing_attributes), named the way the report names them."""
+    gaps = set(missing_attributes(claim))
+    return [name for key, name in _ATTRIBUTE_NAMES if key in gaps]
 
 
 def _severity(status: str, risk, legal: dict | None, claim) -> str:

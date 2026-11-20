@@ -1,0 +1,159 @@
+[{"stream_name":"stderr","time":5.833463494,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":5.833527918,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":6.634641413,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.634664317,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.63466767,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.634670409,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.192624743,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.192652033,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.192657437,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.192661833,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":8.242387825,"data":"[boot] nb_stance_nli_probe | python 3.13.16 | start 2026-11-13 04:08:12\n"}
+,{"stream_name":"stdout","time":8.244211415,"data":"[cell] setup\n"}
+,{"stream_name":"stdout","time":8.275322521,"data":"name, memory.total [MiB], driver_version\n"}
+,{"stream_name":"stdout","time":8.276185132,"data":"Tesla T4, 15360 MiB, 580.178.04\n"}
+,{"stream_name":"stdout","time":8.277004147,"data":"Tesla T4, 15360 MiB, 580.178.04\n"}
+,{"stream_name":"stdout","time":13.784431858,"data":"torch 2.11.0+cu130 cuda True 2\n"}
+,{"stream_name":"stdout","time":15.909410484,"data":"openpyxl                              3.1.5\n"}
+,{"stream_name":"stdout","time":15.9105364,"data":"pandas                                2.3.3\n"}
+,{"stream_name":"stdout","time":15.911493905,"data":"torch                                 2.11.0+cu130\n"}
+,{"stream_name":"stdout","time":15.9122403,"data":"transformers                          5.20.2\n"}
+,{"stream_name":"stdout","time":15.929874287,"data":"[cell] write code files\n"}
+,{"stream_name":"stdout","time":15.931153388,"data":"wrote common.py 4961\n"}
+,{"stream_name":"stdout","time":15.932924024,"data":"wrote train_stance_enc.py 11505\n"}
+,{"stream_name":"stdout","time":15.944509029,"data":"[cell] run 1: python -u train_stance_enc.py --nli-head --max-len 256 --epo\n"}
+,{"stream_name":"stdout","time":17.522805303,"data":"[cell] stance data\n"}
+,{"stream_name":"stdout","time":17.767242076,"data":"[stance] 815 labelled pairs · {'neutral': 628, 'entailment': 187} · companies 11\n"}
+,{"stream_name":"stdout","time":17.768055791,"data":"[cell] stance cv\n"}
+,{"stream_name":"stdout","time":37.573255753,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":45.166664742,"data":"\n"}
+,{"stream_name":"stdout","time":45.242596128,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":45.24337264,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2657.83it/s]\n"}
+,{"stream_name":"stdout","time":52.796657216,"data":"\n"}
+,{"stream_name":"stdout","time":52.875732249,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":52.876545349,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2465.66it/s]\n"}
+,{"stream_name":"stdout","time":58.451228371,"data":"\n"}
+,{"stream_name":"stdout","time":58.529607045,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":58.530757331,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2576.06it/s]\n"}
+,{"stream_name":"stdout","time":64.239134072,"data":"\n"}
+,{"stream_name":"stdout","time":64.314095076,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":64.314994393,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2675.10it/s]\n"}
+,{"stream_name":"stdout","time":71.027571656,"data":"\n"}
+,{"stream_name":"stdout","time":71.10646972,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":71.106670564,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2644.38it/s]\n"}
+,{"stream_name":"stdout","time":75.452123659,"data":"[stance] CV macro-F1 0.5007 (T=2.7) · baselines {'rules': 0.4088, 'nli-mdeberta': 0.5874}\n"}
+,{"stream_name":"stdout","time":75.453013484,"data":"[cell] stance final + S5\n"}
+,{"stream_name":"stdout","time":77.324942385,"data":"\n"}
+,{"stream_name":"stdout","time":77.400313831,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":77.401262385,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2703.28it/s]\n"}
+,{"stream_name":"stdout","time":78.267650459,"data":"\n"}
+,{"stream_name":"stdout","time":79.362486257,"data":"Writing model shards:   0%|          | 0/1 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":79.363447427,"data":"Writing model shards: 100%|██████████| 1/1 [00:01\u003c00:00,  1.09s/it]\n"}
+,{"stream_name":"stdout","time":79.364142467,"data":"Writing model shards: 100%|██████████| 1/1 [00:01\u003c00:00,  1.09s/it]\n"}
+,{"stream_name":"stdout","time":86.692500731,"data":"[stance] S5 model 0.4881 [0.4232, 0.523] false C 0 · rules 0.5578 false C 0\n"}
+,{"stream_name":"stdout","time":86.693708228,"data":"[cell] stance cpu latency\n"}
+,{"stream_name":"stdout","time":110.494018508,"data":"/kaggle/working/train_stance_enc.py:224: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10. \n"}
+,{"stream_name":"stdout","time":110.497083481,"data":"For migrations of users: \n"}
+,{"stream_name":"stdout","time":110.499658031,"data":"1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead \n"}
+,{"stream_name":"stdout","time":110.503704651,"data":"2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e) \n"}
+,{"stream_name":"stdout","time":110.505047378,"data":"3. pt2e quantization has been migrated to torchao (https://github.com/pytorch/ao/tree/main/torchao/quantization/pt2e) \n"}
+,{"stream_name":"stdout","time":110.506558283,"data":"see https://github.com/pytorch/ao/issues/2259 for more details\n"}
+,{"stream_name":"stdout","time":110.510947701,"data":"  q = torch.quantization.quantize_dynamic(cpu, {torch.nn.Linear}, dtype=torch.qint8)\n"}
+,{"stream_name":"stdout","time":155.983143472,"data":"[stance] cpu 480.6 ms/pair · DONE\n"}
+,{"stream_name":"stdout","time":159.368074357,"data":"[cell] run 2: python -u train_stance_enc.py --nli-head --max-len 256 --pro\n"}
+,{"stream_name":"stdout","time":161.003205788,"data":"[cell] stance data\n"}
+,{"stream_name":"stdout","time":161.044111494,"data":"[stance] 815 labelled pairs · {'neutral': 628, 'entailment': 187} · companies 11\n"}
+,{"stream_name":"stdout","time":161.045018089,"data":"[cell] stance cv\n"}
+,{"stream_name":"stdout","time":169.912146435,"data":"\n"}
+,{"stream_name":"stdout","time":169.98383983,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":169.984647856,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2816.25it/s]\n"}
+,{"stream_name":"stdout","time":176.720433888,"data":"[stance] fold0 epoch 1 loss 0.7980\n"}
+,{"stream_name":"stdout","time":181.645392194,"data":"[stance] fold0 epoch 2 loss 0.6450\n"}
+,{"stream_name":"stdout","time":186.541138639,"data":"[stance] fold0 epoch 3 loss 0.6490\n"}
+,{"stream_name":"stdout","time":191.484248095,"data":"[stance] fold0 epoch 4 loss 0.6095\n"}
+,{"stream_name":"stdout","time":196.410992945,"data":"[stance] fold0 epoch 5 loss 0.6407\n"}
+,{"stream_name":"stdout","time":201.344280112,"data":"[stance] fold0 epoch 6 loss 0.6130\n"}
+,{"stream_name":"stdout","time":206.271486583,"data":"[stance] fold0 epoch 7 loss 0.5972\n"}
+,{"stream_name":"stdout","time":211.221343286,"data":"[stance] fold0 epoch 8 loss 0.5917\n"}
+,{"stream_name":"stdout","time":216.73599258,"data":"\n"}
+,{"stream_name":"stdout","time":216.813887771,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":216.814706084,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2570.94it/s]\n"}
+,{"stream_name":"stdout","time":222.874275863,"data":"[stance] fold1 epoch 1 loss 0.8288\n"}
+,{"stream_name":"stdout","time":228.061508306,"data":"[stance] fold1 epoch 2 loss 0.6431\n"}
+,{"stream_name":"stdout","time":233.246653442,"data":"[stance] fold1 epoch 3 loss 0.6559\n"}
+,{"stream_name":"stdout","time":238.435455452,"data":"[stance] fold1 epoch 4 loss 0.6274\n"}
+,{"stream_name":"stdout","time":243.628506061,"data":"[stance] fold1 epoch 5 loss 0.6297\n"}
+,{"stream_name":"stdout","time":248.809015404,"data":"[stance] fold1 epoch 6 loss 0.6219\n"}
+,{"stream_name":"stdout","time":254.018733665,"data":"[stance] fold1 epoch 7 loss 0.6017\n"}
+,{"stream_name":"stdout","time":259.207166397,"data":"[stance] fold1 epoch 8 loss 0.6075\n"}
+,{"stream_name":"stdout","time":264.220895123,"data":"\n"}
+,{"stream_name":"stdout","time":264.294865503,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":264.295662096,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2705.61it/s]\n"}
+,{"stream_name":"stdout","time":270.453501237,"data":"[stance] fold2 epoch 1 loss 0.8216\n"}
+,{"stream_name":"stdout","time":275.714072809,"data":"[stance] fold2 epoch 2 loss 0.6826\n"}
+,{"stream_name":"stdout","time":280.984415743,"data":"[stance] fold2 epoch 3 loss 0.6663\n"}
+,{"stream_name":"stdout","time":286.268464991,"data":"[stance] fold2 epoch 4 loss 0.6365\n"}
+,{"stream_name":"stdout","time":291.571075108,"data":"[stance] fold2 epoch 5 loss 0.6465\n"}
+,{"stream_name":"stdout","time":296.836039462,"data":"[stance] fold2 epoch 6 loss 0.6362\n"}
+,{"stream_name":"stdout","time":302.122194203,"data":"[stance] fold2 epoch 7 loss 0.6122\n"}
+,{"stream_name":"stdout","time":307.380077642,"data":"[stance] fold2 epoch 8 loss 0.6256\n"}
+,{"stream_name":"stdout","time":312.060648007,"data":"\n"}
+,{"stream_name":"stdout","time":312.136616132,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":312.137261482,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2646.64it/s]\n"}
+,{"stream_name":"stdout","time":317.717445636,"data":"[stance] fold3 epoch 1 loss 0.8284\n"}
+,{"stream_name":"stdout","time":322.47909143,"data":"[stance] fold3 epoch 2 loss 0.6554\n"}
+,{"stream_name":"stdout","time":327.257004463,"data":"[stance] fold3 epoch 3 loss 0.6524\n"}
+,{"stream_name":"stdout","time":332.058487473,"data":"[stance] fold3 epoch 4 loss 0.6484\n"}
+,{"stream_name":"stdout","time":336.84028262,"data":"[stance] fold3 epoch 5 loss 0.6436\n"}
+,{"stream_name":"stdout","time":341.609404386,"data":"[stance] fold3 epoch 6 loss 0.6314\n"}
+,{"stream_name":"stdout","time":346.391966485,"data":"[stance] fold3 epoch 7 loss 0.6258\n"}
+,{"stream_name":"stdout","time":351.200399023,"data":"[stance] fold3 epoch 8 loss 0.6055\n"}
+,{"stream_name":"stdout","time":356.892072163,"data":"\n"}
+,{"stream_name":"stdout","time":356.966087083,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":356.966902576,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2705.31it/s]\n"}
+,{"stream_name":"stdout","time":362.993677437,"data":"[stance] fold4 epoch 1 loss 0.7919\n"}
+,{"stream_name":"stdout","time":368.209436492,"data":"[stance] fold4 epoch 2 loss 0.6772\n"}
+,{"stream_name":"stdout","time":373.434479332,"data":"[stance] fold4 epoch 3 loss 0.6536\n"}
+,{"stream_name":"stdout","time":378.643427104,"data":"[stance] fold4 epoch 4 loss 0.6464\n"}
+,{"stream_name":"stdout","time":383.873201114,"data":"[stance] fold4 epoch 5 loss 0.6247\n"}
+,{"stream_name":"stdout","time":389.098674221,"data":"[stance] fold4 epoch 6 loss 0.6316\n"}
+,{"stream_name":"stdout","time":394.318637639,"data":"[stance] fold4 epoch 7 loss 0.6202\n"}
+,{"stream_name":"stdout","time":399.542092049,"data":"[stance] fold4 epoch 8 loss 0.6159\n"}
+,{"stream_name":"stdout","time":403.069341892,"data":"[stance] CV macro-F1 0.4605 (T=1.0) · baselines {'rules': 0.4088, 'nli-mdeberta': 0.5874}\n"}
+,{"stream_name":"stdout","time":403.070340965,"data":"[cell] stance final + S5\n"}
+,{"stream_name":"stdout","time":404.991151934,"data":"\n"}
+,{"stream_name":"stdout","time":405.067268046,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":405.06806369,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2644.40it/s]\n"}
+,{"stream_name":"stdout","time":412.210750362,"data":"[stance] final epoch 1 loss 0.7813\n"}
+,{"stream_name":"stdout","time":418.562089819,"data":"[stance] final epoch 2 loss 0.6699\n"}
+,{"stream_name":"stdout","time":424.908781801,"data":"[stance] final epoch 3 loss 0.6453\n"}
+,{"stream_name":"stdout","time":431.269819946,"data":"[stance] final epoch 4 loss 0.6495\n"}
+,{"stream_name":"stdout","time":437.608662143,"data":"[stance] final epoch 5 loss 0.6415\n"}
+,{"stream_name":"stdout","time":443.947507214,"data":"[stance] final epoch 6 loss 0.6261\n"}
+,{"stream_name":"stdout","time":450.313196783,"data":"[stance] final epoch 7 loss 0.6231\n"}
+,{"stream_name":"stdout","time":456.672861577,"data":"[stance] final epoch 8 loss 0.6085\n"}
+,{"stream_name":"stdout","time":456.87401248,"data":"\n"}
+,{"stream_name":"stdout","time":458.017439366,"data":"Writing model shards:   0%|          | 0/1 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":458.018393636,"data":"Writing model shards: 100%|██████████| 1/1 [00:01\u003c00:00,  1.14s/it]\n"}
+,{"stream_name":"stdout","time":458.019151021,"data":"Writing model shards: 100%|██████████| 1/1 [00:01\u003c00:00,  1.14s/it]\n"}
+,{"stream_name":"stdout","time":465.301984008,"data":"[stance] S5 model 0.4501 [0.3678, 0.5013] false C 0 · rules 0.5578 false C 0\n"}
+,{"stream_name":"stdout","time":465.302885092,"data":"[cell] stance cpu latency\n"}
+,{"stream_name":"stdout","time":488.247738642,"data":"/kaggle/working/train_stance_enc.py:224: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10. \n"}
+,{"stream_name":"stdout","time":488.252131539,"data":"For migrations of users: \n"}
+,{"stream_name":"stdout","time":488.256728451,"data":"1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead \n"}
+,{"stream_name":"stdout","time":488.258170545,"data":"2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e) \n"}
+,{"stream_name":"stdout","time":488.26249715,"data":"3. pt2e quantization has been migrated to torchao (https://github.com/pytorch/ao/tree/main/torchao/quantization/pt2e) \n"}
+,{"stream_name":"stdout","time":488.26385585,"data":"see https://github.com/pytorch/ao/issues/2259 for more details\n"}
+,{"stream_name":"stdout","time":488.265143719,"data":"  q = torch.quantization.quantize_dynamic(cpu, {torch.nn.Linear}, dtype=torch.qint8)\n"}
+,{"stream_name":"stdout","time":533.621397113,"data":"[stance] cpu 462.5 ms/pair · DONE\n"}
+,{"stream_name":"stdout","time":535.221295296,"data":"[cell] done\n"}
+,{"stream_name":"stdout","time":535.222528499,"data":"ALL CELLS OK\n"}
+,{"stream_name":"stderr","time":538.051934108,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":538.051973901,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":538.200032375,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":538.200061584,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":538.944374826,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":539.039111633,"data":"[NbConvertApp] Writing 33418 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":541.57632413,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":542.059928715,"data":"[NbConvertApp] Writing 330447 bytes to __results__.html\n"}
+]

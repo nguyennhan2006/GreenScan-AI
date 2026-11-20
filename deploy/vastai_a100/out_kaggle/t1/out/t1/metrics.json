@@ -1,0 +1,427 @@
+{
+ "train_rows": 2043,
+ "label_counts": {
+  "NOT_CLAIM": 1297,
+  "VAGUE": 154,
+  "QUALITATIVE_CLAIM": 435,
+  "QUANTIFIED_CLAIM": 157
+ },
+ "runs": {
+  "e5-small-ce": {
+   "cv": {
+    "macro_f1": 0.5842,
+    "accuracy": 0.7611,
+    "per_class": {
+     "NOT_CLAIM": {
+      "precision": 0.9214,
+      "recall": 0.8319,
+      "f1": 0.8744,
+      "support": 1297,
+      "predicted": 1171
+     },
+     "QUALITATIVE_CLAIM": {
+      "precision": 0.5235,
+      "recall": 0.7931,
+      "f1": 0.6307,
+      "support": 435,
+      "predicted": 659
+     },
+     "QUANTIFIED_CLAIM": {
+      "precision": 0.6538,
+      "recall": 0.758,
+      "f1": 0.7021,
+      "support": 157,
+      "predicted": 182
+     },
+     "VAGUE": {
+      "precision": 0.3871,
+      "recall": 0.0779,
+      "f1": 0.1297,
+      "support": 154,
+      "predicted": 31
+     }
+    },
+    "n": 2043,
+    "claim_recall": 0.8767,
+    "confusion": [
+     [
+      1079,
+      170,
+      37,
+      11
+     ],
+     [
+      59,
+      345,
+      23,
+      8
+     ],
+     [
+      9,
+      29,
+      119,
+      0
+     ],
+     [
+      24,
+      115,
+      3,
+      12
+     ]
+    ]
+   },
+   "s1_gate": {
+    "0.5": {
+     "not_claim_caught": 25,
+     "not_claim_total": 44,
+     "true_claims_flagged": 23,
+     "true_claims_total": 102
+    },
+    "0.6": {
+     "not_claim_caught": 21,
+     "not_claim_total": 44,
+     "true_claims_flagged": 21,
+     "true_claims_total": 102
+    },
+    "0.7": {
+     "not_claim_caught": 16,
+     "not_claim_total": 44,
+     "true_claims_flagged": 17,
+     "true_claims_total": 102
+    },
+    "0.8": {
+     "not_claim_caught": 13,
+     "not_claim_total": 44,
+     "true_claims_flagged": 13,
+     "true_claims_total": 102
+    },
+    "0.9": {
+     "not_claim_caught": 10,
+     "not_claim_total": 44,
+     "true_claims_flagged": 11,
+     "true_claims_total": 102
+    },
+    "0.95": {
+     "not_claim_caught": 9,
+     "not_claim_total": 44,
+     "true_claims_flagged": 9,
+     "true_claims_total": 102
+    }
+   },
+   "seconds": 459.7,
+   "cpu_ms_per_sentence_4threads": 36.7
+  },
+  "e5-small-wce": {
+   "cv": {
+    "macro_f1": 0.7202,
+    "accuracy": 0.8023,
+    "per_class": {
+     "NOT_CLAIM": {
+      "precision": 0.921,
+      "recall": 0.845,
+      "f1": 0.8814,
+      "support": 1297,
+      "predicted": 1190
+     },
+     "QUALITATIVE_CLAIM": {
+      "precision": 0.6598,
+      "recall": 0.731,
+      "f1": 0.6936,
+      "support": 435,
+      "predicted": 482
+     },
+     "QUANTIFIED_CLAIM": {
+      "precision": 0.6814,
+      "recall": 0.8854,
+      "f1": 0.7701,
+      "support": 157,
+      "predicted": 204
+     },
+     "VAGUE": {
+      "precision": 0.515,
+      "recall": 0.5584,
+      "f1": 0.5358,
+      "support": 154,
+      "predicted": 167
+     }
+    },
+    "n": 2043,
+    "claim_recall": 0.874,
+    "confusion": [
+     [
+      1096,
+      118,
+      40,
+      43
+     ],
+     [
+      57,
+      318,
+      22,
+      38
+     ],
+     [
+      9,
+      9,
+      139,
+      0
+     ],
+     [
+      28,
+      37,
+      3,
+      86
+     ]
+    ]
+   },
+   "s1_gate": {
+    "0.5": {
+     "not_claim_caught": 26,
+     "not_claim_total": 44,
+     "true_claims_flagged": 21,
+     "true_claims_total": 102
+    },
+    "0.6": {
+     "not_claim_caught": 21,
+     "not_claim_total": 44,
+     "true_claims_flagged": 20,
+     "true_claims_total": 102
+    },
+    "0.7": {
+     "not_claim_caught": 20,
+     "not_claim_total": 44,
+     "true_claims_flagged": 18,
+     "true_claims_total": 102
+    },
+    "0.8": {
+     "not_claim_caught": 19,
+     "not_claim_total": 44,
+     "true_claims_flagged": 17,
+     "true_claims_total": 102
+    },
+    "0.9": {
+     "not_claim_caught": 11,
+     "not_claim_total": 44,
+     "true_claims_flagged": 7,
+     "true_claims_total": 102
+    },
+    "0.95": {
+     "not_claim_caught": 0,
+     "not_claim_total": 44,
+     "true_claims_flagged": 0,
+     "true_claims_total": 102
+    }
+   },
+   "seconds": 434.4,
+   "cpu_ms_per_sentence_4threads": 33.9
+  },
+  "e5-base-ce": {
+   "cv": {
+    "macro_f1": 0.7429,
+    "accuracy": 0.8267,
+    "per_class": {
+     "NOT_CLAIM": {
+      "precision": 0.9197,
+      "recall": 0.8828,
+      "f1": 0.9009,
+      "support": 1297,
+      "predicted": 1245
+     },
+     "QUALITATIVE_CLAIM": {
+      "precision": 0.6968,
+      "recall": 0.7448,
+      "f1": 0.72,
+      "support": 435,
+      "predicted": 465
+     },
+     "QUANTIFIED_CLAIM": {
+      "precision": 0.7143,
+      "recall": 0.8599,
+      "f1": 0.7803,
+      "support": 157,
+      "predicted": 189
+     },
+     "VAGUE": {
+      "precision": 0.5903,
+      "recall": 0.5519,
+      "f1": 0.5705,
+      "support": 154,
+      "predicted": 144
+     }
+    },
+    "n": 2043,
+    "claim_recall": 0.866,
+    "confusion": [
+     [
+      1145,
+      91,
+      30,
+      31
+     ],
+     [
+      62,
+      324,
+      21,
+      28
+     ],
+     [
+      13,
+      9,
+      135,
+      0
+     ],
+     [
+      25,
+      41,
+      3,
+      85
+     ]
+    ]
+   },
+   "s1_gate": {
+    "0.5": {
+     "not_claim_caught": 30,
+     "not_claim_total": 44,
+     "true_claims_flagged": 25,
+     "true_claims_total": 102
+    },
+    "0.6": {
+     "not_claim_caught": 29,
+     "not_claim_total": 44,
+     "true_claims_flagged": 23,
+     "true_claims_total": 102
+    },
+    "0.7": {
+     "not_claim_caught": 26,
+     "not_claim_total": 44,
+     "true_claims_flagged": 21,
+     "true_claims_total": 102
+    },
+    "0.8": {
+     "not_claim_caught": 25,
+     "not_claim_total": 44,
+     "true_claims_flagged": 19,
+     "true_claims_total": 102
+    },
+    "0.9": {
+     "not_claim_caught": 19,
+     "not_claim_total": 44,
+     "true_claims_flagged": 17,
+     "true_claims_total": 102
+    },
+    "0.95": {
+     "not_claim_caught": 18,
+     "not_claim_total": 44,
+     "true_claims_flagged": 16,
+     "true_claims_total": 102
+    }
+   },
+   "seconds": 946.7,
+   "cpu_ms_per_sentence_4threads": 105.1
+  },
+  "e5-base-wce": {
+   "cv": {
+    "macro_f1": 0.7322,
+    "accuracy": 0.8184,
+    "per_class": {
+     "NOT_CLAIM": {
+      "precision": 0.9289,
+      "recall": 0.8666,
+      "f1": 0.8967,
+      "support": 1297,
+      "predicted": 1210
+     },
+     "QUALITATIVE_CLAIM": {
+      "precision": 0.6785,
+      "recall": 0.7471,
+      "f1": 0.7112,
+      "support": 435,
+      "predicted": 479
+     },
+     "QUANTIFIED_CLAIM": {
+      "precision": 0.6796,
+      "recall": 0.8917,
+      "f1": 0.7713,
+      "support": 157,
+      "predicted": 206
+     },
+     "VAGUE": {
+      "precision": 0.5608,
+      "recall": 0.539,
+      "f1": 0.5497,
+      "support": 154,
+      "predicted": 148
+     }
+    },
+    "n": 2043,
+    "claim_recall": 0.8847,
+    "confusion": [
+     [
+      1124,
+      101,
+      40,
+      32
+     ],
+     [
+      54,
+      325,
+      23,
+      33
+     ],
+     [
+      6,
+      11,
+      140,
+      0
+     ],
+     [
+      26,
+      42,
+      3,
+      83
+     ]
+    ]
+   },
+   "s1_gate": {
+    "0.5": {
+     "not_claim_caught": 27,
+     "not_claim_total": 44,
+     "true_claims_flagged": 24,
+     "true_claims_total": 102
+    },
+    "0.6": {
+     "not_claim_caught": 26,
+     "not_claim_total": 44,
+     "true_claims_flagged": 22,
+     "true_claims_total": 102
+    },
+    "0.7": {
+     "not_claim_caught": 25,
+     "not_claim_total": 44,
+     "true_claims_flagged": 19,
+     "true_claims_total": 102
+    },
+    "0.8": {
+     "not_claim_caught": 22,
+     "not_claim_total": 44,
+     "true_claims_flagged": 19,
+     "true_claims_total": 102
+    },
+    "0.9": {
+     "not_claim_caught": 15,
+     "not_claim_total": 44,
+     "true_claims_flagged": 8,
+     "true_claims_total": 102
+    },
+    "0.95": {
+     "not_claim_caught": 0,
+     "not_claim_total": 44,
+     "true_claims_flagged": 0,
+     "true_claims_total": 102
+    }
+   },
+   "seconds": 941.1,
+   "cpu_ms_per_sentence_4threads": 106.2
+  }
+ }
+}

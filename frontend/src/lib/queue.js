@@ -1,3 +1,4 @@
+import { labelOf } from './labels.js'
 /**
  * The review queue, as the reviewer works it.
  *
@@ -68,7 +69,10 @@ export function tagsFor(item) {
     const quantified = (item.row.claim.values || []).length > 0
     tags.push({ text: quantified ? 'có số liệu' : 'không có số liệu', tone: quantified ? undefined : 'amber' })
     if (item.row.contradicting.length) tags.push({ text: `${item.row.contradicting.length} đoạn mâu thuẫn`, tone: 'red' })
-    if (item.row.missing.length) tags.push({ text: `thiếu ${item.row.missing.length}/5 thuộc tính` })
+    if (item.row.missing.length) {
+      const required = item.row.attributes.filter((a) => a.state !== 'not_applicable').length
+      tags.push({ text: `thiếu ${item.row.missing.length}/${required} thuộc tính` })
+    }
     if (item.row.requiresLlmReview) tags.push({ text: 'mô hình đề xuất — cần xác nhận', tone: 'violet' })
   }
   if (comp.obligation && comp.obligation.max_score && comp.obligation.score / comp.obligation.max_score >= 0.5) {
@@ -77,6 +81,13 @@ export function tagsFor(item) {
   if ((comp.materiality?.reason || '').includes('không nêu chủ thể')) tags.push({ text: 'có thể là câu giải thích chung' })
   if ((comp.materiality?.reason || '').includes('dính cột')) tags.push({ text: 'chữ lỗi trình bày — xem trang gốc', tone: 'amber' })
   return tags
+}
+
+/** The one reason a reviewer must see without hovering: an absolute claim that a table figure on the
+ *  record does not bear out (figure-tension-v1). Never a verdict; the sentence says "cần người xem". */
+export function tensionOf(item) {
+  const anomaly = (item.components || []).find((c) => c.name === 'anomaly' && c.score > 0)
+  return anomaly ? (anomaly.reason || '').replaceAll('**', '') : ''
 }
 
 export function reasonText(item) {
@@ -102,5 +113,5 @@ export function figureAsEvidence(figure, checks = []) {
 export function formatFigure(figure) {
   if (!figure) return ''
   const value = Number(figure.value).toLocaleString('vi-VN', { maximumFractionDigits: 2 })
-  return `${value} ${figure.unit === 'tan' ? 'tấn' : figure.unit}`
+  return `${value} ${labelOf('unit', figure.unit)}`
 }

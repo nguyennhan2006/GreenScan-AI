@@ -1,4 +1,4 @@
-"""Is this extracted sentence probably not a claim at all? (claim-quality-v1, 2026-11-09)
+"""Is this extracted sentence probably not a claim at all? (claim-quality-v1, 2026-11-09; v1.1 11/11)
 
 GS-Eval v2 (05/11) found that about 30 % of the sentences the extractor keeps are
 not claims (44/146, Wilson [0,23; 0,38]): table cells and a report's index read
@@ -33,6 +33,9 @@ REASON_VI = {
     "standard_title": "tên một tiêu chuẩn, không phải lời doanh nghiệp tự khẳng định",
     "legal_text": "trích văn bản pháp luật, không phải lời doanh nghiệp tự khẳng định",
     "contact_line": "thông tin liên hệ",
+    "list_glue": "nhiều ý của một danh sách gạch đầu dòng đọc liền thành một câu",
+    "fragment": "mảnh câu không trọn (nhãn sơ đồ hoặc câu bị cắt ngang trang, ngang cột)",
+    "model_not_claim": "mô hình phân loại câu (e5) đọc câu này là không phải tuyên bố",
 }
 
 # A bare integer standing alone between words: the page numbers of an index
@@ -76,6 +79,84 @@ _SELF_OR_ACT = re.compile(
 _CAP_RUN_MIN = {"vi": 8, "en": 6}
 
 
+# claim-quality v1.1 (11/11/2026): page furniture read into the first line. The reader
+# set the running title "HÒA PHÁT" between "Giai đoạn này đóng vai" and "trò nền tảng
+# …", so the sentence it cut out began "HÒA PHÁT trò nền tảng …" and led the HPG
+# queue. A sentence the company wrote does not start with a heading run followed by
+# the middle of a clause. On the 1276 unique claims of the current runs this fired on
+# 3, all glue ("MÔI TRƯỜNG nhóm thép …", "KEY PROJECTS equivalent in 2023 …").
+# A run followed by a predicate is the entity speaking ("TẬP ĐOÀN HÒA PHÁT đã giảm …")
+# and is left alone.
+_PUNCT = "()[]\"“”,;.:–—-"
+_PREDICATE_START = frozenset({
+    "đã", "đang", "sẽ", "cam", "tiếp", "luôn", "không", "chưa", "là", "có", "đạt", "giảm", "tăng",
+    "thực", "triển", "hoàn", "đặt", "đầu", "xây", "áp", "tuân", "được", "nỗ", "chú", "ưu",
+    "we", "has", "have", "is", "was", "will", "plans", "aims", "achieved", "reduced", "commits",
+})
+
+
+# claim-quality v1.2 (17/11/2026): what was left at the head of the HPG queue once pages were read as
+# regions (page-regions-v1). Each is a shape a reader can see on the sentence itself.
+# - A bullet glyph between two items: a list read as one sentence ("Quản trị doanh nghiệp tốt • Tuân thủ …").
+_BULLET_INSIDE = re.compile(r"\S\s*[•▪●◦■►]\s*\S")
+# - A unit in front of its number, twice: a table row read across ("(CO2e) Tấn 933.876 … Tấn 23.474.479").
+#   Prose puts the unit after the number ("933.876 tấn"); a year after a unit ("tấn 2024") does not count.
+_UNIT_THEN_NUMBER = re.compile(
+    r"(?<![\w.,])(?:tấn|tco2e?|kwh|mwh|gwh|gj|tj|m3|m³|lít|kg)\s+(?!(?:19|20)\d{2}(?![\d.,]))\d[\d.,]*",
+    re.IGNORECASE,
+)
+# - The same six words twice in one sentence: headings of a page read into the text
+#   ("Kết quả tiêu thụ năng lượng năm 2025 … Kết quả tiêu thụ năng lượng năm 2025 …").
+_NGRAM = 6
+# - No closing punctuation, and the last word hangs on "và"/"hoặc": the sentence was cut at a page or
+#   column edge, or is a diagram label ("Hỗ trợ sản xuất thép bền vững, giảm phát thải và thúc").
+_TERMINAL = tuple(".!?…;:)\"”’")
+_HANGING_CONJ = frozenset({"và", "hoặc", "and", "or"})
+
+
+def repeats_a_phrase(text: str, n: int = _NGRAM) -> bool:
+    """Six words seen again, the second time restarting like a heading: a capital letter right after a
+    word with no punctuation ("… các bên liên quan Kết quả tiêu thụ …"). A real sentence that names a
+    programme twice puts the second one in quotes or after a comma (GS-Eval v2: two such claims)."""
+    tokens = [t for t in (text or "").split() if t.strip(_PUNCT)]
+    words = [t.strip(_PUNCT).lower() for t in tokens]
+    first: dict[tuple, int] = {}
+    for i in range(len(words) - n + 1):
+        gram = tuple(words[i:i + n])
+        if gram not in first:
+            first[gram] = i
+            continue
+        raw, before = tokens[i], tokens[i - 1] if i else ""
+        between = " ".join(tokens[first[gram]:i])
+        if raw[:1].isupper() and before and before[-1] not in _PUNCT and not any(ch in between for ch in ",;.“”\""):
+            return True
+    return False
+
+
+def is_fragment(text: str) -> bool:
+    stripped = (text or "").rstrip()
+    if not stripped or stripped.endswith(_TERMINAL) or any(ch.isdigit() for ch in stripped):
+        return False
+    words = stripped.split()
+    return len(words) >= 3 and words[-2].lower() in _HANGING_CONJ
+
+
+def starts_with_glued_heading(text: str) -> bool:
+    """Two or more all-caps words, then a lowercase word that does not start a predicate."""
+    words = (text or "").split()
+    caps = 0
+    for word in words:
+        core = word.strip(_PUNCT)
+        if len(core) >= 2 and core.isupper() and any(ch.isalpha() for ch in core):
+            caps += 1
+            continue
+        break
+    if caps < 2 or caps >= len(words):
+        return False
+    following = words[caps].strip(_PUNCT)
+    return bool(following) and following[0].islower() and following.lower() not in _PREDICATE_START
+
+
 def standalone_integers(text: str) -> int:
     count = 0
     for match in _STANDALONE_INT.finditer(text):
@@ -115,6 +196,14 @@ def suspect_reason(text: str) -> str | None:
     language = "vi" if normalize_for_match(stripped) != stripped.lower() else "en"
     if longest_capitalised_run(stripped) >= _CAP_RUN_MIN[language]:
         return "layout_glue"
+    if starts_with_glued_heading(stripped):
+        return "layout_glue"
+    if len(_UNIT_THEN_NUMBER.findall(stripped)) >= 2 or repeats_a_phrase(stripped):
+        return "layout_glue"
+    if _BULLET_INSIDE.search(stripped):
+        return "list_glue"
+    if is_fragment(stripped):
+        return "fragment"
     if _CONTACT.search(stripped) and len(stripped.split()) < 20:
         return "contact_line"
     if _STANDARD_TITLE.match(stripped):

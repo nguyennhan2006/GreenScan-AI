@@ -40,8 +40,15 @@ EXCLUDE = [
     "docs/reference/*", "outside_resource/*",
     "experiments/*/out/*", "experiments/*/kaggle_*/*", "training/runs/*",
     "*.mp4", "*.mov", "*.zip", "*.7z", "*.pptx", "*.log",
+    "frontend/dist-static/*",  # bản tĩnh dựng lại bằng tools/build_static_demo.py
 ]
 KEEP_EXCEPTION = [".env.example"]
+# The crawler code (not its 4 GB of downloads) under outside_resource/: tools/crawl_*.py and
+# tools/verify_regressions.py import it, and tests/test_cli_smoke.py runs them (17/11/2026).
+_CRAWLER = "outside_resource/greenscan_vn30_dataset_crawler_2021_2025"
+KEEP_PATHS = [f"{_CRAWLER}/{d}/*.py" for d in ("crawler", "scripts", "dataset", "tests")] + [
+    f"{_CRAWLER}/configs/*.yml", f"{_CRAWLER}/configs/*.csv", f"{_CRAWLER}/schemas/*.json",
+    f"{_CRAWLER}/README.md", f"{_CRAWLER}/pyproject.toml", f"{_CRAWLER}/requirements.txt"]
 # Large files allowed because the prototype or its check needs them.
 LARGE_OK = ["data/real_cases/sources/originals/*", "deploy/seed/*", "frontend/dist/*",
             "benchmark/gs_eval_v2/inputs/pool_a.jsonl"]
@@ -82,7 +89,7 @@ def select(files: list[str]) -> tuple[list[str], list[tuple[str, str]]]:
     keep, dropped = [], []
     for f in files:
         name = f.rsplit("/", 1)[-1]
-        if name not in KEEP_EXCEPTION and matches(f, EXCLUDE):
+        if name not in KEEP_EXCEPTION and not matches(f, KEEP_PATHS) and matches(f, EXCLUDE):
             dropped.append((f, "excluded"))
             continue
         size_mb = (ROOT / f).stat().st_size / 1e6

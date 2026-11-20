@@ -1,0 +1,361 @@
+[{"stream_name":"stderr","time":11.656093373000001,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":11.656152647,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":13.142927579,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":13.142957808,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":13.142963107,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":13.142967277,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":13.895806511,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":13.895855079,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":13.895861057,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":13.895865688,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":15.351841294,"data":"[boot] nb_pairs | python 3.13.16 | start 2026-11-13 02:30:43\n"}
+,{"stream_name":"stdout","time":15.356965328,"data":"[cell] setup\n"}
+,{"stream_name":"stdout","time":15.387751961,"data":"name, memory.total [MiB], driver_version\n"}
+,{"stream_name":"stdout","time":15.388639435,"data":"Tesla T4, 15360 MiB, 580.178.04\n"}
+,{"stream_name":"stdout","time":15.389481674,"data":"Tesla T4, 15360 MiB, 580.178.04\n"}
+,{"stream_name":"stdout","time":28.30902221,"data":"torch 2.11.0+cu130 cuda True 2\n"}
+,{"stream_name":"stdout","time":32.675587442,"data":"openpyxl                              3.1.5\n"}
+,{"stream_name":"stdout","time":32.676443513,"data":"pandas                                2.3.3\n"}
+,{"stream_name":"stdout","time":32.677233897,"data":"torch                                 2.11.0+cu130\n"}
+,{"stream_name":"stdout","time":32.678040766,"data":"transformers                          5.20.2\n"}
+,{"stream_name":"stdout","time":32.698721533,"data":"[cell] write code files\n"}
+,{"stream_name":"stdout","time":32.699727952,"data":"wrote common.py 4961\n"}
+,{"stream_name":"stdout","time":32.700622017,"data":"wrote train_stance_enc.py 9391\n"}
+,{"stream_name":"stdout","time":32.701561123,"data":"wrote train_reranker.py 8093\n"}
+,{"stream_name":"stdout","time":32.712843402,"data":"[cell] run 1: python -u train_stance_enc.py\n"}
+,{"stream_name":"stdout","time":34.486412478,"data":"[cell] stance data\n"}
+,{"stream_name":"stdout","time":34.774158897,"data":"[stance] 815 labelled pairs · {'CONTEXT': 628, 'PARTIAL': 124, 'SUPPORTS': 63} · companies 11\n"}
+,{"stream_name":"stdout","time":34.775054962,"data":"[cell] stance cv\n"}
+,{"stream_name":"stdout","time":72.398919199,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":77.08169806,"data":"[transformers] You passed `num_labels=4` which is incompatible to the `id2label` map of length `3`.\n"}
+,{"stream_name":"stdout","time":81.89211816,"data":"\n"}
+,{"stream_name":"stdout","time":81.975815422,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":81.976847406,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2414.68it/s]\n"}
+,{"stream_name":"stdout","time":82.014988649,"data":"[transformers] \u001b[1mDebertaV2ForSequenceClassification LOAD REPORT\u001b[0m from: MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7\n"}
+,{"stream_name":"stdout","time":82.016081921,"data":"Key               | Status   |                                                                                       \n"}
+,{"stream_name":"stdout","time":82.017233806,"data":"------------------+----------+---------------------------------------------------------------------------------------\n"}
+,{"stream_name":"stdout","time":82.018226341,"data":"classifier.weight | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([3, 768]) vs model:torch.Size([4, 768])\n"}
+,{"stream_name":"stdout","time":82.019330942,"data":"classifier.bias   | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([3]) vs model:torch.Size([4])          \n"}
+,{"stream_name":"stdout","time":82.020165724,"data":"\n"}
+,{"stream_name":"stdout","time":82.021067734,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":82.02198819,"data":"- MISMATCH:\tckpt weights were loaded, but they did not match the original empty weight shapes.\n"}
+,{"stream_name":"stdout","time":111.768954668,"data":"[stance] fold0 epoch 1 loss 1.1411\n"}
+,{"stream_name":"stdout","time":138.549245111,"data":"[stance] fold0 epoch 2 loss 0.8520\n"}
+,{"stream_name":"stdout","time":166.294035492,"data":"[stance] fold0 epoch 3 loss 0.6725\n"}
+,{"stream_name":"stdout","time":195.127439595,"data":"[stance] fold0 epoch 4 loss 0.5292\n"}
+,{"stream_name":"stdout","time":205.392085962,"data":"[transformers] You passed `num_labels=4` which is incompatible to the `id2label` map of length `3`.\n"}
+,{"stream_name":"stdout","time":205.435008461,"data":"\n"}
+,{"stream_name":"stdout","time":205.515997575,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":205.516926651,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2503.75it/s]\n"}
+,{"stream_name":"stdout","time":205.522730054,"data":"[transformers] \u001b[1mDebertaV2ForSequenceClassification LOAD REPORT\u001b[0m from: MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7\n"}
+,{"stream_name":"stdout","time":205.524499789,"data":"Key               | Status   |                                                                                       \n"}
+,{"stream_name":"stdout","time":205.5264629,"data":"------------------+----------+---------------------------------------------------------------------------------------\n"}
+,{"stream_name":"stdout","time":205.528339822,"data":"classifier.weight | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([3, 768]) vs model:torch.Size([4, 768])\n"}
+,{"stream_name":"stdout","time":205.530344611,"data":"classifier.bias   | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([3]) vs model:torch.Size([4])          \n"}
+,{"stream_name":"stdout","time":205.532029787,"data":"\n"}
+,{"stream_name":"stdout","time":205.533922138,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":205.537080829,"data":"- MISMATCH:\tckpt weights were loaded, but they did not match the original empty weight shapes.\n"}
+,{"stream_name":"stdout","time":239.275522995,"data":"[stance] fold1 epoch 1 loss 1.1854\n"}
+,{"stream_name":"stdout","time":270.610099328,"data":"[stance] fold1 epoch 2 loss 0.9105\n"}
+,{"stream_name":"stdout","time":302.61226414,"data":"[stance] fold1 epoch 3 loss 0.6843\n"}
+,{"stream_name":"stdout","time":334.181102569,"data":"[stance] fold1 epoch 4 loss 0.5321\n"}
+,{"stream_name":"stdout","time":342.997360323,"data":"[transformers] You passed `num_labels=4` which is incompatible to the `id2label` map of length `3`.\n"}
+,{"stream_name":"stdout","time":343.03787984,"data":"\n"}
+,{"stream_name":"stdout","time":343.116957697,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":343.117920092,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2576.24it/s]\n"}
+,{"stream_name":"stdout","time":343.125541015,"data":"[transformers] \u001b[1mDebertaV2ForSequenceClassification LOAD REPORT\u001b[0m from: MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7\n"}
+,{"stream_name":"stdout","time":343.127061669,"data":"Key               | Status   |                                                                                       \n"}
+,{"stream_name":"stdout","time":343.129220611,"data":"------------------+----------+---------------------------------------------------------------------------------------\n"}
+,{"stream_name":"stdout","time":343.131508329,"data":"classifier.weight | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([3, 768]) vs model:torch.Size([4, 768])\n"}
+,{"stream_name":"stdout","time":343.13354196,"data":"classifier.bias   | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([3]) vs model:torch.Size([4])          \n"}
+,{"stream_name":"stdout","time":343.13540595,"data":"\n"}
+,{"stream_name":"stdout","time":343.137248604,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":343.13909448,"data":"- MISMATCH:\tckpt weights were loaded, but they did not match the original empty weight shapes.\n"}
+,{"stream_name":"stdout","time":376.535233678,"data":"[stance] fold2 epoch 1 loss 1.2007\n"}
+,{"stream_name":"stdout","time":408.634667393,"data":"[stance] fold2 epoch 2 loss 0.8802\n"}
+,{"stream_name":"stdout","time":440.691990576,"data":"[stance] fold2 epoch 3 loss 0.6472\n"}
+,{"stream_name":"stdout","time":473.082744863,"data":"[stance] fold2 epoch 4 loss 0.4783\n"}
+,{"stream_name":"stdout","time":482.037774627,"data":"[transformers] You passed `num_labels=4` which is incompatible to the `id2label` map of length `3`.\n"}
+,{"stream_name":"stdout","time":482.080950527,"data":"\n"}
+,{"stream_name":"stdout","time":482.163373338,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":482.164339562,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2451.14it/s]\n"}
+,{"stream_name":"stdout","time":482.173429935,"data":"[transformers] \u001b[1mDebertaV2ForSequenceClassification LOAD REPORT\u001b[0m from: MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7\n"}
+,{"stream_name":"stdout","time":482.173476754,"data":"Key               | Status   |                                                                                       \n"}
+,{"stream_name":"stdout","time":482.173488582,"data":"------------------+----------+---------------------------------------------------------------------------------------\n"}
+,{"stream_name":"stdout","time":482.175461438,"data":"classifier.weight | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([3, 768]) vs model:torch.Size([4, 768])\n"}
+,{"stream_name":"stdout","time":482.175489529,"data":"classifier.bias   | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([3]) vs model:torch.Size([4])          \n"}
+,{"stream_name":"stdout","time":482.176120218,"data":"\n"}
+,{"stream_name":"stdout","time":482.177113022,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":482.177915022,"data":"- MISMATCH:\tckpt weights were loaded, but they did not match the original empty weight shapes.\n"}
+,{"stream_name":"stdout","time":512.370053097,"data":"[stance] fold3 epoch 1 loss 1.2251\n"}
+,{"stream_name":"stdout","time":541.88854513,"data":"[stance] fold3 epoch 2 loss 0.8793\n"}
+,{"stream_name":"stdout","time":570.954297786,"data":"[stance] fold3 epoch 3 loss 0.6466\n"}
+,{"stream_name":"stdout","time":600.200088722,"data":"[stance] fold3 epoch 4 loss 0.4828\n"}
+,{"stream_name":"stdout","time":611.094934207,"data":"[transformers] You passed `num_labels=4` which is incompatible to the `id2label` map of length `3`.\n"}
+,{"stream_name":"stdout","time":611.134698096,"data":"\n"}
+,{"stream_name":"stdout","time":611.217212782,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":611.218715637,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2459.98it/s]\n"}
+,{"stream_name":"stdout","time":611.227198767,"data":"[transformers] \u001b[1mDebertaV2ForSequenceClassification LOAD REPORT\u001b[0m from: MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7\n"}
+,{"stream_name":"stdout","time":611.228254838,"data":"Key               | Status   |                                                                                       \n"}
+,{"stream_name":"stdout","time":611.22959176,"data":"------------------+----------+---------------------------------------------------------------------------------------\n"}
+,{"stream_name":"stdout","time":611.233359009,"data":"classifier.weight | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([3, 768]) vs model:torch.Size([4, 768])\n"}
+,{"stream_name":"stdout","time":611.23338631,"data":"classifier.bias   | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([3]) vs model:torch.Size([4])          \n"}
+,{"stream_name":"stdout","time":611.233395861,"data":"\n"}
+,{"stream_name":"stdout","time":611.234437225,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":611.236769467,"data":"- MISMATCH:\tckpt weights were loaded, but they did not match the original empty weight shapes.\n"}
+,{"stream_name":"stdout","time":644.083330429,"data":"[stance] fold4 epoch 1 loss 1.1786\n"}
+,{"stream_name":"stdout","time":676.226906184,"data":"[stance] fold4 epoch 2 loss 0.8659\n"}
+,{"stream_name":"stdout","time":708.11772234,"data":"[stance] fold4 epoch 3 loss 0.5965\n"}
+,{"stream_name":"stdout","time":739.930214226,"data":"[stance] fold4 epoch 4 loss 0.4414\n"}
+,{"stream_name":"stdout","time":747.268102245,"data":"[stance] CV macro-F1 0.3497 (T=1.1) · baselines {'rules': 0.26, 'nli-mdeberta': 0.3558}\n"}
+,{"stream_name":"stdout","time":747.269184235,"data":"[cell] stance final + S5\n"}
+,{"stream_name":"stdout","time":749.635053089,"data":"[transformers] You passed `num_labels=4` which is incompatible to the `id2label` map of length `3`.\n"}
+,{"stream_name":"stdout","time":749.675137202,"data":"\n"}
+,{"stream_name":"stdout","time":749.756143926,"data":"Loading weights:   0%|          | 0/202 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":749.757133,"data":"Loading weights: 100%|██████████| 202/202 [00:00\u003c00:00, 2498.69it/s]\n"}
+,{"stream_name":"stdout","time":749.764447305,"data":"[transformers] \u001b[1mDebertaV2ForSequenceClassification LOAD REPORT\u001b[0m from: MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7\n"}
+,{"stream_name":"stdout","time":749.76559343,"data":"Key               | Status   |                                                                                       \n"}
+,{"stream_name":"stdout","time":749.76755115,"data":"------------------+----------+---------------------------------------------------------------------------------------\n"}
+,{"stream_name":"stdout","time":749.770443164,"data":"classifier.weight | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([3, 768]) vs model:torch.Size([4, 768])\n"}
+,{"stream_name":"stdout","time":749.771202123,"data":"classifier.bias   | MISMATCH | Reinit due to size mismatch - ckpt: torch.Size([3]) vs model:torch.Size([4])          \n"}
+,{"stream_name":"stdout","time":749.772840886,"data":"\n"}
+,{"stream_name":"stdout","time":749.774502784,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":749.776168263,"data":"- MISMATCH:\tckpt weights were loaded, but they did not match the original empty weight shapes.\n"}
+,{"stream_name":"stdout","time":789.848390843,"data":"[stance] final epoch 1 loss 1.1511\n"}
+,{"stream_name":"stdout","time":828.202337621,"data":"[stance] final epoch 2 loss 0.8567\n"}
+,{"stream_name":"stdout","time":867.000320373,"data":"[stance] final epoch 3 loss 0.5997\n"}
+,{"stream_name":"stdout","time":905.719120781,"data":"[stance] final epoch 4 loss 0.4567\n"}
+,{"stream_name":"stdout","time":905.948190504,"data":"\n"}
+,{"stream_name":"stdout","time":907.126232449,"data":"Writing model shards:   0%|          | 0/1 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":907.127066987,"data":"Writing model shards: 100%|██████████| 1/1 [00:01\u003c00:00,  1.18s/it]\n"}
+,{"stream_name":"stdout","time":907.127842137,"data":"Writing model shards: 100%|██████████| 1/1 [00:01\u003c00:00,  1.18s/it]\n"}
+,{"stream_name":"stdout","time":922.246085016,"data":"[stance] S5 model 0.5363 [0.4991, 0.5658] false C 0 · rules 0.5578 false C 0\n"}
+,{"stream_name":"stdout","time":922.247051215,"data":"[cell] stance cpu latency\n"}
+,{"stream_name":"stdout","time":954.286044079,"data":"[stance] cpu 632.6 ms/pair · DONE\n"}
+,{"stream_name":"stdout","time":961.355297719,"data":"[cell] run 2: python -u train_reranker.py\n"}
+,{"stream_name":"stdout","time":963.103640243,"data":"[cell] rerank data\n"}
+,{"stream_name":"stdout","time":963.141306833,"data":"[rerank] claims 136 (lib 50), pairs 815\n"}
+,{"stream_name":"stdout","time":963.142106169,"data":"[cell] rerank baselines\n"}
+,{"stream_name":"stdout","time":969.490213955,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":969.626487684,"data":"[transformers] A new version of the following files was downloaded from https://huggingface.co/Alibaba-NLP/new-impl:\n"}
+,{"stream_name":"stdout","time":969.627533426,"data":"- configuration.py\n"}
+,{"stream_name":"stdout","time":969.628489034,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stdout","time":973.361677929,"data":"[transformers] A new version of the following files was downloaded from https://huggingface.co/Alibaba-NLP/new-impl:\n"}
+,{"stream_name":"stdout","time":973.362750315,"data":"- modeling.py\n"}
+,{"stream_name":"stdout","time":973.363836179,"data":". Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.\n"}
+,{"stream_name":"stdout","time":980.158419843,"data":"\n"}
+,{"stream_name":"stdout","time":980.215009411,"data":"Loading weights:   0%|          | 0/140 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stdout","time":980.215906755,"data":"Loading weights: 100%|██████████| 140/140 [00:00\u003c00:00, 2490.43it/s]\n"}
+,{"stream_name":"stdout","time":981.385014372,"data":"[transformers] `use_return_dict` is deprecated! Use `return_dict` instead!\n"}
+,{"stream_name":"stdout","time":981.532387431,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [32,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.532427856,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [33,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.533544982,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [34,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.534714537,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [35,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.535811931,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [36,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.536813332,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [37,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.537781603,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [38,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.538764267,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [39,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.539651537,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [40,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.540512899,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [41,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.5413042,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [42,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.542165102,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [43,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.542985443,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [44,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.54400736,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [45,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.54506568,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [46,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.546197439,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [47,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.547160529,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [48,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.548137381,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [49,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.549120681,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [50,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.549948651,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [51,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.550762066,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [52,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.551822981,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [53,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.552944191,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [54,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.554006921,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [55,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.55483795,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [56,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.555901745,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [57,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.556694378,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [58,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.557598561,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [59,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.558460251,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [60,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.559356102,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [61,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.560166389,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [62,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.561081872,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [63,0,0], thread: [63,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.562071978,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [96,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.563230819,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [97,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.564301298,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [98,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.565257933,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [99,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.566180749,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [100,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.567200744,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [101,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.568051875,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [102,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.569193136,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [103,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.570397365,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [104,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.570978933,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [105,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.571861396,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [106,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.572789823,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [107,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.573869146,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [108,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.574761914,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [109,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.575700197,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [110,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.576631496,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [111,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.577436201,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [112,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.578172012,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [113,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.579047224,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [114,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.580025933,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [115,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.581014526,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [116,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.581928898,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [117,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.582749233,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [118,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.583609461,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [119,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.584624934,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [120,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.585541219,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [121,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.586436256,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [122,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.587400699,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [123,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.588381185,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [124,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.589236706,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [125,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.590054326,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [126,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.590923055,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [0,0,0], thread: [127,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.591850632,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [0,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.592827663,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [1,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.593571632,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [2,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.594502268,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [3,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.595347466,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [4,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.596173424,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [5,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.597170957,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [6,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.597926189,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [7,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.59885321,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [8,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.599705624,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [9,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.600590464,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [10,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.60171821,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [11,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.602873281,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [12,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.604059542,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [13,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.605019067,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [14,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.606043942,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [15,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.607101047,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [16,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.608263049,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [17,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.609573808,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [18,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.610578497,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [19,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.612014753,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [20,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.613538311,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [21,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.614866778,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [22,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.615896214,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [23,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.616965153,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [24,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.618054055,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [25,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.61906005,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [26,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.620075967,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [27,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.62092729,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [28,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.621841808,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [29,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.62278011,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [30,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.623735501,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [31,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.624664172,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [32,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.62551143,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [33,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.626436649,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [34,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.627246533,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [35,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.628057265,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [36,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.628902576,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [37,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.629765311,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [38,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.630601374,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [39,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.631393846,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [40,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.632386762,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [41,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.633199058,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [42,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.63398319,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [43,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.634838753,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [44,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.635634986,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [45,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.636505682,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [46,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.637311869,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [47,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.638097749,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [48,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.63895246,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [49,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.639772533,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [50,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.640682539,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [51,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.6414741,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [52,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.642211045,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [53,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.643001043,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [54,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.643940558,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [55,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.644734811,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [56,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.64554511,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [57,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.646359378,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [58,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.647134774,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [59,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.648100521,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [60,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.648888046,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [61,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.649769129,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [62,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.650566841,"data":"/pytorch/aten/src/ATen/native/cuda/IndexKernel.cu:111: operator(): block: [59,0,0], thread: [63,0,0] Assertion `-sizes[i] \u003c= index \u0026\u0026 index \u003c sizes[i] \u0026\u0026 \"index out of bounds\"` failed.\n"}
+,{"stream_name":"stdout","time":981.653097882,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stdout","time":981.655104822,"data":"  File \"/kaggle/working/train_reranker.py\", line 199, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":981.657384244,"data":"    raise SystemExit(main())\n"}
+,{"stream_name":"stdout","time":981.658467194,"data":"                     ~~~~^^\n"}
+,{"stream_name":"stdout","time":981.659509075,"data":"  File \"/kaggle/working/train_reranker.py\", line 161, in main\n"}
+,{"stream_name":"stdout","time":981.66058512,"data":"    m[\"zero_shot\"] = scores_of(lib, model_order(zs, ztok, zdev))\n"}
+,{"stream_name":"stdout","time":981.661581085,"data":"                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":981.662478747,"data":"  File \"/kaggle/working/train_reranker.py\", line 43, in scores_of\n"}
+,{"stream_name":"stdout","time":981.663394187,"data":"    order = order_fn(g)\n"}
+,{"stream_name":"stdout","time":981.664468806,"data":"  File \"/kaggle/working/train_reranker.py\", line 87, in f\n"}
+,{"stream_name":"stdout","time":981.665410526,"data":"    s = score_pairs(model, tok, dev, g[\"claim\"], [p[\"passage\"] for p in g[\"pairs\"]])\n"}
+,{"stream_name":"stdout","time":981.666519516,"data":"  File \"/kaggle/working/train_reranker.py\", line 82, in score_pairs\n"}
+,{"stream_name":"stdout","time":981.667436057,"data":"    return model(**x).logits.view(-1).float().cpu().tolist()\n"}
+,{"stream_name":"stdout","time":981.66841607,"data":"           ~~~~~^^^^^\n"}
+,{"stream_name":"stdout","time":981.669444499,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stdout","time":981.670378496,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":981.671378918,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":981.672364245,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stdout","time":981.673371137,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":981.674514218,"data":"  File \"/root/.cache/huggingface/modules/transformers_modules/Alibaba_hyphen_NLP/new_hyphen_impl/40ced75c3017eb27626c9d4ea981bde21a2662f4/modeling.py\", line 1117, in forward\n"}
+,{"stream_name":"stdout","time":981.6756198,"data":"    outputs = self.new(\n"}
+,{"stream_name":"stdout","time":981.676616601,"data":"        input_ids,\n"}
+,{"stream_name":"stdout","time":981.677530139,"data":"    ...\u003c8 lines\u003e...\n"}
+,{"stream_name":"stdout","time":981.678551564,"data":"        unpad_inputs=unpad_inputs,\n"}
+,{"stream_name":"stdout","time":981.679557267,"data":"    )\n"}
+,{"stream_name":"stdout","time":981.680717753,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stdout","time":981.681587789,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":981.682852914,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":981.683597378,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stdout","time":981.684578216,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":981.685498632,"data":"  File \"/root/.cache/huggingface/modules/transformers_modules/Alibaba_hyphen_NLP/new_hyphen_impl/40ced75c3017eb27626c9d4ea981bde21a2662f4/modeling.py\", line 901, in forward\n"}
+,{"stream_name":"stdout","time":981.686418147,"data":"    (embedding_output, attention_mask, rope_embeds, length) = self.embeddings(\n"}
+,{"stream_name":"stdout","time":981.68735378,"data":"                                                              ~~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stdout","time":981.688302952,"data":"        unpad_inputs,\n"}
+,{"stream_name":"stdout","time":981.689177462,"data":"        ^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":981.689961834,"data":"    ...\u003c5 lines\u003e...\n"}
+,{"stream_name":"stdout","time":981.690861406,"data":"        inputs_embeds=inputs_embeds\n"}
+,{"stream_name":"stdout","time":981.691839812,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":981.692857946,"data":"    )\n"}
+,{"stream_name":"stdout","time":981.693581252,"data":"    ^\n"}
+,{"stream_name":"stdout","time":981.694792909,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stdout","time":981.695634101,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":981.696596762,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":981.697569926,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stdout","time":981.698432995,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":981.699322871,"data":"  File \"/root/.cache/huggingface/modules/transformers_modules/Alibaba_hyphen_NLP/new_hyphen_impl/40ced75c3017eb27626c9d4ea981bde21a2662f4/modeling.py\", line 400, in forward\n"}
+,{"stream_name":"stdout","time":981.700228715,"data":"    token_type_ids = position_ids.mul(0)\n"}
+,{"stream_name":"stdout","time":981.70126497,"data":"torch.AcceleratorError: CUDA error: device-side assert triggered\n"}
+,{"stream_name":"stdout","time":981.702346704,"data":"Search for `cudaErrorAssert' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":981.703550448,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":981.704722045,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":981.705864677,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":981.706920793,"data":"\n"}
+,{"stream_name":"stderr","time":983.37562494,"data":"/usr/local/lib/python3.13/dist-packages/IPython/core/interactiveshell.py:3561: UserWarning: To exit: use 'exit', 'quit', or Ctrl-D.\n"}
+,{"stream_name":"stderr","time":983.375657771,"data":"  warn(\"To exit: use 'exit', 'quit', or Ctrl-D.\", stacklevel=1)\n"}
+,{"stream_name":"stderr","time":983.37566367,"data":"\n"}
+,{"stream_name":"stderr","time":983.375667901,"data":"/usr/local/lib/python3.13/dist-packages/IPython/core/interactiveshell.py:3561: UserWarning: To exit: use 'exit', 'quit', or Ctrl-D.\n"}
+,{"stream_name":"stderr","time":983.375672468,"data":"  warn(\"To exit: use 'exit', 'quit', or Ctrl-D.\", stacklevel=1)\n"}
+,{"stream_name":"stderr","time":984.433967121,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":984.434619984,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":984.434638807,"data":"    import sys;import papermill as pm;pm.execute_notebook(\"__notebook__.ipynb\",\"__notebook__.ipynb\",progress_bar=False,log_output=True,stdout_file=sys.stdout,stderr_file=sys.stderr,allow_errors=False,timeout=43200)\n"}
+,{"stream_name":"stderr","time":984.434643197,"data":"                                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":984.43465843,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":984.434662312,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":984.434665538,"data":"    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":984.434668955,"data":"  File \"/usr/local/lib/python3.13/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":984.434672528,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":984.43468001,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":984.434685615,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":984.434689106,"data":"Exception encountered at \"In [4]\":\n"}
+,{"stream_name":"stderr","time":984.434692347,"data":"An exception has occurred, use %tb to see the full traceback.\n"}
+,{"stream_name":"stderr","time":984.434695889,"data":"\n"}
+,{"stream_name":"stderr","time":984.434699208,"data":"SystemExit: command failed (rc 1): python -u train_reranker.py\n"}
+,{"stream_name":"stderr","time":984.434702785,"data":"\n"}
+,{"stream_name":"stderr","time":984.434707181,"data":"\n"}
+,{"stream_name":"stderr","time":987.025879976,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":987.02593514,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":987.260344878,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":987.260378408,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":988.23005059,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":988.362029458,"data":"[NbConvertApp] Writing 71156 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":991.136331111,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":991.750649874,"data":"[NbConvertApp] Writing 376947 bytes to __results__.html\n"}
+]

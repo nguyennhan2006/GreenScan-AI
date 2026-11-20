@@ -1,0 +1,11 @@
+[llm] 25/183
+[llm] 50/183
+[llm] 75/183
+[llm] 100/183
+[llm] 125/183
+[llm] 150/183
+[llm] 175/183
+[llm] M0: 74/75 [0.93–1.00], same answer twice 70/75, {'SUPPORTED': 67, 'PARTIALLY_SUPPORTED': 6, 'INSUFFICIENT_EVIDENCE': 1, 'CONTRADICTED': 1}
+[llm] M1: 47/72 [0.54–0.75], same answer twice 52/72, {'CONTRADICTED': 47, 'INSUFFICIENT_EVIDENCE': 4, 'UNSUPPORTED': 7, 'SUPPORTED': 2, 'PARTIALLY_SUPPORTED': 12}
+[llm] M2: 13/16 [0.57–0.93], same answer twice 16/16, {'CONTRADICTED': 13, 'SUPPORTED': 3}
+[llm] M5: 20/20 [0.84–1.00], same answer twice 15/20, {'CONTRADICTED': 15, 'PARTIALLY_SUPPORTED': 5}

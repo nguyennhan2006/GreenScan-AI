@@ -1,0 +1,157 @@
+{
+ "case": "A",
+ "run_id": "657b68065a37496f",
+ "seconds": 0.46,
+ "peak_working_set_mb": 208.7,
+ "steps": [
+  {
+   "step": "validate_inputs",
+   "index": 1,
+   "of": 10,
+   "detail": "3 tài liệu",
+   "t": 0.0
+  },
+  {
+   "step": "parse_and_ocr_documents",
+   "index": 2,
+   "of": 10,
+   "detail": "PDF lớn có thể mất 1–2 phút",
+   "t": 0.17
+  },
+  {
+   "step": "extract_green_claims",
+   "index": 3,
+   "of": 10,
+   "detail": "10 đoạn văn",
+   "t": 0.18
+  },
+  {
+   "step": "build_hybrid_retrieval_index",
+   "index": 4,
+   "of": 10,
+   "detail": "5 tuyên bố",
+   "t": 0.2
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "1/5 tuyên bố",
+   "t": 0.25
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "2/5 tuyên bố",
+   "t": 0.25
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "3/5 tuyên bố",
+   "t": 0.26
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "4/5 tuyên bố",
+   "t": 0.26
+  },
+  {
+   "step": "retrieve_evidence_per_claim",
+   "index": 5,
+   "of": 10,
+   "detail": "5/5 tuyên bố",
+   "t": 0.27
+  },
+  {
+   "step": "verify_claim_evidence_pairs",
+   "index": 6,
+   "of": 10,
+   "detail": "luật và phép tính",
+   "t": 0.27
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "1/5 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 0.27
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "2/5 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 0.29
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "3/5 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 0.3
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "4/5 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 0.32
+  },
+  {
+   "step": "check_applicable_law",
+   "index": 7,
+   "of": 10,
+   "detail": "5/5 tuyên bố: kiểm chứng, pháp lý, rủi ro",
+   "t": 0.33
+  },
+  {
+   "step": "score_greenwashing_risk",
+   "index": 8,
+   "of": 10,
+   "detail": "số liệu công bố và hàng đợi soát",
+   "t": 0.35
+  },
+  {
+   "step": "apply_quality_gates",
+   "index": 9,
+   "of": 10,
+   "detail": "",
+   "t": 0.39
+  },
+  {
+   "step": "write_evidence_pack",
+   "index": 10,
+   "of": 10,
+   "detail": "",
+   "t": 0.4
+  }
+ ],
+ "summary": {
+  "total_documents": 3,
+  "total_chunks": 10,
+  "total_claims": 5,
+  "status_counts": {
+   "UNSUPPORTED": 2,
+   "CONTRADICTED": 3
+  },
+  "severity_counts": {
+   "MEDIUM": 3,
+   "HIGH": 2
+  },
+  "release_status": "PENDING_HUMAN_REVIEW"
+ },
+ "profile": "offline",
+ "flags": {
+  "stance_llm": false,
+  "assist_explain": "off",
+  "assist_attributes": false,
+  "claim_model_dir": "",
+  "version": "pipeline-v1",
+  "config_hash": "5953b070a122f8ce771a352e7f3657138f432c99072b7e1df732110591f41311"
+ }
+}

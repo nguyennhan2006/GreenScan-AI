@@ -33,7 +33,8 @@ from quantum_gw.agents.claim_quality import reason_vi
 from quantum_gw.domain.enums import VerificationStatus
 from quantum_gw.domain.models import Claim, RiskComponent, VerificationResult
 from quantum_gw.storage.audit import AuditLogger
-from quantum_gw.utils.text import normalize_text
+from quantum_gw.utils import vn_format as vn
+from quantum_gw.utils.text import normalize_for_match, normalize_text
 from quantum_gw.verification.numeric_facts import facts_in
 
 # Who is speaking. A green claim is the reporting entity asserting something about
@@ -111,6 +112,48 @@ def entity_names(texts: Iterable[str], declared: Iterable[str] = ()) -> list[str
     return list(dict.fromkeys(names))  # one entry per name, declared first
 
 
+# figure-tension-v1: a negative absolute ("hoàn toàn không có …", "không phát sinh … nào", "bằng 0").
+_ABSOLUTE_NEGATIVE = re.compile(
+    r"hoàn toàn không|không hề|không (?:có|phát sinh|xả|thải)[^.;]{0,60}?(?:nào|ra môi trường|ra ngoài)"
+    r"|(?:bằng|về) (?:0|không)\b"
+)
+# Bigrams that say nothing about the subject.
+_STOP_BIGRAMS = {"tap doan", "hoa phat", "khu lien", "lien hop", "nam 2025", "nam 2024", "cong ty", "trong nam",
+                 "cua tap", "doan hoa", "moi truong"}
+
+
+def _bigrams(text: str) -> set[str]:
+    words = [w for w in re.findall(r"[a-z0-9]+", normalize_for_match(text)) if len(w) > 1 or w.isdigit()]
+    return {f"{a} {b}" for a, b in zip(words, words[1:])} - _STOP_BIGRAMS
+
+
+def _figure_tension(claim, figures):
+    """The first disclosed figure that names the claim's subject and is above zero, for a negative absolute."""
+    if claim.is_future_commitment:
+        return None  # a target ("hướng tới phát thải ròng bằng 0") says nothing about this year's figures
+    text = normalize_text(claim.text).lower()
+    match = _ABSOLUTE_NEGATIVE.search(text)
+    if not match or re.search(r"ròng|trung hòa|hướng tới|mục tiêu", text[max(0, match.start() - 40): match.end()]):
+        return None
+    # The subject is what the negation is about: the words around it, not the whole sentence.
+    window = text[max(0, match.start() - 60): match.end() + 60]
+    subject = _bigrams(window)
+    best = None
+    for figure in figures:
+        if not figure.value or figure.value <= 0 or figure.unit == "%":
+            continue
+        shared = subject & _bigrams(figure.label)
+        if not shared:
+            continue
+        same_metric = bool(claim.metric) and claim.metric == figure.metric
+        if not (same_metric or len(shared) >= 2):
+            continue
+        score = (len(shared), same_metric, figure.source_doc_id == claim.source_doc_id)
+        if best is None or score > best[0]:
+            best = (score, figure)
+    return best[1] if best else None
+
+
 @dataclass
 class ReviewPriority:
     # A queue holds two kinds of item: a claim (a sentence to verify) and a
@@ -131,6 +174,14 @@ class ReviewPriority:
     max_available: float = 100.0
     not_computed: list[str] = field(default_factory=list)
     policy_version: str = "priority-v1"
+    # Why an item joined the queue beyond its score (feedback/queue.py): an org rule
+    # with on_fail raise_priority, a precedent, active learning. Raise-only.
+    raised_by: list[str] = field(default_factory=list)
+    # Active-learning value and reasons (feedback/active.py); None when that is off.
+    learning: dict | None = None
+    # audit-sample-v1 (15/11/2026): a claim outside the queue drawn at random for a person to read, to estimate
+    # how much the queue misses. Never changes in_queue, rank or score.
+    audit_sample: bool = False
 
     def to_json(self) -> dict:
         return {
@@ -146,6 +197,10 @@ class ReviewPriority:
             "not_computed": self.not_computed,
             "reasons": self.reasons,
             "policy_version": self.policy_version,
+            # Written only when present, so a run without the feedback layer is unchanged.
+            **({"raised_by": self.raised_by} if self.raised_by else {}),
+            **({"learning": self.learning} if self.learning is not None else {}),
+            **({"audit_sample": True} if self.audit_sample else {}),
         }
 
 
@@ -196,7 +251,7 @@ class PrioritizationAgent:
                 self._materiality(claim, scale),
                 self._obligation(legal_by_claim.get(claim.claim_id)),
                 self._evidence_gap(verification),
-                self._anomaly(),
+                self._claim_anomaly(claim, figures or []),
             ]
             priorities.append(self._priority("claim", claim.claim_id, claim.text, components))
 
@@ -211,7 +266,7 @@ class PrioritizationAgent:
                 self._figure_gap(checks_by_figure.get(figure.figure_id, [])),
                 self._anomaly(),
             ]
-            label = f"{figure.label}: {figure.value:,.0f} {figure.unit}"
+            label = f"{figure.label}: {vn.number(figure.value)} {vn.unit(figure.unit)}"
             priorities.append(self._priority("figure", figure.figure_id, label, components))
 
         # Rank, then cut the queue.
@@ -267,10 +322,10 @@ class PrioritizationAgent:
             magnitude, note = policy["magnitude"]["percentage_only"], "là tỷ lệ phần trăm"
         elif len(peers) < policy["magnitude"]["minimum_peers"]:
             magnitude = policy["magnitude"]["too_few_peers"]
-            note = f"{figure.value:,.0f} {figure.unit}, chưa đủ số cùng đơn vị để so độ lớn"
+            note = f"{vn.number(figure.value)} {vn.unit(figure.unit)}, chưa đủ số cùng đơn vị để so độ lớn"
         else:
             magnitude = _percentile(abs(figure.value), peers)
-            note = f"{figure.value:,.0f} {figure.unit}, lớn bằng hoặc hơn {magnitude * 100:.0f}% số cùng đơn vị"
+            note = f"{vn.number(figure.value)} {vn.unit(figure.unit)}, lớn bằng hoặc hơn {magnitude * 100:.0f}% số cùng đơn vị"
         prominence, prominence_note = _prominence(figure, policy["prominence"])
         blended = policy["magnitude_share"] * magnitude + policy["prominence_share"] * prominence
         total_note = " (là dòng tổng cộng)" if figure.is_total else ""
@@ -342,7 +397,7 @@ class PrioritizationAgent:
         return self._component(
             "materiality",
             fraction,
-            f"Trọng yếu: nhóm {metric} (trọng số {family_weight:.2f}); {magnitude_note}; {prominence_note}{note}.",
+            f"Trọng yếu: nhóm {metric} (trọng số {vn.number(family_weight, 2)}); {magnitude_note}; {prominence_note}{note}.",
         )
 
     def _attribution(self, claim: Claim, policy: dict) -> tuple[float, str]:
@@ -419,10 +474,45 @@ class PrioritizationAgent:
             else policy["max_without_contradiction"]
         )
         fraction = min(ceiling, base + policy["per_missing_attribute"] * len(gaps))
-        note = f"thiếu {len(gaps)}/5 thuộc tính" if gaps else "đủ năm thuộc tính"
+        claim = verification.claim
+        # Năm gốc counts only for a change or a target, as on the attribute card.
+        required = 5 if (claim.direction or claim.is_future_commitment) else 4
+        note = f"thiếu {len(gaps)}/{required} thuộc tính" if gaps else "đủ các thuộc tính cần có"
         return self._component(
             "evidence_gap", fraction,
             f"Khoảng trống bằng chứng: kết quả “{_STATUS_VI.get(status.value, status.value)}”, {note}.",
+        )
+
+    def _claim_anomaly(self, claim: Claim, figures: list) -> RiskComponent:
+        """An absolute statement beside a figure of the same subject that is not zero (figure-tension-v1).
+
+        "Các khu liên hợp hoàn toàn không có nước thải công nghiệp xả ra môi trường" (Hòa Phát p.47) and the
+        table one page later, "Nước thải hoàn trả lại môi trường … 4.994 triệu lít", were both found by the
+        retriever and the claim still ranked 105th (Claude spot check, 17/11/2026). Reading tables as figures
+        with their labels (page-regions-v1) is what makes the pair visible. It is not a contradiction -- the
+        scope may differ (the steel complexes against the whole group) -- so it raises the item for a person
+        and is never a verdict. Any other claim keeps anomaly `not_computed`.
+        """
+        hit = _figure_tension(claim, figures)
+        if hit is None:
+            return self._anomaly()
+        figure = hit
+        where = f" trang {figure.source_page}" if figure.source_page else ""
+        # The row label only (a table figure's label is "row · column header"), cut at a word boundary.
+        label = figure.label.split(" · ")[0].strip()
+        if len(label) > 70:
+            label = label[:70].rsplit(" ", 1)[0] + "…"
+        # Say the number the way the page prints it: 4.994.000.000 lít is "4.994 triệu lít" in the table.
+        amount = vn.number(figure.value)
+        for factor, word in ((1e9, "tỷ"), (1e6, "triệu")):
+            scaled = figure.value / factor
+            if abs(figure.value) >= factor and abs(scaled - round(scaled)) < 1e-6:
+                amount = f"{vn.number(round(scaled))} {word}"
+                break
+        return self._component(
+            "anomaly", 1.0,
+            f"Câu khẳng định tuyệt đối, nhưng số liệu “{label}”{where} ghi "
+            f"{amount} {vn.unit(figure.unit)} (khác 0). Có thể khác phạm vi; cần người xem.",
         )
 
     def _anomaly(self) -> RiskComponent:
@@ -474,7 +564,7 @@ class PrioritizationAgent:
             f"Lượt sàng lọc này đưa {len(queued)}/{len(priorities)} mục (tuyên bố và số liệu công bố) vào hàng đợi soát, "
             f"theo chính sách `{self.version}` (ngưỡng chú ý {policy['attention_threshold']}, "
             f"tối đa {policy['max_items']} mục). {len(rest)} mục còn lại **không được soát trong lượt này** "
-            f"vì điểm ưu tiên dưới mức cắt ({top:.1f} so với {cut:.1f} của mục thấp nhất trong hàng đợi): "
+            f"vì điểm ưu tiên dưới mức cắt ({vn.number(top, 1)} so với {vn.number(cut, 1)} của mục thấp nhất trong hàng đợi): "
             f"chúng có độ trọng yếu thấp hơn, không gắn với một nghĩa vụ công bố cụ thể, hoặc đã có bằng chứng "
             f"đối chiếu. Danh sách đầy đủ kèm điểm thành phần nằm trong `result.json`; người soát xét có thể "
             f"hạ ngưỡng để mở rộng phạm vi."
@@ -535,10 +625,10 @@ def _magnitude(claim: Claim, scale: dict[str, list[float]], policy: dict) -> tup
     peers = scale.get(best.unit, [])
     if len(peers) < policy["magnitude"]["minimum_peers"]:
         return policy["magnitude"]["too_few_peers"], (
-            f"số liệu {best.value:g} {best.unit}, chưa đủ số cùng đơn vị để so độ lớn"
+            f"số liệu {vn.figure(best.value)} {vn.unit(best.unit)}, chưa đủ số cùng đơn vị để so độ lớn"
         )
     rank = _percentile(abs(best.value), peers)
-    return rank, f"số liệu {best.value:g} {best.unit} lớn bằng hoặc hơn {rank * 100:.0f}% số cùng đơn vị trong báo cáo"
+    return rank, f"số liệu {vn.figure(best.value)} {vn.unit(best.unit)} lớn bằng hoặc hơn {rank * 100:.0f}% số cùng đơn vị trong báo cáo"
 
 
 def _prominence(item, policy: dict) -> tuple[float, str]:

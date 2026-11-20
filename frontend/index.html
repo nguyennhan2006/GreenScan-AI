@@ -7,7 +7,21 @@
     <title>GreenScan AI — Kiểm chứng tuyên bố môi trường</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Shown until the app mounts; replaced by a plain explanation if it never does (never a blank page). -->
+      <div id="gs-boot" style="font: 15px/1.5 system-ui, 'Segoe UI', Arial, sans-serif; color: #334155; max-width: 520px; margin: 18vh auto; padding: 0 20px">
+        <p style="font-weight: 600; color: #047857">GreenScan đang tải…</p>
+      </div>
+    </div>
+    <script>
+      setTimeout(function () {
+        var boot = document.getElementById('gs-boot');
+        if (!boot) return;
+        boot.innerHTML = '<p style="font-weight:600;color:#0f172a">GreenScan chưa tải được.</p>'
+          + '<p>Hãy tải lại trang (Ctrl + F5). Nếu vẫn vậy, mở bằng Chrome, Edge hoặc Firefox bản mới; '
+          + 'trình duyệt nhúng trong ứng dụng nhắn tin hoặc trình duyệt quá cũ có thể không chạy được bản xem này.</p>';
+      }, 12000);
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

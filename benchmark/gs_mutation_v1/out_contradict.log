@@ -1,0 +1,7 @@
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+[mut:contradict] 205 cases to run, 0 cached
+[mut:contradict] 50/205
+[mut:contradict] 100/205
+[mut:contradict] 150/205
+[mut:contradict] 200/205
+[mut:contradict] done

@@ -793,3 +793,23 @@ def describe_finding(finding: OrgFinding) -> list[str]:
             lines.append(f"   {label} {mark.get(record['status'], '?')} {record['condition_id']}: {record['reason']}")
     lines.append(f"   → {finding.reason}")
     return lines
+
+
+def preview_sentence(pack: OrgPack, text: str, sector: str | None, settings: Any, as_of: date | None = None) -> dict:
+    """`org-preview` as data, for the API: the rule-based extractor's attributes, then every rule, no evidence."""
+    from quantum_gw.agents.claim_extractor import ClaimExtractionAgent
+    from quantum_gw.domain.enums import DocumentRole, SourceType
+    from quantum_gw.domain.models import EvidenceChunk
+
+    class _NoAudit:
+        def write(self, event: str, payload: dict | None = None) -> None:
+            return None
+
+    chunk = EvidenceChunk(chunk_id="org-preview", doc_id="org-preview", source_name="org-preview",
+                          role=DocumentRole.CLAIM_SOURCE, source_type=SourceType.INTERNAL, text=text)
+    claim = ClaimExtractionAgent(settings.claim_extraction, _NoAudit()).describe(text, chunk)
+    facts = ClaimFacts.from_claim(claim, sector)
+    findings = evaluate_claim([pack], facts, [], as_of, preview=True)
+    return {"text": text, "attributes": describe_claim(facts), "draft": pack.draft,
+            "findings": [f.to_json() for f in findings],
+            "lines": [line for f in findings for line in describe_finding(f)]}

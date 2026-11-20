@@ -1,0 +1,17 @@
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+{
+  "total_documents": 2,
+  "total_chunks": 2673,
+  "total_claims": 156,
+  "status_counts": {
+    "PARTIALLY_SUPPORTED": 145,
+    "SUPPORTED": 2,
+    "INSUFFICIENT_EVIDENCE": 9
+  },
+  "severity_counts": {
+    "MEDIUM": 150,
+    "LOW": 6
+  },
+  "release_status": "PENDING_HUMAN_REVIEW"
+}
+Evidence pack: /kaggle/working/runs/ad323c772d064015/evidence_pack.md

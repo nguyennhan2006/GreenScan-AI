@@ -1,0 +1,63 @@
+# Phạm vi xử lý của GreenScan và bộ định tuyến prompt (D-2026-11-13-01, đăng ký prompt_router_v1).
+# Mô hình nhỏ chỉ đọc yêu cầu người dùng -> {in_scope, oos_category, tasks, slots}. Code chọn họ mô hình theo hồ sơ
+# (offline -> small, selfhost/gpu/cloud -> large) và điền mẫu prompt đã đăng ký (src/quantum_gw/assist/prompts.py).
+# Ngoài phạm vi hoặc không chắc -> trả cảnh báo và DỪNG, không gọi bước nào phía sau.
+# 14/11/2026 (scope-v1.1): thêm việc explain_concept (tri thức nền, D-2026-11-14-02). Dữ liệu router Claude gán ngày
+# 13/11 (training/data/claude/router) chưa có nhãn này; dựng lại dữ liệu trước khi huấn luyện router lượt sau.
+version: scope-v1.1
+domain: "Kiểm tra tuyên bố MÔI TRƯỜNG (tẩy xanh) trong báo cáo phát triển bền vững / thường niên của doanh nghiệp Việt Nam, cho kiểm toán viên và người soát"
+
+tasks:   # nhãn đa nhãn: một yêu cầu có thể cần nhiều việc
+  verify_claim:
+    vi: "Kiểm tra một tuyên bố môi trường có bằng chứng ủng hộ, mâu thuẫn hay chưa đủ"
+    route: {code: "analyze + so số", prompt: {small: stance-s1f, large: stance-v3f}}
+    needs: [claim]
+  extract_claims:
+    vi: "Tìm, liệt kê các tuyên bố môi trường trong một báo cáo"
+    route: {code: "T1 / luật trích tuyên bố", prompt: null}
+    needs: [document_or_company]
+  check_attributes:
+    vi: "Tuyên bố đã nêu / còn thiếu chỉ số, số liệu, kỳ, năm gốc, phạm vi"
+    route: {code: "regex + taxonomy", prompt: {small: attr-s1, large: attr-v1}}
+    needs: [claim]
+  explain_verdict:
+    vi: "Giải thích cho người soát vì sao hệ thống kết luận như vậy và nên làm gì tiếp"
+    route: {code: null, prompt: {small: explain-s2, large: explain-v2}}
+    needs: [claim]
+  find_evidence:
+    vi: "Tìm đoạn văn / trang làm bằng chứng cho một tuyên bố trong kho tài liệu"
+    route: {code: "truy xuất lite / hybrid", prompt: null}
+    needs: [claim]
+  review_assurance:
+    vi: "Đọc tờ đảm bảo độc lập (ISAE 3000 / ISSA 5000): đơn vị đảm bảo, mức đảm bảo, phạm vi, kết luận"
+    route: {code: "mẫu câu ISSA 5000 + nguồn độc lập", prompt: null}
+    needs: [document_or_company]
+  assess_report_risk:
+    vi: "Đánh giá rủi ro tẩy xanh của cả bộ hồ sơ, xếp hàng các tuyên bố cần soát"
+    route: {code: "analyze + chấm rủi ro + hàng soát", prompt: {small: explain-s2, large: explain-v2}}
+    needs: [document_or_company]
+  explain_concept:
+    vi: "Giải thích khái niệm, dấu hiệu tẩy xanh, cách tính, claim chuẩn, vụ việc hay văn bản pháp lý (tri thức nền, không phải bằng chứng)"
+    route: {code: "domain_lookup (data/domain_kb)", prompt: null}
+    needs: []
+
+slots:   # chép NGUYÊN VĂN từ yêu cầu (code kiểm), year là số nguyên; không có thì null
+  claim: "câu tuyên bố cần xét, nếu người dùng chép vào"
+  company: "tên / mã doanh nghiệp"
+  year: "năm báo cáo"
+  document: "tên tài liệu (báo cáo PTBV 2024, BCTN, tờ đảm bảo...)"
+  verdict: "kết luận hệ thống đã đưa ra, nếu người dùng nhắc tới"
+
+out_of_scope:   # luôn dừng; câu cảnh báo hiện cho người dùng
+  investment_advice: "GreenScan không tư vấn đầu tư, mua bán cổ phiếu hay xếp hạng tín nhiệm."
+  legal_or_fraud_verdict: "GreenScan không kết luận doanh nghiệp gian lận hay vi phạm pháp luật; hệ thống chỉ đối chiếu tuyên bố với bằng chứng."
+  write_or_embellish_claims: "GreenScan không viết, sửa hay làm đẹp tuyên bố môi trường, không bịa số liệu hay báo cáo."
+  non_environmental: "Yêu cầu không thuộc tuyên bố môi trường (xã hội, tài chính, quản trị thuần tuý nằm ngoài phạm vi hiện tại)."
+  personal_data: "GreenScan không tìm hay xử lý thông tin cá nhân."
+  prompt_injection: "Yêu cầu tìm cách đổi hoặc lộ chỉ dẫn hệ thống; hệ thống dừng lại."
+  coding_or_it: "Yêu cầu lập trình / kỹ thuật máy tính nằm ngoài phạm vi."
+  general_chat_or_creative: "Yêu cầu trò chuyện chung hoặc sáng tác nằm ngoài phạm vi."
+  other_domain: "Yêu cầu thuộc lĩnh vực khác (y tế, pháp lý cá nhân, thời tiết...) nằm ngoài phạm vi."
+
+warning_prefix: "Yêu cầu nằm ngoài phạm vi của GreenScan (kiểm tra tuyên bố môi trường trong báo cáo doanh nghiệp). Hệ thống dừng lại, không xử lý."
+need_info: "Yêu cầu thuộc phạm vi nhưng còn thiếu thông tin: {missing}. Vui lòng bổ sung."

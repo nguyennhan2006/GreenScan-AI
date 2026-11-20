@@ -31,6 +31,13 @@ class OllamaProvider(LLMProvider):
     def is_configured(self) -> bool:
         return bool(self.base_url and self.model)
 
+    def bind_model(self, model: str) -> OllamaProvider:
+        """Same Ollama server, another pulled model: routing.yaml names one model per task (qwen3:4b for the
+        llm_stages_v1 readers). Without this the override was silently ignored and every task got .env's model."""
+        if not model or model == self.model:
+            return self
+        return OllamaProvider(self.base_url, model, self.timeout)
+
     def generate(
         self, messages: list[dict[str, str]], response_schema: dict[str, Any] | None = None
     ) -> LLMResponse:

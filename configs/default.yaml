@@ -8,6 +8,7 @@ intake:
   max_sentences_per_chunk: 3
   min_native_text_chars: 40
   extract_tables: true
+  table_shape_filter: true
   ocr_enabled: true
   ocr_languages: vie+eng
   tesseract_command: tesseract
@@ -16,6 +17,7 @@ claim_extraction:
   provider: heuristic
   minimum_confidence: 0.40
   include_vague_claims: true
+  fallback_types: true   # claim-typing-v2 (15/11): resource-use vocabulary, then known metric + figure, when no claim_type matches
   # claim-quality-v1: mark probable non-claims (layout glue, standard titles,
   # quoted decrees); verdicts unchanged, marked sentences leave the queue and
   # the risk score. Env QUANTUM_FLAG_SUSPECT_NON_CLAIMS=false restores v0.
@@ -56,6 +58,11 @@ verification:
   injection_policy: exclude
   qualitative_min_overlap: 0.20   # authority sources bypass this; see settings.py
   self_evidence_can_contradict: false  # contradiction guard 05/11/2026; true = behaviour before GS-Eval v2
+  support_requires_independent_source: true   # support guard (independent_support_v1); on since 15/11/2026: SUPPORTED needs a legal/external/standard passage
+  figure_consistency_check: true  # figure-consistency-v1 (14/11, GS-Mutation v1): same figure, opposite trend -> CONTRADICTS; one of two figures far off -> PARTIAL
+  absolute_share_check: true      # absolute-share-v1 (14/11): "hoàn toàn" about green-bond proceeds vs used/total in one passage
+  absolute_conflict_cues: true    # stance-cues-v3 (14/11): absolute claim vs "chưa phân bổ / một phần" -> PARTIAL + review flag
+  internal_inconsistency: "off"   # internal-inconsistency-v1 (14/11): off | flag | contradict; see ABSOLUTE_AND_INTERNAL.md
   llm_stance: "off"               # quoted: bare `off` is YAML boolean false
                                   # "off" | "on_ambiguous" — see verification/llm_judge.py
   llm_stance_min_overlap: 0.12

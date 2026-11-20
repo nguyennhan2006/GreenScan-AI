@@ -13,6 +13,9 @@ from .registry import build_provider
 
 # Task targets that never reach an LLM provider.
 NON_LLM_TARGETS = {"none", "deterministic"}
+# Providers that run on this machine. Under QUANTUM_PROFILE=offline nothing else is ever tried, whatever keys
+# .env holds: "documents do not leave the machine" is enforced here, not left to which flags are on.
+LOCAL_PROVIDERS = {"local", "ollama"}
 
 
 def _dedupe(chain: list[str]) -> list[str]:
@@ -26,6 +29,10 @@ def _dedupe(chain: list[str]) -> list[str]:
         seen.add(key)
         ordered.append(key)
     return ordered
+
+
+def _offline_only(chain: list[str], profile: str) -> list[str]:
+    return [name for name in chain if name in LOCAL_PROVIDERS] if profile == "offline" else chain
 
 
 class RoutingPolicy(BaseModel):
@@ -92,11 +99,11 @@ class ModelGateway:
             # An explicit `fallback: none` means stop here, not "carry on down
             # the global chain".
             if policy.fallback == "none":
-                return _dedupe(chain)
+                return _offline_only(_dedupe(chain), self.settings.profile)
         else:
             chain.append(self.settings.provider)
         chain.extend(self.settings.fallback_order)
-        return _dedupe(chain)
+        return _offline_only(_dedupe(chain), self.settings.profile)
 
     def _for_task(self, name: str, task_type: str | None) -> LLMProvider | None:
         """Provider `name`, aimed at whatever model this task asks it for."""

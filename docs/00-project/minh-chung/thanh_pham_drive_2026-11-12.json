@@ -1,0 +1,72 @@
+{
+ "thu_muc": "https://drive.google.com/drive/folders/1Ez-cAbfH6IwNCM9IdoX1T4BAOl3JX9Y-",
+ "tai_lieu": [
+  {
+   "ten": "Thành phẩm 1 - Tài liệu đầu vào và nguồn dữ liệu (việc 1, 4)",
+   "viec": [
+    1,
+    4
+   ],
+   "link": "https://docs.google.com/document/d/1l6uVC6Ji0JQV9i9fottKWvkyjCnLJtRoJnQjrc6XOdU/edit?usp=drivesdk",
+   "id": "1l6uVC6Ji0JQV9i9fottKWvkyjCnLJtRoJnQjrc6XOdU"
+  },
+  {
+   "ten": "Thành phẩm 2 - Đọc PDF, OCR và làm sạch văn bản (việc 8, 9, 11, 49, 50, 56)",
+   "viec": [
+    8,
+    9,
+    11,
+    49,
+    50,
+    56
+   ],
+   "link": "https://docs.google.com/document/d/1SaWN2T_wEbdm2CHrvcio3cDkNSqBM1pzGWVOpfWFM_E/edit?usp=drivesdk",
+   "id": "1SaWN2T_wEbdm2CHrvcio3cDkNSqBM1pzGWVOpfWFM_E"
+  },
+  {
+   "ten": "Thành phẩm 3 - Chuẩn mực ISSA 5000 và báo cáo đảm bảo mẫu (việc 5, 6, 7, 12, 13, 14, 28, 48)",
+   "viec": [
+    5,
+    6,
+    7,
+    48,
+    28,
+    12,
+    13,
+    14
+   ],
+   "link": "https://docs.google.com/document/d/1m0dVkz3LbYugw6MY90rU1VVFfkSS-tNGkoN9bnVc5Is/edit?usp=drivesdk",
+   "id": "1m0dVkz3LbYugw6MY90rU1VVFfkSS-tNGkoN9bnVc5Is"
+  },
+  {
+   "ten": "Thành phẩm 4 - Nhận diện số liệu và trích dẫn phát hiện (việc 18, 27)",
+   "viec": [
+    18,
+    27
+   ],
+   "link": "https://docs.google.com/document/d/1DEkKWeHk-YvAmbOHoJwoi0kuM5b_KDHHfq8JacOLcqM/edit?usp=drivesdk",
+   "id": "1DEkKWeHk-YvAmbOHoJwoi0kuM5b_KDHHfq8JacOLcqM"
+  },
+  {
+   "ten": "Thành phẩm 5 - Đầu ra cho người dùng và tài liệu hướng dẫn (việc 34, 35, 43, 45, 57)",
+   "viec": [
+    34,
+    35,
+    43,
+    45,
+    57
+   ],
+   "link": "https://docs.google.com/document/d/1IWRqgEEaCIHK-RptIr-uoAn8t5-Ola_2nFBzdqxcL1s/edit?usp=drivesdk",
+   "id": "1IWRqgEEaCIHK-RptIr-uoAn8t5-Ola_2nFBzdqxcL1s"
+  },
+  {
+   "ten": "Thành phẩm 6 - Kiểm thử và đo lường (việc 58, 61)",
+   "viec": [
+    58,
+    61
+   ],
+   "link": "https://docs.google.com/document/d/1PSfpXOzh320XlDc3A1fuJ7di7zfZtx3hs2CwU_nxFZI/edit?usp=drivesdk",
+   "id": "1PSfpXOzh320XlDc3A1fuJ7di7zfZtx3hs2CwU_nxFZI"
+  }
+ ]
+}

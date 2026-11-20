@@ -1,0 +1,1 @@
+{"tag": "q3-8b", "repo": "Qwen/Qwen3-8B", "load_s": 307, "stages": {"s5": {"rows": 391, "unparsed": 0, "gen_s": 100, "prompt": "stance-s1@Qwen/Qwen3-8B"}, "s2": {"rows": 200, "unparsed": 11, "gen_s": 25, "prompt": "attr-s1@Qwen/Qwen3-8B"}, "s6": {"rows": 142, "unparsed": 1, "gen_s": 107, "prompt": "explain-s1@Qwen/Qwen3-8B"}}, "ntok_in": 428191, "ntok_out": 49579, "overflow": 0}

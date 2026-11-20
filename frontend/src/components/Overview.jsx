@@ -20,7 +20,7 @@ function WorkTile({ label, count, hint, tone = 'slate', onOpen, disabled }) {
       type="button"
       onClick={onOpen}
       disabled={disabled || !count}
-      className={`rounded-xl border border-slate-200 bg-white p-4 text-left transition disabled:cursor-default disabled:opacity-60 ${tones[tone]}`}
+      className={`rounded-2xl border border-slate-200/70 bg-white shadow-sm p-4 text-left transition disabled:cursor-default disabled:opacity-60 ${tones[tone]}`}
     >
       <p className="text-xs font-medium text-slate-500">{label}</p>
       <p className="mt-1 text-2xl font-semibold tabular-nums text-slate-900">{count}</p>
@@ -77,7 +77,7 @@ export default function Overview({ summary, lastRunAt, onOpenQueue }) {
       </div>
 
       {s.corpus && (
-        <section className="rounded-xl border border-slate-200 bg-white p-4">
+        <section className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-4">
           <div className="flex flex-wrap items-center gap-3">
             <h3 className="text-sm font-semibold text-slate-900">Độ phủ kho tài liệu</h3>
             <span className="font-mono text-sm text-slate-900">{Math.round((s.corpus.coverage || 0) * 100)}%</span>
@@ -94,7 +94,7 @@ export default function Overview({ summary, lastRunAt, onOpenQueue }) {
       )}
 
       <div className="grid gap-4 lg:grid-cols-2">
-        <section className="rounded-xl border border-slate-200 bg-white p-4">
+        <section className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-900">Tài liệu đang soát xét</h3>
           <ul className="mt-3 divide-y divide-slate-100">
             {s.documents.map((d) => (
@@ -115,7 +115,7 @@ export default function Overview({ summary, lastRunAt, onOpenQueue }) {
           </ul>
         </section>
 
-        <section className="rounded-xl border border-slate-200 bg-white p-4">
+        <section className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-4">
           <h3 className="text-sm font-semibold text-slate-900">Thuộc tính thiếu nhiều nhất</h3>
           <p className="mt-1 text-xs text-slate-500">
             Đây là việc có thể sửa ngay trong báo cáo, không phải một chỉ số để ngắm.
@@ -150,7 +150,7 @@ export default function Overview({ summary, lastRunAt, onOpenQueue }) {
         </section>
       </div>
 
-      <section className="rounded-xl border border-slate-200 bg-white p-4">
+      <section className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h3 className="text-sm font-semibold text-slate-900">Kết quả kiểm chứng</h3>
           <ReleasePill status={s.releaseStatus} />
@@ -179,14 +179,14 @@ export default function Overview({ summary, lastRunAt, onOpenQueue }) {
         </p>
       </section>
 
-      <section className="rounded-xl border border-slate-200 bg-white p-4">
+      <section className="rounded-2xl border border-slate-200/70 bg-white shadow-sm p-4">
         <h3 className="text-sm font-semibold text-slate-900">Cổng chất lượng</h3>
         <div className="mt-2 flex flex-wrap gap-1.5">
           {s.gates.map((g) => (
             <span
               key={g.gate_id}
               title={`${g.name}: ${g.details}`}
-              className={`rounded-md px-2 py-1 font-mono text-[11px] font-semibold ${
+              className={`rounded-md px-2 py-1 font-mono text-xs font-semibold ${
                 g.status === 'PASS' ? 'bg-emerald-100 text-emerald-800' : g.status === 'FAIL' ? 'bg-red-100 text-red-800' : 'bg-amber-100 text-amber-800'
               }`}
             >

@@ -1,0 +1,75 @@
+{
+ "steps": [
+  {
+   "n": 1,
+   "name": "validate_inputs",
+   "title": "Kiểm đầu vào",
+   "a": "3 tệp\nmã phiên 657b6806…",
+   "b": "2 tệp\nmã phiên fe38a451…"
+  },
+  {
+   "n": 2,
+   "name": "parse_and_ocr_documents",
+   "title": "Đọc + OCR",
+   "a": "10 đoạn văn\n0 đoạn đọc bằng OCR",
+   "b": "5023 đoạn văn\n161 đoạn đọc bằng OCR"
+  },
+  {
+   "n": 3,
+   "name": "extract_green_claims",
+   "title": "Trích tuyên bố",
+   "a": "5 tuyên bố\n1 câu bị loại có lý do",
+   "b": "186 tuyên bố\n472 câu bị loại có lý do"
+  },
+  {
+   "n": 4,
+   "name": "build_hybrid_retrieval_index",
+   "title": "Dựng chỉ mục",
+   "a": "chỉ mục BM25 + lite\ntrên 10 đoạn",
+   "b": "chỉ mục BM25 + lite\ntrên 5023 đoạn"
+  },
+  {
+   "n": 5,
+   "name": "retrieve_evidence_per_claim",
+   "title": "Truy xuất bằng chứng",
+   "a": "25 cặp tuyên bố–đoạn\n(5 đoạn / tuyên bố)",
+   "b": "930 cặp tuyên bố–đoạn\n(5 đoạn / tuyên bố)"
+  },
+  {
+   "n": 6,
+   "name": "verify_claim_evidence_pairs",
+   "title": "Kiểm chứng",
+   "a": "CONTRADICTED 3 · UNSUPPORTED 2",
+   "b": "PARTIALLY_SUPPORTED 183\nINSUFFICIENT 3"
+  },
+  {
+   "n": 7,
+   "name": "check_applicable_law",
+   "title": "Đối chiếu pháp lý",
+   "a": "5 lượt đối chiếu\npháp lý",
+   "b": "186 lượt đối chiếu\npháp lý"
+  },
+  {
+   "n": 8,
+   "name": "score_greenwashing_risk",
+   "title": "Rủi ro + hàng soát",
+   "a": "5 điểm rủi ro; 2 số liệu\nhàng soát 5/7 mục",
+   "b": "186 điểm rủi ro; 55 số liệu\nhàng soát 9/241 mục"
+  },
+  {
+   "n": 9,
+   "name": "apply_quality_gates",
+   "title": "Cổng chất lượng",
+   "a": "9 PASS, 1 chờ người\n→ PENDING_HUMAN_REVIEW",
+   "b": "9 PASS, 1 chờ người\n→ PENDING_HUMAN_REVIEW"
+  },
+  {
+   "n": 10,
+   "name": "write_evidence_pack",
+   "title": "Ghi gói bằng chứng",
+   "a": "result.json, evidence_pack.md\n36 sự kiện audit",
+   "b": "result.json, evidence_pack.md\n760 sự kiện audit"
+  }
+ ],
+ "footer": "Ca A: 0,46 s · Ca B: 150,7 s trên i7-1355U, 16 GB RAM, không GPU · hồ sơ offline: không mô hình nơ-ron nào trong luồng ra kết luận"
+}

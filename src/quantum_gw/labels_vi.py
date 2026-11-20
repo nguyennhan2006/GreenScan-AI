@@ -8,6 +8,10 @@ CLAIM_TYPE = {
     "emissions_reduction": "Giảm phát thải",
     "renewable_energy": "Năng lượng tái tạo",
     "resource_efficiency": "Dùng tài nguyên hiệu quả",
+    "resource_use": "Sử dụng tài nguyên (nước, điện, nhiên liệu)",
+    "metric_disclosure": "Số liệu môi trường công bố",
+    "environmental_compliance": "Tuân thủ và quản lý môi trường",
+    "greening": "Cây xanh, rừng",
     "waste_and_circularity": "Chất thải và tuần hoàn",
     "green_finance": "Tài chính xanh",
     "biodiversity": "Đa dạng sinh học",
@@ -38,6 +42,10 @@ SCOPE = {
     "product_or_service": "một sản phẩm hoặc dịch vụ",
     "geography": "một vùng địa lý",
 }
+
+# Việc 34: nguyên văn, ở đầu mọi đầu ra (trang web, giấy làm việc, HTML, PDF, DOCX, CSV, gói bằng chứng).
+# frontend/src/lib/labels.js DISCLAIMER phải trùng từng chữ (tests/test_disclaimer.py).
+DISCLAIMER_VI = "Kết quả này là tín hiệu rủi ro dựa trên thông tin công khai, hỗ trợ người hành nghề đảm bảo khoanh vùng kiểm tra — không thay thế thủ tục thu thập bằng chứng theo ISSA 5000. Không bị gắn cờ không có nghĩa là đã được xác nhận."
 
 VERDICT = {
     "SUPPORTED": "Được ủng hộ",

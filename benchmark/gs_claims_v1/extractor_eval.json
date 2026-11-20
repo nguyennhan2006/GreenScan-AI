@@ -1,0 +1,49 @@
+{
+ "stored_run (pipeline 14/11, in document context)": {
+  "tp": 40,
+  "fp": 32,
+  "fn": 13,
+  "precision": 0.556,
+  "precision_ci95": [
+   0.441,
+   0.665
+  ],
+  "recall": 0.755,
+  "recall_ci95": [
+   0.624,
+   0.851
+  ]
+ },
+ "sentence alone, fallback off": {
+  "tp": 38,
+  "fp": 16,
+  "fn": 15,
+  "precision": 0.704,
+  "precision_ci95": [
+   0.572,
+   0.809
+  ],
+  "recall": 0.717,
+  "recall_ci95": [
+   0.584,
+   0.82
+  ]
+ },
+ "sentence alone, fallback on (claim-typing-v2)": {
+  "tp": 41,
+  "fp": 17,
+  "fn": 12,
+  "precision": 0.707,
+  "precision_ci95": [
+   0.58,
+   0.808
+  ],
+  "recall": 0.774,
+  "recall_ci95": [
+   0.645,
+   0.865
+  ]
+ },
+ "n_items": 140,
+ "note": "Sampling frame: per report 18 sentences the 14/11 pipeline extracted + 17 it did not, among sentences with a non-year figure or an environmental word. Recall is within that frame, not over every sentence."
+}

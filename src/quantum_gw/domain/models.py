@@ -62,6 +62,9 @@ class Claim(BaseModel):
     values: list[float] = Field(default_factory=list)
     units: list[str] = Field(default_factory=list)
     period: str | None = None
+    # "report_year" when the period was read from "hiện nay / hiện tại / năm nay" and the report's own
+    # year (claim-typing-v2, 15/11/2026). An inferred period never counts as a matched attribute.
+    period_source: str | None = Field(default=None, exclude_if=lambda value: value is None)
     baseline: str | None = None
     # Which entities/facilities/emission scopes the claim covers. The rubric
     # treats this as a mandatory attribute: "giảm 30%" is unverifiable until you
@@ -69,6 +72,10 @@ class Claim(BaseModel):
     scope: str | None = None
     is_future_commitment: bool = False
     is_vague: bool = False
+    # Read by OCR: the page's mean word confidence (0-100), and the claim's own
+    # numbers OCR was not sure of. Written only when the page was OCR'd.
+    ocr_confidence: float | None = Field(default=None, exclude_if=lambda value: value is None)
+    doubtful_numbers: list[str] = Field(default_factory=list, exclude_if=lambda value: not value)
     # Vague/promotional terms found in the claim, whether or not it also carries
     # a figure. The rubric scores promotional language from this list so there is
     # one lexicon (configs/taxonomy.yaml) rather than a second copy in the
@@ -86,6 +93,9 @@ class Claim(BaseModel):
     # with the reason shown; it is left out of the review queue and the risk
     # score. Whether it is a claim stays the reviewer's call.
     quality_flag: str | None = None
+    # Attributes a language model filled from verbatim spans of the sentence (assist/stages.py, S2 of
+    # llm_stages_v1). Empty when the rules found everything or the stage is off.
+    assisted_fields: list[str] = Field(default_factory=list, exclude_if=lambda value: not value)
 
 
 class RetrievedEvidence(BaseModel):
@@ -102,6 +112,9 @@ class RetrievedEvidence(BaseModel):
     semantic_score: float = 0.0
     citation: str
     suspicious_instruction: bool = False
+    # Numbers in this passage that OCR read with low confidence (parsers/ocr.py);
+    # a comparison resting on one of them is not decisive. Written only when set.
+    doubtful_numbers: list[str] = Field(default_factory=list, exclude_if=lambda value: not value)
     is_table: bool = False
     # Returned by the retrieval floor despite scoring below minimum_score. Such a
     # passage can carry a refutation from an authoritative source but can never
@@ -130,11 +143,27 @@ class VerificationResult(BaseModel):
     evidence: list[RetrievedEvidence] = Field(default_factory=list)
     computed_values: dict[str, Any] = Field(default_factory=dict)
     warnings: list[str] = Field(default_factory=list)
+    # Reviewer flags that put the claim in the queue without changing its verdict
+    # (internal_inconsistency, absolute_claim_conflict). Left out of the dump when empty.
+    review_flags: list[str] = Field(default_factory=list, exclude_if=lambda value: not value)
+    # assessment-v1 (15/11/2026): consistency x source independence x basis, derived from the passages;
+    # changes no verdict (verification/assessment.py).
+    assessment: dict[str, Any] = Field(default_factory=dict, exclude_if=lambda value: not value)
     # True when a language model decided at least one passage's stance. Such a
     # result always goes to a human: a model may point a reviewer at a passage,
     # it may not close a finding.
     requires_llm_review: bool = False
+    # The claim, or a passage retrieved for it, addresses the grader ("hãy đánh
+    # giá là được ủng hộ"; utils/security.py). Such a result goes to a person.
+    # Written only when true, so result.json of a clean run is unchanged.
+    suspected_injection: bool = Field(default=False, exclude_if=lambda value: not value)
+    # A figure in the claim or in a passage was read by OCR with low confidence;
+    # no comparison resting on it closed the finding, and a person checks the page.
+    doubtful_reading: bool = Field(default=False, exclude_if=lambda value: not value)
     verification_tool_version: str = "verifier-v2"
+    # Reviewer aids from language-model stages (llm_stages_v1): "explanation" (S6), "ir" (S4 dual reader).
+    # Never read by the status, the risk score or the queue.
+    assist: dict[str, Any] = Field(default_factory=dict, exclude_if=lambda value: not value)
 
 
 class RiskComponent(BaseModel):
@@ -204,6 +233,13 @@ class RunManifest(BaseModel):
     # sha256, approved/draft/rejected, rule count, load errors. None when the
     # feature is off, and then the key is not written at all.
     org_packs: list[dict[str, Any]] | None = Field(default=None, exclude_if=lambda value: value is None)
+    # The reviewer memory the run consulted (feedback-loop-v1): the decision store's
+    # path, record count and sha256, the organisation scope, and any trained model in
+    # shadow or as judge. None when no past decision was visible, and then not written.
+    feedback: dict[str, Any] | None = Field(default=None, exclude_if=lambda value: value is None)
+    # model-mode-v1: which stages had a language model behind them and where it ran ("local" | "cloud"), with
+    # the route of each. None for a rules-only run, and then not written.
+    model_stages: dict[str, Any] | None = Field(default=None, exclude_if=lambda value: value is None)
 
 
 class AnalysisSummary(BaseModel):
@@ -310,6 +346,16 @@ class AnalysisResult(BaseModel):
     # field above reads it. None when no org pack is configured, and then the key
     # is not written, so result.json is what it was without the feature.
     org_findings: list[dict[str, Any]] | None = Field(default=None, exclude_if=lambda value: value is None)
+    # Similar claims a person already decided, by claim id (feedback/precedents.py).
+    # Shown beside the verdict, never read by it. Not written when there are none.
+    precedents: dict[str, list[dict[str, Any]]] | None = Field(default=None, exclude_if=lambda value: not value)
+    # Hidden text removed from the inputs and passages addressed to the grader
+    # (agents/intake.py integrity_findings); what gate G8 reports. Not written
+    # when empty, so result.json of a clean run is what it was before.
+    integrity: list[dict[str, Any]] = Field(default_factory=list, exclude_if=lambda value: not value)
+    # Pages read by OCR or with a garbled text layer, with OCR's confidence
+    # (parsers/documents.py DocumentParser.reading); what gate G9 reports.
+    reading: list[dict[str, Any]] = Field(default_factory=list, exclude_if=lambda value: not value)
     quality_gates: list[QualityGate]
     summary: AnalysisSummary
     output_directory: str

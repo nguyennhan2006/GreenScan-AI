@@ -80,7 +80,7 @@ def test_claims_carry_numeric_facts_with_their_dimensions(layers):
     claims = [r for r in layers["extract"] if r["extract_type"] == ExtractType.CLAIM.value]
     facts = [fact for row in claims for fact in row["numeric_facts"]]
     assert facts, "the claim states 20% and two scopes"
-    assert all(fact["policy_id"] == "comparison-policy-v2" for fact in facts)
+    assert all(fact["policy_id"] == "comparison-policy-v3" for fact in facts)
     assert any(fact["basis"] == "percentage_change" for fact in facts)
 
 

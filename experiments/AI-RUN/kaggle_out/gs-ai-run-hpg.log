@@ -1,0 +1,145 @@
+[{"stream_name":"stderr","time":7.922660747,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.922725823,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":8.938360487,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.938388615000001,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.938393611,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.938397357,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":9.579184651,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.579217176,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.579222571,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.579226639,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":10.771796538,"data":"[boot] nb | python 3.13.16 | start 2026-11-11 11:10:17\n"}
+,{"stream_name":"stdout","time":10.772711954,"data":"[cell] setup: gpu, tesseract, ollama\n"}
+,{"stream_name":"stdout","time":10.80804787,"data":"name, memory.total [MiB]\n"}
+,{"stream_name":"stdout","time":10.809500451,"data":"Tesla T4, 15360 MiB\n"}
+,{"stream_name":"stdout","time":10.810726315,"data":"Tesla T4, 15360 MiB\n"}
+,{"stream_name":"stdout","time":23.54026894,"data":"tesseract 5.3.4\n"}
+,{"stream_name":"stdout","time":37.271359852,"data":"\u003e\u003e\u003e The Ollama API is now available at 127.0.0.1:11434.\n"}
+,{"stream_name":"stdout","time":37.272349937,"data":"\u003e\u003e\u003e Install complete. Run \"ollama\" from the command line.\n"}
+,{"stream_name":"stdout","time":45.294888014,"data":"ollama version is 0.40.16\n"}
+,{"stream_name":"stdout","time":45.311210675,"data":"[cell] unpack GreenScan + pip install\n"}
+,{"stream_name":"stdout","time":46.698502742,"data":"bundle: \n"}
+,{"stream_name":"stdout","time":46.717175316,"data":"extracted bundle: /kaggle/input/datasets/diuquinh/gs-ai-run-v1/pyproject.toml\n"}
+,{"stream_name":"stdout","time":54.097768072,"data":"configs\n"}
+,{"stream_name":"stdout","time":54.098995277,"data":"data\n"}
+,{"stream_name":"stdout","time":54.099881259,"data":"LICENSE\n"}
+,{"stream_name":"stdout","time":54.100928084,"data":"pyproject.toml\n"}
+,{"stream_name":"stdout","time":54.101743123,"data":"README.md\n"}
+,{"stream_name":"stdout","time":54.102471006,"data":"src\n"}
+,{"stream_name":"stdout","time":68.69855021,"data":"warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.\n"}
+,{"stream_name":"stdout","time":68.699767947,"data":"                                                                                \n"}
+,{"stream_name":"stdout","time":68.700880716,"data":" Usage: quantum-agent [OPTIONS] COMMAND [ARGS]...                               \n"}
+,{"stream_name":"stdout","time":68.701971305,"data":"                                                                                \n"}
+,{"stream_name":"stdout","time":68.703057651,"data":" Evidence-first greenwashing-risk analysis agent                                \n"}
+,{"stream_name":"stdout","time":68.704217313,"data":"                                                                                \n"}
+,{"stream_name":"stdout","time":68.705404196,"data":"╭─ Options ────────────────────────────────────────────────────────────────────╮\n"}
+,{"stream_name":"stdout","time":68.706526562,"data":"│ --install-completion          Install completion for the current shell.      │\n"}
+,{"stream_name":"stdout","time":68.707628914,"data":"│ --show-completion             Show completion for the current shell, to copy │\n"}
+,{"stream_name":"stdout","time":68.708483119,"data":"│                               it or customize the installation.              │\n"}
+,{"stream_name":"stdout","time":68.709361859,"data":"│ --help                        Show this message and exit.                    │\n"}
+,{"stream_name":"stdout","time":68.710355504,"data":"╰──────────────────────────────────────────────────────────────────────────────╯\n"}
+,{"stream_name":"stdout","time":68.711143979,"data":"╭─ Commands ───────────────────────────────────────────────────────────────────╮\n"}
+,{"stream_name":"stdout","time":68.712061486,"data":"│ analyze                                                                      │\n"}
+,{"stream_name":"stdout","time":68.712930623,"data":"│ demo                                                                         │\n"}
+,{"stream_name":"stdout","time":68.713802201,"data":"│ evaluate          Evaluate against the synthetic golden set.                 │\n"}
+,{"stream_name":"stdout","time":68.71473219,"data":"│ evaluate-real     Evaluate against the adjudicated case pack (regulator and  │\n"}
+,{"stream_name":"stdout","time":68.715695066,"data":"│                   court decisions).                                          │\n"}
+,{"stream_name":"stdout","time":68.716571812,"data":"│ validate-config                                                              │\n"}
+,{"stream_name":"stdout","time":68.717543182,"data":"│ org-validate      Kiểm org pack: in OK kèm tóm tắt, hoặc toàn bộ lỗi. Pack   │\n"}
+,{"stream_name":"stdout","time":69.093853677,"data":"[cell] pull qwen3:4b-instruct-2507-q4_K_M + warm-up\n"}
+,{"stream_name":"stdout","time":94.297753151,"data":"writing manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":94.298726289,"data":"success \u001b[K\u001b[?25h\u001b[?2026l\n"}
+,{"stream_name":"stdout","time":193.803280417,"data":"b'{\"model\":\"qwen3:4b-instruct-2507-q4_K_M\",\"created_at\":\"2026-11-11T11:13:20.677364662Z\",\"message\":{\"role\":\"assistant\",\"content\":\"Xanh.\"},\"done\":true,\"done_reason\":\"stop\",\"total_duration\":99464799645,\"load_duration\":53218405965,\"prompt_eval_count\":19,\"prompt_eval_cached_count\":0,\"prompt_eval_duration\":46171520000,\"eval_count\":4,\"eval_duration\":71931000}'\n"}
+,{"stream_name":"stdout","time":193.804605026,"data":"[warm-up] 99.5 s\n"}
+,{"stream_name":"stdout","time":193.818817119,"data":"NAME                             ID              SIZE     PROCESSOR    CONTEXT    RUNNER      UNTIL              \n"}
+,{"stream_name":"stdout","time":193.818839174,"data":"qwen3:4b-instruct-2507-q4_K_M    0edcdef34593    23 GB    100% GPU     32768      llamacpp    4 minutes from now    \n"}
+,{"stream_name":"stdout","time":193.837946427,"data":"[cell] HPG rules only (baseline)\n"}
+,{"stream_name":"stdout","time":194.251360577,"data":"warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.\n"}
+,{"stream_name":"stdout","time":352.091761825,"data":"{\n"}
+,{"stream_name":"stdout","time":352.093665185,"data":"  \"total_documents\": 2,\n"}
+,{"stream_name":"stdout","time":352.093975335,"data":"  \"total_chunks\": 2673,\n"}
+,{"stream_name":"stdout","time":352.095050262,"data":"  \"total_claims\": 156,\n"}
+,{"stream_name":"stdout","time":352.096265434,"data":"  \"status_counts\": {\n"}
+,{"stream_name":"stdout","time":352.097240667,"data":"    \"PARTIALLY_SUPPORTED\": 153,\n"}
+,{"stream_name":"stdout","time":352.098212608,"data":"    \"SUPPORTED\": 2,\n"}
+,{"stream_name":"stdout","time":352.099185481,"data":"    \"INSUFFICIENT_EVIDENCE\": 1\n"}
+,{"stream_name":"stdout","time":352.100150531,"data":"  },\n"}
+,{"stream_name":"stdout","time":352.101176834,"data":"  \"severity_counts\": {\n"}
+,{"stream_name":"stdout","time":352.10224274,"data":"    \"MEDIUM\": 150,\n"}
+,{"stream_name":"stdout","time":352.103369969,"data":"    \"LOW\": 6\n"}
+,{"stream_name":"stdout","time":352.104451683,"data":"  },\n"}
+,{"stream_name":"stdout","time":352.105412689,"data":"  \"release_status\": \"PENDING_HUMAN_REVIEW\"\n"}
+,{"stream_name":"stdout","time":352.106326793,"data":"}\n"}
+,{"stream_name":"stdout","time":352.107273913,"data":"Evidence pack: /kaggle/working/runs/759eaa3583dd4d78/evidence_pack.md\n"}
+,{"stream_name":"stdout","time":353.694178486,"data":"[time] hpg_rules 159.9 s, rc 0\n"}
+,{"stream_name":"stdout","time":353.715900163,"data":"[cell] HPG with AI stages (S5 stance, S4 dual reader, S6 explanations)\n"}
+,{"stream_name":"stdout","time":354.124807286,"data":"warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.\n"}
+,{"stream_name":"stdout","time":413.728629531,"data":"[progress] llm cache files: 0\n"}
+,{"stream_name":"stdout","time":473.73643346,"data":"[progress] llm cache files: 0\n"}
+,{"stream_name":"stdout","time":533.739146698,"data":"[progress] llm cache files: 1\n"}
+,{"stream_name":"stdout","time":593.744315604,"data":"[progress] llm cache files: 1\n"}
+,{"stream_name":"stdout","time":653.747777441,"data":"[progress] llm cache files: 1\n"}
+,{"stream_name":"stdout","time":713.752810432,"data":"[progress] llm cache files: 1\n"}
+,{"stream_name":"stdout","time":773.759158322,"data":"[progress] llm cache files: 1\n"}
+,{"stream_name":"stdout","time":833.76362358,"data":"[progress] llm cache files: 1\n"}
+,{"stream_name":"stdout","time":893.76639632,"data":"[progress] llm cache files: 1\n"}
+,{"stream_name":"stdout","time":953.771905512,"data":"[progress] llm cache files: 1\n"}
+,{"stream_name":"stdout","time":1013.77939946,"data":"[progress] llm cache files: 3\n"}
+,{"stream_name":"stdout","time":1030.413398136,"data":"{\n"}
+,{"stream_name":"stdout","time":1030.413429815,"data":"  \"total_documents\": 2,\n"}
+,{"stream_name":"stdout","time":1030.414249957,"data":"  \"total_chunks\": 2673,\n"}
+,{"stream_name":"stdout","time":1030.415878554,"data":"  \"total_claims\": 156,\n"}
+,{"stream_name":"stdout","time":1030.416157115,"data":"  \"status_counts\": {\n"}
+,{"stream_name":"stdout","time":1030.417170515,"data":"    \"PARTIALLY_SUPPORTED\": 145,\n"}
+,{"stream_name":"stdout","time":1030.418207989,"data":"    \"SUPPORTED\": 2,\n"}
+,{"stream_name":"stdout","time":1030.418991686,"data":"    \"INSUFFICIENT_EVIDENCE\": 9\n"}
+,{"stream_name":"stdout","time":1030.420055413,"data":"  },\n"}
+,{"stream_name":"stdout","time":1030.420954378,"data":"  \"severity_counts\": {\n"}
+,{"stream_name":"stdout","time":1030.421914415,"data":"    \"MEDIUM\": 150,\n"}
+,{"stream_name":"stdout","time":1030.422787562,"data":"    \"LOW\": 6\n"}
+,{"stream_name":"stdout","time":1030.423759791,"data":"  },\n"}
+,{"stream_name":"stdout","time":1030.424735553,"data":"  \"release_status\": \"PENDING_HUMAN_REVIEW\"\n"}
+,{"stream_name":"stdout","time":1030.425740263,"data":"}\n"}
+,{"stream_name":"stdout","time":1030.426712276,"data":"Evidence pack: /kaggle/working/runs/ad323c772d064015/evidence_pack.md\n"}
+,{"stream_name":"stdout","time":1032.079131982,"data":"[time] hpg_ai 678.4 s, rc 0\n"}
+,{"stream_name":"stdout","time":1032.082611626,"data":"slot print_timing: id  1 | task 15823 |    graphs reused =      12918\n"}
+,{"stream_name":"stdout","time":1032.083323773,"data":"slot print_timing: id  1 | task 15823 |   graph reallocs =          0    /     0        (same size) / (changed size)\n"}
+,{"stream_name":"stdout","time":1032.084167913,"data":"slot      release: id  1 | task 15823 | stop processing: n_tokens = 774, truncated = 0\n"}
+,{"stream_name":"stdout","time":1032.084970697,"data":"srv  update_slots: all slots are idle\n"}
+,{"stream_name":"stdout","time":1032.085944691,"data":"[GIN] 2026/11/11 - 11:27:16 | 200 |    2.38s |       127.0.0.1 | POST     \"/api/chat\"\n"}
+,{"stream_name":"stdout","time":1032.108429168,"data":"[cell] evaluate-real: rules vs AI\n"}
+,{"stream_name":"stdout","time":1034.50951512,"data":"[time] eval_rules 2.4 s, rc 0\n"}
+,{"stream_name":"stdout","time":1045.913638303,"data":"[time] eval_ai 11.4 s, rc 0\n"}
+,{"stream_name":"stdout","time":1045.939551874,"data":"[cell] summary + pack\n"}
+,{"stream_name":"stdout","time":1046.000191548,"data":"{\"runs\": {\"rules\": \"759eaa3583dd4d78\", \"ai\": \"ad323c772d064015\"}, \"seconds\": {\"rules\": 159.9, \"ai\": 678.4}, \"ratio_ai_over_rules\": 4.24, \"risk_scores_changed\": 8}\n"}
+,{"stream_name":"stdout","time":1046.001182674,"data":"statuses changed: 8 [('2fd08684b47b43e6', 'PARTIALLY_SUPPORTED', 'INSUFFICIENT_EVIDENCE'), ('e9984da1d6737f18', 'PARTIALLY_SUPPORTED', 'INSUFFICIENT_EVIDENCE'), ('c7cacc9e8b857af9', 'PARTIALLY_SUPPORTED', 'INSUFFICIENT_EVIDENCE'), ('5f807a434b8ee563', 'PARTIALLY_SUPPORTED', 'INSUFFICIENT_EVIDENCE'), ('aa7cebb857fe9ebb', 'PARTIALLY_SUPPORTED', 'INSUFFICIENT_EVIDENCE'), ('0ad6cd6a8a9f4cb5', 'PARTIALLY_SUPPORTED', 'INSUFFICIENT_EVIDENCE'), ('71a7a0c8fcc6c3f8', 'PARTIALLY_SUPPORTED', 'INSUFFICIENT_EVIDENCE'), ('4a55aff54ae3d538', 'PARTIALLY_SUPPORTED', 'INSUFFICIENT_EVIDENCE')]\n"}
+,{"stream_name":"stdout","time":1046.002075142,"data":"rules: {\"summary\": {\"total_documents\": 2, \"total_chunks\": 2673, \"total_claims\": 156, \"status_counts\": {\"PARTIALLY_SUPPORTED\": 153, \"SUPPORTED\": 2, \"INSUFFICIENT_EVIDENCE\": 1}, \"severity_counts\": {\"MEDIUM\": 150, \"LOW\": 6}, \"release_status\": \"PENDING_HUMAN_REVIEW\"}, \"relation_method\": {\"similarity\": 713, \"qualitative_cue\": 38, \"direction\": 5, \"numeric\": 24}, \"ir_passages_read\": 0, \"ir_vs_rules\": {}, \"explanations_kept\": 0, \"queue\": 8}\n"}
+,{"stream_name":"stdout","time":1046.002760405,"data":"ai:    {\"summary\": {\"total_documents\": 2, \"total_chunks\": 2673, \"total_claims\": 156, \"status_counts\": {\"PARTIALLY_SUPPORTED\": 145, \"SUPPORTED\": 2, \"INSUFFICIENT_EVIDENCE\": 9}, \"severity_counts\": {\"MEDIUM\": 150, \"LOW\": 6}, \"release_status\": \"PENDING_HUMAN_REVIEW\"}, \"relation_method\": {\"llm\": 713, \"qualitative_cue\": 38, \"direction\": 5, \"numeric\": 24}, \"ir_passages_read\": 13, \"ir_vs_rules\": {\"N-\u003eN\": 12, \"S-\u003eN\": 1}, \"explanations_kept\": 8, \"queue\": 8}\n"}
+,{"stream_name":"stdout","time":1046.298251478,"data":"total 4124\n"}
+,{"stream_name":"stdout","time":1046.299377573,"data":"drwxr-xr-x  5 root root    4096 Nov 11 11:27 .\n"}
+,{"stream_name":"stdout","time":1046.300379048,"data":"drwxr-xr-x  8 root root    4096 Nov 11 11:10 ..\n"}
+,{"stream_name":"stdout","time":1046.301275852,"data":"-rw-r--r--  1 root root    2755 Nov 11 11:27 eval_ai.json\n"}
+,{"stream_name":"stdout","time":1046.302150482,"data":"-rw-r--r--  1 root root       0 Nov 11 11:27 eval_ai.log\n"}
+,{"stream_name":"stdout","time":1046.303087035,"data":"-rw-r--r--  1 root root    2755 Nov 11 11:27 eval_rules.json\n"}
+,{"stream_name":"stdout","time":1046.304011483,"data":"-rw-r--r--  1 root root       0 Nov 11 11:27 eval_rules.log\n"}
+,{"stream_name":"stdout","time":1046.305001294,"data":"drwxr-xr-x  5 root root    4096 Nov 11 11:10 gs\n"}
+,{"stream_name":"stdout","time":1046.305866115,"data":"-rw-r--r--  1 root root     456 Nov 11 11:27 hpg_ai.log\n"}
+,{"stream_name":"stdout","time":1046.306638662,"data":"-rw-r--r--  1 root root     456 Nov 11 11:15 hpg_rules.log\n"}
+,{"stream_name":"stdout","time":1046.307481179,"data":"drwxr-xr-x  2 root root    4096 Nov 11 11:27 llm_cache\n"}
+,{"stream_name":"stdout","time":1046.308514289,"data":"-rw-r--r--  1 root root   35985 Nov 11 11:27 __notebook__.ipynb\n"}
+,{"stream_name":"stdout","time":1046.309410348,"data":"-rw-r--r--  1 root root    5559 Nov 11 11:10 ollama_install.log\n"}
+,{"stream_name":"stdout","time":1046.310262199,"data":"-rw-r--r--  1 root root 2253160 Nov 11 11:27 ollama.log\n"}
+,{"stream_name":"stdout","time":1046.311297526,"data":"drwxr-xr-x 12 root root    4096 Nov 11 11:27 runs\n"}
+,{"stream_name":"stdout","time":1046.312221696,"data":"-rw-r--r--  1 root root 1875531 Nov 11 11:27 runs.tgz\n"}
+,{"stream_name":"stdout","time":1046.313021078,"data":"-rw-r--r--  1 root root    2125 Nov 11 11:27 summary.json\n"}
+,{"stream_name":"stdout","time":1046.314198811,"data":"-rw-r--r--  1 root root     174 Nov 11 11:27 times.json\n"}
+,{"stream_name":"stdout","time":1046.314938023,"data":"ALL CELLS OK\n"}
+,{"stream_name":"stderr","time":1051.411321809,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1051.411353023,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1051.596980708,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1051.597009422,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1052.455242167,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1052.54383592,"data":"[NbConvertApp] Writing 30816 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1055.100666482,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1055.697012384,"data":"[NbConvertApp] Writing 358532 bytes to __results__.html\n"}
+]

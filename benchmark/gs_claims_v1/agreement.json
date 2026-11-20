@@ -1,0 +1,46 @@
+{
+ "controls": {
+  "sonnet-A": {
+   "fields_checked": 29,
+   "correct": 29,
+   "wrong": []
+  },
+  "sonnet-B": {
+   "fields_checked": 29,
+   "correct": 29,
+   "wrong": []
+  }
+ },
+ "kappa": {
+  "is_claim": 0.924,
+  "claim_kind": 0.887,
+  "has_figure": 1.0,
+  "has_period": 0.898,
+  "has_baseline": 0.735,
+  "has_ghg_scope": 1.0,
+  "has_boundary": 0.743,
+  "cites_independent_source": 1.0,
+  "promotional_language": 0.749
+ },
+ "raw_agreement": {
+  "is_claim": 0.964,
+  "claim_kind": 0.936,
+  "has_figure": 1.0,
+  "has_period": 0.979,
+  "has_baseline": 0.971,
+  "has_ghg_scope": 1.0,
+  "has_boundary": 0.964,
+  "cites_independent_source": 1.0,
+  "promotional_language": 0.929
+ },
+ "n_items_with_disagreement": 29,
+ "n_field_disagreements": 36,
+ "by_field": {
+  "has_boundary": 5,
+  "claim_kind": 9,
+  "is_claim": 5,
+  "promotional_language": 10,
+  "has_baseline": 4,
+  "has_period": 3
+ }
+}

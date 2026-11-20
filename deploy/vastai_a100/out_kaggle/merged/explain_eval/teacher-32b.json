@@ -1,0 +1,21 @@
+{
+ "base": "Qwen/Qwen3-32B-AWQ",
+ "adapter": "",
+ "field": "msgs_large",
+ "systems": {
+  "base": {
+   "n": 142,
+   "must_mention_proxy": 0.214,
+   "ci95": [
+    0.1819,
+    0.2493
+   ],
+   "with_new_number": 3,
+   "empty": 0,
+   "unparsed": 0,
+   "words_mean": 116.8,
+   "seconds": 468.1,
+   "seconds_per_item_batched": 3.296
+  }
+ }
+}

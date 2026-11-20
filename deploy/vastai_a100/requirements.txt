@@ -1,0 +1,9 @@
+# Máy A100 trên vast.ai (CUDA 12.x). vllm kéo theo torch và transformers khớp phiên bản.
+vllm==0.32.0
+peft>=0.13
+accelerate>=1.0
+sentencepiece
+protobuf
+numpy
+matplotlib
+huggingface_hub[cli]

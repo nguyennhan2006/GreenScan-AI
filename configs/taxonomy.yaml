@@ -1,4 +1,7 @@
-version: greenwashing-taxonomy-v3
+version: greenwashing-taxonomy-v4
+# v4 (15/11/2026): fallback_claim_types. On GS-Mutation v1, 63/63 supported sentences that were never
+# extracted matched no claim_type (water, electricity, kWh...). Fallbacks are tried only when no
+# claim_type matches, so a sentence extracted before keeps its type.
 # v3 is bilingual. v1/v2 held Vietnamese keywords only, which silently dropped
 # every English claim: the KDP-2024 recyclability claim matched no claim_type at
 # all and never reached verification, and KLM-2024's "a more sustainable future"
@@ -125,7 +128,9 @@ metrics:
     vi: ["năng lượng tái tạo", "tái tạo", "điện mặt trời", "điện gió"]
     en: ["renewable", "solar", "wind power"]
   energy:
-    vi: ["năng lượng", "điện năng"]
+    # v4: "lượng điện", "sản lượng điện", kWh... (GS-Bench ba-N14: the matching "3,18 tỷ kWh" sentence was
+    # dropped as not about the metric, and the claim was compared with another figure).
+    vi: ["năng lượng", "điện năng", "lượng điện", "sản lượng điện", "điện phát", "tiêu thụ điện", "kwh", "mwh", "gwh"]
     en: ["energy", "electricity"]
   water:
     vi: ["nước"]
@@ -136,3 +141,31 @@ metrics:
   green_finance:
     vi: ["trái phiếu xanh", "tín dụng xanh"]
     en: ["green bond", "green loan", "proceeds"]
+
+# Tried in order, only when no claim_type above matches (claim-typing-v2, claim_extraction.fallback_types).
+# metric_disclosure is built in code: a metric below plus a figure that is not a year.
+fallback_claim_types:
+  resource_use:
+    priority: 1
+    vi: ["tiêu thụ nước", "lượng nước", "nước tiêu thụ", "sử dụng nước", "khai thác nước", "nước thải",
+         "tái sử dụng nước", "tuần hoàn nước", "nước sạch", "tiêu thụ điện", "điện năng", "điện tiêu thụ",
+         "lượng điện", "nhu cầu điện", "tự chủ điện", "sản xuất điện", "phát điện", "nhiệt dư", "kwh", "mwh",
+         "gwh", "tiêu thụ năng lượng", "năng lượng tiêu thụ", "tiêu hao năng lượng", "suất tiêu hao",
+         "nhiên liệu", "dầu diesel", "xăng dầu", "khí tự nhiên", "nguyên liệu tái chế", "phế liệu",
+         "tiêu thụ gas", "khí gas", "lpg"]
+    en: ["water consumption", "water withdrawal", "water use", "wastewater", "electricity consumption",
+         "energy consumption", "power consumption", "fuel consumption", "kwh", "mwh", "gwh", "scrap"]
+  environmental_compliance:
+    priority: 1
+    vi: ["vi phạm pháp luật về môi trường", "vi phạm về môi trường", "vi phạm môi trường", "sự cố môi trường",
+         "xử phạt vi phạm hành chính", "giấy phép môi trường", "quan trắc môi trường", "đánh giá tác động môi trường",
+         "iso 14001", "iso 50001", "iso 14064", "hệ thống quản lý môi trường", "hệ thống quản lý năng lượng",
+         "chứng nhận môi trường", "công trình xanh", "leed", "lotus", "edge"]
+    en: ["environmental violation", "environmental incident", "environmental fine", "environmental permit",
+         "environmental monitoring", "environmental impact assessment",
+         "iso 14001", "iso 50001", "environmental management system", "green building", "leed"]
+  greening:
+    priority: 1
+    vi: ["cây xanh", "trồng cây", "cây rừng", "rừng ngập mặn", "phủ xanh", "mảng xanh", "không gian xanh",
+         "diện tích cây xanh", "khoanh nuôi", "tái sinh rừng", "trồng rừng"]
+    en: ["tree planting", "trees planted", "mangrove", "reforestation", "green space"]

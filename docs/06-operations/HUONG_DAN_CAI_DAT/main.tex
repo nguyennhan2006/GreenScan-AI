@@ -23,7 +23,7 @@
 \newcommand{\tensp}{GreenScan AI}
 \newcommand{\repo}{https://github.com/nguyennhan2006/GreenScan-AI}
 % số đo gói chạy ngay (Phần 5), điền sau khi đóng gói và chạy thử
-\newcommand{\GOISIZE}{313 MB (tệp ZIP), 581 MB sau giải nén}
+\newcommand{\GOISIZE}{305 MB (tệp ZIP), 550 MB sau giải nén}
 \newcommand{\GOITEST}{Giải nén vào thư mục có dấu và dấu cách (\emph{khach hang\textbackslash Màn hình nền}), nhấp đúp \tep{GreenScan.bat}: lần đầu sẵn sàng sau 65 giây, lần sau 30 giây. Chạy trọn bộ mẫu Hòa Phát qua giao diện: 156 tuyên bố, kết quả trùng phiên mẫu (153 ủng hộ một phần, 2 ủng hộ, 1 chưa đủ bằng chứng).}
 
 % ---------- màu (giống báo cáo tổng hợp) ----------
@@ -394,6 +394,7 @@ Bảng~\ref{tab:loi} liệt kê các tình huống hay gặp, theo thứ tự xu
 11 & Phần mềm diệt virus báo hoặc chặn & Cho phép (thêm ngoại lệ) thư mục GreenScan-AI-main. Mã nguồn công khai trên GitHub. \\
 \rowcolor{boxbg}12 & Khi tải tài liệu, dòng đỏ báo \textbf{trang là ảnh quét, máy không có OCR} & Không phải lỗi. GreenScan bỏ qua các trang ảnh đó. Cần đọc cả trang scan thì phải cài thêm Tesseract OCR có gói tiếng Việt (nhờ người hỗ trợ kỹ thuật; xem mục OCR trong tệp \tep{.env.example}). \\
 13 & Máy chậm hoặc đứng khi phân tích & Đóng bớt ứng dụng khác. Một lượt phân tích dùng tối đa khoảng 1,3 GB RAM; máy 4 GB RAM sẽ rất chậm. \\
+\rowcolor{boxbg}14 & (Gói chạy ngay) Cửa sổ đen báo \textbf{``Goi GreenScan chua giai nen du tep''}, hoặc có chữ \emph{ModuleNotFoundError} & Nhấp đúp khi Windows chưa giải nén xong, hoặc việc giải nén bị ngắt giữa chừng. Nếu cửa sổ giải nén còn chạy, đợi nó đóng hẳn rồi nhấp đúp lại. Nếu không: xoá thư mục GreenScan vừa giải nén, giải nén lại tệp ZIP và đợi đến khi xong. \\
 \end{xltabular}
 \endgroup
 
@@ -470,8 +471,8 @@ Lần sau có bản mới: chạy lại lệnh tạo gói, tạo release mới v
 \begin{hopy}{Ba bước gửi cho khách}
 \begin{enumerate}
 \item Tải \tep{GreenScan-Windows-x64.zip} từ đường link.
-\item Bấm chuột phải vào tệp, chọn \emph{Extract All\ldots} (\emph{Giải nén tất cả\ldots}), giải nén vào Documents hoặc Desktop.
-\item Mở thư mục \textbf{GreenScan}, nhấp đúp \textbf{GreenScan}. Nếu Windows hiện ``Windows protected your PC'', bấm \emph{More info} rồi \emph{Run anyway}. Trình duyệt tự mở GreenScan sau khoảng 10--30 giây. Giữ cửa sổ đen mở trong khi dùng.
+\item Bấm chuột phải vào tệp, chọn \emph{Extract All\ldots} (\emph{Giải nén tất cả\ldots}), giải nén vào Documents hoặc Desktop. \textbf{Đợi đến khi cửa sổ giải nén đóng hẳn} (có thể mất vài phút) rồi mới làm bước 3.
+\item Mở thư mục \textbf{GreenScan}, nhấp đúp \textbf{GreenScan}. Nếu Windows hiện ``Windows protected your PC'', bấm \emph{More info} rồi \emph{Run anyway}. Trình duyệt tự mở GreenScan sau khoảng 1 phút ở lần đầu, khoảng 30 giây ở những lần sau. Giữ cửa sổ đen mở trong khi dùng.
 \end{enumerate}
 \end{hopy}
 Cửa sổ đen của gói chỉ có một bước, không cài gì (Hình~\ref{fig:goicon}). Trang đầu tiên khách thấy giống hệt Hình~\ref{fig:batdau}, và các bước dùng giống Phần 3.
@@ -546,7 +547,7 @@ Thời gian tải ZIP & 3 phút 41 giây \\
 Những lần sau & Cổng 8000 mở sau 21 giây, trang sẵn sàng khoảng 30 giây \\
 \rowcolor{boxbg}Kiểm giao diện & 73 màn hình chụp tự động trên bản cài mới, gồm một lượt phân tích bộ mẫu Hòa Phát đầy đủ; không bước nào lỗi \\
 Phiên mẫu cài sẵn & 1 phiên Hòa Phát, 156 tuyên bố, 2 tài liệu \\
-\rowcolor{boxbg}Gói chạy ngay: dung lượng & 313 MB nén, 581 MB giải nén; giải nén mất 10 giây \\
+\rowcolor{boxbg}Gói chạy ngay: dung lượng & 305 MB nén, 550 MB giải nén, 6.191 tệp; Explorer giải nén mất 86 giây trên ổ SSD \\
 Gói chạy ngay: khởi động & Lần đầu 65 giây, lần sau 30 giây \\
 \rowcolor{boxbg}Gói chạy ngay: phân tích bộ mẫu & Chạy trọn qua giao diện; 156 tuyên bố, kết quả trùng phiên mẫu \\
 \end{tabularx}

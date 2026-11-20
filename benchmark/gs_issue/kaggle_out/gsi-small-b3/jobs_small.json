@@ -1,0 +1,30 @@
+[
+ {
+  "tag": "q3-8b",
+  "tp": 2,
+  "max_len": 4096,
+  "cands": [
+   {
+    "repo": "Qwen/Qwen3-8B"
+   },
+   {
+    "repo": "Qwen/Qwen3-8B",
+    "backend": "hf"
+   }
+  ]
+ },
+ {
+  "tag": "q3-4b",
+  "tp": 1,
+  "max_len": 4096,
+  "cands": [
+   {
+    "repo": "Qwen/Qwen3-4B-Instruct-2507"
+   },
+   {
+    "repo": "Qwen/Qwen3-4B-Instruct-2507",
+    "backend": "hf"
+   }
+  ]
+ }
+]

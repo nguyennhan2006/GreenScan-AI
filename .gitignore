@@ -69,3 +69,11 @@ frontend/.ssr-out/
 
 # Derived data layers: rebuilt in ~15s by tools/data_contract.py migrate-crawl
 data/crawl/**/contract/
+
+# Third-party bank reports used for green-bond cases: same policy as the other originals (not redistributed).
+data/green_bond_cases/raw/*.pdf
+
+# Trained model folders from Kaggle / vast.ai runs (weights and tokenizers, hundreds of MB each).
+# Metrics, logs and run manifests next to them ARE committed.
+*.safetensors
+**/*-final/

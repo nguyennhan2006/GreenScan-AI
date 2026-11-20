@@ -1,0 +1,118 @@
+{
+ "model": "qwen3:4b-instruct-2507-q4_K_M",
+ "gpu": "Tesla T4\nTesla T4",
+ "runs": {
+  "rules": "759eaa3583dd4d78",
+  "ai": "ad323c772d064015"
+ },
+ "seconds": {
+  "rules": 159.9,
+  "ai": 678.4
+ },
+ "ratio_ai_over_rules": 4.24,
+ "statuses_changed": [
+  [
+   "2fd08684b47b43e6",
+   "PARTIALLY_SUPPORTED",
+   "INSUFFICIENT_EVIDENCE"
+  ],
+  [
+   "e9984da1d6737f18",
+   "PARTIALLY_SUPPORTED",
+   "INSUFFICIENT_EVIDENCE"
+  ],
+  [
+   "c7cacc9e8b857af9",
+   "PARTIALLY_SUPPORTED",
+   "INSUFFICIENT_EVIDENCE"
+  ],
+  [
+   "5f807a434b8ee563",
+   "PARTIALLY_SUPPORTED",
+   "INSUFFICIENT_EVIDENCE"
+  ],
+  [
+   "aa7cebb857fe9ebb",
+   "PARTIALLY_SUPPORTED",
+   "INSUFFICIENT_EVIDENCE"
+  ],
+  [
+   "0ad6cd6a8a9f4cb5",
+   "PARTIALLY_SUPPORTED",
+   "INSUFFICIENT_EVIDENCE"
+  ],
+  [
+   "71a7a0c8fcc6c3f8",
+   "PARTIALLY_SUPPORTED",
+   "INSUFFICIENT_EVIDENCE"
+  ],
+  [
+   "4a55aff54ae3d538",
+   "PARTIALLY_SUPPORTED",
+   "INSUFFICIENT_EVIDENCE"
+  ]
+ ],
+ "risk_scores_changed": 8,
+ "rules": {
+  "summary": {
+   "total_documents": 2,
+   "total_chunks": 2673,
+   "total_claims": 156,
+   "status_counts": {
+    "PARTIALLY_SUPPORTED": 153,
+    "SUPPORTED": 2,
+    "INSUFFICIENT_EVIDENCE": 1
+   },
+   "severity_counts": {
+    "MEDIUM": 150,
+    "LOW": 6
+   },
+   "release_status": "PENDING_HUMAN_REVIEW"
+  },
+  "relation_method": {
+   "similarity": 713,
+   "qualitative_cue": 38,
+   "direction": 5,
+   "numeric": 24
+  },
+  "ir_passages_read": 0,
+  "ir_vs_rules": {},
+  "explanations_kept": 0,
+  "queue": 8
+ },
+ "ai": {
+  "summary": {
+   "total_documents": 2,
+   "total_chunks": 2673,
+   "total_claims": 156,
+   "status_counts": {
+    "PARTIALLY_SUPPORTED": 145,
+    "SUPPORTED": 2,
+    "INSUFFICIENT_EVIDENCE": 9
+   },
+   "severity_counts": {
+    "MEDIUM": 150,
+    "LOW": 6
+   },
+   "release_status": "PENDING_HUMAN_REVIEW"
+  },
+  "relation_method": {
+   "llm": 713,
+   "qualitative_cue": 38,
+   "direction": 5,
+   "numeric": 24
+  },
+  "ir_passages_read": 13,
+  "ir_vs_rules": {
+   "N->N": 12,
+   "S->N": 1
+  },
+  "explanations_kept": 8,
+  "queue": 8
+ },
+ "llm_cache_files": 3,
+ "evaluate_real_seconds": {
+  "eval_rules": 2.4,
+  "eval_ai": 11.4
+ }
+}

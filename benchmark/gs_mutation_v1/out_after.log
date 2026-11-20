@@ -1,0 +1,20 @@
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+[mut:after] 865 cases to run, 0 cached
+[mut:after] 50/865
+[mut:after] 100/865
+[mut:after] 150/865
+[mut:after] 200/865
+[mut:after] 250/865
+[mut:after] 300/865
+[mut:after] 350/865
+[mut:after] 400/865
+[mut:after] 450/865
+[mut:after] 500/865
+[mut:after] 550/865
+[mut:after] 600/865
+[mut:after] 650/865
+[mut:after] 700/865
+[mut:after] 750/865
+[mut:after] 800/865
+[mut:after] 850/865
+[mut:after] done

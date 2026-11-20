@@ -43,12 +43,37 @@ routing:
   # gemma-4-26B-A4B-it for every pair, GLM-5.2 only when gemma says SUPPORTS or
   # CONTRADICTS (the two relations that change a verdict) — would cut the cost
   # of a report from ~$0.8–2.0 to ~$0.2–0.8.
+  # llm_stages_v1 (11/11/2026): the FPT key answers 401, so the route is the local Qwen3-4B (Ollama;
+  # prompt stance-s1f) and, in the cloud profile for public reports only, Groq gpt-oss-120b (stance-v3f).
+  # GLM-5.2 stays listed for when an FPT key returns. The prompt follows the model (assist/prompts.py).
   qualitative_stance:
     status: active
     primary: local
-    fallback: fpt
+    fallback: groq
     models:
+      local: qwen3:4b-instruct-2507-q4_K_M
+      groq: openai/gpt-oss-120b
       fpt: GLM-5.2
+
+  # S4 of llm_stages_v1: the IR reader behind QUANTUM_VERIFY=dual (verification/ir_reader.py, AG-1 prompt
+  # frozen). A reviewer note only. Laptop: ~25 s per sentence (Qwen3-4B Q4), so dual suits the gpu or cloud profile.
+  ir_reading:
+    status: active
+    primary: local
+    fallback: groq
+    models:
+      local: qwen3:4b-instruct-2507-q4_K_M
+      groq: openai/gpt-oss-120b
+
+  # S6 of llm_stages_v1: plain-language explanation beside the rules rationale (QUANTUM_ASSIST_EXPLAIN),
+  # rejected in code when it writes a number nobody wrote.
+  claim_explanation:
+    status: active
+    primary: local
+    fallback: groq
+    models:
+      local: qwen3:4b-instruct-2507-q4_K_M
+      groq: openai/gpt-oss-120b
 
   # Units, base years, ratios and trends. A language model must not arbitrate
   # arithmetic — this stays in Python and has no fallback by design.
@@ -68,11 +93,14 @@ routing:
 
   # Filling five attributes from text already extracted: structured output,
   # a mid-size model with a JSON schema is enough.
+  # S2 of llm_stages_v1 (QUANTUM_ASSIST_ATTRIBUTES): period / baseline / scope as verbatim spans only.
   claim_normalization:
-    status: planned
+    status: active
     primary: local
-    fallback: fpt
+    fallback: groq
     models:
+      local: qwen3:4b-instruct-2507-q4_K_M
+      groq: openai/gpt-oss-120b
       fpt: gemma-4-26B-A4B-it
 
   # Templates today; a model only when no keyword matches.

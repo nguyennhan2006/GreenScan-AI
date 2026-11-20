@@ -1,0 +1,56 @@
+{
+ "t1": {
+  "t1_train": 2055,
+  "q13_relabel_rows": 164,
+  "q13_changed_to": {
+   "QUANTIFIED_CLAIM": 16,
+   "QUALITATIVE_CLAIM": 14,
+   "VAGUE": 1
+  },
+  "labels": {
+   "NOT_CLAIM": 1303,
+   "VAGUE": 154,
+   "QUALITATIVE_CLAIM": 441,
+   "QUANTIFIED_CLAIM": 157
+  },
+  "s1_eval": 200,
+  "s1_extracted": {
+   "is_claim=True": 102,
+   "is_claim=False": 44
+  }
+ },
+ "pairs": {
+  "pool": 821,
+  "pool_overlapping_gs_eval": 6,
+  "labels": 821,
+  "relations": {
+   "CONTEXT": 633,
+   "PARTIAL": 125,
+   "SUPPORTS": 63
+  }
+ },
+ "explain": {
+  "explain_train": 996,
+  "verdicts": {
+   "CONTRADICTED": 3,
+   "PARTIALLY_SUPPORTED": 966,
+   "SUPPORTED": 3,
+   "INSUFFICIENT_EVIDENCE": 24
+  },
+  "s6": 142
+ },
+ "s5_pairs": 391,
+ "md5": {
+  "explain_train.jsonl": "8a29a741229042e645fb43a145fdc19e",
+  "pairs_cand_nli-mdeberta.jsonl": "f202dec7917e8fb13808a89c31e82bde",
+  "pairs_cand_rules.jsonl": "a9614fe6ec7c75c62b0d572522a058cf",
+  "pairs_labels.jsonl": "bf31271812b7aefb09eb3bf47bab0b06",
+  "pairs_pool.jsonl": "2960e4af64880dc9c9fd2f89ce81161f",
+  "rankings.jsonl": "c9fd86b9bda3e110f083a8bff354c520",
+  "s1_eval.jsonl": "085814685db0681b64583dc45c03d85e",
+  "s5_pairs.jsonl": "0c61e2aa83e0b5fed0d8663520d34324",
+  "s6_explain.jsonl": "befbc909873f41f08e09f2e4375393b5",
+  "stance_sft.jsonl": "5e9080b175eeb222cb893014a782fdc0",
+  "t1_train.jsonl": "577d6a685aa6d9efad7e824315597c93"
+ }
+}

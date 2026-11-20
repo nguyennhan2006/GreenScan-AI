@@ -1,0 +1,30 @@
+{
+ "PAN": {
+  "seconds_original": 162.3,
+  "seconds_planted": 113.6,
+  "claims": 201,
+  "verdicts": {
+   "PARTIALLY_SUPPORTED": 178,
+   "INSUFFICIENT_EVIDENCE": 23
+  },
+  "claim_types": {
+   "emissions_reduction": 54,
+   "waste_and_circularity": 52,
+   "generic_sustainability": 46,
+   "metric_disclosure": 12,
+   "esg_process_integration": 2,
+   "environmental_compliance": 5,
+   "biodiversity": 12,
+   "resource_efficiency": 3,
+   "renewable_energy": 2,
+   "resource_use": 13
+  },
+  "queue": 8,
+  "review_flags": {},
+  "contradicted_to_read": 0,
+  "planted": 8,
+  "planted_found_again": 7,
+  "planted_caught_contradicted_or_flag": 1,
+  "planted_in_queue": 1
+ }
+}

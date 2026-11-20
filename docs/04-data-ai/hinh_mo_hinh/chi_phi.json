@@ -1,0 +1,128 @@
+{
+ "config": "chi-phi-v1",
+ "date": "2026-11-13",
+ "rows": [
+  {
+   "phuong_an": "PA1",
+   "ten": "Laptop, chỉ luật",
+   "giay_moi_bo": 104,
+   "usd_thang": 0.0,
+   "usd_thang_khoang": [
+    0.0,
+    0.0
+   ],
+   "vnd_moi_bo": 2,
+   "ghi_chu": "bản nộp hiện tại",
+   "du_lieu_ra_ngoai": "không"
+  },
+  {
+   "phuong_an": "PA1",
+   "ten": "Laptop + mô hình CPU đã huấn luyện",
+   "giay_moi_bo": 198,
+   "usd_thang": 0.0,
+   "usd_thang_khoang": [
+    0.0,
+    0.0
+   ],
+   "vnd_moi_bo": 5,
+   "ghi_chu": "mDeBERTa chấm quan hệ, e5 lọc tuyên bố",
+   "du_lieu_ra_ngoai": "không"
+  },
+  {
+   "phuong_an": "PA1",
+   "ten": "Laptop + Qwen3-4B viết lời giải thích",
+   "giay_moi_bo": 752,
+   "usd_thang": 0.1,
+   "usd_thang_khoang": [
+    0.1,
+    0.1
+   ],
+   "vnd_moi_bo": 18,
+   "ghi_chu": "Ollama Q4; chậm nhưng không cần mạng",
+   "du_lieu_ra_ngoai": "không"
+  },
+  {
+   "phuong_an": "PA2",
+   "ten": "vast.ai A100 80 GB (gpt-oss-120b), bật giờ hành chính",
+   "giay_moi_bo": 167,
+   "usd_thang": 176.0,
+   "usd_thang_khoang": [
+    128.5,
+    227.0
+   ],
+   "vnd_moi_bo": 22880,
+   "ghi_chu": "176 giờ/tháng, đọc mọi tuyên bố có số",
+   "du_lieu_ra_ngoai": "chỉ cặp tuyên bố–đoạn, về máy nhóm thuê"
+  },
+  {
+   "phuong_an": "PA2",
+   "ten": "vast.ai A100 80 GB (gpt-oss-120b), thuê theo lượt",
+   "giay_moi_bo": 887,
+   "usd_thang": 49.3,
+   "usd_thang_khoang": [
+    36.0,
+    63.6
+   ],
+   "vnd_moi_bo": 6405,
+   "ghi_chu": "bật máy 12 phút mỗi bộ",
+   "du_lieu_ra_ngoai": "chỉ cặp tuyên bố–đoạn, về máy nhóm thuê"
+  },
+  {
+   "phuong_an": "PA2",
+   "ten": "vast.ai RTX 4090 (Qwen3-14B), bật giờ hành chính",
+   "giay_moi_bo": 198,
+   "usd_thang": 70.4,
+   "usd_thang_khoang": [
+    44.0,
+    93.3
+   ],
+   "vnd_moi_bo": 9152,
+   "ghi_chu": "176 giờ/tháng, đọc mọi tuyên bố có số",
+   "du_lieu_ra_ngoai": "chỉ cặp tuyên bố–đoạn, về máy nhóm thuê"
+  },
+  {
+   "phuong_an": "PA2",
+   "ten": "vast.ai RTX 4090 (Qwen3-14B), thuê theo lượt",
+   "giay_moi_bo": 918,
+   "usd_thang": 20.4,
+   "usd_thang_khoang": [
+    12.8,
+    27.0
+   ],
+   "vnd_moi_bo": 2653,
+   "ghi_chu": "bật máy 12 phút mỗi bộ",
+   "du_lieu_ra_ngoai": "chỉ cặp tuyên bố–đoạn, về máy nhóm thuê"
+  },
+  {
+   "phuong_an": "Đám mây",
+   "ten": "API Groq gpt-oss-120b (tham chiếu)",
+   "giay_moi_bo": 340,
+   "usd_thang": 5.6,
+   "usd_thang_khoang": [
+    5.6,
+    5.6
+   ],
+   "vnd_moi_bo": 725,
+   "ghi_chu": "chỉ được dùng cho báo cáo công khai",
+   "du_lieu_ra_ngoai": "có, ra nước ngoài"
+  }
+ ],
+ "training": {
+  "Kaggle T4 (PA1)": {
+   "gio_gpu": 6.0,
+   "usd": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "vast.ai A100 (PA2)": {
+   "gio_gpu": 3.5,
+   "usd": [
+    2.5549999999999997,
+    3.5,
+    4.515000000000001
+   ]
+  }
+ }
+}

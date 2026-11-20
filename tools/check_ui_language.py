@@ -48,7 +48,10 @@ JSX_TEXT = re.compile(r">([^<>{}=;()&|`]*[A-Za-zÀ-ỹ][^<>{}=;()&|`]*)<")
 JS_STR = re.compile(r"'((?:\\.|[^'\\\n]){2,300})'|\"((?:\\.|[^\"\\\n]){2,300})\"|`((?:\\.|[^`\\]){2,600})`")
 REGEX_LIKE = re.compile(r"\(\?:|\\s|\\d|\[\^|\]\+|\\b")
 # Tệp chỉ chứa lời nhắc gửi mô hình hoặc mẫu nhận dạng, không hiện cho người dùng.
-SKIP_FILES = {"src/quantum_gw/verification/llm_judge.py"}
+# Model prompts, and the MCP / harness modules (13/11): their text is read by models and MCP clients, and tool
+# names (run_id, list_runs, analyze_documents...) are protocol identifiers, not words of the web interface.
+SKIP_FILES = {"src/quantum_gw/verification/llm_judge.py", "src/quantum_gw/assist/prompts.py",
+              "src/quantum_gw/agent_harness.py", "src/quantum_gw/mcp_server.py", "src/quantum_gw/mcp_tools.py"}
 PY_STR = re.compile(r"'((?:\\.|[^'\\\n]){2,400})'|\"((?:\\.|[^\"\\\n]){2,400})\"")
 
 

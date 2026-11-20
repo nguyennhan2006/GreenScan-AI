@@ -34,7 +34,7 @@ COMPARABLE = "COMPARABLE"
 NOT_COMPARABLE = "NOT_COMPARABLE"
 AMBIGUOUS = "AMBIGUOUS"
 
-POLICY_ID = "comparison-policy-v2"
+POLICY_ID = "comparison-policy-v3"  # v3 (14/11/2026): + segment (business line) dimension
 
 # --- measurement basis --------------------------------------------------------
 # What a percentage is a percentage *of*. A share of a total and a change over
@@ -53,8 +53,8 @@ _TARGET_RE = re.compile(
     r"phan dau|ke hoach|du kien|se dat|aim|goal|pledge)(?!\w)"
 )
 _INTENSITY_RE = re.compile(
-    r"(?<!\w)(?:cuong do|intensity|per (?:tonne|ton|unit|mwh|kwh)|/\s*(?:tan|t|mwh|kwh|san pham|"
-    r"tonne|ton)|tren (?:moi )?(?:tan|don vi|san pham|mwh|kwh)|moi tan)(?!\w)"
+    r"(?:(?<!\w)(?:cuong do|intensity|per (?:tonne|ton|unit|mwh|kwh)|tren (?:moi |mot )?(?:tan|don vi|san pham|mwh|kwh)|"
+    r"moi tan)|/\s*(?:tan|t|mwh|kwh|san pham|tonne|ton))(?!\w)"
 )
 
 # --- organisational boundary --------------------------------------------------
@@ -66,6 +66,7 @@ _BOUNDARY_PATTERNS = (
         r"(?<!\w)(?:nha may|khu lien hop|co so san xuat|co so|facility|facilities|plant|site|"
         r"chi nhanh|phan xuong|dung quat|hai duong|kinh mon)(?!\w)"
     )),
+    ("parent", re.compile(r"(?<!\w)(?:cong ty me|parent company|cong ty mẹ)(?!\w)")),
     ("subsidiary", re.compile(
         r"(?<!\w)(?:cong ty con|cong ty thanh vien|don vi thanh vien|subsidiary|subsidiaries|"
         r"cong ty tnhh|cong ty co phan|ctcp)(?!\w)"
@@ -102,8 +103,35 @@ _VARIANT_PATTERNS = (
     ("disposed", re.compile(r"(?<!\w)(?:thai bo|tieu huy|chon lap|dot|landfill\w*|incinerat\w*|dispos\w*)(?!\w)")),
     ("renewable", re.compile(r"(?<!\w)(?:tai tao|renewable|nang luong sach|nang luong xanh|re100)(?!\w)")),
     ("grid", re.compile(r"(?<!\w)(?:luoi dien|luoi|grid|evn|dien mua)(?!\w)")),
+    # water (units-v2, 15/11/2026): GS-Bench "N6 metric" swapped water use for wastewater with the same figure.
+    ("wastewater", re.compile(r"(?<!\w)(?:nuoc thai|wastewater|effluent)(?!\w)")),
+    ("water_withdrawal", re.compile(r"(?<!\w)(?:khai thac nuoc|nuoc khai thac|water withdrawal)(?!\w)")),
+    ("water_use", re.compile(r"(?<!\w)(?:(?:su dung|tieu thu) nuoc|nuoc (?:su dung|tieu thu)|water (?:use|consumption))(?!\w)")),
     ("fossil", re.compile(r"(?<!\w)(?:hoa thach|fossil|than|coal|dau|oil|khi dot|gas)(?!\w)")),
 )
+
+# Business line the figure belongs to (v3). HPG B1 matched a 99% recycling rate of
+# the steel group against 100% of manure in the agriculture group; both figures sit
+# next to their segment's name. Read next to the figure, then from the sentence, and
+# only when exactly one segment is named there; several names read as unknown.
+_SEGMENT_PATTERNS = (
+    ("steel", re.compile(r"(?<!\w)(?:thep|phoi thep|luyen kim|lo cao|steel\w*)(?!\w)")),
+    ("agriculture", re.compile(r"(?<!\w)(?:nong nghiep|chan nuoi|trang trai|gia suc|gia cam|thuc an chan nuoi|agricultur\w*|livestock|farm\w*)(?!\w)")),
+    ("real_estate", re.compile(r"(?<!\w)(?:bat dong san|khu do thi|khu cong nghiep|real estate)(?!\w)")),
+    ("appliances", re.compile(r"(?<!\w)(?:dien may|dien lanh|dieu hoa|appliance\w*)(?!\w)")),
+    ("cement", re.compile(r"(?<!\w)(?:xi mang|clinker|cement)(?!\w)")),
+)
+
+
+def _segment(window: str, folded: str) -> str:
+    for scope in (window, folded):
+        found = {name for name, pattern in _SEGMENT_PATTERNS if pattern.search(scope)}
+        if len(found) == 1:
+            return found.pop()
+        if len(found) > 1:
+            return "unknown"
+    return "unknown"
+
 
 # A gap this wide between two figures of the same unit is far more often a
 # boundary, sector or unit mismatch than a misstatement (nobody claims 23
@@ -129,6 +157,8 @@ class NumericFact:
     variant: frozenset[str] = frozenset()   # every variant tag the figure's context names
     scopes: frozenset[int] = frozenset()
     sentence: str = ""
+    cumulative: bool = False         # "lũy kế", "tích lũy", "cumulative" next to the figure (units-v2)
+    segment: str = "unknown"        # steel | agriculture | real_estate | appliances | cement | unknown (v3)
 
     def as_tuple(self) -> tuple[float, str | None, float]:
         return (self.value, self.unit, self.half)
@@ -141,6 +171,7 @@ class NumericFact:
             "technology": self.technology,
             "variant": "+".join(sorted(self.variant)) or None,
             "scopes": "+".join(str(s) for s in sorted(self.scopes)) or None,
+            "segment": self.segment,
         }
 
 
@@ -196,6 +227,29 @@ def _window(folded: str, value: float, unit: str | None, width: int = 48) -> str
     return folded
 
 
+_CUMULATIVE_RE = re.compile(r"(?<!\w)(?:luy ke|tich luy|cong don|cumulative|to date)(?!\w)")
+
+
+def _scopes_left(folded: str, value: float, unit: str | None, width: int = 60) -> frozenset[int]:
+    """GHG scope named nearest before the figure (units-v2, 15/11/2026), or empty.
+
+    A table row read as one sentence ("pham vi 1: 22.540.603 tco2e; pham vi 2: 933.876 tco2e") names
+    several scopes; the sentence-level reading gave every figure {1, 2} and blocked a true match
+    (PV Power on GS-Mutation v1). Empty when no scope label precedes the figure within `width`
+    characters: the caller then keeps the sentence-level reading, as before.
+    """
+    window = _window(folded, value, unit, width=0)
+    at = folded.find(window) if window and window != folded else -1
+    if at < 0:
+        return frozenset()
+    left = folded[max(0, at - width):at]
+    labels = list(_SCOPE_LABEL_RE.finditer(left))
+    return emission_scopes(labels[-1].group(0)) if labels else frozenset()
+
+
+_SCOPE_LABEL_RE = re.compile(r"(?:scope|pham vi)\s*(?:[123]\s*(?:,|va|and|&|\+|-|to|den)?\s*)+(?!\d)")
+
+
 def facts_in(sentence: str, drop_years: bool = True) -> list[NumericFact]:
     """Every quantity in one sentence, with the dimensions the sentence states."""
     folded = normalize_for_match(sentence)
@@ -215,7 +269,9 @@ def facts_in(sentence: str, drop_years: bool = True) -> list[NumericFact]:
             boundary=_first(_BOUNDARY_PATTERNS, window) or _first(_BOUNDARY_PATTERNS, folded) or "unknown",
             technology=_first(_TECHNOLOGY_PATTERNS, window) or _first(_TECHNOLOGY_PATTERNS, folded),
             variant=_all(_VARIANT_PATTERNS, window) or _all(_VARIANT_PATTERNS, folded),
-            scopes=scopes, sentence=sentence,
+            scopes=_scopes_left(folded, value, unit) or scopes, sentence=sentence,
+            segment=_segment(window, folded),
+            cumulative=bool(_CUMULATIVE_RE.search(window)),
         ))
     return facts
 
@@ -244,10 +300,14 @@ def eligibility(claim: NumericFact, evidence: NumericFact) -> tuple[str, str | N
         return NOT_COMPARABLE, "different_variant"
     if claim.scopes and evidence.scopes and claim.scopes != evidence.scopes:
         return NOT_COMPARABLE, "different_scope"
+    if _both_known_and_differ(claim.segment, evidence.segment):
+        return NOT_COMPARABLE, "different_segment"
     # A target is not an actual. The claim may itself be a target ("giảm 30%
     # đến 2030"); then a target in the evidence is the right thing to compare.
     if claim.is_target != evidence.is_target:
         return AMBIGUOUS, "target_vs_actual"
+    if claim.cumulative != evidence.cumulative:
+        return AMBIGUOUS, "cumulative_vs_period"
     unknown_side = any(
         d in ("unknown", None)
         for d in (claim.basis, evidence.basis, claim.boundary, evidence.boundary)
@@ -265,7 +325,9 @@ REASON_TEXT_VI = {
     "different_technology": "khác công nghệ sản xuất",
     "different_variant": "khác loại chỉ số con",
     "different_scope": "khác phạm vi phát thải",
+    "different_segment": "khác mảng kinh doanh (thép / nông nghiệp / bất động sản / điện máy / xi măng)",
     "target_vs_actual": "một bên là mục tiêu, một bên là số thực hiện",
+    "cumulative_vs_period": "một bên là số lũy kế, một bên là số của một kỳ",
     "magnitude_gap": "chênh lệch hàng chục lần trở lên — thường là khác ranh giới, ngành hoặc đơn vị; cần người xem",
 }
 

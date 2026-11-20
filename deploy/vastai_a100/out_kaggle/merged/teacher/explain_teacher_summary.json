@@ -1,0 +1,13 @@
+{
+ "model": "Qwen/Qwen3-32B-AWQ",
+ "n": 996,
+ "reasons": {
+  "kept": 939,
+  "length": 50,
+  "new_number": 6,
+  "unparsed": 1
+ },
+ "seconds": 3142.2,
+ "output_tokens": 178060,
+ "tokens_per_second": 56.7
+}
